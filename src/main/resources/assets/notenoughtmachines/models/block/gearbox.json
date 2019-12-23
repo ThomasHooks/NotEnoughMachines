@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+		"particle": "notenoughtmachines:block/gearbox_out",
+		"down": "notenoughtmachines:block/gearbox_out",
+		"up": "notenoughtmachines:block/gearbox_out",
+		"east": "notenoughtmachines:block/gearbox_out",
+		"west": "notenoughtmachines:block/gearbox_out",
+		"north": "notenoughtmachines:block/gearbox_in",
+		"south": "notenoughtmachines:block/gearbox_out"
+    }
+}

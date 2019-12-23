@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "linen",
+  "ingredients": [
+    {
+      "item": "notenoughtmachines:linenblock"
+    }
+  ],
+  "result": {
+    "item": "notenoughtmachines:linen",
+    "count": 9
+  }
+}

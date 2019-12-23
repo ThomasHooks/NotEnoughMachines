@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "=x=",
+    "===",
+	"#v#"
+  ],
+  "key": {
+    "x": {
+      "item": "notenoughtmachines:gear"
+    },
+    "#": {
+      "tag": "minecraft:planks"
+    },
+	"=": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+	"v": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:millstone",
+    "count": 1
+  }
+}

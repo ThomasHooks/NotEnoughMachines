@@ -1,0 +1,10 @@
+{
+    "variants": {
+		"facing=north": {"model": "notenoughtmachines:block/gearbox"},
+		"facing=south": {"model": "notenoughtmachines:block/gearbox", "y": 180},
+		"facing=west": {"model": "notenoughtmachines:block/gearbox", "y": 270},
+		"facing=east": {"model": "notenoughtmachines:block/gearbox", "y": 90},
+		"facing=up": {"model": "notenoughtmachines:block/gearbox", "x": -90},
+		"facing=down": {"model": "notenoughtmachines:block/gearbox", "x": 90}
+    }
+}

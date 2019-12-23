@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "dir=1": {"model": "notenoughtmachines:block/axel"},
+		"dir=2": {"model": "notenoughtmachines:block/axel", "y": 270},
+		"dir=0": {"model": "notenoughtmachines:block/axel", "x": -90}
+    }
+}

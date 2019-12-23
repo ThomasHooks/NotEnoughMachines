@@ -1,0 +1,14 @@
+{
+	"block.notenoughtmachines.linenblock": "Block of Linen",
+	"block.notenoughtmachines.gearbox": "Gearbox",
+	"block.notenoughtmachines.axel": "Axel",
+	"block.notenoughtmachines.millstone": "Millstone",
+	
+	"item.notenoughtmachines.flaxseed" : "Flax Seeds",
+	"item.notenoughtmachines.flax" : "Flax",
+	"item.notenoughtmachines.flaxstring" : "Flax String",
+	"item.notenoughtmachines.linen" : "Linen",
+	"item.notenoughtmachines.gear" : "Gear",
+	
+	"itemGroup.notenoughtmachines" : "Not Enough Machines"
+}

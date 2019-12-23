@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+		"particle": "notenoughtmachines:block/millstone_side",
+		"down": "notenoughtmachines:block/millstone_bottom",
+		"up": "notenoughtmachines:block/millstone_top",
+		"east": "notenoughtmachines:block/millstone_side",
+		"west": "notenoughtmachines:block/millstone_side",
+		"north": "notenoughtmachines:block/millstone_side",
+		"south": "notenoughtmachines:block/millstone_side"
+    }
+}
