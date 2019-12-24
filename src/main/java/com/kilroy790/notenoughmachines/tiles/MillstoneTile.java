@@ -3,6 +3,7 @@ package com.kilroy790.notenoughmachines.tiles;
 import javax.annotation.Nonnull;
 
 import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
+import com.kilroy790.notenoughmachines.blocks.MillstoneBlock;
 import com.kilroy790.notenoughmachines.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.lists.TileEntityList;
 
@@ -150,14 +151,15 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		if(world.isRemote) return;
 		
 		//check if there is an item in the input slot
-		final ItemStack stack = itemInput.getStackInSlot(0).copy();
-		if(stack.isEmpty()) return;
+		/*final ItemStack stack = itemInput.getStackInSlot(0).copy();
+		if(stack.isEmpty()) return;*/
 		
 		//if there is a millable item in the input slot start to process it
 		if(attemptMill()) {
 			isProcessing = true;
 		} else isProcessing = false;
 		
+		//Increase process timer
 		if(isProcessing) {
 			processTime++;
 		} else {
@@ -170,13 +172,16 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 			isProcessing = false;
 		}
 
-		//Increase process timer
-		processTime++;
-		if (processTime > MAX_PROCESS_TIME) processTime = 0;
+		//Update the millstone's block state
+		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MillstoneBlock.LIT, isProcessing), 3);
 	}
 	
 	
     private boolean attemptMill() {
+    	/*
+    	 * attempts to mill the input item(s)
+    	 * @return true if the input(s) can be milled, false otherwise
+    	 */
     	
     	//Loop over all input slots and check for a millable item
     	for(int i = 0; i < INPUTSLOTS; i++) {
@@ -184,13 +189,21 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
     		ItemStack stack = itemInput.getStackInSlot(i).copy();
     		if(!stack.isEmpty()) {
     			
+    			//I might change this to use ItemStackHandler instead of IInventoy
     			IInventory inventory = new Inventory(stack);
+    			//get the recipe for the given item, if it's not valid recipe will equal null
     			MillingRecipe recipe = world.getRecipeManager().getRecipe(MillingRecipe.milling, inventory, world).orElse(null);
+    			
+    			//This checks if the recipe is valid
+    			//this is done to prevent a crash if an invalid item is put into the input slot
+    			if(recipe == null) return false;
+    			
     			ItemStack result = recipe.getCraftingResult(inventory);
         		
         		ItemStack output = itemOutput.insertItem(i, result.copy(), true);
         		if(output.isEmpty()) return true;
     		}
+    		else return false;
     	}
     	
     	return false;
@@ -198,6 +211,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
     
     
     private void millItem() {
+    	//mills the item(s) in the input slot
     	
     	//Loop over all input slots and check for a millable item
     	for(int i = 0; i < INPUTSLOTS; i++) {
@@ -205,8 +219,15 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
     		ItemStack stack = itemInput.getStackInSlot(i).copy();
     		if(!stack.isEmpty()) {
     			
+    			//I might change this to use ItemStackHandler instead of IInventoy
     			IInventory inventory = new Inventory(stack);
+    			//get the recipe for the given item, if it's not valid recipe will equal null
     			MillingRecipe recipe = world.getRecipeManager().getRecipe(MillingRecipe.milling, inventory, world).orElse(null);
+    			
+    			//This checks if the recipe is valid
+    			//this is done to prevent a crash if an invalid item is put into the input slot
+    			if(recipe == null) break;
+    			
     			ItemStack result = recipe.getCraftingResult(inventory);
         		
         		ItemStack output = itemOutput.insertItem(i, result.copy(), false);
@@ -236,6 +257,10 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	
 	public int getProcessTime() {
 		return processTime;
+	}
+	
+	public int getMaxProcessTime() {
+		return MAX_PROCESS_TIME;
 	}
 	
 	public void setProcessTime(int time) {

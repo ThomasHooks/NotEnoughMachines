@@ -2,13 +2,15 @@ package com.kilroy790.notenoughmachines.gui;
 
 import com.kilroy790.notenoughmachines.lists.BlockList;
 import com.kilroy790.notenoughmachines.lists.ContainerList;
+import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -24,7 +26,7 @@ public class MillstoneContainer extends Container{
 	public MillstoneContainer(int id, World world, BlockPos pos, PlayerInventory playerInvIn, PlayerEntity playerIn) {
 		
 		super(ContainerList.MILLSTONE_CONTAINER, id);
-		tile = world.getTileEntity(pos);
+		tile = (MillstoneTile) world.getTileEntity(pos);
 		this.player = playerIn;
 		this.playerInv = new InvWrapper(playerInvIn);
 		
@@ -38,10 +40,26 @@ public class MillstoneContainer extends Container{
 				
 		//add the player inventory and quick bar
 		addPlayerInventorySlots(7,71);
+		
+		//track the millstone's process time
+		trackInt(new IntReferenceHolder() {
+			
+			@Override
+			public void set(int p_221494_1_) {
+				
+				tile.setProcessTime(p_221494_1_);
+			}
+			
+			@Override
+			public int get() {
+				
+				return getProgress();
+			}
+		});
 	}
 	
 	
-	private TileEntity tile;
+	public MillstoneTile tile;
 	private PlayerEntity player;
 	private IItemHandler playerInv;
 	
@@ -125,4 +143,9 @@ public class MillstoneContainer extends Container{
 		return itemstack;
 	}
 	
+	
+	public int getProgress() {
+		
+		return tile.getProcessTime();
+	}
 }

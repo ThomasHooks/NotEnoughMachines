@@ -51,9 +51,10 @@ public class MillstoneScreen extends ContainerScreen<MillstoneContainer>{
         int relY = (this.height - this.ySize) / 2;
         this.blit(relX, relY, 0, 0, this.xSize, this.ySize);
         
-        //draw the gear
+        //draw the progress bar
+        int progressBar = (int)(container.getProgress() * 16) / 200;
         //args in order {top left corner's X the image is drawn, top left corner's Y the image is drawn, X pos in the texture, y pos of the texture, X size of texture, y size of texture}
-        this.blit(relX + 79, relY + 31, 181, 1, 16, 8);
+        this.blit(relX + 79, relY + 31, 181, 1, 16, progressBar);
     }
 }
 
