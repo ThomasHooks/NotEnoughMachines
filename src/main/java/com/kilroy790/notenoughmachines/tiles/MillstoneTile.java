@@ -2,13 +2,17 @@ package com.kilroy790.notenoughmachines.tiles;
 
 import javax.annotation.Nonnull;
 
+import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
 import com.kilroy790.notenoughmachines.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.lists.TileEntityList;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -21,11 +25,12 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.CombinedInvWrapper;
+import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 
 
 
-public class MillstoneTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider{
+public class MillstoneTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
 	public MillstoneTile() {
 		super(TileEntityList.MILLSTONE_TILE);
@@ -33,33 +38,38 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		//these are here so that a combined item hander can be made
 		itemInput = makeItemInputHandler();
 		itemOutput = makeItemOutputHandler();
+		
+		isProcessing = false;
 	}
 	
 	
+	//TODO add a Power capability to the millstone
 	
 	
 	protected ItemStackHandler itemInput;
+	protected RecipeWrapper inputRecipe;
 	private LazyOptional<ItemStackHandler> itemInputHandler = LazyOptional.of(() -> itemInput);
-	private static final int inputSlots = 1;
+	private static final int INPUTSLOTS = 1;
 	
 	
 	protected ItemStackHandler itemOutput;
 	private LazyOptional<ItemStackHandler> itemOutputHandler = LazyOptional.of(() -> itemOutput);
-	private static final int outputSlots = 1;
+	private static final int OUTPUTSLOTS = 1;
 	
 	
 	private LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInput, itemOutput));
-	private static final int NUMBER_OF_SLOTS = inputSlots + outputSlots;
+	private static final int NUMBER_OF_SLOTS = INPUTSLOTS + OUTPUTSLOTS;
 	
 	
 	private int processTime = 0;
 	//number of tick until done
 	//there are ~20 tick per second
-	public static final int MAX_PROCESS_TIME = 200;
-
+	private static final int MAX_PROCESS_TIME = 200;
+	private boolean isProcessing;
+	
 	
 
-
+	
 	@Nonnull
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
@@ -80,7 +90,6 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 			}
 		}
 		
-		//TODO add a Power capability to the millstone
 		
 		return super.getCapability(cap, side);
 	}
@@ -138,10 +147,77 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	@Override
 	public void tick() {
 		
+		if(world.isRemote) return;
+		
+		//check if there is an item in the input slot
+		final ItemStack stack = itemInput.getStackInSlot(0).copy();
+		if(stack.isEmpty()) return;
+		
+		//if there is a millable item in the input slot start to process it
+		if(attemptMill()) {
+			isProcessing = true;
+		} else isProcessing = false;
+		
+		if(isProcessing) {
+			processTime++;
+		} else {
+			processTime--;
+			if(processTime < 0) processTime = 0;
+		}
+		
+		if(processTime >= MAX_PROCESS_TIME) {
+			millItem();
+			isProcessing = false;
+		}
+
 		//Increase process timer
 		processTime++;
 		if (processTime > MAX_PROCESS_TIME) processTime = 0;
 	}
+	
+	
+    private boolean attemptMill() {
+    	
+    	//Loop over all input slots and check for a millable item
+    	for(int i = 0; i < INPUTSLOTS; i++) {
+    		
+    		ItemStack stack = itemInput.getStackInSlot(i).copy();
+    		if(!stack.isEmpty()) {
+    			
+    			IInventory inventory = new Inventory(stack);
+    			MillingRecipe recipe = world.getRecipeManager().getRecipe(MillingRecipe.milling, inventory, world).orElse(null);
+    			ItemStack result = recipe.getCraftingResult(inventory);
+        		
+        		ItemStack output = itemOutput.insertItem(i, result.copy(), true);
+        		if(output.isEmpty()) return true;
+    		}
+    	}
+    	
+    	return false;
+    }
+    
+    
+    private void millItem() {
+    	
+    	//Loop over all input slots and check for a millable item
+    	for(int i = 0; i < INPUTSLOTS; i++) {
+    		
+    		ItemStack stack = itemInput.getStackInSlot(i).copy();
+    		if(!stack.isEmpty()) {
+    			
+    			IInventory inventory = new Inventory(stack);
+    			MillingRecipe recipe = world.getRecipeManager().getRecipe(MillingRecipe.milling, inventory, world).orElse(null);
+    			ItemStack result = recipe.getCraftingResult(inventory);
+        		
+        		ItemStack output = itemOutput.insertItem(i, result.copy(), false);
+        		if(output.isEmpty()) {
+        			itemInput.extractItem(i, 1, false);
+        			processTime = 0;
+        			markDirty();
+        		}
+    		}
+    	}
+    }
 	
 	
 	@Override
@@ -178,11 +254,19 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		return NUMBER_OF_SLOTS;
 	}
 	
+	public static int getSizeInput() {
+		return INPUTSLOTS;
+	}
+	
+	public static int getSizeOutput() {
+		return OUTPUTSLOTS;
+	}
+	
 	
 	private ItemStackHandler makeItemInputHandler() {
 		//Create a new input item stack handler 
 		
-		return new ItemStackHandler(inputSlots) {
+		return new ItemStackHandler(INPUTSLOTS) {
 			
 			@Override
 			protected void onContentsChanged(int slot) {
@@ -196,7 +280,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	private ItemStackHandler makeItemOutputHandler() {
 		//Create a new output item stack handler 
 		
-		return new ItemStackHandler(outputSlots) {
+		return new ItemStackHandler(OUTPUTSLOTS) {
 			
 			@Override
 			protected void onContentsChanged(int slot) {

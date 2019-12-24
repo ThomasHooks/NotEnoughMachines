@@ -11,7 +11,6 @@ import net.minecraft.item.crafting.ShapedRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 
 public class MachineRecipeSerializer<T extends AbstractMachineRecipe> extends net.minecraftforge.registries.ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<T>{
 
@@ -26,30 +25,28 @@ public class MachineRecipeSerializer<T extends AbstractMachineRecipe> extends ne
 	}
 	
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public T read(ResourceLocation recipeId, JsonObject json) {
 		
+		//get the recipe group tag
 		String s = JSONUtils.getString(json, "group", "");
+		
+		//get the ingredient for the recipe
 	    JsonElement jsonelement = (JsonElement)(JSONUtils.isJsonArray(json, "ingredient") ? JSONUtils.getJsonArray(json, "ingredient") : JSONUtils.getJsonObject(json, "ingredient"));
 	    Ingredient ingredient = Ingredient.deserialize(jsonelement);
 	    
 	    //Forge: Check if primitive string to keep vanilla or a object which can contain a count field.
 	    if (!json.has("result")) throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
 	    
-	    ItemStack itemstack;
+	    //Get the result item and the amount of them
+	    ItemStack itemstack = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
 	    
-	    if (json.get("result").isJsonObject()) itemstack = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
-	    else {
-	    	String s1 = JSONUtils.getString(json, "result");
-	    	ResourceLocation resourcelocation = new ResourceLocation(s1);
-	    	itemstack = new ItemStack(Registry.ITEM.getValue(resourcelocation).orElseThrow(() -> {
-	    		return new IllegalStateException("Item: " + s1 + " does not exist");
-	    	}));
-	    }
-	    
+	    //get the experience amount
 	    float f = JSONUtils.getFloat(json, "experience", 0.0F);
+	    
+	    //get the process time
 	    int i = JSONUtils.getInt(json, "processtime", this.processTime);
+	    
 	    return this.IAbstractMachineRecipeFactory.create(recipeId, s, ingredient, itemstack, f, i);
 	}
 

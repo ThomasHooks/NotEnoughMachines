@@ -14,9 +14,10 @@ public class MillingRecipe extends AbstractMachineRecipe{
 	public MillingRecipe(ResourceLocation idIn, String groupIn, Ingredient ingredientIn,
 			ItemStack resultIn, float experienceIn, int processTimeIn) {
 		
-		super(IRecipeType.register("milling"), idIn, groupIn, ingredientIn, resultIn, experienceIn, processTimeIn);
+		super(milling, idIn, groupIn, ingredientIn, resultIn, experienceIn, processTimeIn);
 	}
 	
+	public static final IRecipeType<MillingRecipe> milling = IRecipeType.register("milling");
 	
 	public ItemStack getIcon() {
 		
