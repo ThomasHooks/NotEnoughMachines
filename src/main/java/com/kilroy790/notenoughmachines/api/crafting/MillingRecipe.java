@@ -16,8 +16,12 @@ public class MillingRecipe extends AbstractMachineRecipe{
 		
 		super(milling, idIn, groupIn, ingredientIn, resultIn, experienceIn, processTimeIn);
 	}
+		
+	
 	
 	public static final IRecipeType<MillingRecipe> milling = IRecipeType.register("milling");
+	
+		
 	
 	public ItemStack getIcon() {
 		
@@ -30,5 +34,4 @@ public class MillingRecipe extends AbstractMachineRecipe{
 		
 		return IRecipeSerializer.register("milling", MachineRecipeList.MILLING);
 	}
-
 }

@@ -10,14 +10,19 @@ modLoader="javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
 loaderVersion="[28,)" #mandatory (28 is current forge version)
 
+#A URL to refer people to when problems occur with this mod
+issueTrackerURL="https://github.com/ThomasHooks/NotEnoughMachines/issues"
+
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 
 # The modid of the mod
 modId="notenoughtmachines" #mandatory
 
-# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="${file.jarVersion}" #mandatory
+# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it ${file.jarVersion}
+version="0.1" #mandatory
+
+modState="WIP"
 
  # A display name for the mod
 displayName="Not Enough Machines" #mandatory
@@ -30,7 +35,7 @@ authors="Kilroy_790" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-This is a long form description of the mod. You can write whatever you want here
+A tech mod for Minecraft that uses Forge and adds more machines and automation
 '''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.

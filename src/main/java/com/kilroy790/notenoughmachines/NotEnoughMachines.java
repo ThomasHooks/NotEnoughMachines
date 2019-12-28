@@ -5,11 +5,12 @@ import org.apache.logging.log4j.Logger;
 
 import com.kilroy790.notenoughmachines.api.crafting.MachineRecipeSerializer;
 import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
-import com.kilroy790.notenoughmachines.blocks.AxelBlock;
 import com.kilroy790.notenoughmachines.blocks.FlaxPlantBlock;
-import com.kilroy790.notenoughmachines.blocks.GearBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.LinenBlock;
-import com.kilroy790.notenoughmachines.blocks.MillstoneBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.AxelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.GearBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
 import com.kilroy790.notenoughmachines.lists.BlockList;
@@ -21,6 +22,7 @@ import com.kilroy790.notenoughmachines.setup.IProxy;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.setup.ServerProxy;
 import com.kilroy790.notenoughmachines.tiles.AxelTile;
+import com.kilroy790.notenoughmachines.tiles.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
 
 import net.minecraft.block.Block;
@@ -97,6 +99,9 @@ public class NotEnoughMachines {
 			event.getRegistry().register(BlockList.LINENBLOCK = new LinenBlock());
 			
 			//Machine Blocks
+			logger.info("Registering CreativePowerBoxBlock");
+			event.getRegistry().register(BlockList.CREATIVEPOWERBOX = new CreativePowerBoxBlock("creativepowerbox"));
+			
 			logger.info("Registering GearboxBlock");
 			event.getRegistry().register(BlockList.GEARBOX = new GearBoxBlock("gearbox"));
 			
@@ -140,6 +145,9 @@ public class NotEnoughMachines {
 			logger.info("Registering LinenBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.LINENBLOCK, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.LINENBLOCK.getRegistryName()));
 			
+			logger.info("Registering CreativePowerBoxBlock");
+			event.getRegistry().register(new BlockItem(BlockList.CREATIVEPOWERBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CREATIVEPOWERBOX.getRegistryName()));
+			
 			logger.info("Registering GearboxBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.GEARBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.GEARBOX.getRegistryName()));
 			
@@ -157,6 +165,9 @@ public class NotEnoughMachines {
 		@SubscribeEvent
 		public static void registerTileEntities(final RegistryEvent.Register<TileEntityType<?>> event) {
 			logger.info("Registering all tile entities");
+			
+			logger.info("Registering CreativePowerBoxTileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(CreativePowerBoxTile::new, BlockList.CREATIVEPOWERBOX).build(null).setRegistryName("creativepowerbox"));
 			
 			logger.info("Registering MillstoneTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(MillstoneTile::new, BlockList.MILLSTONE).build(null).setRegistryName("millstone"));

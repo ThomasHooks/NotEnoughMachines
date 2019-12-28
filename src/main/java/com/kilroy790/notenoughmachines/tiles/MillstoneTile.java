@@ -3,7 +3,10 @@ package com.kilroy790.notenoughmachines.tiles;
 import javax.annotation.Nonnull;
 
 import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
-import com.kilroy790.notenoughmachines.blocks.MillstoneBlock;
+import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
+import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
+import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConsumer;
+import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.lists.TileEntityList;
 
@@ -40,6 +43,8 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		itemInput = makeItemInputHandler();
 		itemOutput = makeItemOutputHandler();
 		
+		powerInput = makeMechanicalPowerHandler();
+		
 		isProcessing = false;
 	}
 	
@@ -50,21 +55,32 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	protected ItemStackHandler itemInput;
 	protected RecipeWrapper inputRecipe;
 	private LazyOptional<ItemStackHandler> itemInputHandler = LazyOptional.of(() -> itemInput);
+	
 	private static final int INPUTSLOTS = 1;
 	
 	
 	protected ItemStackHandler itemOutput;
 	private LazyOptional<ItemStackHandler> itemOutputHandler = LazyOptional.of(() -> itemOutput);
+	
 	private static final int OUTPUTSLOTS = 1;
 	
 	
 	private LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInput, itemOutput));
+	
 	private static final int NUMBER_OF_SLOTS = INPUTSLOTS + OUTPUTSLOTS;
 	
 	
-	private int processTime = 0;
-	//number of tick until done
+	private MechanicalPowerConsumer powerInput;
+	private LazyOptional<IMechanicalPower> powerInputHandler = LazyOptional.of(() -> powerInput);
+	
+	private static final int POWERCAPACITY = 800;
+	private static final int MAXPOWERRECEIVED = 30;
+	private static final int MAXPOWERSENT = 0;
+	private static final int PROCESSINGPOWER = 5;
+	
+	
 	//there are ~20 tick per second
+	private int processTime = 0;
 	private static final int MAX_PROCESS_TIME = 200;
 	private boolean isProcessing;
 	
@@ -88,6 +104,11 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 			if(side == Direction.DOWN) {
 				//the millstone only outputs to the bottom
 				return itemOutputHandler.cast();
+			}
+		}
+		else if(cap == CapabilityMechanical.MECHANICAL) {
+			if(side == Direction.UP) {
+				return powerInputHandler.cast();
 			}
 		}
 		
@@ -150,17 +171,14 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		
 		if(world.isRemote) return;
 		
-		//check if there is an item in the input slot
-		/*final ItemStack stack = itemInput.getStackInSlot(0).copy();
-		if(stack.isEmpty()) return;*/
-		
 		//if there is a millable item in the input slot start to process it
-		if(attemptMill()) {
+		if(attemptMill() && powerInput.isPowered()) {
 			isProcessing = true;
 		} else isProcessing = false;
 		
-		//Increase process timer
+		//Increase process timer and consume power
 		if(isProcessing) {
+			powerInput.consumePower(PROCESSINGPOWER, false);
 			processTime++;
 		} else {
 			processTime--;
@@ -313,6 +331,12 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 				markDirty();
 			}
 		};
+	}
+	
+	
+	private MechanicalPowerConsumer makeMechanicalPowerHandler() {
+		
+		return new MechanicalPowerConsumer(POWERCAPACITY, MAXPOWERRECEIVED, MAXPOWERSENT);
 	}
 }
 
