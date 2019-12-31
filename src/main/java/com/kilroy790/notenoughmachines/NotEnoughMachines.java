@@ -7,7 +7,7 @@ import com.kilroy790.notenoughmachines.api.crafting.MachineRecipeSerializer;
 import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
 import com.kilroy790.notenoughmachines.blocks.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.LinenBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.AxelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
@@ -21,7 +21,7 @@ import com.kilroy790.notenoughmachines.setup.ClientProxy;
 import com.kilroy790.notenoughmachines.setup.IProxy;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.setup.ServerProxy;
-import com.kilroy790.notenoughmachines.tiles.AxelTile;
+import com.kilroy790.notenoughmachines.tiles.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
 
@@ -105,8 +105,8 @@ public class NotEnoughMachines {
 			logger.info("Registering GearboxBlock");
 			event.getRegistry().register(BlockList.GEARBOX = new GearBoxBlock("gearbox"));
 			
-			logger.info("Registering AxelBlock");
-			event.getRegistry().register(BlockList.AXEL = new AxelBlock("axel"));
+			logger.info("Registering AxleBlock");
+			event.getRegistry().register(BlockList.AXLE = new AxleBlock("axle"));
 			
 			logger.info("Registering MillstoneBlock");
 			event.getRegistry().register(BlockList.MILLSTONE = new MillstoneBlock("millstone"));
@@ -151,8 +151,8 @@ public class NotEnoughMachines {
 			logger.info("Registering GearboxBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.GEARBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.GEARBOX.getRegistryName()));
 			
-			logger.info("Registering AxelBlockItem");
-			event.getRegistry().register(new BlockItem(BlockList.AXEL, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.AXEL.getRegistryName()));
+			logger.info("Registering AxleBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.AXLE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.AXLE.getRegistryName()));
 			
 			logger.info("Registering MillstoneBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.MILLSTONE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.MILLSTONE.getRegistryName()));
@@ -173,7 +173,7 @@ public class NotEnoughMachines {
 			event.getRegistry().register(TileEntityType.Builder.create(MillstoneTile::new, BlockList.MILLSTONE).build(null).setRegistryName("millstone"));
 			
 			logger.info("Registering AxelTileEntity");
-			event.getRegistry().register(TileEntityType.Builder.create(AxelTile::new, BlockList.AXEL).build(null).setRegistryName("axel"));
+			event.getRegistry().register(TileEntityType.Builder.create(AxleTile::new, BlockList.AXLE).build(null).setRegistryName("axle"));
 			
 			logger.info("Tile entities registered");
 		}

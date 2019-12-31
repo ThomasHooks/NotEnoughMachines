@@ -10,7 +10,6 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
 
 public class CreativePowerBoxTile extends TileEntity implements ITickableTileEntity {
@@ -67,13 +66,13 @@ public class CreativePowerBoxTile extends TileEntity implements ITickableTileEnt
 	}
 	
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void read(CompoundNBT compound) {
 		
 		if(compound.contains("storedpower")) {
-			CompoundNBT powerOutput = compound.getCompound("storedpower");
-			powerOutputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(powerOutput));
+			powerOutputHandler.ifPresent(h -> {
+				h.setEnergyStored(compound.getInt("storedpower"));
+			});
 		}
 		
 		super.read(compound);
@@ -84,9 +83,7 @@ public class CreativePowerBoxTile extends TileEntity implements ITickableTileEnt
 	public CompoundNBT write(CompoundNBT compound) {
 		
 		powerOutputHandler.ifPresent(h -> {
-			@SuppressWarnings("unchecked")
-			CompoundNBT powerOutput = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
-			compound.put("storedpower", powerOutput);
+			compound.putInt("process", h.getEnergyStored());
 		});
 		
 		return super.write(compound);

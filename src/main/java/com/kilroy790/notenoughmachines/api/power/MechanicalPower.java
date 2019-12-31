@@ -134,4 +134,12 @@ public class MechanicalPower implements IMechanicalPower {
 		
 		return storedPower;
 	}
+	
+	
+	@Override
+	public void setEnergyStored(int storedPowerIn) {
+		
+		if(storedPowerIn < 0) this.storedPower = 0;
+		else this.storedPower = storedPowerIn;
+	}
 }

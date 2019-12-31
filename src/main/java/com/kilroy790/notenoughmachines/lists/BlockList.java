@@ -2,7 +2,7 @@ package com.kilroy790.notenoughmachines.lists;
 
 import com.kilroy790.notenoughmachines.blocks.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.LinenBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.AxelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
@@ -21,8 +21,8 @@ public class BlockList {
 	@ObjectHolder("notenoughtmachines:gearbox")
 	public static GearBoxBlock GEARBOX;
 	
-	@ObjectHolder("notenoughtmachines:axel")
-	public static AxelBlock AXEL;
+	@ObjectHolder("notenoughtmachines:axle")
+	public static AxleBlock AXLE;
 	
 	@ObjectHolder("notenoughtmachines:millstone")
 	public static MillstoneBlock MILLSTONE;

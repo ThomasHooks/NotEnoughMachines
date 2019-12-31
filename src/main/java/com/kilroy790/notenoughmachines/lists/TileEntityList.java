@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.lists;
 
-import com.kilroy790.notenoughmachines.tiles.AxelTile;
+import com.kilroy790.notenoughmachines.tiles.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
 
@@ -15,6 +15,6 @@ public class TileEntityList {
 	@ObjectHolder("notenoughtmachines:millstone")
 	public static TileEntityType<MillstoneTile> MILLSTONE_TILE;
 	
-	@ObjectHolder("notenoughtmachines:axel")
-	public static TileEntityType<AxelTile> AXEL_TILE;
+	@ObjectHolder("notenoughtmachines:axle")
+	public static TileEntityType<AxleTile> AXLE_TILE;
 }

@@ -11,12 +11,17 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
+
+
+
 
 public class CreativePowerBoxBlock extends Block {
 
@@ -27,6 +32,13 @@ public class CreativePowerBoxBlock extends Block {
 				.harvestTool(ToolType.AXE)
 				.harvestLevel(0));
 		this.setRegistryName(name);
+	}
+	
+	
+	@Override
+	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving) {
+		
+		if(world.isRemote) return;
 	}
 	
 	

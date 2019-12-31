@@ -116,4 +116,10 @@ public interface IMechanicalPower {
 	 * @return		the amount of energy that is currently stored by the machine
 	 */
 	int getEnergyStored();
+	
+	
+	/*
+	 * @param storedPowerIn		the amount of energy to be stored by the machine
+	 */
+	void setEnergyStored(int storedPowerIn);
 }

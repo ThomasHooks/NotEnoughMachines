@@ -134,6 +134,12 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 			processTime = compound.getInt("process");
 		}
 		
+		if(compound.contains("storedpower")) {
+			powerInputHandler.ifPresent(h -> {
+				h.setEnergyStored(compound.getInt("storedpower"));
+			});
+		}
+		
 		super.read(compound);
 	}
 	
@@ -153,6 +159,10 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		
 		compound.putInt("process", processTime);
 		
+		powerInputHandler.ifPresent(h -> {
+			compound.putInt("process", h.getEnergyStored());
+		});
+		
 		return super.write(compound);
 	}
 	
@@ -163,6 +173,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		this.itemInputHandler.invalidate();
 		this.itemInputHandler.invalidate();
 		this.combinedItemHandler.invalidate();
+		this.powerInputHandler.invalidate();
 	}
 	
 	

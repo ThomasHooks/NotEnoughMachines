@@ -1,12 +1,12 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "notenoughtmachines:block/axel",
-		"particle": "notenoughtmachines:block/axel"
+		"0": "notenoughtmachines:block/axle",
+		"particle": "notenoughtmachines:block/axle"
 	},
 	"elements": [
 		{
-			"name": "axel",
+			"name": "axle",
 			"from": [6, 6, 0],
 			"to": [10, 10, 16],
 			"faces": {
