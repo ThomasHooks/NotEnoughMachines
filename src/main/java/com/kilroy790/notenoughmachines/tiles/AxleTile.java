@@ -6,11 +6,13 @@ import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConduit;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.lists.TileEntityList;
 
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -35,7 +37,7 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	public AxleTile() {
 		super(TileEntityList.AXLE_TILE);
 		
-		this.powerChannel = makeMechanicalPowerHandler();
+		this.powerChannel = makeMechanicalPowerHandler(POWERCAPACITY, MAXPOWERRECEIVED, MAXPOWERSENT);
 	}
 
 	
@@ -47,6 +49,79 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 		if(powerChannel.isPowered()) {
 			
 			sendPowerToNextMachine();
+		}
+	}
+	
+	
+	private void sendPowerToNextMachine() {
+
+		int axleDir = this.getBlockState().get(NEMBlockStateProperties.AXLE_DIRECTION);
+		int axleDist = this.getBlockState().get(NEMBlockStateProperties.POWER_DISTANCE_3_15);
+		
+		int powerLevel[] = new int[2];
+		powerLevel[0] = AxleBlock.MINPOWERDISTANCE;
+		powerLevel[1] = AxleBlock.MINPOWERDISTANCE;
+		
+		//loop over all machine that are bordering the axle and get their power distance level
+		for(int i = 0; i < 2; i++) {
+			
+			Direction direction = AxleBlock.axisAlignment[axleDir][i];
+			BlockPos nextPos = pos.offset(direction);
+			Block nextBlock = world.getBlockState(nextPos).getBlock();
+			
+			if(nextBlock instanceof AxleBlock) {
+				powerLevel[i] = world.getBlockState(nextPos).get(NEMBlockStateProperties.POWER_DISTANCE_3_15);
+			}
+			
+			else if(nextBlock instanceof GearboxBlock) {
+				Direction gearboxInput = world.getBlockState(nextPos).get(BlockStateProperties.FACING);
+				//gearboxInput == AxleBlock.axisAlignment[axleDir][i].getOpposite() || gearboxInput == AxleBlock.axisAlignment[axleDir][i]
+				if(gearboxInput != AxleBlock.axisAlignment[axleDir][i].getOpposite()) {
+					powerLevel[i] = axleDist + 1;
+				}
+				else powerLevel[i] = axleDist - 1;
+			}
+			
+			else if(nextBlock instanceof MillstoneBlock) {
+				//TODO use AbstractMachineBlock instead
+				powerLevel[i] = axleDist - 1;
+			}
+			
+			else if(nextBlock instanceof CreativePowerBoxBlock) {
+				//TODO use AbstractPowerSourceBlock instead
+				powerLevel[i] = axleDist + 1;
+			}
+		}
+		
+		//Check which machine is furthest form the source
+		//and then push power to that machine
+		if(powerLevel[0] == axleDist - 1) {
+			
+			Direction direction = AxleBlock.axisAlignment[axleDir][0];
+			BlockPos nextPos = pos.offset(direction);
+			
+			LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
+			nextMachine.ifPresent(h -> {
+				
+				if(h.canReceive()) {
+					
+					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
+					}
+			});
+		}
+		else if(powerLevel[1] == axleDist - 1) {
+			
+			Direction direction = AxleBlock.axisAlignment[axleDir][1];
+			BlockPos nextPos = pos.offset(direction);
+			
+			LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
+			nextMachine.ifPresent(h -> {
+				
+				if(h.canReceive()) {
+					
+					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
+					}
+			});
 		}
 	}
 	
@@ -95,7 +170,7 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	public CompoundNBT write(CompoundNBT compound) {
 
 		powerChannelHandler.ifPresent(h -> {
-			compound.putInt("process", h.getEnergyStored());
+			compound.putInt("storedpower", h.getEnergyStored());//was "process"
 		});
 		
 		return super.write(compound);
@@ -109,71 +184,11 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	}
 	
 	
-	private void sendPowerToNextMachine() {
-
-		int axelDir = this.getBlockState().get(NEMBlockStateProperties.AXLE_DIRECTION);
-		int axelDist = this.getBlockState().get(NEMBlockStateProperties.POWER_DISTANCE_3_15);
-		
-		int powerLevel[] = new int[2];
-		powerLevel[0] = AxleBlock.MINPOWERDISTANCE;
-		powerLevel[1] = AxleBlock.MINPOWERDISTANCE;
-		
-		//loop over all machine that are bordering the axle and get their power distance level
-		for(int i = 0; i < 2; i++) {
-			
-			Direction direction = AxleBlock.axisAlignment[axelDir][i];
-			BlockPos nextPos = pos.offset(direction);
-			Block nextBlock = world.getBlockState(nextPos).getBlock();
-			
-			if(nextBlock instanceof AxleBlock) {
-				powerLevel[i] = world.getBlockState(nextPos).get(NEMBlockStateProperties.POWER_DISTANCE_3_15);
-			}
-			
-			else if(nextBlock instanceof MillstoneBlock) {
-				//TODO use AbstractMachineBlock instead
-				powerLevel[i] = axelDist - 1;
-			}
-			
-			else if(nextBlock instanceof CreativePowerBoxBlock) {
-				//TODO use AbstractPowerSourceBlock instead
-				powerLevel[i] = axelDist + 1;
-			}
-		}
-		
-		//Check which machine is furthest form the source
-		//and then push power to that machine
-		if(powerLevel[0] == axelDist - 1) {
-			
-			Direction direction = AxleBlock.axisAlignment[axelDir][0];
-			BlockPos nextPos = pos.offset(direction);
-			
-			LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
-			nextMachine.ifPresent(h -> {
-				
-				if(h.canReceive()) {
-					
-					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
-					}
-			});
-		}
-		else if(powerLevel[1] == axelDist - 1) {
-			
-			Direction direction = AxleBlock.axisAlignment[axelDir][1];
-			BlockPos nextPos = pos.offset(direction);
-			
-			LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
-			nextMachine.ifPresent(h -> {
-				
-				if(h.canReceive()) {
-					
-					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
-					}
-			});
-		}
-	}
-	
-	
-	private MechanicalPowerConduit makeMechanicalPowerHandler() {
-		return new MechanicalPowerConduit(POWERCAPACITY, MAXPOWERRECEIVED, MAXPOWERSENT);
+	private MechanicalPowerConduit makeMechanicalPowerHandler(int capacity, int maxPowerReceived, int maxPowerSent) {
+		return new MechanicalPowerConduit(capacity, maxPowerReceived, maxPowerSent);
 	}
 }
+
+
+
+

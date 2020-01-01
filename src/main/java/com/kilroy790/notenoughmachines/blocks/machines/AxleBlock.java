@@ -14,6 +14,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
@@ -82,7 +83,6 @@ public class AxleBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) {
 		//Set the bounding box based on the direction that the block is facing
-		
 		return SHAPE_BY_DIR[state.get(this.getAxelDirection())];
 	}
 	
@@ -143,9 +143,19 @@ public class AxleBlock extends Block {
 			Block blockNext = world.getBlockState(posNext).getBlock();
 			
 			if(blockNext instanceof CreativePowerBoxBlock) {
+				//TODO use AbstractPowerSourceBlock instead
 				nextAxlePowerLevel = MAXPOWERDISTANCE + 1;
 				powerLevel[i] = MAXPOWERDISTANCE + 1;
 				nextToSource = true;
+			}
+			
+			else if(blockNext instanceof GearboxBlock) {
+				Direction gearboxInput = world.getBlockState(posNext).get(BlockStateProperties.FACING);
+				if(gearboxInput != axisAlignment[axleDir][i].getOpposite()) {
+					//axle is attached to a gearbox's output
+					nextAxlePowerLevel = MAXPOWERDISTANCE + 1;
+					powerLevel[i] = MAXPOWERDISTANCE + 1;
+				}
 			}
 			
 			else if(newPowerLevel == MAXPOWERDISTANCE) {
@@ -228,3 +238,7 @@ public class AxleBlock extends Block {
 		return POWER;
 	}
 }
+
+
+
+

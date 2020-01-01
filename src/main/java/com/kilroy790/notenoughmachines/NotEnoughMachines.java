@@ -9,7 +9,7 @@ import com.kilroy790.notenoughmachines.blocks.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.GearBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
@@ -23,6 +23,7 @@ import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.setup.ServerProxy;
 import com.kilroy790.notenoughmachines.tiles.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
 
 import net.minecraft.block.Block;
@@ -103,7 +104,7 @@ public class NotEnoughMachines {
 			event.getRegistry().register(BlockList.CREATIVEPOWERBOX = new CreativePowerBoxBlock("creativepowerbox"));
 			
 			logger.info("Registering GearboxBlock");
-			event.getRegistry().register(BlockList.GEARBOX = new GearBoxBlock("gearbox"));
+			event.getRegistry().register(BlockList.GEARBOX = new GearboxBlock("gearbox"));
 			
 			logger.info("Registering AxleBlock");
 			event.getRegistry().register(BlockList.AXLE = new AxleBlock("axle"));
@@ -174,6 +175,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering AxelTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(AxleTile::new, BlockList.AXLE).build(null).setRegistryName("axle"));
+			
+			logger.info("Registering GearboxTileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(GearboxTile::new, BlockList.GEARBOX).build(null).setRegistryName("gearbox"));
 			
 			logger.info("Tile entities registered");
 		}

@@ -2,6 +2,7 @@ package com.kilroy790.notenoughmachines.lists;
 
 import com.kilroy790.notenoughmachines.tiles.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
 
 import net.minecraft.tileentity.TileEntityType;
@@ -17,4 +18,7 @@ public class TileEntityList {
 	
 	@ObjectHolder("notenoughtmachines:axle")
 	public static TileEntityType<AxleTile> AXLE_TILE;
+	
+	@ObjectHolder("notenoughtmachines:gearbox")
+	public static TileEntityType<GearboxTile> GEARBOX;
 }

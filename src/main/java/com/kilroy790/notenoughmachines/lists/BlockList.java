@@ -4,7 +4,7 @@ import com.kilroy790.notenoughmachines.blocks.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.GearBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 
 import net.minecraftforge.registries.ObjectHolder;
@@ -19,7 +19,7 @@ public class BlockList {
 	public static CreativePowerBoxBlock CREATIVEPOWERBOX;
 	
 	@ObjectHolder("notenoughtmachines:gearbox")
-	public static GearBoxBlock GEARBOX;
+	public static GearboxBlock GEARBOX;
 	
 	@ObjectHolder("notenoughtmachines:axle")
 	public static AxleBlock AXLE;
