@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.setup;
 
-import com.kilroy790.notenoughmachines.gui.MillstoneScreen;
-import com.kilroy790.notenoughmachines.lists.ContainerList;
+import com.kilroy790.notenoughmachines.api.lists.ContainerList;
+import com.kilroy790.notenoughmachines.client.gui.MillstoneScreen;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;

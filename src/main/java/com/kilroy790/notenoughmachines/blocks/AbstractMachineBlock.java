@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks;
 
 import net.minecraft.block.Block;
 

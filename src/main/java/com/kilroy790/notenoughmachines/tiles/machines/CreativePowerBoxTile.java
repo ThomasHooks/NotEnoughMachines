@@ -1,9 +1,9 @@
-package com.kilroy790.notenoughmachines.tiles;
+package com.kilroy790.notenoughmachines.tiles.machines;
 
+import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerProducer;
-import com.kilroy790.notenoughmachines.lists.TileEntityList;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;

@@ -5,7 +5,8 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.kilroy790.notenoughmachines.api.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.AxleTile;
+import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;

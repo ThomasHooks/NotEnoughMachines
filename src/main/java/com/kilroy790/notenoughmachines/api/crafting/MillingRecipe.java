@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.api.crafting;
 
-import com.kilroy790.notenoughmachines.lists.BlockList;
-import com.kilroy790.notenoughmachines.lists.MachineRecipeList;
+import com.kilroy790.notenoughmachines.api.lists.BlockList;
+import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;

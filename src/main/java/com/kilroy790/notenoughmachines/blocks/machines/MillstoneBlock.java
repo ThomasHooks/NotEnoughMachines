@@ -3,7 +3,7 @@ package com.kilroy790.notenoughmachines.blocks.machines;
 import java.util.Random;
 
 import com.kilroy790.notenoughmachines.api.utilities.InventoryHandler;
-import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

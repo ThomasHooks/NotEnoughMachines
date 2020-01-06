@@ -1,6 +1,7 @@
-package com.kilroy790.notenoughmachines.tiles;
+package com.kilroy790.notenoughmachines.tiles.machines;
 
 import com.kilroy790.notenoughmachines.api.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConduit;
@@ -8,7 +9,6 @@ import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
-import com.kilroy790.notenoughmachines.lists.TileEntityList;
 
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;

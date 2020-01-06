@@ -1,13 +1,12 @@
-package com.kilroy790.notenoughmachines.tiles;
+package com.kilroy790.notenoughmachines.tiles.machines;
 
 import com.kilroy790.notenoughmachines.api.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConduit;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
-import com.kilroy790.notenoughmachines.lists.TileEntityList;
-
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -48,7 +47,11 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 			
 			//Loop through each side and push power to all axles that are connected to its outputs
 			sendPowerToNextMachine();
+			
+			updateBlockStatePowered(true);
 		}
+		
+		else updateBlockStatePowered(false);
 	}
 	
 	
@@ -103,6 +106,12 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 				}
 			}
 		}
+	}
+	
+	
+	protected void updateBlockStatePowered(boolean isPowered) {
+		Direction facing = this.world.getBlockState(pos).get(BlockStateProperties.FACING);
+		this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(BlockStateProperties.FACING, facing).with(GearboxBlock.getPowered(), isPowered), 1|2);
 	}
 	
 	

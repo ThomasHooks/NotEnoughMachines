@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.items;
 
-import com.kilroy790.notenoughmachines.lists.BlockList;
+import com.kilroy790.notenoughmachines.api.lists.BlockList;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

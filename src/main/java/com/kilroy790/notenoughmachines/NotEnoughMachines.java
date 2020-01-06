@@ -5,26 +5,29 @@ import org.apache.logging.log4j.Logger;
 
 import com.kilroy790.notenoughmachines.api.crafting.MachineRecipeSerializer;
 import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
-import com.kilroy790.notenoughmachines.blocks.FlaxPlantBlock;
-import com.kilroy790.notenoughmachines.blocks.LinenBlock;
+import com.kilroy790.notenoughmachines.api.lists.BlockList;
+import com.kilroy790.notenoughmachines.api.lists.ItemGroupList;
+import com.kilroy790.notenoughmachines.api.lists.ItemList;
+import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
+import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
+import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
-import com.kilroy790.notenoughmachines.gui.MillstoneContainer;
+import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.client.gui.MillstoneContainer;
+import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
-import com.kilroy790.notenoughmachines.lists.BlockList;
-import com.kilroy790.notenoughmachines.lists.ItemGroupList;
-import com.kilroy790.notenoughmachines.lists.ItemList;
-import com.kilroy790.notenoughmachines.lists.MachineRecipeList;
 import com.kilroy790.notenoughmachines.setup.ClientProxy;
 import com.kilroy790.notenoughmachines.setup.IProxy;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.setup.ServerProxy;
-import com.kilroy790.notenoughmachines.tiles.AxleTile;
-import com.kilroy790.notenoughmachines.tiles.CreativePowerBoxTile;
-import com.kilroy790.notenoughmachines.tiles.GearboxTile;
-import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
+import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
@@ -38,6 +41,7 @@ import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -50,7 +54,7 @@ public class NotEnoughMachines {
 	
 	public static final String modid = "notenoughtmachines";
 	
-	private static final Logger logger = LogManager.getLogger(modid);
+	public static final Logger logger = LogManager.getLogger(modid);
 	
 	public static IProxy proxy = DistExecutor.runForDist(()-> ()-> new ClientProxy(), ()-> ()-> new ServerProxy());
 	
@@ -62,6 +66,7 @@ public class NotEnoughMachines {
 		instance = this;
 		// Register the setup method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		
 		// Register the clientRegistries method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegistries);
 		
@@ -81,6 +86,10 @@ public class NotEnoughMachines {
 	
 	private void clientRegistries(final FMLClientSetupEvent event) {
 		// do something that can only be done on the client
+		
+		logger.info("Registering SmallWindWheelTESR");
+		ClientRegistry.bindTileEntitySpecialRenderer(SmallWindWheelTile.class, new SmallWindWheelRenderers());
+		
 		logger.info("clientRegistries registered");
 	}
 	
@@ -102,6 +111,9 @@ public class NotEnoughMachines {
 			//Machine Blocks
 			logger.info("Registering CreativePowerBoxBlock");
 			event.getRegistry().register(BlockList.CREATIVEPOWERBOX = new CreativePowerBoxBlock("creativepowerbox"));
+			
+			logger.info("Registering SmallWindWheelBlock");
+			event.getRegistry().register(BlockList.SMALLWINDWHEEL = new SmallWindWheelBlock("smallwindwheel"));
 			
 			logger.info("Registering GearboxBlock");
 			event.getRegistry().register(BlockList.GEARBOX = new GearboxBlock("gearbox"));
@@ -149,6 +161,9 @@ public class NotEnoughMachines {
 			logger.info("Registering CreativePowerBoxBlock");
 			event.getRegistry().register(new BlockItem(BlockList.CREATIVEPOWERBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CREATIVEPOWERBOX.getRegistryName()));
 			
+			logger.info("Registering SmallWindWheelBlock");
+			event.getRegistry().register(new BlockItem(BlockList.SMALLWINDWHEEL, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.SMALLWINDWHEEL.getRegistryName()));
+			
 			logger.info("Registering GearboxBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.GEARBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.GEARBOX.getRegistryName()));
 			
@@ -169,6 +184,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering CreativePowerBoxTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(CreativePowerBoxTile::new, BlockList.CREATIVEPOWERBOX).build(null).setRegistryName("creativepowerbox"));
+			
+			logger.info("Registering SmallWindWheelTileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(SmallWindWheelTile::new, BlockList.SMALLWINDWHEEL).build(null).setRegistryName("smallwindwheel"));
 			
 			logger.info("Registering MillstoneTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(MillstoneTile::new, BlockList.MILLSTONE).build(null).setRegistryName("millstone"));
