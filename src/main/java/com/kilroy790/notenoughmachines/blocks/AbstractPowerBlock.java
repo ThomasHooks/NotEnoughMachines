@@ -13,7 +13,7 @@ import net.minecraft.util.Direction;
 public abstract class AbstractPowerBlock extends Block {
 
 	
-	protected static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 	
 	
 	public AbstractPowerBlock(Properties properties, String name) {

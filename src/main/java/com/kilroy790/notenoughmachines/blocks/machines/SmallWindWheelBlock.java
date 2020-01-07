@@ -10,8 +10,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -28,7 +30,10 @@ import net.minecraftforge.common.ToolType;
 
 public class SmallWindWheelBlock extends AbstractPowerBlock {
 
-	private static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
+	protected static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
+	protected static final int AXELAXISX = 2;
+	protected static final int AXELAXISY = 0;
+	protected static final int AXELAXISZ = 1;
 	
 	public SmallWindWheelBlock(String name) {
 		super(Properties.create(Material.WOOD)
@@ -40,9 +45,14 @@ public class SmallWindWheelBlock extends AbstractPowerBlock {
 	
 	
 	@Override
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving) {
+	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 		
-		if(world.isRemote) return;
+		if(placer == null) return;
+		
+		else {
+			placer.getHorizontalFacing();
+			world.setBlockState(pos, state.with(this.getPowerBlockFacing(), placer.getHorizontalFacing().getOpposite()), 1|2);
+		}
 	}
 	
 	
@@ -50,7 +60,7 @@ public class SmallWindWheelBlock extends AbstractPowerBlock {
 	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip,
 			ITooltipFlag flagIn) {
 		
-		StringTextComponent powerText = new StringTextComponent("Outputs 500W");
+		StringTextComponent powerText = new StringTextComponent("Outputs 5.76kW");
 		Style style = new Style();
 		
 		style.setColor(TextFormatting.AQUA);
@@ -66,7 +76,10 @@ public class SmallWindWheelBlock extends AbstractPowerBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) {
 		//Set the bounding box based on the direction that the block is facing
-		return SHAPE_BY_DIR[1];
+		
+		Direction facing = state.get(this.getPowerBlockFacing());
+		if(facing == Direction.EAST || facing == Direction.WEST) return SHAPE_BY_DIR[AXELAXISX];
+		else return SHAPE_BY_DIR[AXELAXISZ];
 	}
 	
 	

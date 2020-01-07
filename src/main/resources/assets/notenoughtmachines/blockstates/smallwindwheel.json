@@ -1,5 +1,8 @@
 {
     "variants": {
-        "": { "model": "notenoughtmachines:block/axle" }
+        "facing=north": { "model": "notenoughtmachines:block/axle" },
+		"facing=south": { "model": "notenoughtmachines:block/axle" },
+		"facing=east": {"model": "notenoughtmachines:block/axle", "y": 270},
+		"facing=west": {"model": "notenoughtmachines:block/axle", "y": 270}
     }
 }

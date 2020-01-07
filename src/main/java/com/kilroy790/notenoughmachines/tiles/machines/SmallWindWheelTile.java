@@ -19,7 +19,7 @@ public class SmallWindWheelTile extends TileEntity {
 	@Override
 	public AxisAlignedBB getRenderBoundingBox() {
 		//TODO make the aabb determined on the windsheel's direction
-		//this works for the moment but it could be made more efficient as the aabb is a large cube around where the windwheel could be
+		//this works for the moment but it could be made more efficient as the aabb is a large cube around where the wind wheel could be
 		AxisAlignedBB boundingBox = new AxisAlignedBB((double)pos.getX() - (7.0f * 16.0f), (double)pos.getY() - (7.0f * 16.0f), (double)pos.getZ() - (7.0f * 16.0f), 
 													  (double)pos.getX() + (7.0f * 16.0f), (double)pos.getY() + (7.0f * 16.0f), (double)pos.getZ() + (7.0f * 16.0f));
 		return boundingBox;
