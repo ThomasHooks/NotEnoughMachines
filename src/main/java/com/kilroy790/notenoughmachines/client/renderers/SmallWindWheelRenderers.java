@@ -24,8 +24,6 @@ public class SmallWindWheelRenderers extends TileEntityRenderer<SmallWindWheelTi
 	private ResourceLocation sailTexture = new ResourceLocation("notenoughtmachines", "textures/block/windsail.png");
 	private static final float SCALE = 0.0625f;
 	private static final int NUMBEROFSAILS = 4;
-	//this is just for testing and will be removed later
-	private float rotation = 0.0f;
 	
 	
 	@Override
@@ -42,11 +40,8 @@ public class SmallWindWheelRenderers extends TileEntityRenderer<SmallWindWheelTi
 		else if (facing == Direction.EAST) GlStateManager.rotatef(90.0f, 0.0f, 1.0f, 0.0f);
 		else if (facing == Direction.WEST) GlStateManager.rotatef(-90.0f, 0.0f, 1.0f, 0.0f);
 		
-		//----------------------------------
-		//this is just for testing and will be removed later
-		rotation += 0.0469f;
-		if(rotation == 360.0f) rotation = 0;
-		//----------------------------------
+		//get the current angle of the wind wheel
+		float rotationAngle = tile.getWindSailAngle() + partialTicks * 0.00005f;
 		
 		//create all 4 wind sails and rotate them around the axle
 		//I may move all of this to another model
@@ -54,8 +49,7 @@ public class SmallWindWheelRenderers extends TileEntityRenderer<SmallWindWheelTi
 
 			windSail[i] = new WindSailModel();
 			
-			//TODO pass in a rotation angle from the tile entity so that the wind wheel will rotate
-			windSail[i].rotate(0.0f, 0.0f, ((float)Math.PI * i + rotation) / 2.0f);
+			windSail[i].rotate(0.0f, 0.0f, ((float)Math.PI * i) / 2.0f + rotationAngle);
 		}
 		
 		for (int i = 0; i < NUMBEROFSAILS; i++) {

@@ -14,6 +14,7 @@ public class WindSailModel extends Model {
 	
 	protected RendererModel stock;
 	protected RendererModel sail;
+	protected static final float SAIL_ANGLE = 0.1963f;
 	
 	
 	public WindSailModel() {
@@ -26,7 +27,7 @@ public class WindSailModel extends Model {
 		this.sail = new RendererModel(this, 0, 0);
 		this.sail.setTextureSize(198, 19);
 		this.sail.setRotationPoint(0.0f, 0.0f, 0.0f);
-		this.sail.addBox(24.0f, 2.0f, -1.0f, 96, 16, 3);
+		this.sail.addBox(24.0f, -18.0f, -1.0f, 96, 16, 3);
 	}
 	
 	
@@ -34,7 +35,7 @@ public class WindSailModel extends Model {
 		
 		this.stock.render(scale);
 		
-		this.sail.rotateAngleX = -0.1963f;
+		//this.sail.rotateAngleX = 0.1963f;
 		this.sail.render(scale);
 	}
 	
@@ -47,7 +48,7 @@ public class WindSailModel extends Model {
 	
 	public void renderSail(float scale) {
 		
-		this.sail.rotateAngleX = -0.1963f;
+		//this.sail.rotateAngleX = 0.1963f;
 		this.sail.render(scale);
 	}
 	
@@ -59,7 +60,7 @@ public class WindSailModel extends Model {
 		this.stock.rotateAngleZ = z;
 		
 		//the entire wind sail must rotate as one structure
-		this.sail.rotateAngleX = this.stock.rotateAngleX;
+		this.sail.rotateAngleX = this.stock.rotateAngleX + SAIL_ANGLE;
 		this.sail.rotateAngleY = this.stock.rotateAngleY;
 		this.sail.rotateAngleZ = this.stock.rotateAngleZ;
 	}
