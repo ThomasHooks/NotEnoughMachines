@@ -19,15 +19,15 @@ import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.client.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
-import com.kilroy790.notenoughmachines.setup.ClientProxy;
-import com.kilroy790.notenoughmachines.setup.IProxy;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
-import com.kilroy790.notenoughmachines.setup.ServerProxy;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.utilities.ClientProxy;
+import com.kilroy790.notenoughmachines.utilities.IProxy;
+import com.kilroy790.notenoughmachines.utilities.ServerProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;
@@ -104,7 +104,7 @@ public class NotEnoughMachines {
 		public static void registerBlocks(final RegistryEvent.Register<Block> event) {
 			logger.info("Registering all blocks");
 			
-			//Storage Blocks
+			//Building Blocks
 			logger.info("Registering LinenBlock");
 			event.getRegistry().register(BlockList.LINENBLOCK = new LinenBlock());
 			
@@ -147,6 +147,12 @@ public class NotEnoughMachines {
 			logger.info("Registering FlaxStringItem");
 			event.getRegistry().register(ItemList.FLAXSTRING = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flaxstring"));
 			
+			logger.info("Registering WindBladeItem");
+			event.getRegistry().register(ItemList.WINDBLADE = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("windblade"));
+			
+			logger.info("Registering WindSailItem");
+			event.getRegistry().register(ItemList.WINDSAIL_ITEM = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("windsail_item"));
+			
 			logger.info("Registering GearItem");
 			event.getRegistry().register(ItemList.GEAR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("gear"));
 			
@@ -158,10 +164,10 @@ public class NotEnoughMachines {
 			logger.info("Registering LinenBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.LINENBLOCK, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.LINENBLOCK.getRegistryName()));
 			
-			logger.info("Registering CreativePowerBoxBlock");
+			logger.info("Registering CreativePowerBoxBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.CREATIVEPOWERBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CREATIVEPOWERBOX.getRegistryName()));
 			
-			logger.info("Registering SmallWindWheelBlock");
+			logger.info("Registering SmallWindWheelBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.SMALLWINDWHEEL, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.SMALLWINDWHEEL.getRegistryName()));
 			
 			logger.info("Registering GearboxBlockItem");

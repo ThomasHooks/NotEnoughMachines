@@ -20,6 +20,12 @@ public class ItemList {
 	@ObjectHolder("notenoughtmachines:gear")
 	public static Item GEAR;
 	
+	@ObjectHolder("notenoughtmachines:windblade")
+	public static Item WINDBLADE;
+	
+	@ObjectHolder("notenoughtmachines:windsail_item")
+	public static Item WINDSAIL_ITEM;
+	
 	//Seed Items
 	@ObjectHolder("notenoughtmachines:flaxseed")
 	public static FlaxSeedItem FLAXSEED;

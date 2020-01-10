@@ -11,6 +11,8 @@
 	"item.notenoughtmachines.flaxstring" : "Flax String",
 	"item.notenoughtmachines.linen" : "Linen",
 	"item.notenoughtmachines.gear" : "Gear",
+	"item.notenoughtmachines.windblade" : "Wind Wheel Blade",
+	"item.notenoughtmachines.windsail_item" : "Wind Wheel Sail",
 	
 	"itemGroup.notenoughtmachines" : "Not Enough Machines"
 }
