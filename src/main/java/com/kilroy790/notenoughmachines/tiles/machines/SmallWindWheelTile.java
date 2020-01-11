@@ -1,5 +1,6 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
+import com.kilroy790.notenoughmachines.api.lists.BlockList;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
@@ -11,6 +12,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 
@@ -24,12 +26,16 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	
 	protected float speedModifier = 1.0f;
 	
+	protected boolean isRotating = true;
+	
 	private static final int POWERCAPACITY = 11520;
 	private static final int MAXPOWERRECEIVED = 0;
-	private static final int MAXPOWERSENT = 144;
+	private static final int MAXPOWERSENT = 288;
 	private static final int POWERPRODUCED = 144;
 	private MechanicalPowerProducer powerOutput;
 	private LazyOptional<IMechanicalPower> powerOutputHandler = LazyOptional.of(() -> powerOutput);
+	
+	public static final int WINDWHEEL_RADIUS = 7;
 	
 	
 	public SmallWindWheelTile() {
@@ -43,9 +49,19 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	public void tick() {
 		//there are ~20 tick per second
 		
-		updateWindWheelAngle();
+		if(world.getGameTime()%40 == 1) {
+			
+			//if(world.isRemote) return;
+			
+			isRotating = validateArea();
+		}
 		
-		generatePower();
+		if(isRotating) {
+			
+			updateWindWheelAngle();
+			
+			generatePower();
+		}
 	}
 	
 	
@@ -59,16 +75,10 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	}
 	
 	
-	public float getWindSailAngle() {
-		//returns the angle of the wind sail in radians
-		return ((float)Math.PI * this.angle)/180.0f;
-	}
-	
-	
-	private void updateWindWheelAngle() {
+	protected void updateWindWheelAngle() {
 		
-		//only update on the client side
-		if(!world.isRemote) return;
+		//TODO only update on the client side
+		//if(world.isRemote) return;
 		
 		//Modify wind wheel speed based on the weather
 		if(world.isRaining()) speedModifier = 1.0f + world.getThunderStrength(1.0f);
@@ -80,12 +90,12 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	}
 	
 	
-	private void generatePower() {
+	protected void generatePower() {
 		
 		//only do on the server side
 		if(world.isRemote) return;
 		
-		powerOutput.producePower(POWERPRODUCED, false);
+		powerOutput.producePower(POWERPRODUCED * (int)speedModifier, false);
 		
 		//check if the block behind has a tile entity that has a mechanical power capability
 		//then send that block power if it can also receive power
@@ -96,12 +106,53 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 			cap.ifPresent(h -> {
 				if(h.canReceive()) {
 					//send power to the receiver
-					int overFlow = h.receivePower(powerOutput.sendPower(MAXPOWERSENT, false), false);
+					int overFlow = MAXPOWERSENT - h.receivePower(powerOutput.sendPower(POWERPRODUCED * (int)speedModifier, false), false);
+					
 					//add the overflow power back into the power source
 					powerOutput.producePower(overFlow, false);
 				}
 			});
 		}
+	}
+	
+	
+	protected boolean validateArea() {
+		//@return true if the area is valid, false otherwise
+		
+		boolean valid = false;
+		if(world.canBlockSeeSky(pos) && world.getBlockState(pos).getBlock() == BlockList.SMALLWINDWHEEL) {
+			
+			Direction direction = this.getBlockState().get(SmallWindWheelBlock.FACING);
+			for(int y = -WINDWHEEL_RADIUS; y <= WINDWHEEL_RADIUS; y++) {
+				
+				for(int hor = -WINDWHEEL_RADIUS; hor <= WINDWHEEL_RADIUS; hor++) {
+					
+					int x = 0;
+					int z = 0;
+					
+					//Z = north & south
+					//Y = up & down
+					//X = east & west
+					if(direction == Direction.NORTH || direction == Direction.SOUTH) x = hor;
+					else z = hor;
+					
+					BlockPos nextPos = pos.add(x, y, z);
+					
+					if(x == 0 && y == 0 && z == 0) continue;
+					
+					valid = world.isAirBlock(nextPos);
+					if(!valid) return false;
+				}
+			}
+		}
+		
+		return valid;
+	}
+	
+	
+	public float getWindSailAngle() {
+		//returns the angle of the wind sail in radians
+		return ((float)Math.PI * this.angle)/180.0f;
 	}
 	
 	
@@ -134,7 +185,7 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	public CompoundNBT write(CompoundNBT compound) {
 		
 		powerOutputHandler.ifPresent(h -> {
-			compound.putInt("process", h.getEnergyStored());
+			compound.putInt("storedpower", h.getEnergyStored());
 		});
 		
 		return super.write(compound);

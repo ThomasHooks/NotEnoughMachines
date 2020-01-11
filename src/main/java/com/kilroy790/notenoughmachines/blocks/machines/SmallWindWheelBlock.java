@@ -50,8 +50,8 @@ public class SmallWindWheelBlock extends AbstractPowerBlock {
 		if(placer == null) return;
 		
 		else {
-			placer.getHorizontalFacing();
-			world.setBlockState(pos, state.with(this.getPowerBlockFacing(), placer.getHorizontalFacing().getOpposite()), 1|2);
+			Direction dir = placer.getHorizontalFacing();
+			world.setBlockState(pos, state.with(this.getPowerBlockFacing(), dir.getOpposite()), 1|2);
 		}
 	}
 	
@@ -60,7 +60,7 @@ public class SmallWindWheelBlock extends AbstractPowerBlock {
 	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip,
 			ITooltipFlag flagIn) {
 		
-		StringTextComponent powerText = new StringTextComponent("Outputs 5.76kW");
+		StringTextComponent powerText = new StringTextComponent("Outputs 2.88kW");
 		Style style = new Style();
 		
 		style.setColor(TextFormatting.AQUA);

@@ -73,10 +73,10 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	private MechanicalPowerConsumer powerInput;
 	private LazyOptional<IMechanicalPower> powerInputHandler = LazyOptional.of(() -> powerInput);
 	
-	private static final int POWERCAPACITY = 800;
-	private static final int MAXPOWERRECEIVED = 30;
+	private static final int POWERCAPACITY = 2700;
+	private static final int MAXPOWERRECEIVED = 288;
 	private static final int MAXPOWERSENT = 0;
-	private static final int PROCESSINGPOWER = 5;
+	private static final int PROCESSINGPOWER = 18;
 	
 	
 	//there are ~20 tick per second

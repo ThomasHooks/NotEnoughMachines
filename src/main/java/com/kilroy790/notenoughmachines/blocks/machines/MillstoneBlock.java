@@ -3,7 +3,7 @@ package com.kilroy790.notenoughmachines.blocks.machines;
 import java.util.Random;
 
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
-import com.kilroy790.notenoughmachines.utilities.NEMInventoryHelper;
+import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -86,7 +86,7 @@ public class MillstoneBlock extends Block{
 		//Drop items in the millstone when it is broken
 		if (state.getBlock() != newState.getBlock()) {
 	         TileEntity tile = world.getTileEntity(pos);
-	         NEMInventoryHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
+	         NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
 	         super.onReplaced(state, world, pos, newState, isMoving);
 		}
 	}

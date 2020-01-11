@@ -1,0 +1,12 @@
+{
+  "type": "notenoughtmachines:milling",
+  "ingredient": {
+    "item": "minecraft:sugar_cane"
+  },
+  "result": {
+    "item": "minecraft:sugar",
+    "count": 2
+  },
+  "experience": 0.35,
+  "processtime": 200
+}

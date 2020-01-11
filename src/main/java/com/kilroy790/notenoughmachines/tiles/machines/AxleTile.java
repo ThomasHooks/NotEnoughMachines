@@ -9,6 +9,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
+import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
@@ -29,14 +30,13 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	private MechanicalPowerConduit powerChannel;
 	private LazyOptional<IMechanicalPower> powerChannelHandler = LazyOptional.of(() -> powerChannel);
 	//there are ~20 tick per second
-	private static final int POWERCAPACITY = 60;
-	private static final int MAXPOWERRECEIVED = 60;
-	private static final int MAXPOWERSENT = 60;
+	private static final int POWERCAPACITY = 72;
+	private static final int MAXPOWERRECEIVED = 72;
+	private static final int MAXPOWERSENT = 72;
 	
 	
 	public AxleTile() {
 		super(TileEntityList.AXLE_TILE);
-		
 		this.powerChannel = makeMechanicalPowerHandler(POWERCAPACITY, MAXPOWERRECEIVED, MAXPOWERSENT);
 	}
 
@@ -47,13 +47,12 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 		if(world.isRemote) return;
 		
 		if(powerChannel.isPowered()) {
-			
-			sendPowerToNextMachine();
+			validateAndSendPower();
 		}
 	}
 	
 	
-	private void sendPowerToNextMachine() {
+	private void validateAndSendPower() {
 
 		int axleDir = this.getBlockState().get(NEMBlockStateProperties.AXLE_DIRECTION);
 		int axleDist = this.getBlockState().get(NEMBlockStateProperties.POWER_DISTANCE_3_15);
@@ -93,35 +92,47 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 			}
 		}
 		
-		//Check which machine is furthest form the source
-		//and then push power to that machine
-		if(powerLevel[0] == axleDist - 1) {
+		//check if the current axle is a saddle point between two axles if so destroy the axle
+		//TODO I may change how this works as currently it can break an axle even if one of its' neighbors isn't powered
+		if(axleDist < powerLevel[0] && axleDist < powerLevel[1]) {
 			
-			Direction direction = AxleBlock.axisAlignment[axleDir][0];
-			BlockPos nextPos = pos.offset(direction);
+			Block nextBlock0 = world.getBlockState(pos.offset(AxleBlock.axisAlignment[axleDir][0])).getBlock();			
+			Block nextBlock1 = world.getBlockState(pos.offset(AxleBlock.axisAlignment[axleDir][1])).getBlock();
 			
-			LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
-			nextMachine.ifPresent(h -> {
+			if(nextBlock0 instanceof AxleBlock && nextBlock1 instanceof AxleBlock) {
 				
-				if(h.canReceive()) {
-					
-					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
-					}
-			});
+				NEMItemHelper.removeAxleBlock(world, this.pos, true);
+				return;
+			}
 		}
-		else if(powerLevel[1] == axleDist - 1) {
+		
+		//Check which machine is furthest form the source and then push power to that machine
+		for(int i = 0; i < 2; i++) {
 			
-			Direction direction = AxleBlock.axisAlignment[axleDir][1];
-			BlockPos nextPos = pos.offset(direction);
-			
-			LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
-			nextMachine.ifPresent(h -> {
+			if(powerLevel[i] == axleDist - 1) {
 				
-				if(h.canReceive()) {
+				Direction direction = AxleBlock.axisAlignment[axleDir][i];
+				BlockPos nextPos = pos.offset(direction);
+				TileEntity nextTile = world.getTileEntity(nextPos);
+				if(nextTile == null) return;
+				
+				Block nextBlock = world.getBlockState(nextPos).getBlock();
+				if(nextBlock instanceof AxleBlock && powerLevel[i] == AxleBlock.MINPOWERDISTANCE) {
+					NEMItemHelper.removeAxleBlock(world, nextPos, false);
+					continue;
+				}
+				
+				LazyOptional<IMechanicalPower> nextMachine = nextTile.getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
+				nextMachine.ifPresent(h -> {
 					
-					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
-					}
-			});
+					if(h.canReceive()) {
+						
+						h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
+						
+						markDirty();
+						}
+				});
+			}
 		}
 	}
 	
