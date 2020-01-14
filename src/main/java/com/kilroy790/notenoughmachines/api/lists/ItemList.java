@@ -5,6 +5,9 @@ import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.ObjectHolder;
 
+
+
+
 public class ItemList {
 
 	//Crafting Items
@@ -13,6 +16,9 @@ public class ItemList {
 	
 	@ObjectHolder("notenoughtmachines:flaxstring")
 	public static Item FLAXSTRING;
+	
+	@ObjectHolder("notenoughtmachines:flour")
+	public static Item FLOUR;
 	
 	@ObjectHolder("notenoughtmachines:flax")
 	public static Item FLAX;

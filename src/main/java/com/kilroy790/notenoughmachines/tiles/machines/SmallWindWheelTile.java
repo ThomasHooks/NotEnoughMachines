@@ -116,7 +116,7 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	}
 	
 	
-	protected boolean validateArea() {
+	public boolean validateArea() {
 		//@return true if the area is valid, false otherwise
 		
 		boolean valid = false;

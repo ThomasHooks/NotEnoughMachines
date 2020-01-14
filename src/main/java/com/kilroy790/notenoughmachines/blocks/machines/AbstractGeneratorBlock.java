@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.blocks;
+package com.kilroy790.notenoughmachines.blocks.machines;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,13 +10,13 @@ import net.minecraft.util.Direction;
 
 
 
-public abstract class AbstractPowerBlock extends Block {
+public abstract class AbstractGeneratorBlock extends Block {
 
 	
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 	
 	
-	public AbstractPowerBlock(Properties properties, String name) {
+	public AbstractGeneratorBlock(Properties properties, String name) {
 		super(properties);
 		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));

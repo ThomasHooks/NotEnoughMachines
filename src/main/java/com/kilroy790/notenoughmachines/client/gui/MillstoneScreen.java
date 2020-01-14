@@ -1,6 +1,7 @@
 package com.kilroy790.notenoughmachines.client.gui;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
+import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;

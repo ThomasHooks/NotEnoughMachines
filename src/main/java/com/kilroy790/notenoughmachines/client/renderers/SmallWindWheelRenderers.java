@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.client.renderers;
 
-import com.kilroy790.notenoughmachines.blocks.AbstractPowerBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.AbstractGeneratorBlock;
 import com.kilroy790.notenoughmachines.client.models.WindSailModel;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -34,7 +34,7 @@ public class SmallWindWheelRenderers extends TileEntityRenderer<SmallWindWheelTi
 		GlStateManager.translated(x + 0.5D, y + 0.5D, z + 0.5D);
 		
 		//Set the small wind wheels' to direction
-		Direction facing = tile.getBlockState().get(AbstractPowerBlock.FACING);
+		Direction facing = tile.getBlockState().get(AbstractGeneratorBlock.FACING);
 		if (facing == Direction.NORTH) GlStateManager.rotatef(180.0f, 1.0f, 0.0f, 0.0f);
 		//by default it faces towards the south
 		else if (facing == Direction.EAST) GlStateManager.rotatef(90.0f, 0.0f, 1.0f, 0.0f);

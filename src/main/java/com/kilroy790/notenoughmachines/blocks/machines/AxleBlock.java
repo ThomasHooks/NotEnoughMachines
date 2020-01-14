@@ -175,8 +175,6 @@ public class AxleBlock extends Block {
 			newPowerLevel = MINPOWERDISTANCE;
 		}
 		
-		//TODO Check if it is between 2 axles that are at a greater power level
-		
 		if(nextAxlePowerLevel > newPowerLevel) newPowerLevel = nextAxlePowerLevel - 1;
 		
 		if(newPowerLevel < MINPOWERDISTANCE) newPowerLevel = MINPOWERDISTANCE;

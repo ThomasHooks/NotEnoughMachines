@@ -2,7 +2,6 @@ package com.kilroy790.notenoughmachines.blocks.machines;
 
 import java.util.List;
 
-import com.kilroy790.notenoughmachines.blocks.AbstractPowerBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
 
 import net.minecraft.block.Block;
@@ -28,12 +27,14 @@ import net.minecraftforge.common.ToolType;
 
 
 
-public class SmallWindWheelBlock extends AbstractPowerBlock {
+public class SmallWindWheelBlock extends AbstractGeneratorBlock {
 
+	
 	protected static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
 	protected static final int AXELAXISX = 2;
 	protected static final int AXELAXISY = 0;
 	protected static final int AXELAXISZ = 1;
+	
 	
 	public SmallWindWheelBlock(String name) {
 		super(Properties.create(Material.WOOD)
@@ -47,11 +48,21 @@ public class SmallWindWheelBlock extends AbstractPowerBlock {
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 		
-		if(placer == null) return;
+		if(placer == null || world.isRemote) return;
 		
-		else {
-			Direction dir = placer.getHorizontalFacing();
-			world.setBlockState(pos, state.with(this.getPowerBlockFacing(), dir.getOpposite()), 1|2);
+		Direction dir = placer.getHorizontalFacing();
+		world.setBlockState(pos, state.with(this.getPowerBlockFacing(), dir.getOpposite()), 1|2);
+		
+		SmallWindWheelTile tile = (SmallWindWheelTile) world.getTileEntity(pos);
+		if(!tile.validateArea()) {
+			
+			placer.sendMessage(new StringTextComponent("Wind Wheel needs 15x15x1 area of free space").setStyle(new Style().setColor(TextFormatting.RED)));
+			world.destroyBlock(pos, true);
+		}
+		Block nextBlock = world.getBlockState(pos.offset(dir)).getBlock();
+		if(!(nextBlock instanceof AxleBlock || nextBlock instanceof GearboxBlock)) {
+			placer.sendMessage(new StringTextComponent("Wind Wheel must be placed on either an Axle or Gearbox").setStyle(new Style().setColor(TextFormatting.RED)));
+			world.destroyBlock(pos, true);
 		}
 	}
 	

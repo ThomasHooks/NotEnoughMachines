@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.client.gui;
+package com.kilroy790.notenoughmachines.containers;
 
 import com.kilroy790.notenoughmachines.api.lists.BlockList;
 import com.kilroy790.notenoughmachines.api.lists.ContainerList;

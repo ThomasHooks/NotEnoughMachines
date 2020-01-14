@@ -101,8 +101,6 @@ public class MechanicalPower implements IMechanicalPower {
 	@Override
 	public int consumePower(int maxPowerRemoved, boolean simulate) {
 		
-		if(!isConsumer()) return 0;
-		
 		int powerConsumed = Math.min(storedPower, maxPowerRemoved);
 		if (!simulate) storedPower -= powerConsumed;
 		

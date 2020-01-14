@@ -16,8 +16,8 @@ import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
-import com.kilroy790.notenoughmachines.client.gui.MillstoneContainer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
+import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
@@ -143,6 +143,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering FlaxItem");
 			event.getRegistry().register(ItemList.FLAX = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flax"));
+			
+			logger.info("Registering FlourItem");
+			event.getRegistry().register(ItemList.FLOUR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flour"));
 			
 			logger.info("Registering FlaxStringItem");
 			event.getRegistry().register(ItemList.FLAXSTRING = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flaxstring"));

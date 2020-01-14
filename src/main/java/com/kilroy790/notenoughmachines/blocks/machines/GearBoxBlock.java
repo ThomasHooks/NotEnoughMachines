@@ -57,7 +57,8 @@ public class GearboxBlock extends Block{
 		//When the gearbox is first placed the front will be set to face the player
 		
 		if(entity != null) {
-			world.setBlockState(pos, state.with(BlockStateProperties.FACING, getFacingFromEntity(pos, entity)).with(POWERED, world.getBlockState(pos).get(POWERED)), 2|1);
+			Direction facing = getFacingFromEntity(pos, entity).getOpposite();
+			world.setBlockState(pos, state.with(BlockStateProperties.FACING, facing).with(POWERED, world.getBlockState(pos).get(POWERED)), 2|1);
 		}
 	}
 	

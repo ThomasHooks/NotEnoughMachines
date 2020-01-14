@@ -8,7 +8,7 @@ import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConsumer;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
-import com.kilroy790.notenoughmachines.client.gui.MillstoneContainer;
+import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -35,7 +35,36 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 
 public class MillstoneTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
-
+	
+	
+	protected ItemStackHandler itemInput;
+	protected RecipeWrapper inputRecipe;
+	private LazyOptional<ItemStackHandler> itemInputHandler = LazyOptional.of(() -> itemInput);
+	private static final int INPUTSLOTS = 1;
+	
+	
+	protected ItemStackHandler itemOutput;
+	private LazyOptional<ItemStackHandler> itemOutputHandler = LazyOptional.of(() -> itemOutput);
+	private static final int OUTPUTSLOTS = 1;
+	
+	
+	private LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInput, itemOutput));
+	private static final int NUMBER_OF_SLOTS = INPUTSLOTS + OUTPUTSLOTS;
+	
+	
+	private MechanicalPowerConsumer powerInput;
+	private LazyOptional<IMechanicalPower> powerInputHandler = LazyOptional.of(() -> powerInput);
+	private static final int POWERCAPACITY = 2700;
+	private static final int MAXPOWERRECEIVED = 288;
+	private static final int MAXPOWERSENT = 0;
+	private static final int PROCESSINGPOWER = 18;
+	
+	
+	private int processTime = 0;
+	private static final int MAX_PROCESS_TIME = 200;
+	private boolean isProcessing;
+	
+	
 	public MillstoneTile() {
 		super(TileEntityList.MILLSTONE_TILE);
 		
@@ -49,146 +78,19 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	}
 	
 	
-	//TODO add a Power capability to the millstone
-	
-	
-	protected ItemStackHandler itemInput;
-	protected RecipeWrapper inputRecipe;
-	private LazyOptional<ItemStackHandler> itemInputHandler = LazyOptional.of(() -> itemInput);
-	
-	private static final int INPUTSLOTS = 1;
-	
-	
-	protected ItemStackHandler itemOutput;
-	private LazyOptional<ItemStackHandler> itemOutputHandler = LazyOptional.of(() -> itemOutput);
-	
-	private static final int OUTPUTSLOTS = 1;
-	
-	
-	private LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInput, itemOutput));
-	
-	private static final int NUMBER_OF_SLOTS = INPUTSLOTS + OUTPUTSLOTS;
-	
-	
-	private MechanicalPowerConsumer powerInput;
-	private LazyOptional<IMechanicalPower> powerInputHandler = LazyOptional.of(() -> powerInput);
-	
-	private static final int POWERCAPACITY = 2700;
-	private static final int MAXPOWERRECEIVED = 288;
-	private static final int MAXPOWERSENT = 0;
-	private static final int PROCESSINGPOWER = 18;
-	
-	
-	//there are ~20 tick per second
-	private int processTime = 0;
-	private static final int MAX_PROCESS_TIME = 200;
-	private boolean isProcessing;
-	
-	
-
-	
-	@Nonnull
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		
-		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			
-			if(side == null) {
-				//this is so the player can access all of the millstone slots
-				return combinedItemHandler.cast();
-			}
-			if(side == Direction.NORTH || side == Direction.EAST || side == Direction.SOUTH || side == Direction.WEST) {
-				//the millstone will except input form any of the sides
-				return itemInputHandler.cast();
-			}
-			if(side == Direction.DOWN) {
-				//the millstone only outputs to the bottom
-				return itemOutputHandler.cast();
-			}
-		}
-		else if(cap == CapabilityMechanical.MECHANICAL) {
-			if(side == Direction.UP) {
-				return powerInputHandler.cast();
-			}
-		}
-		
-		
-		return super.getCapability(cap, side);
-	}
-	
-	
-	@Override
-	public void read(CompoundNBT compound) {
-		
-		if(compound.contains("input")) {
-			CompoundNBT inputInv = compound.getCompound("input");
-			itemInputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(inputInv));
-		}
-		
-		if(compound.contains("output")) {
-			CompoundNBT outputInv = compound.getCompound("output");
-			itemOutputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(outputInv));
-		}
-		
-		if(compound.contains("processtime")) {
-			processTime = compound.getInt("processtime");
-		}
-		
-		if(compound.contains("storedpower")) {
-			powerInputHandler.ifPresent(h -> {
-				h.setEnergyStored(compound.getInt("storedpower"));
-			});
-		}
-		
-		super.read(compound);
-	}
-	
-	
-	@Override
-	public CompoundNBT write(CompoundNBT compound) {
-		
-		itemInputHandler.ifPresent(h -> {
-			CompoundNBT inputInv = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
-			compound.put("input", inputInv);
-		});
-		
-		itemOutputHandler.ifPresent(h -> {
-			CompoundNBT outputInv = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
-			compound.put("output", outputInv);
-		});
-		
-		compound.putInt("processtime", processTime);
-		
-		powerInputHandler.ifPresent(h -> {
-			compound.putInt("process", h.getEnergyStored());
-		});
-		
-		return super.write(compound);
-	}
-	
-	
-	@Override
-	public void remove() {
-		super.remove();
-		this.itemInputHandler.invalidate();
-		this.itemInputHandler.invalidate();
-		this.combinedItemHandler.invalidate();
-		this.powerInputHandler.invalidate();
-	}
-	
-	
 	@Override
 	public void tick() {
+		//there are ~20 tick per second
 		
 		if(world.isRemote) return;
 		
 		//if there is a millable item in the input slot start to process it
-		if(attemptMill() && powerInput.isPowered()) {
+		if(attemptMill() && powerInput.getEnergyStored() >= PROCESSINGPOWER) {
 			isProcessing = true;
 		} else isProcessing = false;
 		
 		//Increase process timer and consume power
-		if(isProcessing) {
+		if(isProcessing && powerInput.getEnergyStored() >= PROCESSINGPOWER) {
 			powerInput.consumePower(PROCESSINGPOWER, false);
 			processTime++;
 		} else {
@@ -342,6 +244,96 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 				markDirty();
 			}
 		};
+	}
+	
+	
+	@Nonnull
+	@Override
+	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+		
+		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			
+			if(side == null) {
+				//this is so the player can access all of the millstone slots
+				return combinedItemHandler.cast();
+			}
+			if(side == Direction.NORTH || side == Direction.EAST || side == Direction.SOUTH || side == Direction.WEST) {
+				//the millstone will except input form any of the sides
+				return itemInputHandler.cast();
+			}
+			if(side == Direction.DOWN) {
+				//the millstone only outputs to the bottom
+				return itemOutputHandler.cast();
+			}
+		}
+		else if(cap == CapabilityMechanical.MECHANICAL) {
+			if(side == Direction.UP) {
+				return powerInputHandler.cast();
+			}
+		}
+		
+		
+		return super.getCapability(cap, side);
+	}
+	
+	
+	@Override
+	public void read(CompoundNBT compound) {
+		
+		if(compound.contains("input")) {
+			CompoundNBT inputInv = compound.getCompound("input");
+			itemInputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(inputInv));
+		}
+		
+		if(compound.contains("output")) {
+			CompoundNBT outputInv = compound.getCompound("output");
+			itemOutputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(outputInv));
+		}
+		
+		if(compound.contains("processtime")) {
+			processTime = compound.getInt("processtime");
+		}
+		
+		if(compound.contains("storedpower")) {
+			powerInputHandler.ifPresent(h -> {
+				h.setEnergyStored(compound.getInt("storedpower"));
+			});
+		}
+		
+		super.read(compound);
+	}
+	
+	
+	@Override
+	public CompoundNBT write(CompoundNBT compound) {
+		
+		itemInputHandler.ifPresent(h -> {
+			CompoundNBT inputInv = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
+			compound.put("input", inputInv);
+		});
+		
+		itemOutputHandler.ifPresent(h -> {
+			CompoundNBT outputInv = ((INBTSerializable<CompoundNBT>) h).serializeNBT();
+			compound.put("output", outputInv);
+		});
+		
+		compound.putInt("processtime", processTime);
+		
+		powerInputHandler.ifPresent(h -> {
+			compound.putInt("process", h.getEnergyStored());
+		});
+		
+		return super.write(compound);
+	}
+	
+	
+	@Override
+	public void remove() {
+		super.remove();
+		this.itemInputHandler.invalidate();
+		this.itemInputHandler.invalidate();
+		this.combinedItemHandler.invalidate();
+		this.powerInputHandler.invalidate();
 	}
 	
 	

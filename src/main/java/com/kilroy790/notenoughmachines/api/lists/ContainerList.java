@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.api.lists;
 
-import com.kilroy790.notenoughmachines.client.gui.MillstoneContainer;
+import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.registries.ObjectHolder;

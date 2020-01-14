@@ -1,6 +1,7 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
 import com.kilroy790.notenoughmachines.api.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.api.NEMConfigurableSides;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
@@ -25,11 +26,13 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 
 	private MechanicalPowerConduit powerChannel;
 	private LazyOptional<IMechanicalPower> powerChannelHandler = LazyOptional.of(() -> powerChannel);
-	//there are ~20 tick per second
-	private static final int POWERCAPACITY = 60;
-	private static final int MAXPOWERRECEIVED = 60;
-	private static final int MAXPOWERSENT = 60;
 	
+	private static final int POWERCAPACITY = 72;
+	private static final int MAXPOWERRECEIVED = 72;
+	private static final int MAXPOWERSENT = 72;
+	
+	protected NEMConfigurableSides[] gearboxSide = {NEMConfigurableSides.OUTPUT, NEMConfigurableSides.INPUT, NEMConfigurableSides.OUTPUT, NEMConfigurableSides.OUTPUT, NEMConfigurableSides.OUTPUT, NEMConfigurableSides.OUTPUT};
+	protected int numberOfOutputs = 5;
 	
 	public GearboxTile() {
 		super(TileEntityList.GEARBOX);
@@ -40,8 +43,12 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 	
 	@Override
 	public void tick() {
+		//there are ~20 tick per second
 		
 		if(world.isRemote) return;
+		
+		//TODO implement configurable sides 
+		//if(world.getGameTime()%10 == 1) updateSides();
 		
 		if(powerChannel.isPowered()) {
 			
@@ -80,7 +87,11 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 			}
 		}
 
-		if(numOfAxles == 0) return;
+		if(numOfAxles == 0) {
+			//if there are no outputs dump the stored power
+			powerChannel.consumePower(MAXPOWERSENT, false);
+			return;
+		}
 		
 		final int connectedAxles = numOfAxles;
 		for(int i = 0; i < 6; i++) {
@@ -97,7 +108,10 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 				int axleDir = world.getBlockState(nextPos).get(NEMBlockStateProperties.AXLE_DIRECTION);
 				if(direction == AxleBlock.axisAlignment[axleDir][0] || direction == AxleBlock.axisAlignment[axleDir][1]) {
 					
-					LazyOptional<IMechanicalPower> nextMachine = world.getTileEntity(nextPos).getCapability(CapabilityMechanical.MECHANICAL, direction);
+					TileEntity nextTile = world.getTileEntity(nextPos);
+					if(nextTile == null) continue;
+					
+					LazyOptional<IMechanicalPower> nextMachine = nextTile.getCapability(CapabilityMechanical.MECHANICAL, direction);
 					nextMachine.ifPresent(h -> {
 						if(h.canReceive()) {
 							h.receivePower(powerChannel.sendPower(MAXPOWERSENT/connectedAxles, false), false);
@@ -105,6 +119,33 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 					});
 				}
 			}
+		}
+	}
+	
+	
+	protected void updateSides() {
+		
+		Direction gearboxInputSide = this.getBlockState().get(BlockStateProperties.FACING);
+		this.numberOfOutputs = 0;
+		
+		for(int i = 0; i < 6; i++) {
+			//loop over all sides and determine the number of axles that are connected to the gearbox
+			Direction direction = GearboxBlock.GEARBOX_SIDE[i];
+			BlockPos nextPos = pos.offset(direction);
+			Block nextBlock = world.getBlockState(nextPos).getBlock();
+			
+			if(direction == gearboxInputSide) gearboxSide[i] = NEMConfigurableSides.INPUT;
+			
+			else if(nextBlock instanceof AxleBlock) {
+				
+				int axleDir = world.getBlockState(nextPos).get(NEMBlockStateProperties.AXLE_DIRECTION);
+				if(direction == AxleBlock.axisAlignment[axleDir][0] || direction == AxleBlock.axisAlignment[axleDir][1]) {
+					
+					gearboxSide[i] = NEMConfigurableSides.OUTPUT;
+					this.numberOfOutputs++;
+				}
+			}
+			else gearboxSide[i] = NEMConfigurableSides.NONE;
 		}
 	}
 	
