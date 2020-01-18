@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.api;
+package com.kilroy790.notenoughmachines.api.stateproperties;
 
 import java.util.Locale;
 

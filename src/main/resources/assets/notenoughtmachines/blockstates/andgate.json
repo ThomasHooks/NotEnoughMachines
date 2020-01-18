@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "notenoughtmachines:block/and_gate_00", "y": 180 },
+		"facing=south": { "model": "notenoughtmachines:block/and_gate_00"},
+		"facing=east": {"model": "notenoughtmachines:block/and_gate_00", "y": 270 },
+		"facing=west": {"model": "notenoughtmachines:block/and_gate_00", "y": 90 }
+    }
+}

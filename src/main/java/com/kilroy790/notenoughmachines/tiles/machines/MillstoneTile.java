@@ -2,13 +2,13 @@ package com.kilroy790.notenoughmachines.tiles.machines;
 
 import javax.annotation.Nonnull;
 
-import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConsumer;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
+import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

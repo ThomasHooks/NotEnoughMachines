@@ -2,6 +2,7 @@ package com.kilroy790.notenoughmachines.api.lists;
 
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
+import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
@@ -10,12 +11,15 @@ import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
 
 import net.minecraftforge.registries.ObjectHolder;
 
+
+
+
 public class BlockList {
 
 	@ObjectHolder("notenoughtmachines:linenblock")
 	public static LinenBlock LINENBLOCK;
 	
-	//machine blocks
+	//Machines
 	@ObjectHolder("notenoughtmachines:creativepowerbox")
 	public static CreativePowerBoxBlock CREATIVEPOWERBOX;
 	
@@ -30,6 +34,10 @@ public class BlockList {
 	
 	@ObjectHolder("notenoughtmachines:millstone")
 	public static MillstoneBlock MILLSTONE;
+	
+	//Logic Gates
+	@ObjectHolder("notenoughtmachines:andgate")
+	public static ANDGateBlock ANDGATE;
 	
 	//Crops
 	@ObjectHolder("notenoughtmachines:flaxplant")

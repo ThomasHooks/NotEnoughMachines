@@ -3,14 +3,13 @@ package com.kilroy790.notenoughmachines;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.kilroy790.notenoughmachines.api.crafting.MachineRecipeSerializer;
-import com.kilroy790.notenoughmachines.api.crafting.MillingRecipe;
 import com.kilroy790.notenoughmachines.api.lists.BlockList;
 import com.kilroy790.notenoughmachines.api.lists.ItemGroupList;
 import com.kilroy790.notenoughmachines.api.lists.ItemList;
 import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
+import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
@@ -19,6 +18,8 @@ import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
+import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
+import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
@@ -30,6 +31,8 @@ import com.kilroy790.notenoughmachines.utilities.IProxy;
 import com.kilroy790.notenoughmachines.utilities.ServerProxy;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -124,6 +127,10 @@ public class NotEnoughMachines {
 			logger.info("Registering MillstoneBlock");
 			event.getRegistry().register(BlockList.MILLSTONE = new MillstoneBlock("millstone"));
 			
+			//Logic Gate Blocks
+			logger.info("Registering ANDGateBlock");
+			event.getRegistry().register(BlockList.ANDGATE = new ANDGateBlock(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F).sound(SoundType.WOOD), "andgate"));
+			
 			//Crops Blocks
 			logger.info("Registering FlaxPlantBlock");
 			event.getRegistry().register(BlockList.FLAXPLANT = new FlaxPlantBlock("flaxplant"));
@@ -182,6 +189,9 @@ public class NotEnoughMachines {
 			logger.info("Registering MillstoneBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.MILLSTONE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.MILLSTONE.getRegistryName()));
 			
+			logger.info("Registering ANDGateBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.ANDGATE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.ANDGATE.getRegistryName()));
+			
 			logger.info("Items registered");
 		} 
 		
@@ -231,7 +241,7 @@ public class NotEnoughMachines {
 			logger.info("Registering all recipes");
 			
 			logger.info("Registering MillingRecipe");
-			event.getRegistry().register(MachineRecipeList.MILLING = new MachineRecipeSerializer<>(MillingRecipe::new, 200));
+			event.getRegistry().register(MachineRecipeList.MILLING = new MillingRecipeSerializer<>(MillingRecipe::new, 200));
 			
 			logger.info("Recipes registered");
 		}

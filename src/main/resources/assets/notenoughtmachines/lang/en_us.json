@@ -6,6 +6,8 @@
 	"block.notenoughtmachines.axle": "Axle",
 	"block.notenoughtmachines.millstone": "Millstone",
 	
+	"block.notenoughtmachines.andgate": "AND Gate",
+	
 	"item.notenoughtmachines.flaxseed" : "Flax Seeds",
 	"item.notenoughtmachines.flax" : "Flax",
 	"item.notenoughtmachines.flour" : "Flour",

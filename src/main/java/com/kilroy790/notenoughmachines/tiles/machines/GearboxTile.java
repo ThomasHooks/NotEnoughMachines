@@ -1,11 +1,11 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
-import com.kilroy790.notenoughmachines.api.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.api.NEMConfigurableSides;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConduit;
+import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.api.stateproperties.NEMConfigurableSides;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import net.minecraft.block.Block;

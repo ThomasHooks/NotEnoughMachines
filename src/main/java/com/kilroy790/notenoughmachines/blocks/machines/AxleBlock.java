@@ -4,7 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.kilroy790.notenoughmachines.api.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
 
 import net.minecraft.block.Block;
