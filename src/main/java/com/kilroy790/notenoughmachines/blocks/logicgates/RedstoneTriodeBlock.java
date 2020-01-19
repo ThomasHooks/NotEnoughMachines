@@ -7,6 +7,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RedstoneDiodeBlock;
 import net.minecraft.block.RedstoneWireBlock;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.util.Direction;
@@ -35,22 +37,34 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 	
 	@Override
 	protected boolean shouldBePowered(World worldIn, BlockPos pos, BlockState state) {
-		//return this.calculateInputStrength(worldIn, pos, state) > 0;
 		return this.getLogicFunction(worldIn, pos, state);
 	}
 	
 	
 	@Override
-	protected int calculateInputStrength(World worldIn, BlockPos pos, BlockState state) {
-		Direction direction = state.get(HORIZONTAL_FACING).rotateY();
-		BlockPos blockpos = pos.offset(direction);
-		int in1 = worldIn.getRedstonePower(blockpos, direction);
-		if (in1 >= 15) {
-			return in1;
-		} else {
-			BlockState blockstate = worldIn.getBlockState(blockpos);
-			return Math.max(in1, blockstate.getBlock() == Blocks.REDSTONE_WIRE ? blockstate.get(RedstoneWireBlock.POWER) : 0);
-		}
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+		
+		this.updateState(worldIn, pos, state);
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+	}
+	
+	
+	@Override
+	protected void updateState(World worldIn, BlockPos pos, BlockState state) {
+		
+		//update the Triode's input state
+		Direction sideCW = state.get(HORIZONTAL_FACING).rotateY();
+		Direction sideCCW = state.get(HORIZONTAL_FACING).rotateYCCW();
+		int inputStrengthCW = this.getInputStrengthOnSide(worldIn, pos, state, sideCW);
+		int inputStrengthCCW = this.getInputStrengthOnSide(worldIn, pos, state, sideCCW);
+		
+		if(inputStrengthCW > 0 && inputStrengthCCW > 0) worldIn.setBlockState(pos, state.with(INPUT, InputDualType.IN11), 1|2);
+		else if(inputStrengthCW > 0 && !(inputStrengthCCW > 0)) worldIn.setBlockState(pos, state.with(INPUT, InputDualType.IN10), 1|2);
+		else if(!(inputStrengthCW > 0) && inputStrengthCCW > 0) worldIn.setBlockState(pos, state.with(INPUT, InputDualType.IN01), 1|2);
+		else worldIn.setBlockState(pos, state.with(INPUT, InputDualType.IN00), 1|2);
+		
+		//update the Triode's powered state
+		super.updateState(worldIn, pos, state);
 	}
 	
 	

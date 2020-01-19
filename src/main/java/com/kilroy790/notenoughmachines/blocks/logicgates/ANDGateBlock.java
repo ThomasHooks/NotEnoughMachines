@@ -5,8 +5,6 @@ import java.util.Random;
 import com.kilroy790.notenoughmachines.api.stateproperties.InputDualType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.util.Direction;
@@ -34,16 +32,6 @@ public class ANDGateBlock extends RedstoneTriodeBlock {
 		Direction sideCCW = worldIn.getBlockState(pos).get(HORIZONTAL_FACING).rotateYCCW();
 		if(this.getInputStrengthOnSide(worldIn, pos, state, sideCW) > 0 && this.getInputStrengthOnSide(worldIn, pos, state, sideCCW) > 0) return true;
 		else return false;
-	}
-	
-	
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		
-		if(placer != null) {
-			Direction dir = placer.getHorizontalFacing().getOpposite();
-			worldIn.setBlockState(pos, state.with(HORIZONTAL_FACING, dir), 1|2);
-		}
 	}
 	
 	

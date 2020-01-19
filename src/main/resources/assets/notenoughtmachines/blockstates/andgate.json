@@ -1,8 +1,20 @@
 {
     "variants": {
-        "facing=north": { "model": "notenoughtmachines:block/and_gate_00", "y": 180 },
-		"facing=south": { "model": "notenoughtmachines:block/and_gate_00"},
-		"facing=east": {"model": "notenoughtmachines:block/and_gate_00", "y": 270 },
-		"facing=west": {"model": "notenoughtmachines:block/and_gate_00", "y": 90 }
+        "facing=north,input=in00": { "model": "notenoughtmachines:block/and_gate_00", "y": 180 },
+		"facing=south,input=in00": { "model": "notenoughtmachines:block/and_gate_00"},
+		"facing=east,input=in00": {"model": "notenoughtmachines:block/and_gate_00", "y": 270 },
+		"facing=west,input=in00": {"model": "notenoughtmachines:block/and_gate_00", "y": 90 },
+		"facing=north,input=in01": { "model": "notenoughtmachines:block/and_gate_01", "y": 180 },
+		"facing=south,input=in01": { "model": "notenoughtmachines:block/and_gate_01"},
+		"facing=east,input=in01": {"model": "notenoughtmachines:block/and_gate_01", "y": 270 },
+		"facing=west,input=in01": {"model": "notenoughtmachines:block/and_gate_01", "y": 90 },
+		"facing=north,input=in10": { "model": "notenoughtmachines:block/and_gate_10", "y": 180 },
+		"facing=south,input=in10": { "model": "notenoughtmachines:block/and_gate_10"},
+		"facing=east,input=in10": {"model": "notenoughtmachines:block/and_gate_10", "y": 270 },
+		"facing=west,input=in10": {"model": "notenoughtmachines:block/and_gate_10", "y": 90 },
+		"facing=north,input=in11": { "model": "notenoughtmachines:block/and_gate_11", "y": 180 },
+		"facing=south,input=in11": { "model": "notenoughtmachines:block/and_gate_11"},
+		"facing=east,input=in11": {"model": "notenoughtmachines:block/and_gate_11", "y": 270 },
+		"facing=west,input=in11": {"model": "notenoughtmachines:block/and_gate_11", "y": 90 }
     }
 }
