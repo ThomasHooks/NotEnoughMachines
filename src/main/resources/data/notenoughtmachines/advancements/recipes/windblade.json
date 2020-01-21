@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "notenoughtmachines:windblade"
+    ]
+  },
+  "criteria": {
+    "logs": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:oak_log"
+          },
+          {
+            "item": "minecraft:birch_log"
+          },
+          {
+            "item": "minecraft:acacia_log"
+          },
+          {
+            "item": "minecraft:dark_oak_log"
+          },
+          {
+            "item": "minecraft:jungle_log"
+          },
+          {
+            "item": "minecraft:spruce_log"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "notenoughtmachines:windblade"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "logs",
+      "has_the_recipe"
+    ]
+  ]
+}

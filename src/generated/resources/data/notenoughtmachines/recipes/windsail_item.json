@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "windblade",
+  "pattern": [
+    "###",
+    "#x#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "notenoughtmachines:linen"
+    },
+    "x": {
+      "item": "notenoughtmachines:windblade"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:windsail_item"
+  }
+}

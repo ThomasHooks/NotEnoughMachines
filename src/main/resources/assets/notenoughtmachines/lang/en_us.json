@@ -8,6 +8,8 @@
 	
 	"block.notenoughtmachines.andgate": "AND Gate",
 	
+	"block.notenoughtmachines.chute": "Chute",
+	
 	"item.notenoughtmachines.flaxseed" : "Flax Seeds",
 	"item.notenoughtmachines.flax" : "Flax",
 	"item.notenoughtmachines.flour" : "Flour",
@@ -16,6 +18,8 @@
 	"item.notenoughtmachines.gear" : "Gear",
 	"item.notenoughtmachines.windblade" : "Wind Wheel Blade",
 	"item.notenoughtmachines.windsail_item" : "Wind Wheel Sail",
+	"item.notenoughtmachines.redstone_collector" : "Redstone Collector",
+	"item.notenoughtmachines.redstone_emitter" : "Redstone Emitter",
 	
 	"itemGroup.notenoughtmachines" : "Not Enough Machines"
 }

@@ -4,6 +4,7 @@ import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
@@ -38,6 +39,10 @@ public class BlockList {
 	//Logic Gates
 	@ObjectHolder("notenoughtmachines:andgate")
 	public static ANDGateBlock ANDGATE;
+	
+	//transport
+	@ObjectHolder("notenoughtmachines:chute")
+	public static ChuteBlock CHUTE;
 	
 	//Crops
 	@ObjectHolder("notenoughtmachines:flaxplant")

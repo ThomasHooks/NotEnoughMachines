@@ -11,6 +11,7 @@ import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
@@ -40,6 +41,7 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -129,7 +131,19 @@ public class NotEnoughMachines {
 			
 			//Logic Gate Blocks
 			logger.info("Registering ANDGateBlock");
-			event.getRegistry().register(BlockList.ANDGATE = new ANDGateBlock(Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F).sound(SoundType.WOOD), "andgate"));
+			event.getRegistry().register(BlockList.ANDGATE = new ANDGateBlock(Block.Properties
+					.create(Material.MISCELLANEOUS)
+					.hardnessAndResistance(0.0f)
+					.sound(SoundType.WOOD), "andgate"));
+			
+			//Transport Blocks
+			logger.info("Registering ChuteBlock");
+			event.getRegistry().register(BlockList.CHUTE = new ChuteBlock(Block.Properties
+					.create(Material.MISCELLANEOUS)
+					.hardnessAndResistance(1.8f, 2.0f)
+					.sound(SoundType.WOOD)
+					.harvestTool(ToolType.AXE)
+					.harvestLevel(0), "chute"));
 			
 			//Crops Blocks
 			logger.info("Registering FlaxPlantBlock");
@@ -166,6 +180,12 @@ public class NotEnoughMachines {
 			logger.info("Registering GearItem");
 			event.getRegistry().register(ItemList.GEAR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("gear"));
 			
+			logger.info("Registering RedstoneCollectorItem");
+			event.getRegistry().register(ItemList.REDSTONE_COLLECTOR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("redstone_collector"));
+			
+			logger.info("Registering RedstoneEmitterItem");
+			event.getRegistry().register(ItemList.REDSTONE_EMITTER = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("redstone_emitter"));
+			
 			//Seed Items
 			logger.info("Registering FlaxSeedItem");
 			event.getRegistry().register(ItemList.FLAXSEED = new FlaxSeedItem(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP), "flaxseed"));
@@ -191,6 +211,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering ANDGateBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.ANDGATE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.ANDGATE.getRegistryName()));
+			
+			logger.info("Registering ChuteBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.CHUTE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CHUTE.getRegistryName()));
 			
 			logger.info("Items registered");
 		} 

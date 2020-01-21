@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "redstone_emitter",
+  "pattern": [
+    "t",
+    "\u003d"
+  ],
+  "key": {
+    "\u003d": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+    "t": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:redstone_emitter"
+  }
+}

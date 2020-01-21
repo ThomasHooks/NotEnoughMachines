@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "notenoughtmachines:flaxstring"
+    ]
+  },
+  "criteria": {
+    "flax": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "notenoughtmachines:flax"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "notenoughtmachines:flaxstring"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "flax",
+      "has_the_recipe"
+    ]
+  ]
+}

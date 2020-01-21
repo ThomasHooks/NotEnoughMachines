@@ -101,6 +101,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		if(processTime >= MAX_PROCESS_TIME) {
 			millItem();
 			isProcessing = false;
+			processTime = 0;
 		}
 
 		//Update the millstone's block state

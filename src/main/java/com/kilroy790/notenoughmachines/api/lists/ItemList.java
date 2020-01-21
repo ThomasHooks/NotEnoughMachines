@@ -32,6 +32,12 @@ public class ItemList {
 	@ObjectHolder("notenoughtmachines:windsail_item")
 	public static Item WINDSAIL_ITEM;
 	
+	@ObjectHolder("notenoughtmachines:redstone_collector")
+	public static Item REDSTONE_COLLECTOR;
+	
+	@ObjectHolder("notenoughtmachines:redstone_emitter")
+	public static Item REDSTONE_EMITTER;
+	
 	//Seed Items
 	@ObjectHolder("notenoughtmachines:flaxseed")
 	public static FlaxSeedItem FLAXSEED;
