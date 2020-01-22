@@ -23,6 +23,7 @@ import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
+import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
@@ -238,6 +239,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering GearboxTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(GearboxTile::new, BlockList.GEARBOX).build(null).setRegistryName("gearbox"));
+			
+			logger.info("Registering ChuteTileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(ChuteTile::new, BlockList.CHUTE).build(null).setRegistryName("chute"));
 			
 			logger.info("Tile entities registered");
 		}

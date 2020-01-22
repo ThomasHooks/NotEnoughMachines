@@ -80,15 +80,19 @@ public class MillstoneBlock extends Block{
 	}
 	
 	
-	@SuppressWarnings("deprecation")
 	@Override
-	public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
-		//Drop items in the millstone when it is broken
-		if (state.getBlock() != newState.getBlock()) {
-	         TileEntity tile = world.getTileEntity(pos);
-	         NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
-	         super.onReplaced(state, world, pos, newState, isMoving);
+	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
+		/*
+		 * Called before the Block is set to air in the world. Called regardless of if the player's tool can actually collect
+		 * this block
+		 */
+
+		TileEntity tile = worldIn.getTileEntity(pos);
+		if(tile instanceof MillstoneTile) {
+			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
 		}
+		
+		super.onBlockHarvested(worldIn, pos, state, player);
 	}
 	
 	
