@@ -168,6 +168,9 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	}
 	
 	
+	//TODO synchronize tile entity to the client
+	
+	
 	@Override
 	public void read(CompoundNBT compound) {
 		

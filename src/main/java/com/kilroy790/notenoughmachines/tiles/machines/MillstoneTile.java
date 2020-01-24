@@ -332,7 +332,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 	public void remove() {
 		super.remove();
 		this.itemInputHandler.invalidate();
-		this.itemInputHandler.invalidate();
+		this.itemOutputHandler.invalidate();
 		this.combinedItemHandler.invalidate();
 		this.powerInputHandler.invalidate();
 	}

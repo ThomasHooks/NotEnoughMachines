@@ -16,6 +16,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.client.renderers.ChuteRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
@@ -95,6 +96,9 @@ public class NotEnoughMachines {
 		
 		logger.info("Registering SmallWindWheelTESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(SmallWindWheelTile.class, new SmallWindWheelRenderers());
+		
+		logger.info("Registering ChuteTESR");
+		ClientRegistry.bindTileEntitySpecialRenderer(ChuteTile.class, new ChuteRenderer());
 		
 		logger.info("clientRegistries registered");
 	}

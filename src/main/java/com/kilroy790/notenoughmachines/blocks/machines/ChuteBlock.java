@@ -26,7 +26,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public class ChuteBlock extends HorizontalBlock {
 
 	
-	protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 11.0D, 16.0D);
+	protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
 	
 	
 	public ChuteBlock(Properties properties, String name) {
@@ -71,7 +71,6 @@ public class ChuteBlock extends HorizontalBlock {
 	
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) {
-		//Set the bounding box based on the direction that the block is facing
 		return SHAPE;
 	}
 
