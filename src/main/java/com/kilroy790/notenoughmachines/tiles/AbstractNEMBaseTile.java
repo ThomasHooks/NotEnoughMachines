@@ -57,6 +57,12 @@ public abstract class AbstractNEMBaseTile extends TileEntity {
 	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
 		this.read(pkt.getNbtCompound());
 	}
+	
+	
+	protected void syncClient() {
+		//Sync the tile on the client with the server
+		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1|2);
+	}
 
 	
 	protected ItemStackHandler makeItemHandler(int numSlots) {

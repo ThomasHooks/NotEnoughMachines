@@ -6,10 +6,10 @@ import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerProducer;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.LazyOptional;
 
 
 
-public class SmallWindWheelTile extends TileEntity implements ITickableTileEntity{
+public class SmallWindWheelTile extends AbstractNEMBaseTile implements ITickableTileEntity{
 
 	
 	protected float angle = 0.0f;
@@ -49,19 +49,13 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	public void tick() {
 		//there are ~20 tick per second
 		
-		if(world.getGameTime()%40 == 1) {
-			
-			//if(world.isRemote) return;
-			
-			isRotating = validateArea();
-		}
+		if(world.getGameTime()%40 == 1 && !world.isRemote) this.isRotating = this.validateArea();
 		
 		if(isRotating) {
-			
-			updateWindWheelAngle();
-			
-			generatePower();
+			this.updateWindWheelAngle();
+			this.generatePower();
 		}
+		this.syncClient();
 	}
 	
 	
@@ -77,8 +71,8 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	
 	protected void updateWindWheelAngle() {
 		
-		//TODO only update on the client side
-		//if(world.isRemote) return;
+		//Only update on the server side
+		if(world.isRemote) return;
 		
 		//Modify wind wheel speed based on the weather
 		if(world.isRaining()) speedModifier = 1.0f + world.getThunderStrength(1.0f);
@@ -145,53 +139,50 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 				}
 			}
 		}
-		
 		return valid;
 	}
 	
 	
 	public float getWindSailAngle() {
-		//returns the angle of the wind sail in radians
+		//@return	the angle of the wind sail in radians
 		return ((float)Math.PI * this.angle)/180.0f;
 	}
 	
 	
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		
-		if(cap == CapabilityMechanical.MECHANICAL) {
-			
-			//return powerOutputHandler.cast();
-		}
-		
+		//if(cap == CapabilityMechanical.MECHANICAL) return powerOutputHandler.cast();
 		return super.getCapability(cap, side);
 	}
 	
 	
-	//TODO synchronize tile entity to the client
-	
-	
 	@Override
 	public void read(CompoundNBT compound) {
-		
-		if(compound.contains("storedpower")) {
-			powerOutputHandler.ifPresent(h -> {
-				h.setEnergyStored(compound.getInt("storedpower"));
-			});
-		}
-		
+		this.powerOutput.setEnergyStored(compound.getInt("storedpower"));
 		super.read(compound);
 	}
 	
 	
 	@Override
+	protected void readCustom(CompoundNBT compound) {
+		this.angle = compound.getFloat("angle");
+		this.isRotating = compound.getBoolean("rotating");
+	}
+	
+	
+	@Override
 	public CompoundNBT write(CompoundNBT compound) {
-		
-		powerOutputHandler.ifPresent(h -> {
-			compound.putInt("storedpower", h.getEnergyStored());
-		});
-		
-		return super.write(compound);
+		compound.putInt("storedpower", this.powerOutput.getEnergyStored());
+		compound = super.write(compound);
+		return compound;
+	}
+
+
+	@Override
+	protected CompoundNBT writeCustom(CompoundNBT compound) {
+		compound.putFloat("angle", this.angle);
+		compound.putBoolean("rotating", this.isRotating);
+		return compound;
 	}
 	
 	
@@ -199,11 +190,5 @@ public class SmallWindWheelTile extends TileEntity implements ITickableTileEntit
 	public void remove() {
 		super.remove();
 		this.powerOutputHandler.invalidate();
-	}
-	
-	
-	private MechanicalPowerProducer makeMechanicalPowerHandler(int capacity, int maxReceived, int maxSent) {
-		
-		return new MechanicalPowerProducer(capacity, maxReceived, maxSent);
 	}
 }

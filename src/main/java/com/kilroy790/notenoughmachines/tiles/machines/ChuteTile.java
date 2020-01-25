@@ -126,6 +126,7 @@ public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntit
 	}
 	
 	
+	@Override
 	protected void syncClient() {
 		//update the Chute's state and then sync the tile to the client
 		
