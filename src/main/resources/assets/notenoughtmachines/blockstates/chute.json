@@ -1,8 +1,18 @@
 {
     "variants": {
-        "facing=north": { "model": "notenoughtmachines:block/chute", "y": 180 },
-		"facing=south": { "model": "notenoughtmachines:block/chute"},
-		"facing=east": {"model": "notenoughtmachines:block/chute", "y": 270 },
-		"facing=west": {"model": "notenoughtmachines:block/chute", "y": 90 }
+        "chutetype=anchored,facing=north": { "model": "notenoughtmachines:block/chute", "y": 180 },
+		"chutetype=anchored,facing=south": { "model": "notenoughtmachines:block/chute"},
+		"chutetype=anchored,facing=east": {"model": "notenoughtmachines:block/chute", "y": 270 },
+		"chutetype=anchored,facing=west": {"model": "notenoughtmachines:block/chute", "y": 90 },
+		
+		"chutetype=hanging,facing=north": { "model": "notenoughtmachines:block/chute_hanging", "y": 180 },
+		"chutetype=hanging,facing=south": { "model": "notenoughtmachines:block/chute_hanging"},
+		"chutetype=hanging,facing=east": {"model": "notenoughtmachines:block/chute_hanging", "y": 270 },
+		"chutetype=hanging,facing=west": {"model": "notenoughtmachines:block/chute_hanging", "y": 90 },
+		
+		"chutetype=hopper,facing=north": { "model": "notenoughtmachines:block/chute_hopper", "y": 180 },
+		"chutetype=hopper,facing=south": { "model": "notenoughtmachines:block/chute_hopper"},
+		"chutetype=hopper,facing=east": {"model": "notenoughtmachines:block/chute_hopper", "y": 270 },
+		"chutetype=hopper,facing=west": {"model": "notenoughtmachines:block/chute_hopper", "y": 90 }
     }
 }

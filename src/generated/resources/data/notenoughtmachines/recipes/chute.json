@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chute",
+  "pattern": [
+    "\u003dc\u003d",
+    " \u003d "
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:chest"
+    },
+    "\u003d": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:chute"
+  }
+}

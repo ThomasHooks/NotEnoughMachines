@@ -1,7 +1,9 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
+import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
+import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
@@ -9,8 +11,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -24,7 +24,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public class ChuteTile extends TileEntity implements ITickableTileEntity {
+public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntity {
 
 	
 	protected ItemStackHandler itemInput;
@@ -38,24 +38,28 @@ public class ChuteTile extends TileEntity implements ITickableTileEntity {
 	public ChuteTile() {
 		super(TileEntityList.CHUTE);
 		final int INPUTSLOTS = 1;
-		itemInput = makeItemHandler(INPUTSLOTS);
+		itemInput = this.makeItemHandler(INPUTSLOTS);
 	}
 	
 	
 	@Override
 	public void tick() {
 		
-		if(this.canTransferItem()) {
-			this.pushItems(MAX_ITEM_TRANSFER);
-		}
-		else {
-			this.itemTransfer++;
-			this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1|2);
-		}
+		if(this.canTransferItem()) this.pushItems(MAX_ITEM_TRANSFER);
+		
+		else if(itemInput.getStackInSlot(0) != ItemStack.EMPTY) this.itemTransfer++;
+		
+		this.syncClient();
 	}
 	
 	
 	protected void pushItems(int amount) {
+		/*
+		 * Will try to push the item stack into the next Container or the Hopper below it
+		 * If the Chute can't push into a Container or a Hopper it will drop the item stack in-front, as long as the Chute is not blocked
+		 * 
+		 * @param	amount		number of items in the stack that will be pushed to the next Container, Hopper, or dropped
+		 */
 		
 		if(this.getWorld().isRemote || itemInput.getStackInSlot(0) == ItemStack.EMPTY) return;
 		
@@ -63,45 +67,72 @@ public class ChuteTile extends TileEntity implements ITickableTileEntity {
 		BlockPos nextPos = pos.offset(facing.getOpposite());
 		Block nextBlock = world.getBlockState(nextPos).getBlock();
 		
-		//drop items in front of the chute
+		//drop items in front of the Chute
 		if(nextBlock == Blocks.AIR) {
 			NEMItemHelper.dropItemStack(world, nextPos, itemInput.extractItem(0, amount, false));
+			this.setItemTransfer(0);
 		}
 		//push items to the next Container
 		else {
-			TileEntity nextTile = world.getTileEntity(nextPos);
-			if(nextTile != null) {
-				
-				//This is done so that the items will render correctly, otherwise they do not stay in the chute long enough to be rendered
-				if(nextTile instanceof ChuteTile) ((ChuteTile) nextTile).setItemTransfer(0);
-				
-				LazyOptional<IItemHandler> nextContainer = nextTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing);
-				nextContainer.ifPresent(h -> {
-					
-					ItemStack stackIn = itemInput.getStackInSlot(0).copy();
-					stackIn.setCount(amount);
-					int numOfSlots = h.getSlots();
-					
-					for(int slot = 0; slot < numOfSlots; slot++) {
-						
-						if(h.isItemValid(slot, stackIn)) {
-							
-							ItemStack stackRemander = h.insertItem(slot, stackIn, true);
-							
-							if(stackRemander.isEmpty()) {
-								
-								h.insertItem(slot, stackIn, false);
-								itemInput.extractItem(0, amount, false);
-								break;
-							}
-							else continue;
-						}
-					}
-				});
-			}
+			//if the Chute is above a Hopper, push items into it first
+			if(this.getBlockState().get(ChuteBlock.TYPE) == ChuteType.HOPPER) this.pushToContainer(this.getPos().down(), amount);
+			
+			//push items into the next Container
+			this.pushToContainer(nextPos, amount);
+			
+			this.setItemTransfer(0);
 		}
+	}
+	
+	
+	protected void pushToContainer(BlockPos nextPos, int amount) {
+		/*
+		 * Will try to push an item stack of size given by amount to the tile at the given block position
+		 * 
+		 * @param	nextPos		position of the tile to push the item stack into
+		 * 
+		 * @param	amount		the number of items in the item stack to push
+		 */
 		
-		this.setItemTransfer(0);
+		Direction facing = this.getBlockState().get(HorizontalBlock.HORIZONTAL_FACING);
+		TileEntity nextTile = world.getTileEntity(nextPos);
+		final int CHUTE_ITEM_SLOT = 0;
+		if(nextTile != null && !this.itemInput.getStackInSlot(CHUTE_ITEM_SLOT).isEmpty()) {
+
+			LazyOptional<IItemHandler> nextContainer = nextTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing);
+			nextContainer.ifPresent(h -> {
+
+				ItemStack stackIn = itemInput.getStackInSlot(CHUTE_ITEM_SLOT).copy();
+				stackIn.setCount(amount);
+				int numOfSlots = h.getSlots();
+
+				for(int slot = 0; slot < numOfSlots; slot++) {
+
+					if(h.isItemValid(slot, stackIn)) {
+
+						ItemStack stackRemander = h.insertItem(slot, stackIn, true);
+
+						if(stackRemander.isEmpty()) {
+
+							h.insertItem(slot, stackIn, false);
+							itemInput.extractItem(CHUTE_ITEM_SLOT, amount, false);
+							break;
+						}
+						else continue;
+					}
+				}
+			});
+		}
+	}
+	
+	
+	protected void syncClient() {
+		//update the Chute's state and then sync the tile to the client
+		
+		if(!this.world.isRemote) {
+			ChuteBlock.updateType(this.getBlockState(), this.getWorld(), this.getPos());
+			this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1|2);
+		}
 	}
 	
 	
@@ -119,58 +150,9 @@ public class ChuteTile extends TileEntity implements ITickableTileEntity {
 	
 	
 	@Override
-	public void read(CompoundNBT compound) {
-		
-		super.read(compound);
-		itemInput.deserializeNBT(compound.getCompound("inv"));
-		this.itemTransfer = compound.getInt("transfertime");
-	}
-	
-	
-	@Override
-	public CompoundNBT write(CompoundNBT compound) {
-		
-		compound = super.write(compound);
-		compound.put("inv", itemInput.serializeNBT());
-		compound.putInt("transfertime", this.itemTransfer);
-		return compound;
-	}
-	
-	
-	@Override
-	public CompoundNBT getUpdateTag() {
-		return this.write(new CompoundNBT());
-	}
-	
-	
-	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(this.getPos(), 0, this.getUpdateTag());
-	}
-	
-	
-	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		//NotEnoughMachines.logger.debug("hit");
-		this.read(pkt.getNbtCompound());
-	}
-	
-	
-	@Override
 	public void remove() {
 		super.remove();
 		this.itemInputHandler.invalidate();
-	}
-	
-	
-	protected ItemStackHandler makeItemHandler(int numSlots) {
-		return new ItemStackHandler(numSlots) {
-			
-			@Override
-			protected void onContentsChanged(int slot) {
-				markDirty();
-			}
-		};
 	}
 	
 	
@@ -180,7 +162,8 @@ public class ChuteTile extends TileEntity implements ITickableTileEntity {
 	
 	
 	public boolean canTransferItem() {
-		return this.itemTransfer > ITEM_TRANSFER_RATE;
+		ItemStack stack = itemInput.getStackInSlot(0).copy();
+		return (this.itemTransfer > ITEM_TRANSFER_RATE) && !stack.isEmpty();
 	}
 	
 	
@@ -191,9 +174,27 @@ public class ChuteTile extends TileEntity implements ITickableTileEntity {
 	
 	
 	public double getItemStackDistance() {
-		//@return the item stacks distance the value is between 0 to 1
-		//if(this.itemTransfer > ITEM_TRANSFER_RATE) return 1.0D;
-		if(this.itemTransfer < 0) return 0.0D;
+		//@return the item stacks distance, the value is between 0.0D to 1.0D
+		
+		if(this.itemTransfer > ITEM_TRANSFER_RATE) return 1.0D;
+		else if(this.itemTransfer < 0) return 0.0D;
 		else return (double)this.itemTransfer/(double)ITEM_TRANSFER_RATE;
+	}
+
+
+	@Override
+	protected void readCustom(CompoundNBT compound) {
+		
+		itemInput.deserializeNBT(compound.getCompound("inv"));
+		this.itemTransfer = compound.getInt("transfertime");
+	}
+
+
+	@Override
+	protected CompoundNBT writeCustom(CompoundNBT compound) {
+		
+		compound.put("inv", itemInput.serializeNBT());
+		compound.putInt("transfertime", this.itemTransfer);
+		return compound;
 	}
 }

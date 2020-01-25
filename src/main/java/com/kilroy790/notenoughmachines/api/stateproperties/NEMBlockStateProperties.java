@@ -18,4 +18,5 @@ public class NEMBlockStateProperties {
 	public static final IntegerProperty POWERED_14_15 = IntegerProperty.create("powered", 14, 15);
 	
 	public static final EnumProperty<InputDualType> DUAL_INPUT = EnumProperty.create("input", InputDualType.class);
+	public static final EnumProperty<ChuteType> CHUTE_TYPE = EnumProperty.create("chutetype", ChuteType.class);
 }

@@ -1,14 +1,18 @@
 package com.kilroy790.notenoughmachines.blocks.machines;
 
+import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
+import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.HopperBlock;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -27,21 +31,29 @@ public class ChuteBlock extends HorizontalBlock {
 
 	
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
-	
+	public static final EnumProperty<ChuteType> TYPE = NEMBlockStateProperties.CHUTE_TYPE;
 	
 	public ChuteBlock(Properties properties, String name) {
 		super(properties);
 		this.setRegistryName(name);
-		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH));
+		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(TYPE, ChuteType.ANCHORED));
 	}
 	
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 		
-		Direction dir = placer.getHorizontalFacing();
-		if(placer.isSneaking()) worldIn.setBlockState(pos, state.with(HORIZONTAL_FACING, dir), 1|2);
-		else worldIn.setBlockState(pos, state.with(HORIZONTAL_FACING, dir.getOpposite()), 1|2);
+		Direction dir;
+		if(placer.isSneaking()) dir = placer.getHorizontalFacing();
+		else dir = placer.getHorizontalFacing().getOpposite();
+		
+		ChuteType type;
+		BlockState bottomBlock = worldIn.getBlockState(pos.down());
+		if(bottomBlock.isNormalCube(worldIn, pos.down())) type = ChuteType.ANCHORED;
+		else if(bottomBlock.getBlock() instanceof HopperBlock) type = ChuteType.HOPPER;
+		else type = ChuteType.HANGING;
+		
+		worldIn.setBlockState(pos, state.with(HORIZONTAL_FACING, dir).with(TYPE, type), 1|2);
 	}
 	
 	
@@ -61,6 +73,23 @@ public class ChuteBlock extends HorizontalBlock {
 	}
 	
 	
+	
+	public static void updateType(BlockState state, World worldIn, BlockPos pos) {
+		
+		//Keep the facing direction the same as it was
+		Direction facing = state.get(HORIZONTAL_FACING);
+		
+		//check the block below the chute to determine the chute type
+		ChuteType type;
+		BlockState bottomBlock = worldIn.getBlockState(pos.down());
+		if(bottomBlock.isNormalCube(worldIn, pos.down())) type = ChuteType.ANCHORED;
+		else if(bottomBlock.getBlock() instanceof HopperBlock) type = ChuteType.HOPPER;
+		else type = ChuteType.HANGING;
+		
+		worldIn.setBlockState(pos, state.with(HORIZONTAL_FACING, facing).with(TYPE, type));
+	}
+	
+	
 	@Override
 	public BlockRenderLayer getRenderLayer() {
 		//This will prevent transparent block faces
@@ -77,7 +106,7 @@ public class ChuteBlock extends HorizontalBlock {
 	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
-		builder.add(HORIZONTAL_FACING);
+		builder.add(HORIZONTAL_FACING, TYPE);
 	}
 	
 	

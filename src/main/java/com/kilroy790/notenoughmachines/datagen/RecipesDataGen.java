@@ -28,6 +28,7 @@ public class RecipesDataGen extends RecipeProvider {
 	protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
 		
 		
+		//Crafting Items
 		ShapedRecipeBuilder.shapedRecipe(ItemList.FLAXSTRING, 3)
 		.patternLine("#")
 		.patternLine("#")
@@ -120,6 +121,18 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		//Transport Machines
+		//TODO change the Chute recipe
+		ShapedRecipeBuilder.shapedRecipe(BlockList.CHUTE, 1)
+		.patternLine("=c=")
+		.patternLine(" = ")
+		.key('c', Items.CHEST)
+		.key('=', ItemTags.WOODEN_SLABS)
+		.setGroup("chute")
+		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(ItemList.FLAX))
+		.build(consumer);
+		
+		
 		ShapedRecipeBuilder.shapedRecipe(BlockList.AXLE, 3)
 		.patternLine("#")
 		.patternLine("#")
@@ -141,6 +154,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		//Generators
 		ShapedRecipeBuilder.shapedRecipe(BlockList.SMALLWINDWHEEL, 1)
 		.patternLine(" # ")
 		.patternLine("#x#")
@@ -152,6 +166,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		//Processing Machines
 		ShapedRecipeBuilder.shapedRecipe(BlockList.MILLSTONE, 1)
 		.patternLine("=x=")
 		.patternLine("===")
@@ -165,6 +180,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		//Logic Gates
 		ShapedRecipeBuilder.shapedRecipe(BlockList.ANDGATE, 1)
 		.patternLine(" e ")
 		.patternLine("ece")
