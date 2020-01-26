@@ -14,6 +14,7 @@ import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
@@ -27,6 +28,7 @@ import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
 import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
@@ -37,6 +39,7 @@ import com.kilroy790.notenoughmachines.utilities.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -157,6 +160,12 @@ public class NotEnoughMachines {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0), "chute"));
 			
+			logger.info("Registering FilterBlock");
+			event.getRegistry().register(BlockList.FILTER = new FilterBlock(Block.Properties
+					.create(Material.IRON, MaterialColor.STONE)
+					.hardnessAndResistance(3.0F, 4.8F)
+					.sound(SoundType.METAL), "filter"));
+			
 			//Crops Blocks
 			logger.info("Registering FlaxPlantBlock");
 			event.getRegistry().register(BlockList.FLAXPLANT = new FlaxPlantBlock("flaxplant"));
@@ -170,44 +179,35 @@ public class NotEnoughMachines {
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			logger.info("Registering all items");
 			
-			//Crafting Items
-			logger.info("Registering LinenItem");
-			event.getRegistry().register(ItemList.LINEN = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("linen"));
+			logger.info("Registering FlaxSeedItem");
+			event.getRegistry().register(ItemList.FLAXSEED = new FlaxSeedItem(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP), "flaxseed"));
 			
 			logger.info("Registering FlaxItem");
 			event.getRegistry().register(ItemList.FLAX = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flax"));
 			
+			logger.info("Registering FlaxStringItem");
+			event.getRegistry().register(ItemList.FLAXSTRING = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flaxstring"));
+			
+			logger.info("Registering LinenItem");
+			event.getRegistry().register(ItemList.LINEN = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("linen"));
+			
+			logger.info("Registering LinenBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.LINENBLOCK, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.LINENBLOCK.getRegistryName()));
+			
 			logger.info("Registering FlourItem");
 			event.getRegistry().register(ItemList.FLOUR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flour"));
 			
-			logger.info("Registering FlaxStringItem");
-			event.getRegistry().register(ItemList.FLAXSTRING = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flaxstring"));
+			logger.info("Registering GearItem");
+			event.getRegistry().register(ItemList.GEAR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("gear"));
+			
+			logger.info("Registering CreativePowerBoxBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.CREATIVEPOWERBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CREATIVEPOWERBOX.getRegistryName()));
 			
 			logger.info("Registering WindBladeItem");
 			event.getRegistry().register(ItemList.WINDBLADE = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("windblade"));
 			
 			logger.info("Registering WindSailItem");
 			event.getRegistry().register(ItemList.WINDSAIL_ITEM = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("windsail_item"));
-			
-			logger.info("Registering GearItem");
-			event.getRegistry().register(ItemList.GEAR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("gear"));
-			
-			logger.info("Registering RedstoneCollectorItem");
-			event.getRegistry().register(ItemList.REDSTONE_COLLECTOR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("redstone_collector"));
-			
-			logger.info("Registering RedstoneEmitterItem");
-			event.getRegistry().register(ItemList.REDSTONE_EMITTER = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("redstone_emitter"));
-			
-			//Seed Items
-			logger.info("Registering FlaxSeedItem");
-			event.getRegistry().register(ItemList.FLAXSEED = new FlaxSeedItem(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP), "flaxseed"));
-			
-			//Block Items
-			logger.info("Registering LinenBlockItem");
-			event.getRegistry().register(new BlockItem(BlockList.LINENBLOCK, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.LINENBLOCK.getRegistryName()));
-			
-			logger.info("Registering CreativePowerBoxBlockItem");
-			event.getRegistry().register(new BlockItem(BlockList.CREATIVEPOWERBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CREATIVEPOWERBOX.getRegistryName()));
 			
 			logger.info("Registering SmallWindWheelBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.SMALLWINDWHEEL, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.SMALLWINDWHEEL.getRegistryName()));
@@ -218,17 +218,26 @@ public class NotEnoughMachines {
 			logger.info("Registering AxleBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.AXLE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.AXLE.getRegistryName()));
 			
+			logger.info("Registering ChuteBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.CHUTE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CHUTE.getRegistryName()));
+			
+			logger.info("Registering FilterBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.FILTER, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.FILTER.getRegistryName()));
+			
 			logger.info("Registering MillstoneBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.MILLSTONE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.MILLSTONE.getRegistryName()));
+			
+			logger.info("Registering RedstoneCollectorItem");
+			event.getRegistry().register(ItemList.REDSTONE_COLLECTOR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("redstone_collector"));
+			
+			logger.info("Registering RedstoneEmitterItem");
+			event.getRegistry().register(ItemList.REDSTONE_EMITTER = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("redstone_emitter"));
 			
 			logger.info("Registering ANDGateBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.ANDGATE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.ANDGATE.getRegistryName()));
 			
 			logger.info("Registering ORGateBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.ORGATE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.ORGATE.getRegistryName()));
-			
-			logger.info("Registering ChuteBlockItem");
-			event.getRegistry().register(new BlockItem(BlockList.CHUTE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CHUTE.getRegistryName()));
 			
 			logger.info("Items registered");
 		} 
@@ -256,6 +265,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering ChuteTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(ChuteTile::new, BlockList.CHUTE).build(null).setRegistryName("chute"));
+			
+			logger.info("Registering FilterTileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(FilterTile::new, BlockList.FILTER).build(null).setRegistryName(BlockList.FILTER.getRegistryName()));
 			
 			logger.info("Tile entities registered");
 		}

@@ -10,6 +10,7 @@
 	"block.notenoughtmachines.orgate": "OR Gate",
 	
 	"block.notenoughtmachines.chute": "Chute",
+	"block.notenoughtmachines.filter": "Filter",
 	
 	"item.notenoughtmachines.flaxseed" : "Flax Seeds",
 	"item.notenoughtmachines.flax" : "Flax",

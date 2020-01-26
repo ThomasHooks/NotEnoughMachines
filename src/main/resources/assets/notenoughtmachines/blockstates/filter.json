@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=down": { "model": "notenoughtmachines:block/filter" },
+		"facing=north": { "model": "notenoughtmachines:block/filter_side", "y": 0 },
+		"facing=east": { "model": "notenoughtmachines:block/filter_side", "y": 90 },
+		"facing=south": { "model": "notenoughtmachines:block/filter_side", "y": 180 },
+		"facing=west": { "model": "notenoughtmachines:block/filter_side", "y": -90 }
+    }
+}

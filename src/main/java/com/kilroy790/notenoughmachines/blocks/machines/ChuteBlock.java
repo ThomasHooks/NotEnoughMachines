@@ -31,7 +31,9 @@ public class ChuteBlock extends HorizontalBlock {
 
 	
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
+	
 	public static final EnumProperty<ChuteType> TYPE = NEMBlockStateProperties.CHUTE_TYPE;
+	
 	
 	public ChuteBlock(Properties properties, String name) {
 		super(properties);
@@ -83,7 +85,7 @@ public class ChuteBlock extends HorizontalBlock {
 		ChuteType type;
 		BlockState bottomBlock = worldIn.getBlockState(pos.down());
 		if(bottomBlock.isNormalCube(worldIn, pos.down())) type = ChuteType.ANCHORED;
-		else if(bottomBlock.getBlock() instanceof HopperBlock) type = ChuteType.HOPPER;
+		else if(bottomBlock.getBlock() instanceof HopperBlock || bottomBlock.getBlock() instanceof FilterBlock) type = ChuteType.HOPPER;
 		else type = ChuteType.HANGING;
 		
 		worldIn.setBlockState(pos, state.with(HORIZONTAL_FACING, facing).with(TYPE, type));

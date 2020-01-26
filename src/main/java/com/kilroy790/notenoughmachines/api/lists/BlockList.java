@@ -7,6 +7,7 @@ import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
@@ -47,6 +48,9 @@ public class BlockList {
 	//transport
 	@ObjectHolder("notenoughtmachines:chute")
 	public static ChuteBlock CHUTE;
+	
+	@ObjectHolder("notenoughtmachines:filter")
+	public static FilterBlock FILTER;
 	
 	//Crops
 	@ObjectHolder("notenoughtmachines:flaxplant")
