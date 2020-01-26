@@ -5,15 +5,10 @@ import java.util.Random;
 import com.kilroy790.notenoughmachines.api.stateproperties.InputDualType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -43,23 +38,6 @@ public class ANDGateBlock extends RedstoneTriodeBlock {
 		else {
 			if(this.getInputStrengthOnSide(worldIn, pos, state, sideCW) > 0 && this.getInputStrengthOnSide(worldIn, pos, state, sideCCW) > 0) return true;
 			else return false;
-		}
-	}
-	
-	
-	@Override
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		
-		if (!player.abilities.allowEdit) {
-			return false;
-		} 
-		else {
-			state = state.cycle(NEGATED);
-			float f = state.get(NEGATED) == true ? 0.55f : 0.5f;
-			worldIn.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 0.3f, f);
-			worldIn.setBlockState(pos, state, 2);
-			worldIn.getPendingBlockTicks().scheduleTick(pos, this, 1);
-			return true;
 		}
 	}
 	

@@ -8,11 +8,16 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.RedstoneDiodeBlock;
 import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
@@ -76,6 +81,23 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 		} else {
 			BlockState blockstate = worldIn.getBlockState(blockpos);
 			return Math.max(in, blockstate.getBlock() == Blocks.REDSTONE_WIRE ? blockstate.get(RedstoneWireBlock.POWER) : 0);
+		}
+	}
+	
+	
+	@Override
+	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+		
+		if (!player.abilities.allowEdit) {
+			return false;
+		} 
+		else {
+			state = state.cycle(NEGATED);
+			float f = state.get(NEGATED) == true ? 0.55f : 0.5f;
+			worldIn.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 0.3f, f);
+			worldIn.setBlockState(pos, state, 2);
+			worldIn.getPendingBlockTicks().scheduleTick(pos, this, 1);
+			return true;
 		}
 	}
 	

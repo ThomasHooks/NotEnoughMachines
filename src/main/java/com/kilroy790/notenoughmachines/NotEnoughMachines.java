@@ -10,6 +10,7 @@ import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
+import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
@@ -141,6 +142,12 @@ public class NotEnoughMachines {
 					.hardnessAndResistance(0.0f)
 					.sound(SoundType.WOOD), "andgate"));
 			
+			logger.info("Registering ORGateBlock");
+			event.getRegistry().register(BlockList.ORGATE = new ORGateBlock(Block.Properties
+					.create(Material.MISCELLANEOUS)
+					.hardnessAndResistance(0.0f)
+					.sound(SoundType.WOOD), "orgate"));
+			
 			//Transport Blocks
 			logger.info("Registering ChuteBlock");
 			event.getRegistry().register(BlockList.CHUTE = new ChuteBlock(Block.Properties
@@ -216,6 +223,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering ANDGateBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.ANDGATE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.ANDGATE.getRegistryName()));
+			
+			logger.info("Registering ORGateBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.ORGATE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.ORGATE.getRegistryName()));
 			
 			logger.info("Registering ChuteBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.CHUTE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CHUTE.getRegistryName()));

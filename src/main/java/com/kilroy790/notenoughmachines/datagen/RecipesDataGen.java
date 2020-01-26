@@ -189,5 +189,15 @@ public class RecipesDataGen extends RecipeProvider {
 		.setGroup("andgate")
 		.addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
 		.build(consumer);
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(BlockList.ORGATE, 1)
+		.patternLine(" c ")
+		.patternLine("cec")
+		.key('c', ItemList.REDSTONE_COLLECTOR)
+		.key('e', ItemList.REDSTONE_EMITTER)
+		.setGroup("orgate")
+		.addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
+		.build(consumer);
 	}
 }

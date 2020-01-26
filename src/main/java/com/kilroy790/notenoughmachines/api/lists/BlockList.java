@@ -3,6 +3,7 @@ package com.kilroy790.notenoughmachines.api.lists;
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
+import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
@@ -39,6 +40,9 @@ public class BlockList {
 	//Logic Gates
 	@ObjectHolder("notenoughtmachines:andgate")
 	public static ANDGateBlock ANDGATE;
+	
+	@ObjectHolder("notenoughtmachines:orgate")
+	public static ORGateBlock ORGATE;
 	
 	//transport
 	@ObjectHolder("notenoughtmachines:chute")
