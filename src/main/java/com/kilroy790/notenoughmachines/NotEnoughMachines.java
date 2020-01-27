@@ -20,6 +20,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.client.renderers.ChuteRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
+import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
@@ -283,6 +284,12 @@ public class NotEnoughMachines {
                 BlockPos pos = data.readBlockPos();
                 return new MillstoneContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
             }).setRegistryName("millstone"));
+			
+			logger.info("Registering FilterContainer");
+			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                return new FilterContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
+            }).setRegistryName("filter"));
 			
 			logger.info("Containers registered");
 		}
