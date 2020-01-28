@@ -25,7 +25,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntity {
-
+	//TODO look into why the chute transfers items so slow
 	
 	protected ItemStackHandler itemInput;
 	protected LazyOptional<ItemStackHandler> itemInputHandler = LazyOptional.of(() -> itemInput);

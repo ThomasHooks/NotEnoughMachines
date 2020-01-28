@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "filter",
+  "pattern": [
+    "\u003d#\u003d",
+    "\u003dc\u003d",
+    " v "
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:comparator"
+    },
+    "v": {
+      "item": "minecraft:hopper"
+    },
+    "#": {
+      "tag": "minecraft:wooden_trapdoors"
+    },
+    "\u003d": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:filter"
+  }
+}

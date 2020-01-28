@@ -9,7 +9,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -22,18 +24,18 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 
 
-public class FilterTile extends AbstractNEMBaseTile implements INamedContainerProvider {
-	
+public class FilterTile extends AbstractNEMBaseTile implements INamedContainerProvider, ITickableTileEntity {
+	//TODO look into making it into a smart filter
 	
 	protected ItemStackHandler itemInv;
 	public static final int INVENTORYSLOTS = 4;
-	protected LazyOptional<ItemStackHandler> itemInvHandler = LazyOptional.of(() -> itemInv);
 	
 	protected ItemStackHandler itemFilter;
 	public static final int FILTERSLOTS = 1;
+	protected LazyOptional<ItemStackHandler> itemFilterHandler = LazyOptional.of(() -> itemFilter);
 	
-	protected LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemFilter, itemInv));
 	public static final int COMBINEDSLOTS = FILTERSLOTS + INVENTORYSLOTS;
+	protected LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemFilter, itemInv));
 	
 	protected int itemTransfer = 0;
 	public static final int MAX_ITEM_TRANSFER = 1;
@@ -48,12 +50,75 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	
 	
 	@Override
+	public void tick() {
+		
+		if(!this.world.isRemote) {
+			
+			//move items from the filter slot to the Filter's inventory
+			this.moveItemsInternally(this.itemFilter, 0, 1, this.itemInv);
+			//push items in the Filter's inventory to the container it's facing
+			if(this.canTransferItem()) this.pushItems(this.itemInv, MAX_ITEM_TRANSFER);
+			//Increment the Filter's item transfer cool-down
+			this.itemTransfer++;
+		}
+	}
+	
+	
+	protected void moveItemsInternally(ItemStackHandler itemHandler1, int index, int amount, ItemStackHandler itemHandler2) {
+		
+		ItemStack stackIn = itemHandler1.getStackInSlot(index).copy();
+		if(!stackIn.isEmpty() && stackIn.getCount() > 1) {
+			
+			stackIn.setCount(amount);
+			for(int slot = 0; slot < itemHandler2.getSlots(); slot++) {
+				
+				if(itemHandler2.isItemValid(slot, stackIn)) {
+
+					ItemStack stackRemander = itemHandler2.insertItem(slot, stackIn, true);
+					if(stackRemander.isEmpty()) {
+
+						itemHandler2.insertItem(slot, stackIn, false);
+						itemHandler1.extractItem(index, amount, false);
+						break;
+					}
+
+					else continue;
+				}
+			}
+		}
+	}
+	
+	
+	protected void pushItems(ItemStackHandler itemHandler, int amount) {
+		/*
+		 * Will try to push the item stack into the next Container
+		 * 
+		 * @param	amount		number of items in the stack that will be pushed to the next Container
+		 */
+
+		Direction facing = this.getBlockState().get(FilterBlock.FACING);
+		for(int slot = 0; slot < itemHandler.getSlots(); slot++) {
+
+			if(itemHandler.getStackInSlot(slot).isEmpty()) continue;
+
+			else {
+				this.pushToContainer(pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
+				break;
+			}
+		}
+
+		this.setItemTransfer(0);
+	}
+	
+	
+	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
 		
 		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			//So the player can interact with the Filter
 			if(side == null) return combinedItemHandler.cast();
-			else if(side != this.getBlockState().get(FilterBlock.FACING)) return itemInvHandler.cast();
+			
+			else if(side != this.getBlockState().get(FilterBlock.FACING)) return itemFilterHandler.cast();
 		}
 		
 		return super.getCapability(cap, side);
@@ -62,14 +127,16 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	
 	@Override
 	protected void readCustom(CompoundNBT compound) {
-		itemInv.deserializeNBT(compound.getCompound("inv"));
+		this.itemFilter.deserializeNBT(compound.getCompound("filter"));
+		this.itemInv.deserializeNBT(compound.getCompound("inv"));
 		this.itemTransfer = compound.getInt("transfertime");
 	}
 
 	
 	@Override
 	protected CompoundNBT writeCustom(CompoundNBT compound) {
-		compound.put("inv", itemInv.serializeNBT());
+		compound.put("filter", this.itemFilter.serializeNBT());
+		compound.put("inv", this.itemInv.serializeNBT());
 		compound.putInt("transfertime", this.itemTransfer);
 		return compound;
 	}
@@ -78,7 +145,7 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	@Override
 	public void remove() {
 		super.remove();
-		this.itemInvHandler.invalidate();
+		this.itemFilterHandler.invalidate();
 		this.combinedItemHandler.invalidate();
 	}
 
@@ -97,5 +164,17 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	
 	public int getNumberOfInventorySlots() {
 		return INVENTORYSLOTS;
+	}
+	
+	
+	public boolean canTransferItem() {
+		//@return	true if it can transfer items
+		return (this.itemTransfer > ITEM_TRANSFER_RATE);
+	}
+	
+	
+	protected void setItemTransfer(int tick) {
+		this.itemTransfer = tick;
+		markDirty();
 	}
 }

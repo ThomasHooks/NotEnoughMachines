@@ -133,6 +133,19 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		ShapedRecipeBuilder.shapedRecipe(BlockList.FILTER, 1)
+		.patternLine("=#=")
+		.patternLine("=c=")
+		.patternLine(" v ")
+		.key('c', Items.COMPARATOR)
+		.key('v', Items.HOPPER)
+		.key('#', ItemTags.WOODEN_TRAPDOORS)
+		.key('=', ItemTags.WOODEN_SLABS)
+		.setGroup("filter")
+		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(ItemList.FLAX))
+		.build(consumer);
+		
+		
 		ShapedRecipeBuilder.shapedRecipe(BlockList.AXLE, 3)
 		.patternLine("#")
 		.patternLine("#")

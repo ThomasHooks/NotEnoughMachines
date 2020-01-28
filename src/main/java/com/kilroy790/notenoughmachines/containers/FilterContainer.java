@@ -7,6 +7,8 @@ import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -24,6 +26,11 @@ public class FilterContainer extends Container {
 	private FilterTile tile;
 	
 	private IItemHandler playerInv;
+	
+	private final int FILTERSLOT = 0;
+	private final int FILTER_INV = 1;
+	private final int PLAYER_INV_START = 5;
+	private final int PLAYER_INV_END = 41;
 	
 	
 	public FilterContainer(int id, World world, BlockPos pos, PlayerInventory playerInv, PlayerEntity player) {
@@ -48,7 +55,38 @@ public class FilterContainer extends Container {
 	}
 	
 	
-	//TODO override transferStackInSlot method to prevent shift-clicking causing a crash
+	@Override
+	public ItemStack transferStackInSlot(PlayerEntity player, int index) {
+		//method for shift clicking into an inventory 
+		
+		ItemStack itemstack = ItemStack.EMPTY;
+		Slot slot = (Slot)this.inventorySlots.get(index);
+		if (slot != null && slot.getHasStack()) {
+			
+			ItemStack itemstack1 = slot.getStack();
+			itemstack = itemstack1.copy();
+			if (index == FILTERSLOT) {
+				//Filter slot to player inventory
+				if(!this.mergeItemStack(itemstack1, PLAYER_INV_START, PLAYER_INV_END, true)) return ItemStack.EMPTY;
+			}
+			
+			else if (index >= FILTER_INV && index < PLAYER_INV_START) {
+				//Filter inventory slot to player inventory
+				if(!this.mergeItemStack(itemstack1, PLAYER_INV_START, PLAYER_INV_END, true)) return ItemStack.EMPTY;
+			}
+			
+			if (index < PLAYER_INV_END && index >= PLAYER_INV_START) {
+				//player inventory to Filter inventory
+				if (!this.mergeItemStack(itemstack1, FILTER_INV, PLAYER_INV_START, false)) return ItemStack.EMPTY;
+			}
+
+			if (itemstack1.getCount() == 0) slot.putStack(ItemStack.EMPTY);
+			
+			else slot.onSlotChanged();
+		}
+
+		return itemstack;
+	}
 
 	
 	@Override
