@@ -47,7 +47,7 @@ public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntit
 		
 		if(this.canTransferItem()) this.pushItems(MAX_ITEM_TRANSFER);
 		
-		else if(itemInput.getStackInSlot(0) != ItemStack.EMPTY) this.itemTransfer++;
+		else if(!this.getWorld().isRemote && !this.itemInput.getStackInSlot(0).isEmpty()) this.itemTransfer++;
 		
 		this.syncClient();
 	}
@@ -76,7 +76,6 @@ public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntit
 		else {
 			//if the Chute is above a Hopper, push items into it first
 			if(this.getBlockState().get(ChuteBlock.TYPE) == ChuteType.HOPPER) this.pushToContainer(this.getPos().down(), amount);
-			
 			//push items into the next Container
 			this.pushToContainer(nextPos, amount);
 			
@@ -163,8 +162,7 @@ public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntit
 	
 	
 	public boolean canTransferItem() {
-		ItemStack stack = itemInput.getStackInSlot(0).copy();
-		return (this.itemTransfer > ITEM_TRANSFER_RATE) && !stack.isEmpty();
+		return this.itemTransfer > ITEM_TRANSFER_RATE;
 	}
 	
 	
@@ -177,9 +175,9 @@ public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntit
 	public double getItemStackDistance() {
 		//@return the item stacks distance, the value is between 0.0D to 1.0D
 		
-		if(this.itemTransfer > ITEM_TRANSFER_RATE) return 1.0D;
-		else if(this.itemTransfer < 0) return 0.0D;
-		else return (double)this.itemTransfer/(double)ITEM_TRANSFER_RATE;
+		if(this.itemTransfer > ITEM_TRANSFER_RATE) return 1.0D - (1.0D/(double)ITEM_TRANSFER_RATE);
+		
+		else return ((double)this.itemTransfer/(double)ITEM_TRANSFER_RATE) - (1.0D/(double)ITEM_TRANSFER_RATE);
 	}
 
 

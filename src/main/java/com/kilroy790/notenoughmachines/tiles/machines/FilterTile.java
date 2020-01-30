@@ -1,10 +1,14 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
 
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -13,6 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.EntityPredicates;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
@@ -56,8 +62,13 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 			
 			//move items from the filter slot to the Filter's inventory
 			this.moveItemsInternally(this.itemFilter, 0, 1, this.itemInv);
-			//push items in the Filter's inventory to the container it's facing
-			if(this.canTransferItem()) this.pushItems(this.itemInv, MAX_ITEM_TRANSFER);
+			
+			if(this.canTransferItem()) {
+				//push items in the Filter's inventory to the container it's facing
+				this.pushItems(this.itemInv, MAX_ITEM_TRANSFER);
+				//pull items into the Filter's filter slot
+				this.pullItems(this.itemFilter, MAX_ITEM_TRANSFER);
+			}
 			//Increment the Filter's item transfer cool-down
 			this.itemTransfer++;
 		}
@@ -93,7 +104,9 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 		/*
 		 * Will try to push the item stack into the next Container
 		 * 
-		 * @param	amount		number of items in the stack that will be pushed to the next Container
+		 * @param	itemHandler		the item handler for this tile
+		 * 
+		 * @param	amount			number of items in the stack that will be pushed to the next Container
 		 */
 
 		Direction facing = this.getBlockState().get(FilterBlock.FACING);
@@ -108,6 +121,43 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 		}
 
 		this.setItemTransfer(0);
+	}
+	
+	
+	protected void pullItems(ItemStackHandler itemHandler, int amount) {
+		/*
+		 * Will try to pull items inside of the capture area into the filter slot
+		 * 
+		 * @param	itemHandler		the item handler for this tile
+		 * 
+		 * @param	amount			number of items in the stack that will be pulled
+		 */
+		
+		BlockPos posUp = this.getPos().up();
+		if(this.world.getBlockState(posUp).isAir(this.getWorld(), posUp)) {
+			for(ItemEntity itemEntity : this.getCapturedItems()) {
+				this.captureItem(itemEntity);
+			}
+		}
+		
+		this.setItemTransfer(0);
+	}
+	
+	
+	public void captureItem(ItemEntity item) {
+		//Will try to add the item entity into the filter slot
+		
+		ItemStack stack = item.getItem().copy();
+		ItemStack stackRemander = itemFilter.insertItem(0, stack, false);
+		if(stackRemander.isEmpty()) item.remove();
+		else item.setItem(stackRemander);
+	}
+	
+	
+	protected List<ItemEntity> getCapturedItems() {
+		return FilterBlock.COLLECTION_AREA_SHAPE.toBoundingBoxList().stream().flatMap(h -> {
+			return this.getWorld().getEntitiesWithinAABB(ItemEntity.class, h.offset(this.getPos().getX() - 0.5D, this.getPos().getY() - 0.5D, this.getPos().getZ() - 0.5D), EntityPredicates.IS_ALIVE).stream();
+		}).collect(Collectors.toList());
 	}
 	
 	

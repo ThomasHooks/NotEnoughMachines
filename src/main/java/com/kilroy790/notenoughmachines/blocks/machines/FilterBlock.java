@@ -5,6 +5,8 @@ import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
@@ -18,6 +20,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -34,10 +37,14 @@ public class FilterBlock extends Block {
 	
 	public static final DirectionProperty FACING = BlockStateProperties.FACING_EXCEPT_UP;
 	
-	private static final VoxelShape TOP_SHAPE = Block.makeCuboidShape(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+	private static final VoxelShape OUTTER_BOWL_SHAPE = Block.makeCuboidShape(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+	private static final VoxelShape INNER_BOWL_SHAPE = Block.makeCuboidShape(1.0D, 13.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+	private static final VoxelShape BOWL_AREA_SHAPE = VoxelShapes.combineAndSimplify(OUTTER_BOWL_SHAPE, INNER_BOWL_SHAPE, IBooleanFunction.ONLY_FIRST);
 	private static final VoxelShape MIDDLE_SHAPE = Block.makeCuboidShape(3.0D, 3.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-	private static final VoxelShape FILTER_SHAPE = VoxelShapes.or(TOP_SHAPE, MIDDLE_SHAPE);
-	//private static final VoxelShape COMBINED_INPUT_SHAPE = VoxelShapes.combineAndSimplify(INPUT_MIDDLE_SHAPE, IHopper.INSIDE_BOWL_SHAPE, IBooleanFunction.ONLY_FIRST);
+	private static final VoxelShape FILTER_SHAPE = VoxelShapes.or(BOWL_AREA_SHAPE, MIDDLE_SHAPE);
+	
+	private static final VoxelShape BLOCK_ABOVE_SHAPE = Block.makeCuboidShape(0.0D, 16.0D, 0.0D, 16.0D, 32.0D, 16.0D);
+	public static final VoxelShape COLLECTION_AREA_SHAPE = VoxelShapes.or(INNER_BOWL_SHAPE, BLOCK_ABOVE_SHAPE);
 
 	
 	public FilterBlock(Properties properties, String name) {
@@ -67,6 +74,19 @@ public class FilterBlock extends Block {
 			
 			return true;
 		}
+	}
+	
+	
+	@Override
+	public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+	    /*
+		 * Block's chance to react to an entity falling on it.
+		 */
+		
+		TileEntity tile = worldIn.getTileEntity(pos);
+		if(tile instanceof FilterTile && entityIn instanceof ItemEntity) ((FilterTile)tile).captureItem((ItemEntity) entityIn);
+		
+		else super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
 	}
 	
 	
