@@ -7,6 +7,7 @@ import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
+import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -59,43 +60,19 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	public void tick() {
 		
 		if(!this.world.isRemote) {
-			
 			//move items from the filter slot to the Filter's inventory
-			this.moveItemsInternally(this.itemFilter, 0, 1, this.itemInv);
+			NEMItemHelper.moveItemsInternally(this.itemFilter, 0, 1, this.itemInv);
 			
 			if(this.canTransferItem()) {
 				//push items in the Filter's inventory to the container it's facing
 				this.pushItems(this.itemInv, MAX_ITEM_TRANSFER);
 				//pull items into the Filter's filter slot
 				this.pullItems(this.itemFilter, MAX_ITEM_TRANSFER);
+				//Reset the Filter's item transfer cool-down
+				this.setItemTransfer(0);
 			}
 			//Increment the Filter's item transfer cool-down
 			this.itemTransfer++;
-		}
-	}
-	
-	
-	protected void moveItemsInternally(ItemStackHandler itemHandler1, int index, int amount, ItemStackHandler itemHandler2) {
-		
-		ItemStack stackIn = itemHandler1.getStackInSlot(index).copy();
-		if(!stackIn.isEmpty() && stackIn.getCount() > 1) {
-			
-			stackIn.setCount(amount);
-			for(int slot = 0; slot < itemHandler2.getSlots(); slot++) {
-				
-				if(itemHandler2.isItemValid(slot, stackIn)) {
-
-					ItemStack stackRemander = itemHandler2.insertItem(slot, stackIn, true);
-					if(stackRemander.isEmpty()) {
-
-						itemHandler2.insertItem(slot, stackIn, false);
-						itemHandler1.extractItem(index, amount, false);
-						break;
-					}
-
-					else continue;
-				}
-			}
 		}
 	}
 	
@@ -115,12 +92,10 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 			if(itemHandler.getStackInSlot(slot).isEmpty()) continue;
 
 			else {
-				this.pushToContainer(pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
+				NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
 				break;
 			}
 		}
-
-		this.setItemTransfer(0);
 	}
 	
 	
@@ -139,8 +114,7 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 				this.captureItem(itemEntity);
 			}
 		}
-		
-		this.setItemTransfer(0);
+		else NEMItemHelper.pullFromContainer(world, posUp, Direction.DOWN, itemHandler, 0, amount);
 	}
 	
 	

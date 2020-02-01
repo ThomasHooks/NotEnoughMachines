@@ -9,8 +9,6 @@ import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
-import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
-
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -101,7 +99,7 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 			
 			if(nextBlock0 instanceof AxleBlock && nextBlock1 instanceof AxleBlock) {
 				
-				NEMItemHelper.removeAxleBlock(world, this.pos, true);
+				AxleBlock.removeAxleBlock(world, this.pos, true);
 				return;
 			}
 		}
@@ -118,7 +116,7 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 				
 				Block nextBlock = world.getBlockState(nextPos).getBlock();
 				if(nextBlock instanceof AxleBlock && powerLevel[i] == AxleBlock.MINPOWERDISTANCE) {
-					NEMItemHelper.removeAxleBlock(world, nextPos, false);
+					AxleBlock.removeAxleBlock(world, nextPos, false);
 					continue;
 				}
 				

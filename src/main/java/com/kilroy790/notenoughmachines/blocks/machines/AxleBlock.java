@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
+import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,6 +14,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -211,6 +213,35 @@ public class AxleBlock extends Block {
 		default :
 			//North/South
 			return 1;
+		}
+	}
+	
+	
+	public static void removeAxleBlock(World world, BlockPos pos, Boolean destroy) {
+		/*
+		 * Removes	the given axle and will either drop the axle or destroy it
+		 * 			if the axle is destroyed it will drop between 3 - 7 sticks
+		 * 
+		 * @param world		the current world
+		 * 
+		 * @param pos		the position of the axle
+		 * 
+		 * @param destroy	if true the axle is to be destroyed
+		 */
+		
+		if(world.isRemote) return;
+		
+		Block block = world.getBlockState(pos).getBlock();
+		if(block instanceof AxleBlock) {
+			
+			if(destroy) {
+				int rand = (int)(Math.random() * 4.0D);
+				NEMItemHelper.dropItemStack(world, pos, new ItemStack(Items.STICK, 3 + rand));
+				world.destroyBlock(pos, false);
+			}
+			else {
+				world.destroyBlock(pos, true);
+			}
 		}
 	}
 	
