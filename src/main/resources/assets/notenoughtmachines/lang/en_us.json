@@ -1,5 +1,7 @@
 {
 	"block.notenoughtmachines.linenblock": "Block of Linen",
+	"block.notenoughtmachines.hammerhead": "Hammer Head",
+	
 	"block.notenoughtmachines.creativepowerbox": "Creative Power Box",
 	"block.notenoughtmachines.smallwindwheel": "Small Windwheel",
 	"block.notenoughtmachines.gearbox": "Gearbox",
@@ -10,6 +12,7 @@
 	"block.notenoughtmachines.orgate": "OR Gate",
 	
 	"block.notenoughtmachines.chute": "Chute",
+	"block.notenoughtmachines.closedchute": "Closed Chute",
 	"block.notenoughtmachines.filter": "Filter",
 	
 	"item.notenoughtmachines.flaxseed" : "Flax Seeds",

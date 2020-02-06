@@ -133,6 +133,18 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		ShapedRecipeBuilder.shapedRecipe(BlockList.CLOSEDCHUTE, 2)
+		.patternLine(" = ")
+		.patternLine("xcx")
+		.patternLine(" = ")
+		.key('c', Items.CHEST)
+		.key('x', Items.IRON_INGOT)
+		.key('=', ItemTags.WOODEN_SLABS)
+		.setGroup("closedchute")
+		.addCriterion("iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.build(consumer);
+		
+		
 		ShapedRecipeBuilder.shapedRecipe(BlockList.FILTER, 1)
 		.patternLine("=#=")
 		.patternLine("=c=")

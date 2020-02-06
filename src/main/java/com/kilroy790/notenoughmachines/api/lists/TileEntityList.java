@@ -2,6 +2,7 @@ package com.kilroy790.notenoughmachines.api.lists;
 
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
 import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
@@ -33,6 +34,9 @@ public class TileEntityList {
 	
 	@ObjectHolder("notenoughtmachines:chute")
 	public static TileEntityType<ChuteTile> CHUTE;
+	
+	@ObjectHolder("notenoughtmachines:closedchute")
+	public static TileEntityType<ClosedChuteTile> CLOSEDCHUTE;
 	
 	@ObjectHolder("notenoughtmachines:filter")
 	public static TileEntityType<FilterTile> FILTER;

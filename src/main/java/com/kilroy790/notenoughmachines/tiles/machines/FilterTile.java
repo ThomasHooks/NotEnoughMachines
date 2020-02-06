@@ -139,12 +139,10 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
 		
 		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			//So the player can interact with the Filter
+			//This is done so the player can interact with the Filter's combined inventory
 			if(side == null) return combinedItemHandler.cast();
-			
-			else if(side != this.getBlockState().get(FilterBlock.FACING)) return itemFilterHandler.cast();
+			else return itemFilterHandler.cast();
 		}
-		
 		return super.getCapability(cap, side);
 	}
 

@@ -1,11 +1,13 @@
 package com.kilroy790.notenoughmachines.api.lists;
 
+import com.kilroy790.notenoughmachines.blocks.building.HammerHeadBlock;
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ClosedChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
@@ -21,6 +23,9 @@ public class BlockList {
 
 	@ObjectHolder("notenoughtmachines:linenblock")
 	public static LinenBlock LINENBLOCK;
+	
+	@ObjectHolder("notenoughtmachines:hammerhead")
+	public static HammerHeadBlock HAMMERHEAD;
 	
 	//Machines
 	@ObjectHolder("notenoughtmachines:creativepowerbox")
@@ -48,6 +53,9 @@ public class BlockList {
 	//transport
 	@ObjectHolder("notenoughtmachines:chute")
 	public static ChuteBlock CHUTE;
+	
+	@ObjectHolder("notenoughtmachines:closedchute")
+	public static ClosedChuteBlock CLOSEDCHUTE;
 	
 	@ObjectHolder("notenoughtmachines:filter")
 	public static FilterBlock FILTER;

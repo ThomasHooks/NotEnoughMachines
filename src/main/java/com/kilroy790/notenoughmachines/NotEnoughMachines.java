@@ -7,12 +7,14 @@ import com.kilroy790.notenoughmachines.api.lists.BlockList;
 import com.kilroy790.notenoughmachines.api.lists.ItemGroupList;
 import com.kilroy790.notenoughmachines.api.lists.ItemList;
 import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
+import com.kilroy790.notenoughmachines.blocks.building.HammerHeadBlock;
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ClosedChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
@@ -28,6 +30,7 @@ import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
 import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
@@ -123,6 +126,14 @@ public class NotEnoughMachines {
 			logger.info("Registering LinenBlock");
 			event.getRegistry().register(BlockList.LINENBLOCK = new LinenBlock());
 			
+			logger.info("Registering HammerHeadBlock");
+			event.getRegistry().register(BlockList.HAMMERHEAD = new HammerHeadBlock(Block.Properties
+					.create(Material.ANVIL)
+					.hardnessAndResistance(5.0f, 1200.0f)
+					.harvestTool(ToolType.PICKAXE)
+					.harvestLevel(2)
+					.sound(SoundType.ANVIL), "hammerhead"));
+			
 			//Machine Blocks
 			logger.info("Registering CreativePowerBoxBlock");
 			event.getRegistry().register(BlockList.CREATIVEPOWERBOX = new CreativePowerBoxBlock("creativepowerbox"));
@@ -161,10 +172,18 @@ public class NotEnoughMachines {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0), "chute"));
 			
+			logger.info("Registering ClosedChuteBlock");
+			event.getRegistry().register(BlockList.CLOSEDCHUTE = new ClosedChuteBlock(Block.Properties
+					.create(Material.MISCELLANEOUS)
+					.hardnessAndResistance(1.2f, 2.0f)
+					.sound(SoundType.WOOD)
+					.harvestTool(ToolType.AXE)
+					.harvestLevel(0), "closedchute"));
+			
 			logger.info("Registering FilterBlock");
 			event.getRegistry().register(BlockList.FILTER = new FilterBlock(Block.Properties
 					.create(Material.IRON, MaterialColor.STONE)
-					.hardnessAndResistance(3.0F, 4.8F)
+					.hardnessAndResistance(3.0f, 4.8f)
 					.sound(SoundType.METAL), "filter"));
 			
 			//Crops Blocks
@@ -195,6 +214,9 @@ public class NotEnoughMachines {
 			logger.info("Registering LinenBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.LINENBLOCK, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.LINENBLOCK.getRegistryName()));
 			
+			logger.info("Registering HammerHeadBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.HAMMERHEAD, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.HAMMERHEAD.getRegistryName()));
+			
 			logger.info("Registering FlourItem");
 			event.getRegistry().register(ItemList.FLOUR = new Item(new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName("flour"));
 			
@@ -221,6 +243,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering ChuteBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.CHUTE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CHUTE.getRegistryName()));
+			
+			logger.info("Registering ClosedChuteBlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.CLOSEDCHUTE, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.CLOSEDCHUTE.getRegistryName()));
 			
 			logger.info("Registering FilterBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.FILTER, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.FILTER.getRegistryName()));
@@ -266,6 +291,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering ChuteTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(ChuteTile::new, BlockList.CHUTE).build(null).setRegistryName("chute"));
+			
+			logger.info("Registering ClosedChuteTileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(ClosedChuteTile::new, BlockList.CLOSEDCHUTE).build(null).setRegistryName(BlockList.CLOSEDCHUTE.getRegistryName()));
 			
 			logger.info("Registering FilterTileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(FilterTile::new, BlockList.FILTER).build(null).setRegistryName(BlockList.FILTER.getRegistryName()));

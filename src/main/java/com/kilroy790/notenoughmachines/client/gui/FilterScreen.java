@@ -23,8 +23,8 @@ public class FilterScreen extends ContainerScreen<FilterContainer> {
 	
 	public FilterScreen(FilterContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
 		super(screenContainer, inv, titleIn);
-		this.xSize = 173;
-        this.ySize = 131;
+		this.xSize = 174;
+        this.ySize = 132;
 	}
 
 	
