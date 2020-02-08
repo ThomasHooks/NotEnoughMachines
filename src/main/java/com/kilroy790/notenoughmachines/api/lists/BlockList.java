@@ -11,6 +11,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.ClosedChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
 
@@ -56,6 +57,9 @@ public class BlockList {
 	
 	@ObjectHolder("notenoughtmachines:closedchute")
 	public static ClosedChuteBlock CLOSEDCHUTE;
+	
+	@ObjectHolder("notenoughtmachines:itempusher")
+	public static ItemPusherBlock ITEMPUSHER;
 	
 	@ObjectHolder("notenoughtmachines:filter")
 	public static FilterBlock FILTER;

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "itempusher",
+  "ingredients": [
+    {
+      "item": "notenoughtmachines:closedchute"
+    },
+    {
+      "item": "minecraft:hopper"
+    }
+  ],
+  "result": {
+    "item": "notenoughtmachines:itempusher"
+  }
+}

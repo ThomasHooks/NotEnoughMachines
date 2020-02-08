@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.blocks.machines;
 
-import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
@@ -14,10 +14,10 @@ import net.minecraft.world.World;
 
 
 
-public class ClosedChuteBlock extends AbstractItemConduitBlock {
-	 
-	 
-	public ClosedChuteBlock(Properties properties, String name) {
+public class ItemPusherBlock extends AbstractItemConduitBlock {
+	
+	
+	public ItemPusherBlock(Properties properties, String name) {
 		super(properties);
 		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH)
@@ -28,7 +28,6 @@ public class ClosedChuteBlock extends AbstractItemConduitBlock {
 				.with(UP, Boolean.valueOf(false))
 				.with(DOWN, Boolean.valueOf(false)));
 	}
-	
 	
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
@@ -59,6 +58,6 @@ public class ClosedChuteBlock extends AbstractItemConduitBlock {
 	
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new ClosedChuteTile();
+		return new ItemPusherTile();
 	}
 }

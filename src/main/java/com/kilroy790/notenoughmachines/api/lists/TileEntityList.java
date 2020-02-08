@@ -6,6 +6,7 @@ import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
 import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
 import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
 
@@ -37,6 +38,9 @@ public class TileEntityList {
 	
 	@ObjectHolder("notenoughtmachines:closedchute")
 	public static TileEntityType<ClosedChuteTile> CLOSEDCHUTE;
+	
+	@ObjectHolder("notenoughtmachines:itempusher")
+	public static TileEntityType<ItemPusherTile> ITEMPUSHER;
 	
 	@ObjectHolder("notenoughtmachines:filter")
 	public static TileEntityType<FilterTile> FILTER;

@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 
@@ -142,6 +143,14 @@ public class RecipesDataGen extends RecipeProvider {
 		.key('=', ItemTags.WOODEN_SLABS)
 		.setGroup("closedchute")
 		.addCriterion("iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.build(consumer);
+		
+		
+		ShapelessRecipeBuilder.shapelessRecipe(BlockList.ITEMPUSHER, 1)
+		.addIngredient(BlockList.CLOSEDCHUTE)
+		.addIngredient(Items.HOPPER) 
+		.setGroup("itempusher") 
+		.addCriterion("iron_ingot",InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
 		
