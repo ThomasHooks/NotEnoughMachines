@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -36,6 +37,7 @@ public class FilterBlock extends Block {
 
 	
 	public static final DirectionProperty FACING = BlockStateProperties.FACING_EXCEPT_UP;
+	public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 	
 	private static final VoxelShape OUTTER_BOWL_SHAPE = Block.makeCuboidShape(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 	private static final VoxelShape INNER_BOWL_SHAPE = Block.makeCuboidShape(1.0D, 13.0D, 1.0D, 15.0D, 16.0D, 15.0D);
@@ -50,7 +52,7 @@ public class FilterBlock extends Block {
 	public FilterBlock(Properties properties, String name) {
 		super(properties);
 		this.setRegistryName(name);
-		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.DOWN));
+		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.DOWN).with(ENABLED, Boolean.valueOf(true)));
 	}
 	
 	
@@ -98,11 +100,31 @@ public class FilterBlock extends Block {
 		 */
 
 		TileEntity tile = worldIn.getTileEntity(pos);
-		if(tile instanceof FilterTile) {
-			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
-		}
+		if(tile != null) NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
 		
 		super.onBlockHarvested(worldIn, pos, state, player);
+	}
+	
+	
+	@Override
+	public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+		if (oldState.getBlock() != state.getBlock()) {
+			this.updateEnabledState(worldIn, pos, state);
+		}
+	}
+
+
+	@Override
+	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+		this.updateEnabledState(worldIn, pos, state);
+	}
+
+
+	private void updateEnabledState(World worldIn, BlockPos pos, BlockState state) {
+		boolean locked = !worldIn.isBlockPowered(pos);
+		if (locked != state.get(ENABLED)) {
+			worldIn.setBlockState(pos, state.with(ENABLED, Boolean.valueOf(locked)), 1|2|4);
+		}
 	}
 	
 	
@@ -114,7 +136,7 @@ public class FilterBlock extends Block {
 	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
-		builder.add(FACING);
+		builder.add(FACING, ENABLED);
 	}
 	
 	

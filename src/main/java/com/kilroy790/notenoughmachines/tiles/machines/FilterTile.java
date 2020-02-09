@@ -191,7 +191,7 @@ public class FilterTile extends AbstractNEMBaseTile implements INamedContainerPr
 	
 	public boolean canTransferItem() {
 		//@return	true if it can transfer items
-		return (this.itemTransfer > ITEM_TRANSFER_RATE);
+		return this.itemTransfer > ITEM_TRANSFER_RATE && this.world.getBlockState(pos).get(FilterBlock.ENABLED);
 	}
 	
 	

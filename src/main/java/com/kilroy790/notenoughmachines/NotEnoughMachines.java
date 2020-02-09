@@ -176,7 +176,7 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering ClosedChuteBlock");
 			event.getRegistry().register(BlockList.CLOSEDCHUTE = new ClosedChuteBlock(Block.Properties
-					.create(Material.MISCELLANEOUS)
+					.create(Material.WOOD)
 					.hardnessAndResistance(1.2f, 2.0f)
 					.sound(SoundType.WOOD)
 					.harvestTool(ToolType.AXE)

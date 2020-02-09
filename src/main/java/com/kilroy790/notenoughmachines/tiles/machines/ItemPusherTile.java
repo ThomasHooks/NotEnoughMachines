@@ -118,7 +118,7 @@ public class ItemPusherTile extends AbstractNEMBaseTile implements ITickableTile
 	
 	
 	public boolean canTransferItem() {
-		return this.itemTransfer > ITEM_TRANSFER_RATE;
+		return this.itemTransfer > ITEM_TRANSFER_RATE && this.world.getBlockState(pos).get(ItemPusherBlock.ENABLED);
 	}
 	
 	
