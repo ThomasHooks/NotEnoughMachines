@@ -1,11 +1,6 @@
 package com.kilroy790.notenoughmachines.utilities;
 
-import com.kilroy790.notenoughmachines.api.lists.ContainerList;
-import com.kilroy790.notenoughmachines.client.gui.FilterScreen;
-import com.kilroy790.notenoughmachines.client.gui.MillstoneScreen;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
@@ -17,9 +12,9 @@ public class ClientProxy implements IProxy{
 	@Override
 	public void init() {
 		
-		ScreenManager.registerFactory(ContainerList.MILLSTONE_CONTAINER, MillstoneScreen::new);
-		
-		ScreenManager.registerFactory(ContainerList.FILTER_CONTAINER, FilterScreen::new);
+//		ScreenManager.registerFactory(ContainerList.MILLSTONE_CONTAINER, MillstoneScreen::new);
+//		
+//		ScreenManager.registerFactory(ContainerList.FILTER_CONTAINER, FilterScreen::new);
 	}
 	
 	

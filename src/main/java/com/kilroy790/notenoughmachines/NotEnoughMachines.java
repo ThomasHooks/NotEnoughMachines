@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.kilroy790.notenoughmachines.api.lists.BlockList;
+import com.kilroy790.notenoughmachines.api.lists.ContainerList;
 import com.kilroy790.notenoughmachines.api.lists.ItemGroupList;
 import com.kilroy790.notenoughmachines.api.lists.ItemList;
 import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
@@ -21,10 +22,14 @@ import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.client.gui.FilterScreen;
+import com.kilroy790.notenoughmachines.client.gui.MillstoneScreen;
+import com.kilroy790.notenoughmachines.client.gui.TripHammerScreen;
 import com.kilroy790.notenoughmachines.client.renderers.ChuteRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
+import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
@@ -38,6 +43,7 @@ import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.TripHammerTile;
 import com.kilroy790.notenoughmachines.utilities.ClientProxy;
 import com.kilroy790.notenoughmachines.utilities.IProxy;
 import com.kilroy790.notenoughmachines.utilities.ServerProxy;
@@ -46,6 +52,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -103,6 +110,10 @@ public class NotEnoughMachines {
 	
 	private void clientRegistries(final FMLClientSetupEvent event) {
 		// do something that can only be done on the client
+		logger.info("registering Client Side Entries");
+		
+		
+		logger.info("Registering all Tile Entity Special Renderer's");
 		
 		logger.info("Registering SmallWindWheelTESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(SmallWindWheelTile.class, new SmallWindWheelRenderers());
@@ -110,7 +121,24 @@ public class NotEnoughMachines {
 		logger.info("Registering ChuteTESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(ChuteTile.class, new ChuteRenderer());
 		
-		logger.info("clientRegistries registered");
+		logger.info("All TESR's registered");
+		
+		
+		logger.info("Registering all Containers");
+		
+		logger.info("Registering Millstone Container");
+		ScreenManager.registerFactory(ContainerList.MILLSTONE_CONTAINER, MillstoneScreen::new);
+		
+		logger.info("Registering Trip Hammer Container");
+		ScreenManager.registerFactory(ContainerList.TRIPHAMMER, TripHammerScreen::new);
+		
+		logger.info("Registering Filter Container");
+		ScreenManager.registerFactory(ContainerList.FILTER_CONTAINER, FilterScreen::new);
+		
+		logger.info("All Containers registered");
+		
+		
+		logger.info("All Client Side entries registered");
 	}
 	
 	
@@ -287,31 +315,34 @@ public class NotEnoughMachines {
 		public static void registerTileEntities(final RegistryEvent.Register<TileEntityType<?>> event) {
 			logger.info("Registering all tile entities");
 			
-			logger.info("Registering CreativePowerBoxTileEntity");
+			logger.info("Registering Creative Powerbox TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(CreativePowerBoxTile::new, BlockList.CREATIVEPOWERBOX).build(null).setRegistryName("creativepowerbox"));
 			
-			logger.info("Registering SmallWindWheelTileEntity");
+			logger.info("Registering Small Wind Wheel TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(SmallWindWheelTile::new, BlockList.SMALLWINDWHEEL).build(null).setRegistryName("smallwindwheel"));
 			
-			logger.info("Registering MillstoneTileEntity");
+			logger.info("Registering Millstone TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(MillstoneTile::new, BlockList.MILLSTONE).build(null).setRegistryName("millstone"));
 			
-			logger.info("Registering AxelTileEntity");
+			logger.info("Registering Trip Hammer TileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(TripHammerTile::new, BlockList.HAMMERHEAD).build(null).setRegistryName("triphammer"));
+			
+			logger.info("Registering Axel TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(AxleTile::new, BlockList.AXLE).build(null).setRegistryName("axle"));
 			
-			logger.info("Registering GearboxTileEntity");
+			logger.info("Registering Gearbox TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(GearboxTile::new, BlockList.GEARBOX).build(null).setRegistryName("gearbox"));
 			
-			logger.info("Registering ChuteTileEntity");
+			logger.info("Registering Chute TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(ChuteTile::new, BlockList.CHUTE).build(null).setRegistryName("chute"));
 			
-			logger.info("Registering ClosedChuteTileEntity");
+			logger.info("Registering Closed Chute TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(ClosedChuteTile::new, BlockList.CLOSEDCHUTE).build(null).setRegistryName(BlockList.CLOSEDCHUTE.getRegistryName()));
 			
-			logger.info("Registering ItemPusherTileEntity");
+			logger.info("Registering Item Pusher TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(ItemPusherTile::new, BlockList.ITEMPUSHER).build(null).setRegistryName(BlockList.ITEMPUSHER.getRegistryName()));
 			
-			logger.info("Registering FilterTileEntity");
+			logger.info("Registering Filter TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(FilterTile::new, BlockList.FILTER).build(null).setRegistryName(BlockList.FILTER.getRegistryName()));
 			
 			logger.info("Tile entities registered");
@@ -323,13 +354,19 @@ public class NotEnoughMachines {
 		public static void registerContainers(final RegistryEvent.Register<ContainerType<?>> event) {
 			logger.info("Registering all containers");
 			
-			logger.info("Registering MillstoneContainer");
+			logger.info("Registering Millstone Container");
 			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
                 return new MillstoneContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
             }).setRegistryName("millstone"));
 			
-			logger.info("Registering FilterContainer");
+			logger.info("Registering Trip Hammer Container");
+			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                return new TripHammerContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
+            }).setRegistryName("triphammer"));
+			
+			logger.info("Registering Filter Container");
 			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();
                 return new FilterContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());

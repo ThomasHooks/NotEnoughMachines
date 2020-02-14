@@ -4,9 +4,12 @@
 	
 	"block.notenoughtmachines.creativepowerbox": "Creative Power Box",
 	"block.notenoughtmachines.smallwindwheel": "Small Windwheel",
+	
 	"block.notenoughtmachines.gearbox": "Gearbox",
 	"block.notenoughtmachines.axle": "Axle",
+	
 	"block.notenoughtmachines.millstone": "Millstone",
+	"tiles.notenoughtmachines.triphammer": "Trip Hammer",
 	
 	"block.notenoughtmachines.andgate": "AND Gate",
 	"block.notenoughtmachines.orgate": "OR Gate",

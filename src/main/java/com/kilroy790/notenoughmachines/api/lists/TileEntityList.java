@@ -9,6 +9,7 @@ import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.TripHammerTile;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
@@ -26,6 +27,9 @@ public class TileEntityList {
 	
 	@ObjectHolder("notenoughtmachines:millstone")
 	public static TileEntityType<MillstoneTile> MILLSTONE_TILE;
+	
+	@ObjectHolder("notenoughtmachines:triphammer")
+	public static TileEntityType<TripHammerTile> TRIPHAMMER;
 	
 	@ObjectHolder("notenoughtmachines:axle")
 	public static TileEntityType<AxleTile> AXLE_TILE;

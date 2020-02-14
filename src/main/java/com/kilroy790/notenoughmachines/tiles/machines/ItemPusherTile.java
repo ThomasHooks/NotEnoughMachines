@@ -36,6 +36,7 @@ public class ItemPusherTile extends AbstractNEMBaseTile implements ITickableTile
 	
 	@Override
 	public void tick() {
+		//there are ~20 tick per second
 		
 		if(!this.world.isRemote) {
 			
@@ -45,6 +46,7 @@ public class ItemPusherTile extends AbstractNEMBaseTile implements ITickableTile
 				this.setItemTransfer(0);
 			}
 			this.itemTransfer++;
+			if(this.itemTransfer > ITEM_TRANSFER_RATE * 2) this.setItemTransfer(ITEM_TRANSFER_RATE * 2);
 		}
 	}
 	

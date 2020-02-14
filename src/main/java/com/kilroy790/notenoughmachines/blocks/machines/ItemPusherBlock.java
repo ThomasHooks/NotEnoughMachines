@@ -82,7 +82,7 @@ public class ItemPusherBlock extends AbstractItemConduitBlock {
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		/*
-		 * Called periodically clientside on blocks near the player to show effects (like furnace fire particles). Note that
+		 * Called periodically on client side on blocks near the player to show effects (like furnace fire particles). Note that
 		 * this method is unrelated to {@link randomTick} and {@link #needsRandomTick}, and will always be called regardless
 		 * of whether the block can receive random update ticks
 		 */

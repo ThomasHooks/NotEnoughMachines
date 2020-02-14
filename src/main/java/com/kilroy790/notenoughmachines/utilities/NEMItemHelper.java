@@ -99,7 +99,6 @@ public class NEMItemHelper {
 
 			LazyOptional<IItemHandler> nextContainer = nextTile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing);
 			nextContainer.ifPresent(h -> {
-
 				int numOfSlots = h.getSlots();
 				for(int slot = 0; slot < numOfSlots; slot++) {
 					
@@ -108,7 +107,8 @@ public class NEMItemHelper {
 						
 						stackIn.setCount(amount);
 						ItemStack stackRemander = itemHandler.insertItem(index, stackIn, true);
-						if(stackRemander.isEmpty()) {
+						ItemStack stackExtracted = h.extractItem(slot, amount, true);
+						if(stackRemander.isEmpty() && !stackExtracted.isEmpty()) {
 							
 							itemHandler.insertItem(index, stackIn, false);
 							h.extractItem(slot, amount, false);
