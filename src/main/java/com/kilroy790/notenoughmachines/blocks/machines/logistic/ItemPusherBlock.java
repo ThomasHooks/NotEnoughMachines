@@ -1,8 +1,10 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
 import java.util.Random;
 
-import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
+import com.kilroy790.notenoughmachines.blocks.machines.AbstractItemConduitBlock;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ItemPusherTile;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;

@@ -1,20 +1,22 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.power;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConduit;
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -31,6 +33,8 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	private static final int POWERCAPACITY = 72;
 	private static final int MAXPOWERRECEIVED = 72;
 	private static final int MAXPOWERSENT = 72;
+	
+	//protected Direction input;
 	
 	
 	public AxleTile() {
@@ -122,13 +126,8 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 				
 				LazyOptional<IMechanicalPower> nextMachine = nextTile.getCapability(CapabilityMechanical.MECHANICAL, direction.getOpposite());
 				nextMachine.ifPresent(h -> {
-					
-					if(h.canReceive()) {
-						
-						h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
-						
-						markDirty();
-						}
+					h.receivePower(powerChannel.sendPower(MAXPOWERSENT, false), false);
+					markDirty();
 				});
 			}
 		}
@@ -141,17 +140,24 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 		if(cap == CapabilityMechanical.MECHANICAL) {
 			
 			int axelDir = this.getBlockState().get(NEMBlockStateProperties.AXLE_DIRECTION);
-			
 			switch(axelDir) {
-			
 			case AxleBlock.AXELAXISY :
-				if(side == Direction.UP || side == Direction.DOWN) return powerChannelHandler.cast();
+				if(side == Direction.UP || side == Direction.DOWN) {
+					//this.input = side.getOpposite();
+					return powerChannelHandler.cast();
+				}
 				
 			case AxleBlock.AXELAXISZ :
-				if(side == Direction.NORTH || side == Direction.SOUTH) return powerChannelHandler.cast();
+				if(side == Direction.NORTH || side == Direction.SOUTH) {
+					//this.input = side.getOpposite();
+					return powerChannelHandler.cast();
+				}
 				
 			case AxleBlock.AXELAXISX :
-				if(side == Direction.EAST || side == Direction.WEST) return powerChannelHandler.cast();
+				if(side == Direction.EAST || side == Direction.WEST) {
+					//this.input = side.getOpposite();
+					return powerChannelHandler.cast();
+				}
 				
 			default :
 				break;
@@ -167,9 +173,11 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 		
 		if(compound.contains("storedpower")) {
 			powerChannelHandler.ifPresent(h -> {
-				h.setEnergyStored(compound.getInt("storedpower"));
+				h.setStoredEnergy(compound.getInt("storedpower"));
 			});
 		}
+		
+		//this.input= Direction.byName(compound.getString("input"));
 		
 		super.read(compound);
 	}
@@ -179,8 +187,10 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	public CompoundNBT write(CompoundNBT compound) {
 
 		powerChannelHandler.ifPresent(h -> {
-			compound.putInt("storedpower", h.getEnergyStored());//was "process"
+			compound.putInt("storedpower", h.getStoredEngergy());//was "process"
 		});
+		
+		//compound.putString("input_direction", this.input.toString());
 		
 		return super.write(compound);
 	}
@@ -195,6 +205,13 @@ public class AxleTile extends TileEntity implements ITickableTileEntity {
 	
 	private MechanicalPowerConduit makeMechanicalPowerHandler(int capacity, int maxPowerReceived, int maxPowerSent) {
 		return new MechanicalPowerConduit(capacity, maxPowerReceived, maxPowerSent);
+	}
+	
+	
+	
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return new AxisAlignedBB(getPos()).grow(1.0D);
 	}
 }
 

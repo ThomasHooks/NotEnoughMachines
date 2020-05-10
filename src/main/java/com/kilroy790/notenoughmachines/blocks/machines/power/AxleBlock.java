@@ -1,14 +1,15 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.power;
 
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -266,6 +267,12 @@ public class AxleBlock extends Block {
 	
 	public IntegerProperty getPowerDistance() {
 		return POWER;
+	}
+	
+	
+	@Override
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 }
 

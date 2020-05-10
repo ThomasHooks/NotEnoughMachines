@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.client.renderers;
 
-import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ChuteTile;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.minecraft.block.HorizontalBlock;

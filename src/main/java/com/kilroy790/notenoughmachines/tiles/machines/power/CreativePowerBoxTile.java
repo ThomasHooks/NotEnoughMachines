@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.power;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
@@ -46,9 +46,7 @@ public class CreativePowerBoxTile extends TileEntity implements ITickableTileEnt
 			LazyOptional<IMechanicalPower> cap = world.getTileEntity(pos.down()).getCapability(CapabilityMechanical.MECHANICAL, Direction.UP);
 			
 			cap.ifPresent(h -> {
-				if(h.canReceive()) {
-					h.receivePower(powerOutput.sendPower(MAXPOWERSENT, false), false);
-				}
+				h.receivePower(powerOutput.sendPower(MAXPOWERSENT, false), false);
 			});
 		}
 	}
@@ -71,7 +69,7 @@ public class CreativePowerBoxTile extends TileEntity implements ITickableTileEnt
 		
 		if(compound.contains("storedpower")) {
 			powerOutputHandler.ifPresent(h -> {
-				h.setEnergyStored(compound.getInt("storedpower"));
+				h.setStoredEnergy(compound.getInt("storedpower"));
 			});
 		}
 		
@@ -83,7 +81,7 @@ public class CreativePowerBoxTile extends TileEntity implements ITickableTileEnt
 	public CompoundNBT write(CompoundNBT compound) {
 		
 		powerOutputHandler.ifPresent(h -> {
-			compound.putInt("process", h.getEnergyStored());
+			compound.putInt("process", h.getStoredEngergy());
 		});
 		
 		return super.write(compound);

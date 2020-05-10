@@ -1,8 +1,8 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.power;
 
 import java.util.List;
 
-import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

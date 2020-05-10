@@ -1,8 +1,8 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
 import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ChuteTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;

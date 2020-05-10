@@ -1,9 +1,9 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
-import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
-import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ChuteBlock;
+import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
@@ -24,7 +24,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntity {
+public class ChuteTile extends AbstractBaseTile implements ITickableTileEntity {
 	//TODO look into why the chute transfers items so slow
 	
 	protected ItemStackHandler itemInput;
@@ -125,10 +125,9 @@ public class ChuteTile extends AbstractNEMBaseTile implements ITickableTileEntit
 	}
 	
 	
+	//update the Chute's state and then sync the tile to the client
 	@Override
-	protected void syncClient() {
-		//update the Chute's state and then sync the tile to the client
-		
+	public void syncClient() {
 		if(!this.world.isRemote) {
 			ChuteBlock.updateType(this.getBlockState(), this.getWorld(), this.getPos());
 			this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1|2);

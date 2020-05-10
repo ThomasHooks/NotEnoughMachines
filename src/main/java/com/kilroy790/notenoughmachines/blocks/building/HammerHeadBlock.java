@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.blocks.building;
 
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.machines.TripHammerTile;
+import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

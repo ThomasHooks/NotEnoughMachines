@@ -13,9 +13,9 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public abstract class AbstractNEMBaseTile extends TileEntity {
+public abstract class AbstractBaseTile extends TileEntity {
 
-	public AbstractNEMBaseTile(TileEntityType<?> tileEntityTypeIn) {
+	public AbstractBaseTile(TileEntityType<?> tileEntityTypeIn) {
 		super(tileEntityTypeIn);
 	}
 	
@@ -47,10 +47,12 @@ public abstract class AbstractNEMBaseTile extends TileEntity {
 	}
 	
 	
+	
 	@Override
 	public SUpdateTileEntityPacket getUpdatePacket() {
         return new SUpdateTileEntityPacket(this.getPos(), 0, this.getUpdateTag());
 	}
+	
 	
 	
 	@Override
@@ -59,11 +61,24 @@ public abstract class AbstractNEMBaseTile extends TileEntity {
 	}
 	
 	
-	protected void syncClient() {
-		//Sync the tile on the client with the server
-		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1|2);
+	
+	//Causes the Client to sync with the Server
+	public void syncClient() {
+		/*
+		 * 2 will send the change to clients.
+		 * 4 will prevent the block from being re-rendered.
+		 * 16 will prevent neighbor reactions (e.g. fences connecting, observers pulsing).
+		 */
+		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 2 | 4 | 16);
+	}
+	
+	
+	
+	public void triggerBlockUpdate() {
+		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1);
 	}
 
+	
 	
 	protected ItemStackHandler makeItemHandler(int numSlots) {
 		return new ItemStackHandler(numSlots) {
@@ -73,6 +88,7 @@ public abstract class AbstractNEMBaseTile extends TileEntity {
 			}
 		};
 	}
+	
 	
 	
 	protected MechanicalPowerProducer makeMechanicalPowerHandler(int capacity, int maxReceived, int maxSent) {

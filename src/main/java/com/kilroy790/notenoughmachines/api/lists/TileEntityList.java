@@ -1,15 +1,15 @@
 package com.kilroy790.notenoughmachines.api.lists;
 
-import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
-import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
-import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
-import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
-import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
-import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
-import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
-import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
-import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
-import com.kilroy790.notenoughmachines.tiles.machines.TripHammerTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ClosedChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.FilterTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ItemPusherTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;

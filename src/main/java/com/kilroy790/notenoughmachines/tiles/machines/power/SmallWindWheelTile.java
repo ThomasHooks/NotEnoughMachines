@@ -1,12 +1,12 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.power;
 
 import com.kilroy790.notenoughmachines.api.lists.BlockList;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerProducer;
-import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
-import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
+import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.LazyOptional;
 
 
 
-public class SmallWindWheelTile extends AbstractNEMBaseTile implements ITickableTileEntity{
+public class SmallWindWheelTile extends AbstractBaseTile implements ITickableTileEntity{
 
 	
 	protected float angle = 0.0f;
@@ -98,13 +98,11 @@ public class SmallWindWheelTile extends AbstractNEMBaseTile implements ITickable
 			LazyOptional<IMechanicalPower> cap = world.getTileEntity(pos.offset(facing)).getCapability(CapabilityMechanical.MECHANICAL, facing.getOpposite());
 			
 			cap.ifPresent(h -> {
-				if(h.canReceive()) {
-					//send power to the receiver
-					int overFlow = MAXPOWERSENT - h.receivePower(powerOutput.sendPower(POWERPRODUCED * (int)speedModifier, false), false);
-					
-					//add the overflow power back into the power source
-					powerOutput.producePower(overFlow, false);
-				}
+				//send power to the receiver
+				int overFlow = MAXPOWERSENT - h.receivePower(powerOutput.sendPower(POWERPRODUCED * (int)speedModifier, false), false);
+
+				//add the overflow power back into the power source
+				powerOutput.producePower(overFlow, false);
 			});
 		}
 	}
@@ -158,7 +156,7 @@ public class SmallWindWheelTile extends AbstractNEMBaseTile implements ITickable
 	
 	@Override
 	public void read(CompoundNBT compound) {
-		this.powerOutput.setEnergyStored(compound.getInt("storedpower"));
+		this.powerOutput.setStoredEnergy(compound.getInt("storedpower"));
 		super.read(compound);
 	}
 	
@@ -172,7 +170,7 @@ public class SmallWindWheelTile extends AbstractNEMBaseTile implements ITickable
 	
 	@Override
 	public CompoundNBT write(CompoundNBT compound) {
-		compound.putInt("storedpower", this.powerOutput.getEnergyStored());
+		compound.putInt("storedpower", this.powerOutput.getStoredEngergy());
 		compound = super.write(compound);
 		return compound;
 	}

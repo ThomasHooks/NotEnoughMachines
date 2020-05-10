@@ -5,15 +5,15 @@ import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.ClosedChuteBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.ItemPusherBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ChuteBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ClosedChuteBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 
 import net.minecraftforge.registries.ObjectHolder;
 

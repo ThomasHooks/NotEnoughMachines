@@ -2,7 +2,7 @@ package com.kilroy790.notenoughmachines.client.renderers;
 
 import com.kilroy790.notenoughmachines.blocks.machines.AbstractGeneratorBlock;
 import com.kilroy790.notenoughmachines.client.models.WindSailModel;
-import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
 import com.mojang.blaze3d.platform.GlStateManager;
 
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;

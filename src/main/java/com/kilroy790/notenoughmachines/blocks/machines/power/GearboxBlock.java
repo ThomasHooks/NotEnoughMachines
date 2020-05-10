@@ -1,11 +1,11 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.power;
 
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

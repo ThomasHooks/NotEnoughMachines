@@ -1,8 +1,8 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.processing;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
-import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
+import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,7 +21,7 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 
 
-public class TripHammerTile extends AbstractNEMBaseTile implements INamedContainerProvider {
+public class TripHammerTile extends AbstractBaseTile implements INamedContainerProvider {
 	
 	
 	protected ItemStackHandler itemInputHandler;

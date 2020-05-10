@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.processing;
 
 import javax.annotation.Nonnull;
 
@@ -6,7 +6,7 @@ import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConsumer;
-import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 
@@ -85,12 +85,12 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		if(world.isRemote) return;
 		
 		//if there is a millable item in the input slot start to process it
-		if(attemptMill() && powerInput.getEnergyStored() >= PROCESSINGPOWER) {
+		if(attemptMill() && powerInput.getStoredEngergy() >= PROCESSINGPOWER) {
 			isProcessing = true;
 		} else isProcessing = false;
 		
 		//Increase process timer and consume power
-		if(isProcessing && powerInput.getEnergyStored() >= PROCESSINGPOWER) {
+		if(isProcessing && powerInput.getStoredEngergy() >= PROCESSINGPOWER) {
 			powerInput.consumePower(PROCESSINGPOWER, false);
 			processTime++;
 		} else {
@@ -297,7 +297,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		
 		if(compound.contains("storedpower")) {
 			powerInputHandler.ifPresent(h -> {
-				h.setEnergyStored(compound.getInt("storedpower"));
+				h.setStoredEnergy(compound.getInt("storedpower"));
 			});
 		}
 		
@@ -321,7 +321,7 @@ public class MillstoneTile extends TileEntity implements ITickableTileEntity, IN
 		compound.putInt("processtime", processTime);
 		
 		powerInputHandler.ifPresent(h -> {
-			compound.putInt("process", h.getEnergyStored());
+			compound.putInt("process", h.getStoredEngergy());
 		});
 		
 		return super.write(compound);

@@ -13,37 +13,39 @@ import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.ChuteBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.ClosedChuteBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.CreativePowerBoxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.ItemPusherBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ChuteBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ClosedChuteBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 import com.kilroy790.notenoughmachines.client.gui.FilterScreen;
 import com.kilroy790.notenoughmachines.client.gui.MillstoneScreen;
 import com.kilroy790.notenoughmachines.client.gui.TripHammerScreen;
+import com.kilroy790.notenoughmachines.client.renderers.AxleTileRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.ChuteRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
 import com.kilroy790.notenoughmachines.items.FlaxSeedItem;
+import com.kilroy790.notenoughmachines.power.PowerNetworkStack;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
-import com.kilroy790.notenoughmachines.tiles.machines.AxleTile;
-import com.kilroy790.notenoughmachines.tiles.machines.ChuteTile;
-import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
-import com.kilroy790.notenoughmachines.tiles.machines.CreativePowerBoxTile;
-import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
-import com.kilroy790.notenoughmachines.tiles.machines.GearboxTile;
-import com.kilroy790.notenoughmachines.tiles.machines.ItemPusherTile;
-import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
-import com.kilroy790.notenoughmachines.tiles.machines.SmallWindWheelTile;
-import com.kilroy790.notenoughmachines.tiles.machines.TripHammerTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ClosedChuteTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.FilterTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ItemPusherTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 import com.kilroy790.notenoughmachines.utilities.ClientProxy;
 import com.kilroy790.notenoughmachines.utilities.IProxy;
 import com.kilroy790.notenoughmachines.utilities.ServerProxy;
@@ -75,13 +77,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class NotEnoughMachines {
 	
 	public static NotEnoughMachines instance;
-	
 	public static final String modid = "notenoughtmachines";
-	
 	public static final Logger logger = LogManager.getLogger(modid);
 	
-	public static IProxy proxy = DistExecutor.runForDist(()-> ()-> new ClientProxy(), ()-> ()-> new ServerProxy());
+	public static PowerNetworkStack AETHER = new PowerNetworkStack();
 	
+	public static IProxy proxy = DistExecutor.runForDist(()-> ()-> new ClientProxy(), ()-> ()-> new ServerProxy());
 	public static ModSetup setup = new ModSetup();
 	
 	
@@ -113,15 +114,19 @@ public class NotEnoughMachines {
 		logger.info("registering Client Side Entries");
 		
 		
-		logger.info("Registering all Tile Entity Special Renderer's");
+		logger.info("Registering all Tile Entity Special Renderers");
 		
-		logger.info("Registering SmallWindWheelTESR");
+		logger.info("Registering Small Wind Wheel TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(SmallWindWheelTile.class, new SmallWindWheelRenderers());
 		
-		logger.info("Registering ChuteTESR");
+		logger.info("Registering Chute TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(ChuteTile.class, new ChuteRenderer());
 		
+		logger.info("Registering Axle TESR");
+		ClientRegistry.bindTileEntitySpecialRenderer(AxleTile.class, new AxleTileRenderer());
+		
 		logger.info("All TESR's registered");
+		
 		
 		
 		logger.info("Registering all Containers");
@@ -136,6 +141,7 @@ public class NotEnoughMachines {
 		ScreenManager.registerFactory(ContainerList.FILTER_CONTAINER, FilterScreen::new);
 		
 		logger.info("All Containers registered");
+		
 		
 		
 		logger.info("All Client Side entries registered");

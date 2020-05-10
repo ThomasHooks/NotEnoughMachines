@@ -8,98 +8,75 @@ public class MechanicalPower implements IMechanicalPower {
 	
     protected int storedPower;
     protected int capacity;
-    protected int maxReceive;
-    protected int maxSent;
-    protected boolean powered;
-    protected boolean load;
+    protected int load;
+    protected int maxTransmitted;
+    //protected int maxReceive;
+    //protected int maxSent;
+    
+    protected MechanicalType type;
     
     
-    public MechanicalPower(int powerCapacity, int maxPowerReceived, int maxPowerSent) {
+//    public MechanicalPower(int powerCapacity, int maxPowerReceived, int maxPowerSent, MechanicalType typeIn) {
+//		
+//    	this.storedPower = 0;
+//    	this.capacity = powerCapacity;
+//    	this.maxReceive = maxPowerReceived;
+//    	this.maxSent = maxPowerSent;
+//    	this.type = typeIn;
+//	}
+
+    
+    public MechanicalPower(int powerCapacity, int powerLoad, int maxTransmitted, MechanicalType typeIn) {
 		
     	this.storedPower = 0;
     	this.capacity = powerCapacity;
-    	this.maxReceive = maxPowerReceived;
-    	this.maxSent = maxPowerSent;
-    	this.powered = false;
-    	this.load = false;
-	}
-    
-    
-	@Override
-	public boolean hasLoad() {
-		
-		return load;
+    	this.load = powerLoad;
+    	this.maxTransmitted = maxTransmitted;
+    	this.type = typeIn;
 	}
 	
-	
-	@Override
-	public void setLoaded(boolean loaded) {
-		
-		this.load = loaded;
-	}
-
+    
 	
 	@Override
 	public boolean isPowered() {
-		
 		return storedPower > 0;
 	}
 
-	
+
+
 	@Override
-	public boolean isProducer() {
-		
-		return false;
+	public MechanicalType getMechType() {
+		return this.type;
 	}
 
 	
-	@Override
-	public boolean isConsumer() {
-		
-		return false;
-	}
-
-	
-	@Override
-	public boolean canReceive() {
-		
-		return this.maxReceive > 0;
-	}
-
-	
-	@Override
-	public boolean canSend() {
-		
-		return this.maxSent > 0;
-	}
-
 	
 	@Override
 	public int sendPower(int maxPowerRemoved, boolean simulate) {
 		
-        if (!canSend()) return 0;
-
-        int powerSent = Math.min(storedPower, Math.min(this.maxSent, maxPowerRemoved));
+        int powerSent = Math.min(storedPower, Math.min(this.maxTransmitted, maxPowerRemoved));
         if (!simulate) storedPower -= powerSent;
         
         return powerSent;
 	}
 
 	
+	
 	@Override
 	public int receivePower(int maxPowerAdded, boolean simulate) {
 		
-        if (!canReceive()) return 0;
-
-        int powerReceived = Math.min(capacity - storedPower, Math.min(this.maxReceive, maxPowerAdded));
+        int powerReceived = Math.min(capacity - storedPower, Math.min(this.maxTransmitted, maxPowerAdded));
         if (!simulate) storedPower += powerReceived;
         
         return powerReceived;
 	}
 	
 	
+	
 	@Override
 	public int consumePower(int maxPowerRemoved, boolean simulate) {
+		
+		if(this.type == MechanicalType.SOURCE) return 0;
 		
 		int powerConsumed = Math.min(storedPower, maxPowerRemoved);
 		if (!simulate) storedPower -= powerConsumed;
@@ -108,10 +85,11 @@ public class MechanicalPower implements IMechanicalPower {
 	}
 	
 	
+	
 	@Override
 	public int producePower(int maxPowerAdded, boolean simulate) {
 		
-		if(!isProducer()) return 0;
+		if(this.type != MechanicalType.SOURCE) return 0;
 		
 		int powerProduced = Math.min(capacity - storedPower, maxPowerAdded);
 		if(!simulate) storedPower += powerProduced;
@@ -120,23 +98,23 @@ public class MechanicalPower implements IMechanicalPower {
 	}
 
 	
+	
 	@Override
 	public int getMaxCapacity() {
-		
 		return capacity;
 	}
 
 	
+	
 	@Override
-	public int getEnergyStored() {
-		
+	public int getStoredEngergy() {
 		return storedPower;
 	}
 	
 	
+	
 	@Override
-	public void setEnergyStored(int storedPowerIn) {
-		
+	public void setStoredEnergy(int storedPowerIn) {
 		if(storedPowerIn < 0) this.storedPower = 0;
 		else this.storedPower = storedPowerIn;
 	}

@@ -1,6 +1,8 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
-import com.kilroy790.notenoughmachines.tiles.machines.ClosedChuteTile;
+import com.kilroy790.notenoughmachines.blocks.machines.AbstractItemConduitBlock;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.ClosedChuteTile;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;

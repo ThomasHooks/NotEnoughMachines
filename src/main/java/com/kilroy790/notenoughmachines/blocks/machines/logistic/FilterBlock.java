@@ -1,6 +1,6 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
-import com.kilroy790.notenoughmachines.tiles.machines.FilterTile;
+import com.kilroy790.notenoughmachines.tiles.machines.logistic.FilterTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;

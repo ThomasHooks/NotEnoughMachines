@@ -1,8 +1,8 @@
-package com.kilroy790.notenoughmachines.blocks.machines;
+package com.kilroy790.notenoughmachines.blocks.machines.processing;
 
 import java.util.Random;
 
-import com.kilroy790.notenoughmachines.tiles.machines.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;

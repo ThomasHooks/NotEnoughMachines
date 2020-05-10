@@ -1,0 +1,53 @@
+package com.kilroy790.notenoughmachines.blocks.machines;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.state.EnumProperty;
+import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.Direction;
+
+
+
+
+public abstract class MechanicalShaftBlock extends MechanicalBlock {
+
+	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
+	
+	
+	
+	public MechanicalShaftBlock(Properties properties) {
+		super(properties);
+		this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.X));
+	}
+
+	
+	
+	@Override
+	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+		builder.add(AXIS);
+	}
+	
+	
+	
+	@Override
+	public BlockRenderLayer getRenderLayer() {
+		return BlockRenderLayer.CUTOUT_MIPPED;
+	}
+	
+	
+	
+	@Override
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
+}
+
+
+
+
+
+
+

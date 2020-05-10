@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.power;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
@@ -6,8 +6,9 @@ import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerConduit;
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.api.stateproperties.NEMConfigurableSides;
-import com.kilroy790.notenoughmachines.blocks.machines.AxleBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -113,9 +114,7 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 					
 					LazyOptional<IMechanicalPower> nextMachine = nextTile.getCapability(CapabilityMechanical.MECHANICAL, direction);
 					nextMachine.ifPresent(h -> {
-						if(h.canReceive()) {
-							h.receivePower(powerChannel.sendPower(MAXPOWERSENT/connectedAxles, false), false);
-						}
+						h.receivePower(powerChannel.sendPower(MAXPOWERSENT/connectedAxles, false), false);
 					});
 				}
 			}
@@ -176,7 +175,7 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 		
 		if(compound.contains("storedpower")) {
 			powerChannelHandler.ifPresent(h -> {
-				h.setEnergyStored(compound.getInt("storedpower"));
+				h.setStoredEnergy(compound.getInt("storedpower"));
 			});
 		}
 		
@@ -188,7 +187,7 @@ public class GearboxTile extends TileEntity implements ITickableTileEntity {
 	public CompoundNBT write(CompoundNBT compound) {
 
 		powerChannelHandler.ifPresent(h -> {
-			compound.putInt("storedpower", h.getEnergyStored());
+			compound.putInt("storedpower", h.getStoredEngergy());
 		});
 		
 		return super.write(compound);

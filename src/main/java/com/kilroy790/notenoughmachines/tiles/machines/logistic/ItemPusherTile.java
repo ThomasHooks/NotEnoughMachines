@@ -1,9 +1,8 @@
-package com.kilroy790.notenoughmachines.tiles.machines;
+package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
-import com.kilroy790.notenoughmachines.blocks.machines.ClosedChuteBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.FilterBlock;
-import com.kilroy790.notenoughmachines.tiles.AbstractNEMBaseTile;
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
+import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.nbt.CompoundNBT;
@@ -18,7 +17,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public class ClosedChuteTile extends AbstractNEMBaseTile implements ITickableTileEntity {
+public class ItemPusherTile extends AbstractBaseTile implements ITickableTileEntity {
 
 	
 	protected ItemStackHandler itemInv;
@@ -29,53 +28,68 @@ public class ClosedChuteTile extends AbstractNEMBaseTile implements ITickableTil
 	public static final int ITEM_TRANSFER_RATE = 8;
 	
 	
-	public ClosedChuteTile() {
-		super(TileEntityList.CLOSEDCHUTE);
+	public ItemPusherTile() {
+		super(TileEntityList.ITEMPUSHER);
 		itemInv = this.makeItemHandler(1);
 	}
 
 	
 	@Override
 	public void tick() {
+		//there are ~20 tick per second
 		
 		if(!this.world.isRemote) {
 			
 			if(this.canTransferItem()) {
+				this.pullItems(this.itemInv, MAX_ITEM_TRANSFER);
 				this.pushItems(this.itemInv, MAX_ITEM_TRANSFER);
 				this.setItemTransfer(0);
 			}
 			this.itemTransfer++;
+			if(this.itemTransfer > ITEM_TRANSFER_RATE * 2) this.setItemTransfer(ITEM_TRANSFER_RATE * 2);
 		}
+	}
+	
+	
+	protected void pullItems(ItemStackHandler itemHandler, int amount) {
+		/*
+		 * Will try to pull the item stack from the Container
+		 * 
+		 * @param	itemHandler		the item handler for this tile
+		 * 
+		 * @param	amount			number of items in the stack that will be pushed to the next Container
+		 */
+		
+		Direction facing = this.getBlockState().get(ItemPusherBlock.FACING);
+		BlockPos nextPos = pos.offset(facing);
+		
+		NEMItemHelper.pullFromContainer(world, nextPos, facing.getOpposite(), itemHandler, 0, amount);
 	}
 	
 	
 	protected void pushItems(ItemStackHandler itemHandler, int amount) {
 		/*
-		 * Will try to push the item stack into the next Container or drop the item stack in front of itself
+		 * Will try to drop the item stack in front of itself or push to the Container in front of itself
 		 * 
 		 * @param	itemHandler		the item handler for this tile
 		 * 
 		 * @param	amount			number of items in the stack that will be pushed to the next Container
 		 */
 
-		Direction facing = this.getBlockState().get(ClosedChuteBlock.FACING);
+		Direction facing = this.getBlockState().get(ItemPusherBlock.FACING).getOpposite();
 		BlockPos nextPos = pos.offset(facing);
 		
 		if(this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) NEMItemHelper.dropItemStack(world, nextPos, itemInv.extractItem(0, amount, false));
-
+		
 		else {
 			for(int slot = 0; slot < itemHandler.getSlots(); slot++) {
 
 				if(itemHandler.getStackInSlot(slot).isEmpty()) continue;
 				
 				else {
-
-					if(this.world.getBlockState(pos.down()).getBlock() instanceof FilterBlock) NEMItemHelper.pushToContainer(world, pos.down(), Direction.UP, itemHandler, slot, amount);
-					//This is done so that if the chute can't push an item into the Filter it will try to push it to the next Container
 					NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
 					break;
 				}
-
 			}
 		}
 	}
@@ -106,7 +120,7 @@ public class ClosedChuteTile extends AbstractNEMBaseTile implements ITickableTil
 	
 	
 	public boolean canTransferItem() {
-		return this.itemTransfer > ITEM_TRANSFER_RATE;
+		return this.itemTransfer > ITEM_TRANSFER_RATE && this.world.getBlockState(pos).get(ItemPusherBlock.ENABLED);
 	}
 	
 	
