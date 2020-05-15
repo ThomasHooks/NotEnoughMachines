@@ -19,7 +19,8 @@ public class PowerNetwork {
 
 
 
-	public PowerNetwork(long idIn){
+	public PowerNetwork(long idIn) {
+		this.nodeArray = new ArrayList<MechanicalTile>();
 		this.id = idIn;
 		this.powerCapacity = 0;
 		this.powerLoad = 0;
@@ -27,12 +28,14 @@ public class PowerNetwork {
 
 
 
-	public void addNode(MechanicalTile te) {
-
+	public void addNode(MechanicalTile te, boolean addSilently) {
+		
+		if(te == null) return;
+		
 		if(!nodeArray.contains(te)) {
 			nodeArray.add(te);
-			updateNetwork();
 			NotEnoughMachines.logger.debug("Tile Entity '" + te.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
+			if(!addSilently) updateNetwork();
 		}
 		else NotEnoughMachines.logger.warn("Tile Entity '" + te.getType().getRegistryName() + "' has already been added to the Power Network ID:" + this.id);
 	}
@@ -40,6 +43,8 @@ public class PowerNetwork {
 	
 	
 	public void removeNode(MechanicalTile te) {
+		
+		if(te == null) return;
 		
 		if(nodeArray.contains(te)) {
 			nodeArray.remove(te);

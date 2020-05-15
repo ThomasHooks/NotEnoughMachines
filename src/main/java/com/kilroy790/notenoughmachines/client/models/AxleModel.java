@@ -33,9 +33,9 @@ public class AxleModel extends Model {
 	
 	
 	public void translate(float x, float y, float z) {
-		this.shaft.offsetX += x;
-		this.shaft.offsetY += y;
-		this.shaft.offsetZ += z;
+		this.shaft.offsetX = x;
+		this.shaft.offsetY = y;
+		this.shaft.offsetZ = z;
 	}
 	
 	

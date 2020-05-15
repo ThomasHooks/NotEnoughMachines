@@ -10,21 +10,9 @@ public class MechanicalPower implements IMechanicalPower {
     protected int capacity;
     protected int load;
     protected int maxTransmitted;
-    //protected int maxReceive;
-    //protected int maxSent;
     
     protected MechanicalType type;
     
-    
-//    public MechanicalPower(int powerCapacity, int maxPowerReceived, int maxPowerSent, MechanicalType typeIn) {
-//		
-//    	this.storedPower = 0;
-//    	this.capacity = powerCapacity;
-//    	this.maxReceive = maxPowerReceived;
-//    	this.maxSent = maxPowerSent;
-//    	this.type = typeIn;
-//	}
-
     
     public MechanicalPower(int powerCapacity, int powerLoad, int maxTransmitted, MechanicalType typeIn) {
 		

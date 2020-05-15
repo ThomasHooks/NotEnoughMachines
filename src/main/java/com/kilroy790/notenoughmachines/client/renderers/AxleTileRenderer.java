@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.client.renderers;
 
-import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
 import com.kilroy790.notenoughmachines.client.models.AxleModel;
 import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -28,17 +28,17 @@ public class AxleTileRenderer extends TileEntityRenderer<AxleTile> {
 		GlStateManager.translatef((float)x, (float)y, (float)z);
 		
 		GlStateManager.translatef(0.5f, 0.5f, 0.5f);
-		switch(te.getBlockState().get(AxleBlock.AXLE_DIRECTION)) {
+		switch(te.getBlockState().get(MechanicalShaftBlock.AXIS)) {
 		
-		case AxleBlock.AXELAXISX:
+		case X:
 			GlStateManager.rotatef(90.0f, 0.0f, 1.0f, 0.0f);
 			break;
 			
-		case AxleBlock.AXELAXISY:
+		case Y:
 			GlStateManager.rotatef(90.0f, 1.0f, 0.0f, 0.0f);
 			break;
 			
-		case AxleBlock.AXELAXISZ:
+		case Z:
 			GlStateManager.rotatef(0.0f, 0.0f, 1.0f, 0.0f);
 			break;
 		}

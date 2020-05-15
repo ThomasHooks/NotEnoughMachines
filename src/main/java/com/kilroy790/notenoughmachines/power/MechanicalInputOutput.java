@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 
 
 
-public class MechanicalInputOutputWrapper {
+public class MechanicalInputOutput {
 
 	private BlockPos pos;
 	private Direction facing;
@@ -14,7 +14,7 @@ public class MechanicalInputOutputWrapper {
 	
 	
 	
-	public MechanicalInputOutputWrapper(BlockPos posIn, Direction dirFacing, MechIOType ioType) {
+	public MechanicalInputOutput(BlockPos posIn, Direction dirFacing, MechIOType ioType) {
 		this.pos = posIn;
 		this.facing = dirFacing;
 		this.typeIO = ioType;

@@ -1,14 +1,11 @@
 package com.kilroy790.notenoughmachines.blocks.machines;
 
-import javax.annotation.Nullable;
-
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -52,6 +49,7 @@ public abstract class MechanicalBlock extends Block {
 	}
 	
 	
+	
 	/*
 	 * @return The item stack that is dropped when this machine is broken
 	 */
@@ -59,22 +57,17 @@ public abstract class MechanicalBlock extends Block {
 	
 	
 	
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity entity, ItemStack stack) {
-		
-		if(worldIn.isRemote) return;
-		
-		MechanicalTile te = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
-		if(te != null) NotEnoughMachines.AETHER.joinPowerNetwork(te);
-	}
-	
-	
-	
+	/*
+	 * Called before the Block is set to air in the world. Called regardless of if the player's tool can actually collect
+	 * this block
+	 */
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
 		
-		MechanicalTile te = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
-		if(te != null) NotEnoughMachines.AETHER.removeFromPowerNetwork(te);
+		if(!worldIn.isRemote()) {
+			MechanicalTile te = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
+			if(te != null) NotEnoughMachines.AETHER.removeFromPowerNetwork(te);
+		}
 		
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
