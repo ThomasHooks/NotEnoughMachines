@@ -3,7 +3,7 @@ package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ChuteBlock;
-import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
+import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
@@ -24,7 +24,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public class ChuteTile extends AbstractBaseTile implements ITickableTileEntity {
+public class ChuteTile extends NEMBaseTile implements ITickableTileEntity {
 	//TODO look into why the chute transfers items so slow
 	
 	protected ItemStackHandler itemInput;

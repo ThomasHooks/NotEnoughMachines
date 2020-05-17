@@ -28,47 +28,60 @@ public class PowerNetwork {
 
 
 
-	public void addNode(MechanicalTile te, boolean addSilently) {
+	/**
+	 * 
+	 * @param tile
+	 * @param isSilent
+	 */
+	public void addNode(MechanicalTile tile, boolean isSilent) {
 		
-		if(te == null) return;
+		if(tile == null) return;
 		
-		if(!nodeArray.contains(te)) {
-			nodeArray.add(te);
-			NotEnoughMachines.logger.debug("Tile Entity '" + te.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
-			if(!addSilently) updateNetwork();
+		if(!nodeArray.contains(tile)) {
+			nodeArray.add(tile);
+			NotEnoughMachines.logger.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
+			if(!isSilent) update();
 		}
-		else NotEnoughMachines.logger.warn("Tile Entity '" + te.getType().getRegistryName() + "' has already been added to the Power Network ID:" + this.id);
+		else NotEnoughMachines.logger.warn("Tile Entity '" + tile.getType().getRegistryName() + "' has already been added to the Power Network ID:" + this.id);
 	}
 	
 	
 	
-	public void removeNode(MechanicalTile te) {
+	/**
+	 * 
+	 * @param tile
+	 * @param isSilent
+	 */
+	public void removeNode(MechanicalTile tile, boolean isSilent) {
 		
-		if(te == null) return;
+		if(tile == null) return;
 		
-		if(nodeArray.contains(te)) {
-			nodeArray.remove(te);
-			te.networkUpdate(0, 0);
-			updateNetwork();
+		if(nodeArray.contains(tile)) {
+			nodeArray.remove(tile);
+			tile.networkUpdate(0, 0);
+			if(!isSilent) update();
 		}
 	}
 
 
 
-	private void updateNetwork() {
+	/**
+	 * 
+	 */
+	public void update() {
 
 		int load = 0;
 		int power = 0;
-		for(MechanicalTile te : nodeArray) {
+		for(MechanicalTile tile : nodeArray) {
 
-			switch(te.getMechType()) {
+			switch(tile.getMechType()) {
 			
 			case SOURCE:
-				power += te.getCapacity();
+				power += tile.getCapacity();
 				break;
 
 			case SINK:
-				load += te.getLoad();
+				load += tile.getLoad();
 				break;
 
 			default:
@@ -83,9 +96,25 @@ public class PowerNetwork {
 	
 	
 	private void syncNodes() {
-		for(MechanicalTile te : nodeArray) {
-			te.networkUpdate(this.powerCapacity, this.powerLoad);
+		for(MechanicalTile tile : nodeArray) {
+			tile.networkUpdate(this.powerCapacity, this.powerLoad);
 		}
+	}
+	
+	
+	
+	/**
+	 * Merges another power network into this power network.
+	 * 
+	 * @param other The power network that is to be merged into this power network
+	 */
+	public void mergeNetwork(PowerNetwork other) {
+		
+		for(MechanicalTile tile : other.nodeArray) {
+			tile.setNetworkID(this.id, true);
+			addNode(tile, true);
+		}
+		update();
 	}
 
 

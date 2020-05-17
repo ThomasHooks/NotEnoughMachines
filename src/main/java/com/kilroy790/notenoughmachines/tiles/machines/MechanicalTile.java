@@ -1,21 +1,22 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
 import java.util.ArrayList;
-
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.power.IHaveMechanicalPower;
 import com.kilroy790.notenoughmachines.power.MechanicalInputOutput;
-import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
+import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.Direction;
 
 
 
 
-abstract public class MechanicalTile extends AbstractBaseTile implements ITickableTileEntity, IHaveMechanicalPower {
+abstract public class MechanicalTile extends NEMBaseTile implements ITickableTileEntity, IHaveMechanicalPower {
 
 	protected long networkID = 0;
 	protected int powerCapacity = 0;
@@ -37,20 +38,33 @@ abstract public class MechanicalTile extends AbstractBaseTile implements ITickab
 	}
 	
 	
-    /*
+	
+    /**
      * Called when this is first added to the world (by {@link World#addTileEntity(TileEntity)}).
      * Override instead of adding {@code if (firstTick)} stuff in update.
-     * 
+     * <p>
      * Note: super must be called at the end of the method
      */
 	@Override
 	public void onLoad() {
 		
 		if(!world.isRemote) {
-			this.networkID = NotEnoughMachines.AETHER.joinPowerNetwork(this);
+			NotEnoughMachines.AETHER.joinPowerNetwork(this);
 		}
 		
 		super.onLoad();
+	}
+	
+	
+	
+	@Override
+	public void remove() {
+		
+		if(!world.isRemote) {
+			NotEnoughMachines.AETHER.removeFromPowerNetwork(this, false);
+		}
+		
+		super.remove();
 	}
 	
 	
@@ -69,8 +83,8 @@ abstract public class MechanicalTile extends AbstractBaseTile implements ITickab
 	
 	
 	
-	/*
-	 * There are ~20 tick per second
+	/**
+	 * This method will be called by both the server and the client once per tick. There are about 20 tick per second.
 	 */
 	abstract protected void tickCustom();
 	
@@ -83,17 +97,52 @@ abstract public class MechanicalTile extends AbstractBaseTile implements ITickab
 	
 	
 	
-	public void networkUpdate(int currentCapacity, int currentLoad) {
-		this.networkCapacity = currentCapacity;
-		this.networkLoad = currentLoad;
+	/**
+	 * Gets an array of this machine's Mechanical Inputs/Outputs
+	 * 
+	 * @return An array of this machine's I/O
+	 */
+	abstract public ArrayList<MechanicalInputOutput> getMechIO();
+	
+	
+	
+	/**
+	 * Gets an array of neighboring machines that are aligned to this machine.
+	 * It is possible that the returned array is empty.
+	 * 
+	 * @return An array of neighboring machines to this machine
+	 */
+	public ArrayList<MechanicalTile> getNeighbors() {
+		
+		ArrayList<MechanicalTile> neighbors = new ArrayList<MechanicalTile>();
+		for(MechanicalInputOutput io : getMechIO()) {
+			
+			TileEntity tile = world.getTileEntity(io.getPos());
+			MechanicalTile mechTile = tile instanceof MechanicalTile ? (MechanicalTile)tile : null;
+			if(mechTile != null) {
+				if(mechTile.isAlignedWith(io.getFacing(), io.isAxle())) neighbors.add(mechTile);
+			}
+		}
+		return neighbors;
 	}
 	
 	
 	
-	/*
-	 * @return Gets a list of this machine's Inputs/Outputs
+	/**
+	 * Checks if the given direction and Input/Output type is aligned with this machine.
+	 * 
+	 * @param facing The direction that is being checked for alignment with this machine
+	 * @param isAxle If the Mechanical I/O is not an axle it is assumed to be a cog I/O
+	 * 
+	 * @return True if the given direction is aligned with this machine
 	 */
-	abstract public ArrayList<MechanicalInputOutput> getMechIO();
+	public boolean isAlignedWith(Direction facing, boolean isAxle) {
+		
+		for(MechanicalInputOutput io : getMechIO()) {
+			if(io.getFacing() == facing.getOpposite() && io.isAxle() == isAxle) return true;
+		}
+		return false;
+	}
 	
 	
 	
@@ -122,11 +171,43 @@ abstract public class MechanicalTile extends AbstractBaseTile implements ITickab
 	
 	
 	
-	/*
-	 * @return This mechanical tile's power network ID or 0 if it does not have a network
+	/**
+	 * Updates this machine with the power networks new state.
+	 * This method should only be called by this machine's power network.
+	 * 
+	 * @param currentCapacity The new power capacity of the power network
+	 * @param currentLoad The new power load of the power network
+	 */
+	public void networkUpdate(int currentCapacity, int currentLoad) {
+		this.networkCapacity = currentCapacity;
+		this.networkLoad = currentLoad;
+		markDirty();
+	}
+	
+	
+	
+	/**
+	 * @return This mechanical tile's power network ID or 0 if it does not have a network.
 	 */
 	public long getNetworkID() {
 		return this.networkID;
+	}
+	
+	
+	
+	/**
+	 * Attaches this tile to a new power network.
+	 * 
+	 * @param id The new power network ID for this tile
+	 * @param isSilent True if changing the network ID should not cause an update
+	 */
+	public void setNetworkID(long id, boolean isSilent) {
+		
+		if(id > 0 && this.networkID != id) {
+			//if(this.networkID > 0) NotEnoughMachines.AETHER.removeFromPowerNetwork(this, isSilent);
+			this.networkID = id;
+			markDirty();
+		}
 	}
 	
 	

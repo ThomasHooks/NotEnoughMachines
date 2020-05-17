@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
-import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
+import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.entity.item.ItemEntity;
@@ -31,7 +31,7 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 
 
-public class FilterTile extends AbstractBaseTile implements INamedContainerProvider, ITickableTileEntity {
+public class FilterTile extends NEMBaseTile implements INamedContainerProvider, ITickableTileEntity {
 	//TODO look into making it into a smart filter
 	
 	protected ItemStackHandler itemInv;

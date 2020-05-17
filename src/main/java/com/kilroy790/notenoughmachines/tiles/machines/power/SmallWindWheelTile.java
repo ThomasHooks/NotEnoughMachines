@@ -6,7 +6,7 @@ import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
 import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
 import com.kilroy790.notenoughmachines.api.power.MechanicalPowerProducer;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
-import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
+import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.LazyOptional;
 
 
 
-public class SmallWindWheelTile extends AbstractBaseTile implements ITickableTileEntity{
+public class SmallWindWheelTile extends NEMBaseTile implements ITickableTileEntity{
 
 	
 	protected float angle = 0.0f;

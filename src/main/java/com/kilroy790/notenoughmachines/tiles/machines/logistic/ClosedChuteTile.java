@@ -3,7 +3,7 @@ package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ClosedChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
-import com.kilroy790.notenoughmachines.tiles.AbstractBaseTile;
+import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.nbt.CompoundNBT;
@@ -18,7 +18,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public class ClosedChuteTile extends AbstractBaseTile implements ITickableTileEntity {
+public class ClosedChuteTile extends NEMBaseTile implements ITickableTileEntity {
 
 	
 	protected ItemStackHandler itemInv;

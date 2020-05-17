@@ -1,15 +1,13 @@
 package com.kilroy790.notenoughmachines.power;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
 
 
 
@@ -35,89 +33,148 @@ public class PowerNetworkStack {
 	
 	
 	
-	/*
+	/**
 	 * 
+	 * @param worldIn The world that has the power network
+	 * @param networkID The ID of the power network
+	 * 
+	 * @return True if the given World has a power network with the given ID
 	 */
 	public boolean hasPowerNetwork(IWorld worldIn, long networkID) {
 		return universePowerNetworks.get(worldIn).containsKey(networkID);
 	}
 	
 	
-	/*
-	 * @param te, the mechanical tile that is joining a power network
+
+	/**
+	 * 
+	 * @param tile The mechanical tile that is joining a power network
 	 * 
 	 * @return The power network's ID, or 0 if the tile is null
 	 */
-	public long joinPowerNetwork(MechanicalTile te) {
+	public void joinPowerNetwork(MechanicalTile tile) {
 		
-		if(te == null) return 0;
+		if(tile == null) return;
 		
-		long networkID = te.getNetworkID();
-		Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(te.getWorld());
-		if(networkID != 0) addBackToPowerNetwork(te, worldPowerNetworks);
-		else networkID = createOrAddToPowerNetwork(te, worldPowerNetworks);
+		long networkID = tile.getNetworkID();
+		Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(tile.getWorld());
+		if(networkID != 0) addBackToPowerNetwork(tile, worldPowerNetworks);
+		else networkID = createOrAddToPowerNetwork(tile, worldPowerNetworks);
 		
-		return networkID;
+		tile.setNetworkID(networkID, false);
 	}
 	
 	
 	
-	private void addBackToPowerNetwork(MechanicalTile te, Map<Long, PowerNetwork> worldPowerNetworks) {
+	/**
+	 * 
+	 * @param tile
+	 * @param worldPowerNetworks
+	 */
+	private void addBackToPowerNetwork(MechanicalTile tile, Map<Long, PowerNetwork> worldPowerNetworks) {
 		
-		long networkID = te.getNetworkID();
+		long networkID = tile.getNetworkID();
 		PowerNetwork network = worldPowerNetworks.get(networkID);
 		if( network == null) {
 			network = new PowerNetwork(networkID);
 			worldPowerNetworks.put(networkID, network);
 		}
-		network.addNode(te, false);
+		network.addNode(tile, true);
 	}
 	
 	
 	
-	private long createOrAddToPowerNetwork(MechanicalTile te, Map<Long, PowerNetwork> worldPowerNetworks) {
+	/**
+	 * 
+	 * @param tile
+	 * @param worldPowerNetworks
+	 * 
+	 * @return
+	 */
+	private long createOrAddToPowerNetwork(MechanicalTile tile, Map<Long, PowerNetwork> worldPowerNetworks) {
 		
 		long networkID = 0;
-		World world = te.getWorld();
+		ArrayList<MechanicalTile> neighbors = tile.getNeighbors();
 		
-		//TODO: add network merging 
-		for(MechanicalInputOutput io : te.getMechIO()) {
-			TileEntity otherTE = world.getTileEntity(io.getPos());
-			MechanicalTile mechTE = otherTE instanceof MechanicalTile ? (MechanicalTile)otherTE : null;
-			if(mechTE != null) {
-				for(MechanicalInputOutput io2 : mechTE.getMechIO()) {
-					BlockPos posIO = io2.getPos();
-					BlockPos posTE = te.getPos();
-					if(posIO.getX() == posTE.getX() && posIO.getY() == posTE.getY() && posIO.getZ() == posTE.getZ()) {
-						networkID = mechTE.getNetworkID();
-						worldPowerNetworks.get(networkID).addNode(te, false);
-						break;
-					}
-				}
+		//Merge all neighboring machines into one power network
+		if(neighbors.size() > 1) {
+			ArrayList<PowerNetwork> networks = new ArrayList<PowerNetwork>();
+			for(MechanicalTile neighbor : neighbors) {
+				PowerNetwork network = worldPowerNetworks.get(neighbor.getNetworkID());
+				if(!networks.contains(network)) networks.add(network);
 			}
-			if(networkID != 0) break;
+			mergePowerNetworks(worldPowerNetworks, networks);
 		}
+		
+		//Join the power network of the first neighboring machine that is aligned with this machine
+		for(MechanicalTile neighbor : neighbors) {
+			if(neighbor != null) {
+				networkID = neighbor.getNetworkID();
+				worldPowerNetworks.get(networkID).addNode(tile, false);
+				break;
+			}
+		}
+		//Because there are no neighboring machines create a new power network
 		if(networkID == 0) {
 			networkID = nextID++;
 			PowerNetwork network = new PowerNetwork(networkID);
-			network.addNode(te, false);
+			network.addNode(tile, false);
 			worldPowerNetworks.put(networkID, network);
 		}
 		return networkID;
 	}
-	
-	
-	
-	/*
-	 * 
-	 */
-	public void removeFromPowerNetwork(MechanicalTile te) {
+
 		
-		if(te != null) {
-			World world = te.getWorld();
-			Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(world);
-			worldPowerNetworks.get(te.getNetworkID()).removeNode(te);
+	//TODO: optimize
+	/**
+	 * Merges multiple power networks into one new power network.
+	 * 
+	 * @param networks An array of networks that are to be merged
+	 * @param worldPowerNetworks A map of a world's power networks
+	 */
+	private void mergePowerNetworks(Map<Long, PowerNetwork> worldPowerNetworks, ArrayList<PowerNetwork> networks) {
+		
+		if(networks.size() <= 1) return;
+		
+		long networkID = nextID++;
+		PowerNetwork network = new PowerNetwork(networkID);
+		for(PowerNetwork other : networks) {
+			network.mergeNetwork(other);
+			worldPowerNetworks.remove(other.getID());
 		}
+		worldPowerNetworks.put(networkID, network);
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param tile
+	 * @param isSilent
+	 */
+	public void removeFromPowerNetwork(MechanicalTile tile, boolean isSilent) {
+		if(tile == null) return;
+		//TODO: add network splitting
+		if(tile.getNetworkID() > 0) universePowerNetworks.get(tile.getWorld()).get(tile.getNetworkID()).removeNode(tile, isSilent);
+	}
+	
+	
+	//TODO
+	/**
+	 * 
+	 * @param network
+	 */
+	public void splitPowerNetwork(PowerNetwork network) {}
+	
+	
+	
+	/**
+	 * 
+	 * @param tile
+	 */
+	public void updatePowerNetwork(MechanicalTile tile) {
+		if(tile == null) return;
+		if(tile.getNetworkID() > 0) universePowerNetworks.get(tile.getWorld()).get(tile.getNetworkID()).update();
 	}
 }
 

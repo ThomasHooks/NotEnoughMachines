@@ -13,11 +13,12 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public abstract class AbstractBaseTile extends TileEntity {
+public abstract class NEMBaseTile extends TileEntity {
 
-	public AbstractBaseTile(TileEntityType<?> tileEntityTypeIn) {
+	public NEMBaseTile(TileEntityType<?> tileEntityTypeIn) {
 		super(tileEntityTypeIn);
 	}
+	
 	
 	
 	@Override
@@ -27,48 +28,53 @@ public abstract class AbstractBaseTile extends TileEntity {
 	}
 	
 	
+	
 	protected abstract void readCustom(CompoundNBT compound);
+	
 	
 	
 	@Override
 	public CompoundNBT write(CompoundNBT compound) {
 		compound = super.write(compound);
-		compound = this.writeCustom(compound);
+		compound = writeCustom(compound);
 		return compound;
 	}
+	
 	
 	
 	protected abstract CompoundNBT writeCustom(CompoundNBT compound);
 	
 	
+	
 	@Override
 	public CompoundNBT getUpdateTag() {
-		return this.write(new CompoundNBT());
+		return write(new CompoundNBT());
 	}
 	
 	
 	
 	@Override
 	public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(this.getPos(), 0, this.getUpdateTag());
+        return new SUpdateTileEntityPacket(this.getPos(), 0, getUpdateTag());
 	}
 	
 	
 	
 	@Override
 	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		this.read(pkt.getNbtCompound());
+		read(pkt.getNbtCompound());
 	}
 	
 	
 	
-	//Causes the Client to sync with the Server
+	/*
+	 * Causes the Client to sync with the Server
+	 * 
+	 * 2 will send the change to clients.
+	 * 4 will prevent the block from being re-rendered.
+	 * 16 will prevent neighbor reactions (e.g. fences connecting, observers pulsing).
+	 */
 	public void syncClient() {
-		/*
-		 * 2 will send the change to clients.
-		 * 4 will prevent the block from being re-rendered.
-		 * 16 will prevent neighbor reactions (e.g. fences connecting, observers pulsing).
-		 */
 		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 2 | 4 | 16);
 	}
 	
@@ -95,3 +101,10 @@ public abstract class AbstractBaseTile extends TileEntity {
 		return new MechanicalPowerProducer(capacity, maxReceived, maxSent);
 	}
 }
+
+
+
+
+
+
+
