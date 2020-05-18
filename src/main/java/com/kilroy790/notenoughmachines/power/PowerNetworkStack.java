@@ -59,9 +59,10 @@ public class PowerNetworkStack {
 		long networkID = tile.getNetworkID();
 		Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(tile.getWorld());
 		if(networkID != 0) addBackToPowerNetwork(tile, worldPowerNetworks);
+		
 		else networkID = createOrAddToPowerNetwork(tile, worldPowerNetworks);
 		
-		tile.setNetworkID(networkID, false);
+		tile.setNetworkID(networkID);
 	}
 	
 	
@@ -123,9 +124,9 @@ public class PowerNetworkStack {
 		}
 		return networkID;
 	}
-
-		
-	//TODO: optimize
+	
+	
+	
 	/**
 	 * Merges multiple power networks into one new power network.
 	 * 
@@ -148,32 +149,125 @@ public class PowerNetworkStack {
 	
 	
 	/**
+	 * Removes the given machine from its current power network
 	 * 
-	 * @param tile
-	 * @param isSilent
+	 * @param tile The machine that is to be removed from its power network
 	 */
-	public void removeFromPowerNetwork(MechanicalTile tile, boolean isSilent) {
+	public void removeFromPowerNetwork(MechanicalTile tile) {
+		
 		if(tile == null) return;
-		//TODO: add network splitting
-		if(tile.getNetworkID() > 0) universePowerNetworks.get(tile.getWorld()).get(tile.getNetworkID()).removeNode(tile, isSilent);
+		
+		if(tile.getNetworkID() > 0) {
+			
+			PowerNetwork network = universePowerNetworks.get(tile.getWorld()).get(tile.getNetworkID());
+			ArrayList<MechanicalTile> neighbors = tile.getNeighbors();
+			//When a machine only has one neighboring machine it must be along the edge of its network
+			if(neighbors.size() > 1) {
+				//Because this machine has more than one neighboring machine 
+				//the power network it belongs to must be split into multiple power networks
+				splitPowerNetwork(network, tile, neighbors);
+			}
+			
+			network.removeNode(tile, false);
+		}
 	}
 	
 	
-	//TODO
+	
 	/**
+	 * Splits the prime power network into multiple power networks.
 	 * 
-	 * @param network
+	 * @param networkPrime
+	 * @param tileFrom
+	 * @param neighbors
 	 */
-	public void splitPowerNetwork(PowerNetwork network) {}
+	private void splitPowerNetwork(PowerNetwork networkPrime, MechanicalTile tileFrom, ArrayList<MechanicalTile> neighbors) {
+				
+		//Find all subnetworks that are attached to the machine
+		ArrayList<ArrayList<MechanicalTile>> subnetworks = new ArrayList<ArrayList<MechanicalTile>>();
+		for(MechanicalTile tileNext : neighbors) {
+			
+			ArrayList<MechanicalTile> subnetwork = new ArrayList<MechanicalTile>();
+			findMachinesInSubnetwork(subnetwork, tileFrom, tileNext);
+			subnetworks.add(subnetwork);
+		}
+		
+		//The subnetwork with the most members will keep the original power network's ID
+		int indexOfLargestSubnetwork = 0;
+		for(int i = 1; i < subnetworks.size(); i++) {
+			if(subnetworks.get(i).size() > subnetworks.get(indexOfLargestSubnetwork).size()) indexOfLargestSubnetwork = i;
+		}
+		
+		//All other subnetworks will be put into their own new power network and removed from the prime power network
+		Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(tileFrom.getWorld());
+		for(int i = 1; i < subnetworks.size(); i++) {
+			
+			if(i == indexOfLargestSubnetwork) continue;
+			
+			PowerNetwork network = createNetworkFromSubnetwork(networkPrime, subnetworks.get(i));
+			worldPowerNetworks.put(network.getID(), network);
+			network.update();
+		}
+	}
 	
 	
 	
 	/**
 	 * 
-	 * @param tile
+	 * @param subnetwork
+	 * @param tileFrom
+	 * @param tileCurrent
+	 */
+	private void findMachinesInSubnetwork(ArrayList<MechanicalTile> subnetwork, MechanicalTile tileFrom, MechanicalTile tileCurrent) {
+		
+		subnetwork.add(tileCurrent);
+		
+		ArrayList<MechanicalTile> neighbors = tileCurrent.getNeighbors();
+		if(neighbors.size() <= 1) return;
+		
+		for(MechanicalTile tileNext : neighbors) {
+			
+			if(tileNext == tileFrom) continue;
+			
+			findMachinesInSubnetwork(subnetwork, tileCurrent, tileNext);
+		}
+	}
+	
+	
+	
+	/**
+	 * Creates a new power network from a subnetwork of the given prime power network.
+	 * 
+	 * @param networkPrime The prime network of the given subnetwork
+	 * @param subnetwork An array of machines that are part of a subnetwork of the prime network
+	 * 
+	 * @return A new power network that was a subnetwork of the given prime network
+	 */
+	private PowerNetwork createNetworkFromSubnetwork(PowerNetwork networkPrime, ArrayList<MechanicalTile> subnetwork) {
+		
+		long networkID = nextID++;
+		PowerNetwork network = new PowerNetwork(networkID);
+		for(MechanicalTile tile : subnetwork) {
+			
+			network.addNode(tile, true);
+			tile.setNetworkID(networkID);
+			networkPrime.removeNode(tile, true);
+		}
+		return network;
+	}
+	
+	
+	
+	/**
+	 * Triggers a power network update for the power network that given machine is attached to.
+	 * Because this will cause the entire power network to be iterated over it should not be call every tick.
+	 * 
+	 * @param tile The machine which is triggering a power network update
 	 */
 	public void updatePowerNetwork(MechanicalTile tile) {
+		
 		if(tile == null) return;
+		
 		if(tile.getNetworkID() > 0) universePowerNetworks.get(tile.getWorld()).get(tile.getNetworkID()).update();
 	}
 }

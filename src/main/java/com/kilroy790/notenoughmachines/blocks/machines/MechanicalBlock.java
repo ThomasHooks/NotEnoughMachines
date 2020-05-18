@@ -65,8 +65,8 @@ public abstract class MechanicalBlock extends Block {
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
 		
 		if(!worldIn.isRemote()) {
-			MechanicalTile te = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
-			if(te != null) NotEnoughMachines.AETHER.removeFromPowerNetwork(te, false);
+			MechanicalTile tile = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
+			if(tile != null) NotEnoughMachines.AETHER.removeFromPowerNetwork(tile);
 		}
 		
 		super.onBlockHarvested(worldIn, pos, state, player);

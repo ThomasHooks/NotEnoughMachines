@@ -61,7 +61,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	public void remove() {
 		
 		if(!world.isRemote) {
-			NotEnoughMachines.AETHER.removeFromPowerNetwork(this, false);
+			NotEnoughMachines.AETHER.removeFromPowerNetwork(this);
 		}
 		
 		super.remove();
@@ -197,14 +197,13 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	/**
 	 * Attaches this tile to a new power network.
+	 * This method should only be called by this machine's power network or a power network that is adding this machine.
 	 * 
 	 * @param id The new power network ID for this tile
-	 * @param isSilent True if changing the network ID should not cause an update
 	 */
-	public void setNetworkID(long id, boolean isSilent) {
+	public void setNetworkID(long id) {
 		
 		if(id > 0 && this.networkID != id) {
-			//if(this.networkID > 0) NotEnoughMachines.AETHER.removeFromPowerNetwork(this, isSilent);
 			this.networkID = id;
 			markDirty();
 		}
