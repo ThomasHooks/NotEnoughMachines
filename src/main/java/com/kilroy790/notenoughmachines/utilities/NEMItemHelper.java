@@ -1,5 +1,7 @@
 package com.kilroy790.notenoughmachines.utilities;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -16,7 +18,6 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class NEMItemHelper {
 
-	
 	public static void dropItemHandlerInventory(final IItemHandler handler, World world, BlockPos pos) {
 		if(handler == null) return;
 		for(int i = 0; i < handler.getSlots(); ++i) {
@@ -25,28 +26,31 @@ public class NEMItemHelper {
 	}
 	
 	
+	
+	@Nullable
 	public static void dropItemStack(World world, BlockPos pos, ItemStack stack) {
 		if(stack == null) return;
 		else InventoryHelper.spawnItemStack(world, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), stack);
 	}
 	
 	
+	
+	/**
+	 * Will try to push an item stack size of the given amount to the tile at the given block position
+	 * 
+	 * @param	world			the current world
+	 * 
+	 * @param	nextPos			position of the tile to push the item stack into
+	 * 
+	 * @param	facing			the direction that the tile is pushing items into
+	 * 
+	 * @param	itemHandler		the item handler for this tile
+	 * 
+	 * @param	index			the slot of the tile to pull from
+	 * 
+	 * @param	amount			the number of items in the item stack to push
+	 */
 	public static void pushToContainer(World world, BlockPos nextPos, Direction facing, ItemStackHandler itemHandler, int index, int amount) {
-		/*
-		 * Will try to push an item stack size of the given amount to the tile at the given block position
-		 * 
-		 * @param	world			the current world
-		 * 
-		 * @param	nextPos			position of the tile to push the item stack into
-		 * 
-		 * @param	facing			the direction that the tile is pushing items into
-		 * 
-		 * @param	itemHandler		the item handler for this tile
-		 * 
-		 * @param	index			the slot of the tile to pull from
-		 * 
-		 * @param	amount			the number of items in the item stack to push
-		 */
 
 		TileEntity nextTile = world.getTileEntity(nextPos);
 		if(nextTile != null && !itemHandler.getStackInSlot(index).isEmpty()) {
@@ -77,22 +81,23 @@ public class NEMItemHelper {
 	}
 	
 	
+	
+	/**
+	 * Will try to push an item stack size of the given amount to the tile at the given block position
+	 * 
+	 * @param	world			the current world
+	 * 
+	 * @param	nextPos			position of the tile to pull the item stack from
+	 * 
+	 * @param	facing			the direction that the tile is pulling the item stack from
+	 * 
+	 * @param	itemHandler		the item handler for this tile
+	 * 
+	 * @param	index			the slot of the tile to pull into
+	 * 
+	 * @param	amount			the number of items in the item stack to pull
+	 */
 	public static void pullFromContainer(World world, BlockPos nextPos, Direction facing, ItemStackHandler itemHandler, int index, int amount) {
-		/*
-		 * Will try to push an item stack size of the given amount to the tile at the given block position
-		 * 
-		 * @param	world			the current world
-		 * 
-		 * @param	nextPos			position of the tile to pull the item stack from
-		 * 
-		 * @param	facing			the direction that the tile is pulling the item stack from
-		 * 
-		 * @param	itemHandler		the item handler for this tile
-		 * 
-		 * @param	index			the slot of the tile to pull into
-		 * 
-		 * @param	amount			the number of items in the item stack to pull
-		 */
 
 		TileEntity nextTile = world.getTileEntity(nextPos);
 		if(nextTile != null) {
@@ -122,18 +127,19 @@ public class NEMItemHelper {
 	}
 	
 	
+	
+	/**
+	 * Will try to move an item stack size of the given amount from on item handler to another
+	 * 
+	 * @param	itemHandler1		the item handler where the item stack is moving from
+	 * 
+	 * @param	index				the slot of the tile to pull from
+	 * 
+	 * @param	amount				the number of items in the item stack to push
+	 * 
+	 * @param	itemHandler2		the item handler where the item stack is moving to
+	 */
 	public static void moveItemsInternally(ItemStackHandler itemHandler1, int index, int amount, ItemStackHandler itemHandler2) {
-		/*
-		 * Will try to move an item stack size of the given amount from on item handler to another
-		 * 
-		 * @param	itemHandler1		the item handler where the item stack is moving from
-		 * 
-		 * @param	index				the slot of the tile to pull from
-		 * 
-		 * @param	amount				the number of items in the item stack to push
-		 * 
-		 * @param	itemHandler2		the item handler where the item stack is moving to
-		 */
 		
 		ItemStack stackIn = itemHandler1.getStackInSlot(index).copy();
 		if(!stackIn.isEmpty() && stackIn.getCount() > 1) {

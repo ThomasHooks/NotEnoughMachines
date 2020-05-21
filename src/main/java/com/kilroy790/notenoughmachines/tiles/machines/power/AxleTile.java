@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
@@ -20,6 +21,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 public class AxleTile extends MechanicalTile {
 	
 	private Map<Direction.Axis, ArrayList<MechanicalInputOutput>> IO_LOOKUP = new HashMap<Direction.Axis, ArrayList<MechanicalInputOutput>>();
+	
+	private int timer = 0;
 	
 	public AxleTile() {
 		super(72, 0, MechanicalType.CHANNEL, TileEntityList.AXLE_TILE);
@@ -49,7 +52,13 @@ public class AxleTile extends MechanicalTile {
 	
 	
 	@Override
-	protected void tickCustom() {}
+	protected void tickCustom() {
+		if(timer > VALIDATE_TICK) {
+			NotEnoughMachines.logger.debug("Current Power Cap" + this.networkCapacity);
+			timer = 0;
+		}
+		else timer++;
+	}
 
 	
 	

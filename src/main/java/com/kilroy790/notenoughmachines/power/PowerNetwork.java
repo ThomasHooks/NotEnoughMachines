@@ -83,7 +83,7 @@ public class PowerNetwork {
 		int power = 0;		
 		
 		for(Entry<BlockPos, MechanicalTile> itr : nodeMap.entrySet()) {
-			switch(itr.getValue().getMechType()) {
+			switch(itr.getValue().getMachineType()) {
 			
 			case SOURCE:
 				power += itr.getValue().getCapacity();

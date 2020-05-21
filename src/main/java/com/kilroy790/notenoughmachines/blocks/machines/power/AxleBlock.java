@@ -39,7 +39,6 @@ public class AxleBlock extends MechanicalShaftBlock {
 	public static final int AXELAXISY = 0;
 	public static final int AXELAXISZ = 1;
 	
-	//private static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
 	
 
 	public AxleBlock(String name) {
@@ -50,7 +49,6 @@ public class AxleBlock extends MechanicalShaftBlock {
 				.harvestLevel(0));
 		
 		this.setRegistryName(name);
-		//this.setDefaultState(this.stateContainer.getBaseState().with(AXLE_DIRECTION, Integer.valueOf(1)).with(POWER, Integer.valueOf(3)));
 	}
 	
 	
@@ -93,13 +91,6 @@ public class AxleBlock extends MechanicalShaftBlock {
 	public ItemStack itemWhenDestroyed() {
 		int rand = (int)(Math.random() * 4.0D);
 		return new ItemStack(Items.STICK, 3 + rand);
-	}
-	
-	
-	
-	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
 	}
 }
 

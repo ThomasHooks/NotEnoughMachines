@@ -1,5 +1,7 @@
 package com.kilroy790.notenoughmachines.blocks.machines;
 
+import javax.annotation.Nullable;
+
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
@@ -24,14 +26,14 @@ public abstract class MechanicalBlock extends Block {
 	
 	
 	
-	/* 
+	/**
+	 * Breaks this machine and either drops the machine or destroys it
+	 * 
 	 * @param world, the current world
 	 * 
 	 * @param pos, The position of the machine
 	 * 
 	 * @param destroy, if true the machine is destroyed
-	 * 
-	 * Breaks this machine and either drops the machine or destroys it
 	 */
 	public void breakMachine(World world, BlockPos pos, Boolean destroy) {
 		if(world.isRemote) return;
@@ -50,9 +52,10 @@ public abstract class MechanicalBlock extends Block {
 	
 	
 	
-	/*
+	/**
 	 * @return The item stack that is dropped when this machine is broken
 	 */
+	@Nullable
 	abstract public ItemStack itemWhenDestroyed();
 	
 	
@@ -82,7 +85,7 @@ public abstract class MechanicalBlock extends Block {
 	
 	
 	@Override
-	public boolean hasTileEntity() {
+	public boolean hasTileEntity(BlockState state) {
 		return true;
 	}
 	

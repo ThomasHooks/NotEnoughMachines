@@ -31,5 +31,5 @@ public interface IHaveMechanicalPower {
 	/**
 	 * @return The mechanical power type of this machine
 	 */
-	MechanicalType getMechType();
+	MechanicalType getMachineType();
 }

@@ -17,16 +17,17 @@ import net.minecraft.util.Direction;
 
 
 abstract public class MechanicalTile extends NEMBaseTile implements ITickableTileEntity, IHaveMechanicalPower {
-
+	
 	protected long networkID = 0;
-	protected int powerCapacity = 0;
-	protected int powerLoad = 0;
+	private int powerCapacity = 0;
+	private int powerLoad = 0;
 	protected MechanicalType mechType = MechanicalType.CHANNEL;
 	protected int networkCapacity = 0;
 	protected int networkLoad = 0;
 	
-	private int validationTimer = 0;
-	private final static int VALIDATE_TICK = 20;
+	private int powerNetworkTimer = 0;
+	protected final static int VALIDATE_TICK = 20;
+	private boolean updateNetwork = false;
 	
 	
 	
@@ -69,13 +70,12 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	
-	//TODO
 	@Override
 	public void tick() {
 		
 		if(!world.isRemote()) {
-			if(this.validationTimer >= VALIDATE_TICK) validatePowerNetwork();
-			else this.validationTimer++;
+			if(this.powerNetworkTimer >= VALIDATE_TICK) validatePowerNetwork();
+			else this.powerNetworkTimer++;
 		}
 		
 		tickCustom();
@@ -90,9 +90,65 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	
-	//TODO
-	protected void  validatePowerNetwork() {
-		this.validationTimer = 0;
+	/**
+	 * Updates this machine's power network if its power state has changed
+	 */
+	private void  validatePowerNetwork() {
+		
+		if(this.updateNetwork) {
+			NotEnoughMachines.AETHER.updatePowerNetwork(this);
+			this.updateNetwork = false;
+		}
+		
+		this.powerNetworkTimer = 0;
+	}
+	
+	
+	
+	/**
+	 * Increases the power capacity of this machine by the given amount
+	 * 
+	 * @param capacity
+	 */
+	protected void increaseCapacity(int capacity) {
+		this.powerCapacity += Math.abs(capacity);
+		this.updateNetwork = true;
+	}
+	
+	
+	
+	/**
+	 * Decreases the power capacity of this machine by the given amount
+	 * 
+	 * @param capacity
+	 */
+	protected void decreaseCapacity(int capacity) {
+		this.powerCapacity -= Math.abs(capacity);
+		this.updateNetwork = true;
+	}
+	
+	
+	
+	/**
+	 * Decreases the power load of this machine by the given amount
+	 * 
+	 * @param capacity
+	 */
+	protected void decreaseLoad(int capacity) {
+		this.powerLoad -= Math.abs(capacity);
+		this.updateNetwork = true;
+	}
+	
+	
+	
+	/**
+	 * Increases the power load of this machine by the given amount
+	 * 
+	 * @param capacity
+	 */
+	protected void increaseLoad(int capacity) {
+		this.powerLoad += Math.abs(capacity);
+		this.updateNetwork = true;
 	}
 	
 	
@@ -182,6 +238,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		this.networkCapacity = currentCapacity;
 		this.networkLoad = currentLoad;
 		markDirty();
+		syncClient();
 	}
 	
 	
@@ -233,7 +290,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	@Override
-	public MechanicalType getMechType() {
+	public MechanicalType getMachineType() {
 		return this.mechType;
 	}
 }
