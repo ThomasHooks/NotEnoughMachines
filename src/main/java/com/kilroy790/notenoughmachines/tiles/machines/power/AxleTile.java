@@ -10,7 +10,6 @@ import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
 import com.kilroy790.notenoughmachines.power.MechanicalInputOutput;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
-
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Axis;
 import net.minecraft.util.math.AxisAlignedBB;

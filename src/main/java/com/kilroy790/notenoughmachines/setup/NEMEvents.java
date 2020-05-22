@@ -1,4 +1,6 @@
-package com.kilroy790.notenoughmachines;
+package com.kilroy790.notenoughmachines.setup;
+
+import com.kilroy790.notenoughmachines.NotEnoughMachines;
 
 import net.minecraft.world.IWorld;
 import net.minecraftforge.event.world.WorldEvent;
