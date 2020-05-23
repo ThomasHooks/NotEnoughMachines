@@ -177,30 +177,30 @@ public class PowerNetworkStack {
 	/**
 	 * Splits the prime power network into multiple power networks.
 	 * 
-	 * @param networkPrime
-	 * @param tileFrom
-	 * @param neighbors
+	 * @param networkPrime The power network that the machine is part of
+	 * @param tileOrigin The tile that is the origin of the network split
+	 * @param neighbors The machines that are neighboring origin machine
 	 */
-	private void splitPowerNetwork(PowerNetwork networkPrime, MechanicalTile tileFrom, ArrayList<MechanicalTile> neighbors) {
+	private void splitPowerNetwork(PowerNetwork networkPrime, MechanicalTile tileOrigin, ArrayList<MechanicalTile> neighbors) {
 				
 		//Find all subnetworks that are attached to the machine
 		ArrayList<ArrayList<MechanicalTile>> subnetworks = new ArrayList<ArrayList<MechanicalTile>>();
 		for(MechanicalTile tileNext : neighbors) {
 			
 			ArrayList<MechanicalTile> subnetwork = new ArrayList<MechanicalTile>();
-			findMachinesInSubnetwork(subnetwork, tileFrom, tileNext);
+			findMachinesInSubnetwork(subnetwork, tileOrigin, tileNext);
 			subnetworks.add(subnetwork);
 		}
 		
 		//The subnetwork with the most members will keep the original power network's ID
 		int indexOfLargestSubnetwork = 0;
-		for(int i = 1; i < subnetworks.size(); i++) {
+		for(int i = 0; i < subnetworks.size(); i++) {
 			if(subnetworks.get(i).size() > subnetworks.get(indexOfLargestSubnetwork).size()) indexOfLargestSubnetwork = i;
 		}
 		
 		//All other subnetworks will be put into their own new power network and removed from the prime power network
-		Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(tileFrom.getWorld());
-		for(int i = 1; i < subnetworks.size(); i++) {
+		Map<Long, PowerNetwork> worldPowerNetworks = universePowerNetworks.get(tileOrigin.getWorld());
+		for(int i = 0; i < subnetworks.size(); i++) {
 			
 			if(i == indexOfLargestSubnetwork) continue;
 			
@@ -213,18 +213,19 @@ public class PowerNetworkStack {
 	
 	
 	/**
+	 * Creates an array of machines by recursively looping through a power subnetwork
 	 * 
-	 * @param subnetwork
-	 * @param tileFrom
-	 * @param tileCurrent
+	 * @param subnetwork The array to populate with machines
+	 * @param tileFrom The starting machine
+	 * @param tileCurrent the current machine
 	 */
 	private void findMachinesInSubnetwork(ArrayList<MechanicalTile> subnetwork, MechanicalTile tileFrom, MechanicalTile tileCurrent) {
 		
+		if(subnetwork.contains(tileCurrent)) return;
+		
 		subnetwork.add(tileCurrent);
-		
+
 		ArrayList<MechanicalTile> neighbors = tileCurrent.getNeighbors();
-		if(neighbors.size() <= 1) return;
-		
 		for(MechanicalTile tileNext : neighbors) {
 			
 			if(tileNext == tileFrom) continue;
