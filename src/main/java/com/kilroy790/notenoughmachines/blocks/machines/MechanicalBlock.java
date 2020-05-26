@@ -8,6 +8,7 @@ import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -73,6 +74,12 @@ public abstract class MechanicalBlock extends Block {
 		}
 		
 		super.onBlockHarvested(worldIn, pos, state, player);
+	}
+	
+	
+	
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 	}
 	
 	

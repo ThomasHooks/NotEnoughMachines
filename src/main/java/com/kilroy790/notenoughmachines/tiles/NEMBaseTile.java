@@ -1,14 +1,11 @@
 package com.kilroy790.notenoughmachines.tiles;
 
-import com.kilroy790.notenoughmachines.api.power.MechanicalPowerProducer;
-
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.items.ItemStackHandler;
-
 
 
 
@@ -75,7 +72,7 @@ public abstract class NEMBaseTile extends TileEntity {
 	 * 16 will prevent neighbor reactions (e.g. fences connecting, observers pulsing).
 	 */
 	public void syncClient() {
-		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 2 | 4 | 16);
+		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 2 | 16);
 	}
 	
 	
@@ -93,12 +90,6 @@ public abstract class NEMBaseTile extends TileEntity {
 				markDirty();
 			}
 		};
-	}
-	
-	
-	
-	protected MechanicalPowerProducer makeMechanicalPowerHandler(int capacity, int maxReceived, int maxSent) {
-		return new MechanicalPowerProducer(capacity, maxReceived, maxSent);
 	}
 }
 

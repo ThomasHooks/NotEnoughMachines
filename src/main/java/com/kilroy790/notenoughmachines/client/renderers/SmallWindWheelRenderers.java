@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.client.renderers;
 
-import com.kilroy790.notenoughmachines.blocks.machines.AbstractGeneratorBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
 import com.kilroy790.notenoughmachines.client.models.AxleModel;
 import com.kilroy790.notenoughmachines.client.models.WindSailModel;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
@@ -39,7 +39,7 @@ public class SmallWindWheelRenderers extends TileEntityRenderer<SmallWindWheelTi
 		this.axleModel.translate(-0.5f, -0.5f, -0.5f);
 		
 		//Set the small wind wheels' to direction
-		Direction facing = tile.getBlockState().get(AbstractGeneratorBlock.FACING);
+		Direction facing = tile.getBlockState().get(MechanicalHorizontalBlock.FACING);
 		if (facing == Direction.NORTH) GlStateManager.rotatef(180.0f, 1.0f, 0.0f, 0.0f);
 		//by default it faces towards the south
 		else if (facing == Direction.EAST) GlStateManager.rotatef(90.0f, 0.0f, 1.0f, 0.0f);

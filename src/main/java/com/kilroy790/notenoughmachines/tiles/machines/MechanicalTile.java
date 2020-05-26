@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.power.IHaveMechanicalPower;
-import com.kilroy790.notenoughmachines.power.MechanicalInputOutput;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
 import net.minecraft.nbt.CompoundNBT;
@@ -12,6 +12,7 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
 
 
 
@@ -21,13 +22,16 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	protected long networkID = 0;
 	private int powerCapacity = 0;
 	private int powerLoad = 0;
-	protected MechanicalType mechType = MechanicalType.CHANNEL;
 	protected int networkCapacity = 0;
 	protected int networkLoad = 0;
+	protected MechanicalType mechType = MechanicalType.CHANNEL;
+	private float speed = 0.0f;
+	protected BlockPos driverPos = null;
 	
 	private int powerNetworkTimer = 0;
 	protected final static int VALIDATE_TICK = 20;
 	private boolean updateNetwork = false;
+	private boolean speedChanged = false;
 	
 	
 	
@@ -74,10 +78,18 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	public void tick() {
 		
 		if(!world.isRemote()) {
-			if(this.powerNetworkTimer >= VALIDATE_TICK) validatePowerNetwork();
+			if(this.powerNetworkTimer > VALIDATE_TICK) {
+				validatePowerNetwork();
+				this.powerNetworkTimer = 0;
+			}
 			else this.powerNetworkTimer++;
+			
+			if(!isPowered()) {
+				this.speed = 0;
+				syncClient();
+			}
+			propagateSpeed();
 		}
-		
 		tickCustom();
 	}
 	
@@ -99,8 +111,20 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 			NotEnoughMachines.AETHER.updatePowerNetwork(this);
 			this.updateNetwork = false;
 		}
+	}
+	
+	
+	
+	private void propagateSpeed() {
 		
-		this.powerNetworkTimer = 0;
+		if(speedChanged) {
+			for(MechanicalTile neighbor : getNeighbors()) {
+				
+				if(neighbor.getPos().equals(this.driverPos)) continue;
+				
+				neighbor.changeSpeed(this, this.speed);
+			}
+		}
 	}
 	
 	
@@ -108,9 +132,12 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	/**
 	 * Increases the power capacity of this machine by the given amount
 	 * 
-	 * @param capacity
+	 * @param capacity The amount to increase by
 	 */
 	protected void increaseCapacity(int capacity) {
+		
+		if(capacity == 0) return;
+		
 		this.powerCapacity += Math.abs(capacity);
 		this.updateNetwork = true;
 	}
@@ -120,9 +147,12 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	/**
 	 * Decreases the power capacity of this machine by the given amount
 	 * 
-	 * @param capacity
+	 * @param capacity The amount to decrease by
 	 */
 	protected void decreaseCapacity(int capacity) {
+		
+		if(capacity == 0) return;
+		
 		this.powerCapacity -= Math.abs(capacity);
 		this.updateNetwork = true;
 	}
@@ -130,12 +160,15 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	/**
-	 * Decreases the power load of this machine by the given amount
+	 * Sets the power capacity of this machine to the given amount
 	 * 
-	 * @param capacity
+	 * @param capacity This machine's new power capacity
 	 */
-	protected void decreaseLoad(int capacity) {
-		this.powerLoad -= Math.abs(capacity);
+	protected void setCapacity(int capacity) {
+		
+		if(capacity == this.powerCapacity) return;
+		
+		this.powerCapacity = Math.abs(capacity);
 		this.updateNetwork = true;
 	}
 	
@@ -144,10 +177,43 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	/**
 	 * Increases the power load of this machine by the given amount
 	 * 
-	 * @param capacity
+	 * @param load The amount to increase by
 	 */
-	protected void increaseLoad(int capacity) {
-		this.powerLoad += Math.abs(capacity);
+	protected void increaseLoad(int load) {
+		
+		if(load == 0) return;
+		
+		this.powerLoad += Math.abs(load);
+		this.updateNetwork = true;
+	}
+	
+	
+	
+	/**
+	 * Decreases the power load of this machine by the given amount
+	 * 
+	 * @param load The amount to decrease by
+	 */
+	protected void decreaseLoad(int load) {
+		
+		if(load == 0) return;
+		
+		this.powerLoad -= Math.abs(load);
+		this.updateNetwork = true;
+	}
+	
+	
+	
+	/**
+	 * Sets the power load of this machine to the given amount
+	 * 
+	 * @param load This machine's new power load
+	 */
+	protected void setLoad(int load) {
+		
+		if(load == this.powerLoad) return;
+		
+		this.powerLoad = Math.abs(load);
 		this.updateNetwork = true;
 	}
 	
@@ -158,12 +224,12 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	 * 
 	 * @return An array of this machine's I/O
 	 */
-	abstract public ArrayList<MechanicalInputOutput> getMechIO();
+	abstract public ArrayList<MechanicalContext> getIO();
 	
 	
 	
 	/**
-	 * Gets an array of neighboring machines that are aligned to this machine.
+	 * Gets an array of neighboring machines that are aligned Ie attached to this machine.
 	 * It is possible that the returned array is empty.
 	 * 
 	 * @return An array of neighboring machines to this machine
@@ -171,7 +237,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	public ArrayList<MechanicalTile> getNeighbors() {
 		
 		ArrayList<MechanicalTile> neighbors = new ArrayList<MechanicalTile>();
-		for(MechanicalInputOutput io : getMechIO()) {
+		for(MechanicalContext io : getIO()) {
 			
 			TileEntity tile = world.getTileEntity(io.getPos());
 			MechanicalTile mechTile = tile instanceof MechanicalTile ? (MechanicalTile)tile : null;
@@ -194,7 +260,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	 */
 	public boolean isAlignedWith(Direction facing, boolean isAxle) {
 		
-		for(MechanicalInputOutput io : getMechIO()) {
+		for(MechanicalContext io : getIO()) {
 			if(io.getFacing() == facing.getOpposite() && io.isAxle() == isAxle) return true;
 		}
 		return false;
@@ -209,6 +275,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		this.networkCapacity = compound.getInt("netcapacity");
 		this.powerLoad = compound.getInt("load");
 		this.networkLoad = compound.getInt("netload");
+		this.speed = compound.getFloat("speed");
 		this.mechType = MechanicalType.byName(compound.getString("mechtype"));
 	}
 	
@@ -221,6 +288,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		compound.putInt("netcapacity", this.networkCapacity);
 		compound.putInt("load", this.powerLoad);
 		compound.putInt("netload", this.networkLoad);
+		compound.putFloat("speed", this.speed);
 		compound.putString("mechtype", this.mechType.getName());
 		return compound;
 	}
@@ -278,6 +346,33 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	@Override
 	public int getCapacity() {
 		return this.mechType == MechanicalType.SOURCE ? this.powerCapacity : 0;
+	}
+	
+	
+	
+	@Override
+	public float getSpeed() {
+		return this.speed;
+	}
+	
+	
+	
+	@Override
+	public void changeSpeed(MechanicalTile driver, float speedIn) {
+		
+		if(speedIn == this.speed) return;
+		
+		this.speed = speedIn;
+		this.driverPos = driver.getPos();
+		this.speedChanged = true;
+		syncClient();
+	}
+	
+	
+	
+	@Override
+	public float getTorque() {
+		return getSpeed() != 0.0f ? 9.5488f * this.networkCapacity/getSpeed() : 0;
 	}
 	
 	

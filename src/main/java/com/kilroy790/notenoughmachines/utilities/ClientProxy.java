@@ -9,25 +9,43 @@ import net.minecraft.world.World;
 
 public class ClientProxy implements IProxy{
 
+	private static long tick = 0;
+	
 	@Override
-	public void init() {
-		
-//		ScreenManager.registerFactory(ContainerList.MILLSTONE_CONTAINER, MillstoneScreen::new);
-//		
-//		ScreenManager.registerFactory(ContainerList.FILTER_CONTAINER, FilterScreen::new);
-	}
+	public void init() {}
+	
 	
 	
 	@Override
 	public World getClientWorld() {
-		
 		return Minecraft.getInstance().world;
 	}
 
 
+	
 	@Override
 	public PlayerEntity getClientPlayer() {
-		
 		return Minecraft.getInstance().player;
 	}
+
+
+	
+	@Override
+	public float getClientTick() {
+		return (float)tick + Minecraft.getInstance().getRenderPartialTicks();
+	}
+
+	
+
+	@Override
+	public void tickClient() {
+		tick++;
+	}
 }
+
+
+
+
+
+
+

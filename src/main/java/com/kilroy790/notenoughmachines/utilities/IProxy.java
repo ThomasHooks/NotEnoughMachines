@@ -10,4 +10,8 @@ public interface IProxy {
 	World getClientWorld();
 	
 	PlayerEntity getClientPlayer();
+	
+	float getClientTick();
+	
+	void tickClient();
 }

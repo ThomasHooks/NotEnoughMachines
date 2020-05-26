@@ -115,9 +115,17 @@ public class PowerNetworkStack {
 				break;
 			}
 		}
+		
 		//Because there are no neighboring machines create a new power network
 		if(networkID == 0) {
-			networkID = nextID++;
+			//Because power networks are not saved in chunk or world data 
+			//it is possible for a new power network to overwrite an older 
+			//power network after the world has been reloaded
+			while(true) {
+				networkID = nextID++;
+				if(!worldPowerNetworks.containsKey(networkID)) break;
+			}
+			
 			PowerNetwork network = new PowerNetwork(networkID);
 			network.addNode(tile, false);
 			worldPowerNetworks.put(networkID, network);

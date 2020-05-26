@@ -17,6 +17,8 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockReader;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 
 
@@ -51,19 +53,15 @@ public class CreativePowerBoxBlock extends MechanicalBlock {
 	
 	
 	@Override
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip,
-			ITooltipFlag flagIn) {
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		
-		StringTextComponent powerText = new StringTextComponent("Outputs 1MW");
 		Style style = new Style();
-		
 		style.setColor(TextFormatting.AQUA);
 		style.setItalic(true);
+		StringTextComponent powerText = new StringTextComponent("How did you get this?");
 		powerText.setStyle(style);
-		
 		tooltip.add(powerText);
-	
-		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 }
 

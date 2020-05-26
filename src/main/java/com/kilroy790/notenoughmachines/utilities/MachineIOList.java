@@ -2,7 +2,9 @@ package com.kilroy790.notenoughmachines.utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import com.kilroy790.notenoughmachines.power.MechanicalInputOutput;
+import java.util.HashMap;
+
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -11,93 +13,124 @@ import net.minecraft.util.math.BlockPos;
 
 
 public class MachineIOList {
+
+	/**
+	 * Creates a new 2-way mechanical axle I/O lookup map. Use this when the machine's axis is either unknown or can change.
+	 * 
+	 * @param pos The position of the machine
+	 * 
+	 * @return New 2-way mechanical axle I/O lookup map
+	 */
+	public static HashMap<Direction.Axis, ArrayList<MechanicalContext>> monoAxle(BlockPos pos) {
+
+		HashMap<Direction.Axis, ArrayList<MechanicalContext>> io = new HashMap<Direction.Axis, ArrayList<MechanicalContext>>();
+		io.put(Direction.Axis.X, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true), 
+						new MechanicalContext(pos.west(), Direction.WEST, true))));
+		io.put(Direction.Axis.Y, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.up(), Direction.UP, true), 
+						new MechanicalContext(pos.down(), Direction.DOWN, true))));
+		io.put(Direction.Axis.Z, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.north(), Direction.NORTH, true), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, true))));
+		return io;
+	}
+	
+	
 	
 	/**
+	 * Creates a new 2-way mechanical axle I/O array. The axis must be know ahead of time and must never change.
+	 * 
 	 * @param pos The position of the machine
 	 * @param axis The axis that the machine is aligned with
 	 * 
-	 * @return New 2-way axle mechanical I/O array
+	 * @return New 2-way mechanical axle I/O array
 	 */
-	public static ArrayList<MechanicalInputOutput> monoAxle(BlockPos pos, Direction.Axis axis) {
-		
-		ArrayList<MechanicalInputOutput> io;
+	public static ArrayList<MechanicalContext> monoAxle(BlockPos pos, Direction.Axis axis) {
+
+		ArrayList<MechanicalContext> io;
 		switch(axis) {
+		
 		case X:
-			io = new ArrayList<MechanicalInputOutput>(Arrays.asList(new MechanicalInputOutput(pos.east(), Direction.EAST, true), 
-					new MechanicalInputOutput(pos.west(), Direction.WEST, true)));
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+					new MechanicalContext(pos.east(), Direction.EAST, true), 
+					new MechanicalContext(pos.west(), Direction.WEST, true)));
 			break;
+
 		case Y:
-			io = new ArrayList<MechanicalInputOutput>(Arrays.asList(new MechanicalInputOutput(pos.up(), Direction.UP, true), 
-					new MechanicalInputOutput(pos.down(), Direction.DOWN, true)));
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+					new MechanicalContext(pos.up(), Direction.UP, true), 
+					new MechanicalContext(pos.down(), Direction.DOWN, true)));
 			break;
+
 		case Z:
-			io = new ArrayList<MechanicalInputOutput>(Arrays.asList(new MechanicalInputOutput(pos.north(), Direction.NORTH, true), 
-					new MechanicalInputOutput(pos.south(), Direction.SOUTH, true)));
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+					new MechanicalContext(pos.north(), Direction.NORTH, true), 
+					new MechanicalContext(pos.south(), Direction.SOUTH, true)));
 			break;
+
 		default:
-			io = new ArrayList<MechanicalInputOutput>();
+			io = new ArrayList<MechanicalContext>();
 			break;
-		
 		}
-		
 		return io;
 	}
-	
-	
-	
+
+
+
 	/**
-	 * @param pos The position of the machine
-	 * @param axis The axis that the machine does not have an I/O for
+	 * Creates a new 4-way mechanical axle I/O lookup map. Use this when the machine's axis is either unknown or can change.
 	 * 
-	 * @return New 4-way axle mechanical I/O array
+	 * @param pos The position of the machine
+	 * 
+	 * @return New 4-way mechanical axle I/O lookup map
 	 */
-	public static ArrayList<MechanicalInputOutput> biAxle(BlockPos pos, Direction.Axis axis) {
-		
-		ArrayList<MechanicalInputOutput> io;
-		switch(axis) {
-		case X:
-			io = new ArrayList<MechanicalInputOutput>(Arrays.asList(new MechanicalInputOutput(pos.up(), Direction.UP, true), 
-					new MechanicalInputOutput(pos.down(), Direction.DOWN, true), 
-					new MechanicalInputOutput(pos.north(), Direction.NORTH, true), 
-					new MechanicalInputOutput(pos.south(), Direction.SOUTH, true)));
-			break;
-		case Y:
-			io = new ArrayList<MechanicalInputOutput>(Arrays.asList(new MechanicalInputOutput(pos.east(), Direction.EAST, true), 
-					new MechanicalInputOutput(pos.west(), Direction.WEST, true), 
-					new MechanicalInputOutput(pos.north(), Direction.NORTH, true), 
-					new MechanicalInputOutput(pos.south(), Direction.SOUTH, true)));
-			break;
-		case Z:
-			io = new ArrayList<MechanicalInputOutput>(Arrays.asList(new MechanicalInputOutput(pos.east(), Direction.EAST, true), 
-					new MechanicalInputOutput(pos.west(), Direction.WEST, true), 
-					new MechanicalInputOutput(pos.up(), Direction.UP, true), 
-					new MechanicalInputOutput(pos.down(), Direction.DOWN, true)));
-			break;
-		default:
-			io = new ArrayList<MechanicalInputOutput>();
-			break;
-		
-		}
-		
+	public static HashMap<Direction.Axis, ArrayList<MechanicalContext>> biAxle(BlockPos pos) {
+
+		HashMap<Direction.Axis, ArrayList<MechanicalContext>> io = new HashMap<Direction.Axis, ArrayList<MechanicalContext>>();
+		io.put(Direction.Axis.X, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.up(), Direction.UP, true), 
+						new MechanicalContext(pos.down(), Direction.DOWN, true), 
+						new MechanicalContext(pos.north(), Direction.NORTH, true), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, true))));
+		io.put(Direction.Axis.Y, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true), 
+						new MechanicalContext(pos.west(), Direction.WEST, true), 
+						new MechanicalContext(pos.north(), Direction.NORTH, true), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, true))));
+		io.put(Direction.Axis.Z, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true), 
+						new MechanicalContext(pos.west(), Direction.WEST, true), 
+						new MechanicalContext(pos.up(), Direction.UP, true), 
+						new MechanicalContext(pos.down(), Direction.DOWN, true))));
 		return io;
 	}
-	
-	
-	
+
+
+
 	/**
+	 * Creates a new 6-way mechanical axle I/O array.
+	 * 
 	 * @param pos The position of the machine
 	 * 
-	 * @return New 6-way axle mechanical I/O array
+	 * @return New 6-way mechanical axle I/O array
 	 */
-	public static ArrayList<MechanicalInputOutput> triAxle(BlockPos pos) {
-		
-		ArrayList<MechanicalInputOutput> io = new ArrayList<MechanicalInputOutput>(
-				Arrays.asList(new MechanicalInputOutput(pos.east(), Direction.EAST, true),
-						new MechanicalInputOutput(pos.west(), Direction.WEST, true),
-						new MechanicalInputOutput(pos.up(), Direction.UP, true),
-						new MechanicalInputOutput(pos.down(), Direction.DOWN, true),
-						new MechanicalInputOutput(pos.south(), Direction.SOUTH, true),
-						new MechanicalInputOutput(pos.north(), Direction.NORTH, true)));
+	public static ArrayList<MechanicalContext> triAxle(BlockPos pos) {
+
+		ArrayList<MechanicalContext> io = new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true),
+						new MechanicalContext(pos.west(), Direction.WEST, true),
+						new MechanicalContext(pos.up(), Direction.UP, true),
+						new MechanicalContext(pos.down(), Direction.DOWN, true),
+						new MechanicalContext(pos.south(), Direction.SOUTH, true),
+						new MechanicalContext(pos.north(), Direction.NORTH, true)));
 		return io;
 	}
 }

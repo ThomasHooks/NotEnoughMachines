@@ -2,6 +2,7 @@ package com.kilroy790.notenoughmachines.blocks.machines.processing;
 
 import java.util.Random;
 
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -12,6 +13,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -33,34 +36,23 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 
 
-public class MillstoneBlock extends Block{
+public class MillstoneBlock extends MechanicalBlock {
 
+	public static final BooleanProperty LIT = BlockStateProperties.LIT;
+	
+	
 	public MillstoneBlock(String name) {
 		super(Properties.create(Material.ROCK)
 				.sound(SoundType.STONE)
 				.hardnessAndResistance(2.8f, 3.0f)
 				.harvestTool(ToolType.PICKAXE)
 				.harvestLevel(0));
+		
 		this.setRegistryName(name);
+		
 		this.setDefaultState(this.stateContainer.getBaseState().with(LIT, Boolean.valueOf(false)));
 	}
 
-	
-	public static final BooleanProperty LIT = BlockStateProperties.LIT;
-	
-	
-	@Override
-	public boolean hasTileEntity(BlockState state) {
-		
-		return true;
-	}
-	
-	
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		
-		return new MillstoneTile();
-	}
 	
 	
 	@Override
@@ -80,6 +72,7 @@ public class MillstoneBlock extends Block{
 	}
 	
 	
+	
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
 		/*
@@ -96,6 +89,7 @@ public class MillstoneBlock extends Block{
 	}
 	
 	
+	
 	@OnlyIn(Dist.CLIENT) 
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		/**
@@ -107,7 +101,7 @@ public class MillstoneBlock extends Block{
 		if (stateIn.get(LIT)) {
   
 			double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
-			double d1 = (double)pos.getY() + 1.0D + (rand.nextDouble() - 0.5D) * 0.2D;
+			double d1 = (double)pos.getY() + 0.6D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
 			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 	        
@@ -116,8 +110,31 @@ public class MillstoneBlock extends Block{
 	}
 	
 	
+	
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(LIT);
 	}
+
+	
+
+	@Override
+	public ItemStack itemWhenDestroyed() {
+		int rand = (int)(Math.random() * 4.0D);
+		return new ItemStack(Items.SMOOTH_STONE_SLAB, rand + 1);
+	}
+	
+	
+	
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		return new MillstoneTile();
+	}
 }
+
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 package com.kilroy790.notenoughmachines.power;
 
 import com.kilroy790.notenoughmachines.api.power.MechanicalType;
+import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 
 
 
@@ -15,9 +16,37 @@ public interface IHaveMechanicalPower {
 	
 	
 	/**
-	 * @return The amount of energy that can be stored by the machine
+	 * @return The amount of energy that can be generated or stored by the machine
 	 */
 	int getCapacity();
+	
+	
+	
+	/**
+	 * Gets this machine's angular velocity in revolutions per second. 
+	 * If the returned value is positive then this machine is rotating counterclockwise, and clockwise if negative.
+	 * 
+	 * @return The angular velocity of this machine in revolutions per second
+	 */
+	float getSpeed();
+	
+	
+	
+	/**
+	 * Changes this machine's angular velocity to the given amount.
+	 * Unit is in revolutions per second.
+	 * 
+	 * @param driver The machine the change is coming from
+	 * @param speedIn This machine's new angular velocity
+	 */
+	void changeSpeed(MechanicalTile driver, float speedIn);
+	
+	
+	
+	/**
+	 * @return Gets this machine's torque.
+	 */
+	float getTorque();
 	
 	
 	
@@ -33,3 +62,10 @@ public interface IHaveMechanicalPower {
 	 */
 	MechanicalType getMachineType();
 }
+
+
+
+
+
+
+

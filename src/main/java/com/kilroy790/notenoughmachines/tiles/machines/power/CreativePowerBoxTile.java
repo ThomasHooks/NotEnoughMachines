@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.api.power.MechanicalType;
-import com.kilroy790.notenoughmachines.power.MechanicalInputOutput;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
@@ -13,7 +13,7 @@ import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 public class CreativePowerBoxTile extends MechanicalTile {
 
-	private ArrayList<MechanicalInputOutput> io;
+	private ArrayList<MechanicalContext> io;
 	
 	public CreativePowerBoxTile() {
 		super(5000, 0, MechanicalType.SOURCE, TileEntityList.CREATIVEPOWERBOX);
@@ -35,7 +35,7 @@ public class CreativePowerBoxTile extends MechanicalTile {
 	
 	
 	@Override
-	public ArrayList<MechanicalInputOutput> getMechIO() {
+	public ArrayList<MechanicalContext> getIO() {
 		return io;
 	}
 }

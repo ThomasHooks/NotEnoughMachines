@@ -1,78 +1,82 @@
 package com.kilroy790.notenoughmachines.tiles.machines.power;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import com.kilroy790.notenoughmachines.api.lists.BlockList;
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
-import com.kilroy790.notenoughmachines.api.power.CapabilityMechanical;
-import com.kilroy790.notenoughmachines.api.power.IMechanicalPower;
-import com.kilroy790.notenoughmachines.api.power.MechanicalPowerProducer;
+import com.kilroy790.notenoughmachines.api.power.MechanicalType;
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
-import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
+import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
 
 
 
 
-public class SmallWindWheelTile extends NEMBaseTile implements ITickableTileEntity{
+public class SmallWindWheelTile extends MechanicalTile {
 
-	
 	protected float angle = 0.0f;
-	
 	protected float speedModifier = 1.0f;
-	
 	protected boolean isRotating = true;
 	
-	private static final int POWERCAPACITY = 11520;
-	private static final int MAXPOWERRECEIVED = 0;
-	private static final int MAXPOWERSENT = 288;
-	private static final int POWERPRODUCED = 144;
-	private MechanicalPowerProducer powerOutput;
-	private LazyOptional<IMechanicalPower> powerOutputHandler = LazyOptional.of(() -> powerOutput);
+	private Map<Direction.Axis, ArrayList<MechanicalContext>> io;
 	
 	public static final int WINDWHEEL_RADIUS = 7;
 	
 	
+	
 	public SmallWindWheelTile() {
-		super(TileEntityList.SMALLWINDWHEEL);
-		
-		powerOutput = makeMechanicalPowerHandler(POWERCAPACITY, MAXPOWERRECEIVED, MAXPOWERSENT);
+		super(200, 0, MechanicalType.SOURCE, TileEntityList.SMALLWINDWHEEL);
 	}
+	
 	
 	
 	@Override
-	public void tick() {
-		//there are ~20 tick per second
+	public void onLoad() {
+		io = MachineIOList.monoAxle(pos);
+		super.onLoad();
+	}
+
+
+
+	@Override
+	protected void tickCustom() {
 		
-		if(world.getGameTime()%40 == 1 && !world.isRemote) this.isRotating = this.validateArea();
-		
-		if(isRotating) {
-			this.updateWindWheelAngle();
-			this.generatePower();
+		if(!world.isRemote()) {
+			if(world.getGameTime()%40 == 1) this.isRotating = validateArea();
+			
+			if(isRotating) {
+				updateWindWheelAngle();
+				//setCapacity((int)(200 * this.speedModifier));
+				changeSpeed(this, 20.0f * this.speedModifier);
+			}
+			else changeSpeed(this, 0.0f);//setCapacity(0);
 		}
-		this.syncClient();
 	}
 	
 	
+	
+	//TODO: make the aabb determined on the wind wheel's direction
 	@Override
 	public AxisAlignedBB getRenderBoundingBox() {
-		//TODO make the aabb determined on the wind wheel's direction
-		//this works for the moment but it could be made more efficient as the aabb is a large cube around where the wind wheel could be
-		AxisAlignedBB boundingBox = new AxisAlignedBB((double)pos.getX() - (7.0f * 16.0f), (double)pos.getY() - (7.0f * 16.0f), (double)pos.getZ() - (7.0f * 16.0f), 
-													  (double)pos.getX() + (7.0f * 16.0f), (double)pos.getY() + (7.0f * 16.0f), (double)pos.getZ() + (7.0f * 16.0f));
-		return boundingBox;
+		return new AxisAlignedBB((double)pos.getX() - (7.0f * 16.0f), 
+								 (double)pos.getY() - (7.0f * 16.0f), 
+								 (double)pos.getZ() - (7.0f * 16.0f), 
+								 (double)pos.getX() + (7.0f * 16.0f), 
+								 (double)pos.getY() + (7.0f * 16.0f), 
+								 (double)pos.getZ() + (7.0f * 16.0f));
 	}
+	
 	
 	
 	protected void updateWindWheelAngle() {
-		
-		//Only update on the server side
-		if(world.isRemote) return;
 		
 		//Modify wind wheel speed based on the weather
 		if(world.isRaining()) speedModifier = 1.0f + world.getThunderStrength(1.0f);
@@ -81,35 +85,17 @@ public class SmallWindWheelTile extends NEMBaseTile implements ITickableTileEnti
 		this.angle += 4.0f * speedModifier;
 		
 		if(this.angle > 360.0f)this.angle = 0.0f;
+		
+		syncClient();
 	}
 	
 	
-	protected void generatePower() {
-		
-		//only do on the server side
-		if(world.isRemote) return;
-		
-		powerOutput.producePower(POWERPRODUCED * (int)speedModifier, false);
-		
-		//check if the block behind has a tile entity that has a mechanical power capability
-		//then send that block power if it can also receive power
-		Direction facing = this.getBlockState().get(SmallWindWheelBlock.FACING).getOpposite();
-		if(world.getBlockState(pos.offset(facing)).hasTileEntity()){
-			LazyOptional<IMechanicalPower> cap = world.getTileEntity(pos.offset(facing)).getCapability(CapabilityMechanical.MECHANICAL, facing.getOpposite());
-			
-			cap.ifPresent(h -> {
-				//send power to the receiver
-				int overFlow = MAXPOWERSENT - h.receivePower(powerOutput.sendPower(POWERPRODUCED * (int)speedModifier, false), false);
-
-				//add the overflow power back into the power source
-				powerOutput.producePower(overFlow, false);
-			});
-		}
-	}
 	
-	
+	/**
+	 * @return True if the area is valid
+	 */
 	public boolean validateArea() {
-		//@return true if the area is valid, false otherwise
+		
 		
 		boolean valid = false;
 		if(world.canBlockSeeSky(pos) && world.getBlockState(pos).getBlock() == BlockList.SMALLWINDWHEEL) {
@@ -141,52 +127,43 @@ public class SmallWindWheelTile extends NEMBaseTile implements ITickableTileEnti
 	}
 	
 	
+	
+	/**
+	 * @return The angle of the wind sail in radians
+	 */
 	public float getWindSailAngle() {
-		//@return	the angle of the wind sail in radians
 		return ((float)Math.PI * this.angle)/180.0f;
 	}
 	
-	
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		//if(cap == CapabilityMechanical.MECHANICAL) return powerOutputHandler.cast();
-		return super.getCapability(cap, side);
-	}
-	
-	
-	@Override
-	public void read(CompoundNBT compound) {
-		this.powerOutput.setStoredEnergy(compound.getInt("storedpower"));
-		super.read(compound);
-	}
 	
 	
 	@Override
 	protected void readCustom(CompoundNBT compound) {
 		this.angle = compound.getFloat("angle");
 		this.isRotating = compound.getBoolean("rotating");
+		super.readCustom(compound);
 	}
 	
 	
-	@Override
-	public CompoundNBT write(CompoundNBT compound) {
-		compound.putInt("storedpower", this.powerOutput.getStoredEngergy());
-		compound = super.write(compound);
-		return compound;
-	}
-
-
+	
 	@Override
 	protected CompoundNBT writeCustom(CompoundNBT compound) {
 		compound.putFloat("angle", this.angle);
 		compound.putBoolean("rotating", this.isRotating);
-		return compound;
+		return super.writeCustom(compound);
 	}
-	
-	
+
+
+
 	@Override
-	public void remove() {
-		super.remove();
-		this.powerOutputHandler.invalidate();
+	public ArrayList<MechanicalContext> getIO() {
+		return io.get(getBlockState().get(MechanicalHorizontalBlock.FACING).getAxis());
 	}
 }
+
+
+
+
+
+
+
