@@ -80,6 +80,13 @@ public abstract class MechanicalBlock extends Block {
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+		
+		if(!worldIn.isRemote()) {
+			MechanicalTile tile = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
+			if(tile != null) {
+				
+			}
+		}
 	}
 	
 	

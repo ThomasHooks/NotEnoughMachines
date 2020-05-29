@@ -2,7 +2,7 @@ package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
 import java.util.Random;
 
-import com.kilroy790.notenoughmachines.blocks.machines.AbstractItemConduitBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ItemConduitBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.ItemPusherTile;
 
 import net.minecraft.block.Block;
@@ -23,7 +23,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class ItemPusherBlock extends AbstractItemConduitBlock {
+public class ItemPusherBlock extends ItemConduitBlock {
 	
 	
 	public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;

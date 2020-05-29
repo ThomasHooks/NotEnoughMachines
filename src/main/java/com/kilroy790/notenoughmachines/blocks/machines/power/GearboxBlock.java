@@ -10,8 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -22,11 +20,9 @@ import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -64,28 +60,25 @@ public class GearboxBlock extends MechanicalBlock {
 	
 	
 	
-	/**
-	 * Called when this block is right-clicked by the player
-	 */
-	@Override
-	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-		
-		if (player.abilities.allowEdit && player.getHeldItemMainhand().isEmpty()) {
-			
-			BlockState oldState = world.getBlockState(pos);
-			world.setBlockState(pos, state.with(AXIS, getFacingFromEntity(pos, player).getAxis()).with(POWERED, world.getBlockState(pos).get(POWERED)), 2|1);
-			
-			double d0 = (double)pos.getX() + 0.5D;
-			double d1 = (double)pos.getY() + 0.5D;
-			double d2 = (double)pos.getZ() + 0.5D;
-			world.playSound(d0, d1, d2, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 0.5F, 1.0F, false);
-			
-			world.notifyBlockUpdate(pos, oldState, world.getBlockState(pos), 2|1);
-			
-			return true;
-		}
-		else return false;
-	}
+//	@Override
+//	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+//		
+//		if (player.abilities.allowEdit && player.getHeldItemMainhand().isEmpty()) {
+//			
+//			BlockState oldState = world.getBlockState(pos);
+//			world.setBlockState(pos, state.with(AXIS, getFacingFromEntity(pos, player).getAxis()).with(POWERED, world.getBlockState(pos).get(POWERED)), 2|1);
+//			
+//			double d0 = (double)pos.getX() + 0.5D;
+//			double d1 = (double)pos.getY() + 0.5D;
+//			double d2 = (double)pos.getZ() + 0.5D;
+//			world.playSound(d0, d1, d2, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 0.5F, 1.0F, false);
+//			
+//			world.notifyBlockUpdate(pos, oldState, world.getBlockState(pos), 2|1);
+//			
+//			return true;
+//		}
+//		else return false;
+//	}
 	
 	
 	
@@ -113,9 +106,9 @@ public class GearboxBlock extends MechanicalBlock {
 	
 	
 	
-	private static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
-		return Direction.getFacingFromVector((float) (entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
-	}
+//	private static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
+//		return Direction.getFacingFromVector((float) (entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
+//	}
 	
 	
 	

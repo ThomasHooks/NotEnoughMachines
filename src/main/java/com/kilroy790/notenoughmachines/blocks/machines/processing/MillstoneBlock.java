@@ -2,11 +2,13 @@ package com.kilroy790.notenoughmachines.blocks.machines.processing;
 
 import java.util.Random;
 
+import com.kilroy790.notenoughmachines.api.lists.ShapeList;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -25,6 +27,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -112,6 +116,13 @@ public class MillstoneBlock extends MechanicalBlock {
 	
 	
 	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+		return ShapeList.MILLSTONE;
+	}
+	
+	
+	
+	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(LIT);
 	}
@@ -129,6 +140,13 @@ public class MillstoneBlock extends MechanicalBlock {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new MillstoneTile();
+	}
+	
+	
+	
+	@Override
+	public BlockRenderType getRenderType(BlockState state) { 
+		return BlockRenderType.MODEL;
 	}
 }
 

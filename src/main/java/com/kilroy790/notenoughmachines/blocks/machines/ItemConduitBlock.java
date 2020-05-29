@@ -27,7 +27,7 @@ import net.minecraftforge.items.IItemHandler;
 
 
 
-public abstract class AbstractItemConduitBlock extends Block {
+public abstract class ItemConduitBlock extends Block {
 
 	
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
@@ -54,7 +54,7 @@ public abstract class AbstractItemConduitBlock extends Block {
 	protected static final VoxelShape TUBE_DOWN_SHAPE = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D);
 	
 	
-	public AbstractItemConduitBlock(Properties properties) {
+	public ItemConduitBlock(Properties properties) {
 		super(properties);
 	}
 

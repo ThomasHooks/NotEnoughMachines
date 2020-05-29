@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
-import com.kilroy790.notenoughmachines.blocks.machines.AbstractItemConduitBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.ItemConduitBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.ClosedChuteTile;
 
 import net.minecraft.block.Block;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 
 
-public class ClosedChuteBlock extends AbstractItemConduitBlock {
+public class ClosedChuteBlock extends ItemConduitBlock {
 	 
 	 
 	public ClosedChuteBlock(Properties properties, String name) {

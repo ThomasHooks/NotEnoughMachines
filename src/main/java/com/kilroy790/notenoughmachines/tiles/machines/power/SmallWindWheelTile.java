@@ -79,8 +79,11 @@ public class SmallWindWheelTile extends MechanicalTile {
 	protected void updateWindWheelAngle() {
 		
 		//Modify wind wheel speed based on the weather
-		if(world.isRaining()) speedModifier = 1.0f + world.getThunderStrength(1.0f);
-		else speedModifier = 1.0f;
+		if(world.getGameTime()%40 == 1) {
+			if(world.isThundering()) speedModifier = 2.0f;
+			else if(world.isRaining()) speedModifier = 1.25f;
+			else speedModifier = 1.0f;
+		}
 		
 		this.angle += 4.0f * speedModifier;
 		
