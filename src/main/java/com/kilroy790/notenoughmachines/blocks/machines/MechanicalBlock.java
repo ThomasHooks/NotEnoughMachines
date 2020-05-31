@@ -15,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 
 
@@ -59,6 +60,13 @@ public abstract class MechanicalBlock extends Block {
 	@Nullable
 	abstract public ItemStack itemWhenDestroyed();
 	
+	
+	
+	@Override
+	public ToolType getHarvestTool(BlockState state) {
+		return null;
+	}
+
 	
 	
 	/*

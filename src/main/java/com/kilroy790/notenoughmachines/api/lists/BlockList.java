@@ -13,6 +13,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.TubWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 
 import net.minecraftforge.registries.ObjectHolder;
@@ -34,6 +35,9 @@ public class BlockList {
 	
 	@ObjectHolder("notenoughtmachines:smallwindwheel")
 	public static SmallWindWheelBlock SMALLWINDWHEEL;
+	
+	@ObjectHolder("notenoughtmachines:tubwheel")
+	public static TubWheelBlock TUBWHEEL;
 	
 	@ObjectHolder("notenoughtmachines:gearbox")
 	public static GearboxBlock GEARBOX;

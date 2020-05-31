@@ -79,13 +79,14 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		
 		if(!world.isRemote()) {
 			if(this.powerNetworkTimer > VALIDATE_TICK) {
-				validatePowerNetwork();
+				updatePowerNetwork();
 				this.powerNetworkTimer = 0;
 			}
 			else this.powerNetworkTimer++;
 			
 			if(!isPowered()) {
 				this.speed = 0;
+				markDirty();
 				syncClient();
 			}
 			propagateSpeed();
@@ -105,11 +106,12 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	/**
 	 * Updates this machine's power network if its power state has changed
 	 */
-	private void  validatePowerNetwork() {
+	private void  updatePowerNetwork() {
 		
 		if(this.updateNetwork) {
 			NotEnoughMachines.AETHER.updatePowerNetwork(this);
 			this.updateNetwork = false;
+			markDirty();
 		}
 	}
 	
@@ -365,6 +367,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		this.speed = speedIn;
 		this.driverPos = driver.getPos();
 		this.speedChanged = true;
+		markDirty();
 		syncClient();
 	}
 	

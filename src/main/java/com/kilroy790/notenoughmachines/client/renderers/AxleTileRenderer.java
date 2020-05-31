@@ -27,6 +27,7 @@ public class AxleTileRenderer extends TileEntityRenderer<AxleTile> {
 	
 	@Override
 	public void render(AxleTile te, double x, double y, double z, float partialTicks, int destroyStage) {
+		
 		GlStateManager.pushMatrix();
 
 		GlStateManager.translatef((float)x, (float)y, (float)z);
@@ -48,9 +49,8 @@ public class AxleTileRenderer extends TileEntityRenderer<AxleTile> {
 		}
 		GlStateManager.translatef(-0.5f, -0.5f, -0.5f);
 		
-		//TODO: move this into the Axle tile and pass in the speed (rpm) instead
 		float tick = NotEnoughMachines.proxy.getClientTick();
-		float speed = te.getSpeed();//15.0f
+		float speed = te.getSpeed();
 		float angle = (tick * speed * 0.3f) % 360;
 		angle = angle/180f * (float)Math.PI;
 		
@@ -60,6 +60,5 @@ public class AxleTileRenderer extends TileEntityRenderer<AxleTile> {
 		this.model.render(SCALE);
 		
 		GlStateManager.popMatrix();
-		tick++;
 	}
 }

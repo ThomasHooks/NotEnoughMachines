@@ -21,6 +21,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.TubWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 import com.kilroy790.notenoughmachines.client.gui.FilterScreen;
 import com.kilroy790.notenoughmachines.client.gui.MillstoneScreen;
@@ -29,6 +30,7 @@ import com.kilroy790.notenoughmachines.client.renderers.AxleTileRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.ChuteRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.MillstoneRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
+import com.kilroy790.notenoughmachines.client.renderers.TubWheelRenderer;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
@@ -45,6 +47,7 @@ import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.TubWheelTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 import com.kilroy790.notenoughmachines.utilities.ClientProxy;
@@ -120,12 +123,14 @@ public class NotEnoughMachines {
 		logger.info("Registering Small Wind Wheel TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(SmallWindWheelTile.class, new SmallWindWheelRenderers());
 		
+		logger.info("Registering Tub Wheel TESR");
+		ClientRegistry.bindTileEntitySpecialRenderer(TubWheelTile.class, new TubWheelRenderer());
+		
 		logger.info("Registering Chute TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(ChuteTile.class, new ChuteRenderer());
 		
 		logger.info("Registering Axle TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(AxleTile.class, new AxleTileRenderer());
-		
 		
 		logger.info("Registering Millstone TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(MillstoneTile.class, new MillstoneRenderer());
@@ -181,6 +186,14 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering SmallWindWheelBlock");
 			event.getRegistry().register(BlockList.SMALLWINDWHEEL = new SmallWindWheelBlock("smallwindwheel"));
+			
+			logger.info("Registering Tub Wheel Block");
+			event.getRegistry().register(BlockList.TUBWHEEL = new TubWheelBlock(Block.Properties
+					.create(Material.WOOD)
+					.hardnessAndResistance(1.8f, 2.0f)
+					.harvestTool(ToolType.AXE)
+					.harvestLevel(0)
+					.sound(SoundType.WOOD), "tubwheel"));
 			
 			logger.info("Registering GearboxBlock");
 			event.getRegistry().register(BlockList.GEARBOX = new GearboxBlock("gearbox"));
@@ -284,6 +297,9 @@ public class NotEnoughMachines {
 			logger.info("Registering SmallWindWheelBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.SMALLWINDWHEEL, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.SMALLWINDWHEEL.getRegistryName()));
 			
+			logger.info("Registering Tub Wheel BlockItem");
+			event.getRegistry().register(new BlockItem(BlockList.TUBWHEEL, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.TUBWHEEL.getRegistryName()));
+			
 			logger.info("Registering GearboxBlockItem");
 			event.getRegistry().register(new BlockItem(BlockList.GEARBOX, new Item.Properties().group(ItemGroupList.NEM_ITEMGROUP)).setRegistryName(BlockList.GEARBOX.getRegistryName()));
 			
@@ -331,6 +347,9 @@ public class NotEnoughMachines {
 			
 			logger.info("Registering Small Wind Wheel TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(SmallWindWheelTile::new, BlockList.SMALLWINDWHEEL).build(null).setRegistryName("smallwindwheel"));
+			
+			logger.info("Registering Tub Wheel TileEntity");
+			event.getRegistry().register(TileEntityType.Builder.create(TubWheelTile::new, BlockList.TUBWHEEL).build(null).setRegistryName("tubwheel"));
 			
 			logger.info("Registering Millstone TileEntity");
 			event.getRegistry().register(TileEntityType.Builder.create(MillstoneTile::new, BlockList.MILLSTONE).build(null).setRegistryName("millstone"));

@@ -8,6 +8,7 @@ import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.TubWheelTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 
@@ -24,6 +25,9 @@ public class TileEntityList {
 	
 	@ObjectHolder("notenoughtmachines:smallwindwheel")
 	public static TileEntityType<SmallWindWheelTile> SMALLWINDWHEEL;
+	
+	@ObjectHolder("notenoughtmachines:tubwheel")
+	public static TileEntityType<TubWheelTile> TUBWHEEL;
 	
 	@ObjectHolder("notenoughtmachines:millstone")
 	public static TileEntityType<MillstoneTile> MILLSTONE_TILE;

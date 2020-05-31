@@ -22,6 +22,7 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
@@ -62,8 +63,8 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	public MillstoneTile() {
 		super(0, 20, MechanicalType.SINK, TileEntityList.MILLSTONE_TILE);
 		
-		itemInput = makeItemInputHandler();
-		itemOutput = makeItemOutputHandler();
+		this.itemInput = makeItemHandler(INPUTSLOTS);
+		this.itemOutput = makeItemHandler(OUTPUTSLOTS);
 	}
 	
 	
@@ -79,7 +80,6 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 		} 
 		else isProcessing = false;
 		
-		//Increase process timer and consume power
 		if(isProcessing && isPowered()) {
 			processTime++;
 		} 
@@ -266,6 +266,13 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	
 	
+	@Override
+	public AxisAlignedBB getRenderBoundingBox() {
+		return new AxisAlignedBB(getPos()).grow(1.0D);
+	}
+	
+	
+	
 	public int getProcessTime() {
 		return processTime;
 	}
@@ -307,28 +314,6 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	public static int getSizeOutput() {
 		return OUTPUTSLOTS;
-	}
-	
-	
-	private ItemStackHandler makeItemInputHandler() {
-		return new ItemStackHandler(INPUTSLOTS) {
-			
-			@Override
-			protected void onContentsChanged(int slot) {
-				markDirty();
-			}
-		};
-	}
-	
-	
-	private ItemStackHandler makeItemOutputHandler() {
-		return new ItemStackHandler(OUTPUTSLOTS) {
-			
-			@Override
-			protected void onContentsChanged(int slot) {
-				markDirty();
-			}
-		};
 	}
 }
 

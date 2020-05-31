@@ -106,12 +106,6 @@ public class GearboxBlock extends MechanicalBlock {
 	
 	
 	
-//	private static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity) {
-//		return Direction.getFacingFromVector((float) (entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
-//	}
-	
-	
-	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
 		builder.add(AXIS, POWERED);

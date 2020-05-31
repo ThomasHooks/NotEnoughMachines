@@ -3,7 +3,7 @@
 	"textures": {
 		"0": "notenoughtmachines:block/axle",
 		"1": "notenoughtmachines:block/chute_runner_side",
-		"particle": "notenoughtmachines:block/axle"
+		"particle": "notenoughtmachines:block/chute_runner_side"
 	},
 	"elements": [
 		{

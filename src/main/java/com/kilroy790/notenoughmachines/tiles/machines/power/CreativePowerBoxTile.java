@@ -30,7 +30,10 @@ public class CreativePowerBoxTile extends MechanicalTile {
 	
 	
 	@Override
-	protected void tickCustom() {}
+	protected void tickCustom() {
+		
+		if(!world.isRemote()) changeSpeed(this, 33.3f);
+	}
 
 	
 	
