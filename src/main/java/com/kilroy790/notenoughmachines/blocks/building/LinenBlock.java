@@ -10,6 +10,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+
+
+
 public class LinenBlock extends Block{
 
 	public LinenBlock() {
@@ -22,6 +25,7 @@ public class LinenBlock extends Block{
 	}
 
 	
+	
    /**
     * Block's chance to react to a living entity falling on it.
     */
@@ -30,6 +34,7 @@ public class LinenBlock extends Block{
       super.onFallenUpon(worldIn, pos, entityIn, fallDistance * 0.5F);
    }
 
+	
    
    /**
     * Called when an Entity lands on this Block. This method *must* update motionY because the entity will not do that
@@ -48,3 +53,10 @@ public class LinenBlock extends Block{
       }
    }
 }
+
+
+
+
+
+
+

@@ -99,10 +99,10 @@ public abstract class MechanicalBlock extends Block {
 	
 	
 	
-	@Override
-	public boolean isSolid(BlockState state) {
-		return false;
-	}
+//	@Override
+//	public boolean isSolid(BlockState state) {
+//		return false;
+//	}
 	
 	
 	

@@ -11,7 +11,7 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -55,17 +55,16 @@ public class HammerHeadBlock extends Block {
 	
 	
 	@Override
-	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 
-		if(world.isRemote) return true;
+		if(world.isRemote) return ActionResultType.PASS;
 		
 		else {
 			TileEntity entity = world.getTileEntity(pos);
 			if(entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
-			
 			else throw new IllegalStateException("Trip Hammer container provider is missing!");
 			
-			return true;
+			return ActionResultType.PASS;
 		}
 	}
 	
@@ -75,11 +74,6 @@ public class HammerHeadBlock extends Block {
 		return HAMMER_SHAPE;
 	}
 	
-	
-	@Override
-	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
 	
 	
 	@Override

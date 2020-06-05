@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
@@ -86,10 +87,10 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 	
 	
 	@Override
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		
 		if (!player.abilities.allowEdit) {
-			return false;
+			return ActionResultType.FAIL;
 		} 
 		else {
 			state = state.cycle(NEGATED);
@@ -97,7 +98,7 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 			worldIn.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 0.3f, f);
 			worldIn.setBlockState(pos, state, 2);
 			worldIn.getPendingBlockTicks().scheduleTick(pos, this, 1);
-			return true;
+			return ActionResultType.PASS;
 		}
 	}
 	

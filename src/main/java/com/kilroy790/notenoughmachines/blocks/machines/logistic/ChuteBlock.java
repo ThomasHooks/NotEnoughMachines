@@ -15,7 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -29,10 +28,9 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 public class ChuteBlock extends HorizontalBlock {
 
-	
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
-	
 	public static final EnumProperty<ChuteType> TYPE = NEMBlockStateProperties.CHUTE_TYPE;
+	
 	
 	
 	public ChuteBlock(Properties properties, String name) {
@@ -40,6 +38,7 @@ public class ChuteBlock extends HorizontalBlock {
 		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(TYPE, ChuteType.ANCHORED));
 	}
+	
 	
 	
 	@Override
@@ -59,18 +58,14 @@ public class ChuteBlock extends HorizontalBlock {
 	}
 	
 	
+	
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-		/*
-		 * Called before the Block is set to air in the world. Called regardless of if the player's tool can actually collect
-		 * this block
-		 */
 
 		TileEntity tile = worldIn.getTileEntity(pos);
 		if(tile instanceof ChuteTile) {
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
 		}
-		
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
 	
@@ -92,12 +87,12 @@ public class ChuteBlock extends HorizontalBlock {
 	}
 	
 	
-	@Override
-	public BlockRenderLayer getRenderLayer() {
-		//This will prevent transparent block faces
-		return BlockRenderLayer.CUTOUT_MIPPED;
-		
-	}
+	
+//	@Override
+//	public BlockRenderLayer getRenderLayer() {
+//		return BlockRenderLayer.CUTOUT_MIPPED;
+//	}
+	
 	
 	
 	@Override
@@ -106,10 +101,12 @@ public class ChuteBlock extends HorizontalBlock {
 	}
 
 	
+	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
 		builder.add(HORIZONTAL_FACING, TYPE);
 	}
+	
 	
 	
 	@Override
@@ -118,8 +115,16 @@ public class ChuteBlock extends HorizontalBlock {
 	}
 	
 	
+	
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new ChuteTile();
 	}
 }
+
+
+
+
+
+
+

@@ -20,6 +20,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -27,75 +28,82 @@ public class FlaxPlantBlock extends CropsBlock implements IGrowable {
 
 	public static final IntegerProperty FLAXPLANT_AGE = BlockStateProperties.AGE_0_7;
 
-    public FlaxPlantBlock(String name) {
-    	
-        super(Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.CROP).tickRandomly().harvestLevel(0));
-        this.setRegistryName(NotEnoughMachines.modid, name);
-        this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
-        }
-    
-    
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    protected IItemProvider getSeedsItem() {
-    	
-    	return ItemList.FLAXSEED;
-        }
+	
+	
+	public FlaxPlantBlock(String name) {
+		super(Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.CROP).tickRandomly().harvestLevel(0));
+		this.setRegistryName(NotEnoughMachines.modid, name);
+		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
+	}
 
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-    	
-       return new ItemStack(this.getSeedsItem());
-       }
-    
-    
-    @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-    	
-        return state.getBlock() instanceof FarmlandBlock;
-        }
-    
-    
-    @Override
-    public IntegerProperty getAgeProperty() {
-    	
-        return FLAXPLANT_AGE;
-        }
 
-    
-    @Override
-    public int getMaxAge() {
-    	
-    	return 7;
-        }
-    
-    
-    @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-    	
-    	return !this.isMaxAge(state);
-        }
+	
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	protected IItemProvider getSeedsItem() {
+		return ItemList.FLAXSEED;
+	}
 
-    
-    @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
-    	
-    	return true;
-        }
+	
+	
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+		return new ItemStack(this.getSeedsItem());
+	}
 
-    
-    @Override
-    public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
-    	
-    	this.grow(worldIn, pos, state);
-        }
 
-    
-    @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-    	
-    	builder.add(FLAXPLANT_AGE);
-        }
+	@Override
+	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		return state.getBlock() instanceof FarmlandBlock;
+	}
+
+	
+
+	@Override
+	public IntegerProperty getAgeProperty() {
+		return FLAXPLANT_AGE;
+	}
+
+	
+
+	@Override
+	public int getMaxAge() {
+		return 7;
+	}
+
+
+	
+	@Override
+	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+		return !this.isMaxAge(state);
+	}
+
+	
+
+	@Override
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+		return true;
+	}
+
+	
+
+	@Override
+	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+		this.grow(worldIn, pos, state);
+	}
+
+	
+
+	@Override
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+		builder.add(FLAXPLANT_AGE);
+	}
 }
+
+
+
+
+
+
 

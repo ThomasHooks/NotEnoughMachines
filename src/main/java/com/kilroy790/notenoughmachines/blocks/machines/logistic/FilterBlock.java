@@ -16,7 +16,7 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +35,6 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 public class FilterBlock extends Block {
 
-	
 	public static final DirectionProperty FACING = BlockStateProperties.FACING_EXCEPT_UP;
 	public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 	
@@ -49,11 +48,13 @@ public class FilterBlock extends Block {
 	public static final VoxelShape COLLECTION_AREA_SHAPE = VoxelShapes.or(INNER_BOWL_SHAPE, BLOCK_ABOVE_SHAPE);
 
 	
+	
 	public FilterBlock(Properties properties, String name) {
 		super(properties);
 		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.DOWN).with(ENABLED, Boolean.valueOf(true)));
 	}
+	
 	
 	
 	@Override
@@ -63,10 +64,11 @@ public class FilterBlock extends Block {
 	}
 	
 	
+	
 	@Override
-	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 		
-		if(world.isRemote) return true;
+		if(world.isRemote) return ActionResultType.PASS;
 		
 		else {
 			TileEntity entity = world.getTileEntity(pos);
@@ -74,9 +76,10 @@ public class FilterBlock extends Block {
 			
 			else throw new IllegalStateException("Filter container provider is missing!");
 			
-			return true;
+			return ActionResultType.FAIL;
 		}
 	}
+	
 	
 	
 	@Override
@@ -90,6 +93,7 @@ public class FilterBlock extends Block {
 		
 		else super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
 	}
+	
 	
 	
 	@Override
@@ -106,6 +110,7 @@ public class FilterBlock extends Block {
 	}
 	
 	
+	
 	@Override
 	public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
 		if (oldState.getBlock() != state.getBlock()) {
@@ -114,6 +119,7 @@ public class FilterBlock extends Block {
 	}
 
 
+	
 	@Override
 	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
 		this.updateEnabledState(worldIn, pos, state);
@@ -128,10 +134,12 @@ public class FilterBlock extends Block {
 	}
 	
 	
+	
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		return FILTER_SHAPE;
 	}
+	
 	
 	
 	@Override
@@ -140,10 +148,12 @@ public class FilterBlock extends Block {
 	}
 	
 	
-	@Override
-	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
+	
+//	@Override
+//	public BlockRenderLayer getRenderLayer() {
+//		return BlockRenderLayer.CUTOUT_MIPPED;
+//	}
+	
 	
 	
 	@Override
@@ -152,8 +162,16 @@ public class FilterBlock extends Block {
 	}
 	
 	
+	
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new FilterTile();
 	}
 }
+
+
+
+
+
+
+
