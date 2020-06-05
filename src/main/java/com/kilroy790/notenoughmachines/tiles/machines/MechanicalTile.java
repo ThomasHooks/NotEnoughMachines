@@ -2,9 +2,9 @@ package com.kilroy790.notenoughmachines.tiles.machines;
 
 import java.util.ArrayList;
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
-import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.power.IHaveMechanicalPower;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
+import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
 import net.minecraft.nbt.CompoundNBT;

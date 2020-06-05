@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
-import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
+import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Axis;

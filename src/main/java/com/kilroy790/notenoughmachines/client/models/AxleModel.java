@@ -11,8 +11,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class AxleModel extends Model {
 
-	
 	protected RendererModel shaft;
+	
 	
 	
 	public AxleModel() {

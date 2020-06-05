@@ -1,6 +1,7 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
-import com.kilroy790.notenoughmachines.api.power.MechanicalType;
+import com.kilroy790.notenoughmachines.power.MechanicalType;
+
 import net.minecraft.tileentity.TileEntityType;
 
 

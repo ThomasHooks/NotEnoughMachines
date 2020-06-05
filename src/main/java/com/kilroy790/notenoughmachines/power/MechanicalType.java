@@ -1,4 +1,4 @@
-package com.kilroy790.notenoughmachines.api.power;
+package com.kilroy790.notenoughmachines.power;
 
 import net.minecraft.util.IStringSerializable;
 

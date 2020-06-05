@@ -1,5 +1,7 @@
 package com.kilroy790.notenoughmachines.api.power;
 
+import com.kilroy790.notenoughmachines.power.MechanicalType;
+
 import net.minecraft.nbt.INBT;
 import net.minecraft.nbt.IntNBT;
 import net.minecraft.util.Direction;

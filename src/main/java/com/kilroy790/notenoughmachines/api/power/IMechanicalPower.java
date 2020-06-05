@@ -1,7 +1,6 @@
 package com.kilroy790.notenoughmachines.api.power;
 
-
-
+import com.kilroy790.notenoughmachines.power.MechanicalType;
 
 public interface IMechanicalPower {
 

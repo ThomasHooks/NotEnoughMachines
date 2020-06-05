@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
-import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
+import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
@@ -74,8 +74,6 @@ public class TubWheelTile extends MechanicalTile {
 			Vec3d flux = new Vec3d(Math.signum(vec.getX()), Math.signum(vec.getY()), Math.signum(vec.getZ()));
 			
 			/*
-			 * Both Up, Down, and Default cases should never happen, but have been added for safety
-			 * 
 			 * 				North (-Z)
 			 * 
 			 * West (-X)					East (+X)
@@ -85,32 +83,28 @@ public class TubWheelTile extends MechanicalTile {
 			 * Because Counter Clockwise is positive rotation, the flow for both South and West must be negated
 			 */
 			switch(dir) {
-			case DOWN:
-				changeWaterFlow(dir, 0.0D);
-				break;
-				
 			case EAST:
-				changeWaterFlow(dir, flux.getZ());
+				//changeWaterFlow(dir, flux.getZ());
+				this.waterFlow.put(dir, flux.getZ());
 				break;
 				
 			case NORTH:
-				changeWaterFlow(dir, flux.getX());
+				//changeWaterFlow(dir, flux.getX());
+				this.waterFlow.put(dir, flux.getX());
 				break;
 				
 			case SOUTH:
-				changeWaterFlow(dir, -flux.getX());
-				break;
-				
-			case UP:
-				changeWaterFlow(dir, 0.0D);
+				//changeWaterFlow(dir, -flux.getX());
+				this.waterFlow.put(dir, -flux.getX());
 				break;
 				
 			case WEST:
-				changeWaterFlow(dir, -flux.getZ());
+				//changeWaterFlow(dir, -flux.getZ());
+				this.waterFlow.put(dir, -flux.getZ());
 				break;
 				
 			default:
-				changeWaterFlow(dir, 0.0D);
+				this.waterFlow.put(dir, 0.0D);
 				break;
 			
 			}

@@ -1,6 +1,5 @@
 package com.kilroy790.notenoughmachines.power;
 
-import com.kilroy790.notenoughmachines.api.power.MechanicalType;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 
 

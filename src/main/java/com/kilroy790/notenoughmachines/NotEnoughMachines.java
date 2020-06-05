@@ -28,6 +28,7 @@ import com.kilroy790.notenoughmachines.client.gui.MillstoneScreen;
 import com.kilroy790.notenoughmachines.client.gui.TripHammerScreen;
 import com.kilroy790.notenoughmachines.client.renderers.AxleTileRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.ChuteRenderer;
+import com.kilroy790.notenoughmachines.client.renderers.GearboxRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.MillstoneRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.SmallWindWheelRenderers;
 import com.kilroy790.notenoughmachines.client.renderers.TubWheelRenderer;
@@ -131,6 +132,9 @@ public class NotEnoughMachines {
 		
 		logger.info("Registering Axle TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(AxleTile.class, new AxleTileRenderer());
+		
+		logger.info("Registering Gearbox TESR");
+		ClientRegistry.bindTileEntitySpecialRenderer(GearboxTile.class, new GearboxRenderer());
 		
 		logger.info("Registering Millstone TESR");
 		ClientRegistry.bindTileEntitySpecialRenderer(MillstoneTile.class, new MillstoneRenderer());
