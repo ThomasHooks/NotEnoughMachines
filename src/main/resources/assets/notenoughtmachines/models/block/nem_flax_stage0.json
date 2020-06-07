@@ -1,6 +1,0 @@
-{
-    "parent": "block/crop",
-    "textures": {
-        "crop": "notenoughtmachines:block/nem_flax_stage0"
-    }
-}

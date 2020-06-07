@@ -2,9 +2,9 @@ package com.kilroy790.notenoughmachines.tiles.machines.power;
 
 import java.util.ArrayList;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
@@ -16,7 +16,7 @@ public class CreativePowerBoxTile extends MechanicalTile {
 	private ArrayList<MechanicalContext> io;
 	
 	public CreativePowerBoxTile() {
-		super(5000, 0, MechanicalType.SOURCE, TileEntityList.CREATIVEPOWERBOX);
+		super(5000, 0, MechanicalType.SOURCE, NEMTiles.CREATIVEPOWERBOX.get());
 	}
 	
 	

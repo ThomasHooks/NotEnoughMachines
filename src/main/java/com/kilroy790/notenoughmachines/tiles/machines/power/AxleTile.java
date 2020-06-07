@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Axis;
@@ -21,7 +21,7 @@ public class AxleTile extends MechanicalTile {
 	private Map<Direction.Axis, ArrayList<MechanicalContext>> IO_LOOKUP = new HashMap<Direction.Axis, ArrayList<MechanicalContext>>();
 	
 	public AxleTile() {
-		super(72, 0, MechanicalType.CHANNEL, TileEntityList.AXLE_TILE);
+		super(72, 0, MechanicalType.CHANNEL, NEMTiles.AXLE.get());
 	}
 	
 	

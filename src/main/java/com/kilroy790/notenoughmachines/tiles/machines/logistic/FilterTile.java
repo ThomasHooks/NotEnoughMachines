@@ -3,9 +3,9 @@ package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -50,7 +50,7 @@ public class FilterTile extends NEMBaseTile implements INamedContainerProvider, 
 	
 	
 	public FilterTile() {
-		super(TileEntityList.FILTER);
+		super(NEMTiles.FILTER.get());
 		itemInv = this.makeItemHandler(INVENTORYSLOTS);
 		itemFilter = this.makeItemHandler(FILTERSLOTS);
 	}

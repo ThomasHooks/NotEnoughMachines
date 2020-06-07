@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.blocks.machines.logistic;
 
-import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
-import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.state.properties.ChuteType;
+import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.ChuteTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -33,10 +33,11 @@ public class ChuteBlock extends HorizontalBlock {
 	
 	
 	
-	public ChuteBlock(Properties properties, String name) {
+	public ChuteBlock(Properties properties) {
 		super(properties);
-		this.setRegistryName(name);
-		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(TYPE, ChuteType.ANCHORED));
+		this.setDefaultState(this.stateContainer.getBaseState()
+				.with(HORIZONTAL_FACING, Direction.NORTH)
+				.with(TYPE, ChuteType.ANCHORED));
 	}
 	
 	

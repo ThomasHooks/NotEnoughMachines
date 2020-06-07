@@ -29,9 +29,8 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 	
 	
-	public ItemPusherBlock(Properties properties, String name) {
+	public ItemPusherBlock(Properties properties) {
 		super(properties);
-		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH)
 				.with(NORTH, Boolean.valueOf(false))
 				.with(EAST, Boolean.valueOf(false))

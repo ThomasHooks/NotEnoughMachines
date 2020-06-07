@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -29,7 +29,7 @@ public class ItemPusherTile extends NEMBaseTile implements ITickableTileEntity {
 	
 	
 	public ItemPusherTile() {
-		super(TileEntityList.ITEMPUSHER);
+		super(NEMTiles.ITEMPUSHER.get());
 		itemInv = this.makeItemHandler(1);
 	}
 

@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.tiles.machines.processing;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,7 +37,7 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	
 	
 	public TripHammerTile() {
-		super(TileEntityList.TRIPHAMMER);
+		super(NEMTiles.TRIPHAMMER.get());
 		this.itemInputHandler = this.makeItemHandler(INPUTSLOTS);
 		this.itemOutputHandler = this.makeItemHandler(OUTPUTSLOTS);
 	}

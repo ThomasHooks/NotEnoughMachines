@@ -1,8 +1,8 @@
 package com.kilroy790.notenoughmachines.blocks.machines.power;
 
-import com.kilroy790.notenoughmachines.api.lists.ShapeList;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.power.TubWheelTile;
+import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -19,9 +19,8 @@ import net.minecraft.world.IBlockReader;
 
 public class TubWheelBlock extends MechanicalBlock {
 
-	public TubWheelBlock(Properties properties, String name) {
+	public TubWheelBlock(Properties properties) {
 		super(properties);
-		this.setRegistryName(name);
 	}
 
 	
@@ -36,7 +35,7 @@ public class TubWheelBlock extends MechanicalBlock {
 	
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return ShapeList.TUBWHEEL;
+		return NEMBlockShapes.TUBWHEEL;
 	}
 	
 	

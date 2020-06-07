@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.api.lists.BlockList;
-import com.kilroy790.notenoughmachines.api.lists.ContainerList;
+import com.kilroy790.notenoughmachines.setup.ContainerList;
+import com.kilroy790.notenoughmachines.setup.NEMBlocks;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.FilterTile;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -91,7 +91,7 @@ public class FilterContainer extends Container {
 	
 	@Override
 	public boolean canInteractWith(PlayerEntity player) {
-		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, BlockList.FILTER);
+		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, NEMBlocks.FILTER.get());
 	}
 	
 	

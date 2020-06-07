@@ -19,9 +19,8 @@ import net.minecraft.world.World;
 public class ClosedChuteBlock extends ItemConduitBlock {
 	 
 	 
-	public ClosedChuteBlock(Properties properties, String name) {
+	public ClosedChuteBlock(Properties properties) {
 		super(properties);
-		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH)
 				.with(NORTH, Boolean.valueOf(false))
 				.with(EAST, Boolean.valueOf(false))

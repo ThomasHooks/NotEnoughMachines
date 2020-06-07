@@ -1,8 +1,8 @@
 package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
-import com.kilroy790.notenoughmachines.api.stateproperties.ChuteType;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ChuteBlock;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
+import com.kilroy790.notenoughmachines.state.properties.ChuteType;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -36,7 +36,7 @@ public class ChuteTile extends NEMBaseTile implements ITickableTileEntity {
 	
 	
 	public ChuteTile() {
-		super(TileEntityList.CHUTE);
+		super(NEMTiles.CHUTE.get());
 		final int INPUTSLOTS = 1;
 		itemInput = this.makeItemHandler(INPUTSLOTS);
 	}

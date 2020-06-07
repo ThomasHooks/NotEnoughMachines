@@ -49,10 +49,11 @@ public class FilterBlock extends Block {
 
 	
 	
-	public FilterBlock(Properties properties, String name) {
+	public FilterBlock(Properties properties) {
 		super(properties);
-		this.setRegistryName(name);
-		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.DOWN).with(ENABLED, Boolean.valueOf(true)));
+		this.setDefaultState(this.stateContainer.getBaseState()
+				.with(FACING, Direction.DOWN)
+				.with(ENABLED, Boolean.valueOf(true)));
 	}
 	
 	
@@ -68,15 +69,18 @@ public class FilterBlock extends Block {
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 		
-		if(world.isRemote) return ActionResultType.PASS;
-		
+		if(world.isRemote) {
+			return ActionResultType.SUCCESS;
+		}
 		else {
 			TileEntity entity = world.getTileEntity(pos);
-			if(entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
-			
-			else throw new IllegalStateException("Filter container provider is missing!");
-			
-			return ActionResultType.FAIL;
+			if(entity instanceof INamedContainerProvider) {
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
+			}
+			else {
+				throw new IllegalStateException("Filter container provider is missing!");
+			}
+			return ActionResultType.SUCCESS;
 		}
 	}
 	

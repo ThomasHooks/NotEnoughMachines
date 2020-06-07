@@ -2,16 +2,14 @@ package com.kilroy790.notenoughmachines.blocks.machines.processing;
 
 import java.util.Random;
 
-import com.kilroy790.notenoughmachines.api.lists.ShapeList;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
+import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
@@ -34,7 +32,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 
@@ -46,15 +43,8 @@ public class MillstoneBlock extends MechanicalBlock {
 	public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
 
-	public MillstoneBlock(String name) {
-		super(Properties.create(Material.ROCK)
-				.sound(SoundType.STONE)
-				.hardnessAndResistance(2.8f, 3.0f)
-				.harvestTool(ToolType.PICKAXE)
-				.harvestLevel(0));
-
-		this.setRegistryName(name);
-
+	public MillstoneBlock(Properties properties) {
+		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(LIT, Boolean.valueOf(false)));
 	}
 
@@ -63,7 +53,9 @@ public class MillstoneBlock extends MechanicalBlock {
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 
-		if(world.isRemote) return ActionResultType.PASS; 
+		if(world.isRemote) {
+			return ActionResultType.SUCCESS; 
+		}
 		else {
 			TileEntity entity = world.getTileEntity(pos);
 			if(entity instanceof INamedContainerProvider) {
@@ -72,7 +64,7 @@ public class MillstoneBlock extends MechanicalBlock {
 			else {
 				throw new IllegalStateException("Millstone container provider is missing!");
 			}
-			return ActionResultType.PASS;
+			return ActionResultType.SUCCESS;
 		}
 	}
 
@@ -109,7 +101,7 @@ public class MillstoneBlock extends MechanicalBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return ShapeList.MILLSTONE;
+		return NEMBlockShapes.MILLSTONE;
 	}
 
 

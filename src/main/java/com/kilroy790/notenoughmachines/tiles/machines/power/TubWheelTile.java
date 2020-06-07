@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
@@ -32,7 +32,7 @@ public class TubWheelTile extends MechanicalTile {
 	
 
 	public TubWheelTile() {
-		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, TileEntityList.TUBWHEEL);
+		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, NEMTiles.TUBWHEEL.get());
 		
 		for(Direction dir : Direction.Plane.HORIZONTAL) {
 			this.waterFlow.put(dir, 0.0D);

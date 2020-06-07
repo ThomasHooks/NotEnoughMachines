@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.api.lists.BlockList;
-import com.kilroy790.notenoughmachines.api.lists.ContainerList;
+import com.kilroy790.notenoughmachines.setup.ContainerList;
+import com.kilroy790.notenoughmachines.setup.NEMBlocks;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -71,7 +71,7 @@ public class MillstoneContainer extends Container{
 	
 	@Override
 	public boolean canInteractWith(PlayerEntity playerIn) {
-		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, BlockList.MILLSTONE);
+		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, NEMBlocks.MILLSTONE.get());
 	}
 	
 	
@@ -149,3 +149,10 @@ public class MillstoneContainer extends Container{
 		return tile.getProcessTime();
 	}
 }
+
+
+
+
+
+
+

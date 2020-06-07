@@ -2,16 +2,13 @@ package com.kilroy790.notenoughmachines.blocks.crops;
 
 import java.util.Random;
 
-import com.kilroy790.notenoughmachines.NotEnoughMachines;
-import com.kilroy790.notenoughmachines.api.lists.ItemList;
+import com.kilroy790.notenoughmachines.setup.NEMItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -24,15 +21,17 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+
+
+
 public class FlaxPlantBlock extends CropsBlock implements IGrowable {
 
 	public static final IntegerProperty FLAXPLANT_AGE = BlockStateProperties.AGE_0_7;
 
 	
 	
-	public FlaxPlantBlock(String name) {
-		super(Properties.create(Material.PLANTS).doesNotBlockMovement().sound(SoundType.CROP).tickRandomly().harvestLevel(0));
-		this.setRegistryName(NotEnoughMachines.modid, name);
+	public FlaxPlantBlock(Properties properties) {
+		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	}
 
@@ -41,7 +40,7 @@ public class FlaxPlantBlock extends CropsBlock implements IGrowable {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	protected IItemProvider getSeedsItem() {
-		return ItemList.FLAXSEED;
+		return NEMItems.FLAXSEED.get();
 	}
 
 	
@@ -52,6 +51,7 @@ public class FlaxPlantBlock extends CropsBlock implements IGrowable {
 		return new ItemStack(this.getSeedsItem());
 	}
 
+	
 
 	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {

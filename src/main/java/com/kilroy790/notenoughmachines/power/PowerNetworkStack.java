@@ -20,14 +20,14 @@ public class PowerNetworkStack {
 	
 	
 	public void onWorldLoad(IWorld worldIn) {
-		NotEnoughMachines.logger.info("Creating Power Network space for world " + worldIn.getDimension().getType().getRegistryName());
+		NotEnoughMachines.LOGGER.info("Creating Power Network space for world " + worldIn.getDimension().getType().getRegistryName());
 		universePowerNetworks.put(worldIn, new HashMap<>());
 	}
 	
 	
 	
 	public void onWorldUnload(IWorld worldIn) {
-		NotEnoughMachines.logger.info("Removing Power Network space for world " + worldIn.getDimension().getType().getRegistryName());
+		NotEnoughMachines.LOGGER.info("Removing Power Network space for world " + worldIn.getDimension().getType().getRegistryName());
 		universePowerNetworks.remove(worldIn);
 	}
 	
