@@ -13,9 +13,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.Material;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -36,10 +36,8 @@ public class AxleRenderer extends TileEntityRenderer<AxleTile> {
 
 	
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void render(AxleTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLightIn, int combinedOverlayIn) {
-		
 		matrixStack.push();
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
@@ -60,7 +58,7 @@ public class AxleRenderer extends TileEntityRenderer<AxleTile> {
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material material = new Material(AtlasTexture.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		Material material = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder vertexbuilder = material.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, vertexbuilder, combinedLightIn, combinedOverlayIn);
 		

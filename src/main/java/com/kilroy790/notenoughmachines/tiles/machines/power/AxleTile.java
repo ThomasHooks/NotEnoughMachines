@@ -12,6 +12,8 @@ import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Axis;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
@@ -61,6 +63,7 @@ public class AxleTile extends MechanicalTile {
 	
 	
 	@Override
+	@OnlyIn(Dist.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox() {
 		return new AxisAlignedBB(getPos()).grow(1.0D);
 	}

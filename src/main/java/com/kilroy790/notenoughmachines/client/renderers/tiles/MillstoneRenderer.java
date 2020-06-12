@@ -12,9 +12,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.Material;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -38,10 +38,8 @@ public class MillstoneRenderer extends TileEntityRenderer<MillstoneTile> {
 
 	
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void render(MillstoneTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
-		
 		matrixStack.push();
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
@@ -52,11 +50,11 @@ public class MillstoneRenderer extends TileEntityRenderer<MillstoneTile> {
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material shaftMaterial = new Material(AtlasTexture.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder shaftVertexBuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexBuilder, combinedLight, combinedOverlay);
 		
-		Material runnerMaterial = new Material(AtlasTexture.LOCATION_BLOCKS_TEXTURE, NEMTextures.RUNNERSTONE);
+		Material runnerMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.RUNNERSTONE);
 		IVertexBuilder runnerVertexBuilder = runnerMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.runnerstone.render(matrixStack, runnerVertexBuilder, combinedLight, combinedOverlay);
 		

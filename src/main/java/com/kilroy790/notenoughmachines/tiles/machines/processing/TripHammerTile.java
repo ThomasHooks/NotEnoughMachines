@@ -23,7 +23,6 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 public class TripHammerTile extends NEMBaseTile implements INamedContainerProvider {
 	
-	
 	protected ItemStackHandler itemInputHandler;
 	public static final int INPUTSLOTS = 1;
 	protected LazyOptional<ItemStackHandler> itemInput = LazyOptional.of(() -> itemInputHandler);
@@ -34,6 +33,7 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	
 	public static final int COMBINEDSLOTS = INPUTSLOTS + OUTPUTSLOTS;
 	protected LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInputHandler, itemOutputHandler));
+	
 	
 	
 	public TripHammerTile() {
@@ -59,17 +59,20 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	}
 	
 	
+	
 	@Override
 	protected void readCustom(CompoundNBT compound) {
 		
 	}
 
 	
+	
 	@Override
 	protected CompoundNBT writeCustom(CompoundNBT compound) {
 		return compound;
 	}
 
+	
 	
 	@Override
 	public void remove() {
@@ -80,19 +83,29 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	}
 	
 	
+	
 	@Override
 	public Container createMenu(int id, PlayerInventory playerInv, PlayerEntity playerEntity) {
 		return new TripHammerContainer(id, world, pos, playerInv, playerEntity);
 	}
 
 	
+	
 	@Override
 	public ITextComponent getDisplayName() {
-		return new TranslationTextComponent("tiles.notenoughtmachines.triphammer");
+		return new TranslationTextComponent("machine.notenoughtmachines.triphammer");
 	}
 
 
+	
 	public int getNumberOfInventorySlots() {
 		return COMBINEDSLOTS;
 	}
 }
+
+
+
+
+
+
+

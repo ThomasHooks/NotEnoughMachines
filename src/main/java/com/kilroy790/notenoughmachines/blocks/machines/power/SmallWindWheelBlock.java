@@ -55,14 +55,11 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 		if(placer == null || world.isRemote) return;
 
 		Direction dir = placer.getHorizontalFacing();
-		//		world.setBlockState(pos, state.with(FACING, dir.getOpposite()), 1 | 2 | 4);
-
 		SmallWindWheelTile tile = (SmallWindWheelTile) world.getTileEntity(pos);
 		if(!tile.validateArea()) {
-			placer.sendMessage(new StringTextComponent("Wind Wheel needs 15x15x1 area of free space").setStyle(new Style().setColor(TextFormatting.RED)));
+			placer.sendMessage(new StringTextComponent("Wind Wheel needs 16x16x1 area of free space").setStyle(new Style().setColor(TextFormatting.RED)));
 			world.destroyBlock(pos, true);
 		}
-
 		Block nextBlock = world.getBlockState(pos.offset(dir)).getBlock();
 		if(!(nextBlock instanceof MechanicalBlock)) {
 			placer.sendMessage(new StringTextComponent("Wind Wheel must be placed on a machine").setStyle(new Style().setColor(TextFormatting.RED)));
@@ -74,7 +71,7 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return getDefaultState().with(FACING, context.getNearestLookingDirection().getOpposite());
+		return getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
 	}
 
 

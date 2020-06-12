@@ -11,10 +11,13 @@ import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 import net.minecraft.fluid.IFluidState;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
@@ -26,7 +29,6 @@ public class TubWheelTile extends MechanicalTile {
 	private static final int BASE_POWER_CAPACITY = 20;
 	private static final float BASE_SPEED = 11.1f;
 	private Map<Direction, Double> waterFlow = new HashMap<Direction, Double>();
-	//TODO: totalFlux should be read/written to NBT
 	private double totalFlow = 0;
 	
 	
@@ -127,6 +129,22 @@ public class TubWheelTile extends MechanicalTile {
 	public void changeWaterFlow(Direction dir, double flux) {
 		this.waterFlow.put(dir, flux);
 	}
+	
+	
+	
+	@Override
+	protected void readCustom(CompoundNBT compound) {
+		super.readCustom(compound);
+		this.totalFlow = compound.getDouble("totalflow");
+	}
+	
+	
+	
+	@Override
+	protected CompoundNBT writeCustom(CompoundNBT compound) {
+		compound.putDouble("totalflow", this.totalFlow);
+		return super.writeCustom(compound);
+	}
 
 	
 	
@@ -138,6 +156,7 @@ public class TubWheelTile extends MechanicalTile {
 	
 	
 	@Override
+	@OnlyIn(Dist.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox() {
 		return new AxisAlignedBB(getPos()).grow(1.0D);
 	}

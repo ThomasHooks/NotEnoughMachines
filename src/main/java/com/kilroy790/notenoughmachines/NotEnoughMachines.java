@@ -8,6 +8,7 @@ import com.kilroy790.notenoughmachines.client.gui.screen.MillstoneScreen;
 import com.kilroy790.notenoughmachines.client.gui.screen.TripHammerScreen;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.AxleRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.MillstoneRenderer;
+import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallWindWheelRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.TubWheelRenderer;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
@@ -78,6 +79,7 @@ public class NotEnoughMachines {
 	}
 	
 	
+	
 	private void setup(final FMLCommonSetupEvent event) {
 		LOGGER.info("Starting NEM preinit");
 		setup.init();
@@ -85,6 +87,7 @@ public class NotEnoughMachines {
 		LOGGER.info("NEM preinit done");
 	}
 
+	
 	
 	private void clientRegistries(final FMLClientSetupEvent event) {
 		LOGGER.info("registering NEM Client side entries");
@@ -99,6 +102,7 @@ public class NotEnoughMachines {
 		AxleRenderer.register();
 		MillstoneRenderer.register();
 		TubWheelRenderer.register();
+		SmallWindWheelRenderer.register();
 		LOGGER.info("All NEM Tile Entity Renderers registered");
 		
 		LOGGER.info("Registering all NEM Containers");

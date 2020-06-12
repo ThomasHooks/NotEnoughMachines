@@ -12,9 +12,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.Material;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -46,10 +46,8 @@ public class TubWheelRenderer extends TileEntityRenderer<TubWheelTile> {
 
 	
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void render(TubWheelTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
-		
 		matrixStack.push();
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
@@ -60,15 +58,15 @@ public class TubWheelRenderer extends TileEntityRenderer<TubWheelTile> {
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material shaftMaterial = new Material(AtlasTexture.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder shaftVertexBuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexBuilder, combinedLight, combinedOverlay);
 		
-		Material hubMaterial = new Material(AtlasTexture.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_HUB);
+		Material hubMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_HUB);
 		IVertexBuilder hubVertexBuilder = hubMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.hub.render(matrixStack, hubVertexBuilder, combinedLight, combinedOverlay);
 		
-		Material paddleMaterial = new Material(AtlasTexture.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_PADDLE);
+		Material paddleMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_PADDLE);
 		IVertexBuilder paddleVertexBuilder = paddleMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		for(int i = 0; i < NUMBER_OF_PADDLES; i++) {
 			matrixStack.translate(0.5D, 0.5D, 0.5D);

@@ -21,7 +21,7 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 
 
 
-public class MillstoneContainer extends Container{
+public class MillstoneContainer extends Container {
 
 	public MillstoneContainer(int id, World world, BlockPos pos, PlayerInventory playerInvIn, PlayerEntity playerIn) {
 		
@@ -145,7 +145,6 @@ public class MillstoneContainer extends Container{
 	
 	
 	public int getProgress() {
-		
 		return tile.getProcessTime();
 	}
 }
