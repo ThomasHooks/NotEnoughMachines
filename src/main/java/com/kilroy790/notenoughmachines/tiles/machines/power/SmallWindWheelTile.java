@@ -3,12 +3,12 @@ package com.kilroy790.notenoughmachines.tiles.machines.power;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.kilroy790.notenoughmachines.api.lists.BlockList;
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
+import com.kilroy790.notenoughmachines.setup.NEMBlocks;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
@@ -16,28 +16,30 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
 
 public class SmallWindWheelTile extends MechanicalTile {
 
-	protected float angle = 0.0f;
 	protected float speedModifier = 1.0f;
-	protected boolean isRotating = true;
-	
+	private static final int BASE_POWER_CAPACITY = 200;
+	private static final float BASE_SPEED = 12.0f;
+
 	private Map<Direction.Axis, ArrayList<MechanicalContext>> io;
-	
-	public static final int WINDWHEEL_RADIUS = 7;
-	
-	
-	
+
+	public static final int WINDWHEEL_RADIUS = 8;
+
+
+
 	public SmallWindWheelTile() {
-		super(200, 0, MechanicalType.SOURCE, TileEntityList.SMALLWINDWHEEL);
+		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, NEMTiles.SMALLWINDWHEEL.get());
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onLoad() {
 		io = MachineIOList.monoAxle(pos);
@@ -49,78 +51,70 @@ public class SmallWindWheelTile extends MechanicalTile {
 	@Override
 	protected void tickCustom() {
 		
-		if(!world.isRemote()) {
-			if(world.getGameTime()%40 == 1) this.isRotating = validateArea();
+		if(!this.world.isRemote()) {
 			
-			if(isRotating) {
-				updateWindWheelAngle();
-				//setCapacity((int)(200 * this.speedModifier));
-				changeSpeed(this, 20.0f * this.speedModifier);
+			if(world.getGameTime() % 40 == 1) {
+				updateWindSpeed();
+				setCapacity((int)(BASE_POWER_CAPACITY * speedModifier));
 			}
-			else changeSpeed(this, 0.0f);//setCapacity(0);
+			
+			if(this.isPowered()) changeSpeed(this, BASE_SPEED * (float)this.speedModifier);
 		}
 	}
-	
-	
-	
-	//TODO: make the aabb determined on the wind wheel's direction
+
+
+
 	@Override
+	@OnlyIn(Dist.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox() {
-		return new AxisAlignedBB((double)pos.getX() - (7.0f * 16.0f), 
-								 (double)pos.getY() - (7.0f * 16.0f), 
-								 (double)pos.getZ() - (7.0f * 16.0f), 
-								 (double)pos.getX() + (7.0f * 16.0f), 
-								 (double)pos.getY() + (7.0f * 16.0f), 
-								 (double)pos.getZ() + (7.0f * 16.0f));
+		return new AxisAlignedBB(getPos()).grow((double)WINDWHEEL_RADIUS);
 	}
 	
 	
 	
-	protected void updateWindWheelAngle() {
-		
-		//Modify wind wheel speed based on the weather
-		if(world.getGameTime()%40 == 1) {
-			if(world.isThundering()) speedModifier = 2.0f;
-			else if(world.isRaining()) speedModifier = 1.25f;
-			else speedModifier = 1.0f;
-		}
-		
-		this.angle += 4.0f * speedModifier;
-		
-		if(this.angle > 360.0f)this.angle = 0.0f;
-		
-		syncClient();
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public double getMaxRenderDistanceSquared() {
+		return 4096.0D * 4.0D;
 	}
-	
-	
-	
+
+
+
+	protected void updateWindSpeed() {
+		
+		if(!validateArea()) this.speedModifier = 0.0f;
+		else if(world.isThundering()) this.speedModifier = 2.0f;
+		else if(world.isRaining()) this.speedModifier = 1.33f;
+		else this.speedModifier = 1.0f;
+	}
+
+
+
 	/**
 	 * @return True if the area is valid
 	 */
 	public boolean validateArea() {
-		
-		
+
 		boolean valid = false;
-		if(world.canBlockSeeSky(pos) && world.getBlockState(pos).getBlock() == BlockList.SMALLWINDWHEEL) {
-			
+		if(world.canBlockSeeSky(pos) && world.getBlockState(pos).getBlock() == NEMBlocks.SMALLWINDWHEEL.get()) {
+
 			Direction direction = this.getBlockState().get(SmallWindWheelBlock.FACING);
 			for(int y = -WINDWHEEL_RADIUS; y <= WINDWHEEL_RADIUS; y++) {
-				
 				for(int hor = -WINDWHEEL_RADIUS; hor <= WINDWHEEL_RADIUS; hor++) {
-					
+
 					int x = 0;
 					int z = 0;
-					
+
 					//Z = north & south
 					//Y = up & down
 					//X = east & west
 					if(direction == Direction.NORTH || direction == Direction.SOUTH) x = hor;
 					else z = hor;
-					
+
 					BlockPos nextPos = pos.add(x, y, z);
-					
+
 					if(x == 0 && y == 0 && z == 0) continue;
-					
+
 					valid = world.isAirBlock(nextPos);
 					if(!valid) return false;
 				}
@@ -128,31 +122,20 @@ public class SmallWindWheelTile extends MechanicalTile {
 		}
 		return valid;
 	}
-	
-	
-	
-	/**
-	 * @return The angle of the wind sail in radians
-	 */
-	public float getWindSailAngle() {
-		return ((float)Math.PI * this.angle)/180.0f;
-	}
-	
-	
-	
+
+
+
 	@Override
 	protected void readCustom(CompoundNBT compound) {
-		this.angle = compound.getFloat("angle");
-		this.isRotating = compound.getBoolean("rotating");
+		this.speedModifier = compound.getFloat("speedfactor");
 		super.readCustom(compound);
 	}
-	
-	
-	
+
+
+
 	@Override
 	protected CompoundNBT writeCustom(CompoundNBT compound) {
-		compound.putFloat("angle", this.angle);
-		compound.putBoolean("rotating", this.isRotating);
+		compound.putFloat("speedfactor", this.speedModifier);
 		return super.writeCustom(compound);
 	}
 

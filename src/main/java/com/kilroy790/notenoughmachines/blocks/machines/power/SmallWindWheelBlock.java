@@ -9,8 +9,6 @@ import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.BlockItemUseContext;
@@ -28,66 +26,60 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ToolType;
 
 
 
 
 public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 
-	protected static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
+	protected static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{
+			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
+			Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), 
+			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
+	
 	protected static final int AXELAXISX = 2;
 	protected static final int AXELAXISY = 0;
 	protected static final int AXELAXISZ = 1;
-	
-	
-	
-	public SmallWindWheelBlock(String name) {
-		super(Properties.create(Material.WOOD)
-				.sound(SoundType.WOOD)
-				.hardnessAndResistance(1.8f, 2.0f)
-				.harvestTool(ToolType.AXE)
-				.harvestLevel(0));
-		
-		this.setRegistryName(name);
+
+
+
+	public SmallWindWheelBlock(Properties properties) {
+		super(properties);
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		
+
 		if(placer == null || world.isRemote) return;
-		
+
 		Direction dir = placer.getHorizontalFacing();
-//		world.setBlockState(pos, state.with(FACING, dir.getOpposite()), 1 | 2 | 4);
-		
 		SmallWindWheelTile tile = (SmallWindWheelTile) world.getTileEntity(pos);
 		if(!tile.validateArea()) {
-			placer.sendMessage(new StringTextComponent("Wind Wheel needs 15x15x1 area of free space").setStyle(new Style().setColor(TextFormatting.RED)));
+			placer.sendMessage(new StringTextComponent("Wind Wheel needs 16x16x1 area of free space").setStyle(new Style().setColor(TextFormatting.RED)));
 			world.destroyBlock(pos, true);
 		}
-		
 		Block nextBlock = world.getBlockState(pos.offset(dir)).getBlock();
 		if(!(nextBlock instanceof MechanicalBlock)) {
 			placer.sendMessage(new StringTextComponent("Wind Wheel must be placed on a machine").setStyle(new Style().setColor(TextFormatting.RED)));
 			world.destroyBlock(pos, true);
 		}
 	}
-	
-	
-	
+
+
+
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return getDefaultState().with(FACING, context.getNearestLookingDirection().getOpposite());
+		return getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
 	}
-	
-	
-	
+
+
+
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		
+
 		Style style = new Style();
 		style.setColor(TextFormatting.AQUA);
 		style.setItalic(true);
@@ -95,32 +87,32 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 		powerText.setStyle(style);
 		tooltip.add(powerText);
 	}
-	
-	
-	
+
+
+
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) {
 		Direction facing = state.get(FACING);
 		if(facing == Direction.EAST || facing == Direction.WEST) return SHAPE_BY_DIR[AXELAXISX];
 		else return SHAPE_BY_DIR[AXELAXISZ];
 	}
-	
-	
-	
+
+
+
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new SmallWindWheelTile();
 	}
-	
-	
-	
+
+
+
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
 		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 
-	
+
 	@Override
 	public ItemStack itemWhenDestroyed() {
 		return null;

@@ -10,7 +10,8 @@
 	"block.notenoughtmachines.axle": "Axle",
 	
 	"block.notenoughtmachines.millstone": "Millstone",
-	"tiles.notenoughtmachines.triphammer": "Trip Hammer",
+	"machine.notenoughtmachines.millstone": "Millstone",
+	"machine.notenoughtmachines.triphammer": "Trip Hammer",
 	
 	"block.notenoughtmachines.andgate": "AND Gate",
 	"block.notenoughtmachines.orgate": "OR Gate",

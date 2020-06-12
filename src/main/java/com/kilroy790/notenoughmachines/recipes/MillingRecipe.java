@@ -1,13 +1,16 @@
 package com.kilroy790.notenoughmachines.recipes;
 
-import com.kilroy790.notenoughmachines.api.lists.BlockList;
-import com.kilroy790.notenoughmachines.api.lists.MachineRecipeList;
+import com.kilroy790.notenoughmachines.setup.NEMBlocks;
+import com.kilroy790.notenoughmachines.setup.NEMMachineRecipes;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+
+
+
 
 public class MillingRecipe extends AbstractMachineRecipe{
 
@@ -25,13 +28,21 @@ public class MillingRecipe extends AbstractMachineRecipe{
 	
 	public ItemStack getIcon() {
 		
-		return new ItemStack(BlockList.MILLSTONE);
+		return new ItemStack(NEMBlocks.MILLSTONE.get());
 	}
+	
 	
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
 		
-		return IRecipeSerializer.register("milling", MachineRecipeList.MILLING);
+		return IRecipeSerializer.register("milling", NEMMachineRecipes.MILLING);
 	}
 }
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.blocks.logicgates;
 
-import com.kilroy790.notenoughmachines.api.stateproperties.InputDualType;
+import com.kilroy790.notenoughmachines.state.properties.InputDualType;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -14,10 +14,13 @@ import net.minecraft.world.World;
 
 public class ORGateBlock extends RedstoneTriodeBlock {
 
-	public ORGateBlock(Properties builder, String name) {
+	public ORGateBlock(Properties builder) {
 		super(builder);
-		this.setRegistryName(name);
-		this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(INPUT, InputDualType.IN00).with(NEGATED, Boolean.valueOf(false)).with(POWERED, Boolean.valueOf(false)));
+		this.setDefaultState(this.stateContainer.getBaseState()
+				.with(HORIZONTAL_FACING, Direction.NORTH)
+				.with(INPUT, InputDualType.IN00)
+				.with(NEGATED, Boolean.valueOf(false))
+				.with(POWERED, Boolean.valueOf(false)));
 	}
 
 	@Override

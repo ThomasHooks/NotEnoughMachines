@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.tiles.machines.processing;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,7 +23,6 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 public class TripHammerTile extends NEMBaseTile implements INamedContainerProvider {
 	
-	
 	protected ItemStackHandler itemInputHandler;
 	public static final int INPUTSLOTS = 1;
 	protected LazyOptional<ItemStackHandler> itemInput = LazyOptional.of(() -> itemInputHandler);
@@ -36,8 +35,9 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	protected LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInputHandler, itemOutputHandler));
 	
 	
+	
 	public TripHammerTile() {
-		super(TileEntityList.TRIPHAMMER);
+		super(NEMTiles.TRIPHAMMER.get());
 		this.itemInputHandler = this.makeItemHandler(INPUTSLOTS);
 		this.itemOutputHandler = this.makeItemHandler(OUTPUTSLOTS);
 	}
@@ -59,17 +59,20 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	}
 	
 	
+	
 	@Override
 	protected void readCustom(CompoundNBT compound) {
 		
 	}
 
 	
+	
 	@Override
 	protected CompoundNBT writeCustom(CompoundNBT compound) {
 		return compound;
 	}
 
+	
 	
 	@Override
 	public void remove() {
@@ -80,19 +83,29 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	}
 	
 	
+	
 	@Override
 	public Container createMenu(int id, PlayerInventory playerInv, PlayerEntity playerEntity) {
 		return new TripHammerContainer(id, world, pos, playerInv, playerEntity);
 	}
 
 	
+	
 	@Override
 	public ITextComponent getDisplayName() {
-		return new TranslationTextComponent("tiles.notenoughtmachines.triphammer");
+		return new TranslationTextComponent("machine.notenoughtmachines.triphammer");
 	}
 
 
+	
 	public int getNumberOfInventorySlots() {
 		return COMBINEDSLOTS;
 	}
 }
+
+
+
+
+
+
+

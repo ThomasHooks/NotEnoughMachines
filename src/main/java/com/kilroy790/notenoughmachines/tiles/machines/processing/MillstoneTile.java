@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import javax.annotation.Nonnull;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
@@ -24,7 +24,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
@@ -61,7 +61,7 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	
 	public MillstoneTile() {
-		super(0, 20, MechanicalType.SINK, TileEntityList.MILLSTONE_TILE);
+		super(0, 20, MechanicalType.SINK, NEMTiles.MILLSTONE.get());
 		
 		this.itemInput = makeItemHandler(INPUTSLOTS);
 		this.itemOutput = makeItemHandler(OUTPUTSLOTS);
@@ -261,7 +261,7 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	@Override
 	public ITextComponent getDisplayName() {
-		return new StringTextComponent(getType().getRegistryName().getPath());
+		return new TranslationTextComponent("machine.notenoughtmachines.millstone");
 	}
 	
 	

@@ -21,7 +21,7 @@ public class MillingRecipeSerializer<T extends AbstractMachineRecipe> extends ne
 	public MillingRecipeSerializer(MillingRecipeSerializer.IFactory<T> factoryIn, int processTimeIn) {
 		this.processTime = processTimeIn;
 	    this.IAbstractMachineRecipeFactory = factoryIn;
-	    this.setRegistryName(NotEnoughMachines.modid, "milling");
+	    this.setRegistryName(NotEnoughMachines.MODID, "milling");
 	}
 	
 	

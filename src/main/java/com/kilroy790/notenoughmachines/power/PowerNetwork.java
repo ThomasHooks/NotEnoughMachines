@@ -47,7 +47,7 @@ public class PowerNetwork {
 		
 		if(!nodeMap.containsKey(tile.getPos())) {
 			nodeMap.put(tile.getPos(), tile);
-			NotEnoughMachines.logger.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
+			NotEnoughMachines.LOGGER.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
 			if(!silently) update();
 		}
 	}
@@ -67,7 +67,7 @@ public class PowerNetwork {
 		if(nodeMap.containsKey(tile.getPos())) {
 			nodeMap.remove(tile.getPos());
 			tile.networkUpdate(0, 0);
-			NotEnoughMachines.logger.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been removed from the Power Network ID: " + this.id);
+			NotEnoughMachines.LOGGER.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been removed from the Power Network ID: " + this.id);
 			if(!silently) update();
 		}
 	}

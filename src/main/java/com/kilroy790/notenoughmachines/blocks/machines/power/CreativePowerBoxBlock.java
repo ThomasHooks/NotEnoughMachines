@@ -6,8 +6,6 @@ import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -19,21 +17,14 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ToolType;
 
 
 
 
 public class CreativePowerBoxBlock extends MechanicalBlock {
 
-	public CreativePowerBoxBlock(String name) {
-		super(Properties.create(Material.WOOD)
-				.sound(SoundType.WOOD)
-				.hardnessAndResistance(1.8f, 2.0f)
-				.harvestTool(ToolType.AXE)
-				.harvestLevel(0));
-		
-		this.setRegistryName(name);
+	public CreativePowerBoxBlock(Properties properties) {
+		super(properties);
 	}
 
 	

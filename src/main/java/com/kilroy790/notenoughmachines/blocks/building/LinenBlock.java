@@ -1,8 +1,6 @@
 package com.kilroy790.notenoughmachines.blocks.building;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
@@ -10,17 +8,16 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class LinenBlock extends Block{
 
-	public LinenBlock() {
-		super(Properties.create(Material.WOOL)
-						.sound(SoundType.CLOTH)
-						.hardnessAndResistance(0.8f, 2.0f)
-						.harvestLevel(0)
-						);
-		this.setRegistryName("linenblock");
+
+
+public class LinenBlock extends Block {
+
+	public LinenBlock(Properties properties) {
+		super(properties);
 	}
 
+	
 	
    /**
     * Block's chance to react to a living entity falling on it.
@@ -30,6 +27,7 @@ public class LinenBlock extends Block{
       super.onFallenUpon(worldIn, pos, entityIn, fallDistance * 0.5F);
    }
 
+	
    
    /**
     * Called when an Entity lands on this Block. This method *must* update motionY because the entity will not do that
@@ -48,3 +46,10 @@ public class LinenBlock extends Block{
       }
    }
 }
+
+
+
+
+
+
+

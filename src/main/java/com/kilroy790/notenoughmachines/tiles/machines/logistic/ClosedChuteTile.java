@@ -1,8 +1,8 @@
 package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 
-import com.kilroy790.notenoughmachines.api.lists.TileEntityList;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ClosedChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
+import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -30,7 +30,7 @@ public class ClosedChuteTile extends NEMBaseTile implements ITickableTileEntity 
 	
 	
 	public ClosedChuteTile() {
-		super(TileEntityList.CLOSEDCHUTE);
+		super(NEMTiles.CLOSEDCHUTE.get());
 		itemInv = this.makeItemHandler(1);
 	}
 

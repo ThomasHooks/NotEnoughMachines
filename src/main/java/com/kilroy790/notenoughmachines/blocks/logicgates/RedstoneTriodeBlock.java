@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.blocks.logicgates;
 
-import com.kilroy790.notenoughmachines.api.stateproperties.InputDualType;
-import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.state.properties.InputDualType;
+import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
@@ -27,9 +28,9 @@ import net.minecraft.world.World;
 
 public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 	
-	
 	public static final EnumProperty<InputDualType> INPUT = NEMBlockStateProperties.DUAL_INPUT;
 	public static final BooleanProperty NEGATED = NEMBlockStateProperties.NEGATED;
+	
 	
 	
 	protected RedstoneTriodeBlock(Properties builder) {
@@ -37,7 +38,9 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 	}
 	
 	
+	
 	protected abstract boolean getLogicFunction(World worldIn, BlockPos pos, BlockState state);
+	
 	
 	
 	@Override
@@ -46,18 +49,18 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 	}
 	
 	
+	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		
 		this.updateState(worldIn, pos, state);
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 	
 	
+	
 	@Override
 	protected void updateState(World worldIn, BlockPos pos, BlockState state) {
 		
-		//update the Triode's input state
 		Direction sideCW = state.get(HORIZONTAL_FACING).rotateY();
 		Direction sideCCW = state.get(HORIZONTAL_FACING).rotateYCCW();
 		int inputStrengthCW = this.getInputStrengthOnSide(worldIn, pos, state, sideCW);
@@ -68,9 +71,9 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 		else if(!(inputStrengthCW > 0) && inputStrengthCCW > 0) worldIn.setBlockState(pos, state.with(INPUT, InputDualType.IN01), 1|2);
 		else worldIn.setBlockState(pos, state.with(INPUT, InputDualType.IN00), 1|2);
 		
-		//update the Triode's powered state
 		super.updateState(worldIn, pos, state);
 	}
+	
 	
 	
 	protected int getInputStrengthOnSide(World worldIn, BlockPos pos, BlockState state, Direction side) {
@@ -78,28 +81,30 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 		int in = worldIn.getRedstonePower(blockpos, side);
 		if (in >= 15) {
 			return in;
-		} else {
+		} 
+		else {
 			BlockState blockstate = worldIn.getBlockState(blockpos);
 			return Math.max(in, blockstate.getBlock() == Blocks.REDSTONE_WIRE ? blockstate.get(RedstoneWireBlock.POWER) : 0);
 		}
 	}
 	
 	
+	
 	@Override
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		if (!player.abilities.allowEdit) {
-			return false;
+			return ActionResultType.PASS;
 		} 
 		else {
-			state = state.cycle(NEGATED);
-			float f = state.get(NEGATED) == true ? 0.55f : 0.5f;
-			worldIn.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 0.3f, f);
-			worldIn.setBlockState(pos, state, 2);
-			worldIn.getPendingBlockTicks().scheduleTick(pos, this, 1);
-			return true;
+			BlockState stateUpdate = state.cycle(NEGATED);
+			float pitch = stateUpdate.get(NEGATED) == true ? 0.55f : 0.5f;
+			worldIn.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 0.3f, pitch);
+			worldIn.setBlockState(pos, stateUpdate, 1 | 2);
+			worldIn.getPendingBlockTicks().scheduleTick(pos, this, getDelay(stateUpdate));
+			return ActionResultType.SUCCESS;
 		}
 	}
+	
 	
 	
 	@Override
@@ -108,22 +113,33 @@ public abstract class RedstoneTriodeBlock extends RedstoneDiodeBlock {
 	}
 	
 	
+	
 	protected int getDelay(BlockState state) {
 		return 2;
 	}
 
+	
 	
 	public Direction getFacing(IWorldReader worldIn, BlockPos pos, BlockState state) {
 		return worldIn.getBlockState(pos).get(HORIZONTAL_FACING);
 	}
 
 	
+	
 	public InputDualType getInputs(IWorldReader worldIn, BlockPos pos, BlockState state) {
 		return worldIn.getBlockState(pos).get(INPUT);
 	}
+	
 	
 	
 	public boolean isNegated(IWorldReader worldIn, BlockPos pos, BlockState state) {
 		return worldIn.getBlockState(pos).get(NEGATED);
 	}
 }
+
+
+
+
+
+
+

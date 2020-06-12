@@ -2,14 +2,12 @@ package com.kilroy790.notenoughmachines.blocks.machines.power;
 
 import java.util.Random;
 
-import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -27,7 +25,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ToolType;
 
 
 
@@ -39,16 +36,11 @@ public class GearboxBlock extends MechanicalBlock {
 
 	
 	
-	public GearboxBlock(String name) {
-		super(Properties.create(Material.WOOD)
-						.sound(SoundType.WOOD)
-						.hardnessAndResistance(1.8f, 2.0f)
-						.harvestTool(ToolType.AXE)
-						.harvestLevel(0));
-		
-		this.setRegistryName(name);
-		
-		this.setDefaultState(this.stateContainer.getBaseState().with(AXIS, Direction.Axis.Y).with(POWERED, Boolean.valueOf(false)));
+	public GearboxBlock(Properties properties) {
+		super(properties);
+		this.setDefaultState(this.stateContainer.getBaseState()
+				.with(AXIS, Direction.Axis.Y)
+				.with(POWERED, Boolean.valueOf(false)));
 	}
 	
 	

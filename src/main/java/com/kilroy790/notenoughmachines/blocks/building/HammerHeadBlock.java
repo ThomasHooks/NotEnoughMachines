@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.blocks.building;
 
-import com.kilroy790.notenoughmachines.api.stateproperties.NEMBlockStateProperties;
+import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 
 import net.minecraft.block.Block;
@@ -11,7 +11,7 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -27,7 +27,6 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class HammerHeadBlock extends Block {
 
-	
 	private static final VoxelShape FACE_SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D);
 	private static final VoxelShape NECK_SHAPE = Block.makeCuboidShape(4.0D, 3.0D, 4.0D, 12.0D, 6.0D, 12.0D);
 	private static final VoxelShape HEAD_SHAPE = Block.makeCuboidShape(3.0D, 6.0D, 3.0D, 13.0D, 13.0D, 13.0D);
@@ -37,9 +36,9 @@ public class HammerHeadBlock extends Block {
 	public static final BooleanProperty FORMED = NEMBlockStateProperties.FORMED;
 	
 	
-	public HammerHeadBlock(Properties properties, String name) {
+	
+	public HammerHeadBlock(Properties properties) {
 		super(properties);
-		this.setRegistryName(name);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FORMED, false));
 	}
 	
@@ -54,20 +53,22 @@ public class HammerHeadBlock extends Block {
 	}*/
 	
 	
+	
 	@Override
-	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 
-		if(world.isRemote) return true;
-		
+		if(world.isRemote) {
+			return ActionResultType.SUCCESS;
+		}
 		else {
 			TileEntity entity = world.getTileEntity(pos);
 			if(entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
-			
 			else throw new IllegalStateException("Trip Hammer container provider is missing!");
 			
-			return true;
+			return ActionResultType.SUCCESS;
 		}
 	}
+	
 	
 	
 	@Override
@@ -76,16 +77,12 @@ public class HammerHeadBlock extends Block {
 	}
 	
 	
-	@Override
-	public BlockRenderLayer getRenderLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
-	
 	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
 		builder.add(FORMED);
 	}
+	
 	
 	
 	@Override
@@ -94,8 +91,16 @@ public class HammerHeadBlock extends Block {
 	}
 	
 	
+	
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new TripHammerTile();
 	}
 }
+
+
+
+
+
+
+
