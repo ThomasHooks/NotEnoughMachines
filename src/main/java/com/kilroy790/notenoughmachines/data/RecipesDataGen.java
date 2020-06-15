@@ -60,11 +60,11 @@ public class RecipesDataGen extends RecipeProvider {
 
 
 		
-		  /*ShapelessRecipeBuilder.shapelessRecipe(ItemList.LINEN, 9)
-		  .addIngredient(BlockList.LINENBLOCK) 
-		  .setGroup("linen") 
-		  .addCriterion("flax",InventoryChangeTrigger.Instance.forItems(ItemList.FLAX))
-		  .build(consumer);*/
+//		  ShapelessRecipeBuilder.shapelessRecipe(ItemList.LINEN, 9)
+//		  .addIngredient(BlockList.LINENBLOCK) 
+//		  .setGroup("linen") 
+//		  .addCriterion("flax",InventoryChangeTrigger.Instance.forItems(ItemList.FLAX))
+//		  .build(consumer);
 		 
 		
 		
@@ -122,10 +122,9 @@ public class RecipesDataGen extends RecipeProvider {
 		
 		
 		//Transport Machines
-		//TODO change the Chute recipe
-		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.CHUTE.get(), 1)
-		.patternLine("=c=")
-		.patternLine(" = ")
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.CHUTE.get(), 2)
+		.patternLine("xc=")
+		.key('x', Items.IRON_INGOT)
 		.key('c', Items.CHEST)
 		.key('=', ItemTags.WOODEN_SLABS)
 		.setGroup("chute")
@@ -133,39 +132,27 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
-		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.CLOSEDCHUTE.get(), 2)
-		.patternLine(" = ")
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.FILTER.get(), 2)
+		.patternLine("=#=")
 		.patternLine("xcx")
-		.patternLine(" = ")
+		.patternLine("=r=")
 		.key('c', Items.CHEST)
-		.key('x', Items.IRON_INGOT)
+		.key('x', NEMBlocks.CHUTE.get())
 		.key('=', ItemTags.WOODEN_SLABS)
-		.setGroup("closedchute")
+		.key('#', ItemTags.WOODEN_TRAPDOORS)
+		.key('r', Items.COMPARATOR)
+		.setGroup("filter")
 		.addCriterion("iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
 		
 		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.ITEMPUSHER.get(), 2)
-		.patternLine(" x ")
-		.patternLine("xcx")
-		.patternLine(" x ")
+		.patternLine("icx")
+		.key('i', Items.IRON_INGOT)
 		.key('c', Items.CHEST)
-		.key('x', Items.IRON_INGOT)
+		.key('x', Items.REDSTONE)
 		.setGroup("itempusher")
 		.addCriterion("iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
-		.build(consumer);
-		
-		
-		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.FILTER.get(), 1)
-		.patternLine("=#=")
-		.patternLine("=c=")
-		.patternLine(" v ")
-		.key('c', Items.COMPARATOR)
-		.key('v', Items.HOPPER)
-		.key('#', ItemTags.WOODEN_TRAPDOORS)
-		.key('=', ItemTags.WOODEN_SLABS)
-		.setGroup("filter")
-		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAX.get()))
 		.build(consumer);
 		
 		

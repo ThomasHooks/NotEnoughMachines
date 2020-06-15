@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -28,7 +29,6 @@ import net.minecraftforge.items.IItemHandler;
 
 public abstract class ItemConduitBlock extends Block {
 
-	
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 	public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
 	public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -53,17 +53,29 @@ public abstract class ItemConduitBlock extends Block {
 	protected static final VoxelShape TUBE_DOWN_SHAPE = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D);
 	
 	
+	
 	public ItemConduitBlock(Properties properties) {
 		super(properties);
+		this.setDefaultState(this.stateContainer.getBaseState()
+				.with(FACING, Direction.NORTH)
+				.with(NORTH, Boolean.valueOf(false))
+				.with(EAST, Boolean.valueOf(false))
+				.with(SOUTH, Boolean.valueOf(false))
+				.with(WEST, Boolean.valueOf(false))
+				.with(UP, Boolean.valueOf(false))
+				.with(DOWN, Boolean.valueOf(false)));
 	}
 
+	
 	
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		
 		World world = context.getWorld();
 		BlockPos pos = context.getPos();
-		return this.getDefaultState().with(FACING, context.getFace().getOpposite())
+		Direction facing = context.getPlayer().isSneaking() ? context.getFace().getOpposite() : context.getFace();
+		return this.getDefaultState()
+				.with(FACING, facing)
 				.with(NORTH, Boolean.valueOf(this.canConnectTo(world, pos.north(), Direction.NORTH)))
 				.with(EAST, Boolean.valueOf(this.canConnectTo(world, pos.east(), Direction.EAST)))
 				.with(SOUTH, Boolean.valueOf(this.canConnectTo(world, pos.south(), Direction.SOUTH)))
@@ -73,17 +85,12 @@ public abstract class ItemConduitBlock extends Block {
 	}
 	
 	
+	
 	@Override
 	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-		/*
-		 * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
-		 * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-		 * returns its solidified counterpart.
-		 * Note that this method should ideally consider only the specific face passed in.
-		 */
-
 		return stateIn.with(SixWayBlock.FACING_TO_PROPERTY_MAP.get(facing), Boolean.valueOf(this.canConnectTo((World) worldIn, facingPos, facing)));
 	}
+	
 	
 	
 	protected boolean canConnectTo(World worldIn, BlockPos pos, Direction side) {
@@ -97,25 +104,13 @@ public abstract class ItemConduitBlock extends Block {
 	}
 	
 	
+	
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-		/*
-		 * Called before the Block is set to air in the world. Called regardless of if the player's tool can actually collect
-		 * this block
-		 */
-
 		TileEntity tile = worldIn.getTileEntity(pos);
 		if(tile != null) NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
-		
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
-	
-	
-	
-//	@Override
-//	public BlockRenderLayer getRenderLayer() {
-//		return BlockRenderLayer.CUTOUT_MIPPED;
-//	}
 	
 	
 	
@@ -140,9 +135,14 @@ public abstract class ItemConduitBlock extends Block {
 	}
 	
 	
+	
+	/**
+	 * Gets the item conduit's bounding box
+	 * 
+	 * @param state Is the block state of the Item Conduit
+	 * @return The bounding box for the given Item Conduit Block
+	 */
 	protected VoxelShape getTubeShapes(BlockState state) {
-		//@param	state	is the block state of the Item Conduit
-		
 		VoxelShape shape = VoxelShapes.empty();
 		if(state.get(NORTH)) shape = VoxelShapes.or(shape, TUBE_NORTH_SHAPE);
 		if(state.get(EAST)) shape = VoxelShapes.or(shape, TUBE_EAST_SHAPE);
@@ -152,4 +152,30 @@ public abstract class ItemConduitBlock extends Block {
 		if(state.get(DOWN)) shape = VoxelShapes.or(shape, TUBE_DOWN_SHAPE);
 		return shape;
 	}
+	
+	
+	
+	@Override
+	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+		builder.add(FACING, NORTH, EAST, SOUTH, WEST, UP, DOWN);
+	}
+	
+	
+	
+	@Override
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+	
+	
+	
+	@Override
+	abstract public TileEntity createTileEntity(BlockState state, IBlockReader world);
 }
+
+
+
+
+
+
+

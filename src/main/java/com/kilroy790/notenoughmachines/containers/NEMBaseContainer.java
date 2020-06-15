@@ -6,6 +6,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -21,10 +23,10 @@ public abstract class NEMBaseContainer<T extends NEMBaseTile> extends Container 
 	
 	
 
-	protected NEMBaseContainer(ContainerType<?> type, int id, PlayerInventory playerInvIn, T tileIn) {
+	protected NEMBaseContainer(ContainerType<?> type, int id, PlayerInventory inventory, T tile) {
 		super(type, id);
-		this.playerInv = new InvWrapper(playerInvIn);
-		this.tile = tileIn;
+		this.playerInv = new InvWrapper(inventory);
+		this.tile = tile;
 	}
 	
 	
@@ -36,6 +38,16 @@ public abstract class NEMBaseContainer<T extends NEMBaseTile> extends Container 
 	
 	
 	
+	@Override
+	public boolean canMergeSlot(ItemStack stack, Slot slotIn) {
+		if(slotIn.getStack().isEmpty()) return true;
+		if(!slotIn.getStack().getItem().equals(stack.getItem())) return false;
+		if(slotIn.getStack().getCount() + stack.getCount() > slotIn.getSlotStackLimit()) return false;
+		else return true;
+	}
+	
+	
+	
 	/**
 	 * Adds the player's inventory and quick bar slots to this container
 	 * 
@@ -43,12 +55,12 @@ public abstract class NEMBaseContainer<T extends NEMBaseTile> extends Container 
 	 * @param slotY The Y coordinate of the top-left inventory slot in the player's inventory
 	 */
 	protected void addPlayerInventorySlots(int slotX, int slotY) {
-		//Player inventory
-		addItemSlot(playerInv, 9, slotX, slotY, 9, 18, 3, 18);
+		//Player's inventory
+		addItemSlot(playerInv, slotX, slotY, 18, 18, 9, 9, 3);
 
-		//Player quick bar
+		//Player's quick bar
 		slotY += 58;
-		addItemSlot(playerInv, 0, slotX, slotY, 9, 18, 1, 0);
+		addItemSlot(playerInv, slotX, slotY, 18, 18, 0, 9, 1);
 	}
 	
 
@@ -61,14 +73,14 @@ public abstract class NEMBaseContainer<T extends NEMBaseTile> extends Container 
 	 * @param xOffset
 	 * @param yOffset
 	 * @param slotOffset
-	 * @param numberOfHorizontalSlots
-	 * @param numberOfVerticalSlots
+	 * @param numberOfColumns
+	 * @param numberOfRows
 	 */
-	protected void addItemSlot(IItemHandler itemHandler, int x, int y, int xOffset, int yOffset, int slotOffset, int numberOfHorizontalSlots, int numberOfVerticalSlots) {
+	protected void addItemSlot(IItemHandler itemHandler, int x, int y, int xOffset, int yOffset, int slotOffset, int numberOfColumns, int numberOfRows) {
 
-		for(int i = 0; i < numberOfVerticalSlots; i++) {
+		for(int i = 0; i < numberOfRows; i++) {
 			int tempX = x;
-			for(int j = 0; j < numberOfHorizontalSlots; j++) {
+			for(int j = 0; j < numberOfColumns; j++) {
 				addSlot(new SlotItemHandler(itemHandler, slotOffset, tempX, y));
 				tempX += xOffset;
 				slotOffset++;
@@ -76,20 +88,6 @@ public abstract class NEMBaseContainer<T extends NEMBaseTile> extends Container 
 			y += yOffset;
 		}
 	}
-	
-	
-	
-	/**
-	 * @return Gets the slot index where the player's inventory starts
-	 */
-	abstract protected int getPlayerInventoryStatringSlot();
-	
-	
-	
-	/**
-	 * @return Gets the slot index where the player's inventory ends
-	 */
-	abstract protected int getPlayerInventoryEndingSlot();
 }
 
 

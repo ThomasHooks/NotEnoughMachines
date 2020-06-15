@@ -1,3 +1,6 @@
 {
-    "parent": "notenoughtmachines:block/chute"
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "notenoughtmachines:item/chute_item"
+    }
 }

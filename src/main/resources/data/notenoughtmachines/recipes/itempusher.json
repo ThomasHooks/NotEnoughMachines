@@ -2,16 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "group": "itempusher",
   "pattern": [
-    " x ",
-    "xcx",
-    " x "
+    "icx"
   ],
   "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
     "c": {
       "item": "minecraft:chest"
     },
     "x": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:redstone"
     }
   },
   "result": {

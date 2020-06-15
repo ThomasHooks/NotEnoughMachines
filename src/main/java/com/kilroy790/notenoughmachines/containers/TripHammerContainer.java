@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.setup.ContainerList;
 import com.kilroy790.notenoughmachines.setup.NEMBlocks;
+import com.kilroy790.notenoughmachines.setup.NEMContainers;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,13 +34,13 @@ public class TripHammerContainer extends Container {
 
 
 	public TripHammerContainer(int id, World world, BlockPos pos, PlayerInventory playerInv, PlayerEntity player) {
-		super(ContainerList.TRIPHAMMER, id);
+		super(NEMContainers.TRIPHAMMER.get(), id);
 		this.tile = (TripHammerTile) world.getTileEntity(pos);
 		this.playerInv = new InvWrapper(playerInv);
 
 		//add the machines' inventory slots
 		tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-
+			
 			for(int slot = 0; slot < tile.getNumberOfInventorySlots(); slot++) {
 				//add the input slot
 				if(slot == 0) addSlot(new SlotItemHandler(h, slot, 51, 20));

@@ -2,7 +2,6 @@ package com.kilroy790.notenoughmachines.setup;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.ChuteTile;
-import com.kilroy790.notenoughmachines.tiles.machines.logistic.ClosedChuteTile;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.FilterTile;
 import com.kilroy790.notenoughmachines.tiles.machines.logistic.ItemPusherTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
@@ -50,14 +49,11 @@ public class NEMTiles {
 	public static final RegistryObject<TileEntityType<ChuteTile>> CHUTE = TILES.register("chute", 
 			() -> TileEntityType.Builder.create(ChuteTile::new, NEMBlocks.CHUTE.get()).build(null));
 	
-	public static final RegistryObject<TileEntityType<ClosedChuteTile>> CLOSEDCHUTE = TILES.register("closedchute", 
-			() -> TileEntityType.Builder.create(ClosedChuteTile::new, NEMBlocks.CLOSEDCHUTE.get()).build(null));
+	public static final RegistryObject<TileEntityType<FilterTile>> FILTER = TILES.register("filter", 
+			() -> TileEntityType.Builder.create(FilterTile::new, NEMBlocks.FILTER.get()).build(null));
 	
 	public static final RegistryObject<TileEntityType<ItemPusherTile>> ITEMPUSHER = TILES.register("itempusher", 
 			() -> TileEntityType.Builder.create(ItemPusherTile::new, NEMBlocks.ITEMPUSHER.get()).build(null));
-	
-	public static final RegistryObject<TileEntityType<FilterTile>> FILTER = TILES.register("filter", 
-			() -> TileEntityType.Builder.create(FilterTile::new, NEMBlocks.FILTER.get()).build(null));
 
 	
 	

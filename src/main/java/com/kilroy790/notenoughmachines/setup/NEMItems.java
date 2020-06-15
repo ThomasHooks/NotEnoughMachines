@@ -68,14 +68,11 @@ public class NEMItems {
 	public static final RegistryObject<Item> CHUTE = ITEMS.register("chute", 
 			()-> new BlockItem(NEMBlocks.CHUTE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
-	public static final RegistryObject<Item> CLOSEDCHUTE = ITEMS.register("closedchute", 
-			()-> new BlockItem(NEMBlocks.CLOSEDCHUTE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	public static final RegistryObject<Item> FILTER = ITEMS.register("filter", 
+			()-> new BlockItem(NEMBlocks.FILTER.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	public static final RegistryObject<Item> ITEMPUSHER = ITEMS.register("itempusher", 
 			()-> new BlockItem(NEMBlocks.ITEMPUSHER.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
-	public static final RegistryObject<Item> FILTER = ITEMS.register("filter", 
-			()-> new BlockItem(NEMBlocks.FILTER.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	public static final RegistryObject<Item> REDSTONE_COLLECTOR = ITEMS.register("redstone_collector", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));

@@ -10,15 +10,12 @@ import com.kilroy790.notenoughmachines.client.renderers.tiles.AxleRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.MillstoneRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallWindWheelRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.TubWheelRenderer;
-import com.kilroy790.notenoughmachines.containers.FilterContainer;
-import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
-import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
 import com.kilroy790.notenoughmachines.power.PowerNetworkStack;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
-import com.kilroy790.notenoughmachines.setup.ContainerList;
 import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.setup.NEMBlocks;
+import com.kilroy790.notenoughmachines.setup.NEMContainers;
 import com.kilroy790.notenoughmachines.setup.NEMItems;
 import com.kilroy790.notenoughmachines.setup.NEMMachineRecipes;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
@@ -26,22 +23,15 @@ import com.kilroy790.notenoughmachines.utilities.ClientProxy;
 import com.kilroy790.notenoughmachines.utilities.IProxy;
 import com.kilroy790.notenoughmachines.utilities.ServerProxy;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -60,6 +50,7 @@ public class NotEnoughMachines {
 	
 	public static PowerNetworkStack AETHER = new PowerNetworkStack();
 	
+	@SuppressWarnings("deprecation")
 	public static IProxy proxy = DistExecutor.runForDist(()-> ()-> new ClientProxy(), ()-> ()-> new ServerProxy());
 	public static ModSetup setup = new ModSetup();
 	
@@ -68,14 +59,14 @@ public class NotEnoughMachines {
 	public NotEnoughMachines() {
 		
 		instance = this;
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegistries);
-		MinecraftForge.EVENT_BUS.register(this);
-		
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		modEventBus.addListener(this::setup);
+		modEventBus.addListener(this::clientRegistries);
+		MinecraftForge.EVENT_BUS.register(this);
 		NEMBlocks.registerAll(modEventBus);
 		NEMItems.registerAll(modEventBus);
 		NEMTiles.registerAll(modEventBus);
+		NEMContainers.registerAll(modEventBus);
 	}
 	
 	
@@ -106,9 +97,9 @@ public class NotEnoughMachines {
 		LOGGER.info("All NEM Tile Entity Renderers registered");
 		
 		LOGGER.info("Registering all NEM Containers");
-		ScreenManager.registerFactory(ContainerList.MILLSTONE_CONTAINER, MillstoneScreen::new);
-		ScreenManager.registerFactory(ContainerList.TRIPHAMMER, TripHammerScreen::new);
-		ScreenManager.registerFactory(ContainerList.FILTER_CONTAINER, FilterScreen::new);
+		ScreenManager.registerFactory(NEMContainers.MILLSTONE.get(), MillstoneScreen::new);
+		ScreenManager.registerFactory(NEMContainers.TRIPHAMMER.get(), TripHammerScreen::new);
+		ScreenManager.registerFactory(NEMContainers.FILTER.get(), FilterScreen::new);
 		LOGGER.info("All NEM Containers registered");
 		
 		LOGGER.info("All NEM Client side entries registered");
@@ -117,35 +108,7 @@ public class NotEnoughMachines {
 	
 	
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-	public static class registryEvents {
-		
-		//Register Containers
-		@SubscribeEvent
-		public static void registerContainers(final RegistryEvent.Register<ContainerType<?>> event) {
-			LOGGER.info("Registering all containers");
-			
-			LOGGER.info("Registering Millstone Container");
-			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                return new MillstoneContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
-            }).setRegistryName("millstone"));
-			
-			LOGGER.info("Registering Trip Hammer Container");
-			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                return new TripHammerContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
-            }).setRegistryName("triphammer"));
-			
-			LOGGER.info("Registering Filter Container");
-			event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
-                BlockPos pos = data.readBlockPos();
-                return new FilterContainer(windowId, NotEnoughMachines.proxy.getClientWorld(), pos, inv, NotEnoughMachines.proxy.getClientPlayer());
-            }).setRegistryName("filter"));
-			
-			LOGGER.info("Containers registered");
-		}
-		
-		
+	public static class registryEvents {		
 		
 		//Register recipes
 		@SubscribeEvent

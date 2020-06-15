@@ -1,22 +1,40 @@
 {
     "multipart": [
-		{   "when": { "facing": "down" },
-            "apply": { "model": "notenoughtmachines:block/itempusher", "x": 90, "uvlock": false }
+		{   "when": { "facing": "down", "enabled": "true" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_unlocked", "x": 90, "uvlock": false }
         },
-		{   "when": { "facing": "up" },
-            "apply": { "model": "notenoughtmachines:block/itempusher", "x": -90, "uvlock": false }
+		{   "when": { "facing": "up", "enabled": "true" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_unlocked", "x": -90, "uvlock": false }
         },
-		{   "when": { "facing": "north" },
-            "apply": { "model": "notenoughtmachines:block/itempusher", "y": 0, "uvlock": false }
+		{   "when": { "facing": "north", "enabled": "true" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_unlocked", "y": 0, "uvlock": false }
         },
-		{   "when": { "facing": "east" },
-            "apply": { "model": "notenoughtmachines:block/itempusher", "y": 90, "uvlock": false }
+		{   "when": { "facing": "east", "enabled": "true" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_unlocked", "y": 90, "uvlock": false }
         },
-		{   "when": { "facing": "south" },
-            "apply": { "model": "notenoughtmachines:block/itempusher", "y": 180, "uvlock": false }
+		{   "when": { "facing": "south", "enabled": "true" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_unlocked", "y": 180, "uvlock": false }
         },
-		{   "when": { "facing": "west" },
-            "apply": { "model": "notenoughtmachines:block/itempusher", "y": -90, "uvlock": false }
+		{   "when": { "facing": "west", "enabled": "true" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_unlocked", "y": -90, "uvlock": false }
+        },
+		{   "when": { "facing": "down", "enabled": "false" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_locked", "x": 90, "uvlock": false }
+        },
+		{   "when": { "facing": "up", "enabled": "false" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_locked", "x": -90, "uvlock": false }
+        },
+		{   "when": { "facing": "north", "enabled": "false" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_locked", "y": 0, "uvlock": false }
+        },
+		{   "when": { "facing": "east", "enabled": "false" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_locked", "y": 90, "uvlock": false }
+        },
+		{   "when": { "facing": "south", "enabled": "false" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_locked", "y": 180, "uvlock": false }
+        },
+		{   "when": { "facing": "west", "enabled": "false" },
+            "apply": { "model": "notenoughtmachines:block/itempusher_locked", "y": -90, "uvlock": false }
         },
 	
 	

@@ -1,24 +1,22 @@
 package com.kilroy790.notenoughmachines.tiles.machines.logistic;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
-import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
+import javax.annotation.Nullable;
+
+import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
-import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
+import com.kilroy790.notenoughmachines.tiles.machines.ItemConduitTile;
+import com.kilroy790.notenoughmachines.utilities.NEMDirectionHelper;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -31,172 +29,216 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 
 
-public class FilterTile extends NEMBaseTile implements INamedContainerProvider, ITickableTileEntity {
-	//TODO look into making it into a smart filter
+public class FilterTile extends ItemConduitTile implements INamedContainerProvider {
+
+	private final static int BUFFER = 0;
+	private final static int NUMBER_OF_BUFFER_SLOTS = 1;
+	private final static int BUFFER_SLOT = 0;
+	private final static int RED_FILTER = 1;
+	private final static int GREEN_FILTER = 2;
+	private final static int BLUE_FILTER = 3;
+	private final static int YELLOW_FILTER	 = 4;
+	private final static int NUMBER_OF_FILTERS = 4;
+	private final static int NUMBER_OF_FILTER_SLOTS = 7;
+	private LazyOptional<ItemStackHandler> bufferHandler = LazyOptional.of(() -> this.inventory.get(BUFFER));
+	private LazyOptional<CombinedInvWrapper> combinedHandler = LazyOptional.of(
+			() -> new CombinedInvWrapper(
+					this.inventory.get(BUFFER), 
+					this.inventory.get(RED_FILTER), 
+					this.inventory.get(GREEN_FILTER), 
+					this.inventory.get(BLUE_FILTER), 
+					this.inventory.get(YELLOW_FILTER)));
 	
-	protected ItemStackHandler itemInv;
-	public static final int INVENTORYSLOTS = 4;
 	
-	protected ItemStackHandler itemFilter;
-	public static final int FILTERSLOTS = 1;
-	protected LazyOptional<ItemStackHandler> itemFilterHandler = LazyOptional.of(() -> itemFilter);
-	
-	public static final int COMBINEDSLOTS = FILTERSLOTS + INVENTORYSLOTS;
-	protected LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemFilter, itemInv));
-	
-	protected int itemTransfer = 0;
-	public static final int MAX_ITEM_TRANSFER = 1;
-	public static final int ITEM_TRANSFER_RATE = 8;
-	
-	
+	public enum FilterColor {
+		RED(1),
+		GREEN(2),
+		BLUE(3),
+		YELLOW(4);
+		
+		private int number;
+		
+		private FilterColor(int numberIn) {
+			this.number = numberIn;
+		}
+		
+		public int getSlot() {
+			return this.number;
+		}
+		
+		@Nullable
+		static public FilterColor getFilter(int number) {
+			switch(number) {
+			case 1:
+				return RED;
+			case 2:
+				return GREEN;
+			case 3:
+				return BLUE;
+			case 4:
+				return YELLOW;
+			default:
+				return null;
+			}
+		}
+	}
+
+
+
 	public FilterTile() {
 		super(NEMTiles.FILTER.get());
-		itemInv = this.makeItemHandler(INVENTORYSLOTS);
-		itemFilter = this.makeItemHandler(FILTERSLOTS);
+		
+		//Buffer
+		this.addItemStackHandler(NUMBER_OF_BUFFER_SLOTS);
+		
+		//Filters
+		for(int i = 0; i < NUMBER_OF_FILTERS; i++) {
+			this.addItemStackHandler(NUMBER_OF_FILTER_SLOTS, 1);
+		}
 	}
+	
 	
 	
 	@Override
 	public void tick() {
-		
 		if(!this.world.isRemote) {
-			//move items from the filter slot to the Filter's inventory
-			NEMItemHelper.moveItemsInternally(this.itemFilter, 0, 1, this.itemInv);
-			
-			if(this.canTransferItem()) {
-				//push items in the Filter's inventory to the container it's facing
-				this.pushItems(this.itemInv, MAX_ITEM_TRANSFER);
-				//pull items into the Filter's filter slot
-				this.pullItems(this.itemFilter, MAX_ITEM_TRANSFER);
-				//Reset the Filter's item transfer cool-down
-				this.setItemTransfer(0);
+			if(canTransferItem()) {
+				pushItems(this.inventory.get(BUFFER), MAX_ITEM_TRANSFER);
+				this.transferTimer = 0;
+				markDirty();
 			}
-			//Increment the Filter's item transfer cool-down
-			this.itemTransfer++;
+			this.transferTimer++;
+			if(this.transferTimer > ITEM_TRANSFER_RATE) this.transferTimer = ITEM_TRANSFER_RATE;
 		}
 	}
 	
 	
+	
+	/**
+	 * Will try to push Items to the Container or drop Items behind this Item Conduit
+	 * 
+	 * @param itemHandler The item handler for this tile
+	 * @param amount Number of items in the stack that will be pushed to the next Container
+	 */
+	@Override
 	protected void pushItems(ItemStackHandler itemHandler, int amount) {
-		/*
-		 * Will try to push the item stack into the next Container
-		 * 
-		 * @param	itemHandler		the item handler for this tile
-		 * 
-		 * @param	amount			number of items in the stack that will be pushed to the next Container
-		 */
 
-		Direction facing = this.getBlockState().get(FilterBlock.FACING);
-		for(int slot = 0; slot < itemHandler.getSlots(); slot++) {
+		ItemStack stackInBuffer = this.inventory.get(BUFFER).getStackInSlot(0);
+		if(stackInBuffer.isEmpty()) return;
 
-			if(itemHandler.getStackInSlot(slot).isEmpty()) continue;
+		for(int i = RED_FILTER; i <= NUMBER_OF_FILTERS; i++) {
+			for(int slot = 0; slot < NUMBER_OF_FILTER_SLOTS; slot++) {
+				ItemStack stackInFilter = this.inventory.get(i).getStackInSlot(slot);
+				if(stackInFilter.isEmpty()) continue;
 
+				if(stackInBuffer.getItem().equals(stackInFilter.getItem())) {
+					Direction facing = getFilterFacing(FilterColor.getFilter(i));
+					Objects.requireNonNull(facing, "Direction cannot be null!");
+					BlockPos nextPos = pos.offset(facing);
+					if(this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) {
+						NEMItemHelper.dropItemStack(world, nextPos, itemHandler.extractItem(BUFFER_SLOT, amount, false));
+					}
+					else {
+						NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, BUFFER_SLOT, amount);
+					}
+					return;
+				}
+			}
+		}
+		super.pushItems(itemHandler, amount);
+	}
+	
+	
+	
+	@Nullable
+	protected Direction getFilterFacing(FilterColor filter) {
+		Direction facing = this.getBlockState().get(ItemPusherBlock.FACING);
+		switch(filter) {
+
+		case RED:
+			if(facing == Direction.UP || facing == Direction.DOWN) {
+				boolean ccw = facing == Direction.DOWN ? false : true;
+				Direction dir = Direction.UP;
+				return NEMDirectionHelper.rotateX(dir, ccw, 1);
+			}
+			else return Direction.UP;
+
+		case BLUE:
+			if(facing == Direction.UP || facing == Direction.DOWN) {
+				boolean ccw = facing == Direction.DOWN ? false : true;
+				Direction dir = Direction.DOWN;
+				return NEMDirectionHelper.rotateX(dir, ccw, 1);
+				
+			}
+			else return Direction.DOWN;
+
+		case GREEN:
+			if(facing == Direction.UP || facing == Direction.DOWN) return Direction.WEST;
 			else {
-				NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
-				break;
+				int times = 0;
+				if(facing == Direction.NORTH) times = 0;
+				else if(facing == Direction.EAST) times = 1;
+				else if(facing == Direction.SOUTH) times = 2;
+				else if(facing == Direction.WEST) times = 3;
+				Direction dir = Direction.WEST;
+				return NEMDirectionHelper.rotateY(dir, false, times);
 			}
+
+		case YELLOW:
+			if(facing == Direction.UP || facing == Direction.DOWN) return Direction.EAST;
+			else {
+				int times = 0;
+				if(facing == Direction.NORTH) times = 0;
+				else if(facing == Direction.EAST) times = 1;
+				else if(facing == Direction.SOUTH) times = 2;
+				else if(facing == Direction.WEST) times = 3;
+				Direction dir = Direction.EAST;
+				return NEMDirectionHelper.rotateY(dir, false, times);
+			}
+
+		default:
+			return null;
 		}
 	}
-	
-	
-	protected void pullItems(ItemStackHandler itemHandler, int amount) {
-		/*
-		 * Will try to pull items inside of the capture area into the filter slot
-		 * 
-		 * @param	itemHandler		the item handler for this tile
-		 * 
-		 * @param	amount			number of items in the stack that will be pulled
-		 */
-		
-		BlockPos posUp = this.getPos().up();
-		if(this.world.getBlockState(posUp).isAir(this.getWorld(), posUp)) {
-			for(ItemEntity itemEntity : this.getCapturedItems()) {
-				this.captureItem(itemEntity);
-			}
-		}
-		else NEMItemHelper.pullFromContainer(world, posUp, Direction.DOWN, itemHandler, 0, amount);
-	}
-	
-	
-	public void captureItem(ItemEntity item) {
-		//Will try to add the item entity into the filter slot
-		
-		ItemStack stack = item.getItem().copy();
-		ItemStack stackRemander = itemFilter.insertItem(0, stack, false);
-		if(stackRemander.isEmpty()) item.remove();
-		else item.setItem(stackRemander);
-	}
-	
-	
-	protected List<ItemEntity> getCapturedItems() {
-		return FilterBlock.COLLECTION_AREA_SHAPE.toBoundingBoxList().stream().flatMap(h -> {
-			return this.getWorld().getEntitiesWithinAABB(ItemEntity.class, h.offset(this.getPos().getX() - 0.5D, this.getPos().getY() - 0.5D, this.getPos().getZ() - 0.5D), EntityPredicates.IS_ALIVE).stream();
-		}).collect(Collectors.toList());
-	}
-	
-	
+
+
+
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		
 		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			//This is done so the player can interact with the Filter's combined inventory
-			if(side == null) return combinedItemHandler.cast();
-			else return itemFilterHandler.cast();
+			if(side == null) return combinedHandler.cast();
+			else return bufferHandler.cast();
 		}
 		return super.getCapability(cap, side);
 	}
 
-	
-	@Override
-	protected void readCustom(CompoundNBT compound) {
-		this.itemFilter.deserializeNBT(compound.getCompound("filter"));
-		this.itemInv.deserializeNBT(compound.getCompound("inv"));
-		this.itemTransfer = compound.getInt("transfertime");
-	}
 
-	
-	@Override
-	protected CompoundNBT writeCustom(CompoundNBT compound) {
-		compound.put("filter", this.itemFilter.serializeNBT());
-		compound.put("inv", this.itemInv.serializeNBT());
-		compound.putInt("transfertime", this.itemTransfer);
-		return compound;
-	}
-	
-	
+
 	@Override
 	public void remove() {
 		super.remove();
-		this.itemFilterHandler.invalidate();
-		this.combinedItemHandler.invalidate();
+		this.bufferHandler.invalidate();
+		this.combinedHandler.invalidate();
 	}
 
-
+	
+	
 	@Override
-	public Container createMenu(int id, PlayerInventory playerInv, PlayerEntity playerEntity) {
-		return new FilterContainer(id, world, pos, playerInv, playerEntity);
+	public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
+		return new FilterContainer(id, inventory, this);
 	}
+
 
 
 	@Override
 	public ITextComponent getDisplayName() {
-		return new TranslationTextComponent("block.notenoughtmachines.filter");
-	}
-	
-	
-	public int getNumberOfInventorySlots() {
-		return INVENTORYSLOTS;
-	}
-	
-	
-	public boolean canTransferItem() {
-		//@return	true if it can transfer items
-		return this.itemTransfer > ITEM_TRANSFER_RATE && this.world.getBlockState(pos).get(FilterBlock.ENABLED);
-	}
-	
-	
-	protected void setItemTransfer(int tick) {
-		this.itemTransfer = tick;
-		markDirty();
+		return new TranslationTextComponent("container.notenoughtmachines.filter");
 	}
 }
+
+
+
+
+
+
+

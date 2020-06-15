@@ -7,7 +7,6 @@ import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ORGateBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ChuteBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.logistic.ClosedChuteBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.FilterBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
@@ -20,7 +19,6 @@ import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -121,8 +119,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
-	public static final RegistryObject<ClosedChuteBlock> CLOSEDCHUTE = BLOCKS.register("closedchute", 
-			()-> new ClosedChuteBlock(Block.Properties
+	public static final RegistryObject<FilterBlock> FILTER = BLOCKS.register("filter", 
+			()-> new FilterBlock(Block.Properties
 					.create(Material.WOOD)
 					.hardnessAndResistance(1.2f, 2.0f)
 					.sound(SoundType.WOOD)
@@ -136,12 +134,6 @@ public class NEMBlocks {
 					.sound(SoundType.METAL)
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(0)));
-
-	public static final RegistryObject<FilterBlock> FILTER = BLOCKS.register("filter", 
-			()-> new FilterBlock(Block.Properties
-					.create(Material.IRON, MaterialColor.STONE)
-					.hardnessAndResistance(3.0f, 4.8f)
-					.sound(SoundType.METAL)));
 
 	//Crops Blocks
 	public static final RegistryObject<FlaxPlantBlock> FLAXPLANT = BLOCKS.register("flaxplant", 

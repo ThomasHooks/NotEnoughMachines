@@ -64,12 +64,8 @@ public abstract class NEMBaseTile extends TileEntity {
 	
 	
 	
-	/*
+	/**
 	 * Causes the Client to sync with the Server
-	 * 
-	 * 2 will send the change to clients.
-	 * 4 will prevent the block from being re-rendered.
-	 * 16 will prevent neighbor reactions (e.g. fences connecting, observers pulsing).
 	 */
 	public void syncClient() {
 		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 2 | 16);
@@ -83,8 +79,28 @@ public abstract class NEMBaseTile extends TileEntity {
 
 	
 	
-	protected ItemStackHandler makeItemHandler(int numSlots) {
+	/**
+	 * Creates a new Item Stack Handler with the given parameters
+	 * 
+	 * @param numSlots The number of slots this Item Stack Handler has
+	 * @param stackLimit The Item Stack limit for each Item slot
+	 * 
+	 * @return A new Item Stack Handler with the given parameters
+	 */
+	protected ItemStackHandler makeItemHandler(int numSlots, int stackLimit) {
 		return new ItemStackHandler(numSlots) {
+			
+			@Override
+			public int getSlotLimit(int slot) {
+				int limit;
+				if(Math.abs(stackLimit) < 1) limit = 1;
+				else if(Math.abs(stackLimit) > 64) limit = 64;
+				else limit = Math.abs(stackLimit);
+				return limit;
+			}
+			
+			
+			
 			@Override
 			protected void onContentsChanged(int slot) {
 				markDirty();

@@ -57,10 +57,10 @@ public class SmallWindWheelRenderer extends TileEntityRenderer<SmallWindWheelTil
 			matrixStack.rotate(Vector3f.ZP.rotationDegrees(90));
 			break;
 		case NORTH:
-			matrixStack.rotate(Vector3f.XP.rotationDegrees(-90));
+			matrixStack.rotate(Vector3f.XP.rotationDegrees(90));
 			break;
 		case SOUTH:
-			matrixStack.rotate(Vector3f.XP.rotationDegrees(90));
+			matrixStack.rotate(Vector3f.XP.rotationDegrees(-90));
 			break;
 		case WEST:
 			matrixStack.rotate(Vector3f.ZP.rotationDegrees(-90));

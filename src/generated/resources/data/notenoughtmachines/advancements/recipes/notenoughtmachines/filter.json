@@ -6,12 +6,12 @@
     ]
   },
   "criteria": {
-    "flax": {
+    "iron_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "notenoughtmachines:flax"
+            "item": "minecraft:iron_ingot"
           }
         ]
       }
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "flax",
+      "iron_ingot",
       "has_the_recipe"
     ]
   ]

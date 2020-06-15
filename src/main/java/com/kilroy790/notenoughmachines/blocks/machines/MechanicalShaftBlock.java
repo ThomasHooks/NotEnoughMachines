@@ -30,13 +30,6 @@ public abstract class MechanicalShaftBlock extends MechanicalBlock {
 	}
 	
 	
-	
-//	@Override
-//	public BlockRenderLayer getRenderLayer() {
-//		return BlockRenderLayer.CUTOUT_MIPPED;
-//	}
-	
-	
 
 	/**
 	 * The type of render function called. MODEL for mixed tesr and static model, MODELBLOCK_ANIMATED for TESR-only,

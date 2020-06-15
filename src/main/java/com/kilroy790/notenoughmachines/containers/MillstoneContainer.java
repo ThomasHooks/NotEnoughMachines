@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.setup.ContainerList;
 import com.kilroy790.notenoughmachines.setup.NEMBlocks;
+import com.kilroy790.notenoughmachines.setup.NEMContainers;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +25,7 @@ public class MillstoneContainer extends Container {
 
 	public MillstoneContainer(int id, World world, BlockPos pos, PlayerInventory playerInvIn, PlayerEntity playerIn) {
 		
-		super(ContainerList.MILLSTONE_CONTAINER, id);
+		super(NEMContainers.MILLSTONE.get(), id);
 		tile = (MillstoneTile) world.getTileEntity(pos);
 		this.player = playerIn;
 		this.playerInv = new InvWrapper(playerInvIn);

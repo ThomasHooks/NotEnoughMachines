@@ -27,11 +27,4 @@ abstract public class MechanicalHorizontalBlock extends MechanicalBlock {
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
 		builder.add(FACING);
 	}
-	
-	
-	
-//	@Override
-//	public BlockRenderLayer getRenderLayer() {
-//		return BlockRenderLayer.CUTOUT_MIPPED;
-//	}
 }

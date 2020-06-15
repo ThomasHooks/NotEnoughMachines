@@ -17,9 +17,10 @@
 	"block.notenoughtmachines.orgate": "OR Gate",
 	
 	"block.notenoughtmachines.chute": "Chute",
-	"block.notenoughtmachines.closedchute": "Item Chute",
-	"block.notenoughtmachines.itempusher": "Item Pusher",
 	"block.notenoughtmachines.filter": "Filter",
+	"container.notenoughtmachines.filter": "Filter",
+	"container.notenoughtmachines.filter2": "Buffer",
+	"block.notenoughtmachines.itempusher": "Pusher",
 	
 	"item.notenoughtmachines.flaxseed" : "Flax Seeds",
 	"item.notenoughtmachines.flax" : "Flax",

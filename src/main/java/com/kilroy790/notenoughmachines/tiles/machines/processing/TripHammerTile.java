@@ -38,8 +38,8 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	
 	public TripHammerTile() {
 		super(NEMTiles.TRIPHAMMER.get());
-		this.itemInputHandler = this.makeItemHandler(INPUTSLOTS);
-		this.itemOutputHandler = this.makeItemHandler(OUTPUTSLOTS);
+		this.itemInputHandler = this.makeItemHandler(INPUTSLOTS, 64);
+		this.itemOutputHandler = this.makeItemHandler(OUTPUTSLOTS, 64);
 	}
 
 	

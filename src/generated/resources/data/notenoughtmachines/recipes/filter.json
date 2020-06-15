@@ -3,24 +3,28 @@
   "group": "filter",
   "pattern": [
     "\u003d#\u003d",
-    "\u003dc\u003d",
-    " v "
+    "xcx",
+    "\u003dr\u003d"
   ],
   "key": {
     "c": {
-      "item": "minecraft:comparator"
+      "item": "minecraft:chest"
     },
-    "v": {
-      "item": "minecraft:hopper"
+    "x": {
+      "item": "notenoughtmachines:chute"
+    },
+    "\u003d": {
+      "tag": "minecraft:wooden_slabs"
     },
     "#": {
       "tag": "minecraft:wooden_trapdoors"
     },
-    "\u003d": {
-      "tag": "minecraft:wooden_slabs"
+    "r": {
+      "item": "minecraft:comparator"
     }
   },
   "result": {
-    "item": "notenoughtmachines:filter"
+    "item": "notenoughtmachines:filter",
+    "count": 2
   }
 }
