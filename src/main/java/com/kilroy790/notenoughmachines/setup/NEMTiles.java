@@ -7,6 +7,7 @@ import com.kilroy790.notenoughmachines.tiles.machines.logistic.ItemPusherTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.SmallCogTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
 import com.kilroy790.notenoughmachines.tiles.machines.power.TubWheelTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
@@ -42,6 +43,9 @@ public class NEMTiles {
 	
 	public static final RegistryObject<TileEntityType<AxleTile>> AXLE = TILES.register("axle", 
 			() -> TileEntityType.Builder.create(AxleTile::new, NEMBlocks.AXLE.get()).build(null));
+	
+	public static final RegistryObject<TileEntityType<SmallCogTile>> SMALLCOG = TILES.register("smallcog", 
+			() -> TileEntityType.Builder.create(SmallCogTile::new, NEMBlocks.SMALLCOG.get()).build(null));
 	
 	public static final RegistryObject<TileEntityType<GearboxTile>> GEARBOX = TILES.register("gearbox", 
 			() -> TileEntityType.Builder.create(GearboxTile::new, NEMBlocks.GEARBOX.get()).build(null));

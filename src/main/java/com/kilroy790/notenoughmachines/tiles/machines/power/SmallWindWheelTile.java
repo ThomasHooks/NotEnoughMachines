@@ -23,31 +23,31 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 public class SmallWindWheelTile extends MechanicalTile {
-
+	
 	protected float speedModifier = 1.0f;
 	private static final int BASE_POWER_CAPACITY = 200;
 	private static final float BASE_SPEED = 12.0f;
-
+	
 	private Map<Direction.Axis, ArrayList<MechanicalContext>> io;
-
+	
 	public static final int WINDWHEEL_RADIUS = 8;
-
-
-
+	
+	
+	
 	public SmallWindWheelTile() {
 		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, NEMTiles.SMALLWINDWHEEL.get());
 	}
-
-
-
+	
+	
+	
 	@Override
 	public void onLoad() {
 		io = MachineIOList.monoAxle(pos);
 		super.onLoad();
 	}
-
-
-
+	
+	
+	
 	@Override
 	protected void tickCustom() {
 		
@@ -58,12 +58,12 @@ public class SmallWindWheelTile extends MechanicalTile {
 				setCapacity((int)(BASE_POWER_CAPACITY * speedModifier));
 			}
 			
-			if(this.isPowered()) changeSpeed(this, BASE_SPEED * (float)this.speedModifier);
+			if(this.isPowered()) changeSpeed(this, BASE_SPEED * (float)speedModifier);
 		}
 	}
-
-
-
+	
+	
+	
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox() {
@@ -77,9 +77,9 @@ public class SmallWindWheelTile extends MechanicalTile {
 	public double getMaxRenderDistanceSquared() {
 		return 4096.0D * 4.0D;
 	}
-
-
-
+	
+	
+	
 	protected void updateWindSpeed() {
 		
 		if(!validateArea()) this.speedModifier = 0.0f;
@@ -87,9 +87,9 @@ public class SmallWindWheelTile extends MechanicalTile {
 		else if(world.isRaining()) this.speedModifier = 1.33f;
 		else this.speedModifier = 1.0f;
 	}
-
-
-
+	
+	
+	
 	/**
 	 * @return True if the area is valid
 	 */

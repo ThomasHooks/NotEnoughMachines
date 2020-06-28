@@ -23,7 +23,7 @@ public class GearboxTile extends MechanicalTile {
 	
 	
 	public GearboxTile() {
-		super(72, 0, MechanicalType.CHANNEL, NEMTiles.GEARBOX.get());
+		super(72, 0, MechanicalType.SHAFT, NEMTiles.GEARBOX.get());
 	}
 	
 	

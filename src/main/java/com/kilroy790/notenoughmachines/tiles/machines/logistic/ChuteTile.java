@@ -30,7 +30,7 @@ public class ChuteTile extends ItemConduitTile {
 	
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return this.bufferHandler.cast();
+		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return this.bufferHandler.cast();
 		return super.getCapability(cap, side);
 	}
 	

@@ -8,7 +8,8 @@ import net.minecraft.util.IStringSerializable;
 public enum MechanicalType implements IStringSerializable {
 	
 	SOURCE("source"),
-	CHANNEL("channel"),
+	SHAFT("shaft"),
+	COG("cog"),
 	SINK("sink");
 	
 	private final String tag;
@@ -41,14 +42,17 @@ public enum MechanicalType implements IStringSerializable {
 		case "source":
 			return MechanicalType.SOURCE;
 			
-		case "channel":
-			return MechanicalType.CHANNEL;
+		case "shaft":
+			return MechanicalType.SHAFT;
+			
+		case "cog":
+			return MechanicalType.COG;
 			
 		case "sink":
 			return MechanicalType.SINK;
 			
 		default:
-			return MechanicalType.CHANNEL;
+			return MechanicalType.SHAFT;
 		}
 	}
 }

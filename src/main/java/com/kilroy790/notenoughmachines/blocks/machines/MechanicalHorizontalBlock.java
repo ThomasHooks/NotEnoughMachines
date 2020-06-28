@@ -25,6 +25,14 @@ abstract public class MechanicalHorizontalBlock extends MechanicalBlock {
 	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+		super.fillStateContainer(builder);
 		builder.add(FACING);
 	}
 }
+
+
+
+
+
+
+

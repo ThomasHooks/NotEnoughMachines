@@ -1,6 +1,7 @@
 package com.kilroy790.notenoughmachines.client.renderers.tiles;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
 import com.kilroy790.notenoughmachines.client.renderers.NEMTextures;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
@@ -72,6 +73,7 @@ public class SmallWindWheelRenderer extends TileEntityRenderer<SmallWindWheelTil
 		float speed = tile.getSpeed();
 		float angle = (tick * speed * 0.3f) % 360;
 		angle = angle/180f * (float)Math.PI;
+		if(tile.getBlockState().get(MechanicalBlock.SHIFTED)) angle += 22.5f/180.0f * (float)Math.PI;
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		

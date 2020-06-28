@@ -27,15 +27,20 @@ public class MachineIOList {
 		io.put(Direction.Axis.X, new ArrayList<MechanicalContext>(
 				Arrays.asList(
 						new MechanicalContext(pos.east(), Direction.EAST, true), 
-						new MechanicalContext(pos.west(), Direction.WEST, true))));
+						new MechanicalContext(pos.west(), Direction.WEST, true)
+						)));
+		
 		io.put(Direction.Axis.Y, new ArrayList<MechanicalContext>(
 				Arrays.asList(
 						new MechanicalContext(pos.up(), Direction.UP, true), 
-						new MechanicalContext(pos.down(), Direction.DOWN, true))));
+						new MechanicalContext(pos.down(), Direction.DOWN, true)
+						)));
+		
 		io.put(Direction.Axis.Z, new ArrayList<MechanicalContext>(
 				Arrays.asList(
 						new MechanicalContext(pos.north(), Direction.NORTH, true), 
-						new MechanicalContext(pos.south(), Direction.SOUTH, true))));
+						new MechanicalContext(pos.south(), Direction.SOUTH, true)
+						)));
 		return io;
 	}
 	
@@ -53,23 +58,26 @@ public class MachineIOList {
 
 		ArrayList<MechanicalContext> io;
 		switch(axis) {
-		
+
 		case X:
 			io = new ArrayList<MechanicalContext>(Arrays.asList(
-					new MechanicalContext(pos.east(), Direction.EAST, true), 
-					new MechanicalContext(pos.west(), Direction.WEST, true)));
+							new MechanicalContext(pos.east(), Direction.EAST, true), 
+							new MechanicalContext(pos.west(), Direction.WEST, true)
+							));
 			break;
 
 		case Y:
 			io = new ArrayList<MechanicalContext>(Arrays.asList(
-					new MechanicalContext(pos.up(), Direction.UP, true), 
-					new MechanicalContext(pos.down(), Direction.DOWN, true)));
+							new MechanicalContext(pos.up(), Direction.UP, true), 
+							new MechanicalContext(pos.down(), Direction.DOWN, true)
+							));
 			break;
 
 		case Z:
 			io = new ArrayList<MechanicalContext>(Arrays.asList(
-					new MechanicalContext(pos.north(), Direction.NORTH, true), 
-					new MechanicalContext(pos.south(), Direction.SOUTH, true)));
+							new MechanicalContext(pos.north(), Direction.NORTH, true), 
+							new MechanicalContext(pos.south(), Direction.SOUTH, true)
+							));
 			break;
 
 		default:
@@ -96,19 +104,24 @@ public class MachineIOList {
 						new MechanicalContext(pos.up(), Direction.UP, true), 
 						new MechanicalContext(pos.down(), Direction.DOWN, true), 
 						new MechanicalContext(pos.north(), Direction.NORTH, true), 
-						new MechanicalContext(pos.south(), Direction.SOUTH, true))));
+						new MechanicalContext(pos.south(), Direction.SOUTH, true)
+						)));
+		
 		io.put(Direction.Axis.Y, new ArrayList<MechanicalContext>(
 				Arrays.asList(
 						new MechanicalContext(pos.east(), Direction.EAST, true), 
 						new MechanicalContext(pos.west(), Direction.WEST, true), 
 						new MechanicalContext(pos.north(), Direction.NORTH, true), 
-						new MechanicalContext(pos.south(), Direction.SOUTH, true))));
+						new MechanicalContext(pos.south(), Direction.SOUTH, true)
+						)));
+		
 		io.put(Direction.Axis.Z, new ArrayList<MechanicalContext>(
 				Arrays.asList(
 						new MechanicalContext(pos.east(), Direction.EAST, true), 
 						new MechanicalContext(pos.west(), Direction.WEST, true), 
 						new MechanicalContext(pos.up(), Direction.UP, true), 
-						new MechanicalContext(pos.down(), Direction.DOWN, true))));
+						new MechanicalContext(pos.down(), Direction.DOWN, true)
+						)));
 		return io;
 	}
 
@@ -130,7 +143,51 @@ public class MachineIOList {
 						new MechanicalContext(pos.up(), Direction.UP, true),
 						new MechanicalContext(pos.down(), Direction.DOWN, true),
 						new MechanicalContext(pos.south(), Direction.SOUTH, true),
-						new MechanicalContext(pos.north(), Direction.NORTH, true)));
+						new MechanicalContext(pos.north(), Direction.NORTH, true)
+						));
+		return io;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param pos
+	 * 
+	 * @return
+	 */
+	public static HashMap<Direction.Axis, ArrayList<MechanicalContext>> smallCogwheel(BlockPos pos) {
+		
+		HashMap<Direction.Axis, ArrayList<MechanicalContext>> io = new HashMap<Direction.Axis, ArrayList<MechanicalContext>>();
+		io.put(Direction.Axis.X, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true), 
+						new MechanicalContext(pos.west(), Direction.WEST, true),
+						new MechanicalContext(pos.north(), Direction.NORTH, false), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, false),
+						new MechanicalContext(pos.up(), Direction.UP, false), 
+						new MechanicalContext(pos.down(), Direction.DOWN, false)
+						)));
+		
+		io.put(Direction.Axis.Y, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, false), 
+						new MechanicalContext(pos.west(), Direction.WEST, false),
+						new MechanicalContext(pos.north(), Direction.NORTH, false), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, false),
+						new MechanicalContext(pos.up(), Direction.UP, true), 
+						new MechanicalContext(pos.down(), Direction.DOWN, true)
+						)));
+		
+		io.put(Direction.Axis.Z, new ArrayList<MechanicalContext>(
+				Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, false), 
+						new MechanicalContext(pos.west(), Direction.WEST, false),
+						new MechanicalContext(pos.north(), Direction.NORTH, true), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, true),
+						new MechanicalContext(pos.up(), Direction.UP, false), 
+						new MechanicalContext(pos.down(), Direction.DOWN, false)
+						)));
 		return io;
 	}
 }

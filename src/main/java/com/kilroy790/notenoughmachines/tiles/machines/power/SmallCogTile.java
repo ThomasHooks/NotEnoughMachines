@@ -11,49 +11,38 @@ import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 import net.minecraft.util.Direction;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
 
-public class AxleTile extends MechanicalTile {
-	
+public class SmallCogTile extends MechanicalTile {
+
 	private Map<Direction.Axis, ArrayList<MechanicalContext>> io;
 	
 	
 	
-	public AxleTile() {
-		super(72, 0, MechanicalType.SHAFT, NEMTiles.AXLE.get());
-	}
-	
-	
-	
-	@Override
-	public void onLoad() {
-		io = MachineIOList.monoAxle(pos);
-		super.onLoad();
+	public SmallCogTile() {
+		super(72, 0, MechanicalType.COG, NEMTiles.SMALLCOG.get());
 	}
 
 	
 	
 	@Override
 	protected void tickCustom() {}
+	
+	
+	
+	@Override
+	public void onLoad() {
+		io = MachineIOList.smallCogwheel(pos);
+		super.onLoad();
+	}
 
 	
 	
 	@Override
 	public ArrayList<MechanicalContext> getIO() {
 		return io.get(getBlockState().get(MechanicalShaftBlock.AXIS));
-	}
-	
-	
-	
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public AxisAlignedBB getRenderBoundingBox() {
-		return new AxisAlignedBB(getPos()).grow(1.0D);
 	}
 }
 

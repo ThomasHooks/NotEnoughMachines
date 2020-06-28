@@ -32,7 +32,7 @@ public class TubWheelTile extends MechanicalTile {
 	private double totalFlow = 0;
 	
 	
-
+	
 	public TubWheelTile() {
 		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, NEMTiles.TUBWHEEL.get());
 		
@@ -48,7 +48,7 @@ public class TubWheelTile extends MechanicalTile {
 		this.io = MachineIOList.monoAxle(getPos(), Direction.Axis.Y);
 		super.onLoad();
 	}
-
+	
 	
 	
 	@Override
@@ -108,10 +108,8 @@ public class TubWheelTile extends MechanicalTile {
 			default:
 				this.waterFlow.put(dir, 0.0D);
 				break;
-			
 			}
 		}
-		
 		this.totalFlow = 0;
 		for(Direction dir : Direction.Plane.HORIZONTAL) {
 			this.totalFlow += this.waterFlow.get(dir);
@@ -145,7 +143,7 @@ public class TubWheelTile extends MechanicalTile {
 		compound.putDouble("totalflow", this.totalFlow);
 		return super.writeCustom(compound);
 	}
-
+	
 	
 	
 	@Override

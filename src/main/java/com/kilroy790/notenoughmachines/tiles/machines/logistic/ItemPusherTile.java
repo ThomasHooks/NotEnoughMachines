@@ -27,7 +27,7 @@ public class ItemPusherTile extends ItemConduitTile {
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return itemInvHandler.cast();
+		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return itemInvHandler.cast();
 		return super.getCapability(cap, side);
 	}
 	

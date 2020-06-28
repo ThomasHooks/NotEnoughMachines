@@ -3,6 +3,8 @@ package com.kilroy790.notenoughmachines.blocks.machines;
 import javax.annotation.Nullable;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
+import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -11,6 +13,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -22,8 +26,13 @@ import net.minecraftforge.common.ToolType;
 
 public abstract class MechanicalBlock extends Block {
 
+	public static final BooleanProperty SHIFTED = NEMBlockStateProperties.SHIFTED;
+	
+	
+	
 	public MechanicalBlock(Properties properties) {
 		super(properties);
+		this.setDefaultState(this.getDefaultState().with(SHIFTED, false));
 	}
 	
 	
@@ -88,21 +97,35 @@ public abstract class MechanicalBlock extends Block {
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		
+
 		if(!worldIn.isRemote()) {
 			MechanicalTile tile = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
 			if(tile != null) {
-				
+				for(MechanicalContext io : tile.getIO()) {
+					MechanicalTile neighborTile = tile instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(io.getPos()) : null;
+					if(neighborTile != null) {
+						if(neighborTile.isAlignedWith(io.getFacing(), io.isAxle())) {
+							if(!io.isAxle()) {
+								BlockState neighborState = neighborTile.getBlockState().cycle(SHIFTED);
+								worldIn.setBlockState(pos, state.with(SHIFTED, neighborState.get(SHIFTED)));
+							}
+							else {
+								worldIn.setBlockState(pos, state.with(SHIFTED, neighborTile.getBlockState().get(SHIFTED)));
+							}
+							break;
+						}
+					}
+				}
 			}
 		}
 	}
+
 	
 	
-	
-//	@Override
-//	public boolean isSolid(BlockState state) {
-//		return false;
-//	}
+	@Override
+	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+		builder.add(SHIFTED);
+	}
 	
 	
 	

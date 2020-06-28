@@ -16,7 +16,9 @@ public abstract class MotorTile extends MechanicalTile {
 	
 	
 	@Override
-	protected void tickCustom() {}
+	protected void tickCustom() {
+		
+	}
 }
 
 

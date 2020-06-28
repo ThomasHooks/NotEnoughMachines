@@ -9,10 +9,16 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 
 public class NEMBlockShapes {
 
-	public static final VoxelShape[] AXLE = new VoxelShape[]{
+	public static final VoxelShape[] AXLE = new VoxelShape[] {
 			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D), 
 			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
 			Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D)
+	};
+	
+	public static final VoxelShape[] COGWHEEL = new VoxelShape[] {
+			VoxelShapes.or(AXLE[0], Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D)),
+			VoxelShapes.or(AXLE[1], Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D)),
+			VoxelShapes.or(AXLE[2], Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D))
 	};
 	
 	private static final VoxelShape RUNNERSTONE = Block.makeCuboidShape(1.0D, 6.0D, 1.0D, 15.D, 10.0D, 15.0D);

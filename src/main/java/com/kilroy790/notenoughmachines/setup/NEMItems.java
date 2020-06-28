@@ -56,6 +56,9 @@ public class NEMItems {
 	public static final RegistryObject<Item> AXLE = ITEMS.register("axle", 
 			()-> new BlockItem(NEMBlocks.AXLE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
+	public static final RegistryObject<Item> SMALLCOG = ITEMS.register("smallcog", 
+			()-> new BlockItem(NEMBlocks.SMALLCOG.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
 	public static final RegistryObject<Item> GEARBOX = ITEMS.register("gearbox", 
 			()-> new BlockItem(NEMBlocks.GEARBOX.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	

@@ -34,18 +34,18 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 	
 	@Override
 	public void tick() {
-		if(!this.world.isRemote) {
-			if(canTransferItem()) {
-				for(int i = 0; i < this.inventory.size(); i++) {
+		if (!this.world.isRemote) {
+			if (canTransferItem()) {
+				for (int i = 0; i < this.inventory.size(); i++) {
 					ItemStackHandler inv = this.inventory.get(i);
-					if(canPullItems()) pullItems(inv, MAX_ITEM_TRANSFER);
-					if(canPushItems()) pushItems(inv, MAX_ITEM_TRANSFER);
+					if (canPullItems()) pullItems(inv, MAX_ITEM_TRANSFER);
+					if (canPushItems()) pushItems(inv, MAX_ITEM_TRANSFER);
 				}
 				this.transferTimer = 0;
 				markDirty();
 			}
 			this.transferTimer++;
-			if(this.transferTimer > ITEM_TRANSFER_RATE) this.transferTimer = ITEM_TRANSFER_RATE;
+			if (this.transferTimer > ITEM_TRANSFER_RATE) this.transferTimer = ITEM_TRANSFER_RATE;
 		}
 	}
 	
@@ -99,13 +99,13 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 
 		Direction facing = this.getBlockState().get(ItemPusherBlock.FACING).getOpposite();
 		BlockPos nextPos = pos.offset(facing);
-		if(this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) {
+		if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) {
 			NEMItemHelper.dropItemStack(world, nextPos, itemHandler.extractItem(0, amount, false));
 		}
 		else {
-			for(int slot = 0; slot < itemHandler.getSlots(); slot++) {
+			for (int slot = 0; slot < itemHandler.getSlots(); slot++) {
 
-				if(itemHandler.getStackInSlot(slot).isEmpty()) continue;
+				if (itemHandler.getStackInSlot(slot).isEmpty()) continue;
 				else {
 					NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
 					break;
@@ -142,7 +142,7 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 	@Override
 	protected void readCustom(CompoundNBT compound) {
 		
-		for(int i = 0; i < this.inventory.size(); i++) {
+		for (int i = 0; i < this.inventory.size(); i++) {
 			this.inventory.get(i).deserializeNBT(compound.getCompound("inv" + Integer.toString(i)));
 		}
 		this.transferTimer = compound.getInt("transfertime");
@@ -153,7 +153,7 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 	@Override
 	protected CompoundNBT writeCustom(CompoundNBT compound) {
 		
-		for(int i = 0; i < this.inventory.size(); i++) {
+		for (int i = 0; i < this.inventory.size(); i++) {
 			compound.put("inv" + Integer.toString(i), this.inventory.get(i).serializeNBT());
 		}
 		compound.putInt("transfertime", this.transferTimer);

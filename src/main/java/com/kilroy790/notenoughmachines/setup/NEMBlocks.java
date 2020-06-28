@@ -12,6 +12,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.SmallCogBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.TubWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
@@ -83,6 +84,14 @@ public class NEMBlocks {
 
 	public static final RegistryObject<AxleBlock> AXLE = BLOCKS.register("axle", 
 			()-> new AxleBlock(Block.Properties
+					.create(Material.WOOD)
+					.sound(SoundType.WOOD)
+					.hardnessAndResistance(1.8f, 2.0f)
+					.harvestTool(ToolType.AXE)
+					.harvestLevel(0)));
+	
+	public static final RegistryObject<SmallCogBlock> SMALLCOG = BLOCKS.register("smallcog", 
+			()-> new SmallCogBlock(Block.Properties
 					.create(Material.WOOD)
 					.sound(SoundType.WOOD)
 					.hardnessAndResistance(1.8f, 2.0f)

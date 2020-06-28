@@ -26,6 +26,9 @@ public class ClientSetup {
 			event.addSprite(NEMTextures.TUBWHEEL_PADDLE);
 			event.addSprite(NEMTextures.WINDSAIL_STOCK);
 			event.addSprite(NEMTextures.WINDSAIL_SAIL);
+			event.addSprite(NEMTextures.SMALLCOG_OUT);
+			event.addSprite(NEMTextures.SMALLCOG_IN);
+			event.addSprite(NEMTextures.SMALLCOG_TOOTH);
 			NotEnoughMachines.LOGGER.debug("All NEM textures have been stitched to Atlas");
 		}
 	}

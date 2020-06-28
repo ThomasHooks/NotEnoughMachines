@@ -3,6 +3,7 @@ package com.kilroy790.notenoughmachines.blocks.machines;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -22,10 +23,18 @@ public abstract class MechanicalShaftBlock extends MechanicalBlock {
 		this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.X));
 	}
 
+
+
+	@Override
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
+		return this.getDefaultState().with(MechanicalShaftBlock.AXIS, context.getFace().getAxis());
+	}
+
 	
 	
 	@Override
 	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+		super.fillStateContainer(builder);
 		builder.add(AXIS);
 	}
 	
