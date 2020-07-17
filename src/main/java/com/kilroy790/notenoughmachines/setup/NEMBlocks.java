@@ -16,6 +16,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.power.SmallCogBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.TubWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.processing.TripHammerBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -102,6 +103,14 @@ public class NEMBlocks {
 			()-> new MillstoneBlock(Block.Properties
 					.create(Material.ROCK)
 					.sound(SoundType.STONE)
+					.hardnessAndResistance(2.8f, 3.0f)
+					.harvestTool(ToolType.PICKAXE)
+					.harvestLevel(0)));
+	
+	public static final RegistryObject<TripHammerBlock> TRIPHAMMER = BLOCKS.register("triphammer", 
+			()-> new TripHammerBlock(Block.Properties
+					.create(Material.WOOD)
+					.sound(SoundType.ANVIL)
 					.hardnessAndResistance(2.8f, 3.0f)
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(0)));

@@ -5,6 +5,7 @@ import java.util.Random;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
+import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,6 +22,8 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,7 +41,7 @@ public class GearboxBlock extends MechanicalBlock {
 	
 	public GearboxBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState()
+		this.setDefaultState(getDefaultState()
 				.with(AXIS, Direction.Axis.Y)
 				.with(POWERED, Boolean.valueOf(false)));
 	}
@@ -71,6 +74,26 @@ public class GearboxBlock extends MechanicalBlock {
 //		}
 //		else return false;
 //	}
+
+
+
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+		switch(state.get(AXIS)) {
+
+		case X:
+			return NEMBlockShapes.GEARBOX[0];
+
+		case Y:
+			return NEMBlockShapes.GEARBOX[1];
+
+		case Z:
+			return NEMBlockShapes.GEARBOX[2];
+
+		default:
+			return NEMBlockShapes.GEARBOX[1];
+		}
+	}
 	
 	
 	

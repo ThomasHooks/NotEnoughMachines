@@ -65,6 +65,9 @@ public class NEMItems {
 	public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone", 
 			()-> new BlockItem(NEMBlocks.MILLSTONE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
+	public static final RegistryObject<Item> TRIPHAMMER = ITEMS.register("triphammer", 
+			()-> new BlockItem(NEMBlocks.TRIPHAMMER.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
 	public static final RegistryObject<Item> HAMMERHEAD = ITEMS.register("hammerhead", 
 			()-> new BlockItem(NEMBlocks.HAMMERHEAD.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	

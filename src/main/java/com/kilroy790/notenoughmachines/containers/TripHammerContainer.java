@@ -91,7 +91,7 @@ public class TripHammerContainer extends Container {
 
 	@Override
 	public boolean canInteractWith(PlayerEntity player) {
-		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, NEMBlocks.HAMMERHEAD.get());
+		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, NEMBlocks.TRIPHAMMER.get());
 	}
 
 

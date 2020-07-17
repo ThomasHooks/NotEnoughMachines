@@ -7,6 +7,7 @@ import com.kilroy790.notenoughmachines.client.gui.screen.FilterScreen;
 import com.kilroy790.notenoughmachines.client.gui.screen.MillstoneScreen;
 import com.kilroy790.notenoughmachines.client.gui.screen.TripHammerScreen;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.AxleRenderer;
+import com.kilroy790.notenoughmachines.client.renderers.tiles.GearboxRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.MillstoneRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallCogRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallWindWheelRenderer;
@@ -93,6 +94,7 @@ public class NotEnoughMachines {
 		LOGGER.info("Registering all NEM Tile Entity Renderers");
 		AxleRenderer.register();
 		SmallCogRenderer.register();
+		GearboxRenderer.register();
 		MillstoneRenderer.register();
 		TubWheelRenderer.register();
 		SmallWindWheelRenderer.register();

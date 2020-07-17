@@ -14,6 +14,7 @@ public class NEMBlockStateProperties {
 	public static final BooleanProperty FORMED = BooleanProperty.create("formed");
 	
 	public static final EnumProperty<InputDualType> DUAL_INPUT = EnumProperty.create("input", InputDualType.class);
+	public static final EnumProperty<TripHammerPart> TRIPHAMMERPART = EnumProperty.create("hammerpart", TripHammerPart.class);
 }
 
 

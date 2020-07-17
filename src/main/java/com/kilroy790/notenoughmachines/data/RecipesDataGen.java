@@ -10,6 +10,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.tags.ItemTags;
 
@@ -166,6 +167,14 @@ public class RecipesDataGen extends RecipeProvider {
 		.build(consumer);
 		
 		
+		ShapelessRecipeBuilder.shapelessRecipe(NEMItems.SMALLCOG.get(), 1)
+		  .addIngredient(NEMBlocks.AXLE.get())
+		  .addIngredient(NEMItems.GEAR.get())
+		  .setGroup("gear") 
+		  .addCriterion("iron",InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		  .build(consumer);
+		
+		
 		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.GEARBOX.get(), 1)
 		.patternLine("#x#")
 		.patternLine("xxx")
@@ -186,6 +195,17 @@ public class RecipesDataGen extends RecipeProvider {
 		.key('x', NEMBlocks.AXLE.get())
 		.setGroup("smallwindwheel")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAX.get()))
+		.build(consumer);
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.TUBWHEEL.get(), 1)
+		.patternLine("===")
+		.patternLine("=x=")
+		.patternLine("===")
+		.key('=', ItemTags.WOODEN_SLABS)
+		.key('x', NEMBlocks.SMALLCOG.get())
+		.setGroup("tubwheel")
+		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
 		

@@ -1,0 +1,23 @@
+{
+    "variants": {
+        "hammerpart=base,facing=north": { "model": "notenoughtmachines:block/triphammer/triphammerbase", "y": 180 },
+		"hammerpart=base,facing=south": { "model": "notenoughtmachines:block/triphammer/triphammerbase"},
+		"hammerpart=base,facing=east": {"model": "notenoughtmachines:block/triphammer/triphammerbase", "y": 270 },
+		"hammerpart=base,facing=west": {"model": "notenoughtmachines:block/triphammer/triphammerbase", "y": 90 },
+		
+		"hammerpart=lowerframe,facing=north": { "model": "notenoughtmachines:block/triphammer/triphammerframe", "y": 180 },
+		"hammerpart=lowerframe,facing=south": { "model": "notenoughtmachines:block/triphammer/triphammerframe"},
+		"hammerpart=lowerframe,facing=east": {"model": "notenoughtmachines:block/triphammer/triphammerframe", "y": 270 },
+		"hammerpart=lowerframe,facing=west": {"model": "notenoughtmachines:block/triphammer/triphammerframe", "y": 90 },
+		
+		"hammerpart=cam,facing=north": { "model": "notenoughtmachines:block/triphammer/triphammercam", "y": 180 },
+		"hammerpart=cam,facing=south": { "model": "notenoughtmachines:block/triphammer/triphammercam"},
+		"hammerpart=cam,facing=east": {"model": "notenoughtmachines:block/triphammer/triphammercam", "y": 270 },
+		"hammerpart=cam,facing=west": {"model": "notenoughtmachines:block/triphammer/triphammercam", "y": 90 },
+		
+		"hammerpart=upperframe,facing=north": { "model": "notenoughtmachines:block/triphammer/triphammerframe", "y": 180 },
+		"hammerpart=upperframe,facing=south": { "model": "notenoughtmachines:block/triphammer/triphammerframe"},
+		"hammerpart=upperframe,facing=east": {"model": "notenoughtmachines:block/triphammer/triphammerframe", "y": 270 },
+		"hammerpart=upperframe,facing=west": {"model": "notenoughtmachines:block/triphammer/triphammerframe", "y": 90 }
+    }
+}
