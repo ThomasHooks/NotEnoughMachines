@@ -26,15 +26,11 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	protected ItemStackHandler itemInputHandler;
 	public static final int INPUTSLOTS = 1;
 	protected LazyOptional<ItemStackHandler> itemInput = LazyOptional.of(() -> itemInputHandler);
-	
 	protected ItemStackHandler itemOutputHandler;
 	public static final int OUTPUTSLOTS = 2;
 	protected LazyOptional<ItemStackHandler> itemOutput = LazyOptional.of(() -> itemOutputHandler);
-	
 	public static final int COMBINEDSLOTS = INPUTSLOTS + OUTPUTSLOTS;
 	protected LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInputHandler, itemOutputHandler));
-	
-	
 	
 	public TripHammerTile() {
 		super(NEMTiles.TRIPHAMMER.get());
@@ -46,15 +42,13 @@ public class TripHammerTile extends NEMBaseTile implements INamedContainerProvid
 	
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		
-		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if(side == null) return combinedItemHandler.cast();
+		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (side == null) return combinedItemHandler.cast();
 			
 			else if (side == Direction.DOWN) return itemOutput.cast();
 			
 			else return itemInput.cast();
 		}
-		
 		return super.getCapability(cap, side);
 	}
 	

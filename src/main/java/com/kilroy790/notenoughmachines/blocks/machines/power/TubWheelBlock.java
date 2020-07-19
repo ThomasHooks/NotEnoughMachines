@@ -1,7 +1,11 @@
 package com.kilroy790.notenoughmachines.blocks.machines.power;
 
+import java.util.ArrayList;
+
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.TubWheelTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.BlockRenderType;
@@ -9,10 +13,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 
 
@@ -55,6 +61,13 @@ public class TubWheelBlock extends MechanicalBlock {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new TubWheelTile();
+	}
+
+
+
+	@Override
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+		return MachineIOList.monoAxle(pos, Direction.Axis.Y);
 	}
 }
 

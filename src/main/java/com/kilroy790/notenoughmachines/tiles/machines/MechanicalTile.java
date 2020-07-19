@@ -1,12 +1,15 @@
 package com.kilroy790.notenoughmachines.tiles.machines;
 
 import java.util.ArrayList;
+
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.power.IHaveMechanicalPower;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -29,13 +32,10 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	protected MechanicalType mechType = MechanicalType.SHAFT;
 	private float speed = 0.0f;
 	protected BlockPos driverPos = null;
-	
 	private int powerNetworkTimer = 0;
 	protected final static int VALIDATE_TICK = 20;
 	private boolean updateNetwork = false;
 	private boolean speedChanged = false;
-	
-	
 	
 	public MechanicalTile(int powerCapacity, int powerLoad, MechanicalType type, TileEntityType<?> tileEntityTypeIn) {
 		super(tileEntityTypeIn);
@@ -54,7 +54,6 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
      */
 	@Override
 	public void onLoad() {
-		
 		if (!world.isRemote) {
 			NotEnoughMachines.AETHER.joinPowerNetwork(this);
 		}
@@ -65,7 +64,6 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	@Override
 	public void remove() {
-		
 		if (!world.isRemote) {
 			NotEnoughMachines.AETHER.removeFromPowerNetwork(this);
 		}
@@ -74,11 +72,13 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	
+	/**
+	 * This method will be called by both the server and all clients once per tick. There are about 20 tick per second.
+	 * <p> 
+	 * If overridden the super must be called.
+	 */
 	@Override
-	public void tick() {
-		
-		tickCustom();
-		
+	public void tick() {		
 		if (!world.isRemote()) {
 			if (this.powerNetworkTimer > VALIDATE_TICK) {
 				updatePowerNetwork();
@@ -94,13 +94,6 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 			propagateSpeed();
 		}
 	}
-	
-	
-	
-	/**
-	 * This method will be called by both the server and the client once per tick. There are about 20 tick per second.
-	 */
-	abstract protected void tickCustom();
 	
 	
 	
@@ -125,13 +118,15 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 
 		if (speedChanged) {
 			
-			for (MechanicalContext io : getIO()) {
+			MechanicalBlock block = (MechanicalBlock)getBlockState().getBlock();
+			for (MechanicalContext io : block.getIO(world, pos, getBlockState())) {
 				MechanicalTile neighbor = world.getTileEntity(io.getPos()) instanceof MechanicalTile ? (MechanicalTile)world.getTileEntity(io.getPos()) : null;
 				if (neighbor != null) {
 					
+					MechanicalBlock neighborBlock = (MechanicalBlock) neighbor.getBlockState().getBlock();
 					if (neighbor.getPos().equals(this.driverPos)) continue;
 					
-					else if (neighbor.isAlignedWith(io.getFacing(), io.isAxle())) {
+					else if (neighborBlock.isAlignedWith(neighbor.world, neighbor.pos, neighbor.getBlockState(), io)) {
 						if (io.isAxle()) {
 							neighbor.changeSpeed(this, this.speed);
 						}
@@ -239,24 +234,19 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	/**
-	 * Gets an array of this machine's Mechanical Inputs/Outputs
-	 * 
-	 * @return An array of this machine's I/O
-	 */
-	abstract public ArrayList<MechanicalContext> getIO();
-	
-	
-	
-	/**
-	 * Gets an array of neighboring machines that are aligned Ie attached to this machine.
-	 * It is possible that the returned array is empty.
+	 * Gets an array of neighboring machines that are attached to this machine.
+	 * It is possible that the returned array is empty if there are not neighboring machines. 
+	 * <p>
+	 * Use {@link MechanicalBlock#getNeighbors(World, BlockPos, BlockState)} instead
 	 * 
 	 * @return An array of neighboring machines to this machine
 	 */
+	@Deprecated
 	public ArrayList<MechanicalTile> getNeighbors() {
 		
 		ArrayList<MechanicalTile> neighbors = new ArrayList<MechanicalTile>();
-		for (MechanicalContext io : getIO()) {
+		MechanicalBlock block = (MechanicalBlock)getBlockState().getBlock();
+		for (MechanicalContext io : block.getIO(world, pos, getBlockState())) {
 			
 			TileEntity tile = world.getTileEntity(io.getPos());
 			MechanicalTile mechTile = tile instanceof MechanicalTile ? (MechanicalTile)tile : null;
@@ -271,15 +261,19 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	/**
 	 * Checks if the given direction and Input/Output type is aligned with this machine.
+	 * <p>
+	 * Use {@link MechanicalBlock#isAlignedWith(World, BlockPos, BlockState, MechanicalContext)} instead
 	 * 
 	 * @param facing The direction that is being checked for alignment with this machine
 	 * @param isAxle If the Mechanical I/O is not an axle it is assumed to be a cog I/O
 	 * 
 	 * @return True if the given direction is aligned with this machine
 	 */
+	@Deprecated
 	public boolean isAlignedWith(Direction facing, boolean isAxle) {
 		
-		for (MechanicalContext io : getIO()) {
+		MechanicalBlock block = (MechanicalBlock)getBlockState().getBlock();
+		for (MechanicalContext io : block.getIO(world, pos, getBlockState())) {
 			if (io.getFacing() == facing.getOpposite() && io.isAxle() == isAxle) return true;
 		}
 		return false;

@@ -1,9 +1,12 @@
 package com.kilroy790.notenoughmachines.blocks.machines.processing;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -21,6 +24,7 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -53,12 +57,12 @@ public class MillstoneBlock extends MechanicalBlock {
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 
-		if(world.isRemote) {
+		if (world.isRemote) {
 			return ActionResultType.SUCCESS; 
 		}
 		else {
 			TileEntity entity = world.getTileEntity(pos);
-			if(entity instanceof INamedContainerProvider) {
+			if (entity instanceof INamedContainerProvider) {
 				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos());
 			} 
 			else {
@@ -74,7 +78,7 @@ public class MillstoneBlock extends MechanicalBlock {
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
 
 		TileEntity tile = worldIn.getTileEntity(pos);
-		if(tile instanceof MillstoneTile) {
+		if (tile instanceof MillstoneTile) {
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
 		}
 		super.onBlockHarvested(worldIn, pos, state, player);
@@ -85,14 +89,11 @@ public class MillstoneBlock extends MechanicalBlock {
 	@Override
 	@OnlyIn(Dist.CLIENT) 
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-
 		if (stateIn.get(LIT)) {
-
 			double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
 			double d1 = (double)pos.getY() + 0.6D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
 			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-
 			worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_MINECART_RIDING, SoundCategory.BLOCKS, 0.25F, 0.75F, false);
 		}
 	}
@@ -132,6 +133,13 @@ public class MillstoneBlock extends MechanicalBlock {
 	@Override
 	public BlockRenderType getRenderType(BlockState state) { 
 		return BlockRenderType.MODEL;
+	}
+
+
+
+	@Override
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+		return MachineIOList.monoAxle(pos, Direction.Axis.Y);
 	}
 }
 

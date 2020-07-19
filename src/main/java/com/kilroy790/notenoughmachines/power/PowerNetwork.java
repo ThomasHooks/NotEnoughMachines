@@ -1,11 +1,11 @@
 package com.kilroy790.notenoughmachines.power;
 
-import java.util.Map.Entry;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
+import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 
 
 
@@ -13,21 +13,15 @@ import net.minecraft.util.math.BlockPos;
 public class PowerNetwork {
 
 	private long id;
-
+	private IWorld world;
 	private int powerCapacity;
 	private int powerLoad;
+	private ArrayList<MechanicalTile> nodes;
 
-	private TreeMap<BlockPos, MechanicalTile> nodeMap;
-
-
-
-	/**
-	 * 
-	 * @param idIn This power network's ID
-	 */
-	public PowerNetwork(long idIn) {
-		this.nodeMap = new TreeMap<BlockPos, MechanicalTile>();
+	public PowerNetwork(long idIn, IWorld worldIn) {
+		this.nodes = new ArrayList<MechanicalTile>();
 		this.id = idIn;
+		this.world = worldIn;
 		this.powerCapacity = 0;
 		this.powerLoad = 0;
 	}
@@ -41,13 +35,10 @@ public class PowerNetwork {
 	 * @param silently If true this action will not trigger a network update
 	 */
 	public void addNode(MechanicalTile tile, boolean silently) {
-		
-		if(tile == null) return;	
-		
-		if(!nodeMap.containsKey(tile.getPos())) {
-			nodeMap.put(tile.getPos(), tile);
-			//NotEnoughMachines.LOGGER.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
-			if(!silently) update();
+		if (!nodes.contains(tile)) {
+			nodes.add(tile);
+			NotEnoughMachines.LOGGER.debug("Tile entity '" + tile.getType().getRegistryName() + "' has been added to the Power Network ID: " + this.id);
+			if (!silently) update();
 		}
 	}
 	
@@ -60,48 +51,40 @@ public class PowerNetwork {
 	 * @param silently If true action this will not trigger a network update
 	 */
 	public void removeNode(MechanicalTile tile, boolean silently) {
-		
-		if(tile == null) return;
-		
-		if(nodeMap.containsKey(tile.getPos())) {
-			nodeMap.remove(tile.getPos());
-			tile.networkUpdate(0, 0);
-			//NotEnoughMachines.LOGGER.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been removed from the Power Network ID: " + this.id);
-			if(!silently) update();
+		if (nodes.contains(tile)) {
+			nodes.remove(tile);
+			NotEnoughMachines.LOGGER.debug("Tile Entity '" + tile.getType().getRegistryName() + "' has been removed from the Power Network ID: " + this.id);
+			if (!silently) update();
 		}
 	}
-
-
-
+	
+	
+	
 	/**
 	 * Triggers a power network update, and sends all nodes a message containing the power network's current state.
 	 */
 	public void update() {
-
 		int load = 0;
-		int power = 0;		
-		
-		for(Entry<BlockPos, MechanicalTile> itr : nodeMap.entrySet()) {
-			switch(itr.getValue().getMachineType()) {
-			
+		int power = 0;
+		for (MechanicalTile tile : nodes) {
+			switch(tile.getMachineType()) {
+
 			case SOURCE:
-				power += itr.getValue().getCapacity();
+				power += tile.getCapacity();
 				break;
-
+				
 			case SINK:
-				load += itr.getValue().getLoad();
+				load += tile.getLoad();
 				break;
-
+				
 			default:
 				break;
 			}
 		}
-		
 		this.powerLoad = load;
 		this.powerCapacity = power;
-		
-		for(Entry<BlockPos, MechanicalTile> itr : nodeMap.entrySet()) {
-			itr.getValue().networkUpdate(powerCapacity, powerLoad);
+		for (MechanicalTile tile : nodes) {
+			tile.networkUpdate(powerCapacity, powerLoad);
 		}
 	}
 	
@@ -115,10 +98,9 @@ public class PowerNetwork {
 	 * @param other The power network that is to be merged into this power network
 	 */
 	public void mergeNetwork(PowerNetwork other) {
-		
-		for(Entry<BlockPos, MechanicalTile> itr : other.nodeMap.entrySet()) {
-			itr.getValue().setNetworkID(id);
-			addNode(itr.getValue(), true);
+		for (MechanicalTile tile : other.nodes) {
+			tile.setNetworkID(id);
+			addNode(tile, true);
 		}
 		update();
 	}
@@ -126,25 +108,31 @@ public class PowerNetwork {
 	
 	
 	public int numberOfNodes() {
-		return nodeMap.size();
+		return nodes.size();
 	}
-
-
-
+	
+	
+	
 	public int getCapacity() {
 		return this.powerCapacity;
 	}
-
-
-
+	
+	
+	
 	public int getLoad() {
 		return this.powerLoad;
 	}
-
-
-
+	
+	
+	
 	public long getID() {
 		return this.id;
+	}
+	
+	
+	
+	public IWorld getWorld() {
+		return this.world;
 	}
 }
 

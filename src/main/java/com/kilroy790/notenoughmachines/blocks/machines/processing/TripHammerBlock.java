@@ -1,12 +1,16 @@
 package com.kilroy790.notenoughmachines.blocks.machines.processing;
 
+import java.util.ArrayList;
+
 import javax.annotation.Nullable;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.state.properties.TripHammerPart;
 import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -42,8 +46,6 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	
 	public static final EnumProperty<TripHammerPart> PART = NEMBlockStateProperties.TRIPHAMMERPART;
 	
-	
-	
 	public TripHammerBlock(Properties properties) {
 		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(PART, TripHammerPart.BASE));
@@ -53,13 +55,13 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-		if(world.isRemote) {
+		if (world.isRemote) {
 			return ActionResultType.SUCCESS;
 		}
 		else {
 			
 			TileEntity entity = getMaster(world, pos, state);
-			if(entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
+			if (entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
 			else throw new IllegalStateException("Trip Hammer container provider is missing!");
 			
 			return ActionResultType.SUCCESS;
@@ -80,7 +82,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	@Nullable
 	private TileEntity getMaster(World world, BlockPos pos, BlockState state) {
 		TripHammerPart part = state.get(PART);
-		switch(part) {
+		switch (part) {
 		
 		case BASE:
 			return world.getTileEntity(pos);
@@ -114,7 +116,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		BlockPos pos = context.getPos();
-		if(pos.getY() < 256 - 4 && context.getWorld().getBlockState(pos.up(1)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(2)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(3)).isReplaceable(context)) {
+		if (pos.getY() < 256 - 4 && context.getWorld().getBlockState(pos.up(1)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(2)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(3)).isReplaceable(context)) {
 			return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing()).with(PART, TripHammerPart.BASE);
 		}
 		else {
@@ -127,12 +129,12 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player) {
 		TileEntity tile = getMaster(world, pos, state);
-		if(tile instanceof NEMBaseTile) {
+		if (tile instanceof NEMBaseTile) {
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
 		}
 		
 		TripHammerPart part = state.get(PART);
-		switch(part) {
+		switch (part) {
 		
 		case BASE:
 			world.setBlockState(pos.up(1), Blocks.AIR.getDefaultState(), 1 | 2 | 32);
@@ -181,7 +183,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	@Override
 	public void onBlockExploded(BlockState state, World world, BlockPos pos, Explosion explosion) {
 		TripHammerPart part = state.get(PART);
-		switch(part) {
+		switch (part) {
 		
 		case BASE:
 			world.setBlockState(pos.up(1), Blocks.AIR.getDefaultState(), 1 | 2 | 32);
@@ -220,10 +222,10 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
 		Direction facing = state.get(FACING);
 		TripHammerPart part = state.get(PART);
-		switch(part) {
+		switch (part) {
 		
 		case BASE:
-			if(facing == Direction.EAST || facing == Direction.WEST) {
+			if (facing == Direction.EAST || facing == Direction.WEST) {
 				return NEMBlockShapes.TRIPHAMMER_BASE[0];
 			}
 			else {
@@ -233,7 +235,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 		case CAM:
 		case LOWERFRAME:
 		case UPPERFRAME:
-			if(facing == Direction.EAST || facing == Direction.WEST) {
+			if (facing == Direction.EAST || facing == Direction.WEST) {
 				return NEMBlockShapes.TRIPHAMMER_FRAME[0];
 			}
 			else {
@@ -265,12 +267,43 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		TripHammerPart part = state.get(PART);
-		if(part == TripHammerPart.BASE) {
+		if (part == TripHammerPart.BASE) {
 			return new TripHammerTile();
 		}
 		else {
 			return null;
 		}
+	}
+
+
+
+	@Override
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+		TripHammerPart part = state.get(PART);
+		BlockPos posIO;
+		switch (part) {
+		
+		case BASE:
+			posIO = pos.up(2);
+			break;
+			
+		case CAM:
+			posIO = pos;
+			break;
+			
+		case LOWERFRAME:
+			posIO = pos.up();
+			break;
+			
+		case UPPERFRAME:
+			posIO = pos.down();
+			break;
+			
+		default:
+			throw new IllegalStateException("TripHammerBlock is in an unknow state!");
+		}
+		
+		return MachineIOList.monoAxle(posIO, state.get(FACING).getAxis());
 	}
 }
 

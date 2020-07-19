@@ -14,8 +14,6 @@ abstract public class MechanicalHorizontalBlock extends MechanicalBlock {
 
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 	
-	
-	
 	public MechanicalHorizontalBlock(Properties properties) {
 		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));

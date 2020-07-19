@@ -1,5 +1,7 @@
 package com.kilroy790.notenoughmachines.multiblocks;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -8,63 +10,92 @@ import net.minecraft.world.World;
 
 public interface IMultiblock {
 
-	
-	/*
-	 * @param	pos		Location of the Master
+	/**
+	 * Checks if the Multiblock structure is currently formed
 	 * 
-	 * @return	true if the Multiblock is formed
+	 * @param world This part's world
+	 * @param pos This part's position
+	 * @param state This part's current block state
+	 * 
+	 * @return true if the Multiblock structure is currently formed
 	 */
-	public boolean isMultiblockFormed(World world, BlockPos pos);
+	public boolean isMultiblockFormed(World world, BlockPos pos, BlockState state);
 	
 	
-	/*
-	 * Checks if the Multiblock is valid
+	
+	/**
+	 * Checks if the Multiblock structure is valid
 	 * 
-	 * @param	pos		Location of the Master
+	 * @param world This part's world
+	 * @param pos This part's position
+	 * @param state This part's current block state
 	 * 
-	 * @return	true if the Multiblock is valid
+	 * @return true if the Multiblock structure is valid
 	 */
-	public boolean isMultiblockValid(World world, BlockPos pos);
+	public boolean isMultiblockValid(World world, BlockPos pos, BlockState state);
 	
 	
-	/*
-	 * Creates a Multiblock at the given location with given size
+	
+	/**
+	 * Creates a Multiblock structure at the given location with given size
 	 * 
-	 * @param	pos		Location of the Master
+	 * @param world The master's world
+	 * @param pos The master's position
+	 * @param state The master's current block state
 	 * 
-	 * @param	x,y,z	Size of the Multiblock
-	 * 
-	 * @return	true if the Multiblock was formed
+	 * @return true if the Multiblock structure was formed
 	 */
-	public boolean formMultiblock(World world, BlockPos pos, int x, int y, int z);
+	public boolean formMultiblock(World world, BlockPos pos, BlockState state);
 	
 	
-	/*
-	 * Removes this Multiblock at the given location
+	
+	/**
+	 * Removes this Multiblock structure 
 	 * 
-	 * @param	pos		Location of the Master
+	 * @param world This part's world
+	 * @param pos This part's position
+	 * @param state This part's current block state
 	 * 
-	 * @return	true if the Multiblock was removed
+	 * @return true if the Multiblock structure was removed
 	 */
-	public boolean removeMultiblock(World world, BlockPos pos);
+	public boolean unformMultiblock(World world, BlockPos pos, BlockState state);
 	
 	
-	/*
-	 * @param	pos		Location of the Master
+
+	/**
+	 * Gets the tile entity of this part's master.
 	 * 
-	 * @return	The block position of the master block for this Multiblock
+	 * @param world This part's world
+	 * @param pos This part's position
+	 * @param state This part's current block state
 	 */
-	public BlockPos getMaster(World world, BlockPos pos);
+	public TileEntity getMaster(World world, BlockPos pos, BlockState state);
 	
 	
-	// @return	The size of this Multiblock on the X axis
+	
+	/**
+	 * @return The size of this Multiblock on the X axis.
+	 */
 	public int getMultiblockWidth();
 	
 	
-	// @return	The size of this Multiblock on the Y axis
+
+	/**
+	 * @return The size of this Multiblock on the Y axis.
+	 */
 	public int getMultiblockHight();
 	
 	
-	// @return	The size of this Multiblock on the Z axis
+	
+	/**
+	 * @return The size of this Multiblock on the Z axis.
+	 */
 	public int getMultiblockDepth();
 }
+
+
+
+
+
+
+

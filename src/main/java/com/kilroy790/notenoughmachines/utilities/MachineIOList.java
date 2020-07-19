@@ -128,6 +128,55 @@ public class MachineIOList {
 
 
 	/**
+	 * Creates a new 4-way mechanical axle I/O array. The axis must be know ahead of time and must never change.
+	 * 
+	 * @param pos The position of the machine
+	 * @param axis The axis that the machine is aligned with
+	 * 
+	 * @return New 4-way mechanical axle I/O lookup map
+	 */
+	public static ArrayList<MechanicalContext> biAxle(BlockPos pos, Direction.Axis axis) {		
+
+		ArrayList<MechanicalContext> io;
+		switch(axis) {
+		case X:
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+						new MechanicalContext(pos.up(), Direction.UP, true), 
+						new MechanicalContext(pos.down(), Direction.DOWN, true), 
+						new MechanicalContext(pos.north(), Direction.NORTH, true), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, true)
+						));
+			break;
+
+		case Y:
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true), 
+						new MechanicalContext(pos.west(), Direction.WEST, true), 
+						new MechanicalContext(pos.north(), Direction.NORTH, true), 
+						new MechanicalContext(pos.south(), Direction.SOUTH, true)
+						));
+			break;
+
+		case Z:
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+						new MechanicalContext(pos.east(), Direction.EAST, true), 
+						new MechanicalContext(pos.west(), Direction.WEST, true), 
+						new MechanicalContext(pos.up(), Direction.UP, true), 
+						new MechanicalContext(pos.down(), Direction.DOWN, true)
+						));
+			break;
+
+		default:
+			io = new ArrayList<MechanicalContext>();
+			break;
+		}
+		
+		return io;
+	}
+
+
+
+	/**
 	 * Creates a new 6-way mechanical axle I/O array.
 	 * 
 	 * @param pos The position of the machine
@@ -188,6 +237,61 @@ public class MachineIOList {
 						new MechanicalContext(pos.up(), Direction.UP, false), 
 						new MechanicalContext(pos.down(), Direction.DOWN, false)
 						)));
+		return io;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param pos
+	 * @param axis
+	 * 
+	 * @return
+	 */
+	public static ArrayList<MechanicalContext> smallCogwheel(BlockPos pos, Direction.Axis axis) {
+		
+		ArrayList<MechanicalContext> io;
+		switch(axis) {
+		
+		case X:
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+							new MechanicalContext(pos.east(), Direction.EAST, true), 
+							new MechanicalContext(pos.west(), Direction.WEST, true),
+							new MechanicalContext(pos.north(), Direction.NORTH, false), 
+							new MechanicalContext(pos.south(), Direction.SOUTH, false),
+							new MechanicalContext(pos.up(), Direction.UP, false), 
+							new MechanicalContext(pos.down(), Direction.DOWN, false)
+							));
+			break;
+			
+		case Y:
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+							new MechanicalContext(pos.east(), Direction.EAST, false), 
+							new MechanicalContext(pos.west(), Direction.WEST, false),
+							new MechanicalContext(pos.north(), Direction.NORTH, false), 
+							new MechanicalContext(pos.south(), Direction.SOUTH, false),
+							new MechanicalContext(pos.up(), Direction.UP, true), 
+							new MechanicalContext(pos.down(), Direction.DOWN, true)
+							));
+			break;
+			
+		case Z:
+			io = new ArrayList<MechanicalContext>(Arrays.asList(
+							new MechanicalContext(pos.east(), Direction.EAST, false), 
+							new MechanicalContext(pos.west(), Direction.WEST, false),
+							new MechanicalContext(pos.north(), Direction.NORTH, true), 
+							new MechanicalContext(pos.south(), Direction.SOUTH, true),
+							new MechanicalContext(pos.up(), Direction.UP, false), 
+							new MechanicalContext(pos.down(), Direction.DOWN, false)
+							));
+			break;
+			
+		default:
+			io = new ArrayList<MechanicalContext>();
+			break;
+		}
+		
 		return io;
 	}
 }

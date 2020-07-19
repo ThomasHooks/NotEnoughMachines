@@ -1,10 +1,13 @@
 package com.kilroy790.notenoughmachines.blocks.machines.power;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.tiles.machines.power.GearboxTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.Block;
@@ -37,8 +40,6 @@ public class GearboxBlock extends MechanicalBlock {
 	public static final BooleanProperty POWERED = NEMBlockStateProperties.POWERED;
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
-	
-	
 	public GearboxBlock(Properties properties) {
 		super(properties);
 		this.setDefaultState(getDefaultState()
@@ -52,34 +53,12 @@ public class GearboxBlock extends MechanicalBlock {
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return this.getDefaultState().with(AXIS, context.getNearestLookingDirection().getAxis());
 	}
-	
-	
-	
-//	@Override
-//	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-//		
-//		if (player.abilities.allowEdit && player.getHeldItemMainhand().isEmpty()) {
-//			
-//			BlockState oldState = world.getBlockState(pos);
-//			world.setBlockState(pos, state.with(AXIS, getFacingFromEntity(pos, player).getAxis()).with(POWERED, world.getBlockState(pos).get(POWERED)), 2|1);
-//			
-//			double d0 = (double)pos.getX() + 0.5D;
-//			double d1 = (double)pos.getY() + 0.5D;
-//			double d2 = (double)pos.getZ() + 0.5D;
-//			world.playSound(d0, d1, d2, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 0.5F, 1.0F, false);
-//			
-//			world.notifyBlockUpdate(pos, oldState, world.getBlockState(pos), 2|1);
-//			
-//			return true;
-//		}
-//		else return false;
-//	}
 
 
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		switch(state.get(AXIS)) {
+		switch (state.get(AXIS)) {
 
 		case X:
 			return NEMBlockShapes.GEARBOX[0];
@@ -140,6 +119,13 @@ public class GearboxBlock extends MechanicalBlock {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new GearboxTile();
+	}
+
+
+
+	@Override
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+		return MachineIOList.biAxle(pos, state.get(AXIS));
 	}
 }
 

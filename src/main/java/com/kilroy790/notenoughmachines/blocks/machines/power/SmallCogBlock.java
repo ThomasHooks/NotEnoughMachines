@@ -1,7 +1,11 @@
 package com.kilroy790.notenoughmachines.blocks.machines.power;
 
+import java.util.ArrayList;
+
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallCogTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.BlockState;
@@ -12,6 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 
 
@@ -55,6 +60,13 @@ public class SmallCogBlock extends MechanicalShaftBlock {
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new SmallCogTile();
+	}
+
+
+
+	@Override
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+		return MachineIOList.smallCogwheel(pos, state.get(AXIS));
 	}
 }
 

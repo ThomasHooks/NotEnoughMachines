@@ -12,13 +12,6 @@ public abstract class MotorTile extends MechanicalTile {
 	public MotorTile(int powerCapacity, TileEntityType<?> tileEntityTypeIn) {
 		super(powerCapacity, 0, MechanicalType.SOURCE, tileEntityTypeIn);
 	}
-
-	
-	
-	@Override
-	protected void tickCustom() {
-		
-	}
 }
 
 

@@ -1,10 +1,13 @@
 package com.kilroy790.notenoughmachines.blocks.machines.power;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -36,12 +39,9 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
 			Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), 
 			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
-	
 	protected static final int AXELAXISX = 2;
 	protected static final int AXELAXISY = 0;
 	protected static final int AXELAXISZ = 1;
-
-
 
 	public SmallWindWheelBlock(Properties properties) {
 		super(properties);
@@ -52,16 +52,16 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 
-		if(placer == null || world.isRemote) return;
+		if (placer == null || world.isRemote) return;
 
 		Direction dir = placer.getHorizontalFacing();
 		SmallWindWheelTile tile = (SmallWindWheelTile) world.getTileEntity(pos);
-		if(!tile.validateArea()) {
+		if (!tile.validateArea()) {
 			placer.sendMessage(new StringTextComponent("Wind Wheel needs 16x16x1 area of free space").setStyle(new Style().setColor(TextFormatting.RED)));
 			world.destroyBlock(pos, true);
 		}
 		Block nextBlock = world.getBlockState(pos.offset(dir)).getBlock();
-		if(!(nextBlock instanceof MechanicalBlock)) {
+		if (!(nextBlock instanceof MechanicalBlock)) {
 			placer.sendMessage(new StringTextComponent("Wind Wheel must be placed on a machine").setStyle(new Style().setColor(TextFormatting.RED)));
 			world.destroyBlock(pos, true);
 		}
@@ -93,7 +93,7 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) {
 		Direction facing = state.get(FACING);
-		if(facing == Direction.EAST || facing == Direction.WEST) return SHAPE_BY_DIR[AXELAXISX];
+		if (facing == Direction.EAST || facing == Direction.WEST) return SHAPE_BY_DIR[AXELAXISX];
 		else return SHAPE_BY_DIR[AXELAXISZ];
 	}
 
@@ -116,6 +116,13 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 	@Override
 	public ItemStack itemWhenDestroyed() {
 		return null;
+	}
+
+
+
+	@Override
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+		return MachineIOList.monoAxle(pos, state.get(FACING).getAxis());
 	}
 }
 

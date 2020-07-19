@@ -1,18 +1,13 @@
 package com.kilroy790.notenoughmachines.tiles.machines.processing;
 
-import java.util.ArrayList;
-
 import javax.annotation.Nonnull;
 
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
-import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
-
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -42,23 +37,15 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	protected RecipeWrapper inputRecipe;
 	private LazyOptional<ItemStackHandler> itemInputHandler = LazyOptional.of(() -> itemInput);
 	private static final int INPUTSLOTS = 1;
-	
 	protected ItemStackHandler itemOutput;
 	private LazyOptional<ItemStackHandler> itemOutputHandler = LazyOptional.of(() -> itemOutput);
 	private static final int OUTPUTSLOTS = 1;
-	
 	private LazyOptional<CombinedInvWrapper> combinedItemHandler = LazyOptional.of(() -> new CombinedInvWrapper(itemInput, itemOutput));
 	private static final int NUMBER_OF_SLOTS = INPUTSLOTS + OUTPUTSLOTS;
-	
 	private int processTime = 0;
 	private static final int MAX_PROCESS_TIME = 200;
-	private boolean isProcessing = false;
-	
-	private ArrayList<MechanicalContext> io;
-	
+	private boolean isProcessing = false;	
 	private int timer = 0;
-	
-	
 	
 	public MillstoneTile() {
 		super(0, 20, MechanicalType.SINK, NEMTiles.MILLSTONE.get());
@@ -70,35 +57,34 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	
 	@Override
-	protected void tickCustom() {
-		
-		if(world.isRemote) return;
-		
-		//if there is a millable item in the input slot start to process it
-		if(attemptMill() && isPowered()) {
-			isProcessing = true;
-		} 
-		else isProcessing = false;
-		
-		if(isProcessing && isPowered()) {
-			processTime++;
-		} 
-		else {
-			processTime--;
-			if(processTime < 0) processTime = 0;
-		}
-		
-		if(processTime >= MAX_PROCESS_TIME) {
-			millItem();
-			isProcessing = false;
-			processTime = 0;
-		}
+	public void tick() {
+		if (!world.isRemote) {
+			if (attemptMill() && isPowered()) {
+				isProcessing = true;
+			} 
+			else isProcessing = false;
+			
+			if (isProcessing && isPowered()) {
+				processTime++;
+			} 
+			else {
+				processTime--;
+				if (processTime < 0) processTime = 0;
+			}
+			
+			if (processTime >= MAX_PROCESS_TIME) {
+				millItem();
+				isProcessing = false;
+				processTime = 0;
+			}
 
-		if(this.timer > VALIDATE_TICK) {
-			this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MillstoneBlock.LIT, isProcessing), 1 | 2 | 4);
-			this.timer = 0;
-		}
-		else this.timer++;
+			if (this.timer > VALIDATE_TICK) {
+				this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MillstoneBlock.LIT, isProcessing), 1 | 2 | 4);
+				this.timer = 0;
+			}
+			else this.timer++;
+		}		
+		super.tick();
 	}
 	
 	
@@ -108,20 +94,20 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	 */
     private boolean attemptMill() {
     	
-    	for(int i = 0; i < INPUTSLOTS; i++) {
+    	for (int i = 0; i < INPUTSLOTS; i++) {
     		
     		ItemStack stack = itemInput.getStackInSlot(i).copy();
-    		if(!stack.isEmpty()) {
+    		if (!stack.isEmpty()) {
     			
     			//TODO: I might change this to use ItemStackHandler instead of IInventoy
     			IInventory inventory = new Inventory(stack);
     			MillingRecipe recipe = world.getRecipeManager().getRecipe(MillingRecipe.milling, inventory, world).orElse(null);
-    			if(recipe == null) return false;
+    			if (recipe == null) return false;
     			
     			ItemStack result = recipe.getCraftingResult(inventory);
         		
         		ItemStack output = itemOutput.insertItem(i, result.copy(), true);
-        		if(output.isEmpty()) return true;
+        		if (output.isEmpty()) return true;
     		}
     		else return false;
     	}
@@ -136,20 +122,20 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
      */
     private void millItem() {
     	
-    	for(int i = 0; i < INPUTSLOTS; i++) {
+    	for (int i = 0; i < INPUTSLOTS; i++) {
     		
     		ItemStack stack = itemInput.getStackInSlot(i).copy();
-    		if(!stack.isEmpty()) {
+    		if (!stack.isEmpty()) {
     			
     			//TODO: I might change this to use ItemStackHandler instead of IInventoy
     			IInventory inventory = new Inventory(stack);
     			MillingRecipe recipe = world.getRecipeManager().getRecipe(MillingRecipe.milling, inventory, world).orElse(null);
-    			if(recipe == null) break;
+    			if (recipe == null) break;
     			
     			ItemStack result = recipe.getCraftingResult(inventory);
         		
         		ItemStack output = itemOutput.insertItem(i, result.copy(), false);
-        		if(output.isEmpty()) {
+        		if (output.isEmpty()) {
         			itemInput.extractItem(i, 1, false);
         			processTime = 0;
         			markDirty();
@@ -160,29 +146,18 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	
 	
-	@Override
-	public void onLoad() {
-		io = MachineIOList.monoAxle(pos, Direction.Axis.Y);
-		super.onLoad();
-	}
-	
-	
-	
 	@Nonnull
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
 		
-		if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			
-			if(side == null) {
+		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (side == null) {
 				return combinedItemHandler.cast();
 			}
-			
-			if(side == Direction.NORTH || side == Direction.EAST || side == Direction.SOUTH || side == Direction.WEST) {
+			if (side == Direction.NORTH || side == Direction.EAST || side == Direction.SOUTH || side == Direction.WEST) {
 				return itemInputHandler.cast();
 			}
-			
-			if(side == Direction.UP || side == Direction.DOWN) {
+			if (side == Direction.UP || side == Direction.DOWN) {
 				return itemOutputHandler.cast();
 			}
 		}
@@ -193,21 +168,18 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	@Override
 	protected void readCustom(CompoundNBT compound) {
-
-		if(compound.contains("input")) {
+		
+		if (compound.contains("input")) {
 			CompoundNBT inputInv = compound.getCompound("input");
 			itemInputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(inputInv));
 		}
-
-		if(compound.contains("output")) {
+		if (compound.contains("output")) {
 			CompoundNBT outputInv = compound.getCompound("output");
 			itemOutputHandler.ifPresent(h -> ((INBTSerializable<CompoundNBT>) h).deserializeNBT(outputInv));
 		}
-
-		if(compound.contains("processtime")) {
+		if (compound.contains("processtime")) {
 			processTime = compound.getInt("processtime");
 		}
-
 		super.readCustom(compound);
 	}
 	
@@ -235,19 +207,10 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	@Override
 	public void remove() {
-		
 		this.itemInputHandler.invalidate();
 		this.itemOutputHandler.invalidate();
 		this.combinedItemHandler.invalidate();
-		
 		super.remove();
-	}
-
-	
-
-	@Override
-	public ArrayList<MechanicalContext> getIO() {
-		return io;
 	}
 	
 	
@@ -287,11 +250,11 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	public void setProcessTime(int time) {
 		
-		if(time > MAX_PROCESS_TIME) {
+		if (time > MAX_PROCESS_TIME) {
 			this.processTime = MAX_PROCESS_TIME;
 		}
 		
-		else if(time < 0) {
+		else if (time < 0) {
 			this.processTime = 0;
 		}
 		
