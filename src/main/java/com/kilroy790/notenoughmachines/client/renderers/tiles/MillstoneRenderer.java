@@ -44,7 +44,8 @@ public class MillstoneRenderer extends TileEntityRenderer<MillstoneTile> {
 		matrixStack.push();
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
-		float tick = NotEnoughMachines.proxy.getClientTick();
+//		float tick = NotEnoughMachines.proxy.getClientTick();
+		float tick = NotEnoughMachines.CLIENTTIMER.getTick() + partialTicks;
 		float speed = tile.getSpeed();
 		float angle = (tick * speed * 0.3f) % 360;
 		angle = angle/180f * (float)Math.PI;

@@ -51,7 +51,7 @@ public class GearboxBlock extends MechanicalBlock {
 	
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return this.getDefaultState().with(AXIS, context.getNearestLookingDirection().getAxis());
+		return super.getStateForPlacement(context).with(AXIS, context.getNearestLookingDirection().getAxis());
 	}
 
 

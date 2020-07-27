@@ -1,0 +1,14 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:flint",
+  "ingredient": {
+    "item": "minecraft:gravel"
+  },
+  "result": {
+    "item": "minecraft:flint"
+  },
+  "resultsecond": {
+    "item": "minecraft:sand"
+  },
+  "processtime": 300
+}

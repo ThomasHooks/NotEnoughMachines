@@ -29,6 +29,8 @@ public class ClientSetup {
 			event.addSprite(NEMTextures.SMALLCOG_OUT);
 			event.addSprite(NEMTextures.SMALLCOG_IN);
 			event.addSprite(NEMTextures.SMALLCOG_TOOTH);
+			event.addSprite(NEMTextures.HAMMER_HEAD);
+			event.addSprite(NEMTextures.TRIPHAMMER_SHAFT);
 			NotEnoughMachines.LOGGER.debug("All NEM textures have been stitched to Atlas");
 		}
 	}

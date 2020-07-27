@@ -32,9 +32,6 @@ public class NEMItems {
 	public static final RegistryObject<Item> LINENBLOCK = ITEMS.register("linenblock", 
 			()-> new BlockItem(NEMBlocks.LINENBLOCK.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
-	public static final RegistryObject<Item> FLOUR = ITEMS.register("flour", 
-			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
 	public static final RegistryObject<Item> GEAR = ITEMS.register("gear", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -91,6 +88,15 @@ public class NEMItems {
 	
 	public static final RegistryObject<Item> ORGATE = ITEMS.register("orgate", 
 			()-> new BlockItem(NEMBlocks.ORGATE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	public static final RegistryObject<Item> FLOUR = ITEMS.register("flour", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushedironore", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	public static final RegistryObject<Item> CRUSHED_GOLD_ORE = ITEMS.register("crushedgoldore", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 
 
 

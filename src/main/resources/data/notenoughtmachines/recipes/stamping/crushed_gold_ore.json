@@ -1,0 +1,15 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:crushed_gold_ore",
+  "ingredient": {
+    "item": "minecraft:gold_ore"
+  },
+  "result": {
+    "item": "notenoughtmachines:crushedgoldore",
+    "count": 2
+  },
+  "resultsecond": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 900
+}

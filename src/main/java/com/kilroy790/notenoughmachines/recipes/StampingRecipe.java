@@ -5,6 +5,7 @@ import com.kilroy790.notenoughmachines.setup.NEMItems;
 import com.kilroy790.notenoughmachines.setup.NEMRecipes;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
@@ -28,15 +29,17 @@ public class StampingRecipe implements IRecipe<RecipeWrapper> {
 	private final String group;
 	private final NBTIngredient ingredient;
 	private final ItemStack result;
+	private final ItemStack resultSecondary;
 	private final int processingTime;
 	
 	
 	
-	public StampingRecipe(ResourceLocation id, String group, NBTIngredient ingredient, ItemStack result, int processingTime) {
+	public StampingRecipe(ResourceLocation id, String group, NBTIngredient ingredient, ItemStack result, ItemStack resultSecondary, int processingTime) {
 		this.id = id;
 		this.group = group;
 		this.ingredient = ingredient;
 		this.result = result;
+		this.resultSecondary = resultSecondary;
 		this.processingTime = processingTime;
 	}
 
@@ -66,6 +69,12 @@ public class StampingRecipe implements IRecipe<RecipeWrapper> {
 	@Override
 	public ItemStack getRecipeOutput() {
 		return this.result;
+	}
+	
+	
+	
+	public ItemStack getCraftingResultSecondary() {
+		return this.resultSecondary.copy();
 	}
 
 	
@@ -125,28 +134,29 @@ public class StampingRecipe implements IRecipe<RecipeWrapper> {
 			
 			String group = JSONUtils.getString(json, "group", "");
 			
-			if(!json.has("ingredient")) throw new com.google.gson.JsonSyntaxException("Missing ingredient, expected to find a string or object");
+			if (!json.has("ingredient")) throw new com.google.gson.JsonSyntaxException("Missing ingredient, expected to find a string or object");
 		    NBTIngredient ingredient = NBTIngredient.Serializer.INSTANCE.parse(JSONUtils.getJsonObject(json, "ingredient"));
 		    
-		    if(!json.has("result")) throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
+		    if (!json.has("result")) throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
 		    ItemStack result = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
 		    
-		    int time = JSONUtils.getInt(json, "processtime", 0);
+		    ItemStack result2 = json.has("resultsecond") ? ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "resultsecond")) : new ItemStack(Items.AIR);
 		    
-		    return new StampingRecipe(recipeId, group, ingredient, result, time);
+		    int time = JSONUtils.getInt(json, "processtime", 300);
+		    
+		    return new StampingRecipe(recipeId, group, ingredient, result, result2, time);
 		}
 
 		
 		
 		@Override
 		public StampingRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
-			
 			String group = buffer.readString(32767);
 			NBTIngredient ingredient = NBTIngredient.Serializer.INSTANCE.parse(buffer);
 			ItemStack result = buffer.readItemStack();
+			ItemStack result2 = buffer.readItemStack();
 			int time = buffer.readVarInt();
-			
-			return new StampingRecipe(recipeId, group, ingredient, result, time);
+			return new StampingRecipe(recipeId, group, ingredient, result, result2, time);
 		}
 
 		
@@ -156,6 +166,7 @@ public class StampingRecipe implements IRecipe<RecipeWrapper> {
 		    buffer.writeString(recipe.group);
 		    recipe.ingredient.write(buffer);
 		    buffer.writeItemStack(recipe.result);
+		    buffer.writeItemStack(recipe.resultSecondary);
 		    buffer.writeVarInt(recipe.processingTime);
 		}
 	}

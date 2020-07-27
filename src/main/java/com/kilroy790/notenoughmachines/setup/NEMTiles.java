@@ -39,7 +39,7 @@ public class NEMTiles {
 			() -> TileEntityType.Builder.create(MillstoneTile::new, NEMBlocks.MILLSTONE.get()).build(null));
 	
 	public static final RegistryObject<TileEntityType<TripHammerTile>> TRIPHAMMER = TILES.register("triphammer", 
-			() -> TileEntityType.Builder.create(TripHammerTile::new, NEMBlocks.HAMMERHEAD.get()).build(null));
+			() -> TileEntityType.Builder.create(TripHammerTile::new, NEMBlocks.TRIPHAMMER.get()).build(null));
 	
 	public static final RegistryObject<TileEntityType<AxleTile>> AXLE = TILES.register("axle", 
 			() -> TileEntityType.Builder.create(AxleTile::new, NEMBlocks.AXLE.get()).build(null));

@@ -101,7 +101,6 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	 * Updates this machine's power network if its power state has changed
 	 */
 	private void  updatePowerNetwork() {
-		
 		if (this.updateNetwork) {
 			NotEnoughMachines.AETHER.updatePowerNetwork(this);
 			this.updateNetwork = false;
@@ -117,20 +116,17 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	private void propagateSpeed() {
 
 		if (speedChanged) {
-			
 			MechanicalBlock block = (MechanicalBlock)getBlockState().getBlock();
 			for (MechanicalContext io : block.getIO(world, pos, getBlockState())) {
-				MechanicalTile neighbor = world.getTileEntity(io.getPos()) instanceof MechanicalTile ? (MechanicalTile)world.getTileEntity(io.getPos()) : null;
-				if (neighbor != null) {
-					
-					MechanicalBlock neighborBlock = (MechanicalBlock) neighbor.getBlockState().getBlock();
+				MechanicalBlock neighborBlock = MechanicalBlock.getMechanicalBlock(world, io.getPos());
+				if (neighborBlock != null) {
+					MechanicalTile neighbor = neighborBlock.getTile(world, io.getPos(), world.getBlockState(io.getPos()));
 					if (neighbor.getPos().equals(this.driverPos)) continue;
 					
 					else if (neighborBlock.isAlignedWith(neighbor.world, neighbor.pos, neighbor.getBlockState(), io)) {
 						if (io.isAxle()) {
 							neighbor.changeSpeed(this, this.speed);
 						}
-						
 						else {
 							//At the moment if a connection isn't an Axle it is assumed to be a Cogwheel with a 1:1 ratio
 							neighbor.changeSpeed(this, this.speed * -1.0f);
@@ -168,6 +164,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		if (capacity == 0) return;
 		
 		this.powerCapacity -= Math.abs(capacity);
+		if (this.powerCapacity < 0) this.powerCapacity = 0;
 		this.updateNetwork = true;
 	}
 	
@@ -213,6 +210,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		if (load == 0) return;
 		
 		this.powerLoad -= Math.abs(load);
+		if (this.powerLoad < 0) this.powerLoad = 0;
 		this.updateNetwork = true;
 	}
 	
@@ -247,7 +245,6 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		ArrayList<MechanicalTile> neighbors = new ArrayList<MechanicalTile>();
 		MechanicalBlock block = (MechanicalBlock)getBlockState().getBlock();
 		for (MechanicalContext io : block.getIO(world, pos, getBlockState())) {
-			
 			TileEntity tile = world.getTileEntity(io.getPos());
 			MechanicalTile mechTile = tile instanceof MechanicalTile ? (MechanicalTile)tile : null;
 			if (mechTile != null) {

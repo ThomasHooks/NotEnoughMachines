@@ -49,7 +49,6 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
 	public MillstoneTile() {
 		super(0, 20, MechanicalType.SINK, NEMTiles.MILLSTONE.get());
-		
 		this.itemInput = makeItemHandler(INPUTSLOTS, 64);
 		this.itemOutput = makeItemHandler(OUTPUTSLOTS, 64);
 	}

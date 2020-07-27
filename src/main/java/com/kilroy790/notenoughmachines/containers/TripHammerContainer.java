@@ -10,6 +10,7 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -22,16 +23,13 @@ import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class TripHammerContainer extends Container {
 
-
 	private TripHammerTile tile;
-
 	private IItemHandler playerInv;
 
 	private final int INPUTSLOTSTART = 0;
 	private final int OUTPUTSLOTSTART = 1;
 	private final int PLAYER_INV_START = 3;
 	private final int PLAYER_INV_END = 39;
-
 
 	public TripHammerContainer(int id, World world, BlockPos pos, PlayerInventory playerInv, PlayerEntity player) {
 		super(NEMContainers.TRIPHAMMER.get(), id);
@@ -52,32 +50,55 @@ public class TripHammerContainer extends Container {
 
 		//add the player's inventory and quick bar
 		addPlayerInventorySlots(7,51);
+		
+		trackInt(new IntReferenceHolder() {
+			
+			@Override
+			public int get() {
+				return tile.getMaxProcessTime();
+			}
+			
+			@Override
+			public void set(int value) {
+			}
+		});
+		
+		trackInt(new IntReferenceHolder() {
+
+			@Override
+			public int get() {
+				return tile.getProcessTime();
+			}
+
+			@Override
+			public void set(int value) {
+			}
+			
+		});
 	}
 
+	
 
 	@Override
 	public ItemStack transferStackInSlot(PlayerEntity player, int index) {
-		//method for shift clicking into an inventory 
-		//TODO fix such that shift clicking in player inventory will move item stacks to the input slot instead of the output slots
+		
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = (Slot)this.inventorySlots.get(index);
 		if (slot != null && slot.getHasStack()) {
 
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
+			//input slot to player inventory
 			if (index == INPUTSLOTSTART) {
-				//Filter slot to player inventory
 				if(!this.mergeItemStack(itemstack1, PLAYER_INV_START, PLAYER_INV_END, true)) return ItemStack.EMPTY;
 			}
-
+			//output slots to player inventory
 			else if (index >= OUTPUTSLOTSTART && index < PLAYER_INV_START) {
-				//Filter inventory slot to player inventory
 				if(!this.mergeItemStack(itemstack1, PLAYER_INV_START, PLAYER_INV_END, true)) return ItemStack.EMPTY;
 			}
-
+			//player inventory to input slot
 			if (index < PLAYER_INV_END && index >= PLAYER_INV_START) {
-				//player inventory to Filter inventory
-				if (!this.mergeItemStack(itemstack1, OUTPUTSLOTSTART, PLAYER_INV_START, false)) return ItemStack.EMPTY;
+				if (!this.mergeItemStack(itemstack1, INPUTSLOTSTART, OUTPUTSLOTSTART, false)) return ItemStack.EMPTY;
 			}
 
 			if (itemstack1.getCount() == 0) slot.putStack(ItemStack.EMPTY);
@@ -89,11 +110,13 @@ public class TripHammerContainer extends Container {
 	}
 
 
+	
 	@Override
 	public boolean canInteractWith(PlayerEntity player) {
 		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, NEMBlocks.TRIPHAMMER.get());
 	}
 
+	
 
 	protected void addPlayerInventorySlots(int topLeftSlotX, int topLeftSlotY) {
 		//Player inventory
@@ -105,6 +128,7 @@ public class TripHammerContainer extends Container {
 	}
 
 
+	
 	protected void addItemSlot(IItemHandler itemHandler, int index, int x, int y, int horSlotNumber, int xOffset, int verSlotNumber, int yOffset) {
 
 		for(int i = 0; i < verSlotNumber; i++) {
@@ -116,6 +140,13 @@ public class TripHammerContainer extends Container {
 			}
 			y += yOffset;
 		}
+	}
+	
+	
+	
+	public int getProgress() {
+		int progress = tile.getProcessTime() * 16 / tile.getMaxProcessTime();
+		return progress > 16 ? 16 : progress;
 	}
 }
 

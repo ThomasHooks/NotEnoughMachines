@@ -49,7 +49,7 @@ public class MillstoneBlock extends MechanicalBlock {
 
 	public MillstoneBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(LIT, Boolean.valueOf(false)));
+		this.setDefaultState(this.getDefaultState().with(LIT, Boolean.valueOf(false)));
 	}
 
 

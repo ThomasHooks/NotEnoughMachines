@@ -16,7 +16,7 @@ abstract public class MechanicalHorizontalBlock extends MechanicalBlock {
 	
 	public MechanicalHorizontalBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
+		this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH));
 	}
 	
 	

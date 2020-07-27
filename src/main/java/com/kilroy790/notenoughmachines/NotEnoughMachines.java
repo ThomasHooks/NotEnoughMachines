@@ -11,6 +11,7 @@ import com.kilroy790.notenoughmachines.client.renderers.tiles.GearboxRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.MillstoneRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallCogRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallWindWheelRenderer;
+import com.kilroy790.notenoughmachines.client.renderers.tiles.TripHammerRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.TubWheelRenderer;
 import com.kilroy790.notenoughmachines.power.PowerNetworkStack;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipeSerializer;
@@ -20,11 +21,9 @@ import com.kilroy790.notenoughmachines.setup.NEMBlocks;
 import com.kilroy790.notenoughmachines.setup.NEMContainers;
 import com.kilroy790.notenoughmachines.setup.NEMItems;
 import com.kilroy790.notenoughmachines.setup.NEMMachineRecipes;
+import com.kilroy790.notenoughmachines.setup.NEMRecipes;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
-import com.kilroy790.notenoughmachines.utilities.ClientProxy;
-import com.kilroy790.notenoughmachines.utilities.IProxy;
-import com.kilroy790.notenoughmachines.utilities.ServerProxy;
-
+import com.kilroy790.notenoughmachines.utilities.ClientTimer;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -33,7 +32,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -46,21 +44,20 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod.EventBusSubscriber(modid = NotEnoughMachines.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class NotEnoughMachines {
 	
-	public static NotEnoughMachines instance;
+	public static NotEnoughMachines INSTANCE;
 	public static final String MODID = "notenoughtmachines";
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
 	
 	public static PowerNetworkStack AETHER = new PowerNetworkStack();
+	public static ClientTimer CLIENTTIMER = new ClientTimer();
 	
-	@SuppressWarnings("deprecation")
-	public static IProxy proxy = DistExecutor.runForDist(()-> ()-> new ClientProxy(), ()-> ()-> new ServerProxy());
 	public static ModSetup setup = new ModSetup();
 	
 	
 	
 	public NotEnoughMachines() {
 		
-		instance = this;
+		INSTANCE = this;
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
 		modEventBus.addListener(this::clientRegistries);
@@ -69,6 +66,7 @@ public class NotEnoughMachines {
 		NEMItems.registerAll(modEventBus);
 		NEMTiles.registerAll(modEventBus);
 		NEMContainers.registerAll(modEventBus);
+		NEMRecipes.registerAll(modEventBus);
 	}
 	
 	
@@ -76,7 +74,6 @@ public class NotEnoughMachines {
 	private void setup(final FMLCommonSetupEvent event) {
 		LOGGER.info("Starting NEM preinit");
 		setup.init();
-		proxy.init();
 		LOGGER.info("NEM preinit done");
 	}
 
@@ -98,6 +95,7 @@ public class NotEnoughMachines {
 		MillstoneRenderer.register();
 		TubWheelRenderer.register();
 		SmallWindWheelRenderer.register();
+		TripHammerRenderer.register();
 		LOGGER.info("All NEM Tile Entity Renderers registered");
 		
 		LOGGER.info("Registering all NEM Containers");

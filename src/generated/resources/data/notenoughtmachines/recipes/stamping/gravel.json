@@ -1,0 +1,11 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:gravel",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "result": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 300
+}

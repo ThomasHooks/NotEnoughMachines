@@ -92,8 +92,28 @@ public abstract class MechanicalBlock extends Block {
 	 */
 	public boolean isAlignedWith(World world, BlockPos pos, BlockState state, MechanicalContext context) {
 		
-		for (MechanicalContext io : getIO(world, pos, state)) {
-			if (io.getFacing() == context.getFacing().getOpposite() && io.isAxle() == context.isAxle()) return true;
+		for (MechanicalContext io : this.getIO(world, pos, state)) {
+			switch (context.getFacing()) {
+			
+			case UP:
+			case DOWN:
+				if (io.getPos().getX() == context.getPos().getX() && io.getPos().getZ() == context.getPos().getZ() && io.getFacing() == context.getFacing().getOpposite() && io.isAxle() == context.isAxle())
+					return true;
+				
+			case WEST:
+			case EAST:
+				if (io.getPos().getY() == context.getPos().getY() && io.getPos().getZ() == context.getPos().getZ() && io.getFacing() == context.getFacing().getOpposite() && io.isAxle() == context.isAxle())
+					return true;
+				
+			case NORTH:
+			case SOUTH:
+				if (io.getPos().getX() == context.getPos().getX() && io.getPos().getY() == context.getPos().getY() && io.getFacing() == context.getFacing().getOpposite() && io.isAxle() == context.isAxle())
+					return true;
+				
+			default:
+				break;
+			
+			}
 		}
 		return false;
 	}
@@ -117,6 +137,21 @@ public abstract class MechanicalBlock extends Block {
 	
 	
 	/**
+	 * Gets the Mechanical Block at the given location
+	 * 
+	 * @param world This machine's World
+	 * @param pos This machine's Block Position
+	 * 
+	 * @return The machine's block at the given location or null if there is not a machine present
+	 */
+	@Nullable
+	public static MechanicalBlock getMechanicalBlock(IWorld world, BlockPos pos) {
+		return world.getBlockState(pos).getBlock() instanceof MechanicalBlock ? (MechanicalBlock)world.getBlockState(pos).getBlock() : null;
+	}
+	
+	
+	
+	/**
 	 * Breaks this machine and either drops the machine or destroys it.
 	 * 
 	 * @param world, the current world
@@ -133,7 +168,6 @@ public abstract class MechanicalBlock extends Block {
 				NEMItemHelper.dropItemStack(world, pos, itemWhenDestroyed());
 				world.destroyBlock(pos, false);
 			}
-			
 			else world.destroyBlock(pos, true);
 		}
 	}
@@ -171,22 +205,20 @@ public abstract class MechanicalBlock extends Block {
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 
 		if (!worldIn.isRemote()) {
-			MechanicalTile tile = worldIn.getTileEntity(pos) instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(pos) : null;
-			if (tile != null) {
-				for (MechanicalContext io : this.getIO(worldIn, pos, state)) {
-					MechanicalTile neighborTile = tile instanceof MechanicalTile ? (MechanicalTile)worldIn.getTileEntity(io.getPos()) : null;
-					if (neighborTile != null) {
-						MechanicalBlock neighborBlock = (MechanicalBlock) neighborTile.getBlockState().getBlock();
-						if (neighborBlock.isAlignedWith(worldIn, neighborTile.getPos(), neighborTile.getBlockState(), io)) {
-							if (!io.isAxle()) {
-								BlockState neighborState = neighborTile.getBlockState().cycle(SHIFTED);
-								worldIn.setBlockState(pos, state.with(SHIFTED, neighborState.get(SHIFTED)));
-							}
-							else {
-								worldIn.setBlockState(pos, state.with(SHIFTED, neighborTile.getBlockState().get(SHIFTED)));
-							}
-							break;
+			for (MechanicalContext io : this.getIO(worldIn, pos, state)) {
+
+				MechanicalBlock neighborBlock = MechanicalBlock.getMechanicalBlock(worldIn, io.getPos());
+				if (neighborBlock != null) {
+					BlockState neighborState = worldIn.getBlockState(io.getPos());
+					if (neighborBlock.isAlignedWith(worldIn, io.getPos(), neighborState, io)) {
+						if (!io.isAxle()) {
+							neighborState = neighborState.cycle(SHIFTED);
+							worldIn.setBlockState(pos, state.with(SHIFTED, neighborState.get(SHIFTED)));
 						}
+						else {
+							worldIn.setBlockState(pos, state.with(SHIFTED, neighborState.get(SHIFTED)));
+						}
+						break;
 					}
 				}
 			}

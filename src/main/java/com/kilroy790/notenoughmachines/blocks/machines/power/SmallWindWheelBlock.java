@@ -71,7 +71,7 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite());
+		return super.getStateForPlacement(context).with(FACING, context.getPlacementHorizontalFacing().getOpposite());
 	}
 
 

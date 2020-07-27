@@ -5,6 +5,7 @@ import com.kilroy790.notenoughmachines.containers.FilterContainer;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.kilroy790.notenoughmachines.containers.TripHammerContainer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.extensions.IForgeContainerType;
@@ -24,14 +25,14 @@ public class NEMContainers {
 			() -> IForgeContainerType.create(
 					(id, inventory, data) -> {
 						BlockPos pos = data.readBlockPos();
-						return new MillstoneContainer(id, NotEnoughMachines.proxy.getClientWorld(), pos, inventory, NotEnoughMachines.proxy.getClientPlayer());
+						return new MillstoneContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player);
 					}));
 
 	public static final RegistryObject<ContainerType<TripHammerContainer>> TRIPHAMMER = CONTAINERS.register("triphammer", 
 			() -> IForgeContainerType.create(
 					(id, inventory, data) -> {
 						BlockPos pos = data.readBlockPos();
-						return new TripHammerContainer(id, NotEnoughMachines.proxy.getClientWorld(), pos, inventory, NotEnoughMachines.proxy.getClientPlayer());
+						return new TripHammerContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player); //NotEnoughMachines.proxy.getClientWorld() NotEnoughMachines.proxy.getClientPlayer()
 					}));
 	
 	public static final RegistryObject<ContainerType<FilterContainer>> FILTER = CONTAINERS.register("filter", 

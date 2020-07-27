@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 
 
 
-public interface IMultiblock {
+public interface IMultiblockPart {
 
 	/**
 	 * Checks if the Multiblock structure is currently formed
@@ -69,7 +69,7 @@ public interface IMultiblock {
 	 * @param pos This part's position
 	 * @param state This part's current block state
 	 */
-	public TileEntity getMaster(World world, BlockPos pos, BlockState state);
+	public TileEntity getMasterTile(World world, BlockPos pos, BlockState state);
 	
 	
 	

@@ -1,8 +1,6 @@
 package com.kilroy790.notenoughmachines.blocks.building;
 
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,8 +32,6 @@ public class HammerHeadBlock extends Block {
 	private static final VoxelShape HAMMER_SHAPE = VoxelShapes.or(FACE_SHAPE, NECK_SHAPE, HEAD_SHAPE, EYE_SHAPE);
 	
 	public static final BooleanProperty FORMED = NEMBlockStateProperties.FORMED;
-	
-	
 	
 	public HammerHeadBlock(Properties properties) {
 		super(properties);
@@ -85,17 +81,17 @@ public class HammerHeadBlock extends Block {
 	
 	
 	
-	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
-	}
-	
-	
-	
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new TripHammerTile();
-	}
+//	@Override
+//	public boolean hasTileEntity(BlockState state) {
+//		return true;
+//	}
+//	
+//	
+//	
+//	@Override
+//	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+//		return new TripHammerTile();
+//	}
 }
 
 

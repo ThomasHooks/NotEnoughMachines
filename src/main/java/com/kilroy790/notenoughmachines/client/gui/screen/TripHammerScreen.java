@@ -54,6 +54,9 @@ public class TripHammerScreen extends ContainerScreen<TripHammerContainer> {
         int relX = (this.width - this.xSize) / 2;
         int relY = (this.height - this.ySize) / 2;
         this.blit(relX, relY, 0, 0, this.xSize, this.ySize);
+        
+        int progressBar = container.getProgress();
+        this.blit(relX + 70, relY + 20, 181, 1, 16, progressBar);
 	}
 }
 

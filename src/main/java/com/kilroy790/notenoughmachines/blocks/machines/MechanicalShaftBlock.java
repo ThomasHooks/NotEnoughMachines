@@ -25,7 +25,7 @@ public abstract class MechanicalShaftBlock extends MechanicalBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return this.getDefaultState().with(MechanicalShaftBlock.AXIS, context.getFace().getAxis());
+		return super.getStateForPlacement(context).with(MechanicalShaftBlock.AXIS, context.getFace().getAxis());
 	}
 
 	

@@ -1,0 +1,11 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:cobblestone",
+  "ingredient": {
+    "item": "minecraft:smooth_stone"
+  },
+  "result": {
+    "item": "minecraft:cobblestone"
+  },
+  "processtime": 300
+}
