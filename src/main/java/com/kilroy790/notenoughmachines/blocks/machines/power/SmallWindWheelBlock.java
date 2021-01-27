@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -122,7 +122,7 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 
 	@Override
 	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
-		return MachineIOList.monoAxle(pos, state.get(FACING).getAxis());
+		return MechanicalConnectionList.monoAxle(pos, state.get(FACING).getAxis());
 	}
 }
 

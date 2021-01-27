@@ -52,6 +52,10 @@ public class SmallWindWheelRenderer extends TileEntityRenderer<SmallWindWheelTil
 	public void render(SmallWindWheelTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
 		matrixStack.push();
 		
+		float tick = NotEnoughMachines.CLIENTTIMER.getTick() + partialTicks;
+		float speed = tile.getSpeed();
+		float angle = (tick * speed * 0.3f) % 360;
+		angle = angle/180f * (float)Math.PI;
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
 		switch(tile.getBlockState().get(MechanicalHorizontalBlock.FACING)) {
 		case EAST:
@@ -62,18 +66,15 @@ public class SmallWindWheelRenderer extends TileEntityRenderer<SmallWindWheelTil
 			break;
 		case SOUTH:
 			matrixStack.rotate(Vector3f.XP.rotationDegrees(-90));
+			angle *= -1;
 			break;
 		case WEST:
 			matrixStack.rotate(Vector3f.ZP.rotationDegrees(-90));
+			angle *= -1;
 			break;
 		default:
 			break;
 		}
-//		float tick = NotEnoughMachines.proxy.getClientTick();
-		float tick = NotEnoughMachines.CLIENTTIMER.getTick() + partialTicks;
-		float speed = tile.getSpeed();
-		float angle = (tick * speed * 0.3f) % 360;
-		angle = angle/180f * (float)Math.PI;
 		if(tile.getBlockState().get(MechanicalBlock.SHIFTED)) angle += 22.5f/180.0f * (float)Math.PI;
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);

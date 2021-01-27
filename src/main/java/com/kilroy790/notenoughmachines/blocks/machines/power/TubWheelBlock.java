@@ -3,9 +3,9 @@ package com.kilroy790.notenoughmachines.blocks.machines.power;
 import java.util.ArrayList;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.TubWheelTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.BlockRenderType;
@@ -67,7 +67,7 @@ public class TubWheelBlock extends MechanicalBlock {
 
 	@Override
 	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
-		return MachineIOList.monoAxle(pos, Direction.Axis.Y);
+		return MechanicalConnectionList.monoAxle(pos, Direction.Axis.Y);
 	}
 }
 

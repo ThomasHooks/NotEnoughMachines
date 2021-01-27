@@ -1,5 +1,6 @@
 package com.kilroy790.notenoughmachines.tiles.machines.power;
 
+import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.power.MechanicalType;
 import com.kilroy790.notenoughmachines.setup.NEMBlocks;
@@ -33,7 +34,7 @@ public class SmallWindWheelTile extends MechanicalTile {
 		if (!this.world.isRemote()) {
 			if (world.getGameTime() % 40 == 1) {
 				updateWindSpeed();
-				setCapacity((int)(BASE_POWER_CAPACITY * speedModifier));
+				setCapacity((int)(BASE_POWER_CAPACITY * Math.abs(speedModifier)));
 			}
 			if (this.isPowered()) changeSpeed(this, BASE_SPEED * (float)speedModifier);
 		}
@@ -60,10 +61,29 @@ public class SmallWindWheelTile extends MechanicalTile {
 	
 	protected void updateWindSpeed() {
 		
-		if (!validateArea()) this.speedModifier = 0.0f;
-		else if (world.isThundering()) this.speedModifier = 2.0f;
-		else if (world.isRaining()) this.speedModifier = 1.33f;
-		else this.speedModifier = 1.0f;
+		if (!validateArea()) {
+			this.speedModifier = 0.0f;
+			return;
+		}
+		switch (this.getBlockState().get(MechanicalHorizontalBlock.FACING)) {
+		
+		case EAST:
+		case NORTH:
+			if (world.isThundering()) this.speedModifier = 2.0f;
+			else if (world.isRaining()) this.speedModifier = 1.33f;
+			else this.speedModifier = 1.0f;
+			break;
+			
+		case SOUTH:
+		case WEST:
+			if (world.isThundering()) this.speedModifier = -2.0f;
+			else if (world.isRaining()) this.speedModifier = -1.33f;
+			else this.speedModifier = -1.0f;
+			break;
+			
+		default:
+			throw new IllegalStateException(this.getType().getRegistryName() + " is in an unknow BlockState for property 'FACING'");
+		}
 	}
 	
 	

@@ -1,6 +1,6 @@
 {
 	"block.notenoughtmachines.linenblock": "Block of Linen",
-	"block.notenoughtmachines.hammerhead": "Hammer Head",
+	"block.notenoughtmachines.copper_ore": "Copper Ore",
 	
 	"block.notenoughtmachines.creativepowerbox": "Creative Power Box",
 	"block.notenoughtmachines.smallwindwheel": "Small Windwheel",
@@ -25,6 +25,7 @@
 	"block.notenoughtmachines.itempusher": "Pusher",
 	
 	"item.notenoughtmachines.flaxseed" : "Flax Seeds",
+	"item.notenoughtmachines.linseed_oil" : "Linseed Oil",
 	"item.notenoughtmachines.flax" : "Flax",
 	"item.notenoughtmachines.flour" : "Flour",
 	"item.notenoughtmachines.flaxstring" : "Flax String",
@@ -34,6 +35,7 @@
 	"item.notenoughtmachines.gear" : "Gear",
 	"item.notenoughtmachines.windblade" : "Wind Wheel Blade",
 	"item.notenoughtmachines.windsail_item" : "Wind Wheel Sail",
+	"item.notenoughtmachines.hammer_and_anvil" : "Hammer and Anvil",
 	"item.notenoughtmachines.redstone_collector" : "Redstone Collector",
 	"item.notenoughtmachines.redstone_emitter" : "Redstone Emitter",
 	

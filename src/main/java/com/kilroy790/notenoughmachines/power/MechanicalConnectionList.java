@@ -1,10 +1,8 @@
-package com.kilroy790.notenoughmachines.utilities;
+package com.kilroy790.notenoughmachines.power;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
-import com.kilroy790.notenoughmachines.power.MechanicalContext;
 
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -12,14 +10,14 @@ import net.minecraft.util.math.BlockPos;
 
 
 
-public class MachineIOList {
+public class MechanicalConnectionList {
 
 	/**
-	 * Creates a new 2-way mechanical axle I/O lookup map. Use this when the machine's axis is either unknown or can change.
+	 * Creates a new 2-way mechanical axle connection lookup map. Use this when the machine's axis is either unknown or can change.
 	 * 
 	 * @param pos The position of the machine
 	 * 
-	 * @return New 2-way mechanical axle I/O lookup map
+	 * @return New 2-way mechanical axle connection map
 	 */
 	public static HashMap<Direction.Axis, ArrayList<MechanicalContext>> monoAxle(BlockPos pos) {
 
@@ -47,12 +45,12 @@ public class MachineIOList {
 	
 	
 	/**
-	 * Creates a new 2-way mechanical axle I/O array. The axis must be know ahead of time and must never change.
+	 * Creates a new 2-way mechanical axle connection array. The axis must be know ahead of time and must never change.
 	 * 
 	 * @param pos The position of the machine
 	 * @param axis The axis that the machine is aligned with
 	 * 
-	 * @return New 2-way mechanical axle I/O array
+	 * @return New 2-way mechanical axle connection array
 	 */
 	public static ArrayList<MechanicalContext> monoAxle(BlockPos pos, Direction.Axis axis) {
 
@@ -90,11 +88,11 @@ public class MachineIOList {
 
 
 	/**
-	 * Creates a new 4-way mechanical axle I/O lookup map. Use this when the machine's axis is either unknown or can change.
+	 * Creates a new 4-way mechanical axle connection lookup map. Use this when the machine's axis is either unknown or can change.
 	 * 
 	 * @param pos The position of the machine
 	 * 
-	 * @return New 4-way mechanical axle I/O lookup map
+	 * @return New 4-way mechanical axle connection map
 	 */
 	public static HashMap<Direction.Axis, ArrayList<MechanicalContext>> biAxle(BlockPos pos) {
 
@@ -128,12 +126,12 @@ public class MachineIOList {
 
 
 	/**
-	 * Creates a new 4-way mechanical axle I/O array. The axis must be know ahead of time and must never change.
+	 * Creates a new 4-way mechanical axle connection array. The axis must be know ahead of time and must never change.
 	 * 
 	 * @param pos The position of the machine
 	 * @param axis The axis that the machine is aligned with
 	 * 
-	 * @return New 4-way mechanical axle I/O lookup map
+	 * @return New 4-way mechanical axle connection map
 	 */
 	public static ArrayList<MechanicalContext> biAxle(BlockPos pos, Direction.Axis axis) {		
 
@@ -177,11 +175,11 @@ public class MachineIOList {
 
 
 	/**
-	 * Creates a new 6-way mechanical axle I/O array.
+	 * Creates a new 6-way mechanical axle connection array.
 	 * 
 	 * @param pos The position of the machine
 	 * 
-	 * @return New 6-way mechanical axle I/O array
+	 * @return New 6-way mechanical axle connection array
 	 */
 	public static ArrayList<MechanicalContext> triAxle(BlockPos pos) {
 
@@ -200,10 +198,11 @@ public class MachineIOList {
 	
 	
 	/**
+	 * Creates a new mechanical small cogwheel connection lookup map. Use this when the machine's axis is either unknown or can change.
 	 * 
-	 * @param pos
+	 * @param pos The position of the machine
 	 * 
-	 * @return
+	 * @return New mechanical small cogwheel connection map
 	 */
 	public static HashMap<Direction.Axis, ArrayList<MechanicalContext>> smallCogwheel(BlockPos pos) {
 		
@@ -243,11 +242,12 @@ public class MachineIOList {
 	
 	
 	/**
+	 * Creates a new mechanical small cogwheel connection lookup map. The axis must be know ahead of time and must never change.
 	 * 
-	 * @param pos
-	 * @param axis
+	 * @param pos The position of the machine
+	 * @param axis The axis that the machine is aligned with
 	 * 
-	 * @return
+	 * @return New mechanical small cogwheel connection array
 	 */
 	public static ArrayList<MechanicalContext> smallCogwheel(BlockPos pos, Direction.Axis axis) {
 		

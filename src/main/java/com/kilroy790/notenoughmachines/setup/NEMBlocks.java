@@ -1,7 +1,6 @@
 package com.kilroy790.notenoughmachines.setup;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
-import com.kilroy790.notenoughmachines.blocks.building.HammerHeadBlock;
 import com.kilroy790.notenoughmachines.blocks.building.LinenBlock;
 import com.kilroy790.notenoughmachines.blocks.crops.FlaxPlantBlock;
 import com.kilroy790.notenoughmachines.blocks.logicgates.ANDGateBlock;
@@ -41,15 +40,19 @@ public class NEMBlocks {
 					.sound(SoundType.CLOTH)
 					.hardnessAndResistance(0.8f, 2.0f)
 					.harvestLevel(0)));
-
-	public static final RegistryObject<HammerHeadBlock> HAMMERHEAD = BLOCKS.register("hammerhead", 
-			()-> new HammerHeadBlock(Block.Properties
-					.create(Material.ANVIL)
-					.hardnessAndResistance(5.0f, 1200.0f)
+	
+	
+	
+	public static final RegistryObject<Block> COPPERORE = BLOCKS.register("copper_ore", 
+			()-> new Block(Block.Properties
+					.create(Material.ROCK)
+					.sound(SoundType.STONE)
+					.hardnessAndResistance(2.4f, 2.4f)
 					.harvestTool(ToolType.PICKAXE)
-					.harvestLevel(2)
-					.sound(SoundType.ANVIL)));
+					.harvestLevel(1)));
 
+	
+	
 	//Machine Blocks
 	public static final RegistryObject<CreativePowerBoxBlock> CREATIVEPOWERBOX = BLOCKS.register("creativepowerbox", 
 			()-> new CreativePowerBoxBlock(Block.Properties
@@ -59,6 +62,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
+	
+	
 	public static final RegistryObject<SmallWindWheelBlock> SMALLWINDWHEEL = BLOCKS.register("smallwindwheel", 
 			()-> new SmallWindWheelBlock(Block.Properties
 					.create(Material.WOOD)
@@ -67,6 +72,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
+	
+	
 	public static final RegistryObject<TubWheelBlock> TUBWHEEL = BLOCKS.register("tubwheel", 
 			()-> new TubWheelBlock(Block.Properties
 					.create(Material.WOOD)
@@ -75,6 +82,8 @@ public class NEMBlocks {
 					.harvestLevel(0)
 					.sound(SoundType.WOOD)));
 
+	
+	
 	public static final RegistryObject<GearboxBlock> GEARBOX = BLOCKS.register("gearbox", 
 			()-> new GearboxBlock(Block.Properties
 					.create(Material.WOOD)
@@ -83,6 +92,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
+	
+	
 	public static final RegistryObject<AxleBlock> AXLE = BLOCKS.register("axle", 
 			()-> new AxleBlock(Block.Properties
 					.create(Material.WOOD)
@@ -90,6 +101,8 @@ public class NEMBlocks {
 					.hardnessAndResistance(1.8f, 2.0f)
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
+	
+	
 	
 	public static final RegistryObject<SmallCogBlock> SMALLCOG = BLOCKS.register("smallcog", 
 			()-> new SmallCogBlock(Block.Properties
@@ -99,6 +112,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
+	
+	
 	public static final RegistryObject<MillstoneBlock> MILLSTONE = BLOCKS.register("millstone", 
 			()-> new MillstoneBlock(Block.Properties
 					.create(Material.ROCK)
@@ -106,6 +121,8 @@ public class NEMBlocks {
 					.hardnessAndResistance(2.8f, 3.0f)
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(0)));
+	
+	
 	
 	public static final RegistryObject<TripHammerBlock> TRIPHAMMER = BLOCKS.register("triphammer", 
 			()-> new TripHammerBlock(Block.Properties
@@ -115,6 +132,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(0)));
 
+	
+	
 	//Logic Gate Blocks
 	public static final RegistryObject<ANDGateBlock> ANDGATE = BLOCKS.register("andgate", 
 			()-> new ANDGateBlock(Block.Properties
@@ -122,12 +141,16 @@ public class NEMBlocks {
 					.hardnessAndResistance(0.0f)
 					.sound(SoundType.WOOD)));
 
+	
+	
 	public static final RegistryObject<ORGateBlock> ORGATE = BLOCKS.register("orgate", 
 			()-> new ORGateBlock(Block.Properties
 					.create(Material.MISCELLANEOUS)
 					.hardnessAndResistance(0.0f)
 					.sound(SoundType.WOOD)));
 
+	
+	
 	//Transport Blocks
 	public static final RegistryObject<ChuteBlock> CHUTE = BLOCKS.register("chute", 
 			()-> new ChuteBlock(Block.Properties
@@ -137,6 +160,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
+	
+	
 	public static final RegistryObject<FilterBlock> FILTER = BLOCKS.register("filter", 
 			()-> new FilterBlock(Block.Properties
 					.create(Material.WOOD)
@@ -145,6 +170,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 
+	
+	
 	public static final RegistryObject<ItemPusherBlock> ITEMPUSHER = BLOCKS.register("itempusher", 
 			()-> new ItemPusherBlock(Block.Properties
 					.create(Material.IRON)
@@ -153,6 +180,8 @@ public class NEMBlocks {
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(0)));
 
+	
+	
 	//Crops Blocks
 	public static final RegistryObject<FlaxPlantBlock> FLAXPLANT = BLOCKS.register("flaxplant", 
 			()-> new FlaxPlantBlock(Block.Properties

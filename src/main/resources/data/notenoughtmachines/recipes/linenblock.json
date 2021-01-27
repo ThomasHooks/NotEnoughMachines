@@ -1,9 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "linen",
   "pattern": [
     "###",
     "###",
-	"###"
+    "###"
   ],
   "key": {
     "#": {
@@ -11,7 +12,6 @@
     }
   },
   "result": {
-    "item": "notenoughtmachines:linenblock",
-    "count": 1
+    "item": "notenoughtmachines:linenblock"
   }
 }

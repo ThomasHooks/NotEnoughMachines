@@ -6,27 +6,12 @@
     ]
   },
   "criteria": {
-    "logs": {
+    "flax": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "minecraft:oak_log"
-          },
-          {
-            "item": "minecraft:birch_log"
-          },
-          {
-            "item": "minecraft:acacia_log"
-          },
-          {
-            "item": "minecraft:dark_oak_log"
-          },
-          {
-            "item": "minecraft:jungle_log"
-          },
-          {
-            "item": "minecraft:spruce_log"
+            "item": "notenoughtmachines:flaxseed"
           }
         ]
       }
@@ -40,7 +25,7 @@
   },
   "requirements": [
     [
-      "logs",
+      "flax",
       "has_the_recipe"
     ]
   ]

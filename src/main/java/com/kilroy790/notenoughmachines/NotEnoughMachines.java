@@ -28,6 +28,12 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -35,7 +41,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 
 
 
@@ -105,6 +113,17 @@ public class NotEnoughMachines {
 		LOGGER.info("All NEM Containers registered");
 		
 		LOGGER.info("All NEM Client side entries registered");
+	}
+	
+	
+	
+	@SubscribeEvent
+	public static void worldGenEvent(FMLLoadCompleteEvent event) {
+		for (Biome biome : ForgeRegistries.BIOMES) {
+			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(
+					OreFeatureConfig.FillerBlockType.NATURAL_STONE, NEMBlocks.COPPERORE.get().getDefaultState(), 12))
+					.withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(40, 32, 0, 196))));
+		}
 	}
 	
 	

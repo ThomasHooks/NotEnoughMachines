@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "notenoughtmachines:item/hammer_and_anvil"
+    }
+}

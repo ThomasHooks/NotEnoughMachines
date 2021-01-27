@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -139,7 +139,7 @@ public class MillstoneBlock extends MechanicalBlock {
 
 	@Override
 	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
-		return MachineIOList.monoAxle(pos, Direction.Axis.Y);
+		return MechanicalConnectionList.monoAxle(pos, Direction.Axis.Y);
 	}
 }
 

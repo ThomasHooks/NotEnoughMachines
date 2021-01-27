@@ -3,9 +3,9 @@ package com.kilroy790.notenoughmachines.blocks.machines.power;
 import java.util.ArrayList;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.AxleTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 
 import net.minecraft.block.BlockState;
@@ -66,7 +66,7 @@ public class AxleBlock extends MechanicalShaftBlock {
 
 	@Override
 	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
-		return MachineIOList.monoAxle(pos, state.get(AXIS));
+		return MechanicalConnectionList.monoAxle(pos, state.get(AXIS));
 	}
 }
 

@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "gear",
   "pattern": [
     " # ",
     "#x#",
-	" # "
+    " # "
   ],
   "key": {
-    "x": {
-      "item": "minecraft:iron_nugget"
-    },
     "#": {
       "item": "minecraft:stick"
+    },
+    "x": {
+      "item": "minecraft:iron_nugget"
     }
   },
   "result": {
-    "item": "notenoughtmachines:gear",
-    "count": 1
+    "item": "notenoughtmachines:gear"
   }
 }

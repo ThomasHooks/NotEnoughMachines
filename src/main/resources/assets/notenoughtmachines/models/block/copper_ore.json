@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "notenoughtmachines:block/copper_ore"
+    }
+}

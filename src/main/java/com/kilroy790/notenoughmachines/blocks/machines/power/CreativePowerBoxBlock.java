@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
+import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.CreativePowerBoxTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -63,7 +63,7 @@ public class CreativePowerBoxBlock extends MechanicalBlock {
 
 	@Override
 	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
-		return MachineIOList.triAxle(pos);
+		return MechanicalConnectionList.triAxle(pos);
 	}
 }
 

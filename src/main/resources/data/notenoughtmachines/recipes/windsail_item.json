@@ -1,9 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "windblade",
   "pattern": [
     "###",
     "#x#",
-	"###"
+    "###"
   ],
   "key": {
     "#": {
@@ -14,7 +15,6 @@
     }
   },
   "result": {
-    "item": "notenoughtmachines:windsail_item",
-    "count": 1
+    "item": "notenoughtmachines:windsail_item"
   }
 }

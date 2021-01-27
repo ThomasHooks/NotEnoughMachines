@@ -1,5 +1,7 @@
 package com.kilroy790.notenoughmachines.multiblocks;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -42,10 +44,8 @@ public interface IMultiblockPart {
 	 * @param world The master's world
 	 * @param pos The master's position
 	 * @param state The master's current block state
-	 * 
-	 * @return true if the Multiblock structure was formed
 	 */
-	public boolean formMultiblock(World world, BlockPos pos, BlockState state);
+	public void formMultiblock(World world, BlockPos pos, BlockState state);
 	
 	
 	
@@ -55,20 +55,19 @@ public interface IMultiblockPart {
 	 * @param world This part's world
 	 * @param pos This part's position
 	 * @param state This part's current block state
-	 * 
-	 * @return true if the Multiblock structure was removed
 	 */
-	public boolean unformMultiblock(World world, BlockPos pos, BlockState state);
+	public void unformMultiblock(World world, BlockPos pos, BlockState state);
 	
 	
 
 	/**
-	 * Gets the tile entity of this part's master.
+	 * Gets this multiblock part's master tile entity
 	 * 
 	 * @param world This part's world
 	 * @param pos This part's position
 	 * @param state This part's current block state
 	 */
+	@Nullable
 	public TileEntity getMasterTile(World world, BlockPos pos, BlockState state);
 	
 	

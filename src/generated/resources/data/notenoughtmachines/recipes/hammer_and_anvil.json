@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "nem:hammer_and_anvil",
+  "pattern": [
+    "l",
+    "#",
+    "\u003d"
+  ],
+  "key": {
+    "l": {
+      "item": "notenoughtmachines:axle"
+    },
+    "#": {
+      "item": "minecraft:iron_block"
+    },
+    "\u003d": {
+      "item": "minecraft:anvil"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:hammer_and_anvil"
+  }
+}

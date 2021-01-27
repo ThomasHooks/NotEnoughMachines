@@ -4,15 +4,18 @@
   "pattern": [
     "#",
     "#",
-    "#"
+    "b"
   ],
   "key": {
     "#": {
-      "tag": "notenoughtmachines:stripped_logs"
+      "tag": "forge:stripped_logs"
+    },
+    "b": {
+      "item": "notenoughtmachines:linseed_oil"
     }
   },
   "result": {
     "item": "notenoughtmachines:axle",
-    "count": 3
+    "count": 2
   }
 }

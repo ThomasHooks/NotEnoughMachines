@@ -3,17 +3,15 @@ package com.kilroy790.notenoughmachines.blocks.machines.processing;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import javax.annotation.Nullable;
-
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
+import com.kilroy790.notenoughmachines.multiblocks.IMultiblockPart;
+import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
 import com.kilroy790.notenoughmachines.state.properties.TripHammerPart;
-import com.kilroy790.notenoughmachines.tiles.NEMBaseTile;
 import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
 import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
-import com.kilroy790.notenoughmachines.utilities.MachineIOList;
 import com.kilroy790.notenoughmachines.utilities.NEMBlockShapes;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
@@ -46,7 +44,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 
 
-public class TripHammerBlock extends MechanicalHorizontalBlock {
+public class TripHammerBlock extends MechanicalHorizontalBlock implements IMultiblockPart {
 	
 	public static final EnumProperty<TripHammerPart> PART = NEMBlockStateProperties.TRIPHAMMERPART;
 	
@@ -63,7 +61,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 			return ActionResultType.SUCCESS;
 		}
 		else {
-			TileEntity entity = getMaster(world, pos, state);
+			TileEntity entity = getMasterTile(world, pos, state);
 			if (entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
 			else throw new IllegalStateException("Trip Hammer container provider is missing!");
 			return ActionResultType.SUCCESS;
@@ -72,17 +70,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	
 	
 	
-	/**
-	 * Gets this Block's master Tile
-	 * 
-	 * @param world This Block's world
-	 * @param pos This Block's position
-	 * @param state This Block's current BlockState
-	 * 
-	 * @return The Block's master Tile
-	 */
-	@Nullable
-	private TileEntity getMaster(World world, BlockPos pos, BlockState state) {
+	public  TileEntity getMasterTile(World world, BlockPos pos, BlockState state) {
 		TripHammerPart part = state.get(PART);
 		switch (part) {
 		
@@ -99,7 +87,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 			return world.getTileEntity(pos.down(3));
 			
 		default:
-			throw new IllegalStateException("Unable to get TripHammerBlock's master!");
+			throw new IllegalStateException("Unable to get TripHammerBlock's tile entity!");
 		}
 	}
 	
@@ -107,7 +95,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	
 	@Override
 	public MechanicalTile getTile(IWorld world, BlockPos pos, BlockState state) {
-		MechanicalTile tile = getMaster((World)world, pos, state) instanceof MechanicalTile ? (MechanicalTile)getMaster((World)world, pos, state) : null;
+		MechanicalTile tile = getMasterTile((World)world, pos, state) instanceof MechanicalTile ? (MechanicalTile)getMasterTile((World)world, pos, state) : null;
 		return Objects.requireNonNull(tile, "MechanicalBlock: '" + state.getBlock().getRegistryName() + "' tile entity must be an instance of MechanicalTile!");
 	}
 	
@@ -139,8 +127,8 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-		TileEntity tile = getMaster(world, pos, state);
-		if (tile instanceof NEMBaseTile) {
+		TileEntity tile = getMasterTile(world, pos, state);
+		if (tile != null) {
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
 		}
 		
@@ -193,6 +181,10 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 	
 	@Override
 	public void onBlockExploded(BlockState state, World world, BlockPos pos, Explosion explosion) {
+		TileEntity tile = getMasterTile(world, pos, state);
+		if (tile != null) {
+			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
+		}
 		TripHammerPart part = state.get(PART);
 		switch (part) {
 		
@@ -302,20 +294,67 @@ public class TripHammerBlock extends MechanicalHorizontalBlock {
 		switch (state.get(PART)) {
 			
 		case CAM:
-			return MachineIOList.monoAxle(pos, state.get(FACING).rotateY().getAxis());
+			return MechanicalConnectionList.monoAxle(pos, state.get(FACING).rotateY().getAxis());
 		
 		case BASE:
-			return MachineIOList.monoAxle(pos.up(2), state.get(FACING).rotateY().getAxis());
+			return MechanicalConnectionList.monoAxle(pos.up(2), state.get(FACING).rotateY().getAxis());
 			
 		case LOWERFRAME:
-			return MachineIOList.monoAxle(pos.up(), state.get(FACING).rotateY().getAxis());
+			return MechanicalConnectionList.monoAxle(pos.up(), state.get(FACING).rotateY().getAxis());
 			
 		case UPPERFRAME:
-			return MachineIOList.monoAxle(pos.down(), state.get(FACING).rotateY().getAxis());
+			return MechanicalConnectionList.monoAxle(pos.down(), state.get(FACING).rotateY().getAxis());
 			
 		default:
 			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknow state!");
 		}
+	}
+	
+	
+	
+	@Override
+	public boolean isMultiblockFormed(World world, BlockPos pos, BlockState state) {
+		return true;
+	}
+	
+	
+	
+	@Override
+	public boolean isMultiblockValid(World world, BlockPos pos, BlockState state) {
+		return true;
+	}
+	
+	
+	
+	@Override
+	public void formMultiblock(World world, BlockPos pos, BlockState state) {
+	}
+	
+	
+	
+	@Override
+	public void unformMultiblock(World world, BlockPos pos, BlockState state) {
+	}
+	
+	
+	
+	@Override
+	public int getMultiblockWidth() {
+		return 1;
+	}
+	
+	
+	
+	@Override
+	public int getMultiblockHight() {
+		return 4;
+	}
+	
+	
+	
+	@Override
+	public int getMultiblockDepth() {
+		return 1;
 	}
 }
 
