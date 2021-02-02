@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "notenoughtmachines:furnace/iron_from_crushed_iron_ore_and_blasting"
+    ]
+  },
+  "criteria": {
+    "iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "notenoughtmachines:furnace/iron_from_crushed_iron_ore_and_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

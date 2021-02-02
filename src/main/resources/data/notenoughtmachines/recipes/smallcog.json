@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "gear",
+  "group": "nem:small_cog",
   "ingredients": [
     {
       "item": "notenoughtmachines:axle"

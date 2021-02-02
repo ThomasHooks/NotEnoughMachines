@@ -8,6 +8,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock
 import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.utilities.NEMInputHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -33,17 +34,20 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
-
-	protected static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]{
+public class SmallWindWheelBlock extends MechanicalHorizontalBlock 
+{
+	protected static final VoxelShape[] SHAPE_BY_DIR = new VoxelShape[]
+		{
 			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
 			Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D), 
-			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)};
+			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D)
+		};
 	protected static final int AXELAXISX = 2;
 	protected static final int AXELAXISY = 0;
 	protected static final int AXELAXISZ = 1;
 
-	public SmallWindWheelBlock(Properties properties) {
+	public SmallWindWheelBlock(Properties properties) 
+	{
 		super(properties);
 	}
 
@@ -78,50 +82,66 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock {
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-
-		Style style = new Style();
-		style.setColor(TextFormatting.AQUA);
-		style.setItalic(true);
-		StringTextComponent powerText = new StringTextComponent("Outputs 2.88kW");
-		powerText.setStyle(style);
-		tooltip.add(powerText);
+	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) 
+	{
+		if (NEMInputHelper.isPressingShift()) 
+		{
+			tooltip.add(new StringTextComponent(""));
+			tooltip.add(new StringTextComponent("Creates mechanical power from the wind").applyTextStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent(""));
+			tooltip.add(new StringTextComponent("Must be placed " + "\u00A72" + "Above Ground" + "\u00A77").applyTextStyle(TextFormatting.GRAY));
+		}
+		else 
+		{
+			tooltip.add(new StringTextComponent(NEMInputHelper.MORE_INFO_PRESS_SHIFT));
+		}
 	}
 
 
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos position, ISelectionContext context) 
+	{
 		Direction facing = state.get(FACING);
-		if (facing == Direction.EAST || facing == Direction.WEST) return SHAPE_BY_DIR[AXELAXISX];
-		else return SHAPE_BY_DIR[AXELAXISZ];
+		if (facing == Direction.EAST || facing == Direction.WEST) 
+		{
+			return SHAPE_BY_DIR[AXELAXISX];
+		}
+		else 
+		{
+			return SHAPE_BY_DIR[AXELAXISZ];
+		}
 	}
 
 
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		return new SmallWindWheelTile();
 	}
 
 
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state) {
+	public BlockRenderType getRenderType(BlockState state) 
+	{
 		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
 
 
 	@Override
-	public ItemStack itemWhenDestroyed() {
+	public ItemStack itemWhenDestroyed() 
+	{
 		return null;
 	}
 
 
 
 	@Override
-	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) 
+	{
 		return MechanicalConnectionList.monoAxle(pos, state.get(FACING).getAxis());
 	}
 }

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "redstone_collector",
+  "group": "nem:redstone_collector",
   "pattern": [
     "x",
     "\u003d"

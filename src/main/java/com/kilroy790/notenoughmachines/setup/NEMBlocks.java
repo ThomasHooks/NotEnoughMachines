@@ -11,7 +11,8 @@ import com.kilroy790.notenoughmachines.blocks.machines.logistic.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.AxleBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.CreativePowerBoxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.GearboxBlock;
-import com.kilroy790.notenoughmachines.blocks.machines.power.SmallCogBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.LargeCogwheelBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.power.SmallCogwheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.power.TubWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.processing.MillstoneBlock;
@@ -29,8 +30,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 
 
-public class NEMBlocks {
-
+public class NEMBlocks 
+{
 	private static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, NotEnoughMachines.MODID);
 
 	//Building Blocks
@@ -50,6 +51,26 @@ public class NEMBlocks {
 					.hardnessAndResistance(2.4f, 2.4f)
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(1)));
+	
+	
+	
+	public static final RegistryObject<Block> FLUXSTONE = BLOCKS.register("fluxstone", 
+			()-> new Block(Block.Properties
+					.create(Material.ROCK)
+					.sound(SoundType.STONE)
+					.hardnessAndResistance(1.5f, 3.0f)
+					.harvestTool(ToolType.PICKAXE)
+					.harvestLevel(0)));
+	
+	
+	
+	public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone", 
+			()-> new Block(Block.Properties
+					.create(Material.ROCK)
+					.sound(SoundType.STONE)
+					.hardnessAndResistance(1.5f, 3.0f)
+					.harvestTool(ToolType.PICKAXE)
+					.harvestLevel(0)));
 
 	
 	
@@ -104,8 +125,18 @@ public class NEMBlocks {
 	
 	
 	
-	public static final RegistryObject<SmallCogBlock> SMALLCOG = BLOCKS.register("smallcog", 
-			()-> new SmallCogBlock(Block.Properties
+	public static final RegistryObject<SmallCogwheelBlock> SMALLCOG = BLOCKS.register("smallcog", 
+			()-> new SmallCogwheelBlock(Block.Properties
+					.create(Material.WOOD)
+					.sound(SoundType.WOOD)
+					.hardnessAndResistance(1.8f, 2.0f)
+					.harvestTool(ToolType.AXE)
+					.harvestLevel(0)));
+	
+	
+	
+	public static final RegistryObject<LargeCogwheelBlock> LARGECOG = BLOCKS.register("largecog", 
+			()-> new LargeCogwheelBlock(Block.Properties
 					.create(Material.WOOD)
 					.sound(SoundType.WOOD)
 					.hardnessAndResistance(1.8f, 2.0f)
@@ -185,14 +216,16 @@ public class NEMBlocks {
 	//Crops Blocks
 	public static final RegistryObject<FlaxPlantBlock> FLAXPLANT = BLOCKS.register("flaxplant", 
 			()-> new FlaxPlantBlock(Block.Properties
-					.create(Material.PLANTS).doesNotBlockMovement()
+					.create(Material.PLANTS)
+					.doesNotBlockMovement()
 					.sound(SoundType.CROP)
 					.tickRandomly()
 					.harvestLevel(0)));
 
 
 
-	public static void registerAll(IEventBus modEventBus) {
+	public static void registerAll(IEventBus modEventBus) 
+	{
 		BLOCKS.register(modEventBus);
 	}
 }

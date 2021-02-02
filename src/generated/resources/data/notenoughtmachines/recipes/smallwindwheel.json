@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "smallwindwheel",
+  "group": "nem:smallwindwheel",
   "pattern": [
     " # ",
     "#x#",

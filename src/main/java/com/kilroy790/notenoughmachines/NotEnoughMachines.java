@@ -8,6 +8,7 @@ import com.kilroy790.notenoughmachines.client.gui.screen.MillstoneScreen;
 import com.kilroy790.notenoughmachines.client.gui.screen.TripHammerScreen;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.AxleRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.GearboxRenderer;
+import com.kilroy790.notenoughmachines.client.renderers.tiles.LargeCogwheelRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.MillstoneRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallCogRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallWindWheelRenderer;
@@ -23,11 +24,13 @@ import com.kilroy790.notenoughmachines.setup.NEMItems;
 import com.kilroy790.notenoughmachines.setup.NEMMachineRecipes;
 import com.kilroy790.notenoughmachines.setup.NEMRecipes;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
+import com.kilroy790.notenoughmachines.setup.lootmodifiers.GrassLootModifier;
 import com.kilroy790.notenoughmachines.utilities.ClientTimer;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
@@ -35,6 +38,7 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -50,8 +54,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod("notenoughtmachines")
 @Mod.EventBusSubscriber(modid = NotEnoughMachines.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class NotEnoughMachines {
-	
+public class NotEnoughMachines 
+{	
 	public static NotEnoughMachines INSTANCE;
 	public static final String MODID = "notenoughtmachines";
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
@@ -61,10 +65,8 @@ public class NotEnoughMachines {
 	
 	public static ModSetup setup = new ModSetup();
 	
-	
-	
-	public NotEnoughMachines() {
-		
+	public NotEnoughMachines() 
+	{
 		INSTANCE = this;
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
@@ -79,7 +81,8 @@ public class NotEnoughMachines {
 	
 	
 	
-	private void setup(final FMLCommonSetupEvent event) {
+	private void setup(final FMLCommonSetupEvent event) 
+	{
 		LOGGER.info("Starting NEM preinit");
 		setup.init();
 		LOGGER.info("NEM preinit done");
@@ -87,7 +90,8 @@ public class NotEnoughMachines {
 
 	
 	
-	private void clientRegistries(final FMLClientSetupEvent event) {
+	private void clientRegistries(final FMLClientSetupEvent event) 
+	{
 		LOGGER.info("registering NEM Client side entries");
 		
 		LOGGER.info("Setting NEM Block render types");
@@ -99,6 +103,7 @@ public class NotEnoughMachines {
 		LOGGER.info("Registering all NEM Tile Entity Renderers");
 		AxleRenderer.register();
 		SmallCogRenderer.register();
+		LargeCogwheelRenderer.register();
 		GearboxRenderer.register();
 		MillstoneRenderer.register();
 		TubWheelRenderer.register();
@@ -118,22 +123,37 @@ public class NotEnoughMachines {
 	
 	
 	@SubscribeEvent
-	public static void worldGenEvent(FMLLoadCompleteEvent event) {
-		for (Biome biome : ForgeRegistries.BIOMES) {
+	public static void worldGenEvent(FMLLoadCompleteEvent event) 
+	{
+		for (Biome biome : ForgeRegistries.BIOMES) 
+		{
 			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(
 					OreFeatureConfig.FillerBlockType.NATURAL_STONE, NEMBlocks.COPPERORE.get().getDefaultState(), 12))
-					.withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(40, 32, 0, 196))));
+					.withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(20, 32, 0, 196))));
+			
+			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(
+					OreFeatureConfig.FillerBlockType.NATURAL_STONE, NEMBlocks.FLUXSTONE.get().getDefaultState(), 33))
+					.withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 196))));
 		}
 	}
 	
 	
 	
+	@SubscribeEvent
+	public static void registerGlobalLootModifiers(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event)
+	{
+		event.getRegistry().register(new GrassLootModifier.Serializer().setRegistryName(new ResourceLocation(MODID, "grass")));
+	}
+	
+	
+	
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-	public static class registryEvents {		
-		
+	public static class registryEvents 
+	{			
 		//Register recipes
 		@SubscribeEvent
-		public static void registerRecipes(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
+		public static void registerRecipes(final RegistryEvent.Register<IRecipeSerializer<?>> event) 
+		{
 			LOGGER.info("Registering all recipes");
 			
 			LOGGER.info("Registering MillingRecipe");

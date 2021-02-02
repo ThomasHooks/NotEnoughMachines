@@ -1,6 +1,8 @@
 {
 	"block.notenoughtmachines.linenblock": "Block of Linen",
 	"block.notenoughtmachines.copper_ore": "Copper Ore",
+	"block.notenoughtmachines.fluxstone": "Fluxstone",
+	"block.notenoughtmachines.polished_fluxstone": "Polished Fluxstone",
 	
 	"block.notenoughtmachines.creativepowerbox": "Creative Power Box",
 	"block.notenoughtmachines.smallwindwheel": "Small Windwheel",
@@ -9,6 +11,7 @@
 	"block.notenoughtmachines.gearbox": "Gearbox",
 	"block.notenoughtmachines.axle": "Axle",
 	"block.notenoughtmachines.smallcog": "Small Cogwheel",
+	"block.notenoughtmachines.largecog": "Large Cogwheel",
 	
 	"block.notenoughtmachines.millstone": "Millstone",
 	"machine.notenoughtmachines.millstone": "Millstone",
@@ -32,6 +35,8 @@
 	"item.notenoughtmachines.linen" : "Linen",
 	"item.notenoughtmachines.crushedironore" : "Crushed Iron Ore",
 	"item.notenoughtmachines.crushedgoldore" : "Crushed Gold Ore",
+	"item.notenoughtmachines.flux" : "Flux",
+	"item.notenoughtmachines.copper_ingot" : "Copper Ingot",
 	"item.notenoughtmachines.gear" : "Gear",
 	"item.notenoughtmachines.windblade" : "Wind Wheel Blade",
 	"item.notenoughtmachines.windsail_item" : "Wind Wheel Sail",

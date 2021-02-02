@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "redstone_emitter",
+  "group": "nem:redstone_emitter",
   "pattern": [
     "t",
     "\u003d"

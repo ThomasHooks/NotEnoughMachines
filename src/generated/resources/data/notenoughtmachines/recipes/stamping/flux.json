@@ -1,0 +1,15 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:flux",
+  "ingredient": {
+    "item": "notenoughtmachines:fluxstone"
+  },
+  "result": {
+    "item": "notenoughtmachines:flux",
+    "count": 4
+  },
+  "resultsecond": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 300
+}

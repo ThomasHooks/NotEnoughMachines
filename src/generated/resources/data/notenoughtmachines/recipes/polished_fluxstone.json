@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "nem:polished_fluxstone",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "notenoughtmachines:fluxstone"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:polished_fluxstone",
+    "count": 4
+  }
+}

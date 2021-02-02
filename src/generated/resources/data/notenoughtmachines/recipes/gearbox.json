@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "gearbox",
+  "group": "nem:gearbox",
   "pattern": [
     "#x#",
-    "xxx",
+    "xbx",
     "#x#"
   ],
   "key": {
@@ -12,6 +12,9 @@
     },
     "x": {
       "item": "notenoughtmachines:gear"
+    },
+    "b": {
+      "item": "notenoughtmachines:linseed_oil"
     }
   },
   "result": {

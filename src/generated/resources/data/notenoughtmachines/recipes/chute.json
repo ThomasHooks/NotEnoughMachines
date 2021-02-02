@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "chute",
+  "group": "nem:chute",
   "pattern": [
     "xc\u003d"
   ],

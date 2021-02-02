@@ -8,6 +8,7 @@ import com.kilroy790.notenoughmachines.setup.NEMItems;
 
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
@@ -20,24 +21,25 @@ import net.minecraft.tags.ItemTags;
 
 
 
-public class RecipesDataGen extends RecipeProvider {
-
-	public RecipesDataGen(DataGenerator generatorIn) {
+public class RecipesDataGen extends RecipeProvider 
+{
+	public RecipesDataGen(DataGenerator generatorIn) 
+	{
 		super(generatorIn);
 	}
 	
 	
 	
 	@Override
-	protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-		
+	protected void registerRecipes(Consumer<IFinishedRecipe> consumer) 
+	{
 		//Crafting Items
 		ShapedRecipeBuilder.shapedRecipe(NEMItems.FLAXSTRING.get(), 3)
 		.patternLine("#")
 		.patternLine("#")
 		.patternLine("#")
 		.key('#', NEMItems.FLAX.get())
-		.setGroup("flaxstring")
+		.setGroup("nem:flaxstring")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
@@ -48,7 +50,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("###")
 		.patternLine("###")
 		.key('#', NEMItems.FLAXSTRING.get())
-		.setGroup("linen")
+		.setGroup("nem:linen")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 
@@ -59,8 +61,18 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("###")
 		.patternLine("###")
 		.key('#', NEMItems.LINEN.get())
-		.setGroup("linen")
+		.setGroup("nem:linenblock")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
+		.build(consumer);
+
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.POLISHED_FLUXSTONE.get(), 4)
+		.patternLine("##")
+		.patternLine("##")
+		.key('#', NEMItems.FLUXSTONE.get())
+		.setGroup("nem:polished_fluxstone")
+		.addCriterion("fluxstone", InventoryChangeTrigger.Instance.forItems(NEMItems.FLUXSTONE.get()))
 		.build(consumer);
 		
 		
@@ -68,7 +80,7 @@ public class RecipesDataGen extends RecipeProvider {
 		ShapelessRecipeBuilder.shapelessRecipe(NEMItems.LINSEEDOIL.get(), 1)
 		.addIngredient(NEMItems.FLAXSEED.get(), 6)
 		.addIngredient(Items.GLASS_BOTTLE, 1)
-		.setGroup("linseed_oil")
+		.setGroup("nem:linseed_oil")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 
@@ -76,7 +88,7 @@ public class RecipesDataGen extends RecipeProvider {
 		
 		ShapelessRecipeBuilder.shapelessRecipe(NEMItems.LINEN.get(), 9)
 		.addIngredient(NEMBlocks.LINENBLOCK.get()) 
-		.setGroup("linen") 
+		.setGroup("nem:linenblock") 
 		.addCriterion("flax",InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer, NotEnoughMachines.MODID + ":linen_from_linen_block");
 
@@ -84,12 +96,12 @@ public class RecipesDataGen extends RecipeProvider {
 		
 		ShapedRecipeBuilder.shapedRecipe(NEMItems.GEAR.get(), 1)
 		.patternLine(" # ")
-		.patternLine("#x#")
+		.patternLine("#b#")
 		.patternLine(" # ")
 		.key('#', Items.STICK)
-		.key('x', Items.IRON_NUGGET)
-		.setGroup("gear")
-		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.key('b', NEMItems.LINSEEDOIL.get())
+		.setGroup("nem:gear")
+		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
 		
@@ -100,7 +112,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("  #")
 		.key('#', NEMBlocks.AXLE.get())
 		.key('x', Items.STICK)
-		.setGroup("windblade")
+		.setGroup("nem:windblade")
 		.addCriterion("logs", InventoryChangeTrigger.Instance.forItems(Items.OAK_LOG, Items.BIRCH_LOG, Items.ACACIA_LOG, Items.DARK_OAK_LOG, Items.JUNGLE_LOG, Items.SPRUCE_LOG))
 		.build(consumer);
 		
@@ -112,7 +124,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("###")
 		.key('#', NEMItems.LINEN.get())
 		.key('x', NEMItems.WINDBLADE.get())
-		.setGroup("windblade")
+		.setGroup("nem:windsail")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
@@ -136,7 +148,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("=")
 		.key('=', Items.SMOOTH_STONE_SLAB)
 		.key('x', Items.REDSTONE)
-		.setGroup("redstone_collector")
+		.setGroup("nem:redstone_collector")
 		.addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
 		.build(consumer);
 		
@@ -147,9 +159,31 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("=")
 		.key('=', Items.SMOOTH_STONE_SLAB)
 		.key('t', Items.REDSTONE_TORCH)
-		.setGroup("redstone_emitter")
+		.setGroup("nem:redstone_emitter")
 		.addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
 		.build(consumer);
+		
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(Items.GUNPOWDER, 2)
+		.patternLine("fc")
+		.patternLine("cf")
+		.key('f', NEMItems.FLUX.get())
+		.key('c', Items.COAL)
+		.setGroup("nem:gunpowder")
+		.addCriterion("fluxstone", InventoryChangeTrigger.Instance.forItems(NEMItems.FLUXSTONE.get()))
+		.build(consumer, NotEnoughMachines.MODID + ":gunpowder_from_flux_and_coal");
+		
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(Items.GUNPOWDER, 2)
+		.patternLine("fc")
+		.patternLine("cf")
+		.key('f', NEMItems.FLUX.get())
+		.key('c', Items.CHARCOAL)
+		.setGroup("nem:gunpowder")
+		.addCriterion("fluxstone", InventoryChangeTrigger.Instance.forItems(NEMItems.FLUXSTONE.get()))
+		.build(consumer, NotEnoughMachines.MODID + ":gunpowder_from_flux_and_charcoal");
 		
 		
 		
@@ -160,7 +194,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.key('x', Items.IRON_INGOT)
 		.key('c', Items.CHEST)
 		.key('=', ItemTags.WOODEN_SLABS)
-		.setGroup("chute")
+		.setGroup("nem:chute")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
@@ -175,7 +209,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.key('=', ItemTags.WOODEN_SLABS)
 		.key('#', ItemTags.WOODEN_TRAPDOORS)
 		.key('r', Items.COMPARATOR)
-		.setGroup("filter")
+		.setGroup("nem:filter")
 		.addCriterion("iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
@@ -186,7 +220,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.key('i', Items.IRON_INGOT)
 		.key('c', Items.CHEST)
 		.key('x', Items.REDSTONE)
-		.setGroup("itempusher")
+		.setGroup("nem:itempusher")
 		.addCriterion("iron_ingot", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
@@ -198,7 +232,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("b")
 		.key('#', NEMItemTags.STRIPPED_LOGS)
 		.key('b', NEMItems.LINSEEDOIL.get())
-		.setGroup("axle")
+		.setGroup("nem:axle")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
@@ -207,20 +241,33 @@ public class RecipesDataGen extends RecipeProvider {
 		ShapelessRecipeBuilder.shapelessRecipe(NEMItems.SMALLCOG.get(), 1)
 		.addIngredient(NEMBlocks.AXLE.get())
 		.addIngredient(NEMItems.GEAR.get())
-		.setGroup("gear") 
-		.addCriterion("iron",InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.setGroup("nem:small_cog") 
+		.addCriterion("flax",InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
+		.build(consumer);
+		
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.LARGECOG.get(), 1)
+		.patternLine("###")
+		.patternLine("#x#")
+		.patternLine("###")
+		.key('#', ItemTags.WOODEN_SLABS)
+		.key('x', NEMItems.SMALLCOG.get())
+		.setGroup("nem:large_cog")
+		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
 		
 		
 		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.GEARBOX.get(), 1)
 		.patternLine("#x#")
-		.patternLine("xxx")
+		.patternLine("xbx")
 		.patternLine("#x#")
 		.key('#', ItemTags.PLANKS)
 		.key('x', NEMItems.GEAR.get())
-		.setGroup("gearbox")
-		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.key('b', NEMItems.LINSEEDOIL.get())
+		.setGroup("nem:gearbox")
+		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
 		
@@ -233,7 +280,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine(" # ")
 		.key('#', NEMItems.WINDSAIL_ITEM.get())
 		.key('x', NEMBlocks.AXLE.get())
-		.setGroup("smallwindwheel")
+		.setGroup("nem:smallwindwheel")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
 		.build(consumer);
 		
@@ -245,7 +292,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("===")
 		.key('=', ItemTags.WOODEN_SLABS)
 		.key('x', NEMBlocks.SMALLCOG.get())
-		.setGroup("tubwheel")
+		.setGroup("nem:tubwheel")
 		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
@@ -261,7 +308,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.key('x', NEMItems.GEAR.get())
 		.key('=', Items.SMOOTH_STONE_SLAB)
 		.key('v', Items.HOPPER)
-		.setGroup("millstone")
+		.setGroup("nem:millstone")
 		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
@@ -288,7 +335,7 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("ece")
 		.key('c', NEMItems.REDSTONE_COLLECTOR.get())
 		.key('e', NEMItems.REDSTONE_EMITTER.get())
-		.setGroup("andgate")
+		.setGroup("nem:andgate")
 		.addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
 		.build(consumer);
 		
@@ -299,9 +346,53 @@ public class RecipesDataGen extends RecipeProvider {
 		.patternLine("cec")
 		.key('c', NEMItems.REDSTONE_COLLECTOR.get())
 		.key('e', NEMItems.REDSTONE_EMITTER.get())
-		.setGroup("orgate")
+		.setGroup("nem:orgate")
 		.addCriterion("redstone", InventoryChangeTrigger.Instance.forItems(Items.REDSTONE))
 		.build(consumer);
+		
+		
+		
+		//***********************************************************************************************************************************************************************
+		//Furnace Recipes
+		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(NEMItems.FLOUR.get()), Items.BREAD, 0.35f, 200)
+		.addCriterion("wheat", InventoryChangeTrigger.Instance.forItems(Items.WHEAT))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/bread_from_flour");
+		
+		
+		
+		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(NEMBlocks.COPPERORE.get()), NEMItems.COPPER_INGOT.get(), 0.35f, 200)
+		.addCriterion("copper_ore", InventoryChangeTrigger.Instance.forItems(NEMBlocks.COPPERORE.get()))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/copper_ingot_from_copper_ore");
+		
+		
+		
+		CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(NEMBlocks.COPPERORE.get()), NEMItems.COPPER_INGOT.get(), 0.35f, 100)
+		.addCriterion("copper_ore", InventoryChangeTrigger.Instance.forItems(NEMBlocks.COPPERORE.get()))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/copper_ingot_from_copper_ore_and_blasting");
+		
+		
+		
+		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(NEMItems.CRUSHED_IRON_ORE.get()), Items.IRON_INGOT, 0.35f, 200)
+		.addCriterion("iron_ore", InventoryChangeTrigger.Instance.forItems(Blocks.IRON_ORE))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/iron_from_crushed_iron_ore");
+		
+		
+		
+		CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(NEMItems.CRUSHED_IRON_ORE.get()), Items.IRON_INGOT, 0.35f, 100)
+		.addCriterion("iron_ore", InventoryChangeTrigger.Instance.forItems(Blocks.IRON_ORE))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/iron_from_crushed_iron_ore_and_blasting");
+		
+		
+		
+		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(NEMItems.CRUSHED_GOLD_ORE.get()), Items.GOLD_INGOT, 0.35f, 200)
+		.addCriterion("gold_ore", InventoryChangeTrigger.Instance.forItems(Blocks.GOLD_ORE))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/gold_from_crushed_gold_ore");
+		
+		
+		
+		CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(NEMItems.CRUSHED_GOLD_ORE.get()), Items.GOLD_INGOT, 0.35f, 100)
+		.addCriterion("gold_ore", InventoryChangeTrigger.Instance.forItems(Blocks.GOLD_ORE))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/gold_from_crushed_gold_ore_and_blasting");
 		
 		
 		
@@ -451,6 +542,13 @@ public class RecipesDataGen extends RecipeProvider {
 		.setGroup("nem:crushed_gold_ore")
 		.addSecondaryResult(Items.GRAVEL)
 		.build(consumer, NotEnoughMachines.MODID + ":stamping/crushed_gold_ore");
+		
+		
+		
+		StampingRecipeBuilder.stampingRecipe(Ingredient.fromItems(NEMBlocks.FLUXSTONE.get()), NEMItems.FLUX.get(), 4, 300)
+		.setGroup("nem:flux")
+		.addSecondaryResult(Items.GRAVEL)
+		.build(consumer, NotEnoughMachines.MODID + ":stamping/flux");
 	}
 }
 

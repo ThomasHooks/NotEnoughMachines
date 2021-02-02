@@ -21,14 +21,23 @@ public class ClientSetup {
 		if(event.getMap().getTextureLocation().equals(PlayerContainer.LOCATION_BLOCKS_TEXTURE)) {
 			NotEnoughMachines.LOGGER.debug("Stitching NEM textures to Atlas");
 			event.addSprite(NEMTextures.AXLE);
+			
 			event.addSprite(NEMTextures.RUNNERSTONE);
+			
 			event.addSprite(NEMTextures.TUBWHEEL_HUB);
 			event.addSprite(NEMTextures.TUBWHEEL_PADDLE);
+			
 			event.addSprite(NEMTextures.WINDSAIL_STOCK);
 			event.addSprite(NEMTextures.WINDSAIL_SAIL);
+			
 			event.addSprite(NEMTextures.SMALLCOG_OUT);
 			event.addSprite(NEMTextures.SMALLCOG_IN);
 			event.addSprite(NEMTextures.SMALLCOG_TOOTH);
+			
+			event.addSprite(NEMTextures.LARGECOG_STRUTS);
+			event.addSprite(NEMTextures.LARGECOG_RIMS);
+			event.addSprite(NEMTextures.LARGECOG_TEETH);
+			
 			event.addSprite(NEMTextures.HAMMER_HEAD);
 			event.addSprite(NEMTextures.TRIPHAMMER_SHAFT);
 			NotEnoughMachines.LOGGER.debug("All NEM textures have been stitched to Atlas");

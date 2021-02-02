@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "andgate",
+  "group": "nem:andgate",
   "pattern": [
     " e ",
     "ece"

@@ -23,6 +23,10 @@ public class NEMTextures {
 	public static final ResourceLocation SMALLCOG_IN = new ResourceLocation(NotEnoughMachines.MODID, "tiles/smallcog/inwheel");
 	public static final ResourceLocation SMALLCOG_TOOTH = new ResourceLocation(NotEnoughMachines.MODID, "tiles/smallcog/tooth");
 	
+	public static final ResourceLocation LARGECOG_STRUTS = new ResourceLocation(NotEnoughMachines.MODID, "tiles/largecog/struts");
+	public static final ResourceLocation LARGECOG_RIMS = new ResourceLocation(NotEnoughMachines.MODID, "tiles/largecog/rims");
+	public static final ResourceLocation LARGECOG_TEETH = new ResourceLocation(NotEnoughMachines.MODID, "tiles/largecog/teeth");
+	
 	public static final ResourceLocation HAMMER_HEAD = new ResourceLocation(NotEnoughMachines.MODID, "tiles/hammer_head");
 	public static final ResourceLocation TRIPHAMMER_SHAFT = new ResourceLocation(NotEnoughMachines.MODID, "tiles/triphammer_shaft");
 }

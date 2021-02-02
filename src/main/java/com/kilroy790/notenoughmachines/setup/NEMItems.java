@@ -16,8 +16,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 
 
-public class NEMItems {
-
+public class NEMItems 
+{
 	private static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, NotEnoughMachines.MODID);
 
 	
@@ -76,6 +76,31 @@ public class NEMItems {
 	
 	
 	
+	public static final RegistryObject<Item> FLOUR = ITEMS.register("flour", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushedironore", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> CRUSHED_GOLD_ORE = ITEMS.register("crushedgoldore", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> FLUX = ITEMS.register("flux", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> COPPER_INGOT = ITEMS.register("copper_ingot", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
 	public static final RegistryObject<Item> CREATIVEPOWERBOX = ITEMS.register("creativepowerbox", 
 			()-> new BlockItem(NEMBlocks.CREATIVEPOWERBOX.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -98,6 +123,11 @@ public class NEMItems {
 	
 	public static final RegistryObject<Item> SMALLCOG = ITEMS.register("smallcog", 
 			()-> new BlockItem(NEMBlocks.SMALLCOG.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> LARGECOG = ITEMS.register("largecog", 
+			()-> new BlockItem(NEMBlocks.LARGECOG.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
@@ -151,18 +181,13 @@ public class NEMItems {
 	
 	
 	
-	public static final RegistryObject<Item> FLOUR = ITEMS.register("flour", 
-			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	public static final RegistryObject<Item> FLUXSTONE = ITEMS.register("fluxstone", 
+			()-> new BlockItem(NEMBlocks.FLUXSTONE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
-	public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushedironore", 
-			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
-	
-	
-	public static final RegistryObject<Item> CRUSHED_GOLD_ORE = ITEMS.register("crushedgoldore", 
-			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	public static final RegistryObject<Item> POLISHED_FLUXSTONE = ITEMS.register("polished_fluxstone", 
+			()-> new BlockItem(NEMBlocks.POLISHED_FLUXSTONE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
@@ -170,7 +195,8 @@ public class NEMItems {
 			()-> new BlockItem(NEMBlocks.COPPERORE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 
 
-	public static void registerAll(IEventBus modEventBus) {
+	public static void registerAll(IEventBus modEventBus) 
+	{
 		ITEMS.register(modEventBus);
 	}
 }

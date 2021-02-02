@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "tubwheel",
+  "group": "nem:tubwheel",
   "pattern": [
     "\u003d\u003d\u003d",
     "\u003dx\u003d",

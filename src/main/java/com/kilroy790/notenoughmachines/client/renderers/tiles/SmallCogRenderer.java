@@ -5,7 +5,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalShaftBlock;
 import com.kilroy790.notenoughmachines.client.renderers.NEMTextures;
 import com.kilroy790.notenoughmachines.setup.NEMTiles;
-import com.kilroy790.notenoughmachines.tiles.machines.power.SmallCogTile;
+import com.kilroy790.notenoughmachines.tiles.machines.power.SmallCogwheelTile;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
@@ -25,7 +25,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 
 @OnlyIn(Dist.CLIENT)
-public class SmallCogRenderer extends TileEntityRenderer<SmallCogTile> {
+public class SmallCogRenderer extends TileEntityRenderer<SmallCogwheelTile> {
 
 	private final ModelRenderer shaft;
 	private final ModelRenderer wheel1;
@@ -50,7 +50,7 @@ public class SmallCogRenderer extends TileEntityRenderer<SmallCogTile> {
 	
 	
 	@Override
-	public void render(SmallCogTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLightIn, int combinedOverlayIn) {
+	public void render(SmallCogwheelTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLightIn, int combinedOverlayIn) {
 		matrixStack.push();
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);

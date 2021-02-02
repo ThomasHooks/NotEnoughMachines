@@ -62,8 +62,10 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 		}
 		else {
 			TileEntity entity = getMasterTile(world, pos, state);
-			if (entity instanceof INamedContainerProvider) NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
-			else throw new IllegalStateException("Trip Hammer container provider is missing!");
+			if (entity instanceof INamedContainerProvider) 
+				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
+			else 
+				throw new IllegalStateException("Trip Hammer container provider is missing!");
 			return ActionResultType.SUCCESS;
 		}
 	}
@@ -96,7 +98,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	@Override
 	public MechanicalTile getTile(IWorld world, BlockPos pos, BlockState state) {
 		MechanicalTile tile = getMasterTile((World)world, pos, state) instanceof MechanicalTile ? (MechanicalTile)getMasterTile((World)world, pos, state) : null;
-		return Objects.requireNonNull(tile, "MechanicalBlock: '" + state.getBlock().getRegistryName() + "' tile entity must be an instance of MechanicalTile!");
+		return Objects.requireNonNull(tile, "'MechanicalBlock:" + state.getBlock().getRegistryName() + "' tile entity must be an instance of MechanicalTile!");
 	}
 	
 	
@@ -132,6 +134,12 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
 		}
 		
+		if (!world.isRemote && !player.isCreative() && player.canHarvestBlock(state)) {
+			spawnDrops(state.with(PART, TripHammerPart.BASE), world, pos, (TileEntity)null, player, player.getHeldItemMainhand());
+		}
+		
+		super.onBlockHarvested(world, pos, state, player);
+		
 		TripHammerPart part = state.get(PART);
 		switch (part) {
 		
@@ -160,14 +168,8 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 			break;
 			
 		default:
-			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknow state!");
+			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknown state!");
 		}
-		
-		if (!world.isRemote && !player.isCreative() && player.canHarvestBlock(state)) {
-			spawnDrops(state.with(PART, TripHammerPart.BASE), world, pos, (TileEntity)null, player, player.getHeldItemMainhand());
-		}
-		
-		super.onBlockHarvested(world, pos, state, player);
 	}
 	
 	
@@ -213,7 +215,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 			break;
 			
 		default:
-			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknow state!");
+			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknown state!");
 		}
 		spawnDrops(state.with(PART, TripHammerPart.BASE), world, pos);
 		super.onBlockExploded(state, world, pos, explosion);
@@ -269,9 +271,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	@Override
 	public boolean hasTileEntity(BlockState state) {
-		TripHammerPart part = state.get(PART);
-		if (part == TripHammerPart.BASE) return true;
-		else return false;
+		return state.get(PART) == TripHammerPart.BASE;
 	}
 	
 	
@@ -306,7 +306,7 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 			return MechanicalConnectionList.monoAxle(pos.down(), state.get(FACING).rotateY().getAxis());
 			
 		default:
-			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknow state!");
+			throw new IllegalStateException(NotEnoughMachines.MODID + ":TripHammerBlock is in an unknown state!");
 		}
 	}
 	

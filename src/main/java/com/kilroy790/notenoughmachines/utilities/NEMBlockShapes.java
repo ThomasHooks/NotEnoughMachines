@@ -1,6 +1,10 @@
 package com.kilroy790.notenoughmachines.utilities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.block.Block;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -9,8 +13,21 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 
 
 public class NEMBlockShapes {
+	
+	public static final Map<Direction.Axis, Integer> AXIS_LOOKUP;
+	static {
+		AXIS_LOOKUP = new HashMap<Direction.Axis, Integer>();
+		AXIS_LOOKUP.put(Direction.Axis.X, 0);
+		AXIS_LOOKUP.put(Direction.Axis.Y, 1);
+		AXIS_LOOKUP.put(Direction.Axis.Z, 2);
+	}
 
+	
+	
 	public static final VoxelShape FULL_BLOCK = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+	
+	
+	
 	private static final VoxelShape BASE16X2X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
 	
 	
@@ -23,10 +40,18 @@ public class NEMBlockShapes {
 	
 	
 	
-	public static final VoxelShape[] COGWHEEL = new VoxelShape[] {
+	public static final VoxelShape[] COGWHEEL_CENTER = new VoxelShape[] {
 			VoxelShapes.or(AXLE[0], Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D)),
 			VoxelShapes.or(AXLE[1], Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D)),
 			VoxelShapes.or(AXLE[2], Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D))
+	};
+	
+	
+	
+	public static final VoxelShape[] COGWHEEL_SIDE = new VoxelShape[] {
+			Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D)
 	};
 	
 	

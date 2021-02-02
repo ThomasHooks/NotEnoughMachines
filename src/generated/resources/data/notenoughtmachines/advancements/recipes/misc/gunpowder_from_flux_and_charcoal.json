@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "notenoughtmachines:gunpowder_from_flux_and_charcoal"
+    ]
+  },
+  "criteria": {
+    "fluxstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "notenoughtmachines:fluxstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "notenoughtmachines:gunpowder_from_flux_and_charcoal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fluxstone",
+      "has_the_recipe"
+    ]
+  ]
+}
