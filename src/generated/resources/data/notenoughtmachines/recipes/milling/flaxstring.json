@@ -1,0 +1,12 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:flaxstring",
+  "ingredient": {
+    "item": "notenoughtmachines:flax"
+  },
+  "result": {
+    "item": "notenoughtmachines:flaxstring",
+    "count": 3
+  },
+  "processtime": 200
+}

@@ -1,7 +1,7 @@
 package com.kilroy790.notenoughmachines.setup;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
-import com.kilroy790.notenoughmachines.client.renderers.NEMTextures;
+import com.kilroy790.notenoughmachines.client.NEMTextures;
 
 import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraftforge.api.distmarker.Dist;

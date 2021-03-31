@@ -1,6 +1,3 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "notenoughtmachines:item/triphammer_item"
-    }
+    "parent": "notenoughtmachines:block/triphammer/triphammer_item"
 }

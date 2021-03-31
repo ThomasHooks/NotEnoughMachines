@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "notenoughtmachines:polished_fluxstone_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "polished_fluxstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "notenoughtmachines:polished_fluxstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "notenoughtmachines:polished_fluxstone_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "polished_fluxstone",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,7 +1,6 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.setup.NEMContainers;
-import com.kilroy790.notenoughmachines.tiles.machines.logistic.FilterTile;
+import com.kilroy790.notenoughmachines.tiles.FilterTile;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

@@ -3,7 +3,7 @@ package com.kilroy790.notenoughmachines.power;
 import java.util.ArrayList;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
-import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
+import com.kilroy790.notenoughmachines.tiles.MechanicalTile;
 
 import net.minecraft.world.IWorld;
 

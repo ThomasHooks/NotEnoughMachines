@@ -1,0 +1,11 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:flour",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result": {
+    "item": "notenoughtmachines:flour"
+  },
+  "processtime": 200
+}

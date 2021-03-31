@@ -40,6 +40,6 @@ public class NEMEvents {
 		if(event.phase == Phase.START) return;
 		
 //		NotEnoughMachines.proxy.tickClient();
-		NotEnoughMachines.CLIENTTIMER.tickClient();
+		NotEnoughMachines.CLIENT_TIMER.tickClient();
 	}
 }

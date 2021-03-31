@@ -1,6 +1,6 @@
 package com.kilroy790.notenoughmachines.items;
 
-import com.kilroy790.notenoughmachines.setup.NEMBlocks;
+import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

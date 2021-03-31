@@ -3,9 +3,9 @@ package com.kilroy790.notenoughmachines.client.renderers.tiles;
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
-import com.kilroy790.notenoughmachines.client.renderers.NEMTextures;
-import com.kilroy790.notenoughmachines.setup.NEMTiles;
-import com.kilroy790.notenoughmachines.tiles.machines.power.SmallWindWheelTile;
+import com.kilroy790.notenoughmachines.client.NEMTextures;
+import com.kilroy790.notenoughmachines.tiles.NEMTiles;
+import com.kilroy790.notenoughmachines.tiles.SmallWindWheelTile;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
@@ -52,7 +52,7 @@ public class SmallWindWheelRenderer extends TileEntityRenderer<SmallWindWheelTil
 	public void render(SmallWindWheelTile tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
 		matrixStack.push();
 		
-		float tick = NotEnoughMachines.CLIENTTIMER.getTick() + partialTicks;
+		float tick = NotEnoughMachines.CLIENT_TIMER.getTick() + partialTicks;
 		float speed = tile.getSpeed();
 		float angle = (tick * speed * 0.3f) % 360;
 		angle = angle/180f * (float)Math.PI;

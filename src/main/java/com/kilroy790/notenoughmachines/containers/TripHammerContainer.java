@@ -1,8 +1,7 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.setup.NEMBlocks;
-import com.kilroy790.notenoughmachines.setup.NEMContainers;
-import com.kilroy790.notenoughmachines.tiles.machines.processing.TripHammerTile;
+import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
+import com.kilroy790.notenoughmachines.tiles.TripHammerTile;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

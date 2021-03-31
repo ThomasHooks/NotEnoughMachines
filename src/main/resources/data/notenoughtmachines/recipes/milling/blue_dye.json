@@ -1,0 +1,17 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:blue_dye",
+  "ingredient": [
+    {
+      "item": "minecraft:lapis_lazuli"
+    },
+    {
+      "item": "minecraft:cornflower"
+    }
+  ],
+  "result": {
+    "item": "minecraft:blue_dye",
+    "count": 2
+  },
+  "processtime": 200
+}

@@ -1,0 +1,15 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:redstone",
+  "ingredient": {
+    "item": "minecraft:redstone_ore"
+  },
+  "result": {
+    "item": "minecraft:redstone",
+    "count": 16
+  },
+  "resultsecond": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 600
+}

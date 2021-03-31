@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
-import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
+import com.kilroy790.notenoughmachines.tiles.MechanicalTile;
 import com.kilroy790.notenoughmachines.utilities.NEMItemHelper;
 
 import net.minecraft.block.Block;

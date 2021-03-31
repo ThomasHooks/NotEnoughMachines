@@ -12,10 +12,11 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 
 
 
-public class NEMBlockShapes {
-	
+public class NEMBlockShapes 
+{	
 	public static final Map<Direction.Axis, Integer> AXIS_LOOKUP;
-	static {
+	static 
+	{
 		AXIS_LOOKUP = new HashMap<Direction.Axis, Integer>();
 		AXIS_LOOKUP.put(Direction.Axis.X, 0);
 		AXIS_LOOKUP.put(Direction.Axis.Y, 1);
@@ -32,7 +33,8 @@ public class NEMBlockShapes {
 	
 	
 	
-	public static final VoxelShape[] AXLE = new VoxelShape[] {
+	public static final VoxelShape[] AXLE = new VoxelShape[] 
+			{
 			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D), 
 			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
 			Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D)
@@ -40,19 +42,21 @@ public class NEMBlockShapes {
 	
 	
 	
-	public static final VoxelShape[] COGWHEEL_CENTER = new VoxelShape[] {
+	public static final VoxelShape[] COGWHEEL_CENTER = new VoxelShape[] 
+		{
 			VoxelShapes.or(AXLE[0], Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D)),
 			VoxelShapes.or(AXLE[1], Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D)),
 			VoxelShapes.or(AXLE[2], Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D))
-	};
+		};
 	
 	
 	
-	public static final VoxelShape[] COGWHEEL_SIDE = new VoxelShape[] {
+	public static final VoxelShape[] COGWHEEL_SIDE = new VoxelShape[] 
+		{
 			Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D),
 			Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D),
 			Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D)
-	};
+		};
 	
 	
 	
@@ -84,26 +88,36 @@ public class NEMBlockShapes {
 			Block.makeCuboidShape(2.0D, 14.0D, 2.0D, 14.0D, 16.0D, 14.0D),
 			Block.makeCuboidShape(0.0D, 2.0D, 2.0D, 20.D, 14.0D, 14.0D));
 	private static final VoxelShape GEARBOX_OUTER_Z = VoxelShapes.combineAndSimplify(FULL_BLOCK, GEARBOX_BOWL_Z, IBooleanFunction.ONLY_FIRST);
-	public static final VoxelShape[] GEARBOX = new VoxelShape[] {
+	public static final VoxelShape[] GEARBOX = new VoxelShape[] 
+		{
 			VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_INNER),
 			VoxelShapes.or(GEARBOX_OUTER_Y, GEARBOX_INNER),
 			VoxelShapes.or(GEARBOX_OUTER_Z, GEARBOX_INNER)
-	};
+		};
+	
+	public static final VoxelShape[] ENCLOSED_AXLE = new VoxelShape[] 
+		{
+			VoxelShapes.or(GEARBOX_OUTER_Y, GEARBOX_OUTER_Z, GEARBOX_INNER),
+			VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Z, GEARBOX_INNER),
+			VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Y, GEARBOX_INNER)
+		};
 	
 	
 	
 	private static final VoxelShape TRIPHAMMER_FRAMEX = Block.makeCuboidShape(2.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);
 	private static final VoxelShape TRIPHAMMER_FRAMEZ = Block.makeCuboidShape(0.0D, 0.0D, 2.0D, 16.0D, 16.0D, 14.0D);
-	public static final VoxelShape[] TRIPHAMMER_BASE = new VoxelShape[] {
+	public static final VoxelShape[] TRIPHAMMER_BASE = new VoxelShape[] 
+		{
 			VoxelShapes.or(BASE16X2X16, TRIPHAMMER_FRAMEX),
 			FULL_BLOCK,
 			VoxelShapes.or(BASE16X2X16, TRIPHAMMER_FRAMEZ)
-	};
-	public static final VoxelShape[] TRIPHAMMER_FRAME = new VoxelShape[] {
+		};
+	public static final VoxelShape[] TRIPHAMMER_FRAME = new VoxelShape[] 
+		{
 			TRIPHAMMER_FRAMEX,
 			FULL_BLOCK,
 			TRIPHAMMER_FRAMEZ
-	};
+		};
 }
 
 

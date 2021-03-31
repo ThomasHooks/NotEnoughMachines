@@ -1,0 +1,17 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:magenta_dye",
+  "ingredient": [
+    {
+      "item": "minecraft:lilac"
+    },
+    {
+      "item": "minecraft:allium"
+    }
+  ],
+  "result": {
+    "item": "minecraft:magenta_dye",
+    "count": 2
+  },
+  "processtime": 200
+}

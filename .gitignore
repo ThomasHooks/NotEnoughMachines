@@ -24,6 +24,7 @@ GradlewBuild.bat
 README.txt
 RunClient.bat
 changelog.txt
+logs/
 
 # Files from Forge MDK
 forge*changelog.txt

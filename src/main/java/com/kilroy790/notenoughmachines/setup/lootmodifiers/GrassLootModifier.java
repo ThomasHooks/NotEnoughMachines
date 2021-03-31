@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import com.google.gson.JsonObject;
-import com.kilroy790.notenoughmachines.setup.NEMItems;
+import com.kilroy790.notenoughmachines.items.NEMItems;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.JSONUtils;

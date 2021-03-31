@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "nem:fluxstone_button",
+  "ingredients": [
+    {
+      "item": "notenoughtmachines:fluxstone"
+    }
+  ],
+  "result": {
+    "item": "notenoughtmachines:fluxstone_button"
+  }
+}

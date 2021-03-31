@@ -15,30 +15,40 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public class LinseedOilItem extends Item {
 
-	public LinseedOilItem(Properties properties) {
+
+
+public class LinseedOilItem extends Item 
+{
+	public LinseedOilItem(Properties properties) 
+	{
 		super(properties);
 	}
 
 	
 	
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) 
+	{
 		super.onItemUseFinish(stack, worldIn, entityLiving);
-		if (entityLiving instanceof ServerPlayerEntity) {
+		if (entityLiving instanceof ServerPlayerEntity) 
+		{
 			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)entityLiving;
 	         CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stack);
 	         serverplayerentity.addStat(Stats.ITEM_USED.get(this));
 		}
-		if (stack.isEmpty()) {
+		if (stack.isEmpty()) 
+		{
 	         return new ItemStack(Items.GLASS_BOTTLE);
 	      } 
-		else {
-	         if (entityLiving instanceof PlayerEntity && !((PlayerEntity)entityLiving).abilities.isCreativeMode) {
+		else 
+		{
+	         if (entityLiving instanceof PlayerEntity && !((PlayerEntity)entityLiving).abilities.isCreativeMode) 
+	         {
 	            ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
 	            PlayerEntity playerentity = (PlayerEntity)entityLiving;
-	            if (!playerentity.inventory.addItemStackToInventory(itemstack)) {
+	            if (!playerentity.inventory.addItemStackToInventory(itemstack)) 
+	            {
 	               playerentity.dropItem(itemstack, false);
 	            }
 	         }
@@ -49,36 +59,44 @@ public class LinseedOilItem extends Item {
 	
 	
 	@Override
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack) 
+	{
 		return 32;
 	}
 	
 	
 	
 	@Override
-	public UseAction getUseAction(ItemStack stack) {
+	public UseAction getUseAction(ItemStack stack) 
+	{
 		return UseAction.DRINK;
 	}
 	
 	
 	
 	@Override
-	public SoundEvent getDrinkSound() {
+	public SoundEvent getDrinkSound() 
+	{
 		return SoundEvents.ENTITY_GENERIC_DRINK;
 	}
 	
 	
 	
 	@Override
-	public SoundEvent getEatSound() {
+	public SoundEvent getEatSound() 
+	{
 		return SoundEvents.ENTITY_GENERIC_DRINK;
 	}
 	
 	
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) 
+	{
 		playerIn.setActiveHand(handIn);
 		return ActionResult.resultSuccess(playerIn.getHeldItem(handIn));
 	}
 }
+
+
+

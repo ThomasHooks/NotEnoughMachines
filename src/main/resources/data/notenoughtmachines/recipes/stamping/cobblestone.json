@@ -1,9 +1,17 @@
 {
   "type": "notenoughtmachines:stamping",
   "group": "nem:cobblestone",
-  "ingredient": {
-    "item": "minecraft:stone"
-  },
+  "ingredient": [
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:cracked_stone_bricks"
+    },
+    {
+      "item": "minecraft:smooth_stone"
+    }
+  ],
   "result": {
     "item": "minecraft:cobblestone"
   },

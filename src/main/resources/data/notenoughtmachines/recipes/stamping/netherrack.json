@@ -1,0 +1,11 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:soul_sand",
+  "ingredient": {
+    "item": "minecraft:netherrack"
+  },
+  "result": {
+    "item": "minecraft:soul_sand"
+  },
+  "processtime": 300
+}

@@ -1,0 +1,12 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:green_dye",
+  "ingredient": {
+    "item": "minecraft:cactus"
+  },
+  "result": {
+    "item": "minecraft:green_dye",
+    "count": 2
+  },
+  "processtime": 200
+}

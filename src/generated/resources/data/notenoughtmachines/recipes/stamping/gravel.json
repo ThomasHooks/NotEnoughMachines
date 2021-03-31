@@ -1,9 +1,29 @@
 {
   "type": "notenoughtmachines:stamping",
   "group": "nem:gravel",
-  "ingredient": {
-    "item": "minecraft:cobblestone"
-  },
+  "ingredient": [
+    {
+      "item": "minecraft:cobblestone"
+    },
+    {
+      "item": "minecraft:andesite"
+    },
+    {
+      "item": "minecraft:polished_andesite"
+    },
+    {
+      "item": "minecraft:diorite"
+    },
+    {
+      "item": "minecraft:polished_diorite"
+    },
+    {
+      "item": "minecraft:granite"
+    },
+    {
+      "item": "minecraft:polished_granite"
+    }
+  ],
   "result": {
     "item": "minecraft:gravel"
   },

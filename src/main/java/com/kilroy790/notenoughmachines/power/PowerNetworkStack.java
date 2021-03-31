@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
-import com.kilroy790.notenoughmachines.tiles.machines.MechanicalTile;
+import com.kilroy790.notenoughmachines.tiles.MechanicalTile;
 
 import net.minecraft.world.IWorld;
 

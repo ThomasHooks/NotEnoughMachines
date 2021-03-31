@@ -1,0 +1,15 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:emerald",
+  "ingredient": {
+    "item": "minecraft:emerald_ore"
+  },
+  "result": {
+    "item": "minecraft:emerald",
+    "count": 4
+  },
+  "resultsecond": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 600
+}

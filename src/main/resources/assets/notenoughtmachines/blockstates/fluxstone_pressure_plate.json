@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "notenoughtmachines:block/fluxstone_pressure_plate" },
+        "powered=true": { "model": "notenoughtmachines:block/fluxstone_pressure_plate_down" }
+    }
+}

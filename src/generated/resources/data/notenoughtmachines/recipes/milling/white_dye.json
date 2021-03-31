@@ -1,0 +1,17 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:white_dye",
+  "ingredient": [
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "minecraft:lily_of_the_valley"
+    }
+  ],
+  "result": {
+    "item": "minecraft:white_dye",
+    "count": 2
+  },
+  "processtime": 200
+}

@@ -2,9 +2,9 @@ package com.kilroy790.notenoughmachines.client.renderers.tiles;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalBlock;
-import com.kilroy790.notenoughmachines.client.renderers.NEMTextures;
-import com.kilroy790.notenoughmachines.setup.NEMTiles;
-import com.kilroy790.notenoughmachines.tiles.machines.processing.MillstoneTile;
+import com.kilroy790.notenoughmachines.client.NEMTextures;
+import com.kilroy790.notenoughmachines.tiles.MillstoneTile;
+import com.kilroy790.notenoughmachines.tiles.NEMTiles;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
@@ -45,7 +45,7 @@ public class MillstoneRenderer extends TileEntityRenderer<MillstoneTile> {
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
 //		float tick = NotEnoughMachines.proxy.getClientTick();
-		float tick = NotEnoughMachines.CLIENTTIMER.getTick() + partialTicks;
+		float tick = NotEnoughMachines.CLIENT_TIMER.getTick() + partialTicks;
 		float speed = tile.getSpeed();
 		float angle = (tick * speed * 0.3f) % 360;
 		angle = angle/180f * (float)Math.PI;

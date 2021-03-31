@@ -1,0 +1,12 @@
+{
+  "type": "notenoughtmachines:milling",
+  "group": "nem:sugar",
+  "ingredient": {
+    "item": "minecraft:sugar_cane"
+  },
+  "result": {
+    "item": "minecraft:sugar",
+    "count": 2
+  },
+  "processtime": 200
+}

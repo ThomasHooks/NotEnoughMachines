@@ -1,0 +1,15 @@
+{
+  "type": "notenoughtmachines:stamping",
+  "group": "nem:crushed_copper_ore",
+  "ingredient": {
+    "item": "notenoughtmachines:copper_ore"
+  },
+  "result": {
+    "item": "notenoughtmachines:crushed_copper_ore",
+    "count": 2
+  },
+  "resultsecond": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 600
+}
