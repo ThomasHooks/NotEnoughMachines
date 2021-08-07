@@ -1,7 +1,10 @@
 package com.kilroy790.notenoughmachines.utilities;
 
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -16,21 +19,49 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public class NEMItemHelper {
+public class NEMItemHelper 
+{	
+	private static final Random randomNum = new Random();
 
-	public static void dropItemHandlerInventory(final IItemHandler handler, World world, BlockPos pos) {
-		if(handler == null) return;
-		for(int i = 0; i < handler.getSlots(); ++i) {
+	public static void spawnItemStackWithVel(World worldIn, ItemStack stack, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
+	{
+		while(!stack.isEmpty()) 
+		{
+			ItemEntity itementity = new ItemEntity(worldIn, x, y, z, stack.split(randomNum.nextInt(21) + 10));
+			//The extra 0.2 getting added with the y speed component is to add an arch. without it items will be thrown down
+			itementity.setMotion(randomNum.nextGaussian() * 0.05D + xSpeed, randomNum.nextGaussian() * 0.05D + 0.2D + ySpeed, randomNum.nextGaussian() * 0.05D + zSpeed);
+			worldIn.addEntity(itementity);
+		}
+	}
+
+
+
+	public static void dropItemHandlerInventory(final IItemHandler handler, World world, BlockPos pos) 
+	{
+		if(handler == null) 
+			return;
+		for (int i = 0; i < handler.getSlots(); ++i) 
+		{
 			InventoryHelper.spawnItemStack(world, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), handler.getStackInSlot(i));
 		}
 	}
 	
 	
 	
-	@Nullable
-	public static void dropItemStack(World world, BlockPos pos, ItemStack stack) {
-		if(stack == null) return;
-		else InventoryHelper.spawnItemStack(world, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), stack);
+	public static void dropItemStack(World world, BlockPos pos, @Nullable ItemStack stack) 
+	{
+		if(stack == null) 
+			return;
+		else 
+			InventoryHelper.spawnItemStack(world, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), stack);
+	}
+	
+	
+	
+	public static void dropItemStack(World world, @Nullable ItemStack stack, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
+	{
+		if (stack != null)
+			spawnItemStackWithVel(world, stack, x, y, z, xSpeed, ySpeed, zSpeed);
 	}
 	
 	

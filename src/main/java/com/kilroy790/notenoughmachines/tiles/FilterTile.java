@@ -140,15 +140,11 @@ public class FilterTile extends ItemConduitTile implements INamedContainerProvid
 					Objects.requireNonNull(facing, "Direction cannot be null!");
 					BlockPos nextPos = pos.offset(facing);
 					if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) 
-					{
-						NEMItemHelper.dropItemStack(world, nextPos, itemHandler.extractItem(BUFFER_SLOT, amount, false));
-					}
+						this.ejectItem(itemHandler, amount, BUFFER_SLOT, nextPos, facing);
 					else if (this.world.getTileEntity(nextPos) != null) 
 					{
 						if (this.world.getTileEntity(nextPos).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent()) 
-						{
 							NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, BUFFER_SLOT, amount);
-						}
 					}
 					else 
 						break;

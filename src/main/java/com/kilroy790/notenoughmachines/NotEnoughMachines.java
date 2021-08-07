@@ -61,7 +61,7 @@ public class NotEnoughMachines
 	public static ClientTimer CLIENT_TIMER = new ClientTimer();
 	
 	public static ModSetup setup = new ModSetup();
-	
+	//Test
 	public NotEnoughMachines() 
 	{
 		INSTANCE = this;

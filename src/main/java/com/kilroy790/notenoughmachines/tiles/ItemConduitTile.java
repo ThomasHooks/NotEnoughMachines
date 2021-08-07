@@ -117,16 +117,67 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 			if (!itemHandler.getStackInSlot(slot).isEmpty()) 
 			{
 				if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) 
-				{
-					world.playSound(null, this.pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 0.3f, 0.5f);
-					NEMItemHelper.dropItemStack(world, nextPos, itemHandler.extractItem(0, amount, false));
-				}
+					this.ejectItem(itemHandler, amount, 0, nextPos, facing);
 				else 
 				{
 					NEMItemHelper.pushToContainer(world, pos.offset(facing), facing.getOpposite(), itemHandler, slot, amount);
 					break;
 				}
 			}
+		}
+	}
+	
+	
+	
+	/**
+	 * 
+	 * 
+	 * @param itemHandler
+	 * @param amount
+	 * @param index
+	 * @param nextPos
+	 * @param ejectorDirection
+	 */
+	protected void ejectItem(ItemStackHandler itemHandler, int amount, int index, BlockPos nextPos, Direction ejectorDirection)
+	{
+		world.playSound(null, this.pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.3f, 0.5f);
+		
+		double x = (double)nextPos.getX();
+		double y = (double)nextPos.getY();
+		double z = (double)nextPos.getZ();
+		
+		//TODO: add custom particles
+		world.playEvent(2000, this.pos, ejectorDirection.getIndex());
+		
+		switch (ejectorDirection)
+		{
+		case UP:
+			NEMItemHelper.dropItemStack(world, itemHandler.extractItem(index, amount, false), x + 0.5D, y - 0.1D, z + 0.5D, 0.0D, 0.22D, 0.0D);
+			break;
+			
+		case DOWN:
+			//The extra -0.2 is to account for the arch added in NEMItemHelper::spawnItemStackWithVel
+			NEMItemHelper.dropItemStack(world, itemHandler.extractItem(index, amount, false), x + 0.5D, y + 1.0D, z + 0.5D, 0.0D, -0.22D - 0.2D, 0.0D);
+			break;
+			
+		case EAST:
+			NEMItemHelper.dropItemStack(world, itemHandler.extractItem(index, amount, false), x - 0.1D, y + 0.5D, z + 0.5D, 0.22D, 0.0D, 0.0D);
+			break;
+			
+		case WEST:
+			NEMItemHelper.dropItemStack(world, itemHandler.extractItem(index, amount, false), x + 1.0D, y + 0.5D, z + 0.5D, -0.22D, 0.0D, 0.0D);
+			break;
+			
+		case SOUTH:
+			NEMItemHelper.dropItemStack(world, itemHandler.extractItem(index, amount, false), x + 0.5D, y + 0.5D, z - 0.1D, 0.0D, 0.0D, 0.22D);
+			break;
+			
+		case NORTH:
+			NEMItemHelper.dropItemStack(world, itemHandler.extractItem(index, amount, false), x + 0.5D, y + 0.5D, z + 1.0D, 0.0D, 0.0D, -0.22D);
+			break;
+			
+		default:
+			break;
 		}
 	}
 	
