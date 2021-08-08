@@ -7,6 +7,7 @@ import com.kilroy790.notenoughmachines.client.NEMTextures;
 import com.kilroy790.notenoughmachines.integration.jei.NEMPlugin;
 import com.kilroy790.notenoughmachines.items.NEMItems;
 import com.kilroy790.notenoughmachines.recipes.StampingRecipe;
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -71,9 +72,9 @@ public class StampingRecipeCategory extends NEMRecipeCategory<StampingRecipe>
 	
 	
 	@Override
-	public void draw(StampingRecipe recipe, double mouseX, double mouseY) 
+	public void draw(StampingRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) 
 	{
-		this.gear.draw(22, 2);
+		this.gear.draw(matrixStack, 22, 2);
 	}
 }
 

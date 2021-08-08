@@ -8,7 +8,11 @@
 modLoader="javafml" #mandatory
 
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[28,)" #mandatory (28 is current forge version)
+loaderVersion="[36,)" #mandatory (36 is current forge version)
+
+# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+license="MIT"
 
 #A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/ThomasHooks/NotEnoughMachines/issues"
@@ -34,9 +38,7 @@ credits="Thanks for this mod goes to Java" #optional
 authors="Kilroy_790" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-A tech mod for Minecraft that uses Forge and adds more machines and automation
-'''
+description='''A tech mod for Minecraft that uses Forge and adds more machines and automation.'''
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.notenoughtmachines]] #optional
@@ -47,7 +49,7 @@ A tech mod for Minecraft that uses Forge and adds more machines and automation
     mandatory=true #mandatory
     
     # The version range of the dependency
-    versionRange="[28,)" #mandatory
+    versionRange="[36,)" #mandatory
     
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
@@ -59,6 +61,6 @@ A tech mod for Minecraft that uses Forge and adds more machines and automation
 [[dependencies.notenoughtmachines]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.5]"
     ordering="NONE"
     side="BOTH"

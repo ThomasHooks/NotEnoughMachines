@@ -10,8 +10,8 @@ import com.kilroy790.notenoughmachines.items.NEMItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootContext;
-import net.minecraft.world.storage.loot.conditions.ILootCondition;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 
@@ -51,6 +51,17 @@ public class GrassLootModifier extends LootModifier
 		public GrassLootModifier read(ResourceLocation location, JsonObject object, ILootCondition[] conditionsIn) 
 		{
 			return new GrassLootModifier(conditionsIn, JSONUtils.getBoolean(object, "enableLootModifier"), JSONUtils.getFloat(object, "dropProbability"));
+		}
+
+		
+		
+		@Override
+		public JsonObject write(GrassLootModifier instance) 
+		{
+			JsonObject json = makeConditions(instance.conditions);
+			json.addProperty("dropProbability", instance.dropProbability);
+			json.addProperty("enableLootModifier", instance.enableLootModifier);
+			return json;
 		}
 	}
 }

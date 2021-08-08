@@ -12,11 +12,14 @@ import net.minecraft.util.Direction;
 
 
 
-public abstract class MechanicalShaftBlock extends MechanicalBlock {
-
+public abstract class MechanicalShaftBlock extends MechanicalBlock 
+{
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 	
-	public MechanicalShaftBlock(Properties properties) {
+	
+	
+	public MechanicalShaftBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.X));
 	}
@@ -24,14 +27,16 @@ public abstract class MechanicalShaftBlock extends MechanicalBlock {
 
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
+	public BlockState getStateForPlacement(BlockItemUseContext context) 
+	{
 		return super.getStateForPlacement(context).with(MechanicalShaftBlock.AXIS, context.getFace().getAxis());
 	}
 
 	
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(Builder<Block, BlockState> builder) 
+	{
 		super.fillStateContainer(builder);
 		builder.add(AXIS);
 	}
@@ -44,7 +49,8 @@ public abstract class MechanicalShaftBlock extends MechanicalBlock {
 	 * @deprecated call via {@link IBlockState#getRenderType()} whenever possible. Implementing/overriding is fine.
 	 */
 	@Override
-	public BlockRenderType getRenderType(BlockState state) { 
+	public BlockRenderType getRenderType(BlockState state) 
+	{ 
 		return BlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 }

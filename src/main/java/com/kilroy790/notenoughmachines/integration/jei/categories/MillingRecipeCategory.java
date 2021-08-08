@@ -4,6 +4,7 @@ import com.kilroy790.notenoughmachines.client.NEMTextures;
 import com.kilroy790.notenoughmachines.integration.jei.NEMPlugin;
 import com.kilroy790.notenoughmachines.items.NEMItems;
 import com.kilroy790.notenoughmachines.recipes.MillingRecipe;
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -52,9 +53,9 @@ public class MillingRecipeCategory extends NEMRecipeCategory<MillingRecipe>
 	
 	
 	@Override
-	public void draw(MillingRecipe recipe, double mouseX, double mouseY) 
+	public void draw(MillingRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) 
 	{
-		this.gear.draw(22, 2);
+		this.gear.draw(matrixStack, 22, 2);
 	}
 
 	

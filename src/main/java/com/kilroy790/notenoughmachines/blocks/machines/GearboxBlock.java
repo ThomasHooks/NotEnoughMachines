@@ -45,6 +45,8 @@ public class GearboxBlock extends MechanicalBlock
 	public static final BooleanProperty POWERED = NEMBlockStateProperties.POWERED;
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
+	
+	
 	public GearboxBlock(Properties properties) 
 	{
 		super(properties);
@@ -70,8 +72,8 @@ public class GearboxBlock extends MechanicalBlock
 		if (NEMInputHelper.isPressingShift()) 
 		{
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("The side it's placed against will").applyTextStyle(TextFormatting.GREEN));
-			tooltip.add(new StringTextComponent("not be connected").applyTextStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("The side it's placed against will").mergeStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("not be connected").mergeStyle(TextFormatting.GREEN));
 		}
 		else 
 		{

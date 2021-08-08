@@ -28,26 +28,30 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 
 
-public class FilterBlock extends ItemConduitBlock {
-	 
-	public FilterBlock(Properties properties) {
+public class FilterBlock extends ItemConduitBlock 
+{ 
+	public FilterBlock(Properties properties) 
+	{
 		super(properties);
 	}
 	
 	
 	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-		
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) 
+	{
 		if(world.isRemote) {
 			return ActionResultType.SUCCESS;
 		}
-		else {
+		else 
+		{
 			TileEntity entity = world.getTileEntity(pos);
-			if(entity instanceof INamedContainerProvider) {
+			if(entity instanceof INamedContainerProvider) 
+			{
 				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
 			}
-			else {
+			else 
+			{
 				throw new IllegalStateException("Container provider is missing!");
 			}
 			return ActionResultType.SUCCESS;
@@ -58,17 +62,19 @@ public class FilterBlock extends ItemConduitBlock {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		
-		if (NEMInputHelper.isPressingShift()) {
+	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) 
+	{
+		if (NEMInputHelper.isPressingShift()) 
+		{
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Routes items in different directions").applyTextStyle(TextFormatting.GREEN));
-			tooltip.add(new StringTextComponent("depending upon which color the item").applyTextStyle(TextFormatting.GREEN));
-			tooltip.add(new StringTextComponent("has been sorted into").applyTextStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("Routes items in different directions").mergeStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("depending upon which color the item").mergeStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("has been sorted into").mergeStyle(TextFormatting.GREEN));
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Hold " + "\u00A72" + "Shift" + "\u00A77" + " to reverse while placing").applyTextStyle(TextFormatting.GRAY));
+			tooltip.add(new StringTextComponent("Hold " + "\u00A72" + "Shift" + "\u00A77" + " to reverse while placing").mergeStyle(TextFormatting.GRAY));
 		}
-		else {
+		else 
+		{
 			tooltip.add(new StringTextComponent(NEMInputHelper.MORE_INFO_PRESS_SHIFT));
 		}
 	}
@@ -76,7 +82,8 @@ public class FilterBlock extends ItemConduitBlock {
 	
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		return new FilterTile();
 	}
 }

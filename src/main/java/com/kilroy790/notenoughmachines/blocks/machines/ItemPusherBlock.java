@@ -27,13 +27,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class ItemPusherBlock extends ItemConduitBlock {
-	
+public class ItemPusherBlock extends ItemConduitBlock 
+{	
 	public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 	
 	
 	
-	public ItemPusherBlock(Properties properties) {
+	public ItemPusherBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(ENABLED, Boolean.valueOf(true)));
 	}
@@ -41,8 +42,10 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	
 	
 	@Override
-	public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
-		if (oldState.getBlock() != state.getBlock()) {
+	public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) 
+	{
+		if (oldState.getBlock() != state.getBlock()) 
+		{
 			this.updateEnabledState(worldIn, pos, state);
 		}
 	}
@@ -50,15 +53,18 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	
 	
 	@Override
-	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) 
+	{
 		this.updateEnabledState(worldIn, pos, state);
 	}
 	
 	
 	
-	private void updateEnabledState(World worldIn, BlockPos pos, BlockState state) {
+	private void updateEnabledState(World worldIn, BlockPos pos, BlockState state) 
+	{
 		boolean locked = !worldIn.isBlockPowered(pos);
-		if (locked != state.get(ENABLED)) {
+		if (locked != state.get(ENABLED)) 
+		{
 			worldIn.setBlockState(pos, state.with(ENABLED, Boolean.valueOf(locked)), 1 | 2 | 4);
 		}
 	}
@@ -67,18 +73,20 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		
-		if (NEMInputHelper.isPressingShift()) {
+	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) 
+	{
+		if (NEMInputHelper.isPressingShift()) 
+		{
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Pulls items from behind").applyTextStyle(TextFormatting.GREEN));
-			tooltip.add(new StringTextComponent("and pushes them forward").applyTextStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("Pulls items from behind").mergeStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("and pushes them forward").mergeStyle(TextFormatting.GREEN));
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Locks when powered with " + "\u00A74" + "Redstone").applyTextStyle(TextFormatting.GRAY));
+			tooltip.add(new StringTextComponent("Locks when powered with " + "\u00A74" + "Redstone").mergeStyle(TextFormatting.GRAY));
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Hold " + "\u00A72" + "Shift" + "\u00A77" + " to reverse while placing").applyTextStyle(TextFormatting.GRAY));
+			tooltip.add(new StringTextComponent("Hold " + "\u00A72" + "Shift" + "\u00A77" + " to reverse while placing").mergeStyle(TextFormatting.GRAY));
 		}
-		else {
+		else 
+		{
 			tooltip.add(new StringTextComponent(NEMInputHelper.MORE_INFO_PRESS_SHIFT));
 		}
 	}
@@ -87,9 +95,10 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		
-		if (!stateIn.get(ENABLED) && rand.nextFloat() < 0.25f) {
+	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
+		if (!stateIn.get(ENABLED) && rand.nextFloat() < 0.25f) 
+		{
 			double x = (double)pos.getX() + 0.5D + (double)(rand.nextFloat() - 0.5f) * 0.5D;
 			double y = (double)pos.getY() + 0.9D;
 			double z = (double)pos.getZ() + 0.5D + (double)(rand.nextFloat() - 0.5f) * 0.5D;
@@ -100,7 +109,8 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(Builder<Block, BlockState> builder) 
+	{
 		super.fillStateContainer(builder);
 		builder.add(ENABLED);
 	}
@@ -108,7 +118,8 @@ public class ItemPusherBlock extends ItemConduitBlock {
 	
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		return new ItemPusherTile();
 	}
 }

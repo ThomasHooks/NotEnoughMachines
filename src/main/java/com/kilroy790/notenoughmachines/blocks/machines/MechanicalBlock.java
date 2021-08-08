@@ -237,8 +237,8 @@ public abstract class MechanicalBlock extends Block
 					{
 						if (!io.isAxle()) 
 						{
-							neighborState = neighborState.cycle(SHIFTED);
-							worldIn.setBlockState(pos, state.with(SHIFTED, neighborState.get(SHIFTED)));
+							//neighborState = neighborState.cycle(SHIFTED);
+							worldIn.setBlockState(pos, state.with(SHIFTED, !neighborState.get(SHIFTED)));
 						}
 						else 
 						{

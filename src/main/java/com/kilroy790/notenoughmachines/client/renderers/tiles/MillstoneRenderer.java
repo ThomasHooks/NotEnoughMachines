@@ -10,9 +10,9 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
-import net.minecraft.client.renderer.model.Material;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.inventory.container.PlayerContainer;
@@ -53,11 +53,11 @@ public class MillstoneRenderer extends TileEntityRenderer<MillstoneTile> {
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		RenderMaterial shaftMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder shaftVertexBuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexBuilder, combinedLight, combinedOverlay);
 		
-		Material runnerMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.RUNNERSTONE);
+		RenderMaterial runnerMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.RUNNERSTONE);
 		IVertexBuilder runnerVertexBuilder = runnerMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.runnerstone.render(matrixStack, runnerVertexBuilder, combinedLight, combinedOverlay);
 		

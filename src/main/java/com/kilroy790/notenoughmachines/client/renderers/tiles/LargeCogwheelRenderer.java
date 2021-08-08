@@ -11,9 +11,9 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
-import net.minecraft.client.renderer.model.Material;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.inventory.container.PlayerContainer;
@@ -84,15 +84,15 @@ public class LargeCogwheelRenderer extends TileEntityRenderer<LargeCogwheelTile>
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		RenderMaterial shaftMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder shaftVertexbuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexbuilder, combinedLightIn, combinedOverlayIn);
 		
-		Material hubMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_OUT);
+		RenderMaterial hubMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_OUT);
 		IVertexBuilder hubVertexbuilder = hubMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.hub.render(matrixStack, hubVertexbuilder, combinedLightIn, combinedOverlayIn);
 		
-		Material strutMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.LARGECOG_STRUTS);
+		RenderMaterial strutMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.LARGECOG_STRUTS);
 		IVertexBuilder strutVertexbuilder = strutMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.strut.render(matrixStack, strutVertexbuilder, combinedLightIn, combinedOverlayIn);
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
@@ -100,7 +100,7 @@ public class LargeCogwheelRenderer extends TileEntityRenderer<LargeCogwheelTile>
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		this.strut.render(matrixStack, strutVertexbuilder, combinedLightIn, combinedOverlayIn);
 		
-		Material rimsMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.LARGECOG_RIMS);
+		RenderMaterial rimsMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.LARGECOG_RIMS);
 		IVertexBuilder rimsVertexbuilder = rimsMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		for (int i = 0; i <= NUMBER_OF_RIM_SEGMENTS; i++)
 		{
@@ -110,7 +110,7 @@ public class LargeCogwheelRenderer extends TileEntityRenderer<LargeCogwheelTile>
 			matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		}
 		
-		Material teethMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.LARGECOG_TEETH);
+		RenderMaterial teethMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.LARGECOG_TEETH);
 		IVertexBuilder teethVertexbuilder = teethMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		for (int i = 0; i <= NUMBER_OF_TEETH; i++)
 		{

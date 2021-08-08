@@ -10,9 +10,9 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
-import net.minecraft.client.renderer.model.Material;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.inventory.container.PlayerContainer;
@@ -61,15 +61,15 @@ public class TubWheelRenderer extends TileEntityRenderer<TubWheelTile> {
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		RenderMaterial shaftMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder shaftVertexBuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexBuilder, combinedLight, combinedOverlay);
 		
-		Material hubMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_HUB);
+		RenderMaterial hubMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_HUB);
 		IVertexBuilder hubVertexBuilder = hubMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.hub.render(matrixStack, hubVertexBuilder, combinedLight, combinedOverlay);
 		
-		Material paddleMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_PADDLE);
+		RenderMaterial paddleMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TUBWHEEL_PADDLE);
 		IVertexBuilder paddleVertexBuilder = paddleMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		for(int i = 0; i < NUMBER_OF_PADDLES; i++) {
 			matrixStack.translate(0.5D, 0.5D, 0.5D);

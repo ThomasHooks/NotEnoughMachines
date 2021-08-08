@@ -43,11 +43,14 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 
 
-public class TripHammerBlock extends MechanicalHorizontalBlock implements IMultiblockPart {
-	
+public class TripHammerBlock extends MechanicalHorizontalBlock implements IMultiblockPart 
+{
 	public static final EnumProperty<TripHammerPart> PART = NEMBlockStateProperties.TRIPHAMMERPART;
 	
-	public TripHammerBlock(Properties properties) {
+	
+	
+	public TripHammerBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.getDefaultState().with(PART, TripHammerPart.BASE));
 	}
@@ -55,11 +58,14 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-		if (world.isRemote) {
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) 
+	{
+		if (world.isRemote) 
+		{
 			return ActionResultType.SUCCESS;
 		}
-		else {
+		else 
+		{
 			TileEntity entity = getMasterTile(world, pos, state);
 			if (entity instanceof INamedContainerProvider) 
 				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos()); 
@@ -71,9 +77,11 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	
-	public  TileEntity getMasterTile(World world, BlockPos pos, BlockState state) {
+	public  TileEntity getMasterTile(World world, BlockPos pos, BlockState state) 
+	{
 		TripHammerPart part = state.get(PART);
-		switch (part) {
+		switch (part) 
+		{
 		
 		case BASE:
 			return world.getTileEntity(pos);
@@ -95,7 +103,8 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public MechanicalTile getTile(IWorld world, BlockPos pos, BlockState state) {
+	public MechanicalTile getTile(IWorld world, BlockPos pos, BlockState state) 
+	{
 		MechanicalTile tile = getMasterTile((World)world, pos, state) instanceof MechanicalTile ? (MechanicalTile)getMasterTile((World)world, pos, state) : null;
 		return Objects.requireNonNull(tile, "'MechanicalBlock:" + state.getBlock().getRegistryName() + "' tile entity must be an instance of MechanicalTile!");
 	}
@@ -103,7 +112,8 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) 
+	{
 		super.onBlockPlacedBy(world, pos, state, placer, stack);
 		BlockState shiftedState = world.getBlockState(pos);
 		world.setBlockState(pos.up(1), state.with(PART, TripHammerPart.LOWERFRAME).with(SHIFTED, shiftedState.get(SHIFTED)), 1 | 2);
@@ -114,12 +124,15 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
+	public BlockState getStateForPlacement(BlockItemUseContext context) 
+	{
 		BlockPos pos = context.getPos();
-		if (pos.getY() < 256 - 4 && context.getWorld().getBlockState(pos.up(1)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(2)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(3)).isReplaceable(context)) {
+		if (pos.getY() < 256 - 4 && context.getWorld().getBlockState(pos.up(1)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(2)).isReplaceable(context) && context.getWorld().getBlockState(pos.up(3)).isReplaceable(context)) 
+		{
 			return super.getStateForPlacement(context).with(FACING, context.getPlacementHorizontalFacing()).with(PART, TripHammerPart.BASE);
 		}
-		else {
+		else 
+		{
 			return null;
 		}
 	}
@@ -127,21 +140,24 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+	public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player) 
+	{
 		TileEntity tile = getMasterTile(world, pos, state);
-		if (tile != null) {
+		if (tile != null) 
+		{
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
 		}
 		
-		if (!world.isRemote && !player.isCreative() && player.canHarvestBlock(state)) {
+		if (!world.isRemote && !player.isCreative() && player.func_234569_d_(state)) //canHarvestBlock
+		{
 			spawnDrops(state.with(PART, TripHammerPart.BASE), world, pos, (TileEntity)null, player, player.getHeldItemMainhand());
 		}
 		
 		super.onBlockHarvested(world, pos, state, player);
 		
 		TripHammerPart part = state.get(PART);
-		switch (part) {
-		
+		switch (part) 
+		{
 		case BASE:
 			world.setBlockState(pos.up(1), Blocks.AIR.getDefaultState(), 1 | 2 | 32);
 			world.setBlockState(pos.up(2), Blocks.AIR.getDefaultState(), 1 | 2 | 32);
@@ -174,21 +190,24 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public void harvestBlock(World world, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack) {
+	public void harvestBlock(World world, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack) 
+	{
 		super.harvestBlock(world, player, pos, Blocks.AIR.getDefaultState(), te, stack);
 	}
 	
 	
 	
 	@Override
-	public void onBlockExploded(BlockState state, World world, BlockPos pos, Explosion explosion) {
+	public void onBlockExploded(BlockState state, World world, BlockPos pos, Explosion explosion) 
+	{
 		TileEntity tile = getMasterTile(world, pos, state);
-		if (tile != null) {
+		if (tile != null) 
+		{
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), world, pos);
 		}
 		TripHammerPart part = state.get(PART);
-		switch (part) {
-		
+		switch (part) 
+		{
 		case BASE:
 			world.setBlockState(pos.up(1), Blocks.AIR.getDefaultState(), 1 | 2 | 32);
 			world.setBlockState(pos.up(2), Blocks.AIR.getDefaultState(), 1 | 2 | 32);
@@ -223,11 +242,12 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) 
+	{
 		Direction facing = state.get(FACING);
 		TripHammerPart part = state.get(PART);
-		switch (part) {
-		
+		switch (part) 
+		{
 		case BASE:
 			if (facing == Direction.EAST || facing == Direction.WEST) {
 				return NEMBlockShapes.TRIPHAMMER_BASE[0];
@@ -239,10 +259,12 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 		case CAM:
 		case LOWERFRAME:
 		case UPPERFRAME:
-			if (facing == Direction.EAST || facing == Direction.WEST) {
+			if (facing == Direction.EAST || facing == Direction.WEST) 
+			{
 				return NEMBlockShapes.TRIPHAMMER_FRAME[0];
 			}
-			else {
+			else 
+			{
 				return NEMBlockShapes.TRIPHAMMER_FRAME[2];
 			}
 			
@@ -254,7 +276,8 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(Builder<Block, BlockState> builder) 
+	{
 		super.fillStateContainer(builder);
 		builder.add(PART);
 	}
@@ -262,26 +285,31 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public ItemStack itemWhenDestroyed() {
+	public ItemStack itemWhenDestroyed() 
+	{
 		return null;
 	}
 	
 	
 	
 	@Override
-	public boolean hasTileEntity(BlockState state) {
+	public boolean hasTileEntity(BlockState state) 
+	{
 		return state.get(PART) == TripHammerPart.BASE;
 	}
 	
 	
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		TripHammerPart part = state.get(PART);
-		if (part == TripHammerPart.BASE) {
+		if (part == TripHammerPart.BASE) 
+		{
 			return new TripHammerTile();
 		}
-		else {
+		else 
+		{
 			return null;
 		}
 	}
@@ -289,9 +317,10 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 
 
 	@Override
-	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
-		switch (state.get(PART)) {
-			
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) 
+	{
+		switch (state.get(PART)) 
+		{
 		case CAM:
 			return MechanicalConnectionList.monoAxle(pos, state.get(FACING).rotateY().getAxis());
 		
@@ -312,47 +341,54 @@ public class TripHammerBlock extends MechanicalHorizontalBlock implements IMulti
 	
 	
 	@Override
-	public boolean isMultiblockFormed(World world, BlockPos pos, BlockState state) {
+	public boolean isMultiblockFormed(World world, BlockPos pos, BlockState state) 
+	{
 		return true;
 	}
 	
 	
 	
 	@Override
-	public boolean isMultiblockValid(World world, BlockPos pos, BlockState state) {
+	public boolean isMultiblockValid(World world, BlockPos pos, BlockState state) 
+	{
 		return true;
 	}
 	
 	
 	
 	@Override
-	public void formMultiblock(World world, BlockPos pos, BlockState state) {
+	public void formMultiblock(World world, BlockPos pos, BlockState state) 
+	{
 	}
 	
 	
 	
 	@Override
-	public void unformMultiblock(World world, BlockPos pos, BlockState state) {
+	public void unformMultiblock(World world, BlockPos pos, BlockState state) 
+	{
 	}
 	
 	
 	
 	@Override
-	public int getMultiblockWidth() {
+	public int getMultiblockWidth() 
+	{
 		return 1;
 	}
 	
 	
 	
 	@Override
-	public int getMultiblockHight() {
+	public int getMultiblockHight() 
+	{
 		return 4;
 	}
 	
 	
 	
 	@Override
-	public int getMultiblockDepth() {
+	public int getMultiblockDepth() 
+	{
 		return 1;
 	}
 }

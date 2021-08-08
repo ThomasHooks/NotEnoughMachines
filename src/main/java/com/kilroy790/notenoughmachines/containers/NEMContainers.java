@@ -20,14 +20,16 @@ public class NEMContainers
 
 	public static final RegistryObject<ContainerType<MillstoneContainer>> MILLSTONE = CONTAINERS.register("millstone", 
 			() -> IForgeContainerType.create(
-					(id, inventory, data) -> {
+					(id, inventory, data) -> 
+					{
 						BlockPos pos = data.readBlockPos();
 						return new MillstoneContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player);
 					}));
 
 	public static final RegistryObject<ContainerType<TripHammerContainer>> TRIPHAMMER = CONTAINERS.register("triphammer", 
 			() -> IForgeContainerType.create(
-					(id, inventory, data) -> {
+					(id, inventory, data) -> 
+					{
 						BlockPos pos = data.readBlockPos();
 						return new TripHammerContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player); //NotEnoughMachines.proxy.getClientWorld() NotEnoughMachines.proxy.getClientPlayer()
 					}));

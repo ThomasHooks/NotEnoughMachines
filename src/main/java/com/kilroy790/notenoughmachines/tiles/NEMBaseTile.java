@@ -1,5 +1,6 @@
 package com.kilroy790.notenoughmachines.tiles;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
@@ -10,17 +11,19 @@ import net.minecraftforge.items.ItemStackHandler;
 
 
 
-public abstract class NEMBaseTile extends TileEntity {
-
-	public NEMBaseTile(TileEntityType<?> tileEntityTypeIn) {
+public abstract class NEMBaseTile extends TileEntity 
+{
+	public NEMBaseTile(TileEntityType<?> tileEntityTypeIn) 
+	{
 		super(tileEntityTypeIn);
 	}
 	
 	
 	
 	@Override
-	public void read(CompoundNBT compound) {
-		super.read(compound);
+	public void read(BlockState state, CompoundNBT compound) 
+	{
+		super.read(state, compound);
 		this.readCustom(compound);
 	}
 	
@@ -31,7 +34,8 @@ public abstract class NEMBaseTile extends TileEntity {
 	
 	
 	@Override
-	public CompoundNBT write(CompoundNBT compound) {
+	public CompoundNBT write(CompoundNBT compound) 
+	{
 		compound = super.write(compound);
 		compound = writeCustom(compound);
 		return compound;
@@ -44,22 +48,25 @@ public abstract class NEMBaseTile extends TileEntity {
 	
 	
 	@Override
-	public CompoundNBT getUpdateTag() {
+	public CompoundNBT getUpdateTag() 
+	{
 		return write(new CompoundNBT());
 	}
 	
 	
 	
 	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() {
+	public SUpdateTileEntityPacket getUpdatePacket() 
+	{
         return new SUpdateTileEntityPacket(this.getPos(), 0, getUpdateTag());
 	}
 	
 	
 	
 	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		read(pkt.getNbtCompound());
+	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) 
+	{
+		read(this.getBlockState() ,pkt.getNbtCompound());
 	}
 	
 	
@@ -67,13 +74,15 @@ public abstract class NEMBaseTile extends TileEntity {
 	/**
 	 * Causes the Client to sync with the Server
 	 */
-	public void syncClient() {
+	public void syncClient() 
+	{
 		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 2 | 16);
 	}
 	
 	
 	
-	public void triggerBlockUpdate() {
+	public void triggerBlockUpdate() 
+	{
 		if(!this.world.isRemote) this.world.notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 1);
 	}
 
@@ -87,11 +96,13 @@ public abstract class NEMBaseTile extends TileEntity {
 	 * 
 	 * @return A new Item Stack Handler with the given parameters
 	 */
-	protected ItemStackHandler makeItemHandler(int numSlots, int stackLimit) {
-		return new ItemStackHandler(numSlots) {
-			
+	protected ItemStackHandler makeItemHandler(int numSlots, int stackLimit) 
+	{
+		return new ItemStackHandler(numSlots) 
+		{
 			@Override
-			public int getSlotLimit(int slot) {
+			public int getSlotLimit(int slot) 
+			{
 				int limit;
 				if(Math.abs(stackLimit) < 1) limit = 1;
 				else if(Math.abs(stackLimit) > 64) limit = 64;
@@ -102,7 +113,8 @@ public abstract class NEMBaseTile extends TileEntity {
 			
 			
 			@Override
-			protected void onContentsChanged(int slot) {
+			protected void onContentsChanged(int slot) 
+			{
 				markDirty();
 			}
 		};

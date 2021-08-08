@@ -10,11 +10,14 @@ import net.minecraft.util.Direction;
 
 
 
-abstract public class MechanicalHorizontalBlock extends MechanicalBlock {
-
+abstract public class MechanicalHorizontalBlock extends MechanicalBlock 
+{
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 	
-	public MechanicalHorizontalBlock(Properties properties) {
+	
+	
+	public MechanicalHorizontalBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH));
 	}
@@ -22,7 +25,8 @@ abstract public class MechanicalHorizontalBlock extends MechanicalBlock {
 	
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(Builder<Block, BlockState> builder) 
+	{
 		super.fillStateContainer(builder);
 		builder.add(FACING);
 	}

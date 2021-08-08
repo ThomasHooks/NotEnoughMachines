@@ -24,13 +24,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class FlaxPlantBlock extends CropsBlock implements IGrowable {
-
+public class FlaxPlantBlock extends CropsBlock implements IGrowable 
+{
 	public static final IntegerProperty FLAXPLANT_AGE = BlockStateProperties.AGE_0_7;
 
 	
 	
-	public FlaxPlantBlock(Properties properties) {
+	public FlaxPlantBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	}
@@ -39,7 +40,8 @@ public class FlaxPlantBlock extends CropsBlock implements IGrowable {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	protected IItemProvider getSeedsItem() {
+	protected IItemProvider getSeedsItem() 
+	{
 		return NEMItems.FLAXSEED.get();
 	}
 
@@ -47,56 +49,64 @@ public class FlaxPlantBlock extends CropsBlock implements IGrowable {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
+	{
 		return new ItemStack(this.getSeedsItem());
 	}
 
 	
 
 	@Override
-	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) 
+	{
 		return state.getBlock() instanceof FarmlandBlock;
 	}
 
 	
 
 	@Override
-	public IntegerProperty getAgeProperty() {
+	public IntegerProperty getAgeProperty() 
+	{
 		return FLAXPLANT_AGE;
 	}
 
 	
 
 	@Override
-	public int getMaxAge() {
+	public int getMaxAge() 
+	{
 		return 7;
 	}
 
 
 	
 	@Override
-	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) 
+	{
 		return !this.isMaxAge(state);
 	}
 
 	
 
 	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) 
+	{
 		return true;
 	}
 
 	
 
 	@Override
-	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) 
+	{
 		this.grow(worldIn, pos, state);
 	}
 
 	
 
 	@Override
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) 
+	{
 		builder.add(FLAXPLANT_AGE);
 	}
 }

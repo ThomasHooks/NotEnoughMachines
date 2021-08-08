@@ -17,10 +17,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class ANDGateBlock extends RedstoneTriodeBlock {
-
-	
-	public ANDGateBlock(Properties properties) {
+public class ANDGateBlock extends RedstoneTriodeBlock 
+{
+	public ANDGateBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState()
 				.with(HORIZONTAL_FACING, Direction.NORTH)
@@ -28,34 +28,42 @@ public class ANDGateBlock extends RedstoneTriodeBlock {
 				.with(NEGATED, Boolean.valueOf(false))
 				.with(POWERED, Boolean.valueOf(false)));
 	}
+
 	
 	
-	protected boolean getLogicFunction(World worldIn, BlockPos pos, BlockState state) {
-		
+	protected boolean getLogicFunction(World worldIn, BlockPos pos, BlockState state) 
+	{
 		Direction sideCW = worldIn.getBlockState(pos).get(HORIZONTAL_FACING).rotateY();
 		Direction sideCCW = worldIn.getBlockState(pos).get(HORIZONTAL_FACING).rotateYCCW();
 		
-		if(state.get(NEGATED)) {
-			if(this.getInputStrengthOnSide(worldIn, pos, state, sideCW) > 0 && this.getInputStrengthOnSide(worldIn, pos, state, sideCCW) > 0) return false;
-			else return true;
+		if(state.get(NEGATED)) 
+		{
+			if(this.getInputStrengthOnSide(worldIn, pos, state, sideCW) > 0 && this.getInputStrengthOnSide(worldIn, pos, state, sideCCW) > 0) 
+				return false;
+			else 
+				return true;
 		}
-		else {
-			if(this.getInputStrengthOnSide(worldIn, pos, state, sideCW) > 0 && this.getInputStrengthOnSide(worldIn, pos, state, sideCCW) > 0) return true;
-			else return false;
+		else 
+		{
+			if(this.getInputStrengthOnSide(worldIn, pos, state, sideCW) > 0 && this.getInputStrengthOnSide(worldIn, pos, state, sideCCW) > 0) 
+				return true;
+			else 
+				return false;
 		}
 	}
 	
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-
+	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
 		Direction direction = stateIn.get(HORIZONTAL_FACING);
 	    double d0 = (double)((float)pos.getX() + 0.5f) + (double)(rand.nextFloat() - 0.5f) * 0.2D;
 	    double d1 = (double)((float)pos.getY() + 0.4f) + (double)(rand.nextFloat() - 0.5f) * 0.2D;
 	    double d2 = (double)((float)pos.getZ() + 0.5f) + (double)(rand.nextFloat() - 0.5f) * 0.2D;
 	    float f = -5.0f;
-        if (rand.nextBoolean()) {
+        if (rand.nextBoolean()) 
+        {
             f = 4.0f;
          }
 	        
@@ -67,7 +75,11 @@ public class ANDGateBlock extends RedstoneTriodeBlock {
 	
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(Builder<Block, BlockState> builder) 
+	{
 		builder.add(HORIZONTAL_FACING, INPUT, NEGATED, POWERED);
 	}
 }
+
+
+

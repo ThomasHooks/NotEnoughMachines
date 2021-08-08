@@ -59,7 +59,7 @@ public class FlaxSeedItem extends Item implements IPlantable
 	@Override
 	public PlantType getPlantType(IBlockReader world, BlockPos pos) 
 	{
-		return PlantType.Crop;
+		return PlantType.CROP;
 	}
 
 

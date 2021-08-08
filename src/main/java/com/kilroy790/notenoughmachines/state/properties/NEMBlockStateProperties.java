@@ -6,8 +6,8 @@ import net.minecraft.state.EnumProperty;
 
 
 
-public class NEMBlockStateProperties {
-
+public class NEMBlockStateProperties 
+{
 	public static final BooleanProperty POWERED = BooleanProperty.create("powered");
 	public static final BooleanProperty SHIFTED = BooleanProperty.create("shifted");
 	public static final BooleanProperty NEGATED = BooleanProperty.create("negated");
@@ -17,10 +17,6 @@ public class NEMBlockStateProperties {
 	public static final EnumProperty<TripHammerPart> TRIPHAMMERPART = EnumProperty.create("hammerpart", TripHammerPart.class);
 	public static final EnumProperty<LargeCogwheelPart> LARGECOGWHEELPART = EnumProperty.create("cogwheelpart", LargeCogwheelPart.class);
 }
-
-
-
-
 
 
 

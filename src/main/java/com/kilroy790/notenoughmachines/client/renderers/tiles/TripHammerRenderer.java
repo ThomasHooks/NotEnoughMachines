@@ -12,11 +12,11 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.model.Material;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.inventory.container.PlayerContainer;
@@ -53,10 +53,10 @@ public class TripHammerRenderer extends TileEntityRenderer<TripHammerTile> {
 		
 		double displacement = tile.getDisplacement();
 		matrixStack.translate(0.0D, displacement, 0.0D);
-		Material hammerMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.HAMMER_HEAD);
+		RenderMaterial hammerMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.HAMMER_HEAD);
 		IVertexBuilder hammerVertexbuilder = hammerMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.hammer.render(matrixStack, hammerVertexbuilder, combinedLight, combinedOverlay);
-		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TRIPHAMMER_SHAFT);
+		RenderMaterial shaftMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.TRIPHAMMER_SHAFT);
 		IVertexBuilder shaftVertexbuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexbuilder, combinedLight, combinedOverlay);
 		matrixStack.translate(0.0D, -displacement, 0.0D);
@@ -93,7 +93,7 @@ public class TripHammerRenderer extends TileEntityRenderer<TripHammerTile> {
 		if (tile.getBlockState().get(MechanicalBlock.SHIFTED)) angle += 22.5f/180.0f * (float)Math.PI;
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
-		Material axleMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		RenderMaterial axleMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder axleVertexbuilder = axleMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.axle.render(matrixStack, axleVertexbuilder, combinedLight, combinedOverlay);
 		

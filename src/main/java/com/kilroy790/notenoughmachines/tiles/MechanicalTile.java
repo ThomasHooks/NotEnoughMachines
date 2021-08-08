@@ -349,7 +349,7 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 		compound.putInt("load", this.powerLoad);
 		compound.putInt("netload", this.networkLoad);
 		compound.putFloat("speed", this.speed);
-		compound.putString("mechtype", this.mechType.getName());
+		compound.putString("mechtype", this.mechType.getString());
 		if (this.driverPos != null) 
 			compound.put("driverpos", NBTUtil.writeBlockPos(this.driverPos));
 		

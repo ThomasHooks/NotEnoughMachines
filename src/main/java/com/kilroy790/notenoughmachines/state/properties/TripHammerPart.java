@@ -5,8 +5,8 @@ import net.minecraft.util.IStringSerializable;
 
 
 
-public enum TripHammerPart implements IStringSerializable {
-	
+public enum TripHammerPart implements IStringSerializable 
+{
 	BASE("base"),
 	LOWERFRAME("lowerframe"),
 	CAM("cam"),
@@ -16,27 +16,26 @@ public enum TripHammerPart implements IStringSerializable {
 
 	
 	
-	private TripHammerPart(String name) {
+	private TripHammerPart(String name) 
+	{
 		this.name = name;
 	}
 
 	
 	
-	public String toString() {
+	public String toString() 
+	{
 		return this.name;
 	}
 
 	
 	
 	@Override
-	public String getName() {
+	public String getString() 
+	{
 		return this.name;
 	}
 }
-
-
-
-
 
 
 

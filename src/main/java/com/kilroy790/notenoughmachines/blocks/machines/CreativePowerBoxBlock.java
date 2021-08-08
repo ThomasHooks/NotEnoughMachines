@@ -15,7 +15,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -25,23 +24,26 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class CreativePowerBoxBlock extends MechanicalBlock {
-
-	public CreativePowerBoxBlock(Properties properties) {
+public class CreativePowerBoxBlock extends MechanicalBlock 
+{
+	public CreativePowerBoxBlock(Properties properties) 
+	{
 		super(properties);
 	}
 
 	
 	
 	@Override
-	public ItemStack itemWhenDestroyed() {
+	public ItemStack itemWhenDestroyed() 
+	{
 		return new ItemStack(Items.AIR);
 	}
 
 	
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		return new CreativePowerBoxTile();
 	}
 	
@@ -49,19 +51,16 @@ public class CreativePowerBoxBlock extends MechanicalBlock {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		Style style = new Style();
-		style.setColor(TextFormatting.AQUA);
-		style.setItalic(true);
-		StringTextComponent powerText = new StringTextComponent("How did you get this?");
-		powerText.setStyle(style);
-		tooltip.add(powerText);
+	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) 
+	{
+		tooltip.add(new StringTextComponent("Power, unlimited POWER!!").mergeStyle(TextFormatting.AQUA));
 	}
 
 
 
 	@Override
-	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) 
+	{
 		return MechanicalConnectionList.triAxle(pos);
 	}
 }

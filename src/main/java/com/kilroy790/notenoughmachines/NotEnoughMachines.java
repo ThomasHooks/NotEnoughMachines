@@ -24,16 +24,12 @@ import com.kilroy790.notenoughmachines.setup.ModSetup;
 import com.kilroy790.notenoughmachines.setup.lootmodifiers.GrassLootModifier;
 import com.kilroy790.notenoughmachines.tiles.NEMTiles;
 import com.kilroy790.notenoughmachines.utilities.ClientTimer;
+import com.kilroy790.notenoughmachines.world.NEMFeatures;
+
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
@@ -42,9 +38,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 
 
 
@@ -61,7 +55,7 @@ public class NotEnoughMachines
 	public static ClientTimer CLIENT_TIMER = new ClientTimer();
 	
 	public static ModSetup setup = new ModSetup();
-	//Test
+	
 	public NotEnoughMachines() 
 	{
 		INSTANCE = this;
@@ -71,6 +65,7 @@ public class NotEnoughMachines
 		modEventBus.addListener(this::clientRegistries);
 		
 		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.addListener(NEMFeatures::addFeatures);
 		
 		LOGGER.info("registering all NEM Blocks");
 		NEMBlocks.registerAll(modEventBus);
@@ -129,15 +124,20 @@ public class NotEnoughMachines
 	
 	
 	
-	@SubscribeEvent
-	public static void worldGenEvent(FMLLoadCompleteEvent event) 
-	{
-		for (Biome biome : ForgeRegistries.BIOMES) 
-		{
-			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, NEMBlocks.COPPERORE.get().getDefaultState(), 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(20, 32, 0, 128))));
-			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, NEMBlocks.FLUXSTONE.get().getDefaultState(), 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 196))));
-		}
-	}
+//	@SubscribeEvent
+//	public static void worldGenEvent(FMLLoadCompleteEvent event) Moved to world.NEMFeatures.addFeatures
+//	{
+//		for (Biome biome : ForgeRegistries.BIOMES) 
+//		{
+//			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
+//					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, NEMBlocks.COPPERORE.get().getDefaultState(), 9))
+//					.withPlacement(Placement.RANGE.configure(new CountRangeConfig(20, 32, 0, 128))));
+//			
+//			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
+//					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, NEMBlocks.FLUXSTONE.get().getDefaultState(), 33))
+//					.withPlacement(Placement.RANGE.configure(new CountRangeConfig(10, 0, 0, 196))));
+//		}
+//	}
 	
 	
 	

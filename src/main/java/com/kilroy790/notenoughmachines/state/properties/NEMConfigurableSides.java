@@ -7,9 +7,8 @@ import net.minecraft.util.IStringSerializable;
 
 
 
-public enum NEMConfigurableSides implements IStringSerializable{
-
-	
+public enum NEMConfigurableSides implements IStringSerializable
+{
 	NONE("none"),
 	INPUT("input"),
 	OUTPUT("output");
@@ -17,13 +16,18 @@ public enum NEMConfigurableSides implements IStringSerializable{
 	final String type;
 	
 	
-	NEMConfigurableSides(String typeIn){
+	
+	NEMConfigurableSides(String typeIn)
+	{
 		this.type = typeIn;
 	}
 
 	@Override
-	public String getName() {
-		
+	public String getString() 
+	{	
 		return this.toString().toLowerCase(Locale.ENGLISH);
 	}
 }
+
+
+

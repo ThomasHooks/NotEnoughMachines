@@ -39,7 +39,8 @@ public class MillstoneContainer extends Container
 		this.playerInv = new InvWrapper(playerInvIn);
 		
 		//add the millstone item slots
-		tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
+		tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> 
+		{
 			//add input slot
 			addSlot(new SlotItemHandler(h, 0, 61, 17));
 			//add output slot

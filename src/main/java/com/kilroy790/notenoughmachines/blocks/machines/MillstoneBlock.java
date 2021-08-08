@@ -41,12 +41,14 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 
 
-public class MillstoneBlock extends MechanicalBlock {
-
+public class MillstoneBlock extends MechanicalBlock 
+{
 	public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
+	
 
-	public MillstoneBlock(Properties properties) {
+	public MillstoneBlock(Properties properties) 
+	{
 		super(properties);
 		this.setDefaultState(this.getDefaultState().with(LIT, Boolean.valueOf(false)));
 	}
@@ -54,17 +56,21 @@ public class MillstoneBlock extends MechanicalBlock {
 
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-
-		if (world.isRemote) {
+	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) 
+	{
+		if (world.isRemote) 
+		{
 			return ActionResultType.SUCCESS; 
 		}
-		else {
+		else 
+		{
 			TileEntity entity = world.getTileEntity(pos);
-			if (entity instanceof INamedContainerProvider) {
+			if (entity instanceof INamedContainerProvider) 
+			{
 				NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) entity, entity.getPos());
 			} 
-			else {
+			else 
+			{
 				throw new IllegalStateException("Millstone container provider is missing!");
 			}
 			return ActionResultType.SUCCESS;
@@ -75,9 +81,10 @@ public class MillstoneBlock extends MechanicalBlock {
 
 	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-
+		
 		TileEntity tile = worldIn.getTileEntity(pos);
-		if (tile instanceof MillstoneTile) {
+		if (tile instanceof MillstoneTile) 
+		{
 			NEMItemHelper.dropItemHandlerInventory(tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).orElse(null), worldIn, pos);
 		}
 		super.onBlockHarvested(worldIn, pos, state, player);
@@ -87,8 +94,10 @@ public class MillstoneBlock extends MechanicalBlock {
 
 	@Override
 	@OnlyIn(Dist.CLIENT) 
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		if (stateIn.get(LIT)) {
+	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
+		if (stateIn.get(LIT)) 
+		{
 			double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
 			double d1 = (double)pos.getY() + 0.6D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
@@ -100,14 +109,16 @@ public class MillstoneBlock extends MechanicalBlock {
 
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
+	{
 		return NEMBlockShapes.MILLSTONE;
 	}
 
 
 
 	@Override
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) 
+	{
 		super.fillStateContainer(builder);
 		builder.add(LIT);
 	}
@@ -115,7 +126,8 @@ public class MillstoneBlock extends MechanicalBlock {
 
 
 	@Override
-	public ItemStack itemWhenDestroyed() {
+	public ItemStack itemWhenDestroyed() 
+	{
 		int rand = (int)(Math.random() * 4.0D);
 		return new ItemStack(Items.SMOOTH_STONE_SLAB, rand + 1);
 	}
@@ -123,21 +135,24 @@ public class MillstoneBlock extends MechanicalBlock {
 
 
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		return new MillstoneTile();
 	}
 
 
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state) { 
+	public BlockRenderType getRenderType(BlockState state) 
+	{ 
 		return BlockRenderType.MODEL;
 	}
 
 
 
 	@Override
-	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) {
+	public ArrayList<MechanicalContext> getIO(World world, BlockPos pos, BlockState state) 
+	{
 		return MechanicalConnectionList.monoAxle(pos, Direction.Axis.Y);
 	}
 }

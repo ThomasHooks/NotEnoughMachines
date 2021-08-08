@@ -321,15 +321,15 @@ public class RecipesDataGen extends RecipeProvider
 		
 		
 		
-		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.AXLE.get(), 2)
-		.patternLine("#")
-		.patternLine("#")
-		.patternLine("b")
-		.key('#', NEMItemTags.STRIPPED_LOGS)
-		.key('b', NEMItems.LINSEEDOIL.get())
-		.setGroup("nem:axle")
-		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
-		.build(consumer);
+//		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.AXLE.get(), 2)
+//		.patternLine("#")
+//		.patternLine("#")
+//		.patternLine("b")
+//		.key('#', NEMItemTags.STRIPPED_LOGS)
+//		.key('b', NEMItems.LINSEEDOIL.get())
+//		.setGroup("nem:axle")
+//		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
+//		.build(consumer);
 		
 		
 		
@@ -421,17 +421,17 @@ public class RecipesDataGen extends RecipeProvider
 		
 		
 		
-		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.TRIPHAMMER.get())
-		.patternLine("#l#")
-		.patternLine("#x#")
-		.patternLine("#=#")
-		.key('l', NEMBlocks.AXLE.get())
-		.key('#', NEMItemTags.STRIPPED_LOGS)
-		.key('x', NEMBlocks.GEARBOX.get())
-		.key('=', NEMItems.HAMMER_AND_ANVIL.get())
-		.setGroup("nem:triphammer")
-		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
-		.build(consumer);
+//		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.TRIPHAMMER.get())
+//		.patternLine("#l#")
+//		.patternLine("#x#")
+//		.patternLine("#=#")
+//		.key('l', NEMBlocks.AXLE.get())
+//		.key('#', NEMItemTags.STRIPPED_LOGS)
+//		.key('x', NEMBlocks.GEARBOX.get())
+//		.key('=', NEMItems.HAMMER_AND_ANVIL.get())
+//		.setGroup("nem:triphammer")
+//		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+//		.build(consumer);
 		
 		
 		

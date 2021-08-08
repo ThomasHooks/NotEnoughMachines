@@ -11,9 +11,9 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Vector3f;
-import net.minecraft.client.renderer.model.Material;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.renderer.model.RenderMaterial;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.inventory.container.PlayerContainer;
@@ -73,22 +73,22 @@ public class SmallCogRenderer extends TileEntityRenderer<SmallCogwheelTile> {
 		matrixStack.rotate(Vector3f.YP.rotation(-angle));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
 		
-		Material shaftMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
+		RenderMaterial shaftMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.AXLE);
 		IVertexBuilder shaftVertexbuilder = shaftMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		this.shaft.render(matrixStack, shaftVertexbuilder, combinedLightIn, combinedOverlayIn);
 		
-		Material wheel1Material = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_OUT);
+		RenderMaterial wheel1Material = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_OUT);
 		IVertexBuilder wheel1Vertexbuilder = wheel1Material.getBuffer(buffer, RenderType::getEntityCutout);
 		this.wheel1.render(matrixStack, wheel1Vertexbuilder, combinedLightIn, combinedOverlayIn);
 		
 		matrixStack.translate(0.5D, 0.5D, 0.5D);
 		matrixStack.rotate(Vector3f.YP.rotationDegrees(45.0f));
 		matrixStack.translate(-0.5D, -0.5D, -0.5D);
-		Material wheel2Material = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_IN);
+		RenderMaterial wheel2Material = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_IN);
 		IVertexBuilder wheel2Vertexbuilder = wheel2Material.getBuffer(buffer, RenderType::getEntityCutout);
 		this.wheel2.render(matrixStack, wheel2Vertexbuilder, combinedLightIn, combinedOverlayIn);
 		
-		Material toothMaterial = new Material(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_TOOTH);
+		RenderMaterial toothMaterial = new RenderMaterial(PlayerContainer.LOCATION_BLOCKS_TEXTURE, NEMTextures.SMALLCOG_TOOTH);
 		IVertexBuilder toothVertexBuilder = toothMaterial.getBuffer(buffer, RenderType::getEntityCutout);
 		for(int i = 0; i < NUMBER_OF_TEETH; i++) {
 			matrixStack.translate(0.5D, 0.5D, 0.5D);

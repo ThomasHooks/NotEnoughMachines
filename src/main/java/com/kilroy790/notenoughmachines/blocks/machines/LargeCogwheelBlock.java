@@ -39,6 +39,8 @@ public class LargeCogwheelBlock extends MechanicalShaftBlock
 {
 	public static final EnumProperty<LargeCogwheelPart> PART = NEMBlockStateProperties.LARGECOGWHEELPART;
 
+	
+	
 	public LargeCogwheelBlock(Properties properties) 
 	{
 		super(properties);
@@ -175,7 +177,7 @@ public class LargeCogwheelBlock extends MechanicalShaftBlock
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player) 
 	{		
-		if (!world.isRemote() && !player.isCreative() && player.canHarvestBlock(state))
+		if (!world.isRemote() && !player.isCreative() && player.func_234569_d_(state))	//canHarvestBlock
 		{
 			spawnDrops(state.with(PART, LargeCogwheelPart.MID), world, pos, (TileEntity)null, player, player.getHeldItemMainhand());
 		}

@@ -5,8 +5,8 @@ import net.minecraft.util.IStringSerializable;
 
 
 
-public enum LargeCogwheelPart implements IStringSerializable {
-	
+public enum LargeCogwheelPart implements IStringSerializable 
+{
 	TOPLEFT("topleft"),
 	TOP("top"),
 	TOPRIGHT("topright"),
@@ -21,27 +21,26 @@ public enum LargeCogwheelPart implements IStringSerializable {
 
 	
 	
-	private LargeCogwheelPart(String name) {
+	private LargeCogwheelPart(String name) 
+	{
 		this.name = name;
 	}
 
 	
 	
-	public String toString() {
+	public String toString() 
+	{
 		return this.name;
 	}
 
 	
 	
 	@Override
-	public String getName() {
+	public String getString() 
+	{
 		return this.name;
 	}
 }
-
-
-
-
 
 
 

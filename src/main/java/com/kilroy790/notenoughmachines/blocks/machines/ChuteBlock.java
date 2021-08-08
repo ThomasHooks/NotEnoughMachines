@@ -19,9 +19,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class ChuteBlock extends ItemConduitBlock {
-
-	public ChuteBlock(Properties properties) {
+public class ChuteBlock extends ItemConduitBlock 
+{
+	public ChuteBlock(Properties properties) 
+	{
 		super(properties);
 	}
 	
@@ -29,13 +30,14 @@ public class ChuteBlock extends ItemConduitBlock {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		
-		if (NEMInputHelper.isPressingShift()) {
+	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) 
+	{
+		if (NEMInputHelper.isPressingShift()) 
+		{
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Pushes items forward").applyTextStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("Pushes items forward").mergeStyle(TextFormatting.GREEN));
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Hold " + "\u00A72" + "Shift" + "\u00A77" + " to reverse while placing").applyTextStyle(TextFormatting.GRAY));
+			tooltip.add(new StringTextComponent("Hold " + "\u00A72" + "Shift" + "\u00A77" + " to reverse while placing").mergeStyle(TextFormatting.GRAY));
 		}
 		else {
 			tooltip.add(new StringTextComponent(NEMInputHelper.MORE_INFO_PRESS_SHIFT));
@@ -45,7 +47,8 @@ public class ChuteBlock extends ItemConduitBlock {
 	
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) 
+	{
 		return new ChuteTile();
 	}
 }

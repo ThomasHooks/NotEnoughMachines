@@ -3,8 +3,8 @@ package com.kilroy790.notenoughmachines.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
@@ -44,11 +44,11 @@ public class PanelBlock extends Block implements IWaterLoggable
 	{
 		BlockPos pos = context.getPos();
 		Direction facing = context.getFace().getOpposite();
-		IFluidState ifluidstate = context.getWorld().getFluidState(pos);
+		FluidState fluid = context.getWorld().getFluidState(pos);
 		if (context.getWorld().getBlockState(pos.offset(facing)).getBlock() == this) 
-			return this.getDefaultState().with(FACING, context.getWorld().getBlockState(pos.offset(facing)).get(FACING)).with(WATERLOGGED, Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));
+			return this.getDefaultState().with(FACING, context.getWorld().getBlockState(pos.offset(facing)).get(FACING)).with(WATERLOGGED, Boolean.valueOf(fluid.getFluid() == Fluids.WATER));
 		else 
-			return this.getDefaultState().with(FACING, facing).with(WATERLOGGED, Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));
+			return this.getDefaultState().with(FACING, facing).with(WATERLOGGED, Boolean.valueOf(fluid.getFluid() == Fluids.WATER));
 	}
 	
 	

@@ -6,7 +6,8 @@ import net.minecraft.util.IStringSerializable;
 
 
 
-public enum InputDualType implements IStringSerializable {
+public enum InputDualType implements IStringSerializable 
+{
 	IN00("in00"),
 	IN01("in01"),
 	IN10("in10"),
@@ -15,18 +16,27 @@ public enum InputDualType implements IStringSerializable {
 	private final String name;
 
 	
-	private InputDualType(String name) {
+	
+	private InputDualType(String name) 
+	{
 		this.name = name;
 	}
 
 	
-	public String toString() {
+	
+	public String toString() 
+	{
 		return this.name;
 	}
 
 	
+	
 	@Override
-	public String getName() {
+	public String getString() 
+	{
 		return this.name;
 	}
 }
+
+
+

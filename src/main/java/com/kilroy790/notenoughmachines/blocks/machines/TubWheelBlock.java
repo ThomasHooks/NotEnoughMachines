@@ -46,7 +46,7 @@ public class TubWheelBlock extends MechanicalBlock
 		if (NEMInputHelper.isPressingShift()) 
 		{
 			tooltip.add(new StringTextComponent(""));
-			tooltip.add(new StringTextComponent("Creates mechanical power from flowing water").applyTextStyle(TextFormatting.GREEN));
+			tooltip.add(new StringTextComponent("Creates mechanical power from flowing water").mergeStyle(TextFormatting.GREEN));
 		}
 		else 
 		{

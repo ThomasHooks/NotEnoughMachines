@@ -5,8 +5,8 @@ import net.minecraft.util.IStringSerializable;
 
 
 
-public enum MechanicalType implements IStringSerializable {
-	
+public enum MechanicalType implements IStringSerializable 
+{	
 	SOURCE("source"),
 	SHAFT("shaft"),
 	COG("cog"),
@@ -16,27 +16,31 @@ public enum MechanicalType implements IStringSerializable {
 	
 	
 	
-	private MechanicalType(String tagIn) {
+	private MechanicalType(String tagIn) 
+	{
 		this.tag = tagIn;
 	}
 
 	
 	
 	@Override
-	public String getName() {
+	public String getString() 
+	{
 		return this.tag;
 	}
 	
 	
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return this.tag;
 	}
 	
 	
 	
-	static public MechanicalType byName(String tagIn) {
+	static public MechanicalType byName(String tagIn) 
+	{
 		switch(tagIn) {
 		
 		case "source":
