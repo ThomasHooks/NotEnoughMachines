@@ -38,11 +38,11 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	
 	
 	
-	public MechanicalTile(int powerCapacity, int powerLoad, MechanicalType type, TileEntityType<?> tileEntityTypeIn) 
+	public MechanicalTile(int startPowerCapacity, int startPowerLoad, MechanicalType type, TileEntityType<?> tileEntityTypeIn) 
 	{
 		super(tileEntityTypeIn);
-		this.powerCapacity = powerCapacity;
-		this.powerLoad = powerLoad;
+		this.powerCapacity = startPowerCapacity;
+		this.powerLoad = startPowerLoad;
 		this.mechType = type;
 	}
 	
@@ -69,10 +69,6 @@ abstract public class MechanicalTile extends NEMBaseTile implements ITickableTil
 	@Override
 	public void remove() 
 	{
-//		if (!world.isRemote) 
-//		{
-//			NotEnoughMachines.AETHER.removeFromPowerNetwork(this);
-//		}
 		super.remove();
 	}
 	

@@ -15,57 +15,49 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class SmallWindWheelTile extends MechanicalTile {
-	
+public class SmallWindWheelTile extends MechanicalTile 
+{
 	protected float speedModifier = 1.0f;
 	private static final int BASE_POWER_CAPACITY = 200;
 	private static final float BASE_SPEED = 12.0f;
 	public static final int WINDWHEEL_RADIUS = 8;
 	
-	public SmallWindWheelTile() {
-		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, NEMTiles.SMALLWINDWHEEL.get());
+	
+	
+	public SmallWindWheelTile() 
+	{
+		super(0, 0, MechanicalType.SOURCE, NEMTiles.SMALLWINDWHEEL.get());
 	}
 	
 	
 	
 	@Override
-	public void tick() {
-		if (!this.world.isRemote()) {
-			if (world.getGameTime() % 40 == 1) {
+	public void tick() 
+	{
+		if (!this.world.isRemote()) 
+		{
+			if (world.getGameTime() % 40 == 1) 
+			{
 				updateWindSpeed();
 				setCapacity((int)(BASE_POWER_CAPACITY * Math.abs(speedModifier)));
 			}
-			if (this.isPowered()) changeSpeed(this, BASE_SPEED * (float)speedModifier);
+			if (this.isPowered()) 
+				changeSpeed(this, BASE_SPEED * (float)speedModifier);
 		}
 		super.tick();
 	}
 	
 	
 	
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public AxisAlignedBB getRenderBoundingBox() {
-		return new AxisAlignedBB(getPos()).grow((double)WINDWHEEL_RADIUS);
-	}
-	
-	
-	
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public double getMaxRenderDistanceSquared() {
-		return 4096.0D * 4.0D;
-	}
-	
-	
-	
 	protected void updateWindSpeed() {
 		
-		if (!validateArea()) {
-			this.speedModifier = 0.0f;
+		if (!isAreaValid()) 
+		{
+			this.stop();
 			return;
 		}
-		switch (this.getBlockState().get(MechanicalHorizontalBlock.FACING)) {
-		
+		switch (this.getBlockState().get(MechanicalHorizontalBlock.FACING)) 
+		{
 		case EAST:
 		case NORTH:
 			if (world.isThundering()) this.speedModifier = 2.0f;
@@ -88,37 +80,55 @@ public class SmallWindWheelTile extends MechanicalTile {
 	
 	
 	/**
-	 * @return True if the area is valid
+	 * Checks if there are blocks blocking this wind wheel's path, and that the wind wheel is above ground
+	 * 
+	 * @return True if the wind wheel is unobstructed
 	 */
-	public boolean validateArea() {
-
+	public boolean isAreaValid() 
+	{
 		boolean valid = false;
-		if (world.canBlockSeeSky(pos) && world.getBlockState(pos).getBlock() == NEMBlocks.SMALLWINDWHEEL.get()) {
-
+		if (world.canBlockSeeSky(pos) && world.getBlockState(pos).getBlock() == NEMBlocks.SMALLWINDWHEEL.get()) 
+		{
 			Direction direction = this.getBlockState().get(SmallWindWheelBlock.FACING);
-			for (int y = -WINDWHEEL_RADIUS; y <= WINDWHEEL_RADIUS; y++) {
-				for (int hor = -WINDWHEEL_RADIUS; hor <= WINDWHEEL_RADIUS; hor++) {
-
+			for (int y = -WINDWHEEL_RADIUS; y <= WINDWHEEL_RADIUS; y++) 
+			{
+				for (int hor = -WINDWHEEL_RADIUS; hor <= WINDWHEEL_RADIUS; hor++) 
+				{
 					int x = 0;
 					int z = 0;
-					if (direction == Direction.NORTH || direction == Direction.SOUTH) x = hor;
-					else z = hor;
-
+					if (direction == Direction.NORTH || direction == Direction.SOUTH) 
+						x = hor;
+					else 
+						z = hor;
+					
 					BlockPos nextPos = pos.add(x, y, z);
-					if (x == 0 && y == 0 && z == 0) continue;
-
+					if (x == 0 && y == 0 && z == 0) 
+						continue;
+					
 					valid = world.isAirBlock(nextPos);
-					if (!valid) return false;
+					if (!valid) 
+						return false;
 				}
 			}
 		}
 		return valid;
 	}
+	
+	
+	
+	/**
+	 * Causes this wind wheel to temporarily stop rotating
+	 */
+	public void stop()
+	{
+		this.speedModifier = 0.0f;
+	}
 
 
 
 	@Override
-	protected void readCustom(CompoundNBT compound) {
+	protected void readCustom(CompoundNBT compound) 
+	{
 		this.speedModifier = compound.getFloat("speedfactor");
 		super.readCustom(compound);
 	}
@@ -126,9 +136,28 @@ public class SmallWindWheelTile extends MechanicalTile {
 
 
 	@Override
-	protected CompoundNBT writeCustom(CompoundNBT compound) {
+	protected CompoundNBT writeCustom(CompoundNBT compound) 
+	{
 		compound.putFloat("speedfactor", this.speedModifier);
 		return super.writeCustom(compound);
+	}
+	
+	
+	
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox() 
+	{
+		return new AxisAlignedBB(getPos()).grow((double)WINDWHEEL_RADIUS);
+	}
+	
+	
+	
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public double getMaxRenderDistanceSquared() 
+	{
+		return 4096.0D * 4.0D;
 	}
 }
 

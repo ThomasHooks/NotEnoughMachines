@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
-import com.kilroy790.notenoughmachines.data.NEMItemTags;
+import com.kilroy790.notenoughmachines.data.NEMTags;
 import com.kilroy790.notenoughmachines.items.NEMItems;
 
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
@@ -321,15 +321,15 @@ public class RecipesDataGen extends RecipeProvider
 		
 		
 		
-//		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.AXLE.get(), 2)
-//		.patternLine("#")
-//		.patternLine("#")
-//		.patternLine("b")
-//		.key('#', NEMItemTags.STRIPPED_LOGS)
-//		.key('b', NEMItems.LINSEEDOIL.get())
-//		.setGroup("nem:axle")
-//		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
-//		.build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.AXLE.get(), 2)
+		.patternLine("#")
+		.patternLine("#")
+		.patternLine("b")
+		.key('#', NEMTags.Items.STRIPPED_LOGS)
+		.key('b', NEMItems.LINSEEDOIL.get())
+		.setGroup("nem:axle")
+		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
+		.build(consumer);
 		
 		
 		

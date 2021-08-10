@@ -12,7 +12,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -48,30 +47,6 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock
 	public SmallWindWheelBlock(Properties properties) 
 	{
 		super(properties);
-	}
-
-
-
-	@Override
-	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-
-		if (placer == null || world.isRemote) 
-			return;
-
-		Direction dir = placer.getHorizontalFacing();
-		SmallWindWheelTile tile = (SmallWindWheelTile) world.getTileEntity(pos);
-		if (!tile.validateArea()) 
-		{
-			placer.sendMessage(new StringTextComponent("Wind Wheel needs 16x16x1 area of free space").mergeStyle(TextFormatting.RED), placer.getUniqueID());
-			world.destroyBlock(pos, true);
-		}
-		
-		Block nextBlock = world.getBlockState(pos.offset(dir)).getBlock();
-		if (!(nextBlock instanceof MechanicalBlock)) 
-		{
-			placer.sendMessage(new StringTextComponent("Wind Wheel must be placed on a machine").mergeStyle(TextFormatting.RED), placer.getUniqueID());
-			world.destroyBlock(pos, true);
-		}
 	}
 
 
@@ -150,10 +125,6 @@ public class SmallWindWheelBlock extends MechanicalHorizontalBlock
 		return MechanicalConnectionList.monoAxle(pos, state.get(FACING).getAxis());
 	}
 }
-
-
-
-
 
 
 

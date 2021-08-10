@@ -28,7 +28,7 @@ public class TubWheelTile extends MechanicalTile
 	
 	public TubWheelTile() 
 	{
-		super(BASE_POWER_CAPACITY, 0, MechanicalType.SOURCE, NEMTiles.TUBWHEEL.get());
+		super(0, 0, MechanicalType.SOURCE, NEMTiles.TUBWHEEL.get());
 		
 		for (Direction dir : Direction.Plane.HORIZONTAL) 
 		{

@@ -24,8 +24,6 @@ import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -106,11 +104,6 @@ public class GearboxBlock extends MechanicalBlock
 			double d1 = (double)pos.getY() + 1.0D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
 			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-	      
-			if (rand.nextDouble() < 0.05D) 
-			{
-				worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_MINECART_INSIDE, SoundCategory.BLOCKS, 0.025F, 0.75F, false);
-			}
 		}
 	}
 	
