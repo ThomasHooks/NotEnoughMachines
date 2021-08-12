@@ -3,8 +3,6 @@ package com.kilroy790.notenoughmachines.tiles;
 import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
 import com.kilroy790.notenoughmachines.blocks.machines.MechanicalHorizontalBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
-import com.kilroy790.notenoughmachines.power.MechanicalType;
-
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -15,61 +13,48 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class SmallWindWheelTile extends MechanicalTile 
+public class SmallWindWheelTile extends MechanicalGeneratorTile 
 {
-	protected float speedModifier = 1.0f;
-	private static final int BASE_POWER_CAPACITY = 200;
-	private static final float BASE_SPEED = 12.0f;
 	public static final int WINDWHEEL_RADIUS = 8;
 	
 	
 	
 	public SmallWindWheelTile() 
 	{
-		super(0, 0, MechanicalType.SOURCE, NEMTiles.SMALLWINDWHEEL.get());
+		super(NEMTiles.SMALLWINDWHEEL.get());
+		this.speedModifier = 1.0f;
 	}
-	
-	
-	
+
+
+
 	@Override
-	public void tick() 
+	protected void updateSpeed() 
 	{
-		if (!this.world.isRemote()) 
-		{
-			if (world.getGameTime() % 40 == 1) 
-			{
-				updateWindSpeed();
-				setCapacity((int)(BASE_POWER_CAPACITY * Math.abs(speedModifier)));
-			}
-			if (this.isPowered()) 
-				changeSpeed(this, BASE_SPEED * (float)speedModifier);
-		}
-		super.tick();
-	}
-	
-	
-	
-	protected void updateWindSpeed() {
-		
 		if (!isAreaValid()) 
 		{
-			this.stop();
+			this.speedModifier = 0.0f;
 			return;
 		}
 		switch (this.getBlockState().get(MechanicalHorizontalBlock.FACING)) 
 		{
 		case EAST:
 		case NORTH:
-			if (world.isThundering()) this.speedModifier = 2.0f;
-			else if (world.isRaining()) this.speedModifier = 1.33f;
-			else this.speedModifier = 1.0f;
+			if (world.isThundering()) 
+				this.speedModifier = 2.0f;
+			else if (world.isRaining()) 
+				this.speedModifier = 1.33f;
+			else 
+				this.speedModifier = 1.0f;
 			break;
 			
 		case SOUTH:
 		case WEST:
-			if (world.isThundering()) this.speedModifier = -2.0f;
-			else if (world.isRaining()) this.speedModifier = -1.33f;
-			else this.speedModifier = -1.0f;
+			if (world.isThundering()) 
+				this.speedModifier = -2.0f;
+			else if (world.isRaining()) 
+				this.speedModifier = -1.33f;
+			else 
+				this.speedModifier = -1.0f;
 			break;
 			
 		default:
@@ -113,16 +98,6 @@ public class SmallWindWheelTile extends MechanicalTile
 		}
 		return valid;
 	}
-	
-	
-	
-	/**
-	 * Causes this wind wheel to temporarily stop rotating
-	 */
-	public void stop()
-	{
-		this.speedModifier = 0.0f;
-	}
 
 
 
@@ -159,11 +134,23 @@ public class SmallWindWheelTile extends MechanicalTile
 	{
 		return 4096.0D * 4.0D;
 	}
+
+
+
+	@Override
+	public float getBaseSpeed() 
+	{
+		return 12.0f;
+	}
+
+
+
+	@Override
+	public int getBasePowerCapacity() 
+	{
+		return 200;
+	}
 }
-
-
-
-
 
 
 

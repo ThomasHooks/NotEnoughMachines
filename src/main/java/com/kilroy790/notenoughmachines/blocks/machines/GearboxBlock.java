@@ -2,8 +2,6 @@ package com.kilroy790.notenoughmachines.blocks.machines;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import com.kilroy790.notenoughmachines.power.MechanicalConnectionList;
 import com.kilroy790.notenoughmachines.power.MechanicalContext;
 import com.kilroy790.notenoughmachines.state.properties.NEMBlockStateProperties;
@@ -17,7 +15,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer.Builder;
@@ -94,18 +91,18 @@ public class GearboxBlock extends MechanicalBlock
 	* this method is unrelated to {@link randomTick} and {@link #needsRandomTick}, and will always be called regardless
 	* of whether the block can receive random update ticks
 	*/
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
-	{
-		if (stateIn.get(POWERED)) 
-		{
-			double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
-			double d1 = (double)pos.getY() + 1.0D + (rand.nextDouble() - 0.5D) * 0.2D;
-			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
-			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-		}
-	}
+//	@Override
+//	@OnlyIn(Dist.CLIENT)
+//	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+//	{
+//		if (stateIn.get(POWERED)) 
+//		{
+//			double d0 = (double)pos.getX() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
+//			double d1 = (double)pos.getY() + 1.0D + (rand.nextDouble() - 0.5D) * 0.2D;
+//			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
+//			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+//		}
+//	}
 	
 	
 	
@@ -141,10 +138,6 @@ public class GearboxBlock extends MechanicalBlock
 		return MechanicalConnectionList.biAxle(pos, state.get(AXIS));
 	}
 }
-
-
-
-
 
 
 

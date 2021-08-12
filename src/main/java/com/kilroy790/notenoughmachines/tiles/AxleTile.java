@@ -9,9 +9,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 
 
-public class AxleTile extends MechanicalTile {
-	
-	public AxleTile() {
+public class AxleTile extends MechanicalTile 
+{	
+	public AxleTile() 
+	{
 		super(72, 0, MechanicalType.SHAFT, NEMTiles.AXLE.get());
 	}
 	
@@ -19,14 +20,11 @@ public class AxleTile extends MechanicalTile {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public AxisAlignedBB getRenderBoundingBox() {
+	public AxisAlignedBB getRenderBoundingBox() 
+	{
 		return new AxisAlignedBB(getPos()).grow(1.0D);
 	}
 }
-
-
-
-
 
 
 
