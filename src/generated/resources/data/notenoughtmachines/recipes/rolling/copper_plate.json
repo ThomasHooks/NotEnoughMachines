@@ -1,0 +1,11 @@
+{
+  "type": "notenoughtmachines:rolling",
+  "group": "nem:copper_plate",
+  "ingredient": {
+    "item": "notenoughtmachines:copper_ingot"
+  },
+  "result": {
+    "item": "notenoughtmachines:copper_plate"
+  },
+  "processtime": 200
+}

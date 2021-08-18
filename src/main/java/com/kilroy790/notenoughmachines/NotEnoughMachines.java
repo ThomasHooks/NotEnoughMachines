@@ -6,12 +6,14 @@ import org.apache.logging.log4j.Logger;
 import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
 import com.kilroy790.notenoughmachines.client.gui.screen.FilterScreen;
 import com.kilroy790.notenoughmachines.client.gui.screen.MillstoneScreen;
+import com.kilroy790.notenoughmachines.client.gui.screen.RollingMillScreen;
 import com.kilroy790.notenoughmachines.client.gui.screen.TripHammerScreen;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.AxleRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.EnclosedAxleRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.GearboxRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.LargeCogwheelRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.MillstoneRenderer;
+import com.kilroy790.notenoughmachines.client.renderers.tiles.RollingMillRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallCogRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.SmallWindWheelRenderer;
 import com.kilroy790.notenoughmachines.client.renderers.tiles.TripHammerRenderer;
@@ -113,31 +115,16 @@ public class NotEnoughMachines
 		TubWheelRenderer.register();
 		SmallWindWheelRenderer.register();
 		TripHammerRenderer.register();
+		RollingMillRenderer.register();
 		
 		LOGGER.info("Registering all NEM Containers");
 		ScreenManager.registerFactory(NEMContainers.MILLSTONE.get(), MillstoneScreen::new);
 		ScreenManager.registerFactory(NEMContainers.TRIPHAMMER.get(), TripHammerScreen::new);
+		ScreenManager.registerFactory(NEMContainers.ROLLING_MILL.get(), RollingMillScreen::new);
 		ScreenManager.registerFactory(NEMContainers.FILTER.get(), FilterScreen::new);
 		
 		LOGGER.info("All NEM Client side entries registered");
 	}
-	
-	
-	
-//	@SubscribeEvent
-//	public static void worldGenEvent(FMLLoadCompleteEvent event) Moved to world.NEMFeatures.addFeatures
-//	{
-//		for (Biome biome : ForgeRegistries.BIOMES) 
-//		{
-//			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
-//					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, NEMBlocks.COPPERORE.get().getDefaultState(), 9))
-//					.withPlacement(Placement.RANGE.configure(new CountRangeConfig(20, 32, 0, 128))));
-//			
-//			biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
-//					new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, NEMBlocks.FLUXSTONE.get().getDefaultState(), 33))
-//					.withPlacement(Placement.RANGE.configure(new CountRangeConfig(10, 0, 0, 196))));
-//		}
-//	}
 	
 	
 	

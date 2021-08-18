@@ -76,6 +76,11 @@ public class NEMItems
 	
 	
 	
+	public static final RegistryObject<Item> WOODEN_FRAME = ITEMS.register("wooden_frame", 
+			()-> new BlockItem(NEMBlocks.WOODEN_FRAME.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
 	public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushedironore", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -102,6 +107,16 @@ public class NEMItems
 	
 	
 	public static final RegistryObject<Item> COPPER_INGOT = ITEMS.register("copper_ingot", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("ironplate", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 
 	
@@ -151,6 +166,11 @@ public class NEMItems
 	
 	
 	public static final RegistryObject<Item> HAMMER_AND_ANVIL = ITEMS.register("hammer_and_anvil", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> ROLLERS = ITEMS.register("rollers", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
@@ -207,6 +227,11 @@ public class NEMItems
 	
 	public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone", 
 			()-> new BlockItem(NEMBlocks.MILLSTONE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> ROLLING_MILL = ITEMS.register("rollingmill", 
+			()-> new BlockItem(NEMBlocks.ROLLING_MILL.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	

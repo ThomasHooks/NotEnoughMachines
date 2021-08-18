@@ -16,6 +16,7 @@ import net.minecraft.data.RecipeProvider;
 import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
 
@@ -64,6 +65,19 @@ public class RecipesDataGen extends RecipeProvider
 		.key('#', NEMItems.LINEN.get())
 		.setGroup("nem:linenblock")
 		.addCriterion("flax", InventoryChangeTrigger.Instance.forItems(NEMItems.FLAXSEED.get()))
+		.build(consumer);
+
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.WOODEN_FRAME.get(), 8)
+		.patternLine("x#x")
+		.patternLine("#o#")
+		.patternLine("x#x")
+		.key('#', NEMTags.Items.STRIPPED_LOGS)
+		.key('x', ItemTags.PLANKS)
+		.key('o', NEMItems.LINSEEDOIL.get())
+		.setGroup("nem:wooden_frame")
+		.addCriterion("wood", InventoryChangeTrigger.Instance.forItems(Items.ACACIA_LOG, Items.BIRCH_LOG, Items.DARK_OAK_LOG, Items.JUNGLE_LOG, Items.OAK_LOG, Items.SPRUCE_LOG))
 		.build(consumer);
 
 		
@@ -233,6 +247,18 @@ public class RecipesDataGen extends RecipeProvider
 		.key('#', Blocks.IRON_BLOCK)
 		.key('=', Blocks.ANVIL)
 		.setGroup("nem:hammer_and_anvil")
+		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.build(consumer);
+		
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(NEMItems.ROLLERS.get())
+		.patternLine("=#x")
+		.patternLine("=#x")
+		.key('=', NEMBlocks.AXLE.get())
+		.key('#', Blocks.IRON_BLOCK)
+		.key('x', NEMBlocks.SMALLCOG.get())
+		.setGroup("nem:rollers")
 		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
 		.build(consumer);
 		
@@ -421,17 +447,30 @@ public class RecipesDataGen extends RecipeProvider
 		
 		
 		
-//		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.TRIPHAMMER.get())
-//		.patternLine("#l#")
-//		.patternLine("#x#")
-//		.patternLine("#=#")
-//		.key('l', NEMBlocks.AXLE.get())
-//		.key('#', NEMItemTags.STRIPPED_LOGS)
-//		.key('x', NEMBlocks.GEARBOX.get())
-//		.key('=', NEMItems.HAMMER_AND_ANVIL.get())
-//		.setGroup("nem:triphammer")
-//		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
-//		.build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.TRIPHAMMER.get())
+		.patternLine("#l#")
+		.patternLine("#x#")
+		.patternLine("#=#")
+		.key('l', NEMBlocks.AXLE.get())
+		.key('#', NEMTags.Items.STRIPPED_LOGS)
+		.key('x', NEMBlocks.GEARBOX.get())
+		.key('=', NEMItems.HAMMER_AND_ANVIL.get())
+		.setGroup("nem:triphammer")
+		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.build(consumer);
+		
+		
+		
+		ShapedRecipeBuilder.shapedRecipe(NEMBlocks.ROLLING_MILL.get(), 1)
+		.patternLine("# #")
+		.patternLine("-=-")
+		.patternLine("# #")
+		.key('#', NEMTags.Items.STRIPPED_LOGS)
+		.key('-', NEMBlocks.AXLE.get())
+		.key('=', NEMItems.ROLLERS.get())
+		.setGroup("nem:rollingmill")
+		.addCriterion("iron", InventoryChangeTrigger.Instance.forItems(Items.IRON_INGOT))
+		.build(consumer);
 		
 		
 		
@@ -464,6 +503,13 @@ public class RecipesDataGen extends RecipeProvider
 		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(NEMItems.FLOUR.get()), Items.BREAD, 0.35f, 200)
 		.addCriterion("wheat", InventoryChangeTrigger.Instance.forItems(Items.WHEAT))
 		.build(consumer, NotEnoughMachines.MODID + ":furnace/bread_from_flour");
+		
+		
+		
+		CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(NEMItems.FLOUR.get()), Items.BREAD, 0.35f, 100, IRecipeSerializer.SMOKING)
+		.addCriterion("wheat", InventoryChangeTrigger.Instance.forItems(Items.WHEAT))
+		.build(consumer, NotEnoughMachines.MODID + ":furnace/bread_from_smoking");
+		
 		
 		
 		
@@ -743,6 +789,20 @@ public class RecipesDataGen extends RecipeProvider
 		MillingRecipeBuilder.millingRecipe(Ingredient.fromItems(Items.DANDELION, Items.SUNFLOWER), Items.YELLOW_DYE, 2, 200)
 		.setGroup("nem:yellow_dye")
 		.build(consumer, NotEnoughMachines.MODID + ":milling/yellow_dye");
+		
+		
+		
+		//***********************************************************************************************************************************************************************
+		//Rolling Recipes
+		RollingRecipeBuilder.rollingRecipe(Ingredient.fromItems(Items.IRON_INGOT), NEMItems.IRON_PLATE.get(), 1, 200)
+		.setGroup("nem:iron_plate")
+		.build(consumer, NotEnoughMachines.MODID + ":rolling/iron_plate");
+		
+		
+		
+		RollingRecipeBuilder.rollingRecipe(Ingredient.fromItems(NEMItems.COPPER_INGOT.get()), NEMItems.COPPER_PLATE.get(), 1, 200)
+		.setGroup("nem:copper_plate")
+		.build(consumer, NotEnoughMachines.MODID + ":rolling/copper_plate");
 	}
 }
 

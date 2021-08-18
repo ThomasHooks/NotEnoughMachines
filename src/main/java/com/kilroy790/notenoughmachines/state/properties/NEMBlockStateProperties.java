@@ -15,6 +15,7 @@ public class NEMBlockStateProperties
 	
 	public static final EnumProperty<InputDualType> DUAL_INPUT = EnumProperty.create("input", InputDualType.class);
 	public static final EnumProperty<TripHammerPart> TRIPHAMMERPART = EnumProperty.create("hammerpart", TripHammerPart.class);
+	public static final EnumProperty<RollingMillPart> ROLLING_MILL_PART = EnumProperty.create("rollingmillpart", RollingMillPart.class);
 	public static final EnumProperty<LargeCogwheelPart> LARGECOGWHEELPART = EnumProperty.create("cogwheelpart", LargeCogwheelPart.class);
 }
 

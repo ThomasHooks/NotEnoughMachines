@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import com.kilroy790.notenoughmachines.NotEnoughMachines;
 import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
 import com.kilroy790.notenoughmachines.integration.jei.categories.MillingRecipeCategory;
+import com.kilroy790.notenoughmachines.integration.jei.categories.RollingRecipeCategory;
 import com.kilroy790.notenoughmachines.integration.jei.categories.StampingRecipeCategory;
 import com.kilroy790.notenoughmachines.recipes.NEMRecipes;
 import mezz.jei.api.IModPlugin;
@@ -28,6 +29,7 @@ public class NEMPlugin implements IModPlugin
 	
 	public static final ResourceLocation STAMPING_CATEGORY_UID = new ResourceLocation(NotEnoughMachines.MODID, "stamping");
 	public static final ResourceLocation MILLING_CATEGORY_UID = new ResourceLocation(NotEnoughMachines.MODID, "milling");
+	public static final ResourceLocation ROLLING_CATEGORY_UID = new ResourceLocation(NotEnoughMachines.MODID, "rolling");
 	
 	@Override
 	public ResourceLocation getPluginUid() 
@@ -41,12 +43,13 @@ public class NEMPlugin implements IModPlugin
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) 
 	{
 		registration.addRecipeCatalyst(new ItemStack(NEMBlocks.TRIPHAMMER.get()), STAMPING_CATEGORY_UID);
-		
 		registration.addRecipeCatalyst(new ItemStack(NEMBlocks.MILLSTONE.get()), MILLING_CATEGORY_UID);
+		registration.addRecipeCatalyst(new ItemStack(NEMBlocks.ROLLING_MILL.get()), ROLLING_CATEGORY_UID);
 	}
 	
 	
 	
+	@SuppressWarnings("resource")
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) 
 	{
@@ -55,6 +58,9 @@ public class NEMPlugin implements IModPlugin
 		
 		List<IRecipe<?>> millingRecipes = Minecraft.getInstance().world.getRecipeManager().getRecipes().stream().filter(recipe -> recipe.getType().equals(NEMRecipes.Types.MILLING)).collect(Collectors.toList());
 		registration.addRecipes(millingRecipes, MILLING_CATEGORY_UID);
+		
+		List<IRecipe<?>> rollingRecipes = Minecraft.getInstance().world.getRecipeManager().getRecipes().stream().filter(recipe -> recipe.getType().equals(NEMRecipes.Types.ROLLING)).collect(Collectors.toList());
+		registration.addRecipes(rollingRecipes, ROLLING_CATEGORY_UID);
 	}
 	
 	
@@ -63,8 +69,8 @@ public class NEMPlugin implements IModPlugin
 	public void registerCategories(IRecipeCategoryRegistration registration) 
 	{
 		registration.addRecipeCategories(new StampingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-		
 		registration.addRecipeCategories(new MillingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+		registration.addRecipeCategories(new RollingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
 	}
 }
 

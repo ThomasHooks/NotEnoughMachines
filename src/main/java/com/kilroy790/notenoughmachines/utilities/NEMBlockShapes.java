@@ -23,55 +23,79 @@ public class NEMBlockShapes
 		AXIS_LOOKUP.put(Direction.Axis.Z, 2);
 	}
 
-	
-	
+
+
+	public static final VoxelShape BASE16X2X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
+
+
+
+	public static final VoxelShape BASE16X4X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
+
+
+
+	public static final VoxelShape BASE16X6X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
+
+
+
+	public static final VoxelShape HALF_BLOCK = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+
+
+
+	public static final VoxelShape BASE16X10X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D);
+
+
+
+	public static final VoxelShape BASE16X12X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
+
+
+
+	public static final VoxelShape BASE16X14X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D);
+
+
+
 	public static final VoxelShape FULL_BLOCK = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-	
-	
-	
-	private static final VoxelShape BASE16X2X16 = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
-	
-	
-	
+
+
+
 	public static final VoxelShape[] AXLE = new VoxelShape[] 
 			{
-			Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D), 
-			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
-			Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D)
-	};
-	
-	
-	
+					Block.makeCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D), 
+					Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D), 
+					Block.makeCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D)
+			};
+
+
+
 	public static final VoxelShape[] COGWHEEL_CENTER = new VoxelShape[] 
-		{
-			VoxelShapes.or(AXLE[0], Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D)),
-			VoxelShapes.or(AXLE[1], Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D)),
-			VoxelShapes.or(AXLE[2], Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D))
-		};
-	
-	
-	
+			{
+					VoxelShapes.or(AXLE[0], Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D)),
+					VoxelShapes.or(AXLE[1], Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D)),
+					VoxelShapes.or(AXLE[2], Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D))
+			};
+
+
+
 	public static final VoxelShape[] COGWHEEL_SIDE = new VoxelShape[] 
-		{
-			Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D),
-			Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D),
-			Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D)
-		};
-	
-	
-	
+			{
+					Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 16.0D),
+					Block.makeCuboidShape(0.0D, 5.0D, 0.0D, 16.0D, 11.0D, 16.0D),
+					Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D)
+			};
+
+
+
 	private static final VoxelShape RUNNERSTONE = Block.makeCuboidShape(1.0D, 6.0D, 1.0D, 15.D, 10.0D, 15.0D);
 	private static final VoxelShape BEDSTONE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
 	public static final VoxelShape MILLSTONE = VoxelShapes.or(AXLE[1], RUNNERSTONE, BEDSTONE);
-	
-	
-	
+
+
+
 	private static final VoxelShape TUBWHEELMID = Block.makeCuboidShape(5.0D, 1.0D, 5.0D, 11.0D, 13.0D, 11.0D);
 	private static final VoxelShape TUBWHEELTRIL = Block.makeCuboidShape(0.0D, 2.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 	public static final VoxelShape TUBWHEEL = VoxelShapes.or(AXLE[1], TUBWHEELMID, TUBWHEELTRIL);
-	
-	
-	
+
+
+
 	private static final VoxelShape GEARBOX_INNER = Block.makeCuboidShape(2.0D, 2.0D, 2.0D, 14.0D, 14.0D, 14.0D);
 	private static final VoxelShape GEARBOX_BOWL_X = VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 0.0D, 14.D, 14.0D, 2.0D), 
 			Block.makeCuboidShape(2.0D, 14.0D, 2.0D, 14.0D, 16.0D, 14.0D), 
@@ -89,40 +113,53 @@ public class NEMBlockShapes
 			Block.makeCuboidShape(0.0D, 2.0D, 2.0D, 20.D, 14.0D, 14.0D));
 	private static final VoxelShape GEARBOX_OUTER_Z = VoxelShapes.combineAndSimplify(FULL_BLOCK, GEARBOX_BOWL_Z, IBooleanFunction.ONLY_FIRST);
 	public static final VoxelShape[] GEARBOX = new VoxelShape[] 
-		{
-			VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_INNER),
-			VoxelShapes.or(GEARBOX_OUTER_Y, GEARBOX_INNER),
-			VoxelShapes.or(GEARBOX_OUTER_Z, GEARBOX_INNER)
-		};
-	
+			{
+					VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_INNER),
+					VoxelShapes.or(GEARBOX_OUTER_Y, GEARBOX_INNER),
+					VoxelShapes.or(GEARBOX_OUTER_Z, GEARBOX_INNER)
+			};
+
 	public static final VoxelShape[] ENCLOSED_AXLE = new VoxelShape[] 
-		{
-			VoxelShapes.or(GEARBOX_OUTER_Y, GEARBOX_OUTER_Z, GEARBOX_INNER),
-			VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Z, GEARBOX_INNER),
-			VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Y, GEARBOX_INNER)
-		};
-	
-	
-	
+			{
+					VoxelShapes.or(GEARBOX_OUTER_Y, GEARBOX_OUTER_Z, GEARBOX_INNER),
+					VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Z, GEARBOX_INNER),
+					VoxelShapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Y, GEARBOX_INNER)
+			};
+
+
+
 	private static final VoxelShape TRIPHAMMER_FRAMEX = Block.makeCuboidShape(2.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);
 	private static final VoxelShape TRIPHAMMER_FRAMEZ = Block.makeCuboidShape(0.0D, 0.0D, 2.0D, 16.0D, 16.0D, 14.0D);
 	public static final VoxelShape[] TRIPHAMMER_BASE = new VoxelShape[] 
-		{
-			VoxelShapes.or(BASE16X2X16, TRIPHAMMER_FRAMEX),
-			FULL_BLOCK,
-			VoxelShapes.or(BASE16X2X16, TRIPHAMMER_FRAMEZ)
-		};
+			{
+					VoxelShapes.or(BASE16X2X16, TRIPHAMMER_FRAMEX),
+					FULL_BLOCK,
+					VoxelShapes.or(BASE16X2X16, TRIPHAMMER_FRAMEZ)
+			};
 	public static final VoxelShape[] TRIPHAMMER_FRAME = new VoxelShape[] 
-		{
-			TRIPHAMMER_FRAMEX,
-			FULL_BLOCK,
-			TRIPHAMMER_FRAMEZ
-		};
+			{
+					TRIPHAMMER_FRAMEX,
+					FULL_BLOCK,
+					TRIPHAMMER_FRAMEZ
+			};
+
+
+
+	private static final VoxelShape ROLLING_MILL_FRAMEX = Block.makeCuboidShape(2.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);
+	private static final VoxelShape ROLLING_MILL_FRAMEZ = Block.makeCuboidShape(0.0D, 0.0D, 2.0D, 16.0D, 16.0D, 14.0D);
+	public static final VoxelShape[] ROLLING_MILL_BASE = new VoxelShape[] 
+			{
+					VoxelShapes.or(BASE16X4X16, ROLLING_MILL_FRAMEX),
+					FULL_BLOCK,
+					VoxelShapes.or(BASE16X4X16, ROLLING_MILL_FRAMEZ)
+			};
+	public static final VoxelShape[] ROLLING_MILL_FRAME = new VoxelShape[] 
+			{
+					ROLLING_MILL_FRAMEX,
+					FULL_BLOCK,
+					ROLLING_MILL_FRAMEZ
+			};
 }
-
-
-
-
 
 
 

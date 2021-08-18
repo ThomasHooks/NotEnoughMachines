@@ -18,6 +18,8 @@ public class NEMContainers
 {
 	private static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, NotEnoughMachines.MODID);
 
+	
+	
 	public static final RegistryObject<ContainerType<MillstoneContainer>> MILLSTONE = CONTAINERS.register("millstone", 
 			() -> IForgeContainerType.create(
 					(id, inventory, data) -> 
@@ -26,16 +28,25 @@ public class NEMContainers
 						return new MillstoneContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player);
 					}));
 
+	
+	
 	public static final RegistryObject<ContainerType<TripHammerContainer>> TRIPHAMMER = CONTAINERS.register("triphammer", 
 			() -> IForgeContainerType.create(
 					(id, inventory, data) -> 
 					{
 						BlockPos pos = data.readBlockPos();
-						return new TripHammerContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player); //NotEnoughMachines.proxy.getClientWorld() NotEnoughMachines.proxy.getClientPlayer()
+						return new TripHammerContainer(id, Minecraft.getInstance().world, pos, inventory, Minecraft.getInstance().player);
 					}));
+	
+	
 	
 	public static final RegistryObject<ContainerType<FilterContainer>> FILTER = CONTAINERS.register("filter", 
 			() -> IForgeContainerType.create( (id, inventory, data) -> { return new FilterContainer(id, inventory, data); } ));
+	
+	
+	
+	public static final RegistryObject<ContainerType<RollingMillContainer>> ROLLING_MILL = CONTAINERS.register("rollingmill", 
+			() -> IForgeContainerType.create( (id, inventory, data) -> { return new RollingMillContainer(id, inventory, data); } ));
 
 
 
@@ -44,10 +55,6 @@ public class NEMContainers
 		CONTAINERS.register(modEventBus);
 	}
 }
-
-
-
-
 
 
 

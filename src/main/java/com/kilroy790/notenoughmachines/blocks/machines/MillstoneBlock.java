@@ -102,7 +102,7 @@ public class MillstoneBlock extends MechanicalBlock
 			double d1 = (double)pos.getY() + 0.6D + (rand.nextDouble() - 0.5D) * 0.2D;
 			double d2 = (double)pos.getZ() + 0.5D + (rand.nextDouble() - 0.5D) * 0.75D;
 			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-			worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_MINECART_RIDING, SoundCategory.BLOCKS, 0.25F, 0.75F, false);
+			worldIn.playSound(d0, d1, d2, SoundEvents.ENTITY_MINECART_RIDING, SoundCategory.BLOCKS, 0.125F, 0.75F, false);
 		}
 	}
 

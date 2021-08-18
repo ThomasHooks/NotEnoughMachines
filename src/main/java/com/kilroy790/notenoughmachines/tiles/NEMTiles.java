@@ -38,6 +38,11 @@ public class NEMTiles
 	
 	
 	
+	public static final RegistryObject<TileEntityType<RollingMillTile>> ROLLING_MILL = TILES.register("rollingmill", 
+			() -> TileEntityType.Builder.create(RollingMillTile::new, NEMBlocks.ROLLING_MILL.get()).build(null));
+	
+	
+	
 	public static final RegistryObject<TileEntityType<TripHammerTile>> TRIPHAMMER = TILES.register("triphammer", 
 			() -> TileEntityType.Builder.create(TripHammerTile::new, NEMBlocks.TRIPHAMMER.get()).build(null));
 	

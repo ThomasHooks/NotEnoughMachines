@@ -13,12 +13,13 @@ import net.minecraftforge.fml.common.Mod;
 
 
 @Mod.EventBusSubscriber(modid = NotEnoughMachines.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ClientSetup {
-
+public class ClientSetup 
+{
 	@SubscribeEvent
-	public static void onTextureStitch(TextureStitchEvent.Pre event) {
-		
-		if(event.getMap().getTextureLocation().equals(PlayerContainer.LOCATION_BLOCKS_TEXTURE)) {
+	public static void onTextureStitch(TextureStitchEvent.Pre event) 
+	{	
+		if(event.getMap().getTextureLocation().equals(PlayerContainer.LOCATION_BLOCKS_TEXTURE)) 
+		{
 			NotEnoughMachines.LOGGER.debug("Stitching NEM textures to Atlas");
 			event.addSprite(NEMTextures.AXLE);
 			
@@ -40,6 +41,8 @@ public class ClientSetup {
 			
 			event.addSprite(NEMTextures.HAMMER_HEAD);
 			event.addSprite(NEMTextures.TRIPHAMMER_SHAFT);
+			
+			event.addSprite(NEMTextures.ROLLER);
 			NotEnoughMachines.LOGGER.debug("All NEM textures have been stitched to Atlas");
 		}
 	}

@@ -35,6 +35,7 @@ public class LanguageDataGen extends LanguageProvider
 	private void items()
 	{
 		addItem(NEMItems.COPPER_INGOT, "Copper Ingot");
+		addItem(NEMItems.COPPER_PLATE, "Copper Plate");
 		addItem(NEMItems.CRUSHED_COPPER_ORE, "Crushed Copper Ore");
 		addItem(NEMItems.CRUSHED_GOLD_ORE, "Crushed Gold Ore");
 		addItem(NEMItems.CRUSHED_IRON_ORE, "Crushed Iron Ore");
@@ -45,6 +46,7 @@ public class LanguageDataGen extends LanguageProvider
 		addItem(NEMItems.FLUX, "Flux");
 		addItem(NEMItems.GEAR, "Gear");
 		addItem(NEMItems.HAMMER_AND_ANVIL, "Hammer and Anvil");
+		addItem(NEMItems.ROLLERS, "Rollers");
 		addItem(NEMItems.LINEN, "Linen");
 		addItem(NEMItems.LINSEEDOIL, "Linseed Oil");
 		addItem(NEMItems.REDSTONE_COLLECTOR, "Redstone Collector");
@@ -88,6 +90,7 @@ public class LanguageDataGen extends LanguageProvider
 		addBlock(NEMBlocks.SMALLCOG, "Small Cogwheel");
 		addBlock(NEMBlocks.SMALLWINDWHEEL, "Wind Wheel");
 		addBlock(NEMBlocks.TRIPHAMMER, "Stamp Mill");
+		addBlock(NEMBlocks.ROLLING_MILL, "Rolling Mill");
 		addBlock(NEMBlocks.TUBWHEEL, "Tub Wheel");
 	}
 	
@@ -99,9 +102,11 @@ public class LanguageDataGen extends LanguageProvider
 		addContainerNEM("filter2", "Buffer");
 		addContainerNEM("millstone", "Grist Mill");
 		addContainerNEM("triphammer", "Stamp Mill");
+		addContainerNEM("rollingmill", "Rolling Mill");
 		
 		addCategoryNEM("stamping", "Stamping");
 		addCategoryNEM("milling", "Milling");
+		addCategoryNEM("rolling", "Rolling");
 	}
 	
 	

@@ -12,6 +12,7 @@ import com.kilroy790.notenoughmachines.blocks.machines.GearboxBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.ItemPusherBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.LargeCogwheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.MillstoneBlock;
+import com.kilroy790.notenoughmachines.blocks.machines.RollingMillBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallCogwheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.SmallWindWheelBlock;
 import com.kilroy790.notenoughmachines.blocks.machines.TripHammerBlock;
@@ -44,6 +45,16 @@ public class NEMBlocks
 					.create(Material.WOOL)
 					.sound(SoundType.CLOTH)
 					.hardnessAndResistance(0.8f, 2.0f)
+					.harvestLevel(0)));
+	
+	
+	
+	public static final RegistryObject<Block> WOODEN_FRAME = BLOCKS.register("wooden_frame", 
+			()-> new Block(Block.Properties
+					.create(Material.WOOD)
+					.sound(SoundType.WOOD)
+					.hardnessAndResistance(2.0F, 3.0F)
+					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
 	
 	
@@ -218,6 +229,16 @@ public class NEMBlocks
 			()-> new MillstoneBlock(Block.Properties
 					.create(Material.ROCK)
 					.sound(SoundType.STONE)
+					.hardnessAndResistance(2.8f, 3.0f)
+					.harvestTool(ToolType.PICKAXE)
+					.harvestLevel(0)));
+	
+	
+	
+	public static final RegistryObject<RollingMillBlock> ROLLING_MILL = BLOCKS.register("rollingmill", 
+			()-> new RollingMillBlock(Block.Properties
+					.create(Material.WOOD)
+					.sound(SoundType.WOOD)
 					.hardnessAndResistance(2.8f, 3.0f)
 					.harvestTool(ToolType.PICKAXE)
 					.harvestLevel(0)));

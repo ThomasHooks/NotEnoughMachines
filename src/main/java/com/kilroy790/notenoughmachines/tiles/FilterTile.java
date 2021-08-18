@@ -139,7 +139,7 @@ public class FilterTile extends ItemConduitTile implements INamedContainerProvid
 					Direction facing = getFilterFacing(FilterColor.getFilter(i));
 					Objects.requireNonNull(facing, "Direction cannot be null!");
 					BlockPos nextPos = pos.offset(facing);
-					if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) 
+					if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) //Will be removed in 1.17
 						this.ejectItem(itemHandler, amount, BUFFER_SLOT, nextPos, facing);
 					else if (this.world.getTileEntity(nextPos) != null) 
 					{

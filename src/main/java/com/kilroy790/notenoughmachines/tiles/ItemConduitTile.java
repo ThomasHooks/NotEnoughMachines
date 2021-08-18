@@ -116,7 +116,7 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 		{
 			if (!itemHandler.getStackInSlot(slot).isEmpty()) 
 			{
-				if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) 
+				if (this.world.getBlockState(nextPos).isAir(this.getWorld(), nextPos)) //Will be removed in 1.17
 					this.ejectItem(itemHandler, amount, 0, nextPos, facing);
 				else 
 				{

@@ -37,11 +37,17 @@ public class NEMTextures
 	
 	public static final ResourceLocation TRIPHAMMER_SHAFT = new ResourceLocation(NotEnoughMachines.MODID, "tiles/triphammer_shaft");
 	
+	public static final ResourceLocation ROLLER = new ResourceLocation(NotEnoughMachines.MODID, "tiles/roller");
+	
+	
+	
 	public static final ResourceLocation JEI_RECIPES_GUI = new ResourceLocation(NotEnoughMachines.MODID, "textures/gui/jei_recipes.png");
 	
 	public static final ResourceLocation TRIPHAMMER_GUI = new ResourceLocation(NotEnoughMachines.MODID, "textures/gui/triphammer_gui.png");
 	
 	public static final ResourceLocation MILLSTONE_GUI = new ResourceLocation(NotEnoughMachines.MODID, "textures/gui/millstone_gui.png");
+	
+	public static final ResourceLocation ROLLING_MILL_GUI = new ResourceLocation(NotEnoughMachines.MODID, "textures/gui/rolling_mill_gui.png");
 }
 
 

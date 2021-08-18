@@ -44,6 +44,7 @@ public class LootTableDataGen extends BaseLootTableProvider
 		lootTables.put(NEMBlocks.SMALLCOG.get(), createBasicTable("smallcog", NEMBlocks.SMALLCOG.get()));
 		lootTables.put(NEMBlocks.SMALLWINDWHEEL.get(), createBasicTable("smallwindwheel", NEMBlocks.SMALLWINDWHEEL.get()));
 		lootTables.put(NEMBlocks.TUBWHEEL.get(), createBasicTable("tubwheel", NEMBlocks.TUBWHEEL.get()));
+		lootTables.put(NEMBlocks.WOODEN_FRAME.get(), createBasicTable("wooden_frame", NEMBlocks.WOODEN_FRAME.get()));
 	}
 }
 
