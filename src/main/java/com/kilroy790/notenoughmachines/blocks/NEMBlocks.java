@@ -38,8 +38,19 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class NEMBlocks 
 {
 	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, NotEnoughMachines.MODID);
+	
+	
+	
+	public static final RegistryObject<FlaxPlantBlock> FLAXPLANT = BLOCKS.register("flaxplant", 
+			()-> new FlaxPlantBlock(Block.Properties
+					.create(Material.PLANTS)
+					.doesNotBlockMovement()
+					.sound(SoundType.CROP)
+					.tickRandomly()
+					.harvestLevel(0)));
 
-	//Building Blocks
+	
+	
 	public static final RegistryObject<LinenBlock> LINENBLOCK = BLOCKS.register("linenblock", 
 			()-> new LinenBlock(Block.Properties
 					.create(Material.WOOL)
@@ -141,10 +152,29 @@ public class NEMBlocks
 	
 	public static final RegistryObject<PanelBlock> CUT_PANLE = BLOCKS.register("cut_panle", 
 			()-> new PanelBlock(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)));
+	
+	
+	
+	public static final RegistryObject<Block> IRON_PLATE_BLOCK = BLOCKS.register("iron_plate_block", 
+			()-> new Block(Block.Properties
+					.create(Material.IRON, MaterialColor.IRON)
+					.sound(SoundType.METAL)
+					.hardnessAndResistance(5.0f, 6.0f)
+					.harvestTool(ToolType.PICKAXE)
+					.setRequiresTool()));
+	
+	
+	
+	public static final RegistryObject<Block> COPPER_PLATE_BLOCK = BLOCKS.register("copper_plate_block", 
+			()-> new Block(Block.Properties
+					.create(Material.IRON, MaterialColor.IRON)
+					.sound(SoundType.METAL)
+					.hardnessAndResistance(4.0f, 5.2f)
+					.harvestTool(ToolType.PICKAXE)
+					.setRequiresTool()));
 
 	
 	
-	//Machine Blocks
 	public static final RegistryObject<CreativePowerBoxBlock> CREATIVEPOWERBOX = BLOCKS.register("creativepowerbox", 
 			()-> new CreativePowerBoxBlock(Block.Properties
 					.create(Material.WOOD)
@@ -255,7 +285,6 @@ public class NEMBlocks
 
 	
 	
-	//Logic Gate Blocks
 	public static final RegistryObject<ANDGateBlock> ANDGATE = BLOCKS.register("andgate", 
 			()-> new ANDGateBlock(Block.Properties
 					.create(Material.MISCELLANEOUS)
@@ -272,7 +301,6 @@ public class NEMBlocks
 
 	
 	
-	//Transport Blocks
 	public static final RegistryObject<ChuteBlock> CHUTE = BLOCKS.register("chute", 
 			()-> new ChuteBlock(Block.Properties
 					.create(Material.MISCELLANEOUS)
@@ -290,7 +318,7 @@ public class NEMBlocks
 					.sound(SoundType.WOOD)
 					.harvestTool(ToolType.AXE)
 					.harvestLevel(0)));
-
+	
 	
 	
 	public static final RegistryObject<ItemPusherBlock> ITEMPUSHER = BLOCKS.register("itempusher", 
@@ -299,17 +327,6 @@ public class NEMBlocks
 					.hardnessAndResistance(1.2f, 2.0f)
 					.sound(SoundType.METAL)
 					.harvestTool(ToolType.PICKAXE)
-					.harvestLevel(0)));
-
-	
-	
-	//Crops Blocks
-	public static final RegistryObject<FlaxPlantBlock> FLAXPLANT = BLOCKS.register("flaxplant", 
-			()-> new FlaxPlantBlock(Block.Properties
-					.create(Material.PLANTS)
-					.doesNotBlockMovement()
-					.sound(SoundType.CROP)
-					.tickRandomly()
 					.harvestLevel(0)));
 
 

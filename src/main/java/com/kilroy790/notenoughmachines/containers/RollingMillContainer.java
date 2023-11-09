@@ -38,19 +38,39 @@ public class RollingMillContainer extends NEMBaseContainer<RollingMillTile>
 
 		addPlayerInventorySlots(7, 48);
 
-		//track the millstone's process time
+		//track the rolling mill's max process time
 		trackInt(new IntReferenceHolder() 
 		{
 			@Override
+			public int get() 
+			{
+				return tile.getMaxProcessTime();
+			}
+			
+			
+			
+			@Override
 			public void set(int value) 
 			{
-				tile.setProcessTime(value);
+				
 			}
-
+		});
+		
+		//track the rolling mill's process time
+		trackInt(new IntReferenceHolder() 
+		{
 			@Override
 			public int get() 
 			{
 				return getProgress();
+			}
+			
+			
+			
+			@Override
+			public void set(int value) 
+			{
+				
 			}
 		});
 	}
@@ -103,10 +123,12 @@ public class RollingMillContainer extends NEMBaseContainer<RollingMillTile>
 		return itemstack;
 	}
 
+	
 
 	public int getProgress() 
 	{
-		return tile.getProcessTime();
+		int progress = tile.getProcessTime() * 16 / tile.getMaxProcessTime();
+		return progress > 16 ? 16 : progress;
 	}
 }
 

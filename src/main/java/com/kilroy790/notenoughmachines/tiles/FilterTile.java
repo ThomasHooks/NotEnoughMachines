@@ -119,6 +119,7 @@ public class FilterTile extends ItemConduitTile implements INamedContainerProvid
 	 * @param itemHandler The item handler for this tile
 	 * @param amount Number of items in the stack that will be pushed to the next Container
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void pushItems(ItemStackHandler itemHandler, int amount) 
 	{

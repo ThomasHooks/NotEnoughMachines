@@ -32,7 +32,7 @@ modState="WIP"
 displayName="Not Enough Machines" #mandatory
 
 # A text field displayed in the mod UI
-credits="Thanks for this mod goes to Java" #optional
+# credits="Thanks for this mod goes to Java" #optional
 
 # A text field displayed in the mod UI
 authors="Kilroy_790" #optional

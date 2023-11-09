@@ -3,8 +3,6 @@ package com.kilroy790.notenoughmachines.client.gui.screen;
 import com.kilroy790.notenoughmachines.client.NEMTextures;
 import com.kilroy790.notenoughmachines.containers.MillstoneContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.systems.RenderSystem;
-
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
@@ -50,7 +48,6 @@ public class MillstoneScreen extends ContainerScreen<MillstoneContainer>
 	@Override
 	protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) 
 	{
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.minecraft.getTextureManager().bindTexture(NEMTextures.MILLSTONE_GUI);
 		int relX = (this.width - this.xSize) / 2;
 		int relY = (this.height - this.ySize) / 2;

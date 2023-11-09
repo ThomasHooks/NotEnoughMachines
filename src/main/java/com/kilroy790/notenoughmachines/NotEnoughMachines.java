@@ -52,11 +52,11 @@ public class NotEnoughMachines
 	public static NotEnoughMachines INSTANCE;
 	public static final String MODID = "notenoughtmachines";
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
-	
 	public static PowerNetworkStack AETHER = new PowerNetworkStack();
 	public static ClientTimer CLIENT_TIMER = new ClientTimer();
-	
 	public static ModSetup setup = new ModSetup();
+	
+	
 	
 	public NotEnoughMachines() 
 	{

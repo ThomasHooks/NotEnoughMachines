@@ -1,0 +1,12 @@
+{
+  "type": "notenoughtmachines:rolling",
+  "group": "nem:copper_rod",
+  "ingredient": {
+    "item": "notenoughtmachines:copper_plate"
+  },
+  "result": {
+    "item": "notenoughtmachines:copper_rod",
+    "count": 3
+  },
+  "processtime": 200
+}

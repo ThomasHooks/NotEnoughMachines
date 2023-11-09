@@ -48,7 +48,7 @@ public class RollingMillTile extends MechanicalTile implements INamedContainerPr
 	private static final int MAX_PROCESS_TIME = 200;
 	public static final int MIN_PROCESSING_TIME = 100;
 	protected boolean isProcessing = false;
-	protected int maxProcessTime = 0;
+	protected int maxProcessTime = MAX_PROCESS_TIME;
 	
 	
 
@@ -157,6 +157,7 @@ public class RollingMillTile extends MechanicalTile implements INamedContainerPr
 	protected void readCustom(CompoundNBT compound) 
 	{	
 		this.processTime = compound.getInt("processtime");		
+		this.maxProcessTime = compound.getInt("maxprocesstime");
 		if (compound.contains("inputinv")) 
 			this.itemInputHandler.deserializeNBT(compound.getCompound("inputinv"));
 		if (compound.contains("outputinv")) 
@@ -171,6 +172,7 @@ public class RollingMillTile extends MechanicalTile implements INamedContainerPr
 	protected CompoundNBT writeCustom(CompoundNBT compound) 
 	{	
 		compound.putInt("processtime", this.processTime);
+		compound.putInt("maxprocesstime", this.maxProcessTime);
 		compound.put("inputinv", this.itemInputHandler.serializeNBT());
 		compound.put("outputinv", this.itemOutputHandler.serializeNBT());
 		
@@ -191,7 +193,7 @@ public class RollingMillTile extends MechanicalTile implements INamedContainerPr
 	
 	
 	@Override
-	public Container createMenu(int id, PlayerInventory inventory, PlayerEntity playerEntity) 
+	public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) 
 	{
 		return new RollingMillContainer(id, inventory, this);
 	}
@@ -236,14 +238,9 @@ public class RollingMillTile extends MechanicalTile implements INamedContainerPr
 	
 	
 	
-	public ItemStack getInputItem() {
+	public ItemStack getInputItem() 
+	{
 		return this.itemInputHandler.getStackInSlot(0).copy();
-	}
-	
-	
-	
-	public int getProcessTime() {
-		return this.processTime;
 	}
 	
 	
@@ -262,7 +259,15 @@ public class RollingMillTile extends MechanicalTile implements INamedContainerPr
 	
 	
 	
-	public int getMaxProcessTime() {
+	public int getProcessTime() 
+	{
+		return this.processTime;
+	}
+	
+	
+	
+	public int getMaxProcessTime() 
+	{
 		return this.maxProcessTime;
 	}
 }

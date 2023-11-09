@@ -194,8 +194,8 @@ public class TripHammerTile extends MechanicalTile implements INamedContainerPro
 	
 	
 	@Override
-	public Container createMenu(int id, PlayerInventory playerInv, PlayerEntity playerEntity) {
-		return new TripHammerContainer(id, world, pos, playerInv, playerEntity);
+	public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
+		return new TripHammerContainer(id, inventory, this);
 	}
 	
 	

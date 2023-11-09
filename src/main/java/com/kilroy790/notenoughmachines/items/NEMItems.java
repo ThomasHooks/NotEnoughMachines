@@ -21,6 +21,12 @@ public class NEMItems
 	
 	
 	
+	//Building Blocks - full
+	public static final RegistryObject<Item> COPPER_ORE = ITEMS.register("copper_ore", 
+			()-> new BlockItem(NEMBlocks.COPPERORE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
 	public static final RegistryObject<Item> FLUXSTONE = ITEMS.register("fluxstone", 
 			()-> new BlockItem(NEMBlocks.FLUXSTONE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -31,16 +37,27 @@ public class NEMItems
 	
 	
 	
-	public static final RegistryObject<Item> COPPER_ORE = ITEMS.register("copper_ore", 
-			()-> new BlockItem(NEMBlocks.COPPERORE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
-	
-	
 	public static final RegistryObject<Item> LINENBLOCK = ITEMS.register("linenblock", 
 			()-> new BlockItem(NEMBlocks.LINENBLOCK.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
+	public static final RegistryObject<Item> WOODEN_FRAME = ITEMS.register("wooden_frame", 
+			()-> new BlockItem(NEMBlocks.WOODEN_FRAME.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> IRON_PLATE_BLOCK = ITEMS.register("iron_plate_block", 
+			()-> new BlockItem(NEMBlocks.IRON_PLATE_BLOCK.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> COPPER_PLATE_BLOCK = ITEMS.register("copper_plate_block", 
+			()-> new BlockItem(NEMBlocks.COPPER_PLATE_BLOCK.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	//Building Blocks - slabs
 	public static final RegistryObject<Item> FLUXSTONE_SLAB = ITEMS.register("fluxstone_slab", 
 			()-> new BlockItem(NEMBlocks.FLUXSTONE_SLAB.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -51,6 +68,12 @@ public class NEMItems
 	
 	
 	
+	public static final RegistryObject<Item> CUT_PANLE = ITEMS.register("cut_panle", 
+			()-> new BlockItem(NEMBlocks.CUT_PANLE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	//Building Blocks - stairs
 	public static final RegistryObject<Item> FLUXSTONE_STAIRS = ITEMS.register("fluxstone_stairs", 
 			()-> new BlockItem(NEMBlocks.FLUXSTONE_STAIRS.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -61,6 +84,7 @@ public class NEMItems
 	
 	
 	
+	//Building Blocks - walls/fences
 	public static final RegistryObject<Item> FLUXSTONE_WALL = ITEMS.register("fluxstone_wall", 
 			()-> new BlockItem(NEMBlocks.FLUXSTONE_WALL.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -71,16 +95,7 @@ public class NEMItems
 	
 	
 	
-	public static final RegistryObject<Item> CUT_PANLE = ITEMS.register("cut_panle", 
-			()-> new BlockItem(NEMBlocks.CUT_PANLE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
-	
-	
-	public static final RegistryObject<Item> WOODEN_FRAME = ITEMS.register("wooden_frame", 
-			()-> new BlockItem(NEMBlocks.WOODEN_FRAME.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
-	
-	
+	//Miscellaneous - dust items
 	public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushedironore", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -106,27 +121,29 @@ public class NEMItems
 	
 	
 	
+	//Miscellaneous - ingot items
 	public static final RegistryObject<Item> COPPER_INGOT = ITEMS.register("copper_ingot", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
-	public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("ironplate", 
-			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-	
-	
-	
-	public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate", 
-			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
-
-	
-	
+	//Miscellaneous - crafting items	
 	public static final RegistryObject<FlaxSeedItem> FLAXSEED = ITEMS.register("flaxseed", 
 			()-> new FlaxSeedItem( new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
 	public static final RegistryObject<Item> FLAX = ITEMS.register("flax", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> FLAXSTRING = ITEMS.register("flaxstring", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> LINEN = ITEMS.register("linen", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
@@ -140,12 +157,27 @@ public class NEMItems
 	
 	
 	
-	public static final RegistryObject<Item> FLAXSTRING = ITEMS.register("flaxstring", 
+	public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("ironplate", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
 	
-	public static final RegistryObject<Item> LINEN = ITEMS.register("linen", 
+	public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> IRON_ROD = ITEMS.register("iron_rod", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> COPPER_ROD = ITEMS.register("copper_rod", 
+			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
+	
+	
+	
+	public static final RegistryObject<Item> IRON_SCREW = ITEMS.register("iron_screw", 
 			()-> new Item(new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
 	
@@ -185,6 +217,7 @@ public class NEMItems
 	
 	
 	
+	//Machine Blocks - power transfer
 	public static final RegistryObject<Item> AXLE = ITEMS.register("axle", 
 			()-> new BlockItem(NEMBlocks.AXLE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -210,6 +243,7 @@ public class NEMItems
 	
 	
 	
+	//Machine Blocks - power generators
 	public static final RegistryObject<Item> CREATIVEPOWERBOX = ITEMS.register("creativepowerbox", 
 			()-> new BlockItem(NEMBlocks.CREATIVEPOWERBOX.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -225,6 +259,7 @@ public class NEMItems
 	
 	
 	
+	//Machine Blocks - processors 
 	public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone", 
 			()-> new BlockItem(NEMBlocks.MILLSTONE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -240,6 +275,7 @@ public class NEMItems
 	
 	
 	
+	//Machine Blocks - item transfer
 	public static final RegistryObject<Item> CHUTE = ITEMS.register("chute", 
 			()-> new BlockItem(NEMBlocks.CHUTE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -255,6 +291,7 @@ public class NEMItems
 	
 	
 	
+	//Redstone Blocks
 	public static final RegistryObject<Item> FLUXSTONE_BUTTON = ITEMS.register("fluxstone_button", 
 			()-> new BlockItem(NEMBlocks.FLUXSTONE_BUTTON.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 	
@@ -283,16 +320,13 @@ public class NEMItems
 	public static final RegistryObject<Item> ANDGATE = ITEMS.register("andgate", 
 			()-> new BlockItem(NEMBlocks.ANDGATE.get(), new Item.Properties().group(NEMItemGroup.NEM_ITEMGROUP)));
 
+	
 
 	public static void registerAll(IEventBus modEventBus) 
 	{
 		ITEMS.register(modEventBus);
 	}
 }
-
-
-
-
 
 
 

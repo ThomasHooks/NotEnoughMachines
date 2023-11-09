@@ -17,6 +17,7 @@ public class NEMTags
 	public static final class Items
 	{
 		public static final ITag.INamedTag<Item> STRIPPED_LOGS = makeForgeTag("stripped_logs");
+		public static final ITag.INamedTag<Item> COBBLESTONE = makeForgeTag("cobblestone");
 		
 		
 		

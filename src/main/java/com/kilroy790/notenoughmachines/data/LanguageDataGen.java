@@ -36,9 +36,13 @@ public class LanguageDataGen extends LanguageProvider
 	{
 		addItem(NEMItems.COPPER_INGOT, "Copper Ingot");
 		addItem(NEMItems.COPPER_PLATE, "Copper Plate");
+		addItem(NEMItems.COPPER_ROD, "Copper Rod");
 		addItem(NEMItems.CRUSHED_COPPER_ORE, "Crushed Copper Ore");
 		addItem(NEMItems.CRUSHED_GOLD_ORE, "Crushed Gold Ore");
 		addItem(NEMItems.CRUSHED_IRON_ORE, "Crushed Iron Ore");
+		addItem(NEMItems.IRON_PLATE, "Iron Plate");
+		addItem(NEMItems.IRON_ROD, "Iron Rod");
+		addItem(NEMItems.IRON_SCREW, "Iron Screw");
 		addItem(NEMItems.FLAX, "Flax");
 		addItem(NEMItems.FLAXSEED, "Flax Seeds");
 		addItem(NEMItems.FLAXSTRING, "Flax String");
@@ -92,6 +96,9 @@ public class LanguageDataGen extends LanguageProvider
 		addBlock(NEMBlocks.TRIPHAMMER, "Stamp Mill");
 		addBlock(NEMBlocks.ROLLING_MILL, "Rolling Mill");
 		addBlock(NEMBlocks.TUBWHEEL, "Tub Wheel");
+		addBlock(NEMBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
+		addBlock(NEMBlocks.COPPER_PLATE_BLOCK, "Block of Copper Plates");
+		addBlock(NEMBlocks.WOODEN_FRAME, "Wooden Frame");
 	}
 	
 	

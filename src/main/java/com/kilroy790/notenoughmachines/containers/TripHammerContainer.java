@@ -1,44 +1,32 @@
 package com.kilroy790.notenoughmachines.containers;
 
-import com.kilroy790.notenoughmachines.blocks.NEMBlocks;
 import com.kilroy790.notenoughmachines.tiles.TripHammerTile;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.IntReferenceHolder;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
 
 
 
 
-public class TripHammerContainer extends Container 
+public class TripHammerContainer extends NEMBaseContainer<TripHammerTile> 
 {
-	private TripHammerTile tile;
-	private IItemHandler playerInv;
-
 	private final int INPUTSLOTSTART = 0;
 	private final int OUTPUTSLOTSTART = 1;
 	private final int PLAYER_INV_START = 3;
 	private final int PLAYER_INV_END = 39;
-
 	
 	
-	public TripHammerContainer(int id, World world, BlockPos pos, PlayerInventory playerInv, PlayerEntity player) 
+	
+	public TripHammerContainer(int id, PlayerInventory inventory, TripHammerTile tile)
 	{
-		super(NEMContainers.TRIPHAMMER.get(), id);
-		this.tile = (TripHammerTile) world.getTileEntity(pos);
-		this.playerInv = new InvWrapper(playerInv);
+		super(NEMContainers.TRIPHAMMER.get(), id, inventory, tile);
 
-		//add the machines' inventory slots
 		tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> 
 		{
 			for(int slot = 0; slot < tile.getNumberOfInventorySlots(); slot++) 
@@ -46,7 +34,7 @@ public class TripHammerContainer extends Container
 				//add the input slot
 				if(slot == 0) 
 					addSlot(new SlotItemHandler(h, slot, 51, 20));
-				
+
 				//add the output slots
 				else 
 					addSlot(new SlotItemHandler(h, slot, 71 + (slot * 18), 20));
@@ -55,7 +43,7 @@ public class TripHammerContainer extends Container
 
 		//add the player's inventory and quick bar
 		addPlayerInventorySlots(7,51);
-		
+
 		trackInt(new IntReferenceHolder() 
 		{
 			@Override
@@ -63,15 +51,16 @@ public class TripHammerContainer extends Container
 			{
 				return tile.getMaxProcessTime();
 			}
-			
-			
-			
+
+
+
 			@Override
 			public void set(int value) 
 			{
+
 			}
 		});
-		
+
 		trackInt(new IntReferenceHolder() 
 		{
 			@Override
@@ -83,9 +72,17 @@ public class TripHammerContainer extends Container
 			@Override
 			public void set(int value) 
 			{
+
 			}
-			
+
 		});
+	}
+	
+	
+	
+	public TripHammerContainer(final int id, final PlayerInventory inventory, final PacketBuffer data)
+	{
+		this(id, inventory, (TripHammerTile)inventory.player.world.getTileEntity(data.readBlockPos()));
 	}
 
 	
@@ -127,44 +124,6 @@ public class TripHammerContainer extends Container
 		}
 
 		return itemstack;
-	}
-
-
-	
-	@Override
-	public boolean canInteractWith(PlayerEntity player) 
-	{
-		return isWithinUsableDistance(IWorldPosCallable.of(tile.getWorld(), tile.getPos()), player, NEMBlocks.TRIPHAMMER.get());
-	}
-
-	
-
-	protected void addPlayerInventorySlots(int topLeftSlotX, int topLeftSlotY) 
-	{
-		//Player inventory
-		addItemSlot(playerInv, 9, topLeftSlotX, topLeftSlotY, 9, 18, 3, 18);
-
-		//Player quick bar
-		topLeftSlotY += 58;
-		addItemSlot(playerInv, 0, topLeftSlotX, topLeftSlotY, 9, 18, 1, 0);
-	}
-
-
-	
-	protected void addItemSlot(IItemHandler itemHandler, int index, int x, int y, int horSlotNumber, int xOffset, int verSlotNumber, int yOffset) 
-	{
-
-		for(int i = 0; i < verSlotNumber; i++) 
-		{
-			int tempX = x;
-			for(int j = 0; j < horSlotNumber; j++) 
-			{
-				addSlot(new SlotItemHandler(itemHandler, index, tempX, y));
-				tempX += xOffset;
-				index++;
-			}
-			y += yOffset;
-		}
 	}
 	
 	

@@ -108,6 +108,7 @@ public abstract class ItemConduitTile extends NEMBaseTile implements ITickableTi
 	 * @param itemHandler The item handler for this tile
 	 * @param amount Number of items in the stack that will be pushed to the next Container
 	 */
+	@SuppressWarnings("deprecation")
 	protected void pushItems(ItemStackHandler itemHandler, int amount) 
 	{
 		Direction facing = this.getBlockState().get(ItemPusherBlock.FACING).getOpposite();

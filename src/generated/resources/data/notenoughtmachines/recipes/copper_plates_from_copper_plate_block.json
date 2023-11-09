@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "nem:copper_plate",
+  "ingredients": [
+    {
+      "item": "notenoughtmachines:copper_plate_block"
+    }
+  ],
+  "result": {
+    "item": "notenoughtmachines:copper_plate",
+    "count": 4
+  }
+}

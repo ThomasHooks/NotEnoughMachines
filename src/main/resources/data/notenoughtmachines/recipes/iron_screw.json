@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "nem:iron_screw",
+  "pattern": [
+    "  l",
+    " l ",
+    "l  "
+  ],
+  "key": {
+    "l": {
+      "item": "notenoughtmachines:iron_rod"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:iron_screw"
+  }
+}

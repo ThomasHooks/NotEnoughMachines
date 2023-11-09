@@ -205,9 +205,9 @@ public class MillstoneTile extends MechanicalTile implements INamedContainerProv
 	
     
 	@Override
-	public Container createMenu(int id, PlayerInventory playerInv, PlayerEntity playerEntity) 
+	public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) 
 	{
-		return new MillstoneContainer(id, world, pos, playerInv, playerEntity);
+		return new MillstoneContainer(id, inventory, this);
 	}
 
 

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "nem:iron_plate_block",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "notenoughtmachines:ironplate"
+    }
+  },
+  "result": {
+    "item": "notenoughtmachines:iron_plate_block"
+  }
+}

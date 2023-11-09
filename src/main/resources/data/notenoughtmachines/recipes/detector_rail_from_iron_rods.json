@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "nem:detector_rail",
+  "pattern": [
+    "l l",
+    "l-l",
+    "lrl"
+  ],
+  "key": {
+    "l": {
+      "item": "notenoughtmachines:iron_rod"
+    },
+    "-": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "minecraft:detector_rail",
+    "count": 6
+  }
+}
