@@ -1,5 +1,0 @@
-{
-	"recipes" : {
-		"milling": "com.kilroy790.notenoughmachines.api.crafting.MachineRecipeSerializer"
-	}
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "notenoughtmachines:block/polished_fluxstone",
-        "top": "notenoughtmachines:block/polished_fluxstone",
-        "side": "notenoughtmachines:block/polished_fluxstone"
-    }
-}

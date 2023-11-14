@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "notenoughtmachines:block/polished_fluxstone",
-        "top": "notenoughtmachines:block/polished_fluxstone",
-        "side": "notenoughtmachines:block/polished_fluxstone"
-    }
-}

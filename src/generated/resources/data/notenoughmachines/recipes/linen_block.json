@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:linen_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:linen_block"
+  },
+  "show_notification": true
+}

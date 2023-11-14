@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:gunpowder",
+  "key": {
+    "c": {
+      "item": "minecraft:charcoal"
+    },
+    "f": {
+      "item": "notenoughmachines:flux"
+    }
+  },
+  "pattern": [
+    "fc",
+    "cf"
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:gunpowder"
+  },
+  "show_notification": true
+}

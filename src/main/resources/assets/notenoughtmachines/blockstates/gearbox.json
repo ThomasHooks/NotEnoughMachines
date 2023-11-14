@@ -1,7 +1,0 @@
-{
-    "variants": {
-		"axis=x": {"model": "notenoughtmachines:block/gearbox", "x": 90, "y": 90},
-		"axis=y": {"model": "notenoughtmachines:block/gearbox"},
-		"axis=z": {"model": "notenoughtmachines:block/gearbox", "x": 90}
-    }
-}

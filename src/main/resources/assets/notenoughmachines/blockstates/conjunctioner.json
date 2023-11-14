@@ -1,0 +1,37 @@
+{
+    "variants": {
+        "negated=false,facing=north,input=in00": { "model": "notenoughmachines:block/and_gate_00", "y": 180 },
+		"negated=false,facing=south,input=in00": { "model": "notenoughmachines:block/and_gate_00"},
+		"negated=false,facing=east,input=in00": {"model": "notenoughmachines:block/and_gate_00", "y": 270 },
+		"negated=false,facing=west,input=in00": {"model": "notenoughmachines:block/and_gate_00", "y": 90 },
+		"negated=false,facing=north,input=in01": { "model": "notenoughmachines:block/and_gate_01", "y": 180 },
+		"negated=false,facing=south,input=in01": { "model": "notenoughmachines:block/and_gate_01"},
+		"negated=false,facing=east,input=in01": {"model": "notenoughmachines:block/and_gate_01", "y": 270 },
+		"negated=false,facing=west,input=in01": {"model": "notenoughmachines:block/and_gate_01", "y": 90 },
+		"negated=false,facing=north,input=in10": { "model": "notenoughmachines:block/and_gate_10", "y": 180 },
+		"negated=false,facing=south,input=in10": { "model": "notenoughmachines:block/and_gate_10"},
+		"negated=false,facing=east,input=in10": {"model": "notenoughmachines:block/and_gate_10", "y": 270 },
+		"negated=false,facing=west,input=in10": {"model": "notenoughmachines:block/and_gate_10", "y": 90 },
+		"negated=false,facing=north,input=in11": { "model": "notenoughmachines:block/and_gate_11", "y": 180 },
+		"negated=false,facing=south,input=in11": { "model": "notenoughmachines:block/and_gate_11"},
+		"negated=false,facing=east,input=in11": {"model": "notenoughmachines:block/and_gate_11", "y": 270 },
+		"negated=false,facing=west,input=in11": {"model": "notenoughmachines:block/and_gate_11", "y": 90 },
+		
+		"negated=true,facing=north,input=in00": { "model": "notenoughmachines:block/nand_gate_00", "y": 180 },
+		"negated=true,facing=south,input=in00": { "model": "notenoughmachines:block/nand_gate_00"},
+		"negated=true,facing=east,input=in00": {"model": "notenoughmachines:block/nand_gate_00", "y": 270 },
+		"negated=true,facing=west,input=in00": {"model": "notenoughmachines:block/nand_gate_00", "y": 90 },
+		"negated=true,facing=north,input=in01": { "model": "notenoughmachines:block/nand_gate_10", "y": 180 },
+		"negated=true,facing=south,input=in01": { "model": "notenoughmachines:block/nand_gate_10"},
+		"negated=true,facing=east,input=in01": {"model": "notenoughmachines:block/nand_gate_10", "y": 270 },
+		"negated=true,facing=west,input=in01": {"model": "notenoughmachines:block/nand_gate_10", "y": 90 },
+		"negated=true,facing=north,input=in10": { "model": "notenoughmachines:block/nand_gate_01", "y": 180 },
+		"negated=true,facing=south,input=in10": { "model": "notenoughmachines:block/nand_gate_01"},
+		"negated=true,facing=east,input=in10": {"model": "notenoughmachines:block/nand_gate_01", "y": 270 },
+		"negated=true,facing=west,input=in10": {"model": "notenoughmachines:block/nand_gate_01", "y": 90 },
+		"negated=true,facing=north,input=in11": { "model": "notenoughmachines:block/nand_gate_11", "y": 180 },
+		"negated=true,facing=south,input=in11": { "model": "notenoughmachines:block/nand_gate_11"},
+		"negated=true,facing=east,input=in11": {"model": "notenoughmachines:block/nand_gate_11", "y": 270 },
+		"negated=true,facing=west,input=in11": {"model": "notenoughmachines:block/nand_gate_11", "y": 90 }
+    }
+}

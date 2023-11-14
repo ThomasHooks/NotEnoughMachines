@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "notenoughmachines:block/flaxplant_stage0"
+    },
+    "age=1": {
+      "model": "notenoughmachines:block/flaxplant_stage1"
+    },
+    "age=2": {
+      "model": "notenoughmachines:block/flaxplant_stage2"
+    },
+    "age=3": {
+      "model": "notenoughmachines:block/flaxplant_stage3"
+    },
+    "age=4": {
+      "model": "notenoughmachines:block/flaxplant_stage4"
+    },
+    "age=5": {
+      "model": "notenoughmachines:block/flaxplant_stage5"
+    },
+    "age=6": {
+      "model": "notenoughmachines:block/flaxplant_stage6"
+    },
+    "age=7": {
+      "model": "notenoughmachines:block/flaxplant_stage7"
+    }
+  }
+}

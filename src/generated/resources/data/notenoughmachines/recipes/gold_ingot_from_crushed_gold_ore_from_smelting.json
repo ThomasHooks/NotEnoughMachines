@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "notenoughmachines:gold_dust",
+  "ingredient": {
+    "item": "notenoughmachines:crushed_gold_ore"
+  },
+  "result": "minecraft:gold_ingot"
+}

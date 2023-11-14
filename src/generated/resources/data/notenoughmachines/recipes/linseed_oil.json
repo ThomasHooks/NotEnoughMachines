@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:linseed_oil",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:flaxseed"
+    },
+    {
+      "item": "notenoughmachines:flaxseed"
+    },
+    {
+      "item": "notenoughmachines:flaxseed"
+    },
+    {
+      "item": "notenoughmachines:flaxseed"
+    },
+    {
+      "item": "notenoughmachines:flaxseed"
+    },
+    {
+      "item": "notenoughmachines:flaxseed"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:linseed_oil"
+  }
+}

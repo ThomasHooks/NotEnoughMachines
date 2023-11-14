@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:gear",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "b": {
+      "item": "notenoughmachines:linseed_oil"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#b#",
+    " # "
+  ],
+  "result": {
+    "item": "notenoughmachines:gear"
+  },
+  "show_notification": true
+}

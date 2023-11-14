@@ -1,7 +1,0 @@
-{
-    "variants": {
-		"axis=x": {"model": "notenoughtmachines:block/enclosedaxle", "y": 90},
-		"axis=y": {"model": "notenoughtmachines:block/enclosedaxle", "x": 90},
-		"axis=z": {"model": "notenoughtmachines:block/enclosedaxle"}
-    }
-}

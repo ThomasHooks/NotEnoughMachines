@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughmachines:block/fluxstone_slab"
+    },
+    "type=double": {
+      "model": "notenoughmachines:block/fluxstone"
+    },
+    "type=top": {
+      "model": "notenoughmachines:block/fluxstone_slab_top"
+    }
+  }
+}

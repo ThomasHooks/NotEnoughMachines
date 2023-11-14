@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "notenoughtmachines:block/polished_fluxstone_slab" },
-        "type=top": { "model": "notenoughtmachines:block/polished_fluxstone_slab_top" },
-        "type=double": { "model": "notenoughtmachines:block/polished_fluxstone" }
-    }
-}
