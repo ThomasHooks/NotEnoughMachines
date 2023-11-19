@@ -1,5 +1,8 @@
-package com.github.thomashooks.notenoughmachines.world.block;
+package com.github.thomashooks.notenoughmachines.world.block.base;
 
+import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
+import com.google.common.collect.Maps;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -7,10 +10,12 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -22,7 +27,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class ItemConduitBlock extends BaseEntityBlock
+import java.util.Map;
+
+public abstract class ItemConduitBlock extends Block implements EntityBlock
 {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
@@ -31,6 +38,15 @@ public abstract class ItemConduitBlock extends BaseEntityBlock
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
+    public static final Map<Direction, BooleanProperty> FACING_TO_PROPERTY_MAP = Util.make(Maps.newEnumMap(Direction.class), (directions) ->
+    {
+        directions.put(Direction.NORTH, NORTH);
+        directions.put(Direction.EAST, EAST);
+        directions.put(Direction.SOUTH, SOUTH);
+        directions.put(Direction.WEST, WEST);
+        directions.put(Direction.UP, UP);
+        directions.put(Direction.DOWN, DOWN);
+    });
 
     protected static final VoxelShape CONDUIT_SHAPE = Block.box(4.0D, 4.0D, 4.0D, 12.0D, 12.0D, 12.0D);
     protected static final VoxelShape CONDUIT_SHAPE_NORTH = Shapes.or(CONDUIT_SHAPE, Block.box(5.0D, 5.0D, 3.0D, 11.0D, 11.0D, 4.0D));
@@ -61,15 +77,32 @@ public abstract class ItemConduitBlock extends BaseEntityBlock
 
     @Nullable
     @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> entityType)
+    {
+        return EntityBlock.super.getTicker(world, state, entityType);
+    }
+
+    @Nullable
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context)
     {
-        return super.getStateForPlacement(context);
+        Level world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
+        Direction facing = context.getPlayer().isCrouching() ? context.getClickedFace() : context.getClickedFace().getOpposite();
+        return this.defaultBlockState()
+                .setValue(FACING, facing)
+                .setValue(NORTH, this.canConnectTo(world, pos.north(), Direction.NORTH))
+                .setValue(EAST, this.canConnectTo(world, pos.east(), Direction.EAST))
+                .setValue(SOUTH, this.canConnectTo(world, pos.south(), Direction.SOUTH))
+                .setValue(WEST, this.canConnectTo(world, pos.west(), Direction.WEST))
+                .setValue(UP, this.canConnectTo(world, pos.above(), Direction.UP))
+                .setValue(DOWN, this.canConnectTo(world, pos.below(), Direction.DOWN));
     }
 
     @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) //updatePostPlacement
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) // was updatePostPlacement
     {
-        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return stateIn.setValue(FACING_TO_PROPERTY_MAP.get(facing), this.canConnectTo((Level) worldIn, facingPos, facing));
     }
 
     protected boolean canConnectTo(Level world, BlockPos pos, Direction side)
@@ -82,9 +115,14 @@ public abstract class ItemConduitBlock extends BaseEntityBlock
     }
 
     @Override
-    public void playerWillDestroy(Level p_49852_, BlockPos p_49853_, BlockState p_49854_, Player p_49855_) //onBlockHarvested
+    public void onRemove(BlockState oldState, Level world, BlockPos pos, BlockState newState, boolean isMoving)
     {
-        super.playerWillDestroy(p_49852_, p_49853_, p_49854_, p_49855_);
+        if (!world.isClientSide() && newState.isAir())
+        {
+            BlockEntity entity = world.getBlockEntity(pos);
+            InventoryHelper.dropItemHandler(entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).orElse(null), world, pos);
+        }
+        super.onRemove(oldState, world, pos, newState, isMoving);
     }
 
     @Override
@@ -101,6 +139,11 @@ public abstract class ItemConduitBlock extends BaseEntityBlock
         }
     }
 
+    /**
+     * Gets the item conduit's bounding box
+     * @param state Block state of the Item Conduit
+     * @return The bounding box for the given Item Conduit Block
+     */
     protected VoxelShape getTubeShapes(BlockState state)
     {
         VoxelShape shape = Shapes.empty();
@@ -120,7 +163,7 @@ public abstract class ItemConduitBlock extends BaseEntityBlock
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) //Was fillStateContainer
     {
         builder.add(FACING, NORTH, EAST, SOUTH, WEST, UP, DOWN);
     }
@@ -131,7 +174,6 @@ public abstract class ItemConduitBlock extends BaseEntityBlock
         return RenderShape.MODEL;
     }
 
-    @Nullable
     @Override
     public abstract BlockEntity newBlockEntity(BlockPos pos, BlockState state);
 }

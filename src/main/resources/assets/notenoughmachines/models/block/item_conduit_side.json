@@ -1,0 +1,57 @@
+{
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"1": "notenoughmachines:block/item_conduit_side",
+		"particle": "notenoughmachines:block/item_conduit_side"
+	},
+	"elements": [
+		{
+			"name": "input",
+			"from": [6, 6, 10],
+			"to": [10, 10, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [1, 1, 5, 5], "texture": "#1"},
+				"east": {"uv": [4, 10, 10, 14], "texture": "#1"},
+				"south": {"uv": [1, 1, 5, 5], "texture": "#1"},
+				"west": {"uv": [6, 10, 12, 14], "texture": "#1"},
+				"up": {"uv": [0, 10, 4, 16], "texture": "#1"},
+				"down": {"uv": [0, 8, 4, 14], "texture": "#1"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [33.5, -33.5, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"fixed": {
+			"rotation": [90, 0, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "tube",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

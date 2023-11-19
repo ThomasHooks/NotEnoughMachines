@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.data.locale.LanguageGenerator;
+import com.github.thomashooks.notenoughmachines.data.locale.EnglishLanguageGenerator;
 import com.github.thomashooks.notenoughmachines.data.loot.modifier.NEMGlobalLootModifiersProvider;
 import com.github.thomashooks.notenoughmachines.data.loot.table.LootTableGenerator;
 import com.github.thomashooks.notenoughmachines.data.models.BlockStateGenerator;
@@ -37,7 +37,7 @@ public class DataGenerators
         BlockTagGenerator blockTagGenerator = generator.addProvider(event.includeServer(), new BlockTagGenerator(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
 
-        generator.addProvider(event.includeClient(), new LanguageGenerator(packOutput, "en_us"));
+        generator.addProvider(event.includeClient(), new EnglishLanguageGenerator(packOutput));
         generator.addProvider(event.includeClient(), new BlockStateGenerator(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ItemModelGenerator(packOutput, existingFileHelper));
     }

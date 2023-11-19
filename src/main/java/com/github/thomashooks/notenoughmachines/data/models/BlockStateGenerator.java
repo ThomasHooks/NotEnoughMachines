@@ -2,7 +2,7 @@ package com.github.thomashooks.notenoughmachines.data.models;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
-import com.github.thomashooks.notenoughmachines.world.block.NEMBlocks;
+import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
@@ -24,25 +24,26 @@ public class BlockStateGenerator extends BlockStateProvider
     @Override
     protected void registerStatesAndModels()
     {
-        axisBlock((RotatedPillarBlock) NEMBlocks.COPPER_PLATE_BLOCK.get(),
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"));
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
+        //simpleBlock(NEMBlocks.FILTER.get(), new ModelFile.UncheckedModelFile(modLoc("block/filter"))); //Manually added the filter's block state
         createFlaxPlant();
-        simpleCubeBlockWithItem(NEMBlocks.FLUXSTONE);
-        stairsBlock(((StairBlock) NEMBlocks.FLUXSTONE_STAIRS.get()), blockTexture(NEMBlocks.FLUXSTONE.get()));
-        slabBlock(((SlabBlock) NEMBlocks.FLUXSTONE_SLAB.get()), blockTexture(NEMBlocks.FLUXSTONE.get()), blockTexture(NEMBlocks.FLUXSTONE.get()));
-        wallBlock(((WallBlock) NEMBlocks.FLUXSTONE_WALL.get()), blockTexture(NEMBlocks.FLUXSTONE.get()));
-        axisBlock((RotatedPillarBlock) NEMBlocks.IRON_PLATE_BLOCK.get(),
+        simpleCubeBlockWithItem(AllBlocks.FLUXSTONE);
+        stairsBlock(((StairBlock) AllBlocks.FLUXSTONE_STAIRS.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
+        slabBlock(((SlabBlock) AllBlocks.FLUXSTONE_SLAB.get()), blockTexture(AllBlocks.FLUXSTONE.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
+        wallBlock(((WallBlock) AllBlocks.FLUXSTONE_WALL.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
+        axisBlock((RotatedPillarBlock) AllBlocks.IRON_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_side"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top"));
-        simpleCubeBlockWithItem(NEMBlocks.LINEN_BLOCK);
-        simpleCubeBlockWithItem(NEMBlocks.POLISHED_FLUXSTONE);
-        stairsBlock(((StairBlock) NEMBlocks.POLISHED_FLUXSTONE_STAIRS.get()), blockTexture(NEMBlocks.POLISHED_FLUXSTONE.get()));
-        slabBlock(((SlabBlock) NEMBlocks.POLISHED_FLUXSTONE_SLAB.get()), blockTexture(NEMBlocks.POLISHED_FLUXSTONE.get()), blockTexture(NEMBlocks.POLISHED_FLUXSTONE.get()));
-        wallBlock(((WallBlock) NEMBlocks.POLISHED_FLUXSTONE_WALL.get()), blockTexture(NEMBlocks.POLISHED_FLUXSTONE.get()));
-        simpleCubeBlockWithItem(NEMBlocks.WOODEN_FRAME);
-
-        //axisBlock(RotatedPillarBlock block, ResourceLocation side, ResourceLocation end);
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
+        );
+        simpleCubeBlockWithItem(AllBlocks.LINEN_BLOCK);
+        simpleCubeBlockWithItem(AllBlocks.POLISHED_FLUXSTONE);
+        stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+        slabBlock(((SlabBlock) AllBlocks.POLISHED_FLUXSTONE_SLAB.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+        wallBlock(((WallBlock) AllBlocks.POLISHED_FLUXSTONE_WALL.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+        simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
     }
 
     public void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)
@@ -52,8 +53,8 @@ public class BlockStateGenerator extends BlockStateProvider
 
     public void createFlaxPlant()
     {
-        Function<BlockState, ConfiguredModel[]> function = state -> flaxCropStates(state, (CropBlock) NEMBlocks.FLAXPLANT.get(), "flaxplant_stage");
-        getVariantBuilder((CropBlock) NEMBlocks.FLAXPLANT.get()).forAllStates(function);
+        Function<BlockState, ConfiguredModel[]> function = state -> flaxCropStates(state, (CropBlock) AllBlocks.FLAXPLANT.get(), "flaxplant_stage");
+        getVariantBuilder((CropBlock) AllBlocks.FLAXPLANT.get()).forAllStates(function);
     }
 
     private ConfiguredModel[] flaxCropStates(BlockState state, CropBlock block, String textureName)

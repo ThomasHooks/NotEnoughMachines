@@ -1,8 +1,8 @@
 package com.github.thomashooks.notenoughmachines.data.models;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.world.block.NEMBlocks;
-import com.github.thomashooks.notenoughmachines.world.item.NEMItems;
+import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
+import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -23,37 +23,39 @@ public class ItemModelGenerator extends ItemModelProvider
     @Override
     protected void registerModels()
     {
-        simpleItemModel(NEMItems.CONJUNCTIONER);
-        simpleItemModel(NEMItems.COPPER_PLATE);
-        simpleBlockItemModel(NEMBlocks.COPPER_PLATE_BLOCK);
-        simpleItemModel(NEMItems.COPPER_ROD);
-        simpleItemModel(NEMItems.CRUSHED_COPPER_ORE);
-        simpleItemModel(NEMItems.CRUSHED_GOLD_ORE);
-        simpleItemModel(NEMItems.CRUSHED_IRON_ORE);
-        simpleItemModel(NEMItems.FLUX);
-        simpleBlockItemModel(NEMBlocks.FLUXSTONE_SLAB);
-        simpleBlockItemModel(NEMBlocks.FLUXSTONE_STAIRS);
-        wallItemModel(NEMBlocks.FLUXSTONE_WALL, NEMBlocks.FLUXSTONE);
-        simpleItemModel(NEMItems.FLOUR);
-        simpleItemModel(NEMItems.FLAXSEED);
-        simpleItemModel(NEMItems.FLAX);
-        simpleItemModel(NEMItems.FLAX_STRING);
-        simpleItemModel(NEMItems.GEAR);
-        simpleItemModel(NEMItems.HAMMER_AND_ANVIL);
-        simpleItemModel(NEMItems.IRON_PLATE);
-        simpleBlockItemModel(NEMBlocks.IRON_PLATE_BLOCK);
-        simpleItemModel(NEMItems.IRON_ROD);
-        simpleItemModel(NEMItems.IRON_SCREW);
-        simpleItemModel(NEMItems.LINEN);
-        simpleItemModel(NEMItems.LINSEED_OIL);
-        simpleBlockItemModel(NEMBlocks.POLISHED_FLUXSTONE_SLAB);
-        simpleBlockItemModel(NEMBlocks.POLISHED_FLUXSTONE_STAIRS);
-        wallItemModel(NEMBlocks.POLISHED_FLUXSTONE_WALL, NEMBlocks.POLISHED_FLUXSTONE);
-        simpleItemModel(NEMItems.REDSTONE_COLLECTOR);
-        simpleItemModel(NEMItems.REDSTONE_EMITTER);
-        simpleItemModel(NEMItems.ROLLERS);
-        simpleItemModel(NEMItems.WIND_WHEEL_BLADE);
-        simpleItemModel(NEMItems.WIND_WHEEL_SAIL);
+        simpleBlockItemModel(AllBlocks.AXLE);
+        simpleItemModel(AllItems.CONJUNCTIONER);
+        simpleItemModel(AllItems.COPPER_PLATE);
+        simpleBlockItemModel(AllBlocks.COPPER_PLATE_BLOCK);
+        simpleItemModel(AllItems.COPPER_ROD);
+        simpleItemModel(AllItems.CRUSHED_COPPER_ORE);
+        simpleItemModel(AllItems.CRUSHED_GOLD_ORE);
+        simpleItemModel(AllItems.CRUSHED_IRON_ORE);
+        simpleItemModel(AllItems.FILTER, "filter_item");
+        simpleItemModel(AllItems.FLUX);
+        simpleBlockItemModel(AllBlocks.FLUXSTONE_SLAB);
+        simpleBlockItemModel(AllBlocks.FLUXSTONE_STAIRS);
+        wallItemModel(AllBlocks.FLUXSTONE_WALL, AllBlocks.FLUXSTONE);
+        simpleItemModel(AllItems.FLOUR);
+        simpleItemModel(AllItems.FLAXSEED);
+        simpleItemModel(AllItems.FLAX);
+        simpleItemModel(AllItems.FLAX_STRING);
+        simpleItemModel(AllItems.GEAR);
+        simpleItemModel(AllItems.HAMMER_AND_ANVIL);
+        simpleItemModel(AllItems.IRON_PLATE);
+        simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
+        simpleItemModel(AllItems.IRON_ROD);
+        simpleItemModel(AllItems.IRON_SCREW);
+        simpleItemModel(AllItems.LINEN);
+        simpleItemModel(AllItems.LINSEED_OIL);
+        simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
+        simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
+        wallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
+        simpleItemModel(AllItems.REDSTONE_COLLECTOR);
+        simpleItemModel(AllItems.REDSTONE_EMITTER);
+        simpleItemModel(AllItems.ROLLERS);
+        simpleItemModel(AllItems.WIND_WHEEL_BLADE);
+        simpleItemModel(AllItems.WIND_WHEEL_SAIL);
     }
 
     public ItemModelBuilder simpleItemModel(RegistryObject<? extends Item> itemIn)
@@ -61,6 +63,13 @@ public class ItemModelGenerator extends ItemModelProvider
         return withExistingParent(itemIn.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + itemIn.getId().getPath()));
+    }
+
+    public ItemModelBuilder simpleItemModel(RegistryObject<? extends Item> itemIn, String textureName)
+    {
+        return withExistingParent(itemIn.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + textureName));
     }
 
     public void wallItemModel(RegistryObject<? extends Block> blockIn, RegistryObject<? extends Block> baseBlock)

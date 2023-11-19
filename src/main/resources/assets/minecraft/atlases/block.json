@@ -1,0 +1,9 @@
+{
+    "sources": [
+        {
+            "type": "directory",
+            "source": "notenoughmachines:machine",
+            "prefix": "notenoughmachines:machine/"
+        }
+    ]
+}

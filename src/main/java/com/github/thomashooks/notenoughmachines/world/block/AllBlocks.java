@@ -11,10 +11,17 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class NEMBlocks
+public class AllBlocks
 {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, NotEnoughMachines.MOD_ID);
 
+    public static final RegistryObject<Block> AXLE = BLOCKS.register("axle",
+            ()-> new AxleBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> CONJUNCTIONER = BLOCKS.register("conjunctioner",
             ()-> new ConjunctionerBlock(Block.Properties
                     .copy(Blocks.REPEATER)
@@ -22,7 +29,6 @@ public class NEMBlocks
                     .sound(SoundType.STONE)
                     .pushReaction(PushReaction.DESTROY)
             ));
-
     public static final RegistryObject<Block> COPPER_PLATE_BLOCK = BLOCKS.register("copper_plate_block",
             ()-> new RotatedPillarBlock(Block.Properties.of()
                     .mapColor(MapColor.COLOR_ORANGE)
@@ -30,43 +36,44 @@ public class NEMBlocks
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
-
+    public static final RegistryObject<Block> FILTER = BLOCKS.register("filter",
+            () -> new FilterBlock(Block.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(1.2F, 2.0F)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> FLAXPLANT = BLOCKS.register("flaxplant",
             ()-> new FlaxPlantBlock(Block.Properties
                     .copy(Blocks.WHEAT)
                     .noOcclusion()
                     .noCollission()
             ));
-
     public static final RegistryObject<Block> FLUXSTONE = BLOCKS.register("fluxstone",
             ()-> new Block(Block.Properties
                     .copy(Blocks.DIORITE)
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> FLUXSTONE_SLAB = BLOCKS.register("fluxstone_slab",
             ()-> new SlabBlock(Block.Properties
                     .copy(Blocks.DIORITE)
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> FLUXSTONE_STAIRS = BLOCKS.register("fluxstone_stairs",
-            ()-> new StairBlock(() -> NEMBlocks.FLUXSTONE.get().defaultBlockState(),
+            ()-> new StairBlock(() -> AllBlocks.FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties
                             .copy(Blocks.DIORITE)
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> FLUXSTONE_WALL = BLOCKS.register("fluxstone_wall",
             ()-> new WallBlock(Block.Properties
                     .copy(Blocks.DIORITE)
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> IRON_PLATE_BLOCK = BLOCKS.register("iron_plate_block",
             ()-> new RotatedPillarBlock(Block.Properties
                     .copy(Blocks.IRON_BLOCK)
@@ -76,7 +83,6 @@ public class NEMBlocks
                     .strength(5.0F, 6.0F)
                     .sound(SoundType.METAL)
             ));
-
     public static final RegistryObject<Block> LINEN_BLOCK = BLOCKS.register("linen_block",
             ()-> new LinenBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOL)
@@ -85,36 +91,31 @@ public class NEMBlocks
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
-
     public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone",
             ()-> new Block(Block.Properties
                     .copy(Blocks.POLISHED_DIORITE)
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_SLAB = BLOCKS.register("polished_fluxstone_slab",
             ()-> new SlabBlock(Block.Properties
                     .copy(Blocks.DIORITE)
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_STAIRS = BLOCKS.register("polished_fluxstone_stairs",
-            ()-> new StairBlock(() -> NEMBlocks.POLISHED_FLUXSTONE.get().defaultBlockState(),
+            ()-> new StairBlock(() -> AllBlocks.POLISHED_FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties
                             .copy(Blocks.DIORITE)
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_WALL = BLOCKS.register("polished_fluxstone_wall",
             ()-> new WallBlock(Block.Properties
                     .copy(Blocks.DIORITE)
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 3.0f)
             ));
-
     public static final RegistryObject<Block> WOODEN_FRAME = BLOCKS.register("wooden_frame",
             ()-> new Block(Block.Properties.of()
                     .mapColor(MapColor.WOOD)

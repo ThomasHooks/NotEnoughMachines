@@ -1,8 +1,8 @@
 package com.github.thomashooks.notenoughmachines.data.loot.table;
 
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
-import com.github.thomashooks.notenoughmachines.world.block.NEMBlocks;
-import com.github.thomashooks.notenoughmachines.world.item.NEMItems;
+import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
+import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -25,26 +25,28 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     @Override
     protected void generate()
     {
-        dropSelf(NEMBlocks.CONJUNCTIONER.get());
-        dropSelf(NEMBlocks.COPPER_PLATE_BLOCK.get());
-        dropCropAndSeed(NEMBlocks.FLAXPLANT.get(), NEMItems.FLAX.get(), NEMItems.FLAXSEED.get(), FlaxPlantBlock.AGE, FlaxPlantBlock.MAX_AGE);
-        dropSelf(NEMBlocks.FLUXSTONE.get());
-        add(NEMBlocks.FLUXSTONE_SLAB.get(), block -> createSlabItemTable(NEMBlocks.FLUXSTONE_SLAB.get()));
-        dropSelf(NEMBlocks.FLUXSTONE_STAIRS.get());
-        dropSelf(NEMBlocks.FLUXSTONE_WALL.get());
-        dropSelf(NEMBlocks.IRON_PLATE_BLOCK.get());
-        dropSelf(NEMBlocks.LINEN_BLOCK.get());
-        dropSelf(NEMBlocks.POLISHED_FLUXSTONE.get());
-        add(NEMBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(NEMBlocks.POLISHED_FLUXSTONE_SLAB.get()));
-        dropSelf(NEMBlocks.POLISHED_FLUXSTONE_STAIRS.get());
-        dropSelf(NEMBlocks.POLISHED_FLUXSTONE_WALL.get());
-        dropSelf(NEMBlocks.WOODEN_FRAME.get());
+        dropSelf(AllBlocks.AXLE.get());
+        dropSelf(AllBlocks.CONJUNCTIONER.get());
+        dropSelf(AllBlocks.COPPER_PLATE_BLOCK.get());
+        dropSelf(AllBlocks.FILTER.get());
+        dropCropAndSeed(AllBlocks.FLAXPLANT.get(), AllItems.FLAX.get(), AllItems.FLAXSEED.get(), FlaxPlantBlock.AGE, FlaxPlantBlock.MAX_AGE);
+        dropSelf(AllBlocks.FLUXSTONE.get());
+        add(AllBlocks.FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.FLUXSTONE_SLAB.get()));
+        dropSelf(AllBlocks.FLUXSTONE_STAIRS.get());
+        dropSelf(AllBlocks.FLUXSTONE_WALL.get());
+        dropSelf(AllBlocks.IRON_PLATE_BLOCK.get());
+        dropSelf(AllBlocks.LINEN_BLOCK.get());
+        dropSelf(AllBlocks.POLISHED_FLUXSTONE.get());
+        add(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.POLISHED_FLUXSTONE_SLAB.get()));
+        dropSelf(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get());
+        dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
+        dropSelf(AllBlocks.WOODEN_FRAME.get());
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks()
     {
-        return NEMBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+        return AllBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
     private void dropCropAndSeed(Block cropBlock, Item crop, Item seed, IntegerProperty age, int maxAge)

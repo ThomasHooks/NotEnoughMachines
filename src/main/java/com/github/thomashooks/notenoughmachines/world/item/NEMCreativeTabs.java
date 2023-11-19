@@ -15,62 +15,62 @@ public class NEMCreativeTabs
     public static final RegistryObject<CreativeModeTab> NEM_TAB =TABS.register("nem_tab",
             ()-> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup." + NotEnoughMachines.MOD_ID + ".nem_tab"))
-                    .icon(NEMItems.GEAR.get()::getDefaultInstance)
+                    .icon(AllItems.GEAR.get()::getDefaultInstance)
                     .displayItems((itemDisplayParameters, output) ->
                     {
                         //Building Blocks - full
-                        output.accept(NEMItems.COPPER_PLATE_BLOCK.get());
-                        output.accept(NEMItems.IRON_PLATE_BLOCK.get());
-                        output.accept(NEMItems.LINEN_BLOCK.get());
-                        output.accept(NEMItems.FLUXSTONE.get());
-                        output.accept(NEMItems.POLISHED_FLUXSTONE.get());
-                        output.accept(NEMItems.WOODEN_FRAME.get());
+                        output.accept(AllItems.COPPER_PLATE_BLOCK.get());
+                        output.accept(AllItems.IRON_PLATE_BLOCK.get());
+                        output.accept(AllItems.LINEN_BLOCK.get());
+                        output.accept(AllItems.FLUXSTONE.get());
+                        output.accept(AllItems.POLISHED_FLUXSTONE.get());
+                        output.accept(AllItems.WOODEN_FRAME.get());
                         //Building Blocks - slabs
-                        output.accept(NEMItems.FLUXSTONE_SLAB.get());
-                        output.accept(NEMItems.POLISHED_FLUXSTONE_SLAB.get());
+                        output.accept(AllItems.FLUXSTONE_SLAB.get());
+                        output.accept(AllItems.POLISHED_FLUXSTONE_SLAB.get());
                         //Building Blocks - stairs
-                        output.accept(NEMItems.FLUXSTONE_STAIRS.get());
-                        output.accept(NEMItems.POLISHED_FLUXSTONE_STAIRS.get());
+                        output.accept(AllItems.FLUXSTONE_STAIRS.get());
+                        output.accept(AllItems.POLISHED_FLUXSTONE_STAIRS.get());
                         //Building Blocks - fences
 
                         //Building Blocks - walls
-                        output.accept(NEMItems.FLUXSTONE_WALL.get());
-                        output.accept(NEMItems.POLISHED_FLUXSTONE_WALL.get());
+                        output.accept(AllItems.FLUXSTONE_WALL.get());
+                        output.accept(AllItems.POLISHED_FLUXSTONE_WALL.get());
                         //Machine Blocks - power transfer
-
+                        output.accept(AllItems.AXLE.get());
                         //Machine Blocks - power generators
 
                         //Machine Blocks - mills/processors
 
                         //Machine Blocks - item transfer
-
+                        output.accept(AllItems.FILTER.get());
                         //Redstone Blocks
-                        output.accept(NEMItems.CONJUNCTIONER.get());
+                        output.accept(AllItems.CONJUNCTIONER.get());
                         //Dust Items
-                        output.accept(NEMItems.CRUSHED_COPPER_ORE.get());
-                        output.accept(NEMItems.CRUSHED_IRON_ORE.get());
-                        output.accept(NEMItems.CRUSHED_GOLD_ORE.get());
-                        output.accept(NEMItems.FLUX.get());
-                        output.accept(NEMItems.FLOUR.get());
+                        output.accept(AllItems.CRUSHED_COPPER_ORE.get());
+                        output.accept(AllItems.CRUSHED_IRON_ORE.get());
+                        output.accept(AllItems.CRUSHED_GOLD_ORE.get());
+                        output.accept(AllItems.FLUX.get());
+                        output.accept(AllItems.FLOUR.get());
                         //Seed Items
-                        output.accept(NEMItems.FLAXSEED.get());
+                        output.accept(AllItems.FLAXSEED.get());
                         //Crafting Items
-                        output.accept(NEMItems.FLAX.get());
-                        output.accept(NEMItems.FLAX_STRING.get());
-                        output.accept(NEMItems.LINEN.get());
-                        output.accept(NEMItems.LINSEED_OIL.get());
-                        output.accept(NEMItems.COPPER_PLATE.get());
-                        output.accept(NEMItems.IRON_PLATE.get());
-                        output.accept(NEMItems.COPPER_ROD.get());
-                        output.accept(NEMItems.IRON_ROD.get());
-                        output.accept(NEMItems.IRON_SCREW.get());
-                        output.accept(NEMItems.GEAR.get());
-                        output.accept(NEMItems.WIND_WHEEL_BLADE.get());
-                        output.accept(NEMItems.WIND_WHEEL_SAIL.get());
-                        output.accept(NEMItems.HAMMER_AND_ANVIL.get());
-                        output.accept(NEMItems.ROLLERS.get());
-                        output.accept(NEMItems.REDSTONE_COLLECTOR.get());
-                        output.accept(NEMItems.REDSTONE_EMITTER.get());
+                        output.accept(AllItems.FLAX.get());
+                        output.accept(AllItems.FLAX_STRING.get());
+                        output.accept(AllItems.LINEN.get());
+                        output.accept(AllItems.LINSEED_OIL.get());
+                        output.accept(AllItems.COPPER_PLATE.get());
+                        output.accept(AllItems.IRON_PLATE.get());
+                        output.accept(AllItems.COPPER_ROD.get());
+                        output.accept(AllItems.IRON_ROD.get());
+                        output.accept(AllItems.IRON_SCREW.get());
+                        output.accept(AllItems.GEAR.get());
+                        output.accept(AllItems.WIND_WHEEL_BLADE.get());
+                        output.accept(AllItems.WIND_WHEEL_SAIL.get());
+                        output.accept(AllItems.HAMMER_AND_ANVIL.get());
+                        output.accept(AllItems.ROLLERS.get());
+                        output.accept(AllItems.REDSTONE_COLLECTOR.get());
+                        output.accept(AllItems.REDSTONE_EMITTER.get());
                     })
                     .build()
     );

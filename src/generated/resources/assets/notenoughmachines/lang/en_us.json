@@ -1,6 +1,8 @@
 {
+  "block.notenoughmachines.axle": "Axle",
   "block.notenoughmachines.conjunctioner": "Redstone Conjunctioner",
   "block.notenoughmachines.copper_plate_block": "Block of Copper Plates",
+  "block.notenoughmachines.filter": "Item Filter",
   "block.notenoughmachines.fluxstone": "Fluxstone",
   "block.notenoughmachines.fluxstone_slab": "Fluxstone Slab",
   "block.notenoughmachines.fluxstone_stairs": "Fluxstone Stairs",
@@ -12,6 +14,7 @@
   "block.notenoughmachines.polished_fluxstone_stairs": "Polished Fluxstone Stairs",
   "block.notenoughmachines.polished_fluxstone_wall": "Polished Fluxstone Wall",
   "block.notenoughmachines.wooden_frame": "Wooden Frame",
+  "container.notenoughmachines.filter": "Item Filter",
   "item.notenoughmachines.copper_plate": "Copper Plate",
   "item.notenoughmachines.copper_rod": "Copper Rod",
   "item.notenoughmachines.crushed_copper_ore": "Crushed Raw Copper",

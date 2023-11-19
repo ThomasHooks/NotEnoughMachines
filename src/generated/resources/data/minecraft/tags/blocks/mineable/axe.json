@@ -1,5 +1,7 @@
 {
   "values": [
+    "notenoughmachines:axle",
+    "notenoughmachines:filter",
     "notenoughmachines:wooden_frame"
   ]
 }

@@ -1,6 +1,8 @@
 {
   "values": [
+    "notenoughmachines:axle",
     "notenoughmachines:copper_plate_block",
+    "notenoughmachines:filter",
     "notenoughmachines:fluxstone",
     "notenoughmachines:fluxstone_slab",
     "notenoughmachines:fluxstone_stairs",

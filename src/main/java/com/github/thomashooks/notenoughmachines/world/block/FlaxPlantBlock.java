@@ -1,6 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.world.item.NEMItems;
+import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -35,7 +35,7 @@ public class FlaxPlantBlock extends CropBlock
     @Override
     protected ItemLike getBaseSeedId()
     {
-        return NEMItems.FLAXSEED.get();
+        return AllItems.FLAXSEED.get();
     }
 
     @Override

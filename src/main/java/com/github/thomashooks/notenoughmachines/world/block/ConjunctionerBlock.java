@@ -1,5 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
+import com.github.thomashooks.notenoughmachines.world.block.base.TriodeBlock;
 import com.github.thomashooks.notenoughmachines.world.block.state.InputDualType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

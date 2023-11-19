@@ -1,6 +1,6 @@
-// 1.20.2	2023-11-12T23:03:41.6202431	Tags for minecraft:block mod id notenoughmachines
-6bbdc4ff59116b8940fd6c6a50b3b0f9c80c35a7 data/minecraft/tags/blocks/mineable/axe.json
-e00120f9db84a52ed3f14e31e7a919b9b6e8b28c data/minecraft/tags/blocks/mineable/pickaxe.json
+// 1.20.2	2023-11-17T00:49:04.0873897	Tags for minecraft:block mod id notenoughmachines
+db0df1f73527ef9c7f2a81c341fb0b8b71f93117 data/minecraft/tags/blocks/mineable/axe.json
+70054e7146d93af7c80d82bf15dac0512f300cf2 data/minecraft/tags/blocks/mineable/pickaxe.json
 ba3136b7a7b4ed1df986db8932fa43e241bb45b7 data/minecraft/tags/blocks/needs_stone_tool.json
 6b7ab0593d798c7fc68b9dcff42d553dbef97bd5 data/minecraft/tags/blocks/walls.json
 e5463ae4f3b82270fa2c991901217be559ca0284 data/notenoughmachines/tags/blocks/stripped_logs.json

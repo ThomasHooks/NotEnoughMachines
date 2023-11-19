@@ -1,0 +1,52 @@
+package com.github.thomashooks.notenoughmachines.events;
+
+import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.AxleRenderer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
+import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
+import com.github.thomashooks.notenoughmachines.world.inventory.AllMenus;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+@Mod.EventBusSubscriber(modid = NotEnoughMachines.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class ClientModEvents
+{
+    @SubscribeEvent
+    public static void onClientSetup(final FMLClientSetupEvent event)
+    {
+        //LNotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":setting Block render types");
+        //ItemBlockRenderTypes.setRenderLayer(NEMBlocks.FLAXPLANT.get(), RenderType.cutout());
+
+        NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Screens");
+        event.enqueueWork(()->
+        {
+            MenuScreens.register(AllMenus.FILTER.get(), FilterScreen::new);
+        });
+    }
+
+    @SubscribeEvent
+    public static void registerLayersDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event)
+    {
+        NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Layer Definitions");
+        event.registerLayerDefinition(AxleModelLayer.LOCATION, AxleModelLayer::createBody);
+    }
+
+    @SubscribeEvent
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event)
+    {
+        NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Block Entity Renderers");
+        event.registerBlockEntityRenderer(AllBlockEntities.AXLE.get(), AxleRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerKeyMappings(RegisterKeyMappingsEvent event)
+    {
+        //NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Key Mappings");
+    }
+}
