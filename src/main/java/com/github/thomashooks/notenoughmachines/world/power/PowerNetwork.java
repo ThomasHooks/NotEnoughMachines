@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class PowerNetwork
 {
-    private long id;
-    private LevelAccessor world;
+    private final long id;
+    private final LevelAccessor world;
     private int powerCapacity;
     private int powerLoad;
     private ArrayList<MechanicalBlockEntity> nodes = new ArrayList<MechanicalBlockEntity>();
@@ -62,7 +62,6 @@ public class PowerNetwork
         {
             switch(entities.getMachineType())
             {
-
                 case SOURCE:
                     power += entities.getCapacity();
                     break;

@@ -1,4 +1,4 @@
-// 1.20.2	2023-11-12T14:17:17.9769968	Global Loot Modifiers : notenoughmachines
+// 1.20.1	2023-11-19T12:05:44.2438757	Global Loot Modifiers : notenoughmachines
 8e97e82556ab97ccb7e53fc0e2c9f3bcf42f3c4d data/forge/loot_modifiers/global_loot_modifiers.json
 2e01b420fe6d1208bcafeda135ceba7be9cb0ac0 data/notenoughmachines/loot_modifiers/flaxseed_from_fern.json
 216eb46e359188748a5ee2bf321e60ec370bfde6 data/notenoughmachines/loot_modifiers/flaxseed_from_grass.json

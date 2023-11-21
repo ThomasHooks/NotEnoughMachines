@@ -82,7 +82,8 @@ public class PowerNetworkStack
             for (MechanicalBlockEntity neighbor : neighbors)
             {
                 PowerNetwork network = worldPowerNetworks.get(neighbor.getNetworkID());
-                if (!networks.contains(network)) networks.add(network);
+                if (!networks.contains(network))
+                    networks.add(network);
             }
             mergePowerNetworks(worldPowerNetworks, networks, entity.getLevel());
         }
@@ -185,7 +186,8 @@ public class PowerNetworkStack
         int indexOfLargestSubnetwork = 0;
         for (int i = 0; i < subnetworks.size(); i++)
         {
-            if (subnetworks.get(i).size() > subnetworks.get(indexOfLargestSubnetwork).size()) indexOfLargestSubnetwork = i;
+            if (subnetworks.get(i).size() > subnetworks.get(indexOfLargestSubnetwork).size())
+                indexOfLargestSubnetwork = i;
         }
 
         //All other subnetworks will be put into their own new power network and removed from the prime power network
@@ -219,7 +221,8 @@ public class PowerNetworkStack
         for (MechanicalBlockEntity tileNext : neighbors)
         {
 
-            if (tileNext == entityFrom) continue;
+            if (tileNext == entityFrom)
+                continue;
 
             findMachinesInSubnetwork(subnetwork, entityCurrent, tileNext);
         }

@@ -2,6 +2,8 @@
   "values": [
     "notenoughmachines:axle",
     "notenoughmachines:filter",
+    "notenoughmachines:millstone",
+    "notenoughmachines:water_wheel",
     "notenoughmachines:wooden_frame"
   ]
 }

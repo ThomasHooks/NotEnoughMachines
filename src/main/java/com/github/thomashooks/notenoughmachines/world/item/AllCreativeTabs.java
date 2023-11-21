@@ -8,7 +8,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-public class NEMCreativeTabs
+public class AllCreativeTabs
 {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, NotEnoughMachines.MOD_ID);
 
@@ -39,9 +39,9 @@ public class NEMCreativeTabs
                         //Machine Blocks - power transfer
                         output.accept(AllItems.AXLE.get());
                         //Machine Blocks - power generators
-
+                        output.accept(AllItems.WATER_WHEEL.get());
                         //Machine Blocks - mills/processors
-
+                        output.accept(AllItems.MILLSTONE.get());
                         //Machine Blocks - item transfer
                         output.accept(AllItems.FILTER.get());
                         //Redstone Blocks

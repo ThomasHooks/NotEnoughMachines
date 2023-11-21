@@ -50,29 +50,31 @@ public class AllBlocks
                     .noCollission()
             ));
     public static final RegistryObject<Block> FLUXSTONE = BLOCKS.register("fluxstone",
-            ()-> new Block(Block.Properties
-                    .copy(Blocks.DIORITE)
+            ()-> new Block(Block.Properties.of()
+                    .mapColor(MapColor.QUARTZ)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 3.0f)
+                    .strength(1.5f, 5.0f)
+                    .sound(SoundType.DEEPSLATE)
             ));
     public static final RegistryObject<Block> FLUXSTONE_SLAB = BLOCKS.register("fluxstone_slab",
             ()-> new SlabBlock(Block.Properties
-                    .copy(Blocks.DIORITE)
+                    .copy(AllBlocks.FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 3.0f)
+                    .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FLUXSTONE_STAIRS = BLOCKS.register("fluxstone_stairs",
             ()-> new StairBlock(() -> AllBlocks.FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties
-                            .copy(Blocks.DIORITE)
+                            .copy(AllBlocks.FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
-                            .strength(1.5f, 3.0f)
+                            .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FLUXSTONE_WALL = BLOCKS.register("fluxstone_wall",
             ()-> new WallBlock(Block.Properties
-                    .copy(Blocks.DIORITE)
+                    .copy(AllBlocks.FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 3.0f)
+                    .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> IRON_PLATE_BLOCK = BLOCKS.register("iron_plate_block",
             ()-> new RotatedPillarBlock(Block.Properties
@@ -91,30 +93,45 @@ public class AllBlocks
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
+
+    public static final RegistryObject<Block> MILLSTONE = BLOCKS.register("millstone",
+            ()-> new MillstoneBlock(Block.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(2.8F, 3.0F)
+                    .sound(SoundType.STONE)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone",
-            ()-> new Block(Block.Properties
-                    .copy(Blocks.POLISHED_DIORITE)
+            ()-> new RotatedPillarBlock(Block.Properties
+                    .copy(AllBlocks.FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 3.0f)
+                    .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_SLAB = BLOCKS.register("polished_fluxstone_slab",
             ()-> new SlabBlock(Block.Properties
-                    .copy(Blocks.DIORITE)
+                    .copy(AllBlocks.FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 3.0f)
+                    .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_STAIRS = BLOCKS.register("polished_fluxstone_stairs",
             ()-> new StairBlock(() -> AllBlocks.POLISHED_FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties
-                            .copy(Blocks.DIORITE)
+                            .copy(AllBlocks.FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
-                            .strength(1.5f, 3.0f)
+                            .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_WALL = BLOCKS.register("polished_fluxstone_wall",
             ()-> new WallBlock(Block.Properties
-                    .copy(Blocks.DIORITE)
+                    .copy(AllBlocks.FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 3.0f)
+                    .strength(1.5f, 5.0f)
+            ));
+    public static final RegistryObject<Block> WATER_WHEEL = BLOCKS.register("water_wheel",
+            ()-> new WaterWheelBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
             ));
     public static final RegistryObject<Block> WOODEN_FRAME = BLOCKS.register("wooden_frame",
             ()-> new Block(Block.Properties.of()

@@ -26,6 +26,8 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(AllBlocks.AXLE.get(),
                         AllBlocks.FILTER.get(),
+                        AllBlocks.MILLSTONE.get(),
+                        AllBlocks.WATER_WHEEL.get(),
                         AllBlocks.WOODEN_FRAME.get()
                 );
 
@@ -38,10 +40,12 @@ public class BlockTagGenerator extends BlockTagsProvider
                         AllBlocks.FLUXSTONE_STAIRS.get(),
                         AllBlocks.FLUXSTONE_WALL.get(),
                         AllBlocks.IRON_PLATE_BLOCK.get(),
+                        AllBlocks.MILLSTONE.get(),
                         AllBlocks.POLISHED_FLUXSTONE.get(),
                         AllBlocks.POLISHED_FLUXSTONE_SLAB.get(),
                         AllBlocks.POLISHED_FLUXSTONE_STAIRS.get(),
                         AllBlocks.POLISHED_FLUXSTONE_WALL.get(),
+                        AllBlocks.WATER_WHEEL.get(),
                         AllBlocks.WOODEN_FRAME.get()
                 );
 

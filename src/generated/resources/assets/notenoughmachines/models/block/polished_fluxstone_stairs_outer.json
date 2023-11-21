@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/outer_stairs",
   "textures": {
-    "bottom": "notenoughmachines:block/polished_fluxstone",
+    "bottom": "notenoughmachines:block/polished_fluxstone_top",
     "side": "notenoughmachines:block/polished_fluxstone",
-    "top": "notenoughmachines:block/polished_fluxstone"
+    "top": "notenoughmachines:block/polished_fluxstone_top"
   }
 }

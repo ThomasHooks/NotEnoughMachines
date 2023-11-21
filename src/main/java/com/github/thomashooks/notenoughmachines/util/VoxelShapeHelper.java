@@ -59,7 +59,7 @@ public class VoxelShapeHelper
 
     private static final VoxelShape RUNNER_STONE = Block.box(1.0D, 6.0D, 1.0D, 15.D, 10.0D, 15.0D);
     private static final VoxelShape BED_STONE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
-    public static final VoxelShape MILL_STONE = Shapes.or(AXLE[1], RUNNER_STONE, BED_STONE);
+    public static final VoxelShape MILLSTONE = Shapes.or(AXLE[1], RUNNER_STONE, BED_STONE);
 
     private static final VoxelShape WATER_WHEEL_MID = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 13.0D, 11.0D);
     private static final VoxelShape WATER_WHEEL_TRIL = Block.box(0.0D, 2.0D, 0.0D, 16.0D, 12.0D, 16.0D);

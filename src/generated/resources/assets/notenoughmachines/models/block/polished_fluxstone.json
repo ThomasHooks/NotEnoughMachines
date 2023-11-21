@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "notenoughmachines:block/polished_fluxstone"
+    "end": "notenoughmachines:block/polished_fluxstone_top",
+    "side": "notenoughmachines:block/polished_fluxstone"
   }
 }

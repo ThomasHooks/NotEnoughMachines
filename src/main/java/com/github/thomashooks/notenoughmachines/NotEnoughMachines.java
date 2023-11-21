@@ -3,10 +3,11 @@ package com.github.thomashooks.notenoughmachines;
 import com.github.thomashooks.notenoughmachines.client.ClientTimer;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
-import com.github.thomashooks.notenoughmachines.data.loot.modifier.NEMLootModifiers;
+import com.github.thomashooks.notenoughmachines.data.loot.modifier.AllLootModifiers;
 import com.github.thomashooks.notenoughmachines.world.inventory.AllMenus;
-import com.github.thomashooks.notenoughmachines.world.item.NEMCreativeTabs;
+import com.github.thomashooks.notenoughmachines.world.item.AllCreativeTabs;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
+import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
 import com.github.thomashooks.notenoughmachines.world.power.PowerNetworkStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -31,7 +32,6 @@ public class NotEnoughMachines
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::onCommonSetup);
-        //modEventBus.addListener(this::onClientSetup);
 
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Blocks");
         AllBlocks.registerAll(modEventBus);
@@ -46,12 +46,13 @@ public class NotEnoughMachines
         AllMenus.registerAll(modEventBus);
 
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Creative Tabs");
-        NEMCreativeTabs.registerAll(modEventBus);
+        AllCreativeTabs.registerAll(modEventBus);
 
-        //LOGGER.debug("registering all NEM Recipes");
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Recipes");
+        AllRecipes.registerAll(modEventBus);
 
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Loot Modifiers");
-        NEMLootModifiers.registerAll(modEventBus);
+        AllLootModifiers.registerAll(modEventBus);
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event)
@@ -60,16 +61,4 @@ public class NotEnoughMachines
 
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":pre-initiation done");
     }
-
-   /* public void onClientSetup(final FMLClientSetupEvent event)
-    {
-        //LNotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":setting Block render types");
-        //ItemBlockRenderTypes.setRenderLayer(NEMBlocks.FLAXPLANT.get(), RenderType.cutout());
-
-        NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Screens");
-        event.enqueueWork(()->
-        {
-            MenuScreens.register(NEMMenus.FILTER.get(), FilterScreen::new);
-        });
-    }*/
 }

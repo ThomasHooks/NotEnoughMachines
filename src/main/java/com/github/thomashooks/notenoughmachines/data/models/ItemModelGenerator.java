@@ -48,12 +48,14 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.IRON_SCREW);
         simpleItemModel(AllItems.LINEN);
         simpleItemModel(AllItems.LINSEED_OIL);
+        simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
         wallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
         simpleItemModel(AllItems.REDSTONE_COLLECTOR);
         simpleItemModel(AllItems.REDSTONE_EMITTER);
         simpleItemModel(AllItems.ROLLERS);
+        simpleBlockItemModel(AllBlocks.WATER_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL_BLADE);
         simpleItemModel(AllItems.WIND_WHEEL_SAIL);
     }

@@ -2,8 +2,13 @@ package com.github.thomashooks.notenoughmachines.events;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
+import com.github.thomashooks.notenoughmachines.client.gui.screens.MillstoneScreen;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.AxleRenderer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.MillstoneRenderer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.WaterWheelRenderer;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.MillstoneModelLayer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.WaterWheelModelLayer;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.inventory.AllMenus;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -27,6 +32,7 @@ public class ClientModEvents
         event.enqueueWork(()->
         {
             MenuScreens.register(AllMenus.FILTER.get(), FilterScreen::new);
+            MenuScreens.register(AllMenus.MILLSTONE.get(), MillstoneScreen::new);
         });
     }
 
@@ -35,6 +41,8 @@ public class ClientModEvents
     {
         NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Layer Definitions");
         event.registerLayerDefinition(AxleModelLayer.LOCATION, AxleModelLayer::createBody);
+        event.registerLayerDefinition(MillstoneModelLayer.LOCATION, MillstoneModelLayer::createBody);
+        event.registerLayerDefinition(WaterWheelModelLayer.LOCATION, WaterWheelModelLayer::createBody);
     }
 
     @SubscribeEvent
@@ -42,6 +50,8 @@ public class ClientModEvents
     {
         NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Block Entity Renderers");
         event.registerBlockEntityRenderer(AllBlockEntities.AXLE.get(), AxleRenderer::new);
+        event.registerBlockEntityRenderer(AllBlockEntities.MILLSTONE.get(), MillstoneRenderer::new);
+        event.registerBlockEntityRenderer(AllBlockEntities.WATER_WHEEL.get(), WaterWheelRenderer::new);
     }
 
     @SubscribeEvent

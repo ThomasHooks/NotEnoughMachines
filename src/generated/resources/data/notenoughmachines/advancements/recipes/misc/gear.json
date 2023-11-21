@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_has_flax"
+      "has_has_flax",
+      "has_the_recipe"
     ]
   ],
   "rewards": {

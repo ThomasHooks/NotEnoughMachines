@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_has_fluxstone"
+      "has_has_fluxstone",
+      "has_the_recipe"
     ]
   ],
   "rewards": {

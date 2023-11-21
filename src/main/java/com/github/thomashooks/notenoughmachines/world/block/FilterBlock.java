@@ -80,7 +80,7 @@ public class FilterBlock extends ItemConduitBlock
                 NetworkHooks.openScreen((ServerPlayer) player, menuProvider, filterEntity.getBlockPos());
             }
             else
-                throw new IllegalStateException(NotEnoughMachines.MOD_ID + ": FilterBlock container provider is missing!");
+                throw new IllegalStateException(NotEnoughMachines.MOD_ID + ": FilterBlock menu provider is missing!");
         }
         return InteractionResult.sidedSuccess(world.isClientSide());
     }
@@ -89,7 +89,7 @@ public class FilterBlock extends ItemConduitBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flags)
     {
-        toolTips.add(Component.literal("\u00A77" + "Test Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information").withStyle(ChatFormatting.GRAY));
+        toolTips.add(Component.literal("\u00A77" + "Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information").withStyle(ChatFormatting.GRAY));
     }
 
     @Override

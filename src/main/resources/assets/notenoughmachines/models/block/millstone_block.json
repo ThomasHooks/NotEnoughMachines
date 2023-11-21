@@ -1,0 +1,109 @@
+{
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"textures": {
+		"2": "notenoughmachines:block/millstone_bedstone_side",
+		"3": "notenoughmachines:block/millstone_bedstone_top",
+		"4": "notenoughmachines:block/millstone_bedstone_bottom",
+		"particle": "notenoughmachines:block/millstone_bedstone_side"
+	},
+	"elements": [
+		{
+			"name": "top",
+			"from": [0, 1, 0],
+			"to": [16, 6, 16],
+			"faces": {
+				"north": {"uv": [0, 10, 16, 15], "texture": "#2"},
+				"east": {"uv": [0, 10, 16, 15], "texture": "#2"},
+				"south": {"uv": [0, 10, 16, 15], "texture": "#2"},
+				"west": {"uv": [0, 10, 16, 15], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#4"}
+			}
+		},
+		{
+			"name": "north",
+			"from": [0, 0, 0],
+			"to": [16, 1, 5],
+			"faces": {
+				"north": {"uv": [0, 15, 16, 16], "texture": "#2"},
+				"east": {"uv": [11, 15, 16, 16], "texture": "#2"},
+				"south": {"uv": [0, 15, 16, 16], "texture": "#2"},
+				"west": {"uv": [0, 15, 5, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 5], "texture": "#missing"},
+				"down": {"uv": [0, 11, 16, 16], "texture": "#4"}
+			}
+		},
+		{
+			"name": "south",
+			"from": [0, 0, 11],
+			"to": [16, 1, 16],
+			"faces": {
+				"north": {"uv": [0, 15, 16, 16], "texture": "#2"},
+				"east": {"uv": [0, 15, 5, 16], "texture": "#2"},
+				"south": {"uv": [0, 15, 16, 16], "texture": "#2"},
+				"west": {"uv": [11, 15, 16, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 5], "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 5], "texture": "#4"}
+			}
+		},
+		{
+			"name": "west",
+			"from": [0, 0, 5],
+			"to": [5, 1, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 13]},
+			"faces": {
+				"north": {"uv": [0, 0, 5, 1], "texture": "#missing"},
+				"east": {"uv": [5, 15, 11, 16], "texture": "#2"},
+				"south": {"uv": [0, 0, 5, 1], "texture": "#missing"},
+				"west": {"uv": [5, 15, 11, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 5, 6], "texture": "#missing"},
+				"down": {"uv": [11, 5, 16, 11], "rotation": 180, "texture": "#4"}
+			}
+		},
+		{
+			"name": "east",
+			"from": [11, 0, 5],
+			"to": [16, 1, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [19, 8, 13]},
+			"faces": {
+				"north": {"uv": [0, 0, 5, 1], "texture": "#missing"},
+				"east": {"uv": [5, 15, 11, 16], "texture": "#2"},
+				"south": {"uv": [0, 0, 5, 1], "texture": "#missing"},
+				"west": {"uv": [5, 15, 11, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 5, 6], "texture": "#missing"},
+				"down": {"uv": [0, 5, 5, 11], "rotation": 180, "texture": "#4"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0, -1],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 0, -1],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [22.5, 45, 0],
+			"scale": [0.66, 0.66, 0.66]
+		}
+	},
+	"groups": [
+		{
+			"name": "bedstone",
+			"origin": [8, 8, 8],
+			"children": [0, 1, 2, 3, 4]
+		}
+	]
+}

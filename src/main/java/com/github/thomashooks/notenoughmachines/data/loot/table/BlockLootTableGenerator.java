@@ -36,10 +36,12 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.FLUXSTONE_WALL.get());
         dropSelf(AllBlocks.IRON_PLATE_BLOCK.get());
         dropSelf(AllBlocks.LINEN_BLOCK.get());
+        dropSelf(AllBlocks.MILLSTONE.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE.get());
         add(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.POLISHED_FLUXSTONE_SLAB.get()));
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
+        dropSelf(AllBlocks.WATER_WHEEL.get());
         dropSelf(AllBlocks.WOODEN_FRAME.get());
     }
 

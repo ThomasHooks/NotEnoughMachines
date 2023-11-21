@@ -12,7 +12,8 @@ public class AllMenus
 {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, NotEnoughMachines.MOD_ID);
 
-    public static final RegistryObject<MenuType<FilterMenu>> FILTER = MENUS.register("filter", ()-> IForgeMenuType.create(((windowId, inv, data) -> new FilterMenu(windowId, inv, data))));
+    public static final RegistryObject<MenuType<FilterMenu>> FILTER = MENUS.register("filter", ()-> IForgeMenuType.create(( (windowId, inv, data) -> new FilterMenu(windowId, inv, data))));
+    public static final RegistryObject<MenuType<MillstoneMenu>> MILLSTONE = MENUS.register("millstone", ()-> IForgeMenuType.create(( (windowId, inv, data) -> new MillstoneMenu(windowId, inv, data))));
 
     public static void registerAll(IEventBus modEventBus)
     {

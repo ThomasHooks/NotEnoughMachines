@@ -28,7 +28,6 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
-        //simpleBlock(NEMBlocks.FILTER.get(), new ModelFile.UncheckedModelFile(modLoc("block/filter"))); //Manually added the filter's block state
         createFlaxPlant();
         simpleCubeBlockWithItem(AllBlocks.FLUXSTONE);
         stairsBlock(((StairBlock) AllBlocks.FLUXSTONE_STAIRS.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
@@ -39,9 +38,21 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
         );
         simpleCubeBlockWithItem(AllBlocks.LINEN_BLOCK);
-        simpleCubeBlockWithItem(AllBlocks.POLISHED_FLUXSTONE);
-        stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
-        slabBlock(((SlabBlock) AllBlocks.POLISHED_FLUXSTONE_SLAB.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+        axisBlock((RotatedPillarBlock) AllBlocks.POLISHED_FLUXSTONE.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
+        slabBlock(((SlabBlock) AllBlocks.POLISHED_FLUXSTONE_SLAB.get()),
+                blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
         wallBlock(((WallBlock) AllBlocks.POLISHED_FLUXSTONE_WALL.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
         simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
     }

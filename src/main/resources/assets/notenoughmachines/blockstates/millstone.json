@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "notenoughmachines:block/millstone_block" }
+    }
+}

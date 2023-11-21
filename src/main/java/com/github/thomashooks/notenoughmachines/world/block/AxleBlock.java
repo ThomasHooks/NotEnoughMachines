@@ -6,6 +6,7 @@ import com.github.thomashooks.notenoughmachines.world.block.entity.AxleBlockEnti
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -36,7 +37,7 @@ public class AxleBlock extends MechanicalShaftBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flags)
     {
-        super.appendHoverText(stack, blockGetter, toolTips, flags);
+        toolTips.add(Component.literal("\u00A77" + "Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information").withStyle(ChatFormatting.GRAY));
     }
 
     @Override

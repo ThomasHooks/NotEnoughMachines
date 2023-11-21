@@ -12,6 +12,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
+
 public class InventoryHelper extends Containers
 {
     public static void dropItemStackWithVel(Level world, ItemStack stack, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
@@ -29,7 +31,7 @@ public class InventoryHelper extends Containers
         }
     }
 
-    public static void dropItemHandler(final IItemHandler handler, Level world, BlockPos pos)
+    public static void dropItemHandler(final @Nullable IItemHandler handler, Level world, BlockPos pos)
     {
         if (handler == null)
             return;

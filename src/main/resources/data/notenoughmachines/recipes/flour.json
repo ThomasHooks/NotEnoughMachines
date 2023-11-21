@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:flour",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result": {
+    "item": "notenoughmachines:flour"
+  },
+  "processtime": 200
+}

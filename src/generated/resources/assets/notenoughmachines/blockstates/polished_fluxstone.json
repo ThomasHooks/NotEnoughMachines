@@ -1,7 +1,16 @@
 {
   "variants": {
-    "": {
+    "axis=x": {
+      "model": "notenoughmachines:block/polished_fluxstone_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
       "model": "notenoughmachines:block/polished_fluxstone"
+    },
+    "axis=z": {
+      "model": "notenoughmachines:block/polished_fluxstone_horizontal",
+      "x": 90
     }
   }
 }

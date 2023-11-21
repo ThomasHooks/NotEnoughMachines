@@ -61,16 +61,19 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.FLUXSTONE_WALL, "Fluxstone Wall");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");
+        addBlock(AllBlocks.MILLSTONE, "Millstone");
         addBlock(AllBlocks.POLISHED_FLUXSTONE, "Polished Fluxstone");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_SLAB, "Polished Fluxstone Slab");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_STAIRS, "Polished Fluxstone Stairs");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_WALL, "Polished Fluxstone Wall");
+        addBlock(AllBlocks.WATER_WHEEL, "Water Wheel");
         addBlock(AllBlocks.WOODEN_FRAME, "Wooden Frame");
     }
 
     private void addAllMenus()
     {
         addMenu("filter", "Item Filter");
+        addMenu("millstone", "Millstone");
     }
 
     public void addMenu(String key, String name)

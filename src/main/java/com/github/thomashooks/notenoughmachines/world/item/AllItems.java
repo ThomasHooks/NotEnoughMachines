@@ -101,9 +101,11 @@ public class AllItems
             ()-> new BlockItem(AllBlocks.AXLE.get(), new Item.Properties()));
 
     //Machine Blocks - power generators
-
+    public static final RegistryObject<Item> WATER_WHEEL = ITEMS.register("water_wheel",
+            ()-> new BlockItem(AllBlocks.WATER_WHEEL.get(), new Item.Properties()));
     //Machine Blocks - mills/processors
-
+    public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone",
+            ()-> new BlockItem(AllBlocks.MILLSTONE.get(), new Item.Properties()));
     //Machine Blocks - item transfer
 
     //Redstone Blocks
