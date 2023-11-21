@@ -38,6 +38,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.POLISHED_FLUXSTONE_WALL.get());
                         //Machine Blocks - power transfer
                         output.accept(AllItems.AXLE.get());
+                        output.accept(AllItems.COGWHEEL_SMALL.get());
                         output.accept(AllItems.ENCLOSED_AXLE.get());
                         output.accept(AllItems.GEARBOX.get());
                         //Machine Blocks - power generators

@@ -52,6 +52,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
     private void addAllBlocks()
     {
         addBlock(AllBlocks.AXLE, "Axle");
+        addBlock(AllBlocks.COGWHEEL_SMALL, "Small Cogwheel");
         addBlock(AllBlocks.ENCLOSED_AXLE, "Enclosed Axle");
         addBlock(AllBlocks.GEARBOX, "Gearbox");
         addBlock(AllBlocks.CONJUNCTIONER, "Redstone Conjunctioner");

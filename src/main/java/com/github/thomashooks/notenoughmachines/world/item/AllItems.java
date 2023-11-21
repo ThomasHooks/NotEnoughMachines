@@ -99,6 +99,8 @@ public class AllItems
     //Machine Blocks - power transfer
     public static final RegistryObject<Item> AXLE = ITEMS.register("axle",
             ()-> new BlockItem(AllBlocks.AXLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> COGWHEEL_SMALL = ITEMS.register("small_cogwheel",
+            ()-> new BlockItem(AllBlocks.COGWHEEL_SMALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> ENCLOSED_AXLE = ITEMS.register("enclosed_axle",
             ()-> new BlockItem(AllBlocks.ENCLOSED_AXLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> GEARBOX = ITEMS.register("gearbox",
