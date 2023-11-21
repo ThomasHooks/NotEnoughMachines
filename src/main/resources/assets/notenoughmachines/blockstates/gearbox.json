@@ -1,0 +1,7 @@
+{
+    "variants": {
+		"axis=x": {"model": "notenoughmachines:block/gearbox", "x": 90, "y": 90},
+		"axis=y": {"model": "notenoughmachines:block/gearbox"},
+		"axis=z": {"model": "notenoughmachines:block/gearbox", "x": 90}
+    }
+}

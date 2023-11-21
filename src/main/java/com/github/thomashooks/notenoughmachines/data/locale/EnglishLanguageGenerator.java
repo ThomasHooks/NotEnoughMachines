@@ -53,6 +53,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
     {
         addBlock(AllBlocks.AXLE, "Axle");
         addBlock(AllBlocks.ENCLOSED_AXLE, "Enclosed Axle");
+        addBlock(AllBlocks.GEARBOX, "Gearbox");
         addBlock(AllBlocks.CONJUNCTIONER, "Redstone Conjunctioner");
         addBlock(AllBlocks.COPPER_PLATE_BLOCK, "Block of Copper Plates");
         addBlock(AllBlocks.FILTER, "Item Filter");

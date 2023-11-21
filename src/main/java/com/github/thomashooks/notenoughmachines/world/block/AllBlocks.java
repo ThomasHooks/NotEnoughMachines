@@ -83,6 +83,13 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
+    public static final RegistryObject<Block> GEARBOX = BLOCKS.register("gearbox",
+            ()-> new GearboxBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> IRON_PLATE_BLOCK = BLOCKS.register("iron_plate_block",
             ()-> new RotatedPillarBlock(Block.Properties
                     .copy(Blocks.IRON_BLOCK)

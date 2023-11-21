@@ -27,6 +27,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 .add(AllBlocks.AXLE.get(),
                         AllBlocks.ENCLOSED_AXLE.get(),
                         AllBlocks.FILTER.get(),
+                        AllBlocks.GEARBOX.get(),
                         AllBlocks.MILLSTONE.get(),
                         AllBlocks.WATER_WHEEL.get(),
                         AllBlocks.WOODEN_FRAME.get()
@@ -41,6 +42,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                         AllBlocks.FLUXSTONE_SLAB.get(),
                         AllBlocks.FLUXSTONE_STAIRS.get(),
                         AllBlocks.FLUXSTONE_WALL.get(),
+                        AllBlocks.GEARBOX.get(),
                         AllBlocks.IRON_PLATE_BLOCK.get(),
                         AllBlocks.MILLSTONE.get(),
                         AllBlocks.POLISHED_FLUXSTONE.get(),

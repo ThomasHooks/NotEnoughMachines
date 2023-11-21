@@ -19,6 +19,8 @@ public class AllBlockEntities
             () -> BlockEntityType.Builder.of(EnclosedAxleBlockEntity::new, AllBlocks.ENCLOSED_AXLE.get()).build(null));
     public static final RegistryObject<BlockEntityType<FilterBlockEntity>> FILTER = BLOCK_ENTITIES.register("filter",
             () -> BlockEntityType.Builder.of(FilterBlockEntity::new, AllBlocks.FILTER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GearboxBlockEntity>> GEARBOX = BLOCK_ENTITIES.register("gearbox",
+            () -> BlockEntityType.Builder.of(GearboxBlockEntity::new, AllBlocks.GEARBOX.get()).build(null));
     public static final RegistryObject<BlockEntityType<MillstoneBlockEntity>> MILLSTONE = BLOCK_ENTITIES.register("millstone",
             () -> BlockEntityType.Builder.of(MillstoneBlockEntity::new, AllBlocks.MILLSTONE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WaterWheelBlockEntity>> WATER_WHEEL = BLOCK_ENTITIES.register("water_wheel",

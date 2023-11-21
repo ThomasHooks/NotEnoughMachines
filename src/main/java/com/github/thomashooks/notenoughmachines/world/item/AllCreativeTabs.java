@@ -39,6 +39,7 @@ public class AllCreativeTabs
                         //Machine Blocks - power transfer
                         output.accept(AllItems.AXLE.get());
                         output.accept(AllItems.ENCLOSED_AXLE.get());
+                        output.accept(AllItems.GEARBOX.get());
                         //Machine Blocks - power generators
                         output.accept(AllItems.WATER_WHEEL.get());
                         //Machine Blocks - mills/processors
