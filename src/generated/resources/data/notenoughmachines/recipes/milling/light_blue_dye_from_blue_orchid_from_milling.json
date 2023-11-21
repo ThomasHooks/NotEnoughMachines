@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:light_blue_dye",
+  "ingredient": {
+    "item": "minecraft:blue_orchid"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:light_blue_dye"
+  }
+}

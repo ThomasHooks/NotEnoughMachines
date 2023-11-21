@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:blue_dye",
+  "ingredient": {
+    "item": "minecraft:cornflower"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:blue_dye"
+  }
+}

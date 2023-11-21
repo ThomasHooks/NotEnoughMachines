@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:flax_string",
+  "ingredient": {
+    "item": "notenoughmachines:flax"
+  },
+  "processtime": 300,
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:flax_string"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:light_gray_dye",
+  "ingredient": {
+    "item": "minecraft:oxeye_daisy"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:light_gray_dye"
+  }
+}

@@ -4,8 +4,8 @@
   "ingredient": {
     "item": "minecraft:wheat"
   },
+  "processtime": 200,
   "result": {
     "item": "notenoughmachines:flour"
-  },
-  "processtime": 200
+  }
 }

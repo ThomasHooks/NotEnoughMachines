@@ -4,6 +4,7 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.MillstoneScreen;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.AxleRenderer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.EnclosedAxleRenderer;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.MillstoneRenderer;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.WaterWheelRenderer;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
@@ -50,6 +51,7 @@ public class ClientModEvents
     {
         NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Block Entity Renderers");
         event.registerBlockEntityRenderer(AllBlockEntities.AXLE.get(), AxleRenderer::new);
+        event.registerBlockEntityRenderer(AllBlockEntities.ENCLOSED_AXLE.get(), EnclosedAxleRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.MILLSTONE.get(), MillstoneRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.WATER_WHEEL.get(), WaterWheelRenderer::new);
     }

@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:blaze_powder",
+  "ingredient": {
+    "item": "minecraft:blaze_rod"
+  },
+  "processtime": 300,
+  "result": {
+    "count": 4,
+    "item": "minecraft:blaze_powder"
+  }
+}

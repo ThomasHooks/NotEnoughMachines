@@ -15,6 +15,8 @@ public class AllBlockEntities
 
     public static final RegistryObject<BlockEntityType<AxleBlockEntity>> AXLE = BLOCK_ENTITIES.register("axle",
             () -> BlockEntityType.Builder.of(AxleBlockEntity::new, AllBlocks.AXLE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<EnclosedAxleBlockEntity>> ENCLOSED_AXLE = BLOCK_ENTITIES.register("enclosed_axle",
+            () -> BlockEntityType.Builder.of(EnclosedAxleBlockEntity::new, AllBlocks.ENCLOSED_AXLE.get()).build(null));
     public static final RegistryObject<BlockEntityType<FilterBlockEntity>> FILTER = BLOCK_ENTITIES.register("filter",
             () -> BlockEntityType.Builder.of(FilterBlockEntity::new, AllBlocks.FILTER.get()).build(null));
     public static final RegistryObject<BlockEntityType<MillstoneBlockEntity>> MILLSTONE = BLOCK_ENTITIES.register("millstone",

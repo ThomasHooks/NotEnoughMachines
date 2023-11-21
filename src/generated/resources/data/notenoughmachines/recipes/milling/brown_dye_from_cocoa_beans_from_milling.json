@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:brown_dye",
+  "ingredient": {
+    "item": "minecraft:cocoa_beans"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:brown_dye"
+  }
+}

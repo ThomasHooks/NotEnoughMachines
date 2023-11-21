@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:red_dye",
+  "ingredient": {
+    "item": "minecraft:beetroot"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:red_dye"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:yellow_dye",
+  "ingredient": {
+    "item": "minecraft:sunflower"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:yellow_dye"
+  }
+}

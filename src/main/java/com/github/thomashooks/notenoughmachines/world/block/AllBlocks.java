@@ -36,6 +36,13 @@ public class AllBlocks
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> ENCLOSED_AXLE = BLOCKS.register("enclosed_axle",
+            ()-> new EnclosedAxleBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> FILTER = BLOCKS.register("filter",
             () -> new FilterBlock(Block.Properties.of()
                     .mapColor(MapColor.STONE)

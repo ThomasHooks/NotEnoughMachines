@@ -1,0 +1,7 @@
+{
+    "variants": {
+		"axis=x": {"model": "notenoughmachines:block/enclosed_axle", "y": 90},
+		"axis=y": {"model": "notenoughmachines:block/enclosed_axle", "x": 90},
+		"axis=z": {"model": "notenoughmachines:block/enclosed_axle"}
+    }
+}

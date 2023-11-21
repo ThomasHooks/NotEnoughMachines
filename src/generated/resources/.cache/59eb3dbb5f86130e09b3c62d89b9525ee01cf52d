@@ -1,7 +1,8 @@
-// 1.20.1	2023-11-19T16:13:24.2350379	Loot Tables
+// 1.20.1	2023-11-20T22:50:33.6619339	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 bb82775b94e1e2763efa4b82df76516c70f853f3 data/notenoughmachines/loot_tables/blocks/conjunctioner.json
 aff11f0def9e9efd5a74754ccbe6fc86250de8cd data/notenoughmachines/loot_tables/blocks/copper_plate_block.json
+ff9c06799e3b1a735b2b66b8235ff58a49e1fd0f data/notenoughmachines/loot_tables/blocks/enclosed_axle.json
 8e7c437e69533b739acacc81caffb3f8713b15e0 data/notenoughmachines/loot_tables/blocks/filter.json
 9ac2f1db6552b170985d0c4de35b626681d6af60 data/notenoughmachines/loot_tables/blocks/flaxplant.json
 d78a703df557baa6396d74b114e0a48dc69a84b6 data/notenoughmachines/loot_tables/blocks/fluxstone.json

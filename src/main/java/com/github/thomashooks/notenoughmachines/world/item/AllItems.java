@@ -99,6 +99,8 @@ public class AllItems
     //Machine Blocks - power transfer
     public static final RegistryObject<Item> AXLE = ITEMS.register("axle",
             ()-> new BlockItem(AllBlocks.AXLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ENCLOSED_AXLE = ITEMS.register("enclosed_axle",
+            ()-> new BlockItem(AllBlocks.ENCLOSED_AXLE.get(), new Item.Properties()));
 
     //Machine Blocks - power generators
     public static final RegistryObject<Item> WATER_WHEEL = ITEMS.register("water_wheel",

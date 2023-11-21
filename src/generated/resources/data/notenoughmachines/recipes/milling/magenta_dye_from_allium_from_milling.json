@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:magenta_dye",
+  "ingredient": {
+    "item": "minecraft:allium"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:magenta_dye"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:white_dye",
+  "ingredient": {
+    "item": "minecraft:lily_of_the_valley"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:white_dye"
+  }
+}

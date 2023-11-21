@@ -160,7 +160,7 @@ public class MillstoneBlockEntity extends MechanicalBlockEntity implements MenuP
         {
             if (side == null)
                 return this.combinedItemHandler.cast();
-            else if (side == Direction.UP || side == Direction.DOWN)
+            else if (side == Direction.DOWN)
                 return this.itemOutputHandler.cast();
             else
                 return this.itemInputHandler.cast();

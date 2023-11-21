@@ -28,6 +28,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.AXLE.get());
         dropSelf(AllBlocks.CONJUNCTIONER.get());
         dropSelf(AllBlocks.COPPER_PLATE_BLOCK.get());
+        dropSelf(AllBlocks.ENCLOSED_AXLE.get());
         dropSelf(AllBlocks.FILTER.get());
         dropCropAndSeed(AllBlocks.FLAXPLANT.get(), AllItems.FLAX.get(), AllItems.FLAXSEED.get(), FlaxPlantBlock.AGE, FlaxPlantBlock.MAX_AGE);
         dropSelf(AllBlocks.FLUXSTONE.get());

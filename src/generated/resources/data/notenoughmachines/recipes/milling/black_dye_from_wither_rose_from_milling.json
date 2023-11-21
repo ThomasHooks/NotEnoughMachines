@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:black_dye",
+  "ingredient": {
+    "item": "minecraft:wither_rose"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:black_dye"
+  }
+}

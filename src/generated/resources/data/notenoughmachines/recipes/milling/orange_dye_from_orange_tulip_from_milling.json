@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:orange_dye",
+  "ingredient": {
+    "item": "minecraft:orange_tulip"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:orange_dye"
+  }
+}

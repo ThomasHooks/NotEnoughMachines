@@ -25,6 +25,7 @@ public class BlockTagGenerator extends BlockTagsProvider
     {
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(AllBlocks.AXLE.get(),
+                        AllBlocks.ENCLOSED_AXLE.get(),
                         AllBlocks.FILTER.get(),
                         AllBlocks.MILLSTONE.get(),
                         AllBlocks.WATER_WHEEL.get(),
@@ -34,6 +35,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(AllBlocks.AXLE.get(),
                         AllBlocks.COPPER_PLATE_BLOCK.get(),
+                        AllBlocks.ENCLOSED_AXLE.get(),
                         AllBlocks.FILTER.get(),
                         AllBlocks.FLUXSTONE.get(),
                         AllBlocks.FLUXSTONE_SLAB.get(),
