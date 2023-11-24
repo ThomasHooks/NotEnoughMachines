@@ -39,6 +39,7 @@ public class AllCreativeTabs
                         //Machine Blocks - power transfer
                         output.accept(AllItems.AXLE.get());
                         output.accept(AllItems.COGWHEEL_SMALL.get());
+                        output.accept(AllItems.COGWHEEL_LARGE.get());
                         output.accept(AllItems.ENCLOSED_AXLE.get());
                         output.accept(AllItems.GEARBOX.get());
                         //Machine Blocks - power generators

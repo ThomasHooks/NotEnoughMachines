@@ -3,7 +3,7 @@ package com.github.thomashooks.notenoughmachines.client.render.blockentity;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
 import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalBlock;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalShaftBlock;
+import com.github.thomashooks.notenoughmachines.world.block.base.RotatingShaftBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AxleBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -38,7 +38,7 @@ public class AxleRenderer implements BlockEntityRenderer<AxleBlockEntity>
         poseStack.pushPose();
 
         poseStack.translate(0.5D, 0.5D, 0.5D);
-        switch (entity.getBlockState().getValue(MechanicalShaftBlock.AXIS))
+        switch (entity.getBlockState().getValue(RotatingShaftBlock.AXIS))
         {
             case X -> poseStack.mulPose(new Quaternionf().rotateLocalZ(Mth.HALF_PI));
             case Z -> poseStack.mulPose(new Quaternionf().rotateLocalX(Mth.HALF_PI));

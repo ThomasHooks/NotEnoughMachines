@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:iron_screw",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:iron_plate"
+    },
+    "l": {
+      "item": "notenoughmachines:iron_rod"
+    }
+  },
+  "pattern": [
+    "-l ",
+    " l-",
+    "-l "
+  ],
+  "result": {
+    "item": "notenoughmachines:iron_screw"
+  },
+  "show_notification": true
+}

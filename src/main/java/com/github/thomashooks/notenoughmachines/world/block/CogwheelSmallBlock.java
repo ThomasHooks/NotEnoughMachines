@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalShaftBlock;
+import com.github.thomashooks.notenoughmachines.world.block.base.RotatingShaftBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.CogwheelSmallBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;
@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CogwheelSmallBlock extends MechanicalShaftBlock
+public class CogwheelSmallBlock extends RotatingShaftBlock
 {
     protected CogwheelSmallBlock(Properties properties) { super(properties); }
 

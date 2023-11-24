@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:millstone",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:wooden_frame"
+    },
+    "=": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+    "v": {
+      "item": "minecraft:hopper"
+    },
+    "x": {
+      "item": "notenoughmachines:gear"
+    }
+  },
+  "pattern": [
+    "=x=",
+    "===",
+    "#v#"
+  ],
+  "result": {
+    "item": "notenoughmachines:millstone"
+  },
+  "show_notification": true
+}

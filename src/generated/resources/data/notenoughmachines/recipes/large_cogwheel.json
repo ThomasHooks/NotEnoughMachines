@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:large_cogwheel",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:wooden_frame"
+    },
+    "=": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "x": {
+      "item": "notenoughmachines:small_cogwheel"
+    }
+  },
+  "pattern": [
+    "=#=",
+    "#x#",
+    "=#="
+  ],
+  "result": {
+    "item": "notenoughmachines:large_cogwheel"
+  },
+  "show_notification": true
+}

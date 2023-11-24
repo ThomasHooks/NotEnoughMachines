@@ -5,17 +5,13 @@ import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
-import com.github.thomashooks.notenoughmachines.world.block.entity.FilterBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.entity.MillstoneBlockEntity;
-import com.github.thomashooks.notenoughmachines.world.block.state.NEMBlockStateProperties;
-import com.github.thomashooks.notenoughmachines.world.inventory.FilterMenu;
-import com.github.thomashooks.notenoughmachines.world.inventory.MillstoneMenu;
+import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,10 +20,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -54,7 +47,7 @@ import java.util.List;
 
 public class MillstoneBlock extends MechanicalBlock
 {
-    public static final BooleanProperty POWERED = NEMBlockStateProperties.POWERED;
+    public static final BooleanProperty POWERED = AllBlockStateProperties.POWERED;
 
     public MillstoneBlock(Properties properties)
     {

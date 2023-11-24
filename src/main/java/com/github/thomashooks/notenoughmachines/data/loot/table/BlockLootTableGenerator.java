@@ -1,13 +1,18 @@
 package com.github.thomashooks.notenoughmachines.data.loot.table;
 
+import com.github.thomashooks.notenoughmachines.world.block.CogwheelLargeBlock;
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
+import com.github.thomashooks.notenoughmachines.world.block.state.MultiBlockPart3x1x3;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -26,6 +31,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     protected void generate()
     {
         dropSelf(AllBlocks.AXLE.get());
+        add(AllBlocks.COGWHEEL_LARGE.get(), (block) -> { return this.createSinglePropConditionTable(block, CogwheelLargeBlock.COGWHEEL_PART, MultiBlockPart3x1x3.CENTER); });
         dropSelf(AllBlocks.COGWHEEL_SMALL.get());
         dropSelf(AllBlocks.CONJUNCTIONER.get());
         dropSelf(AllBlocks.COPPER_PLATE_BLOCK.get());

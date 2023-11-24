@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:string",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:flax_string"
+    }
+  },
+  "pattern": [
+    "# ",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "item": "minecraft:string"
+  },
+  "show_notification": true
+}

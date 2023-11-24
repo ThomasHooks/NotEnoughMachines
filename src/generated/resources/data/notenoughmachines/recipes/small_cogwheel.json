@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:small_cogwheel",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:axle"
+    },
+    {
+      "item": "notenoughmachines:gear"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:small_cogwheel"
+  }
+}

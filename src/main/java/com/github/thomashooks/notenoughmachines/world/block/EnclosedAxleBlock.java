@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalShaftBlock;
+import com.github.thomashooks.notenoughmachines.world.block.base.RotatingShaftBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.EnclosedAxleBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnclosedAxleBlock extends MechanicalShaftBlock
+public class EnclosedAxleBlock extends RotatingShaftBlock
 {
     public EnclosedAxleBlock(Properties properties) { super(properties); }
 

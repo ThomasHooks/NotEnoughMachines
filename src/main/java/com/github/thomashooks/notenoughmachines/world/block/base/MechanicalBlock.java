@@ -2,7 +2,7 @@ package com.github.thomashooks.notenoughmachines.world.block.base;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
-import com.github.thomashooks.notenoughmachines.world.block.state.NEMBlockStateProperties;
+import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public abstract class MechanicalBlock extends Block  implements EntityBlock
 {
-    public static final BooleanProperty SHIFTED = NEMBlockStateProperties.SHIFTED;
+    public static final BooleanProperty SHIFTED = AllBlockStateProperties.SHIFTED;
 
     protected MechanicalBlock(Properties properties)
     {
@@ -135,7 +135,7 @@ public abstract class MechanicalBlock extends Block  implements EntityBlock
     @Override
     public void onRemove(BlockState oldState, Level world, BlockPos pos, BlockState newState, boolean isMoving)
     {
-        if (!world.isClientSide() && newState.isAir())
+        if (!world.isClientSide() && newState.isAir() && !(oldState.getBlock() instanceof IMultiBlockPart))
         {
             NotEnoughMachines.AETHER.removeFromPowerNetwork(getMechanicalEntity(world, pos, oldState));
         }

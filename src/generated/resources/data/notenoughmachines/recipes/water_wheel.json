@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:water_wheel",
+  "key": {
+    "=": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "x": {
+      "item": "notenoughmachines:small_cogwheel"
+    }
+  },
+  "pattern": [
+    "===",
+    "=x=",
+    "==="
+  ],
+  "result": {
+    "item": "notenoughmachines:water_wheel"
+  },
+  "show_notification": true
+}

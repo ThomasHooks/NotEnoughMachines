@@ -9,6 +9,7 @@ import com.github.thomashooks.notenoughmachines.data.models.ItemModelGenerator;
 import com.github.thomashooks.notenoughmachines.data.recipes.RecipeGenerator;
 import com.github.thomashooks.notenoughmachines.data.tags.BlockTagGenerator;
 import com.github.thomashooks.notenoughmachines.data.tags.ItemTagGenerator;
+import com.github.thomashooks.notenoughmachines.data.worldgen.NEMWorldGenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -33,9 +34,9 @@ public class DataGenerators
         generator.addProvider(event.includeServer(), new RecipeGenerator(packOutput));
         generator.addProvider(event.includeServer(), LootTableGenerator.create(packOutput));
         generator.addProvider(event.includeServer(), new NEMGlobalLootModifiersProvider(packOutput));
-
         BlockTagGenerator blockTagGenerator = generator.addProvider(event.includeServer(), new BlockTagGenerator(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new NEMWorldGenProvider(packOutput, lookupProvider));
 
         generator.addProvider(event.includeClient(), new EnglishLanguageGenerator(packOutput));
         generator.addProvider(event.includeClient(), new BlockStateGenerator(packOutput, existingFileHelper));

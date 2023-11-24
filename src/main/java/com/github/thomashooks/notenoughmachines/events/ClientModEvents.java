@@ -4,10 +4,7 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.MillstoneScreen;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.*;
-import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
-import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.CogwheelSmallModelLayer;
-import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.MillstoneModelLayer;
-import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.WaterWheelModelLayer;
+import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.*;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.inventory.AllMenus;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -40,6 +37,7 @@ public class ClientModEvents
     {
         NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Layer Definitions");
         event.registerLayerDefinition(AxleModelLayer.LOCATION, AxleModelLayer::createBody);
+        event.registerLayerDefinition(CogwheelLargeModelLayer.LOCATION, CogwheelLargeModelLayer::createBody);
         event.registerLayerDefinition(CogwheelSmallModelLayer.LOCATION, CogwheelSmallModelLayer::createBody);
         event.registerLayerDefinition(MillstoneModelLayer.LOCATION, MillstoneModelLayer::createBody);
         event.registerLayerDefinition(WaterWheelModelLayer.LOCATION, WaterWheelModelLayer::createBody);
@@ -51,6 +49,7 @@ public class ClientModEvents
         NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Block Entity Renderers");
         event.registerBlockEntityRenderer(AllBlockEntities.AXLE.get(), AxleRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.COGWHEEL_SMALL.get(), CogwheelSmallRenderer::new);
+        event.registerBlockEntityRenderer(AllBlockEntities.COGWHEEL_LARGE.get(), CogwheelLargeRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.ENCLOSED_AXLE.get(), EnclosedAxleRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.GEARBOX.get(), GearboxRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.MILLSTONE.get(), MillstoneRenderer::new);

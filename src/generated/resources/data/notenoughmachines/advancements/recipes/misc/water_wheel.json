@@ -1,34 +1,34 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "notenoughmachines:bread_from_flour_from_smelting"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_wheat": {
+    "has_has_flax": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:wheat"
+              "notenoughmachines:flax"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:water_wheel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_wheat",
+      "has_has_flax",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "notenoughmachines:bread_from_flour_from_smelting"
+      "notenoughmachines:water_wheel"
     ]
   },
   "sends_telemetry_event": false

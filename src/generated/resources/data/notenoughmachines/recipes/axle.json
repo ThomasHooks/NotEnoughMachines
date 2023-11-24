@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:axle",
+  "key": {
+    "#": {
+      "tag": "notenoughmachines:stripped_logs"
+    },
+    "b": {
+      "item": "notenoughmachines:linseed_oil"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "b"
+  ],
+  "result": {
+    "count": 2,
+    "item": "notenoughmachines:axle"
+  },
+  "show_notification": true
+}

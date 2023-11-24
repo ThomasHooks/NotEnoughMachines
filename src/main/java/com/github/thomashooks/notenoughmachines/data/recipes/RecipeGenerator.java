@@ -33,23 +33,42 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildCraftingTableRecipes(Consumer<FinishedRecipe> consumer)
     {
-        //Gear
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEAR.get(), 1)
-                .pattern(" # ")
-                .pattern("#b#")
-                .pattern(" # ")
-                .define('#', Items.STICK)
+        //Axle
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.AXLE.get(), 2)
+                .pattern("#")
+                .pattern("#")
+                .pattern("b")
+                .define('#', NEMTags.Items.STRIPPED_LOGS)
                 .define('b', AllItems.LINSEED_OIL.get())
-                .group(NotEnoughMachines.MOD_ID + ":gear")
+                .group(NotEnoughMachines.MOD_ID + ":axle")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
-        //Block of Linen
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlocks.LINEN_BLOCK.get(), 1)
+        //Large Cogwheel
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COGWHEEL_LARGE.get(), 1)
+                .pattern("=#=")
+                .pattern("#x#")
+                .pattern("=#=")
+                .define('=', ItemTags.WOODEN_SLABS)
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.COGWHEEL_SMALL.get())
+                .group(NotEnoughMachines.MOD_ID + ":large_cogwheel")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        //Small Cogwheel
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COGWHEEL_SMALL.get(), 1)
+                .requires(AllItems.AXLE.get())
+                .requires(AllItems.GEAR.get())
+                .group(NotEnoughMachines.MOD_ID + ":small_cogwheel")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        //Enclosed Axle
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ENCLOSED_AXLE.get(), 3)
                 .pattern("###")
+                .pattern("xxx")
                 .pattern("###")
-                .pattern("###")
-                .define('#', AllItems.LINEN.get())
-                .group(NotEnoughMachines.MOD_ID + ":linen_block")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.AXLE.get())
+                .group(NotEnoughMachines.MOD_ID + ":enclosed_axle")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
         //Flax String
@@ -61,15 +80,50 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":flax_string")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
+        //Flux
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.FLUX.get(), 1)
+                .requires(AllItems.FLUXSTONE.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":flux")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+        //Gear
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEAR.get(), 1)
+                .pattern(" # ")
+                .pattern("#b#")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('b', AllItems.LINSEED_OIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":gear")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        //Gearbox
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEARBOX.get(), 1)
+                .pattern("#x#")
+                .pattern("xbx")
+                .pattern("#x#")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.GEAR.get())
+                .define('b', AllItems.LINSEED_OIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":gearbox")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
         //Gunpowder
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.GUNPOWDER, 2)
-                .pattern("fc")
-                .pattern("cf")
-                .define('f', AllItems.FLUX.get())
-                .define('c', Items.CHARCOAL)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GUNPOWDER, 1)
+                .requires(AllItems.FLUX.get(), 2)
+                .requires(Items.CHARCOAL, 1)
                 .group(NotEnoughMachines.MOD_ID + ":gunpowder")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":gunpowder_from_flux_and_charcoal");
+        //Iron Screw
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_SCREW.get(), 1)
+                .pattern("-l ")
+                .pattern(" l-")
+                .pattern("-l ")
+                .define('l', AllItems.IRON_ROD.get())
+                .define('-', AllItems.IRON_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_screw")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
         //Linen
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.LINEN.get(), 1)
                 .pattern("###")
@@ -84,11 +138,50 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":linen")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":linen_from_linen_block");
+        //Block of Linen
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlocks.LINEN_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":linen_block")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
         //Linseed Oil
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.LINSEED_OIL.get(), 1)
                 .requires(AllItems.FLAXSEED.get(), 6)
                 .requires(Items.GLASS_BOTTLE, 1)
                 .group(NotEnoughMachines.MOD_ID + ":linseed_oil")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        //String from Flax String
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STRING, 3)
+                .pattern("# ")
+                .pattern("##")
+                .define('#', AllItems.FLAX_STRING.get())
+                .group(NotEnoughMachines.MOD_ID + ":string")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":string_from_flax_string");
+        //Millstone
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.MILLSTONE.get(), 1)
+                .pattern("=x=")
+                .pattern("===")
+                .pattern("#v#")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.GEAR.get())
+                .define('=', Items.SMOOTH_STONE_SLAB)
+                .define('v', Items.HOPPER)
+                .group(NotEnoughMachines.MOD_ID + ":millstone")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        //Water Wheel
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WATER_WHEEL.get(), 1)
+                .pattern("===")
+                .pattern("=x=")
+                .pattern("===")
+                .define('=', ItemTags.WOODEN_SLABS)
+                .define('x', AllItems.COGWHEEL_SMALL.get())
+                .group(NotEnoughMachines.MOD_ID + ":water_wheel")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
         //Wooden Frame
@@ -109,6 +202,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         //Flour
         simpleOreSmelting(consumer, AllItems.FLOUR.get(), Items.BREAD, Items.WHEAT, "flour", RecipeCategory.FOOD, 0.35F, 200);
         simpleOreSmoking(consumer, AllItems.FLOUR.get(), Items.BREAD, Items.WHEAT, "flour", RecipeCategory.FOOD, 0.35F, 100);
+        //Polished Fluxstone
+        simpleOreSmelting(consumer, AllItems.FLUXSTONE.get(), AllItems.POLISHED_FLUXSTONE.get(), AllItems.FLUXSTONE.get(), "flux", RecipeCategory.BUILDING_BLOCKS, 0.15F, 200);
         //Copper
         simpleOreSmelting(consumer, AllItems.CRUSHED_COPPER_ORE.get(), Items.COPPER_INGOT, Items.RAW_COPPER, "copper_dust", RecipeCategory.MISC, 0.7F, 200);
         simpleOreBlasting(consumer, AllItems.CRUSHED_COPPER_ORE.get(), Items.COPPER_INGOT, Items.RAW_COPPER, "copper_dust", RecipeCategory.MISC, 0.7F, 100);
@@ -125,7 +220,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), category, result, experience, cookingTime)
                 .unlockedBy("has_" + getItemName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
-                .save(consumer, NotEnoughMachines.MOD_ID + ":" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_blasting");
+                .save(consumer, NotEnoughMachines.MOD_ID + ":cooking/" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_blasting");
     }
 
     protected void simpleOreSmelting(Consumer<FinishedRecipe> output, ItemLike ingredient, ItemLike result, ItemLike unlockedBy, String group, RecipeCategory category, float experience, int cookingTime)
@@ -133,7 +228,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, experience, cookingTime)
                 .unlockedBy("has_" + getItemName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
-                .save(output, NotEnoughMachines.MOD_ID + ":" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_smelting");
+                .save(output, NotEnoughMachines.MOD_ID + ":cooking/" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_smelting");
     }
 
     protected void simpleOreSmoking(Consumer<FinishedRecipe> output, ItemLike ingredient, ItemLike result, ItemLike unlockedBy, String group, RecipeCategory category, float experience, int cookingTime)
@@ -141,7 +236,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), category, result, experience, cookingTime)
                 .unlockedBy("has_" + getItemName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
-                .save(output, NotEnoughMachines.MOD_ID + ":" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_smoking");
+                .save(output, NotEnoughMachines.MOD_ID + ":cooking/" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_smoking");
     }
 
     protected void buildMillingRecipes(Consumer<FinishedRecipe> consumer)

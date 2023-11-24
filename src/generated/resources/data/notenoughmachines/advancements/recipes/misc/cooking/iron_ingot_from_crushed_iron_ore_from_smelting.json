@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_copper": {
+    "has_raw_iron": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:raw_copper"
+              "minecraft:raw_iron"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "notenoughmachines:copper_ingot_from_crushed_copper_ore_from_smelting"
+        "recipe": "notenoughmachines:cooking/iron_ingot_from_crushed_iron_ore_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_raw_copper",
+      "has_raw_iron",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "notenoughmachines:copper_ingot_from_crushed_copper_ore_from_smelting"
+      "notenoughmachines:cooking/iron_ingot_from_crushed_iron_ore_from_smelting"
     ]
   },
   "sends_telemetry_event": false

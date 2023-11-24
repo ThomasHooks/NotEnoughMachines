@@ -11,14 +11,17 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
 {
-    private int lazyTimerAlarm;
+    private int lazyTimerAlarm = 0;
     private int lazyTimer = 0;
+    private int extraLazyTimerAlarm = 0;
+    private int extraLazyTimer = 0;
 
     protected LazyTickingBlockEntity(BlockEntityType<?> entityType, BlockPos pos, BlockState state)
     {
         super(entityType, pos, state);
 
         setLazyTimerAlarm(40);
+        setExtraLazyTimerAlarm(80);
     }
 
     /**
@@ -32,12 +35,14 @@ public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
             return;
         if (pollLazyTimer())
             lazyTick();
+        if (pollExtraLazyTimer())
+            extraLazyTick();
     }
 
     /**
      * This gets called by both the server and all clients at a rate controlled by BaseBlockEntity::setLazyTimerAlarm()
      */
-    public void lazyTick()
+    protected void lazyTick()
     {
         //Do nothing
     }
@@ -55,10 +60,6 @@ public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
 
     /**
      * Sets this block entity's lazy tick rate
-     * <p>
-     * Default rate is once every second or every 20th tick
-     * <p>
-     * call this after the super if using in the constructor
      * @param tickRate The new lazy tick rate
      */
     protected void setLazyTimerAlarm(int tickRate)
@@ -69,6 +70,39 @@ public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
     protected int getLazyTimerAlarm()
     {
         return this.lazyTimerAlarm;
+    }
+
+    /**
+     * This gets called by both the server and all clients at a rate controlled by BaseBlockEntity::setExtraLazyTimerAlarm()
+     */
+    protected void extraLazyTick()
+    {
+        //Do nothing
+    }
+
+    protected boolean pollExtraLazyTimer()
+    {
+        extraLazyTimer++;
+        if (extraLazyTimer >= extraLazyTimerAlarm)
+        {
+            extraLazyTimer = 0;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Sets this block entity's extra lazy tick rate
+     * @param tickRate The new lazy tick rate
+     */
+    protected void setExtraLazyTimerAlarm(int tickRate)
+    {
+        this.extraLazyTimerAlarm = Math.abs(tickRate);
+    }
+
+    protected int getExtraLazyTimerAlarm()
+    {
+        return this.extraLazyTimerAlarm;
     }
 
     /**

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:enclosed_axle",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:wooden_frame"
+    },
+    "x": {
+      "item": "notenoughmachines:axle"
+    }
+  },
+  "pattern": [
+    "###",
+    "xxx",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:enclosed_axle"
+  },
+  "show_notification": true
+}

@@ -24,6 +24,7 @@ public class ItemModelGenerator extends ItemModelProvider
     protected void registerModels()
     {
         simpleBlockItemModel(AllBlocks.AXLE);
+        simpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
         simpleBlockItemModel(AllBlocks.COGWHEEL_SMALL);
         simpleItemModel(AllItems.CONJUNCTIONER);
         simpleItemModel(AllItems.COPPER_PLATE);

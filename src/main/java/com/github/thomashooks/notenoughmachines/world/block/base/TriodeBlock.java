@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block.base;
 
 import com.github.thomashooks.notenoughmachines.world.block.state.InputDualType;
-import com.github.thomashooks.notenoughmachines.world.block.state.NEMBlockStateProperties;
+import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -22,8 +22,8 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public abstract class TriodeBlock extends DiodeBlock
 {
-    public static final EnumProperty<InputDualType> DUAL_INPUT = NEMBlockStateProperties.DUAL_INPUT;
-    public static final BooleanProperty NEGATED = NEMBlockStateProperties.NEGATED;
+    public static final EnumProperty<InputDualType> DUAL_INPUT = AllBlockStateProperties.DUAL_INPUT;
+    public static final BooleanProperty NEGATED = AllBlockStateProperties.NEGATED;
 
     protected TriodeBlock(Properties properties)
     {

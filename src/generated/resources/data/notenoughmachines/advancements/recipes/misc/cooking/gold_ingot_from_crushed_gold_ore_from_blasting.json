@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_iron": {
+    "has_raw_gold": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:raw_iron"
+              "minecraft:raw_gold"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "notenoughmachines:iron_ingot_from_crushed_iron_ore_from_smelting"
+        "recipe": "notenoughmachines:cooking/gold_ingot_from_crushed_gold_ore_from_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_raw_iron",
+      "has_raw_gold",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "notenoughmachines:iron_ingot_from_crushed_iron_ore_from_smelting"
+      "notenoughmachines:cooking/gold_ingot_from_crushed_gold_ore_from_blasting"
     ]
   },
   "sends_telemetry_event": false

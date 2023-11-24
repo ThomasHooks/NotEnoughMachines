@@ -140,7 +140,13 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
-
+    public static final RegistryObject<Block> COGWHEEL_LARGE = BLOCKS.register("large_cogwheel",
+            ()-> new CogwheelLargeBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> COGWHEEL_SMALL = BLOCKS.register("small_cogwheel",
             ()-> new CogwheelSmallBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOD)

@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-21T16:16:16.0710276	Item Models: notenoughmachines
+// 1.20.1	2023-11-22T21:47:44.1662144	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 266856513b6430ed032f68b3910dbae9bf902bdb assets/notenoughmachines/models/item/conjunctioner.json
 d63a35856d13c42a0227547877d93057a100ff56 assets/notenoughmachines/models/item/copper_plate.json
@@ -22,6 +22,7 @@ ccb046d10127be67e24ff5de501c789e0b1a526a assets/notenoughmachines/models/item/fl
 285a6b239e54bdc27823228a74fc1a6d589db020 assets/notenoughmachines/models/item/iron_plate_block.json
 d590f88f5fa3eb53fb4b52a124530f5651dcf236 assets/notenoughmachines/models/item/iron_rod.json
 9a8706ae05f03eaa1cfc60fb54a7fe92895520b9 assets/notenoughmachines/models/item/iron_screw.json
+4b7c4eed02820f746a4fd68a9ba5e31db15bf441 assets/notenoughmachines/models/item/large_cogwheel.json
 f698cc452699a25ea0217a8cf1fc127f11ea6771 assets/notenoughmachines/models/item/linen.json
 0dcfd9c97cb17dbdc060c382b51176857b40617e assets/notenoughmachines/models/item/linseed_oil.json
 020de4694e889759101986156a63c013d5477c51 assets/notenoughmachines/models/item/polished_fluxstone.json

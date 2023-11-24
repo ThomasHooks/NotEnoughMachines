@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "notenoughmachines:iron_ingot_from_crushed_iron_ore_from_blasting"
+        "recipe": "notenoughmachines:cooking/iron_ingot_from_crushed_iron_ore_from_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "notenoughmachines:iron_ingot_from_crushed_iron_ore_from_blasting"
+      "notenoughmachines:cooking/iron_ingot_from_crushed_iron_ore_from_blasting"
     ]
   },
   "sends_telemetry_event": false
