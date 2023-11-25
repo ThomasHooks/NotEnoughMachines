@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:tin_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:tin_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:tin_block"
+  },
+  "show_notification": true
+}

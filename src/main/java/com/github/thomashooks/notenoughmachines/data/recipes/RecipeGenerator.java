@@ -174,6 +174,20 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":millstone")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
+        //Block of Tin
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TIN_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.TIN_INGOT.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_block")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.TIN_INGOT.get(), 9)
+                .requires(AllBlocks.TIN_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_ingot")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":tin_ingot_from_tin_block");
         //Water Wheel
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WATER_WHEEL.get(), 1)
                 .pattern("===")
@@ -213,6 +227,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         //Iron
         simpleOreSmelting(consumer, AllItems.CRUSHED_IRON_ORE.get(), Items.IRON_INGOT, Items.RAW_IRON, "iron_dust", RecipeCategory.MISC, 0.7F, 200);
         simpleOreBlasting(consumer, AllItems.CRUSHED_IRON_ORE.get(), Items.IRON_INGOT, Items.RAW_IRON, "iron_dust", RecipeCategory.MISC, 0.7F, 100);
+        //Tin
+        simpleOreSmelting(consumer, AllItems.RAW_TIN.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), "raw_tin", RecipeCategory.MISC, 0.7F, 200);
+        simpleOreBlasting(consumer, AllItems.RAW_TIN.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), "raw_tin", RecipeCategory.MISC, 0.7F, 100);
+        simpleOreSmelting(consumer, AllItems.CRUSHED_TIN_ORE.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), "tin_dust", RecipeCategory.MISC, 0.7F, 200);
+        simpleOreBlasting(consumer, AllItems.CRUSHED_TIN_ORE.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), "tin_dust", RecipeCategory.MISC, 0.7F, 100);
     }
 
     protected void simpleOreBlasting(Consumer<FinishedRecipe> consumer, ItemLike ingredient, ItemLike result, ItemLike unlockedBy, String group, RecipeCategory category, float experience, int cookingTime)

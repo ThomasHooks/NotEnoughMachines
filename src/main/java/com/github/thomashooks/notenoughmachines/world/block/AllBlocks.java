@@ -1,6 +1,8 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -17,6 +19,20 @@ public class AllBlocks
 
     public static final RegistryObject<Block> AXLE = BLOCKS.register("axle",
             ()-> new AxleBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
+    public static final RegistryObject<Block> COGWHEEL_LARGE = BLOCKS.register("large_cogwheel",
+            ()-> new CogwheelLargeBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
+    public static final RegistryObject<Block> COGWHEEL_SMALL = BLOCKS.register("small_cogwheel",
+            ()-> new CogwheelSmallBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOD)
                     .strength(1.8F, 2.0F)
                     .sound(SoundType.WOOD)
@@ -140,22 +156,30 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
-    public static final RegistryObject<Block> COGWHEEL_LARGE = BLOCKS.register("large_cogwheel",
-            ()-> new CogwheelLargeBlock(Block.Properties.of()
-                    .mapColor(MapColor.WOOD)
-                    .strength(1.8F, 2.0F)
-                    .sound(SoundType.WOOD)
-                    .noOcclusion()
+    public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block",
+            ()-> new Block(Block.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.METAL)
             ));
-    public static final RegistryObject<Block> COGWHEEL_SMALL = BLOCKS.register("small_cogwheel",
-            ()-> new CogwheelSmallBlock(Block.Properties.of()
-                    .mapColor(MapColor.WOOD)
-                    .strength(1.8F, 2.0F)
-                    .sound(SoundType.WOOD)
-                    .noOcclusion()
+    public static final RegistryObject<Block> TIN_ORE = BLOCKS.register("tin_ore",
+            ()-> new DropExperienceBlock(Block.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 3.0F) //, UniformInt.of(0, 1)
             ));
     public static final RegistryObject<Block> WATER_WHEEL = BLOCKS.register("water_wheel",
             ()-> new WaterWheelBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(1.8F, 2.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
+    public static final RegistryObject<Block> WIND_WHEEL = BLOCKS.register("wind_wheel",
+            ()-> new WindWheelBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOD)
                     .strength(1.8F, 2.0F)
                     .sound(SoundType.WOOD)

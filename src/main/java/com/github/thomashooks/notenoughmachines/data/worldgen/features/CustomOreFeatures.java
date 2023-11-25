@@ -17,12 +17,14 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 public class CustomOreFeatures
 {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLUXSTONE_ORE = registerKey("fluxstone_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE = registerKey("tin_ore");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context)
     {
         RuleTest stoneOreReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 
         register(context, FLUXSTONE_ORE, Feature.ORE, new OreConfiguration(stoneOreReplaceables, AllBlocks.FLUXSTONE.get().defaultBlockState(), 19));
+        register(context, TIN_ORE, Feature.ORE, new OreConfiguration(stoneOreReplaceables, AllBlocks.TIN_ORE.get().defaultBlockState(), 8));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name)

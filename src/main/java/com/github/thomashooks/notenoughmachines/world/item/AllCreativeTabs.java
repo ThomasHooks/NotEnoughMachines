@@ -19,6 +19,7 @@ public class AllCreativeTabs
                     .displayItems((itemDisplayParameters, output) ->
                     {
                         //Building Blocks - full
+                        output.accept(AllItems.TIN_BLOCK.get());
                         output.accept(AllItems.COPPER_PLATE_BLOCK.get());
                         output.accept(AllItems.IRON_PLATE_BLOCK.get());
                         output.accept(AllItems.LINEN_BLOCK.get());
@@ -36,6 +37,8 @@ public class AllCreativeTabs
                         //Building Blocks - walls
                         output.accept(AllItems.FLUXSTONE_WALL.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE_WALL.get());
+                        //Ore Blocks
+                        output.accept(AllItems.TIN_ORE.get());
                         //Machine Blocks - power transfer
                         output.accept(AllItems.AXLE.get());
                         output.accept(AllItems.COGWHEEL_SMALL.get());
@@ -44,6 +47,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.GEARBOX.get());
                         //Machine Blocks - power generators
                         output.accept(AllItems.WATER_WHEEL.get());
+                        output.accept(AllItems.WIND_WHEEL.get());
                         //Machine Blocks - mills/processors
                         output.accept(AllItems.MILLSTONE.get());
                         //Machine Blocks - item transfer
@@ -52,8 +56,9 @@ public class AllCreativeTabs
                         output.accept(AllItems.CONJUNCTIONER.get());
                         //Dust Items
                         output.accept(AllItems.CRUSHED_COPPER_ORE.get());
-                        output.accept(AllItems.CRUSHED_IRON_ORE.get());
                         output.accept(AllItems.CRUSHED_GOLD_ORE.get());
+                        output.accept(AllItems.CRUSHED_IRON_ORE.get());
+                        output.accept(AllItems.CRUSHED_TIN_ORE.get());
                         output.accept(AllItems.FLUX.get());
                         output.accept(AllItems.FLOUR.get());
                         //Seed Items
@@ -68,6 +73,8 @@ public class AllCreativeTabs
                         output.accept(AllItems.COPPER_ROD.get());
                         output.accept(AllItems.IRON_ROD.get());
                         output.accept(AllItems.IRON_SCREW.get());
+                        output.accept(AllItems.RAW_TIN.get());
+                        output.accept(AllItems.TIN_INGOT.get());
                         output.accept(AllItems.GEAR.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());
                         output.accept(AllItems.WIND_WHEEL_SAIL.get());

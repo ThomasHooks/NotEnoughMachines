@@ -1,4 +1,7 @@
-// 1.20.1	2023-11-21T23:05:42.2112793	Registries
-fa5480fa61fa120e2764d87e7adf8a2897249538 data/notenoughmachines/forge/biome_modifier/fluxstone_ore.json
+// 1.20.1	2023-11-25T12:52:15.8252497	Registries
+0eedaa2f9010bb645e0ef061d2291840f628bf49 data/notenoughmachines/forge/biome_modifier/fluxstone_ore.json
+2e4b84fe849d0fc6b9b785c1e479a1e5709d7b60 data/notenoughmachines/forge/biome_modifier/tin_ore.json
 86ea98830558f71d042c25be805ede85a7086c19 data/notenoughmachines/worldgen/configured_feature/fluxstone_ore.json
-8ba81ff21c2ccfe04051fee27297632e67312dc8 data/notenoughmachines/worldgen/placed_feature/fluxstone_ore_placed.json
+cfde28a9417d7496bc81dbab454641092957bcf5 data/notenoughmachines/worldgen/configured_feature/tin_ore.json
+c3db8deb65af19a99fad9d4ccc1de2b2d4a50b67 data/notenoughmachines/worldgen/placed_feature/fluxstone_ore.json
+14c0569b5ceafd485424413a52b933ea90ee6726 data/notenoughmachines/worldgen/placed_feature/tin_ore.json

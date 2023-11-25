@@ -14,6 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class WaterWheelBlockEntity extends GeneratorBlockEntity
 {
+    private static final float MAX_NUMBER_OF_SIDES_WITH_WATER = 3.0F;
     public WaterWheelBlockEntity(BlockPos pos, BlockState state)
     {
         super(AllBlockEntities.WATER_WHEEL.get(), pos, state);
@@ -22,7 +23,8 @@ public class WaterWheelBlockEntity extends GeneratorBlockEntity
     @Override
     protected void updateSpeed()
     {
-        this.speedModifier = 0;
+        this.speedModifier = 0.0F;
+        float flowRate = 0.0F;
         for (Direction dir : Direction.Plane.HORIZONTAL)
         {
             BlockPos fluidPos = this.getBlockPos().relative(dir);
@@ -39,21 +41,18 @@ public class WaterWheelBlockEntity extends GeneratorBlockEntity
              */
             switch (dir)
             {
-                case EAST -> this.speedModifier += (float) Math.signum(vec.z());
-
-                case NORTH -> this.speedModifier += (float) Math.signum(vec.x());
-
-                case SOUTH -> this.speedModifier += (float) -Math.signum(vec.x());
-
-                case WEST -> this.speedModifier += (float) -Math.signum(vec.z());
-
+                case EAST -> flowRate += (float) Math.signum(vec.z());
+                case NORTH -> flowRate += (float) Math.signum(vec.x());
+                case SOUTH -> flowRate += (float) -Math.signum(vec.x());
+                case WEST -> flowRate += (float) -Math.signum(vec.z());
                 default -> throw new IllegalStateException(NotEnoughMachines.MOD_ID + ":WaterWheelBlockEntity is in an unknown state!");
             }
         }
+        this.speedModifier = flowRate / MAX_NUMBER_OF_SIDES_WITH_WATER;
     }
 
     @Override
-    public float getBaseSpeed() { return 11.1F; }
+    public float getBaseSpeed() { return 8.0F; }
 
     @Override
     public int getBasePowerCapacity() { return 20; }

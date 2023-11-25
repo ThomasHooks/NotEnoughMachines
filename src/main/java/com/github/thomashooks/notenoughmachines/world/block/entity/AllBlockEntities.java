@@ -29,6 +29,8 @@ public class AllBlockEntities
             () -> BlockEntityType.Builder.of(MillstoneBlockEntity::new, AllBlocks.MILLSTONE.get()).build(null));
     public static final RegistryObject<BlockEntityType<WaterWheelBlockEntity>> WATER_WHEEL = BLOCK_ENTITIES.register("water_wheel",
             () -> BlockEntityType.Builder.of(WaterWheelBlockEntity::new, AllBlocks.WATER_WHEEL.get()).build(null));
+    public static final RegistryObject<BlockEntityType<WindWheelBlockEntity>> WIND_WHEEL = BLOCK_ENTITIES.register("wind_wheel",
+            () -> BlockEntityType.Builder.of(WindWheelBlockEntity::new, AllBlocks.WIND_WHEEL.get()).build(null));
 
     public static void registerAll(IEventBus modEventBus)
     {

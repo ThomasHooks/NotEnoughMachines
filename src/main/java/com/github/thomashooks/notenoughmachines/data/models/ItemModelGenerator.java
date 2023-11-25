@@ -33,6 +33,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.CRUSHED_COPPER_ORE);
         simpleItemModel(AllItems.CRUSHED_GOLD_ORE);
         simpleItemModel(AllItems.CRUSHED_IRON_ORE);
+        simpleItemModel(AllItems.CRUSHED_TIN_ORE);
         simpleItemModel(AllItems.FILTER, "filter_item");
         simpleItemModel(AllItems.FLUX);
         simpleBlockItemModel(AllBlocks.FLUXSTONE_SLAB);
@@ -56,8 +57,11 @@ public class ItemModelGenerator extends ItemModelProvider
         wallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
         simpleItemModel(AllItems.REDSTONE_COLLECTOR);
         simpleItemModel(AllItems.REDSTONE_EMITTER);
+        simpleItemModel(AllItems.RAW_TIN);
         simpleItemModel(AllItems.ROLLERS);
+        simpleItemModel(AllItems.TIN_INGOT);
         simpleBlockItemModel(AllBlocks.WATER_WHEEL);
+        simpleItemModel(AllItems.WIND_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL_BLADE);
         simpleItemModel(AllItems.WIND_WHEEL_SAIL);
     }

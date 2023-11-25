@@ -16,6 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class AllBiomeModifiers
 {
     public static final ResourceKey<BiomeModifier> FLUXSTONE_ORE = register("fluxstone_ore");
+    public static final ResourceKey<BiomeModifier> TIN_ORE = register("tin_ore");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context)
     {
@@ -25,6 +26,11 @@ public class AllBiomeModifiers
         context.register(FLUXSTONE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(CustomOrePlacement.FLUXSTONE_ORE)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
+        ));
+        context.register(TIN_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(CustomOrePlacement.TIN_ORE)),
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
     }

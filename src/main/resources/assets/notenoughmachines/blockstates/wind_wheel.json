@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "notenoughmachines:block/axle" },
+		"facing=south": { "model": "notenoughmachines:block/axle" },
+		"facing=east": {"model": "notenoughmachines:block/axle", "y": 270},
+		"facing=west": {"model": "notenoughmachines:block/axle", "y": 270}
+    }
+}

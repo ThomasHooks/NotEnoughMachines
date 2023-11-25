@@ -27,7 +27,7 @@ public abstract class GeneratorBlockEntity extends MechanicalBlockEntity
     public void lazyTick()
     {
         this.updateSpeed();
-        this.setCapacity((int) (this.getBasePowerCapacity() * Math.abs(this.speedModifier)));
+        this.setCapacity((int) (this.getBasePowerCapacity() * Math.abs(this.getBaseSpeed() * this.speedModifier)));
 
         super.lazyTick();
     }

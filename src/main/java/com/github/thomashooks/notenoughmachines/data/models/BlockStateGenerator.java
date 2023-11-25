@@ -54,6 +54,8 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
         wallBlock(((WallBlock) AllBlocks.POLISHED_FLUXSTONE_WALL.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+        simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
+        simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
         simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
     }
 

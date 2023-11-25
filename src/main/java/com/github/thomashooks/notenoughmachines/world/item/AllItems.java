@@ -29,6 +29,10 @@ public class AllItems
             ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> LINEN_BLOCK = ITEMS.register("linen_block",
             ()-> new BlockItem(AllBlocks.LINEN_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TIN_ORE = ITEMS.register("tin_ore",
+            ()-> new BlockItem(AllBlocks.TIN_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TIN_BLOCK = ITEMS.register("tin_block",
+            ()-> new BlockItem(AllBlocks.TIN_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> WOODEN_FRAME = ITEMS.register("wooden_frame",
             ()-> new BlockItem(AllBlocks.WOODEN_FRAME.get(), new Item.Properties()));
     //Building Blocks - slabs
@@ -47,11 +51,13 @@ public class AllItems
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_WALL = ITEMS.register("polished_fluxstone_wall",
             ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_WALL.get(), new Item.Properties()));
     //Miscellaneous - dust items
-    public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushed_iron_ore",
+    public static final RegistryObject<Item> CRUSHED_COPPER_ORE = ITEMS.register("crushed_copper_ore",
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CRUSHED_GOLD_ORE = ITEMS.register("crushed_gold_ore",
             ()-> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CRUSHED_COPPER_ORE = ITEMS.register("crushed_copper_ore",
+    public static final RegistryObject<Item> CRUSHED_IRON_ORE = ITEMS.register("crushed_iron_ore",
+            ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CRUSHED_TIN_ORE = ITEMS.register("crushed_tin_ore",
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLUX = ITEMS.register("flux",
             ()-> new Item(new Item.Properties()));
@@ -84,11 +90,16 @@ public class AllItems
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GEAR = ITEMS.register("gear",
             ()-> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot",
+            ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WIND_WHEEL_BLADE = ITEMS.register("wind_wheel_blade",
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WIND_WHEEL_SAIL = ITEMS.register("wind_wheel_sail",
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HAMMER_AND_ANVIL = ITEMS.register("hammer_and_anvil",
+            ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin",
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ROLLERS = ITEMS.register("rollers",
             ()-> new Item(new Item.Properties()));
@@ -111,6 +122,8 @@ public class AllItems
     //Machine Blocks - power generators
     public static final RegistryObject<Item> WATER_WHEEL = ITEMS.register("water_wheel",
             ()-> new BlockItem(AllBlocks.WATER_WHEEL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WIND_WHEEL = ITEMS.register("wind_wheel",
+        ()-> new BlockItem(AllBlocks.WIND_WHEEL.get(), new Item.Properties()));
     //Machine Blocks - mills/processors
     public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone",
             ()-> new BlockItem(AllBlocks.MILLSTONE.get(), new Item.Properties()));

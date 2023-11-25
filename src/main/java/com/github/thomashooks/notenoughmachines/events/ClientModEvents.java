@@ -41,6 +41,7 @@ public class ClientModEvents
         event.registerLayerDefinition(CogwheelSmallModelLayer.LOCATION, CogwheelSmallModelLayer::createBody);
         event.registerLayerDefinition(MillstoneModelLayer.LOCATION, MillstoneModelLayer::createBody);
         event.registerLayerDefinition(WaterWheelModelLayer.LOCATION, WaterWheelModelLayer::createBody);
+        event.registerLayerDefinition(WindWheelModelLayer.LOCATION, WindWheelModelLayer::createBody);
     }
 
     @SubscribeEvent
@@ -54,6 +55,7 @@ public class ClientModEvents
         event.registerBlockEntityRenderer(AllBlockEntities.GEARBOX.get(), GearboxRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.MILLSTONE.get(), MillstoneRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.WATER_WHEEL.get(), WaterWheelRenderer::new);
+        event.registerBlockEntityRenderer(AllBlockEntities.WIND_WHEEL.get(), WindWheelRenderer::new);
     }
 
     @SubscribeEvent

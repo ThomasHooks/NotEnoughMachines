@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class MechanicalBlock extends Block  implements EntityBlock
+public abstract class MechanicalBlock extends Block  implements EntityBlock, IMachine
 {
     public static final BooleanProperty SHIFTED = AllBlockStateProperties.SHIFTED;
 

@@ -16,24 +16,30 @@ import java.util.List;
 
 public class CustomOrePlacement
 {
-    public static final ResourceKey<PlacedFeature> FLUXSTONE_ORE = registerKey("fluxstone_ore_placed");
+    public static final ResourceKey<PlacedFeature> FLUXSTONE_ORE = registerKey("fluxstone_ore");
+    public static final ResourceKey<PlacedFeature> TIN_ORE = registerKey("tin_ore");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context)
     {
         HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> fluxstoneHolder = holdergetter.getOrThrow(CustomOreFeatures.FLUXSTONE_ORE);
+        Holder<ConfiguredFeature<?, ?>> tinHolder = holdergetter.getOrThrow(CustomOreFeatures.TIN_ORE);
 
-        register(context, FLUXSTONE_ORE, fluxstoneHolder, commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(191))));
+        register(context, FLUXSTONE_ORE, fluxstoneHolder, commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(192))));
+        register(context, TIN_ORE, tinHolder, commonOrePlacement(9, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(182))));
     }
-    protected static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier heightRange) {
+    protected static List<PlacementModifier> orePlacement(PlacementModifier placementModifier, PlacementModifier heightRange)
+    {
         return List.of(placementModifier, InSquarePlacement.spread(), heightRange, BiomeFilter.biome());
     }
 
-    public static List<PlacementModifier> commonOrePlacement(int count, PlacementModifier heightRange) {
+    public static List<PlacementModifier> commonOrePlacement(int count, PlacementModifier heightRange)
+    {
         return orePlacement(CountPlacement.of(count), heightRange);
     }
 
-    public static List<PlacementModifier> rareOrePlacement(int chance, PlacementModifier heightRange) {
+    public static List<PlacementModifier> rareOrePlacement(int chance, PlacementModifier heightRange)
+    {
         return orePlacement(RarityFilter.onAverageOnceEvery(chance), heightRange);
     }
 

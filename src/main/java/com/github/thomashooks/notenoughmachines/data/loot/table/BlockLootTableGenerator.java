@@ -9,6 +9,7 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -50,7 +51,10 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         add(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.POLISHED_FLUXSTONE_SLAB.get()));
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
+        dropSelf(AllBlocks.TIN_BLOCK.get());
+        this.add(AllBlocks.TIN_ORE.get(), (block) -> { return this.createOreDrop(block, AllItems.RAW_TIN.get()); });
         dropSelf(AllBlocks.WATER_WHEEL.get());
+        dropSelf(AllBlocks.WIND_WHEEL.get());
         dropSelf(AllBlocks.WOODEN_FRAME.get());
     }
 

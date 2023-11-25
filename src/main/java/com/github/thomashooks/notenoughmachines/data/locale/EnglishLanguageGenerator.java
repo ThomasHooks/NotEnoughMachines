@@ -28,6 +28,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.CRUSHED_COPPER_ORE, "Crushed Raw Copper");
         addItem(AllItems.CRUSHED_GOLD_ORE, "Crushed Raw Gold");
         addItem(AllItems.CRUSHED_IRON_ORE, "Crushed Raw Iron");
+        addItem(AllItems.CRUSHED_TIN_ORE, "Crushed Raw Tin");
         addItem(AllItems.IRON_PLATE, "Iron Plate");
         addItem(AllItems.IRON_ROD, "Iron Rod");
         addItem(AllItems.IRON_SCREW, "Iron Screw");
@@ -38,11 +39,13 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.FLUX, "Flux");
         addItem(AllItems.GEAR, "Gear");
         addItem(AllItems.HAMMER_AND_ANVIL, "Hammer and Anvil");
+        addItem(AllItems.RAW_TIN, "Raw Tin");
         addItem(AllItems.ROLLERS, "Rollers");
         addItem(AllItems.LINEN, "Linen");
         addItem(AllItems.LINSEED_OIL, "Linseed Oil");
         addItem(AllItems.REDSTONE_COLLECTOR, "Redstone Collector");
         addItem(AllItems.REDSTONE_EMITTER, "Redstone Emitter");
+        addItem(AllItems.TIN_INGOT, "Tin Ingot");
         addItem(AllItems.WIND_WHEEL_BLADE, "Wind Wheel Blade");
         addItem(AllItems.WIND_WHEEL_SAIL, "Wind Wheel Sail");
 
@@ -70,7 +73,10 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.POLISHED_FLUXSTONE_SLAB, "Polished Fluxstone Slab");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_STAIRS, "Polished Fluxstone Stairs");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_WALL, "Polished Fluxstone Wall");
+        addBlock(AllBlocks.TIN_BLOCK, "Block of Tin");
+        addBlock(AllBlocks.TIN_ORE, "Tin Ore");
         addBlock(AllBlocks.WATER_WHEEL, "Water Wheel");
+        addBlock(AllBlocks.WIND_WHEEL, "Wind Wheel");
         addBlock(AllBlocks.WOODEN_FRAME, "Wooden Frame");
     }
 
