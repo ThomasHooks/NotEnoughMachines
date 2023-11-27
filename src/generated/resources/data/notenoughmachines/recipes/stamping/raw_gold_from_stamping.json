@@ -1,0 +1,17 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:raw_gold",
+  "ingredient": [
+    {
+      "item": "minecraft:gold_ore"
+    },
+    {
+      "item": "minecraft:deepslate_gold_ore"
+    }
+  ],
+  "process_time": 300,
+  "result_primary": {
+    "count": 2,
+    "item": "minecraft:raw_gold"
+  }
+}

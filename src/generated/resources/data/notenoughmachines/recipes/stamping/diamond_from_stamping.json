@@ -1,0 +1,17 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:diamond",
+  "ingredient": [
+    {
+      "item": "minecraft:diamond_ore"
+    },
+    {
+      "item": "minecraft:deepslate_diamond_ore"
+    }
+  ],
+  "process_time": 600,
+  "result_primary": {
+    "count": 3,
+    "item": "minecraft:diamond"
+  }
+}

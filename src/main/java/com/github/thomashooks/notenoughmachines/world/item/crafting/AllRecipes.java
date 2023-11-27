@@ -12,6 +12,7 @@ public class AllRecipes
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, NotEnoughMachines.MOD_ID);
 
     public static final RegistryObject<RecipeSerializer<MillingRecipe>> MILLING = SERIALIZERS.register("milling", ()-> MillingRecipe.Serializer.MILLING);
+    public static final RegistryObject<RecipeSerializer<StampingRecipe>> STAMPING = SERIALIZERS.register("stamping", ()-> StampingRecipe.Serializer.STAMPING);
 
     public static void registerAll(IEventBus eventBus) { SERIALIZERS.register(eventBus); }
 }

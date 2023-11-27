@@ -74,6 +74,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.POLISHED_FLUXSTONE_STAIRS, "Polished Fluxstone Stairs");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_WALL, "Polished Fluxstone Wall");
         addBlock(AllBlocks.TIN_BLOCK, "Block of Tin");
+        addBlock(AllBlocks.TRIP_HAMMER, "Trip Hammer");
         addBlock(AllBlocks.TIN_ORE, "Tin Ore");
         addBlock(AllBlocks.WATER_WHEEL, "Water Wheel");
         addBlock(AllBlocks.WIND_WHEEL, "Wind Wheel");
@@ -84,6 +85,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
     {
         addMenu("filter", "Item Filter");
         addMenu("millstone", "Millstone");
+        addMenu("trip_hammer", "Trip Hammer");
     }
 
     public void addMenu(String key, String name)

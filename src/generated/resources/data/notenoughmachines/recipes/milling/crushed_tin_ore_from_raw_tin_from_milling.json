@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:tin_dust",
+  "ingredient": {
+    "item": "notenoughmachines:raw_tin"
+  },
+  "processtime": 600,
+  "result": {
+    "item": "notenoughmachines:crushed_tin_ore"
+  }
+}

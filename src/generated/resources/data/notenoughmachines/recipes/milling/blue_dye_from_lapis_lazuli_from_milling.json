@@ -4,9 +4,9 @@
   "ingredient": {
     "item": "minecraft:lapis_lazuli"
   },
-  "processtime": 300,
+  "processtime": 400,
   "result": {
-    "count": 2,
+    "count": 3,
     "item": "minecraft:blue_dye"
   }
 }

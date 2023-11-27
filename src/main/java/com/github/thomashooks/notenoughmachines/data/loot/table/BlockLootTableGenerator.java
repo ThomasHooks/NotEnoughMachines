@@ -3,6 +3,8 @@ package com.github.thomashooks.notenoughmachines.data.loot.table;
 import com.github.thomashooks.notenoughmachines.world.block.CogwheelLargeBlock;
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
+import com.github.thomashooks.notenoughmachines.world.block.TripHammerBlock;
+import com.github.thomashooks.notenoughmachines.world.block.state.MultiBlockPart1x1x4;
 import com.github.thomashooks.notenoughmachines.world.block.state.MultiBlockPart3x1x3;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -51,6 +53,8 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         add(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.POLISHED_FLUXSTONE_SLAB.get()));
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
+        //dropSelf(AllBlocks.TRIP_HAMMER.get());
+        add(AllBlocks.TRIP_HAMMER.get(), (block) -> { return this.createSinglePropConditionTable(block, TripHammerBlock.PART, MultiBlockPart1x1x4.BOTTOM); });
         dropSelf(AllBlocks.TIN_BLOCK.get());
         this.add(AllBlocks.TIN_ORE.get(), (block) -> { return this.createOreDrop(block, AllItems.RAW_TIN.get()); });
         dropSelf(AllBlocks.WATER_WHEEL.get());

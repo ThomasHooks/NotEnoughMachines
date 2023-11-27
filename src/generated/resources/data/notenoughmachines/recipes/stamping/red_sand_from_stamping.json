@@ -1,0 +1,22 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:red_sand",
+  "ingredient": [
+    {
+      "item": "minecraft:red_sandstone"
+    },
+    {
+      "item": "minecraft:chiseled_red_sandstone"
+    },
+    {
+      "item": "minecraft:cut_red_sandstone"
+    },
+    {
+      "item": "minecraft:smooth_red_sandstone"
+    }
+  ],
+  "process_time": 200,
+  "result_primary": {
+    "item": "minecraft:red_sand"
+  }
+}

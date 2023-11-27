@@ -95,19 +95,17 @@ public class VoxelShapeHelper
                     Shapes.or(GEARBOX_OUTER_X, GEARBOX_OUTER_Y, GEARBOX_INNER)
             };
 
-    private static final VoxelShape TRIPHAMMER_FRAMEX = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);
-    private static final VoxelShape TRIPHAMMER_FRAMEZ = Block.box(0.0D, 0.0D, 2.0D, 16.0D, 16.0D, 14.0D);
-    public static final VoxelShape[] TRIPHAMMER_BASE = new VoxelShape[]
+    private static final VoxelShape TRIP_HAMMER_FRAME_X = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);
+    private static final VoxelShape TRIP_HAMMER_FRAME_Z = Block.box(0.0D, 0.0D, 2.0D, 16.0D, 16.0D, 14.0D);
+    public static final VoxelShape[] TRIP_HAMMER_BASE = new VoxelShape[]
             {
-                    Shapes.or(BASE_16X2X16, TRIPHAMMER_FRAMEX),
-                    FULL_BLOCK,
-                    Shapes.or(BASE_16X2X16, TRIPHAMMER_FRAMEZ)
+                    Shapes.or(BASE_16X2X16, TRIP_HAMMER_FRAME_X),
+                    Shapes.or(BASE_16X2X16, TRIP_HAMMER_FRAME_Z)
             };
-    public static final VoxelShape[] TRIPHAMMER_FRAME = new VoxelShape[]
+    public static final VoxelShape[] TRIP_HAMMER_FRAME = new VoxelShape[]
             {
-                    TRIPHAMMER_FRAMEX,
-                    FULL_BLOCK,
-                    TRIPHAMMER_FRAMEZ
+                    TRIP_HAMMER_FRAME_X,
+                    TRIP_HAMMER_FRAME_Z
             };
 
     private static final VoxelShape ROLLING_MILL_FRAMEX = Block.box(2.0D, 0.0D, 0.0D, 14.0D, 16.0D, 16.0D);

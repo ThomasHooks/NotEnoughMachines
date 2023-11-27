@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:flux",
+  "ingredient": {
+    "item": "notenoughmachines:fluxstone"
+  },
+  "process_time": 300,
+  "result_primary": {
+    "count": 3,
+    "item": "notenoughmachines:flux"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:gravel",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "process_time": 200,
+  "result_primary": {
+    "item": "minecraft:gravel"
+  },
+  "result_secondary": {
+    "count": 2,
+    "item": "minecraft:flint"
+  }
+}

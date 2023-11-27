@@ -123,7 +123,6 @@ public class AllBlocks
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
-
     public static final RegistryObject<Block> MILLSTONE = BLOCKS.register("millstone",
             ()-> new MillstoneBlock(Block.Properties.of()
                     .mapColor(MapColor.STONE)
@@ -163,6 +162,13 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)
+            ));
+    public static final RegistryObject<Block> TRIP_HAMMER = BLOCKS.register("trip_hammer",
+            ()-> new TripHammerBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(2.8F, 3.0F)
+                    .sound(SoundType.ANVIL)
+                    .noOcclusion()
             ));
     public static final RegistryObject<Block> TIN_ORE = BLOCKS.register("tin_ore",
             ()-> new DropExperienceBlock(Block.Properties.of()

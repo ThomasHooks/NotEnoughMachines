@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:gold_dust",
+  "ingredient": {
+    "item": "minecraft:raw_gold"
+  },
+  "processtime": 600,
+  "result": {
+    "item": "notenoughmachines:crushed_gold_ore"
+  }
+}

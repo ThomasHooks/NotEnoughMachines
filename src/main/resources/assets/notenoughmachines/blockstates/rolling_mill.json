@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "notenoughmachines:block/rolling_mill", "y": 180 },
+		"facing=south": { "model": "notenoughmachines:block/rolling_mill"},
+		"facing=east": {"model": "notenoughmachines:block/rolling_mill", "y": 270 },
+		"facing=west": {"model": "notenoughmachines:block/rolling_mill", "y": 90 }
+    }
+}

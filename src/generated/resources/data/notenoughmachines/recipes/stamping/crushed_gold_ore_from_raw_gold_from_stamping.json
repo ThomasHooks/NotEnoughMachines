@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:gold_dust",
+  "ingredient": {
+    "item": "minecraft:raw_gold"
+  },
+  "process_time": 300,
+  "result_primary": {
+    "count": 2,
+    "item": "notenoughmachines:crushed_gold_ore"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:glowstone_dust",
+  "ingredient": {
+    "item": "minecraft:glowstone"
+  },
+  "process_time": 200,
+  "result_primary": {
+    "count": 4,
+    "item": "minecraft:glowstone_dust"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:pink_dye",
+  "ingredient": [
+    {
+      "item": "minecraft:pink_tulip"
+    },
+    {
+      "item": "minecraft:peony"
+    }
+  ],
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:pink_dye"
+  }
+}

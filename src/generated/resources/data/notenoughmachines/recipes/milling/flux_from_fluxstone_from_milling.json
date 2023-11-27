@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:flux",
+  "ingredient": {
+    "item": "notenoughmachines:fluxstone"
+  },
+  "processtime": 500,
+  "result": {
+    "item": "notenoughmachines:flux"
+  }
+}

@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class MillingRecipe extends AbstractMachineRecipe
 {
-    public MillingRecipe(ResourceLocation idIn, String groupIn, NonNullList<Ingredient> ingredientsIn, NonNullList<ItemStack> resultsIn, int processingTimeIn)
+    public MillingRecipe(ResourceLocation idIn, String groupIn, Ingredient ingredientsIn, ItemStack resultsIn, int processingTimeIn)
     {
         super(idIn, groupIn, ingredientsIn, resultsIn, processingTimeIn);
     }
@@ -51,14 +51,11 @@ public class MillingRecipe extends AbstractMachineRecipe
             if (!serializedRecipe.has("ingredient"))
                 throw new com.google.gson.JsonSyntaxException("Missing ingredient, expected to find a string or object");
             JsonElement jsonelement = (JsonElement)(GsonHelper.isArrayNode(serializedRecipe, "ingredient") ? GsonHelper.getAsJsonArray(serializedRecipe, "ingredient") : GsonHelper.getAsJsonObject(serializedRecipe, "ingredient"));
-            NonNullList<Ingredient> ingredient = NonNullList.withSize(1, Ingredient.EMPTY);
-            ingredient.set(0, Ingredient.fromJson(jsonelement));
+            Ingredient ingredient = Ingredient.fromJson(jsonelement);
 
             if (!serializedRecipe.has("result"))
                 throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
-            ItemStack itemStack = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
-            NonNullList<ItemStack> result = NonNullList.withSize(1, ItemStack.EMPTY);
-            result.set(0, itemStack);
+            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(serializedRecipe, "result"));
 
             int processTime = GsonHelper.getAsInt(serializedRecipe, "processtime", 200);
 
@@ -69,17 +66,9 @@ public class MillingRecipe extends AbstractMachineRecipe
         public @Nullable MillingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
         {
             String group = buffer.readUtf();
-
-            Ingredient ingrd = Ingredient.fromNetwork(buffer);
-            NonNullList<Ingredient> ingredient = NonNullList.withSize(1, Ingredient.EMPTY);
-            ingredient.set(0, ingrd);
-
-            ItemStack itemstack = buffer.readItem();
-            NonNullList<ItemStack> result = NonNullList.withSize(1, ItemStack.EMPTY);
-            result.set(0, itemstack);
-
+            Ingredient ingredient = Ingredient.fromNetwork(buffer);
+            ItemStack result = buffer.readItem();
             int processTime = buffer.readVarInt();
-
             return new MillingRecipe(recipeId, group, ingredient, result, processTime);
         }
 
@@ -87,8 +76,8 @@ public class MillingRecipe extends AbstractMachineRecipe
         public void toNetwork(FriendlyByteBuf buffer, MillingRecipe recipe)
         {
             buffer.writeUtf(recipe.group);
-            recipe.ingredients.get(0).toNetwork(buffer);
-            buffer.writeItem(recipe.results.get(0));
+            recipe.ingredients.toNetwork(buffer);
+            buffer.writeItem(recipe.results);
             buffer.writeVarInt(recipe.processingTime);
         }
     }

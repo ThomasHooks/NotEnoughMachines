@@ -14,18 +14,18 @@ public interface IMultiBlockPart
     BlockPos getCoreBlockPos(BlockState state, BlockPos pos);
 
     /**
-     * @param world This part's world
-     * @param pos This part's position
-     * @param state This part's current block state
+     * @param world This core part's world
+     * @param corePos This core part's position
+     * @param state This core part's current block state
      * @return Is true if the multi-block structure is valid
      */
-    public boolean isValidForPlacement(Level world, BlockPos pos, BlockState state);
+    public boolean isValidForPlacement(Level world, BlockPos corePos, BlockState state);
 
     /**
      * @param world This part's world
      * @param pos This part's position
      * @param state This part's current block state
-     * @return Is true if the multi-block structure is valid
+     * @return Is true if the multi-block structure is still valid
      */
     public boolean isValid(Level world, BlockPos pos, BlockState state);
 }

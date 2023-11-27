@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:iron_dust",
+  "ingredient": {
+    "item": "minecraft:raw_iron"
+  },
+  "processtime": 600,
+  "result": {
+    "item": "notenoughmachines:crushed_iron_ore"
+  }
+}

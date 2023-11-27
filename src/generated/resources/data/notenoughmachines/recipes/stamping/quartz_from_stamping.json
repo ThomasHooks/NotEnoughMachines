@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:quartz",
+  "ingredient": {
+    "item": "minecraft:nether_quartz_ore"
+  },
+  "process_time": 300,
+  "result_primary": {
+    "count": 2,
+    "item": "minecraft:quartz"
+  }
+}

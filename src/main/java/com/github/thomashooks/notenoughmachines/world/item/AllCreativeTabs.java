@@ -50,31 +50,34 @@ public class AllCreativeTabs
                         output.accept(AllItems.WIND_WHEEL.get());
                         //Machine Blocks - mills/processors
                         output.accept(AllItems.MILLSTONE.get());
+                        output.accept(AllItems.TRIP_HAMMER.get());
                         //Machine Blocks - item transfer
                         output.accept(AllItems.FILTER.get());
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
-                        //Dust Items
+                        //Crafting Items - Raw Ore
+                        output.accept(AllItems.RAW_TIN.get());
+                        //Crafting Items - Dust
                         output.accept(AllItems.CRUSHED_COPPER_ORE.get());
                         output.accept(AllItems.CRUSHED_GOLD_ORE.get());
                         output.accept(AllItems.CRUSHED_IRON_ORE.get());
                         output.accept(AllItems.CRUSHED_TIN_ORE.get());
                         output.accept(AllItems.FLUX.get());
                         output.accept(AllItems.FLOUR.get());
-                        //Seed Items
-                        output.accept(AllItems.FLAXSEED.get());
-                        //Crafting Items
-                        output.accept(AllItems.FLAX.get());
-                        output.accept(AllItems.FLAX_STRING.get());
-                        output.accept(AllItems.LINEN.get());
-                        output.accept(AllItems.LINSEED_OIL.get());
+                        //Crafting Items - Ingot
+                        output.accept(AllItems.TIN_INGOT.get());
+                        //Crafting Items - Metal
                         output.accept(AllItems.COPPER_PLATE.get());
                         output.accept(AllItems.IRON_PLATE.get());
                         output.accept(AllItems.COPPER_ROD.get());
                         output.accept(AllItems.IRON_ROD.get());
                         output.accept(AllItems.IRON_SCREW.get());
-                        output.accept(AllItems.RAW_TIN.get());
-                        output.accept(AllItems.TIN_INGOT.get());
+                        //Crafting Items
+                        output.accept(AllItems.FLAXSEED.get());
+                        output.accept(AllItems.FLAX.get());
+                        output.accept(AllItems.FLAX_STRING.get());
+                        output.accept(AllItems.LINEN.get());
+                        output.accept(AllItems.LINSEED_OIL.get());
                         output.accept(AllItems.GEAR.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());
                         output.accept(AllItems.WIND_WHEEL_SAIL.get());

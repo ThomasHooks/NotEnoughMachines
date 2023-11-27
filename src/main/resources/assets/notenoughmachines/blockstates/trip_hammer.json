@@ -1,0 +1,23 @@
+{
+    "variants": {
+        "trip_hammer_part=bottom,facing=north": { "model": "notenoughmachines:block/trip_hammer_base", "y": 180 },
+		"trip_hammer_part=bottom,facing=south": { "model": "notenoughmachines:block/trip_hammer_base"},
+		"trip_hammer_part=bottom,facing=east": {"model": "notenoughmachines:block/trip_hammer_base", "y": 270 },
+		"trip_hammer_part=bottom,facing=west": {"model": "notenoughmachines:block/trip_hammer_base", "y": 90 },
+		
+		"trip_hammer_part=lower_mid,facing=north": { "model": "notenoughmachines:block/trip_hammer_frame", "y": 180 },
+		"trip_hammer_part=lower_mid,facing=south": { "model": "notenoughmachines:block/trip_hammer_frame"},
+		"trip_hammer_part=lower_mid,facing=east": {"model": "notenoughmachines:block/trip_hammer_frame", "y": 270 },
+		"trip_hammer_part=lower_mid,facing=west": {"model": "notenoughmachines:block/trip_hammer_frame", "y": 90 },
+		
+		"trip_hammer_part=upper_mid,facing=north": { "model": "notenoughmachines:block/trip_hammer_cam", "y": 180 },
+		"trip_hammer_part=upper_mid,facing=south": { "model": "notenoughmachines:block/trip_hammer_cam"},
+		"trip_hammer_part=upper_mid,facing=east": {"model": "notenoughmachines:block/trip_hammer_cam", "y": 270 },
+		"trip_hammer_part=upper_mid,facing=west": {"model": "notenoughmachines:block/trip_hammer_cam", "y": 90 },
+		
+		"trip_hammer_part=top,facing=north": { "model": "notenoughmachines:block/trip_hammer_frame", "y": 180 },
+		"trip_hammer_part=top,facing=south": { "model": "notenoughmachines:block/trip_hammer_frame"},
+		"trip_hammer_part=top,facing=east": {"model": "notenoughmachines:block/trip_hammer_frame", "y": 270 },
+		"trip_hammer_part=top,facing=west": {"model": "notenoughmachines:block/trip_hammer_frame", "y": 90 }
+    }
+}

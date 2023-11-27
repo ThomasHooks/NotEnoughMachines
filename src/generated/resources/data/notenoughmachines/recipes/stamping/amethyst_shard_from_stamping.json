@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:amethyst_shard",
+  "ingredient": {
+    "item": "minecraft:amethyst_cluster"
+  },
+  "process_time": 300,
+  "result_primary": {
+    "count": 7,
+    "item": "minecraft:amethyst_shard"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:glowstone_dust",
+  "ingredient": {
+    "item": "minecraft:redstone_lamp"
+  },
+  "process_time": 200,
+  "result_primary": {
+    "count": 4,
+    "item": "minecraft:glowstone_dust"
+  },
+  "result_secondary": {
+    "count": 4,
+    "item": "minecraft:redstone"
+  }
+}

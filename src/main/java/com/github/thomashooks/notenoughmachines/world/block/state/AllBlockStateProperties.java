@@ -10,4 +10,5 @@ public class AllBlockStateProperties
     public static final BooleanProperty SHIFTED = BooleanProperty.create("shifted");
     public static final EnumProperty<InputDualType> DUAL_INPUT = EnumProperty.create("input", InputDualType.class);
     public static final EnumProperty<MultiBlockPart3x1x3> LARGE_COGWHEEL_PART = EnumProperty.create("cogwheel_part", MultiBlockPart3x1x3.class);
+    public static final EnumProperty<MultiBlockPart1x1x4> TRIP_HAMMER_PART = EnumProperty.create("trip_hammer_part", MultiBlockPart1x1x4.class);
 }

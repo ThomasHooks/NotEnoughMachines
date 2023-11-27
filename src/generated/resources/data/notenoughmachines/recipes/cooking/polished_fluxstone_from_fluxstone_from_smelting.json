@@ -3,7 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.15,
-  "group": "notenoughmachines:flux",
+  "group": "notenoughmachines:polished_fluxstone",
   "ingredient": {
     "item": "notenoughmachines:fluxstone"
   },

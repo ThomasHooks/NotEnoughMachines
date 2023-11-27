@@ -1,0 +1,20 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:light_gray_dye",
+  "ingredient": [
+    {
+      "item": "minecraft:azure_bluet"
+    },
+    {
+      "item": "minecraft:oxeye_daisy"
+    },
+    {
+      "item": "minecraft:white_tulip"
+    }
+  ],
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:light_gray_dye"
+  }
+}

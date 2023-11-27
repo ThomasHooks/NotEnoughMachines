@@ -1,0 +1,19 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:cobblestone",
+  "ingredient": [
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:cracked_stone_bricks"
+    },
+    {
+      "item": "minecraft:smooth_stone"
+    }
+  ],
+  "process_time": 200,
+  "result_primary": {
+    "item": "minecraft:cobblestone"
+  }
+}

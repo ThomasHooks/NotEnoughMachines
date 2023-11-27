@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:mossy_cobblestone",
+  "ingredient": {
+    "item": "minecraft:mossy_stone_bricks"
+  },
+  "process_time": 200,
+  "result_primary": {
+    "item": "minecraft:mossy_cobblestone"
+  }
+}

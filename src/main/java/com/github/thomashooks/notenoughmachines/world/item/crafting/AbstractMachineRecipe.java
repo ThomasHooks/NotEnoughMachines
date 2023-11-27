@@ -15,11 +15,11 @@ public abstract class AbstractMachineRecipe implements Recipe<SimpleContainer>
 {
     protected final ResourceLocation id;
     protected final String group;
-    protected final NonNullList<Ingredient> ingredients;
-    protected final NonNullList<ItemStack> results;
+    protected final Ingredient ingredients;
+    protected final ItemStack results;
     protected final int processingTime;
 
-    protected AbstractMachineRecipe(ResourceLocation idIn, String groupIn, NonNullList<Ingredient> ingredientsIn, NonNullList<ItemStack> resultsIn, int processingTimeIn)
+    protected AbstractMachineRecipe(ResourceLocation idIn, String groupIn, Ingredient ingredientsIn, ItemStack resultsIn, int processingTimeIn)
     {
         this.id = idIn;
         this.group = groupIn;
@@ -34,27 +34,18 @@ public abstract class AbstractMachineRecipe implements Recipe<SimpleContainer>
         if (world.isClientSide())
             return false;
         //By default, we assume there is only 1 input slot and its index is 0
-        int inputIngredient = 0;
         int inputSlotIndex = 0;
-        return this.ingredients.get(inputIngredient).test(container.getItem(inputSlotIndex));
+        return this.ingredients.test(container.getItem(inputSlotIndex));
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess)
-    {
-        //By default, we assume there is only 1 output slot
-        return this.results.get(0).copy();
-    }
+    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) { return this.results.copy(); }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) { return true; }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess)
-    {
-        //By default, we assume there is only 1 output slot
-        return this.results.get(0).copy();
-    }
+    public ItemStack getResultItem(RegistryAccess registryAccess) { return this.results.copy(); }
 
     public int getProcessingTime() { return this.processingTime; }
 

@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:copper_dust",
+  "ingredient": {
+    "item": "minecraft:raw_copper"
+  },
+  "processtime": 600,
+  "result": {
+    "item": "notenoughmachines:crushed_copper_ore"
+  }
+}

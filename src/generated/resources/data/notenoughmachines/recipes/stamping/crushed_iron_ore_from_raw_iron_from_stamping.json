@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:iron_dust",
+  "ingredient": {
+    "item": "minecraft:raw_iron"
+  },
+  "process_time": 300,
+  "result_primary": {
+    "count": 2,
+    "item": "notenoughmachines:crushed_iron_ore"
+  }
+}

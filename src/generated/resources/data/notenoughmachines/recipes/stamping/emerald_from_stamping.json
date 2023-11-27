@@ -1,0 +1,17 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:emerald",
+  "ingredient": [
+    {
+      "item": "minecraft:emerald_ore"
+    },
+    {
+      "item": "minecraft:deepslate_emerald_ore"
+    }
+  ],
+  "process_time": 600,
+  "result_primary": {
+    "count": 3,
+    "item": "minecraft:emerald"
+  }
+}

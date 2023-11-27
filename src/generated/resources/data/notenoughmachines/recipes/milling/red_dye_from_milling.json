@@ -1,0 +1,23 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:red_dye",
+  "ingredient": [
+    {
+      "item": "minecraft:poppy"
+    },
+    {
+      "item": "minecraft:red_tulip"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:rose_bush"
+    }
+  ],
+  "processtime": 200,
+  "result": {
+    "count": 2,
+    "item": "minecraft:red_dye"
+  }
+}

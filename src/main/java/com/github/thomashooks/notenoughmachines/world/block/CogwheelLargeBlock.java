@@ -174,7 +174,6 @@ public class CogwheelLargeBlock extends RotatingShaftBlock implements IMultiBloc
 
     private void setMultiBlockState(Level world, BlockPos centerPos, BlockState currentState, BlockState newState, int flags)
     {
-        int partIndex = 0;
         switch (currentState.getValue(AXIS))
         {
             case X -> //Axis is East/West
@@ -184,7 +183,6 @@ public class CogwheelLargeBlock extends RotatingShaftBlock implements IMultiBloc
                     for (int z = -1; z <= 1; z++)
                     {
                         world.setBlock(centerPos.offset(0, y, z), newState, flags);
-                        partIndex++;
                     }
                 }
             }
@@ -195,7 +193,6 @@ public class CogwheelLargeBlock extends RotatingShaftBlock implements IMultiBloc
                     for (int x = -1; x <= 1; x++)
                     {
                         world.setBlock(centerPos.offset(x, 0, z), newState, flags);
-                        partIndex++;
                     }
                 }
             }
@@ -206,7 +203,6 @@ public class CogwheelLargeBlock extends RotatingShaftBlock implements IMultiBloc
                     for (int x = -1; x <= 1; x++)
                     {
                         world.setBlock(centerPos.offset(x, y, 0), newState, flags);
-                        partIndex++;
                     }
                 }
             }
@@ -332,39 +328,39 @@ public class CogwheelLargeBlock extends RotatingShaftBlock implements IMultiBloc
     }
 
     @Override
-    public boolean isValidForPlacement(Level world, BlockPos pos, BlockState state)
+    public boolean isValidForPlacement(Level world, BlockPos corePos, BlockState state)
     {
         return switch (state.getValue(AXIS))
         {
-            case X -> pos.getY() < world.getMaxBuildHeight() - 1
-                    && world.getBlockState(pos.offset(0, 1, -1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 1, 1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 0, -1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 0, 1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, -1, -1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, -1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, -1, 1)).canBeReplaced();
+            case X -> corePos.getY() < world.getMaxBuildHeight() - 1
+                    && world.getBlockState(corePos.offset(0, 1, -1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 1, 1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 0, -1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 0, 1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, -1, -1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, -1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, -1, 1)).canBeReplaced();
 
-            case Y -> pos.getY() < world.getMaxBuildHeight() - 1
-                    &&world.getBlockState(pos.offset(-1, 0, -1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 0, -1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(1, 0, -1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(-1, 0, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(1, 0, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(-1, 0, 1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 0, 1)).canBeReplaced()
-                    && world.getBlockState(pos.offset(1, 0, 1)).canBeReplaced();
+            case Y -> corePos.getY() < world.getMaxBuildHeight() - 1
+                    &&world.getBlockState(corePos.offset(-1, 0, -1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 0, -1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(1, 0, -1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(-1, 0, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(1, 0, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(-1, 0, 1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 0, 1)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(1, 0, 1)).canBeReplaced();
 
-            case Z -> pos.getY() < world.getMaxBuildHeight() - 1
-                    && world.getBlockState(pos.offset(-1, 1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, 1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(1, 1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(-1, 0, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(1, 0, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(-1, -1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(0, -1, 0)).canBeReplaced()
-                    && world.getBlockState(pos.offset(1, -1, 0)).canBeReplaced();
+            case Z -> corePos.getY() < world.getMaxBuildHeight() - 1
+                    && world.getBlockState(corePos.offset(-1, 1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, 1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(1, 1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(-1, 0, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(1, 0, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(-1, -1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(0, -1, 0)).canBeReplaced()
+                    && world.getBlockState(corePos.offset(1, -1, 0)).canBeReplaced();
 
             default -> throw new IllegalStateException(NotEnoughMachines.MOD_ID + ":isValidForPlacement():CogwheelLargeBlock is in an unknown state!");
         };
@@ -373,37 +369,38 @@ public class CogwheelLargeBlock extends RotatingShaftBlock implements IMultiBloc
     @Override
     public boolean isValid(Level world, BlockPos pos, BlockState state)
     {
+        BlockPos corePos = getCoreBlockPos(state, pos);
         return switch (state.getValue(AXIS))
         {
-            case X -> pos.getY() < world.getMaxBuildHeight() - 1
-                    && world.getBlockState(pos.offset(0, 1, -1)).is(this)
-                    && world.getBlockState(pos.offset(0, 1, 0)).is(this)
-                    && world.getBlockState(pos.offset(0, 1, 1)).is(this)
-                    && world.getBlockState(pos.offset(0, 0, -1)).is(this)
-                    && world.getBlockState(pos.offset(0, 0, 1)).is(this)
-                    && world.getBlockState(pos.offset(0, -1, -1)).is(this)
-                    && world.getBlockState(pos.offset(0, -1, 0)).is(this)
-                    && world.getBlockState(pos.offset(0, -1, 1)).is(this);
+            case X -> corePos.getY() < world.getMaxBuildHeight() - 1
+                    && world.getBlockState(corePos.offset(0, 1, -1)).is(this)
+                    && world.getBlockState(corePos.offset(0, 1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(0, 1, 1)).is(this)
+                    && world.getBlockState(corePos.offset(0, 0, -1)).is(this)
+                    && world.getBlockState(corePos.offset(0, 0, 1)).is(this)
+                    && world.getBlockState(corePos.offset(0, -1, -1)).is(this)
+                    && world.getBlockState(corePos.offset(0, -1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(0, -1, 1)).is(this);
 
-            case Y -> pos.getY() < world.getMaxBuildHeight() - 1
-                    && world.getBlockState(pos.offset(-1, 0, -1)).is(this)
-                    && world.getBlockState(pos.offset(0, 0, -1)).is(this)
-                    && world.getBlockState(pos.offset(1, 0, -1)).is(this)
-                    && world.getBlockState(pos.offset(-1, 0, 0)).is(this)
-                    && world.getBlockState(pos.offset(1, 0, 0)).is(this)
-                    && world.getBlockState(pos.offset(-1, 0, 1)).is(this)
-                    && world.getBlockState(pos.offset(0, 0, 1)).is(this)
-                    && world.getBlockState(pos.offset(1, 0, 1)).is(this);
+            case Y -> corePos.getY() < world.getMaxBuildHeight() - 1
+                    && world.getBlockState(corePos.offset(-1, 0, -1)).is(this)
+                    && world.getBlockState(corePos.offset(0, 0, -1)).is(this)
+                    && world.getBlockState(corePos.offset(1, 0, -1)).is(this)
+                    && world.getBlockState(corePos.offset(-1, 0, 0)).is(this)
+                    && world.getBlockState(corePos.offset(1, 0, 0)).is(this)
+                    && world.getBlockState(corePos.offset(-1, 0, 1)).is(this)
+                    && world.getBlockState(corePos.offset(0, 0, 1)).is(this)
+                    && world.getBlockState(corePos.offset(1, 0, 1)).is(this);
 
-            case Z -> pos.getY() < world.getMaxBuildHeight() - 1
-                    && world.getBlockState(pos.offset(-1, 1, 0)).is(this)
-                    && world.getBlockState(pos.offset(0, 1, 0)).is(this)
-                    && world.getBlockState(pos.offset(1, 1, 0)).is(this)
-                    && world.getBlockState(pos.offset(-1, 0, 0)).is(this)
-                    && world.getBlockState(pos.offset(1, 0, 0)).is(this)
-                    && world.getBlockState(pos.offset(-1, -1, 0)).is(this)
-                    && world.getBlockState(pos.offset(0, -1, 0)).is(this)
-                    && world.getBlockState(pos.offset(1, -1, 0)).is(this);
+            case Z -> corePos.getY() < world.getMaxBuildHeight() - 1
+                    && world.getBlockState(corePos.offset(-1, 1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(0, 1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(1, 1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(-1, 0, 0)).is(this)
+                    && world.getBlockState(corePos.offset(1, 0, 0)).is(this)
+                    && world.getBlockState(corePos.offset(-1, -1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(0, -1, 0)).is(this)
+                    && world.getBlockState(corePos.offset(1, -1, 0)).is(this);
 
             default -> throw new IllegalStateException(NotEnoughMachines.MOD_ID + ":isValid():CogwheelLargeBlock is in an unknown state!");
         };

@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:milling",
+  "group": "notenoughmachines:flint",
+  "ingredient": {
+    "item": "minecraft:gravel"
+  },
+  "processtime": 500,
+  "result": {
+    "item": "minecraft:flint"
+  }
+}

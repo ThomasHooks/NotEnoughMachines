@@ -7,6 +7,7 @@
     "notenoughmachines:filter",
     "notenoughmachines:gearbox",
     "notenoughmachines:millstone",
+    "notenoughmachines:trip_hammer",
     "notenoughmachines:water_wheel",
     "notenoughmachines:wind_wheel",
     "notenoughmachines:wooden_frame"

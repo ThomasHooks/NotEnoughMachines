@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:gold_nugget",
+  "ingredient": {
+    "item": "minecraft:nether_gold_ore"
+  },
+  "process_time": 600,
+  "result_primary": {
+    "count": 7,
+    "item": "minecraft:gold_nugget"
+  }
+}

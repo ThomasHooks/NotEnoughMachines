@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "notenoughmachines:trip_hammer",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "trip_hammer_part": "bottom"
+              }
+            }
+          ],
+          "name": "notenoughmachines:trip_hammer"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "notenoughmachines:blocks/trip_hammer"
+}

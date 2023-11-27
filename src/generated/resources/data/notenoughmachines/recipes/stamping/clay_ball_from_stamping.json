@@ -1,0 +1,17 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:clay_ball",
+  "ingredient": [
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:red_sand"
+    }
+  ],
+  "process_time": 200,
+  "result_primary": {
+    "count": 6,
+    "item": "minecraft:clay_ball"
+  }
+}

@@ -127,6 +127,8 @@ public class AllItems
     //Machine Blocks - mills/processors
     public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone",
             ()-> new BlockItem(AllBlocks.MILLSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TRIP_HAMMER = ITEMS.register("trip_hammer",
+            ()-> new BlockItem(AllBlocks.TRIP_HAMMER.get(), new Item.Properties()));
     //Machine Blocks - item transfer
 
     //Redstone Blocks

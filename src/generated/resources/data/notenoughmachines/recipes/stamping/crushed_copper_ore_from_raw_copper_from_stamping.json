@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:copper_dust",
+  "ingredient": {
+    "item": "minecraft:raw_copper"
+  },
+  "process_time": 300,
+  "result_primary": {
+    "count": 2,
+    "item": "notenoughmachines:crushed_copper_ore"
+  }
+}

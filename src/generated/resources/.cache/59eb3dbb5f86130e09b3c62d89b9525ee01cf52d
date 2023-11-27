@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-25T15:42:57.6393029	Loot Tables
+// 1.20.1	2023-11-26T17:08:31.6243906	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 bb82775b94e1e2763efa4b82df76516c70f853f3 data/notenoughmachines/loot_tables/blocks/conjunctioner.json
 aff11f0def9e9efd5a74754ccbe6fc86250de8cd data/notenoughmachines/loot_tables/blocks/copper_plate_block.json
@@ -21,6 +21,7 @@ ea7f775482866552de7f063dfcb6158b102e4d53 data/notenoughmachines/loot_tables/bloc
 3f6963d6f5ad6301d23aebd05efe6b5f18653422 data/notenoughmachines/loot_tables/blocks/small_cogwheel.json
 d6d06cd6867f2b0e9516fe8f5507d69411efde2e data/notenoughmachines/loot_tables/blocks/tin_block.json
 10bc8c2587aa66c0e48e95442bc32aeadad31a0d data/notenoughmachines/loot_tables/blocks/tin_ore.json
+abb6650916ccf50d7e7e7c7b582d816f65c0bf40 data/notenoughmachines/loot_tables/blocks/trip_hammer.json
 86548b6d99c79a82c47c2f507bacb6e742419e42 data/notenoughmachines/loot_tables/blocks/water_wheel.json
 f4f665693236ef01d40c774e403c8fc2f6d81df7 data/notenoughmachines/loot_tables/blocks/wind_wheel.json
 d62a08dc47fc19cb7f9720edef99be04edfd51db data/notenoughmachines/loot_tables/blocks/wooden_frame.json

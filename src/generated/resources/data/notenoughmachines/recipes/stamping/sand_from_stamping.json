@@ -1,0 +1,25 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:sand",
+  "ingredient": [
+    {
+      "item": "minecraft:sandstone"
+    },
+    {
+      "item": "minecraft:chiseled_sandstone"
+    },
+    {
+      "item": "minecraft:smooth_sandstone"
+    },
+    {
+      "item": "minecraft:cut_sandstone"
+    },
+    {
+      "item": "minecraft:gravel"
+    }
+  ],
+  "process_time": 200,
+  "result_primary": {
+    "item": "minecraft:sand"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "notenoughmachines:stamping",
+  "group": "notenoughmachines:coal",
+  "ingredient": [
+    {
+      "item": "minecraft:coal_ore"
+    },
+    {
+      "item": "minecraft:deepslate_coal_ore"
+    }
+  ],
+  "process_time": 600,
+  "result_primary": {
+    "count": 3,
+    "item": "minecraft:coal"
+  }
+}
