@@ -53,7 +53,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         add(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.POLISHED_FLUXSTONE_SLAB.get()));
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
-        //dropSelf(AllBlocks.TRIP_HAMMER.get());
+        dropSelf(AllBlocks.ROLLING_MILL.get());
         add(AllBlocks.TRIP_HAMMER.get(), (block) -> { return this.createSinglePropConditionTable(block, TripHammerBlock.PART, MultiBlockPart1x1x4.BOTTOM); });
         dropSelf(AllBlocks.TIN_BLOCK.get());
         this.add(AllBlocks.TIN_ORE.get(), (block) -> { return this.createOreDrop(block, AllItems.RAW_TIN.get()); });

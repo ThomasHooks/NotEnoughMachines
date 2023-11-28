@@ -1,8 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
-import com.github.thomashooks.notenoughmachines.world.block.base.ItemConduitBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.FilterBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.inventory.FilterMenu;

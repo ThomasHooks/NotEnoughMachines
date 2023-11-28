@@ -1,9 +1,8 @@
-package com.github.thomashooks.notenoughmachines.world.block.entity.base;
+package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
-import com.github.thomashooks.notenoughmachines.world.block.base.ItemConduitBlock;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.LazyTickingBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.ItemConduitBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

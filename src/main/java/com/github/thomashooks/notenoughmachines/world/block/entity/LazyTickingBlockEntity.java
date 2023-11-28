@@ -1,6 +1,5 @@
-package com.github.thomashooks.notenoughmachines.world.block.entity.base;
+package com.github.thomashooks.notenoughmachines.world.block.entity;
 
-import com.github.thomashooks.notenoughmachines.world.block.entity.FilterBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -13,15 +12,12 @@ public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
 {
     private int lazyTimerAlarm = 0;
     private int lazyTimer = 0;
-    private int extraLazyTimerAlarm = 0;
-    private int extraLazyTimer = 0;
 
     protected LazyTickingBlockEntity(BlockEntityType<?> entityType, BlockPos pos, BlockState state)
     {
         super(entityType, pos, state);
 
         setLazyTimerAlarm(40);
-        setExtraLazyTimerAlarm(80);
     }
 
     /**
@@ -35,8 +31,6 @@ public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
             return;
         if (pollLazyTimer())
             lazyTick();
-        if (pollExtraLazyTimer())
-            extraLazyTick();
     }
 
     /**
@@ -70,39 +64,6 @@ public abstract class LazyTickingBlockEntity extends SyncingBlockEntity
     protected int getLazyTimerAlarm()
     {
         return this.lazyTimerAlarm;
-    }
-
-    /**
-     * This gets called by both the server and all clients at a rate controlled by BaseBlockEntity::setExtraLazyTimerAlarm()
-     */
-    protected void extraLazyTick()
-    {
-        //Do nothing
-    }
-
-    protected boolean pollExtraLazyTimer()
-    {
-        extraLazyTimer++;
-        if (extraLazyTimer >= extraLazyTimerAlarm)
-        {
-            extraLazyTimer = 0;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Sets this block entity's extra lazy tick rate
-     * @param tickRate The new lazy tick rate
-     */
-    protected void setExtraLazyTimerAlarm(int tickRate)
-    {
-        this.extraLazyTimerAlarm = Math.abs(tickRate);
-    }
-
-    protected int getExtraLazyTimerAlarm()
-    {
-        return this.extraLazyTimerAlarm;
     }
 
     /**

@@ -2,8 +2,8 @@ package com.github.thomashooks.notenoughmachines.client.render.blockentity;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalBlock;
-import com.github.thomashooks.notenoughmachines.world.block.base.RotatingShaftBlock;
+import com.github.thomashooks.notenoughmachines.world.block.MechanicalBlock;
+import com.github.thomashooks.notenoughmachines.world.block.RotatingShaftBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.EnclosedAxleBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

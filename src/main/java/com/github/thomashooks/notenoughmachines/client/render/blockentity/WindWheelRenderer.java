@@ -4,7 +4,7 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.AxleModelLayer;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.WindWheelModelLayer;
 import com.github.thomashooks.notenoughmachines.world.block.WindWheelBlock;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalBlock;
+import com.github.thomashooks.notenoughmachines.world.block.MechanicalBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.WindWheelBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

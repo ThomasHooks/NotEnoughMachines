@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:iron_rod",
+  "ingredient": {
+    "item": "notenoughmachines:iron_plate"
+  },
+  "processtime": 300,
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:iron_rod"
+  }
+}

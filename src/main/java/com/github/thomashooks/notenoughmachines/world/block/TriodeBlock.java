@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.world.block.base;
+package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.world.block.state.InputDualType;
 import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;

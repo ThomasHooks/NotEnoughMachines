@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:copper_rod",
+  "ingredient": {
+    "item": "notenoughmachines:copper_plate"
+  },
+  "processtime": 200,
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:copper_rod"
+  }
+}

@@ -1,7 +1,7 @@
-package com.github.thomashooks.notenoughmachines.world.block.entity.base;
+package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalBlock;
+import com.github.thomashooks.notenoughmachines.world.block.MechanicalBlock;
 import com.github.thomashooks.notenoughmachines.world.power.IMechanicalPower;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalType;

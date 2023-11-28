@@ -1,4 +1,4 @@
-// 1.20.1	2023-11-26T17:08:31.6243906	Loot Tables
+// 1.20.1	2023-11-27T14:37:28.8117702	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 bb82775b94e1e2763efa4b82df76516c70f853f3 data/notenoughmachines/loot_tables/blocks/conjunctioner.json
 aff11f0def9e9efd5a74754ccbe6fc86250de8cd data/notenoughmachines/loot_tables/blocks/copper_plate_block.json
@@ -18,6 +18,7 @@ fab22d47b4e115b46185ddd9f371eeb8000fc709 data/notenoughmachines/loot_tables/bloc
 65e7ac33f792874e92c559d6cd62ea908f239bdc data/notenoughmachines/loot_tables/blocks/polished_fluxstone_slab.json
 d214f9c769a42279d407048e7479f01564e3fbfc data/notenoughmachines/loot_tables/blocks/polished_fluxstone_stairs.json
 ea7f775482866552de7f063dfcb6158b102e4d53 data/notenoughmachines/loot_tables/blocks/polished_fluxstone_wall.json
+331c83aa85cf4af3e962be0d98c1b3156f0abcff data/notenoughmachines/loot_tables/blocks/rolling_mill.json
 3f6963d6f5ad6301d23aebd05efe6b5f18653422 data/notenoughmachines/loot_tables/blocks/small_cogwheel.json
 d6d06cd6867f2b0e9516fe8f5507d69411efde2e data/notenoughmachines/loot_tables/blocks/tin_block.json
 10bc8c2587aa66c0e48e95442bc32aeadad31a0d data/notenoughmachines/loot_tables/blocks/tin_ore.json

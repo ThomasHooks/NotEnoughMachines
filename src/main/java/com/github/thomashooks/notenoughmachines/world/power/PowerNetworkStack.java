@@ -1,8 +1,8 @@
 package com.github.thomashooks.notenoughmachines.world.power;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.world.block.base.MechanicalBlock;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.MechanicalBlock;
+import com.github.thomashooks.notenoughmachines.world.block.entity.MechanicalBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.LevelAccessor;
 

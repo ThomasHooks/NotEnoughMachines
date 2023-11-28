@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.world.block.entity.base;
+package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

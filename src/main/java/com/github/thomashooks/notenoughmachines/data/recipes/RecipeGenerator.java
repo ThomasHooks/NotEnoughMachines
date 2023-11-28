@@ -122,7 +122,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .pattern(" l-")
                 .pattern("-l ")
                 .define('l', AllItems.IRON_ROD.get())
-                .define('-', AllItems.IRON_PLATE.get())
+                .define('-', Items.IRON_INGOT)
                 .group(NotEnoughMachines.MOD_ID + ":iron_screw")
                 .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
@@ -197,6 +197,19 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":tin_ingot_from_tin_block");
 
+        //Trip Hammer
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TRIP_HAMMER.get(), 1)
+                .pattern("#I#")
+                .pattern("#X#")
+                .pattern("===")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('I', AllItems.AXLE.get())
+                .define('X', Items.IRON_BLOCK)
+                .define('=', AllItems.IRON_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":trip_hammer")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
         //Water Wheel
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WATER_WHEEL.get(), 1)
                 .pattern("===")
@@ -256,6 +269,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleMilling(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 1, 600);
         simpleMilling(consumer, "flour", Items.WHEAT, AllItems.FLOUR.get(), 1, 200);
         simpleMilling(consumer, "flux", AllItems.FLUXSTONE.get(), AllItems.FLUX.get(), 1, 500);
+        simpleMilling(consumer, "glowstone_dust", Items.GLOWSTONE, Items.GLOWSTONE_DUST, 2, 500);
         simpleMilling(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 1, 600);
         simpleMilling(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 1, 600);
         simpleMilling(consumer, "sugar", Items.SUGAR_CANE, Items.SUGAR, 2, 200);
@@ -315,6 +329,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildRollingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        simpleRolling(consumer, "copper_plate", Items.COPPER_INGOT, AllItems.COPPER_PLATE.get(), 1, 200);
+        simpleRolling(consumer, "copper_rod", AllItems.COPPER_PLATE.get(), AllItems.COPPER_ROD.get(), 3, 200);
+        simpleRolling(consumer, "iron_plate", Items.IRON_INGOT, AllItems.IRON_PLATE.get(), 1, 300);
+        simpleRolling(consumer, "iron_rod", AllItems.IRON_PLATE.get(), AllItems.IRON_ROD.get(), 3, 300);
+        simpleRolling(consumer, "sponge_dry", Items.WET_SPONGE, Items.SPONGE, 1, 200);
     }
 
     protected void buildCokeOvenRecipes(Consumer<FinishedRecipe> consumer)
@@ -357,6 +376,20 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         SingleResultMachineRecipeBuilder.millingRecipe(ingredient, result, count, processingTime)
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":milling/" + getItemName(result) + "_from_milling");
+    }
+
+    protected void simpleRolling(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike result, int count, int processingTime)
+    {
+        SingleResultMachineRecipeBuilder.rollingRecipe(Ingredient.of(ingredient), result, count, processingTime)
+                .group(NotEnoughMachines.MOD_ID + ":" + group)
+                .save(consumer, NotEnoughMachines.MOD_ID + ":rolling/" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_rolling");
+    }
+
+    protected void simpleRolling(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, int processingTime)
+    {
+        SingleResultMachineRecipeBuilder.rollingRecipe(ingredient, result, count, processingTime)
+                .group(NotEnoughMachines.MOD_ID + ":" + group)
+                .save(consumer, NotEnoughMachines.MOD_ID + ":rolling/" + getItemName(result) + "_from_rolling");
     }
 
     protected void simpleStamping(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike resultPrimary, int countPrimary, int processingTime)

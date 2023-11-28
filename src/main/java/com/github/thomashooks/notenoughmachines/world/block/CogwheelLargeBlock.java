@@ -2,11 +2,9 @@ package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
-import com.github.thomashooks.notenoughmachines.world.block.base.IMultiBlockPart;
-import com.github.thomashooks.notenoughmachines.world.block.base.RotatingShaftBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.CogwheelLargeBlockEntity;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.entity.MechanicalBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
 import com.github.thomashooks.notenoughmachines.world.block.state.MultiBlockPart3x1x3;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;

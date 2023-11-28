@@ -1,7 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
-import com.github.thomashooks.notenoughmachines.world.block.base.RotatingShaftBlock;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.GearboxBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;

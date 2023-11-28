@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:sponge_dry",
+  "ingredient": {
+    "item": "minecraft:wet_sponge"
+  },
+  "processtime": 200,
+  "result": {
+    "item": "minecraft:sponge"
+  }
+}

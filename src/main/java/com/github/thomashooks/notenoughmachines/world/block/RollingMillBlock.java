@@ -4,13 +4,12 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
-import com.github.thomashooks.notenoughmachines.world.block.entity.MillstoneBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.entity.RollingMillBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,17 +43,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MillstoneBlock extends MechanicalBlock
+public class RollingMillBlock extends HorizontalMechanicalBlock
 {
     public static final BooleanProperty POWERED = AllBlockStateProperties.POWERED;
 
-    public MillstoneBlock(Properties properties)
+    public RollingMillBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any()
-                .setValue(SHIFTED, false)
-                .setValue(POWERED, false)
-        );
+        this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false).setValue(SHIFTED, false));
     }
 
     @Override
@@ -62,10 +58,10 @@ public class MillstoneBlock extends MechanicalBlock
     {
         if (!world.isClientSide())
         {
-            if (world.getBlockEntity(pos) instanceof MillstoneBlockEntity millstoneEntity)
-                NetworkHooks.openScreen((ServerPlayer) player, millstoneEntity, millstoneEntity.getBlockPos());
+            if (world.getBlockEntity(pos) instanceof RollingMillBlockEntity rollingMillBlockEntity)
+                NetworkHooks.openScreen((ServerPlayer) player, rollingMillBlockEntity, rollingMillBlockEntity.getBlockPos());
             else
-                throw new IllegalStateException(NotEnoughMachines.MOD_ID + ": MillstoneBlock menu provider is missing!");
+                throw new IllegalStateException(NotEnoughMachines.MOD_ID + ": RollingMillBlock menu provider is missing!");
         }
         return InteractionResult.sidedSuccess(world.isClientSide());
     }
@@ -105,7 +101,7 @@ public class MillstoneBlock extends MechanicalBlock
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext collisionContext)
     {
-        return VoxelShapeHelper.MILLSTONE;
+        return VoxelShapeHelper.ROLLING_MILL_BASE[VoxelShapeHelper.AXIS_LOOKUP.get(state.getValue(FACING).getAxis())];
     }
 
     @Override
@@ -114,22 +110,26 @@ public class MillstoneBlock extends MechanicalBlock
     @Override
     public ArrayList<MechanicalContext> getMechanicalConnections(Level world, BlockPos pos, BlockState state)
     {
-        return MechanicalConnectionHelper.monoAxle(pos, Direction.Axis.Y);
+        return MechanicalConnectionHelper.monoAxle(pos, state.getValue(FACING).getClockWise().getAxis());
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(SHIFTED, POWERED); }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+    {
+        super.createBlockStateDefinition(builder);
+        builder.add(POWERED);
+    }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> blockEntityType)
     {
-        return MillstoneBlockEntity.getTicker(world);
+        return RollingMillBlockEntity.getTicker(world);
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
     {
-        return AllBlockEntities.MILLSTONE.get().create(pos, state);
+        return AllBlockEntities.ROLLING_MILL.get().create(pos, state);
     }
 }

@@ -1,7 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.world.block.WindWheelBlock;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.GeneratorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;

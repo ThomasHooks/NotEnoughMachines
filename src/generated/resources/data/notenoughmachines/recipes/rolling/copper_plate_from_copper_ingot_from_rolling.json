@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:copper_plate",
+  "ingredient": {
+    "item": "minecraft:copper_ingot"
+  },
+  "processtime": 200,
+  "result": {
+    "item": "notenoughmachines:copper_plate"
+  }
+}

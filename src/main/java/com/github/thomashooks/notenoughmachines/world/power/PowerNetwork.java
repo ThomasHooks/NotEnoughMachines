@@ -1,6 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.power;
 
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.entity.MechanicalBlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 
 import java.util.ArrayList;

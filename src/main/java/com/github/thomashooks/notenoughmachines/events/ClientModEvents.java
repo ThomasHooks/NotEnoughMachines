@@ -3,6 +3,7 @@ package com.github.thomashooks.notenoughmachines.events;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.MillstoneScreen;
+import com.github.thomashooks.notenoughmachines.client.gui.screens.RollingMillScreen;
 import com.github.thomashooks.notenoughmachines.client.gui.screens.TripHammerScreen;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.*;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.*;
@@ -30,6 +31,7 @@ public class ClientModEvents
         {
             MenuScreens.register(AllMenus.FILTER.get(), FilterScreen::new);
             MenuScreens.register(AllMenus.MILLSTONE.get(), MillstoneScreen::new);
+            MenuScreens.register(AllMenus.ROLLING_MILL.get(), RollingMillScreen::new);
             MenuScreens.register(AllMenus.TRIP_HAMMER.get(), TripHammerScreen::new);
         });
     }
@@ -42,6 +44,7 @@ public class ClientModEvents
         event.registerLayerDefinition(CogwheelLargeModelLayer.LOCATION, CogwheelLargeModelLayer::createBody);
         event.registerLayerDefinition(CogwheelSmallModelLayer.LOCATION, CogwheelSmallModelLayer::createBody);
         event.registerLayerDefinition(MillstoneModelLayer.LOCATION, MillstoneModelLayer::createBody);
+        event.registerLayerDefinition(RollingMillModelLayer.LOCATION, RollingMillModelLayer::createBody);
         event.registerLayerDefinition(TripHammerModelLayer.LOCATION, TripHammerModelLayer::createBody);
         event.registerLayerDefinition(WaterWheelModelLayer.LOCATION, WaterWheelModelLayer::createBody);
         event.registerLayerDefinition(WindWheelModelLayer.LOCATION, WindWheelModelLayer::createBody);
@@ -57,6 +60,7 @@ public class ClientModEvents
         event.registerBlockEntityRenderer(AllBlockEntities.ENCLOSED_AXLE.get(), EnclosedAxleRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.GEARBOX.get(), GearboxRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.MILLSTONE.get(), MillstoneRenderer::new);
+        event.registerBlockEntityRenderer(AllBlockEntities.ROLLING_MILL.get(), RollingMillRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.TRIP_HAMMER.get(), TripHammerRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.WATER_WHEEL.get(), WaterWheelRenderer::new);
         event.registerBlockEntityRenderer(AllBlockEntities.WIND_WHEEL.get(), WindWheelRenderer::new);

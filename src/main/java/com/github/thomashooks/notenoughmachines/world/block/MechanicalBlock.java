@@ -1,7 +1,7 @@
-package com.github.thomashooks.notenoughmachines.world.block.base;
+package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.entity.MechanicalBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
 import net.minecraft.core.BlockPos;

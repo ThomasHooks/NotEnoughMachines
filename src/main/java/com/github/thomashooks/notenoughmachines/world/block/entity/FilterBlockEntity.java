@@ -1,11 +1,9 @@
 package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
 import com.github.thomashooks.notenoughmachines.util.DirectionHelper;
 import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
-import com.github.thomashooks.notenoughmachines.world.block.base.ItemConduitBlock;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.ItemConduitBlockEntity;
+import com.github.thomashooks.notenoughmachines.world.block.ItemConduitBlock;
 import com.github.thomashooks.notenoughmachines.world.inventory.FilterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

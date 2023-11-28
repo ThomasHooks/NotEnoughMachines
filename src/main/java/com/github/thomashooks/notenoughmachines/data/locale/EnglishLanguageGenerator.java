@@ -73,6 +73,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.POLISHED_FLUXSTONE_SLAB, "Polished Fluxstone Slab");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_STAIRS, "Polished Fluxstone Stairs");
         addBlock(AllBlocks.POLISHED_FLUXSTONE_WALL, "Polished Fluxstone Wall");
+        addBlock(AllBlocks.ROLLING_MILL, "Rolling Mill");
         addBlock(AllBlocks.TIN_BLOCK, "Block of Tin");
         addBlock(AllBlocks.TRIP_HAMMER, "Trip Hammer");
         addBlock(AllBlocks.TIN_ORE, "Tin Ore");
@@ -85,6 +86,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
     {
         addMenu("filter", "Item Filter");
         addMenu("millstone", "Millstone");
+        addMenu("rolling_mill", "Rolling Mill");
         addMenu("trip_hammer", "Trip Hammer");
     }
 

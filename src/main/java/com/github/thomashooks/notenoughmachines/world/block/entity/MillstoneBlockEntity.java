@@ -1,7 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.world.block.MillstoneBlock;
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.inventory.MillstoneMenu;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.AbstractMachineRecipe;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.MillingRecipe;

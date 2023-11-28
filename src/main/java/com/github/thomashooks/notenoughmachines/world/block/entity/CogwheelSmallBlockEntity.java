@@ -1,6 +1,5 @@
 package com.github.thomashooks.notenoughmachines.world.block.entity;
 
-import com.github.thomashooks.notenoughmachines.world.block.entity.base.MechanicalBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;

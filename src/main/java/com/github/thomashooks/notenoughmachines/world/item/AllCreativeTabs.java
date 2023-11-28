@@ -50,6 +50,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.WIND_WHEEL.get());
                         //Machine Blocks - mills/processors
                         output.accept(AllItems.MILLSTONE.get());
+                        output.accept(AllItems.ROLLING_MILL.get());
                         output.accept(AllItems.TRIP_HAMMER.get());
                         //Machine Blocks - item transfer
                         output.accept(AllItems.FILTER.get());

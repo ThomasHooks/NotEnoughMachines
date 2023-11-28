@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:trip_hammer",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:wooden_frame"
+    },
+    "=": {
+      "item": "notenoughmachines:iron_plate"
+    },
+    "I": {
+      "item": "notenoughmachines:axle"
+    },
+    "X": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "#I#",
+    "#X#",
+    "==="
+  ],
+  "result": {
+    "item": "notenoughmachines:trip_hammer"
+  },
+  "show_notification": true
+}

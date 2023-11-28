@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:iron_plate",
+  "ingredient": {
+    "item": "minecraft:iron_ingot"
+  },
+  "processtime": 300,
+  "result": {
+    "item": "notenoughmachines:iron_plate"
+  }
+}

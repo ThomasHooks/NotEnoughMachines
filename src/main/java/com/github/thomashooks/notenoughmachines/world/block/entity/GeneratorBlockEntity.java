@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.world.block.entity.base;
+package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalType;
 import net.minecraft.core.BlockPos;

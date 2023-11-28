@@ -1,5 +1,6 @@
-package com.github.thomashooks.notenoughmachines.world.block.base;
+package com.github.thomashooks.notenoughmachines.world.block;
 
+import com.github.thomashooks.notenoughmachines.world.block.MechanicalBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;

@@ -155,6 +155,13 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
+    public static final RegistryObject<Block> ROLLING_MILL = BLOCKS.register("rolling_mill",
+            ()-> new RollingMillBlock(Block.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(2.8F, 3.0F)
+                    .sound(SoundType.WOOD)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block",
             ()-> new Block(Block.Properties.of()
                     .mapColor(MapColor.METAL)
