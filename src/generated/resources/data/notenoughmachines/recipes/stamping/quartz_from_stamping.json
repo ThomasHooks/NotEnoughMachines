@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "minecraft:nether_quartz_ore"
   },
-  "process_time": 300,
+  "process_time": 200,
   "result_primary": {
     "count": 2,
     "item": "minecraft:quartz"

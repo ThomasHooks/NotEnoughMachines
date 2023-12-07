@@ -1,10 +1,17 @@
 {
   "values": [
     "notenoughmachines:axle",
+    "notenoughmachines:bronze_block",
     "notenoughmachines:large_cogwheel",
     "notenoughmachines:small_cogwheel",
+    "notenoughmachines:coke_block",
+    "notenoughmachines:coke_oven",
     "notenoughmachines:copper_plate_block",
     "notenoughmachines:enclosed_axle",
+    "notenoughmachines:fire_bricks",
+    "notenoughmachines:fire_bricks_slab",
+    "notenoughmachines:fire_bricks_stairs",
+    "notenoughmachines:fire_bricks_wall",
     "notenoughmachines:filter",
     "notenoughmachines:fluxstone",
     "notenoughmachines:fluxstone_slab",

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:fluxstone_stairs",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:fluxstone"
+    }
+  },
+  "pattern": [
+    "=  ",
+    "== ",
+    "==="
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:fluxstone_stairs"
+  },
+  "show_notification": true
+}

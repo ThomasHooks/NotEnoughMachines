@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:bronze_plate",
+  "ingredient": {
+    "item": "notenoughmachines:bronze_ingot"
+  },
+  "processtime": 300,
+  "result": {
+    "item": "notenoughmachines:bronze_plate"
+  }
+}

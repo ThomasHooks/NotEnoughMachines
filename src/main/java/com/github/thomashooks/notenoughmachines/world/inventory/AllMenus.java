@@ -12,6 +12,7 @@ public class AllMenus
 {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, NotEnoughMachines.MOD_ID);
 
+    public static final RegistryObject<MenuType<CokeOvenMenu>> COKE_OVEN = MENUS.register("coke_oven", ()-> IForgeMenuType.create(( (windowId, inv, data) -> new CokeOvenMenu(windowId, inv, data))));
     public static final RegistryObject<MenuType<FilterMenu>> FILTER = MENUS.register("filter", ()-> IForgeMenuType.create(( (windowId, inv, data) -> new FilterMenu(windowId, inv, data))));
     public static final RegistryObject<MenuType<MillstoneMenu>> MILLSTONE = MENUS.register("millstone", ()-> IForgeMenuType.create(( (windowId, inv, data) -> new MillstoneMenu(windowId, inv, data))));
     public static final RegistryObject<MenuType<RollingMillMenu>> ROLLING_MILL = MENUS.register("rolling_mill", ()-> IForgeMenuType.create(( (windowId, inv, data) -> new RollingMillMenu(windowId, inv, data))));

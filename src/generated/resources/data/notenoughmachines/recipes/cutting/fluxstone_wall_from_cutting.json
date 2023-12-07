@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "notenoughmachines:fluxstone_wall",
+  "ingredient": {
+    "item": "notenoughmachines:fluxstone"
+  },
+  "result": "notenoughmachines:fluxstone_wall"
+}

@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "minecraft:nether_gold_ore"
   },
-  "process_time": 600,
+  "process_time": 400,
   "result_primary": {
     "count": 7,
     "item": "minecraft:gold_nugget"

@@ -1,10 +1,10 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -12,6 +12,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.ToIntFunction;
 
 public class AllBlocks
 {
@@ -23,6 +25,29 @@ public class AllBlocks
                     .strength(1.8F, 2.0F)
                     .sound(SoundType.WOOD)
                     .noOcclusion()
+            ));
+    public static final RegistryObject<Block> BRONZE_BLOCK = BLOCKS.register("bronze_block",
+            ()-> new Block(Block.Properties.of()
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 6.0F)
+                    .sound(SoundType.COPPER)
+            ));
+    public static final RegistryObject<Block> COKE_BLOCK = BLOCKS.register("coke_block",
+            ()-> new Block(Block.Properties.of()
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)
+            ));
+    public static final RegistryObject<Block> COKE_OVEN = BLOCKS.register("coke_oven",
+            ()-> new CokeOvenBlock(Block.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BROWN)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.5F, 3.5F)
+                    .lightLevel(litBlockEmission(13))
             ));
     public static final RegistryObject<Block> COGWHEEL_LARGE = BLOCKS.register("large_cogwheel",
             ()-> new CogwheelLargeBlock(Block.Properties.of()
@@ -59,6 +84,32 @@ public class AllBlocks
                     .sound(SoundType.WOOD)
                     .noOcclusion()
             ));
+    public static final RegistryObject<Block> FIRE_BRICKS = BLOCKS.register("fire_bricks",
+            ()-> new Block(Block.Properties.of()
+                    .mapColor(MapColor.TERRACOTTA_BROWN)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(2.0F, 6.0F)
+            ));
+    public static final RegistryObject<Block> FIRE_BRICKS_SLAB = BLOCKS.register("fire_bricks_slab",
+            ()-> new SlabBlock(Block.Properties
+                    .copy(FIRE_BRICKS.get())
+                    .requiresCorrectToolForDrops()
+                    .strength(2.0F, 6.0F)
+            ));
+    public static final RegistryObject<Block> FIRE_BRICKS_STAIRS = BLOCKS.register("fire_bricks_stairs",
+            ()-> new StairBlock(() -> FIRE_BRICKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties
+                            .copy(FIRE_BRICKS.get())
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5f, 5.0f)
+            ));
+    public static final RegistryObject<Block> FIRE_BRICKS_WALL = BLOCKS.register("fire_bricks_wall",
+            ()-> new WallBlock(Block.Properties
+                    .copy(FIRE_BRICKS.get())
+                    .requiresCorrectToolForDrops()
+                    .strength(1.5f, 5.0f)
+            ));
     public static final RegistryObject<Block> FILTER = BLOCKS.register("filter",
             () -> new FilterBlock(Block.Properties.of()
                     .mapColor(MapColor.STONE)
@@ -82,20 +133,20 @@ public class AllBlocks
             ));
     public static final RegistryObject<Block> FLUXSTONE_SLAB = BLOCKS.register("fluxstone_slab",
             ()-> new SlabBlock(Block.Properties
-                    .copy(AllBlocks.FLUXSTONE.get())
+                    .copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FLUXSTONE_STAIRS = BLOCKS.register("fluxstone_stairs",
-            ()-> new StairBlock(() -> AllBlocks.FLUXSTONE.get().defaultBlockState(),
+            ()-> new StairBlock(() -> FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties
-                            .copy(AllBlocks.FLUXSTONE.get())
+                            .copy(FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FLUXSTONE_WALL = BLOCKS.register("fluxstone_wall",
             ()-> new WallBlock(Block.Properties
-                    .copy(AllBlocks.FLUXSTONE.get())
+                    .copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
@@ -132,26 +183,26 @@ public class AllBlocks
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone",
             ()-> new RotatedPillarBlock(Block.Properties
-                    .copy(AllBlocks.FLUXSTONE.get())
+                    .copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_SLAB = BLOCKS.register("polished_fluxstone_slab",
             ()-> new SlabBlock(Block.Properties
-                    .copy(AllBlocks.FLUXSTONE.get())
+                    .copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_STAIRS = BLOCKS.register("polished_fluxstone_stairs",
-            ()-> new StairBlock(() -> AllBlocks.POLISHED_FLUXSTONE.get().defaultBlockState(),
+            ()-> new StairBlock(() -> POLISHED_FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties
-                            .copy(AllBlocks.FLUXSTONE.get())
+                            .copy(FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_WALL = BLOCKS.register("polished_fluxstone_wall",
             ()-> new WallBlock(Block.Properties
-                    .copy(AllBlocks.FLUXSTONE.get())
+                    .copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
@@ -210,5 +261,12 @@ public class AllBlocks
     public static void registerAll(IEventBus modEventBus)
     {
         BLOCKS.register(modEventBus);
+    }
+
+    public static String getName(Block block) { return ForgeRegistries.BLOCKS.getKey(block).getPath(); }
+
+    protected static ToIntFunction<BlockState> litBlockEmission(int lightLevel)
+    {
+        return (state) -> { return state.getValue(BlockStateProperties.LIT) ? lightLevel : 0; };
     }
 }

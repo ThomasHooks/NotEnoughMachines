@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:coking",
+  "group": "notenoughmachines:charcoal",
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "processtime": 600,
+  "result": {
+    "item": "minecraft:charcoal"
+  }
+}

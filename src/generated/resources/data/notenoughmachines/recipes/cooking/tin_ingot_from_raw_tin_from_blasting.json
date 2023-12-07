@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "group": "notenoughmachines:raw_tin",
+  "group": "notenoughmachines:tin_ingot",
   "ingredient": {
     "item": "notenoughmachines:raw_tin"
   },

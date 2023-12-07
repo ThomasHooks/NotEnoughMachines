@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:coke",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:coke_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "notenoughmachines:coke"
+  }
+}

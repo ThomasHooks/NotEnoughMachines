@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "group": "notenoughmachines:gold_dust",
+  "group": "notenoughmachines:gold_ingot",
   "ingredient": {
     "item": "notenoughmachines:crushed_gold_ore"
   },

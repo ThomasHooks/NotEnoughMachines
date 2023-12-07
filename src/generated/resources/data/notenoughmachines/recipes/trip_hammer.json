@@ -7,19 +7,19 @@
       "item": "notenoughmachines:wooden_frame"
     },
     "=": {
-      "item": "notenoughmachines:iron_plate"
+      "item": "notenoughmachines:bronze_plate"
     },
     "I": {
       "item": "notenoughmachines:axle"
     },
     "X": {
-      "item": "minecraft:iron_block"
+      "item": "notenoughmachines:heavy_bronze_stamp"
     }
   },
   "pattern": [
     "#I#",
     "#X#",
-    "==="
+    "#=#"
   ],
   "result": {
     "item": "notenoughmachines:trip_hammer"

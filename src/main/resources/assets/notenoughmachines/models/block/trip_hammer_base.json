@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"1": "notenoughmachines:block/hammerhead",
+		"1": "notenoughmachines:block/bronze_block",
 		"2": "notenoughmachines:block/axle",
 		"particle": "notenoughmachines:block/axle"
 	},

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "notenoughmachines:polished_fluxstone_slab",
+  "ingredient": {
+    "item": "notenoughmachines:polished_fluxstone"
+  },
+  "result": "notenoughmachines:polished_fluxstone_slab"
+}

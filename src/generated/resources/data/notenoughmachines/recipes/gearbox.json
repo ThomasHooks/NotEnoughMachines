@@ -6,16 +6,13 @@
     "#": {
       "item": "notenoughmachines:wooden_frame"
     },
-    "b": {
-      "item": "notenoughmachines:linseed_oil"
-    },
     "x": {
-      "item": "notenoughmachines:gear"
+      "item": "notenoughmachines:small_cogwheel"
     }
   },
   "pattern": [
     "#x#",
-    "xbx",
+    "x#x",
     "#x#"
   ],
   "result": {

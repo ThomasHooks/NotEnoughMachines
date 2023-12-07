@@ -1,10 +1,7 @@
 package com.github.thomashooks.notenoughmachines.events;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.client.gui.screens.FilterScreen;
-import com.github.thomashooks.notenoughmachines.client.gui.screens.MillstoneScreen;
-import com.github.thomashooks.notenoughmachines.client.gui.screens.RollingMillScreen;
-import com.github.thomashooks.notenoughmachines.client.gui.screens.TripHammerScreen;
+import com.github.thomashooks.notenoughmachines.client.gui.screens.*;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.*;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.*;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
@@ -23,12 +20,13 @@ public class ClientModEvents
     @SubscribeEvent
     public static void onClientSetup(final FMLClientSetupEvent event)
     {
-        //LNotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":setting Block render types");
+        //NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":setting Block render types");
         //ItemBlockRenderTypes.setRenderLayer(NEMBlocks.FLAXPLANT.get(), RenderType.cutout());
 
-        NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Screens");
         event.enqueueWork(()->
         {
+            NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Screens");
+            MenuScreens.register(AllMenus.COKE_OVEN.get(), CokeOvenScreen::new);
             MenuScreens.register(AllMenus.FILTER.get(), FilterScreen::new);
             MenuScreens.register(AllMenus.MILLSTONE.get(), MillstoneScreen::new);
             MenuScreens.register(AllMenus.ROLLING_MILL.get(), RollingMillScreen::new);

@@ -34,12 +34,19 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     protected void generate()
     {
         dropSelf(AllBlocks.AXLE.get());
+        dropSelf(AllBlocks.BRONZE_BLOCK.get());
         add(AllBlocks.COGWHEEL_LARGE.get(), (block) -> { return this.createSinglePropConditionTable(block, CogwheelLargeBlock.COGWHEEL_PART, MultiBlockPart3x1x3.CENTER); });
         dropSelf(AllBlocks.COGWHEEL_SMALL.get());
+        dropSelf(AllBlocks.COKE_BLOCK.get());
+        dropSelf(AllBlocks.COKE_OVEN.get());
         dropSelf(AllBlocks.CONJUNCTIONER.get());
         dropSelf(AllBlocks.COPPER_PLATE_BLOCK.get());
         dropSelf(AllBlocks.ENCLOSED_AXLE.get());
         dropSelf(AllBlocks.GEARBOX.get());
+        dropSelf(AllBlocks.FIRE_BRICKS.get());
+        add(AllBlocks.FIRE_BRICKS_SLAB.get(), block -> createSlabItemTable(AllBlocks.FIRE_BRICKS_SLAB.get()));
+        dropSelf(AllBlocks.FIRE_BRICKS_STAIRS.get());
+        dropSelf(AllBlocks.FIRE_BRICKS_WALL.get());
         dropSelf(AllBlocks.FILTER.get());
         dropCropAndSeed(AllBlocks.FLAXPLANT.get(), AllItems.FLAX.get(), AllItems.FLAXSEED.get(), FlaxPlantBlock.AGE, FlaxPlantBlock.MAX_AGE);
         dropSelf(AllBlocks.FLUXSTONE.get());

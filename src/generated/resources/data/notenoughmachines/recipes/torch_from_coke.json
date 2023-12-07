@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:torch",
+  "key": {
+    "o": {
+      "item": "notenoughmachines:coke"
+    },
+    "|": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "o",
+    "|"
+  ],
+  "result": {
+    "count": 4,
+    "item": "minecraft:torch"
+  },
+  "show_notification": true
+}

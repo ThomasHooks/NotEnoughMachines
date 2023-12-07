@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "minecraft:raw_copper"
   },
-  "process_time": 300,
+  "process_time": 400,
   "result_primary": {
     "count": 2,
     "item": "notenoughmachines:crushed_copper_ore"

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "notenoughmachines:fire_bricks_wall",
+  "ingredient": {
+    "item": "notenoughmachines:fire_bricks"
+  },
+  "result": "notenoughmachines:fire_bricks_wall"
+}

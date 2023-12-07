@@ -3,7 +3,7 @@
   "category": "food",
   "cookingtime": 100,
   "experience": 0.35,
-  "group": "notenoughmachines:flour",
+  "group": "notenoughmachines:bread",
   "ingredient": {
     "item": "notenoughmachines:flour"
   },

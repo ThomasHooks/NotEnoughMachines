@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:heavy_bronze_stamp",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:bronze_block"
+    },
+    "I": {
+      "item": "notenoughmachines:axle"
+    }
+  },
+  "pattern": [
+    "I",
+    "#",
+    "#"
+  ],
+  "result": {
+    "item": "notenoughmachines:heavy_bronze_stamp"
+  },
+  "show_notification": true
+}

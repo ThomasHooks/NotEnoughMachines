@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:polished_fluxstone_stairs",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:polished_fluxstone"
+    }
+  },
+  "pattern": [
+    "=  ",
+    "== ",
+    "==="
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:polished_fluxstone_stairs"
+  },
+  "show_notification": true
+}

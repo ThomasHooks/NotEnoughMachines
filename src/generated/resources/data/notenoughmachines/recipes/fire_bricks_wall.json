@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:fire_bricks_wall",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:fire_bricks"
+    }
+  },
+  "pattern": [
+    "===",
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:fire_bricks_wall"
+  },
+  "show_notification": true
+}

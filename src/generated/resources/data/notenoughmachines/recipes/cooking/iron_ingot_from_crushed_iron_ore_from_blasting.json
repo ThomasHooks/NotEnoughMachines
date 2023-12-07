@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "group": "notenoughmachines:iron_dust",
+  "group": "notenoughmachines:iron_ingot",
   "ingredient": {
     "item": "notenoughmachines:crushed_iron_ore"
   },

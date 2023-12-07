@@ -11,6 +11,7 @@ public class AllRecipes
 {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, NotEnoughMachines.MOD_ID);
 
+    public static final RegistryObject<RecipeSerializer<CokingRecipe>> COKING = SERIALIZERS.register("coking", ()-> CokingRecipe.Serializer.COKING);
     public static final RegistryObject<RecipeSerializer<MillingRecipe>> MILLING = SERIALIZERS.register("milling", ()-> MillingRecipe.Serializer.MILLING);
     public static final RegistryObject<RecipeSerializer<RollingRecipe>> ROLLING = SERIALIZERS.register("rolling", ()-> RollingRecipe.Serializer.ROLLING);
     public static final RegistryObject<RecipeSerializer<StampingRecipe>> STAMPING = SERIALIZERS.register("stamping", ()-> StampingRecipe.Serializer.STAMPING);

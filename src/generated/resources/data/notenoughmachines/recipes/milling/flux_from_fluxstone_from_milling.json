@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "notenoughmachines:fluxstone"
   },
-  "processtime": 500,
+  "processtime": 400,
   "result": {
     "item": "notenoughmachines:flux"
   }

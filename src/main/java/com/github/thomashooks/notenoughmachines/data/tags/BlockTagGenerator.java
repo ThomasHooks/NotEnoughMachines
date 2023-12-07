@@ -40,10 +40,17 @@ public class BlockTagGenerator extends BlockTagsProvider
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(AllBlocks.AXLE.get(),
+                        AllBlocks.BRONZE_BLOCK.get(),
                         AllBlocks.COGWHEEL_LARGE.get(),
                         AllBlocks.COGWHEEL_SMALL.get(),
+                        AllBlocks.COKE_BLOCK.get(),
+                        AllBlocks.COKE_OVEN.get(),
                         AllBlocks.COPPER_PLATE_BLOCK.get(),
                         AllBlocks.ENCLOSED_AXLE.get(),
+                        AllBlocks.FIRE_BRICKS.get(),
+                        AllBlocks.FIRE_BRICKS_SLAB.get(),
+                        AllBlocks.FIRE_BRICKS_STAIRS.get(),
+                        AllBlocks.FIRE_BRICKS_WALL.get(),
                         AllBlocks.FILTER.get(),
                         AllBlocks.FLUXSTONE.get(),
                         AllBlocks.FLUXSTONE_SLAB.get(),
@@ -66,7 +73,14 @@ public class BlockTagGenerator extends BlockTagsProvider
                 );
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(AllBlocks.COPPER_PLATE_BLOCK.get(),
+                .add(AllBlocks.BRONZE_BLOCK.get(),
+                        AllBlocks.COKE_BLOCK.get(),
+                        AllBlocks.COKE_OVEN.get(),
+                        AllBlocks.COPPER_PLATE_BLOCK.get(),
+                        AllBlocks.FIRE_BRICKS.get(),
+                        AllBlocks.FIRE_BRICKS_SLAB.get(),
+                        AllBlocks.FIRE_BRICKS_STAIRS.get(),
+                        AllBlocks.FIRE_BRICKS_WALL.get(),
                         AllBlocks.FLUXSTONE.get(),
                         AllBlocks.FLUXSTONE_SLAB.get(),
                         AllBlocks.FLUXSTONE_STAIRS.get(),
@@ -81,7 +95,8 @@ public class BlockTagGenerator extends BlockTagsProvider
                 );
 
         this.tag(BlockTags.WALLS)
-                .add(AllBlocks.FLUXSTONE_WALL.get(),
+                .add(AllBlocks.FIRE_BRICKS_WALL.get(),
+                        AllBlocks.FLUXSTONE_WALL.get(),
                         AllBlocks.POLISHED_FLUXSTONE_WALL.get()
                 );
 

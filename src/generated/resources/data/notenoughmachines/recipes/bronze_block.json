@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:bronze_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:bronze_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:bronze_block"
+  },
+  "show_notification": true
+}

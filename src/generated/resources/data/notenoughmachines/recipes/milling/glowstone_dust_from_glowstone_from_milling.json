@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "minecraft:glowstone"
   },
-  "processtime": 500,
+  "processtime": 400,
   "result": {
     "count": 2,
     "item": "minecraft:glowstone_dust"

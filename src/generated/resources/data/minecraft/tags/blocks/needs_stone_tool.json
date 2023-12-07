@@ -1,6 +1,13 @@
 {
   "values": [
+    "notenoughmachines:bronze_block",
+    "notenoughmachines:coke_block",
+    "notenoughmachines:coke_oven",
     "notenoughmachines:copper_plate_block",
+    "notenoughmachines:fire_bricks",
+    "notenoughmachines:fire_bricks_slab",
+    "notenoughmachines:fire_bricks_stairs",
+    "notenoughmachines:fire_bricks_wall",
     "notenoughmachines:fluxstone",
     "notenoughmachines:fluxstone_slab",
     "notenoughmachines:fluxstone_stairs",

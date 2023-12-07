@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:coking",
+  "group": "notenoughmachines:coke",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "processtime": 1800,
+  "result": {
+    "item": "notenoughmachines:coke"
+  }
+}

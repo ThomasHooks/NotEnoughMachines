@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:polished_fluxstone_slab",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:polished_fluxstone"
+    }
+  },
+  "pattern": [
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:polished_fluxstone_slab"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:coke_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:coke"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:coke_block"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:campfire",
+  "key": {
+    "#": {
+      "tag": "minecraft:logs"
+    },
+    "o": {
+      "item": "notenoughmachines:coke"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " s ",
+    "sos",
+    "###"
+  ],
+  "result": {
+    "item": "minecraft:campfire"
+  },
+  "show_notification": true
+}

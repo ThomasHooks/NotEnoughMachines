@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "notenoughmachines:polished_fluxstone_stairs",
+  "ingredient": {
+    "item": "notenoughmachines:polished_fluxstone"
+  },
+  "result": "notenoughmachines:polished_fluxstone_stairs"
+}

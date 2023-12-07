@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "group": "notenoughmachines:copper_dust",
+  "group": "notenoughmachines:copper_ingot",
   "ingredient": {
     "item": "notenoughmachines:crushed_copper_ore"
   },

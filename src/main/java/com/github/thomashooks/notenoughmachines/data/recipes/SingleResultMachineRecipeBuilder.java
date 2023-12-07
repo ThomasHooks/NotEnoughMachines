@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data.recipes;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import com.github.thomashooks.notenoughmachines.world.item.crafting.CokingRecipe;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.MillingRecipe;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.RollingRecipe;
 import com.google.gson.JsonObject;
@@ -38,13 +39,25 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
     }
 
     /**
+     * Creates a new coking recipe
+     * @param ingredient specifies the item that the recipe crafts with
+     * @param result specifies the item that is produced from this recipe
+     * @param count specifies the number of items that are produced from this recipe
+     * @param processingTime specifies the amount of time needed to craft this recipe
+     */
+    public static SingleResultMachineRecipeBuilder coking(Ingredient ingredient, ItemLike result, int count, int processingTime)
+    {
+        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, CokingRecipe.Serializer.COKING);
+    }
+
+    /**
      * Creates a new milling recipe
      * @param ingredient specifies the item that the recipe crafts with
      * @param result specifies the item that is produced from this recipe
      * @param count specifies the number of items that are produced from this recipe
      * @param processingTime specifies the amount of time needed to craft this recipe
      */
-    public static SingleResultMachineRecipeBuilder millingRecipe(Ingredient ingredient, ItemLike result, int count, int processingTime)
+    public static SingleResultMachineRecipeBuilder milling(Ingredient ingredient, ItemLike result, int count, int processingTime)
     {
         return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, MillingRecipe.Serializer.MILLING);
     }
@@ -56,7 +69,7 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
      * @param count specifies the number of items that are produced from this recipe
      * @param processingTime specifies the amount of time needed to craft this recipe
      */
-    public static SingleResultMachineRecipeBuilder rollingRecipe(Ingredient ingredient, ItemLike result, int count, int processingTime)
+    public static SingleResultMachineRecipeBuilder rolling(Ingredient ingredient, ItemLike result, int count, int processingTime)
     {
         return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, RollingRecipe.Serializer.ROLLING);
     }

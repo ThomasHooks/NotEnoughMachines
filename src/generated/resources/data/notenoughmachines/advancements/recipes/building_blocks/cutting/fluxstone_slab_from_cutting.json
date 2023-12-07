@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fluxstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "notenoughmachines:fluxstone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:cutting/fluxstone_slab_from_cutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_fluxstone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:cutting/fluxstone_slab_from_cutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

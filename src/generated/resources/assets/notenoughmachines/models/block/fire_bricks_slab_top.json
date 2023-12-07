@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "notenoughmachines:block/fire_bricks",
+    "side": "notenoughmachines:block/fire_bricks",
+    "top": "notenoughmachines:block/fire_bricks"
+  }
+}

@@ -45,7 +45,7 @@ public class DoubleResultMachineRecipeBuilder implements RecipeBuilder
      * @param countPrimary specifies the number of primary items that are produced from this recipe
      * @param processingTime specifies the amount of time needed to craft this recipe
      */
-    public static DoubleResultMachineRecipeBuilder stampingRecipe(Ingredient ingredient, ItemLike resultPrimary, int countPrimary, int processingTime)
+    public static DoubleResultMachineRecipeBuilder stamping(Ingredient ingredient, ItemLike resultPrimary, int countPrimary, int processingTime)
     {
         return new DoubleResultMachineRecipeBuilder(ingredient, resultPrimary, countPrimary, processingTime, AllRecipes.STAMPING.get());
     }
@@ -56,7 +56,7 @@ public class DoubleResultMachineRecipeBuilder implements RecipeBuilder
      * @param resultPrimary specifies the item that is produced from this recipe
      * @param processingTime specifies the amount of time needed to craft this recipe
      */
-    public static DoubleResultMachineRecipeBuilder stampingRecipe(Ingredient ingredient, ItemLike resultPrimary, int processingTime)
+    public static DoubleResultMachineRecipeBuilder stamping(Ingredient ingredient, ItemLike resultPrimary, int processingTime)
     {
         return new DoubleResultMachineRecipeBuilder(ingredient, resultPrimary, 1, processingTime, AllRecipes.STAMPING.get());
     }

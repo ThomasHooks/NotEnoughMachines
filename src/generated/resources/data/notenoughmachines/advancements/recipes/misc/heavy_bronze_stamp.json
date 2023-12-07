@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_has_crushed_bronze": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "notenoughmachines:crushed_bronze"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:heavy_bronze_stamp"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_has_crushed_bronze",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:heavy_bronze_stamp"
+    ]
+  },
+  "sends_telemetry_event": false
+}

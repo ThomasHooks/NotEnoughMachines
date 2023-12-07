@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:crushed_bronze",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:crushed_copper_ore"
+    },
+    {
+      "item": "notenoughmachines:crushed_copper_ore"
+    },
+    {
+      "item": "notenoughmachines:crushed_copper_ore"
+    },
+    {
+      "item": "notenoughmachines:crushed_tin_ore"
+    },
+    {
+      "item": "notenoughmachines:flux"
+    },
+    {
+      "item": "notenoughmachines:flux"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "notenoughmachines:crushed_bronze"
+  }
+}

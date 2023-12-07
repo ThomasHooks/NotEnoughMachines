@@ -19,22 +19,28 @@ public class AllCreativeTabs
                     .displayItems((itemDisplayParameters, output) ->
                     {
                         //Building Blocks - full
+                        output.accept(AllItems.BRONZE_BLOCK.get());
                         output.accept(AllItems.TIN_BLOCK.get());
                         output.accept(AllItems.COPPER_PLATE_BLOCK.get());
                         output.accept(AllItems.IRON_PLATE_BLOCK.get());
+                        output.accept(AllItems.COKE_BLOCK.get());
                         output.accept(AllItems.LINEN_BLOCK.get());
+                        output.accept(AllItems.FIRE_BRICKS.get());
                         output.accept(AllItems.FLUXSTONE.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE.get());
                         output.accept(AllItems.WOODEN_FRAME.get());
                         //Building Blocks - slabs
+                        output.accept(AllItems.FIRE_BRICKS_SLAB.get());
                         output.accept(AllItems.FLUXSTONE_SLAB.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE_SLAB.get());
                         //Building Blocks - stairs
+                        output.accept(AllItems.FIRE_BRICKS_STAIRS.get());
                         output.accept(AllItems.FLUXSTONE_STAIRS.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE_STAIRS.get());
                         //Building Blocks - fences
 
                         //Building Blocks - walls
+                        output.accept(AllItems.FIRE_BRICKS_WALL.get());
                         output.accept(AllItems.FLUXSTONE_WALL.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE_WALL.get());
                         //Ore Blocks
@@ -49,6 +55,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.WATER_WHEEL.get());
                         output.accept(AllItems.WIND_WHEEL.get());
                         //Machine Blocks - mills/processors
+                        output.accept(AllItems.COKE_OVEN.get());
                         output.accept(AllItems.MILLSTONE.get());
                         output.accept(AllItems.ROLLING_MILL.get());
                         output.accept(AllItems.TRIP_HAMMER.get());
@@ -57,19 +64,26 @@ public class AllCreativeTabs
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
                         //Crafting Items - Raw Ore
+                        output.accept(AllItems.COKE.get());
                         output.accept(AllItems.RAW_TIN.get());
                         //Crafting Items - Dust
+                        output.accept(AllItems.CRUSHED_BRONZE.get());
                         output.accept(AllItems.CRUSHED_COPPER_ORE.get());
                         output.accept(AllItems.CRUSHED_GOLD_ORE.get());
                         output.accept(AllItems.CRUSHED_IRON_ORE.get());
                         output.accept(AllItems.CRUSHED_TIN_ORE.get());
                         output.accept(AllItems.FLUX.get());
                         output.accept(AllItems.FLOUR.get());
-                        //Crafting Items - Ingot
+                        output.accept(AllItems.KAOLIN.get());
+                        //Crafting Items - Ingot/Brick
+                        output.accept(AllItems.FIRE_BRICK.get());
+                        output.accept(AllItems.BRONZE_INGOT.get());
                         output.accept(AllItems.TIN_INGOT.get());
-                        //Crafting Items - Metal
+                        //Crafting Items - Misc Metal
+                        output.accept(AllItems.BRONZE_PLATE.get());
                         output.accept(AllItems.COPPER_PLATE.get());
                         output.accept(AllItems.IRON_PLATE.get());
+                        output.accept(AllItems.BRONZE_ROD.get());
                         output.accept(AllItems.COPPER_ROD.get());
                         output.accept(AllItems.IRON_ROD.get());
                         output.accept(AllItems.IRON_SCREW.get());
@@ -82,7 +96,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.GEAR.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());
                         output.accept(AllItems.WIND_WHEEL_SAIL.get());
-                        output.accept(AllItems.HAMMER_AND_ANVIL.get());
+                        output.accept(AllItems.HEAVY_BRONZE_STAMP.get());
                         output.accept(AllItems.ROLLERS.get());
                         output.accept(AllItems.REDSTONE_COLLECTOR.get());
                         output.accept(AllItems.REDSTONE_EMITTER.get());

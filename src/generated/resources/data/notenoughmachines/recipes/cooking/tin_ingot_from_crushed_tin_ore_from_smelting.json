@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
-  "group": "notenoughmachines:tin_dust",
+  "group": "notenoughmachines:tin_ingot",
   "ingredient": {
     "item": "notenoughmachines:crushed_tin_ore"
   },

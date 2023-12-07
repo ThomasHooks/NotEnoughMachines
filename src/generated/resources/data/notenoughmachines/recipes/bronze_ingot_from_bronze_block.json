@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:bronze_ingot",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:bronze_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "notenoughmachines:bronze_ingot"
+  }
+}

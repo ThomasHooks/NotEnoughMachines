@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:polished_fluxstone_wall",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:polished_fluxstone"
+    }
+  },
+  "pattern": [
+    "===",
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:polished_fluxstone_wall"
+  },
+  "show_notification": true
+}

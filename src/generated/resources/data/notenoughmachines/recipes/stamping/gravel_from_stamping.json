@@ -7,9 +7,5 @@
   "process_time": 200,
   "result_primary": {
     "item": "minecraft:gravel"
-  },
-  "result_secondary": {
-    "count": 2,
-    "item": "minecraft:flint"
   }
 }

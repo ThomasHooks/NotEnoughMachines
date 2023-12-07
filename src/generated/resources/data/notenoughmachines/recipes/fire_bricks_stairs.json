@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:fire_bricks_stairs",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:fire_bricks"
+    }
+  },
+  "pattern": [
+    "=  ",
+    "== ",
+    "==="
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:fire_bricks_stairs"
+  },
+  "show_notification": true
+}

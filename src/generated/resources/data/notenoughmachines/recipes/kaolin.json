@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:kaolin",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:flux"
+    },
+    {
+      "item": "notenoughmachines:flux"
+    },
+    {
+      "item": "notenoughmachines:flux"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:kaolin"
+  }
+}

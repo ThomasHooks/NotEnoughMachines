@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "minecraft:bone"
   },
-  "processtime": 300,
+  "processtime": 200,
   "result": {
     "count": 6,
     "item": "minecraft:bone_meal"

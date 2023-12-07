@@ -24,16 +24,26 @@ public class ItemModelGenerator extends ItemModelProvider
     protected void registerModels()
     {
         simpleBlockItemModel(AllBlocks.AXLE);
+        simpleItemModel(AllItems.BRONZE_INGOT);
+        simpleItemModel(AllItems.BRONZE_PLATE);
+        simpleItemModel(AllItems.BRONZE_ROD);
         simpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
         simpleBlockItemModel(AllBlocks.COGWHEEL_SMALL);
+        simpleItemModel(AllItems.COKE);
+        simpleBlockItemModel(AllBlocks.COKE_OVEN);
         simpleItemModel(AllItems.CONJUNCTIONER);
         simpleItemModel(AllItems.COPPER_PLATE);
         simpleBlockItemModel(AllBlocks.COPPER_PLATE_BLOCK);
         simpleItemModel(AllItems.COPPER_ROD);
+        simpleItemModel(AllItems.CRUSHED_BRONZE);
         simpleItemModel(AllItems.CRUSHED_COPPER_ORE);
         simpleItemModel(AllItems.CRUSHED_GOLD_ORE);
         simpleItemModel(AllItems.CRUSHED_IRON_ORE);
         simpleItemModel(AllItems.CRUSHED_TIN_ORE);
+        simpleItemModel(AllItems.FIRE_BRICK);
+        simpleBlockItemModel(AllBlocks.FIRE_BRICKS_SLAB);
+        simpleBlockItemModel(AllBlocks.FIRE_BRICKS_STAIRS);
+        wallItemModel(AllBlocks.FIRE_BRICKS_WALL, AllBlocks.FIRE_BRICKS);
         simpleItemModel(AllItems.FILTER, "filter_item");
         simpleItemModel(AllItems.FLUX);
         simpleBlockItemModel(AllBlocks.FLUXSTONE_SLAB);
@@ -44,11 +54,12 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.FLAX);
         simpleItemModel(AllItems.FLAX_STRING);
         simpleItemModel(AllItems.GEAR);
-        simpleItemModel(AllItems.HAMMER_AND_ANVIL);
+        simpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
         simpleItemModel(AllItems.IRON_PLATE);
         simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
         simpleItemModel(AllItems.IRON_ROD);
         simpleItemModel(AllItems.IRON_SCREW);
+        simpleItemModel(AllItems.KAOLIN);
         simpleItemModel(AllItems.LINEN);
         simpleItemModel(AllItems.LINSEED_OIL);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE);

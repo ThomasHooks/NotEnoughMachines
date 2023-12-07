@@ -9,7 +9,7 @@
       "item": "minecraft:deepslate_redstone_ore"
     }
   ],
-  "process_time": 600,
+  "process_time": 400,
   "result_primary": {
     "count": 6,
     "item": "minecraft:redstone"
