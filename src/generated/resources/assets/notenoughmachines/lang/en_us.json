@@ -69,5 +69,9 @@
   "item.notenoughmachines.tin_ingot": "Tin Ingot",
   "item.notenoughmachines.wind_wheel_blade": "Wind Wheel Blade",
   "item.notenoughmachines.wind_wheel_sail": "Wind Wheel Sail",
-  "itemGroup.notenoughmachines.nem_tab": "Not Enough Machines"
+  "itemGroup.notenoughmachines.nem_tab": "Not Enough Machines",
+  "jei.gui.category.notenoughmachines.coke_oven": "Coking",
+  "jei.gui.category.notenoughmachines.millstone": "Milling",
+  "jei.gui.category.notenoughmachines.rolling_mill": "Rolling",
+  "jei.gui.category.notenoughmachines.trip_hammer": "Stamping"
 }

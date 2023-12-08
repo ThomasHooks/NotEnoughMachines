@@ -532,7 +532,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleStamping(consumer, "raw_copper", Ingredient.of(Items.COPPER_ORE, Items.DEEPSLATE_COPPER_ORE), Items.RAW_COPPER, 6, 400);
         simpleStamping(consumer, "raw_gold", Ingredient.of(Items.GOLD_ORE, Items.DEEPSLATE_GOLD_ORE), Items.RAW_GOLD, 2, 400);
         simpleStamping(consumer, "raw_iron", Ingredient.of(Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), Items.RAW_IRON, 2, 400);
-        simpleStamping(consumer, "raw_tin", Ingredient.of(AllItems.TIN_ORE.get(), Items.DEEPSLATE_IRON_ORE), AllItems.RAW_TIN.get(), 2, 400);
+        simpleStamping(consumer, "raw_tin", Ingredient.of(AllItems.TIN_ORE.get()), AllItems.RAW_TIN.get(), 2, 400);
 
         //Other Minerals
         simpleStamping(consumer, "amethyst_shard", Ingredient.of(Items.AMETHYST_CLUSTER), Items.AMETHYST_SHARD, 7, 200);

@@ -4,7 +4,11 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.function.Supplier;
 
 public class EnglishLanguageGenerator extends LanguageProvider
 {
@@ -19,6 +23,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addAllItems();
         addAllBlocks();
         addAllMenus();
+        addAllJEICategories();
     }
 
     private void addAllItems()
@@ -98,21 +103,29 @@ public class EnglishLanguageGenerator extends LanguageProvider
 
     private void addAllMenus()
     {
-        addMenu("coke_oven", "Coke Oven");
-        addMenu("filter", "Item Filter");
-        addMenu("millstone", "Millstone");
-        addMenu("rolling_mill", "Rolling Mill");
-        addMenu("trip_hammer", "Trip Hammer");
+        addMenu(AllBlocks.COKE_OVEN, "Coke Oven");
+        addMenu(AllBlocks.FILTER, "Item Filter");
+        addMenu(AllBlocks.MILLSTONE, "Millstone");
+        addMenu(AllBlocks.ROLLING_MILL, "Rolling Mill");
+        addMenu(AllBlocks.TRIP_HAMMER, "Trip Hammer");
     }
 
-    public void addMenu(String key, String name)
+    private void addAllJEICategories()
     {
-        add("container." + NotEnoughMachines.MOD_ID + "." + key, name);
+        addJEICategory(AllBlocks.COKE_OVEN, "Coking");
+        addJEICategory(AllBlocks.MILLSTONE, "Milling");
+        addJEICategory(AllBlocks.ROLLING_MILL, "Rolling");
+        addJEICategory(AllBlocks.TRIP_HAMMER, "Stamping");
     }
 
-    public void addJEICategory(String key, String name)
+    public void addMenu(Supplier<? extends Block> key, String name)
     {
-        add("jei.gui.category." + NotEnoughMachines.MOD_ID + "." + key, name);
+        add("container." + NotEnoughMachines.MOD_ID + "." + AllBlocks.getName(key.get()), name);
+    }
+
+    public void addJEICategory(Supplier<? extends Block> key, String name)
+    {
+        add("jei.gui.category." + NotEnoughMachines.MOD_ID + "." + AllBlocks.getName(key.get()), name);
     }
 
     public void addItemGroup(String key, String name)

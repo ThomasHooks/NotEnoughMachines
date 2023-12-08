@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data.recipes;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.CokingRecipe;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.MillingRecipe;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.RollingRecipe;
@@ -47,7 +48,7 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
      */
     public static SingleResultMachineRecipeBuilder coking(Ingredient ingredient, ItemLike result, int count, int processingTime)
     {
-        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, CokingRecipe.Serializer.COKING);
+        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, AllRecipes.COKING.get());
     }
 
     /**
@@ -59,7 +60,7 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
      */
     public static SingleResultMachineRecipeBuilder milling(Ingredient ingredient, ItemLike result, int count, int processingTime)
     {
-        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, MillingRecipe.Serializer.MILLING);
+        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, AllRecipes.MILLING.get());
     }
 
     /**
@@ -71,7 +72,7 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
      */
     public static SingleResultMachineRecipeBuilder rolling(Ingredient ingredient, ItemLike result, int count, int processingTime)
     {
-        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, RollingRecipe.Serializer.ROLLING);
+        return new SingleResultMachineRecipeBuilder(ingredient, result, count, processingTime, AllRecipes.ROLLING.get());
     }
 
     @Override

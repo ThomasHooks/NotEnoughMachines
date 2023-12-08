@@ -39,6 +39,12 @@ public abstract class AbstractMachineRecipe implements Recipe<SimpleContainer>
     }
 
     @Override
+    public NonNullList<Ingredient> getIngredients()
+    {
+        return NonNullList.withSize(1, this.ingredients);
+    }
+
+    @Override
     public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) { return this.results.copy(); }
 
     @Override
