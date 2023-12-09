@@ -49,6 +49,12 @@ public class AllBlocks
                     .strength(3.5F, 3.5F)
                     .lightLevel(litBlockEmission(13))
             ));
+    public static final RegistryObject<Block> CROSSOVER_RAIL = BLOCKS.register("crossover_rail",
+            ()-> new CrossoverRailBlock(Block.Properties.of()
+                    .noCollission()
+                    .strength(0.7F)
+                    .sound(SoundType.METAL)
+            ));
     public static final RegistryObject<Block> COGWHEEL_LARGE = BLOCKS.register("large_cogwheel",
             ()-> new CogwheelLargeBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOD)

@@ -61,6 +61,8 @@ public class AllCreativeTabs
                         output.accept(AllItems.TRIP_HAMMER.get());
                         //Machine Blocks - item transfer
                         output.accept(AllItems.FILTER.get());
+                        //Mine Cart Rails
+                        output.accept(AllItems.CROSSOVER_RAIL.get());
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
                         //Crafting Items - Raw Ore
@@ -79,21 +81,24 @@ public class AllCreativeTabs
                         output.accept(AllItems.FIRE_BRICK.get());
                         output.accept(AllItems.BRONZE_INGOT.get());
                         output.accept(AllItems.TIN_INGOT.get());
-                        //Crafting Items - Misc Metal
+                        //Crafting Items - Metal
                         output.accept(AllItems.BRONZE_PLATE.get());
                         output.accept(AllItems.COPPER_PLATE.get());
+                        output.accept(AllItems.GOLD_PLATE.get());
                         output.accept(AllItems.IRON_PLATE.get());
                         output.accept(AllItems.BRONZE_ROD.get());
                         output.accept(AllItems.COPPER_ROD.get());
+                        output.accept(AllItems.GOLD_ROD.get());
                         output.accept(AllItems.IRON_ROD.get());
                         output.accept(AllItems.IRON_SCREW.get());
-                        //Crafting Items
+                        //Crafting Items - Misc
                         output.accept(AllItems.FLAXSEED.get());
                         output.accept(AllItems.FLAX.get());
                         output.accept(AllItems.FLAX_STRING.get());
                         output.accept(AllItems.LINEN.get());
                         output.accept(AllItems.LINSEED_OIL.get());
                         output.accept(AllItems.GEAR.get());
+                        output.accept(AllItems.RAILROAD_TIE.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());
                         output.accept(AllItems.WIND_WHEEL_SAIL.get());
                         output.accept(AllItems.HEAVY_BRONZE_STAMP.get());

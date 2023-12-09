@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-05T01:02:40.0844731	Item Models: notenoughmachines
+// 1.20.1	2023-12-09T11:56:59.2970822	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 93c288fc646e29b513fa6094d99d37d1651d8eb1 assets/notenoughmachines/models/item/bronze_ingot.json
 354deb017bb1b8685da86ad6b53addbd269f5849 assets/notenoughmachines/models/item/bronze_plate.json
@@ -9,6 +9,7 @@ f7991298a1ffe16a1012f6006420d6505dbdf392 assets/notenoughmachines/models/item/br
 d63a35856d13c42a0227547877d93057a100ff56 assets/notenoughmachines/models/item/copper_plate.json
 a8a8a9f4f8d89ffd9902dcff5b1b423d740928e0 assets/notenoughmachines/models/item/copper_plate_block.json
 f852c32c2b48ce092947f75c29ce023d9c33ee0f assets/notenoughmachines/models/item/copper_rod.json
+cb5c093c360540cba09c348878b07ae488038449 assets/notenoughmachines/models/item/crossover_rail.json
 6fb58c50779152c0a4a19a0859698c005e9a22b9 assets/notenoughmachines/models/item/crushed_bronze.json
 6b968eecc2d9c1945d96070cb9897539528d2b8e assets/notenoughmachines/models/item/crushed_copper_ore.json
 76818196763718f8bbf970b9baa98907a5c38494 assets/notenoughmachines/models/item/crushed_gold_ore.json
@@ -28,6 +29,8 @@ ccb046d10127be67e24ff5de501c789e0b1a526a assets/notenoughmachines/models/item/fl
 79a17384b1c379ea63dd914379307ebb826bbc1e assets/notenoughmachines/models/item/fluxstone_stairs.json
 5536e61646585a6f28069437c54c46301d8026b3 assets/notenoughmachines/models/item/fluxstone_wall.json
 58c47074a68ea68c4c4ca78dac2f2ce73ba68496 assets/notenoughmachines/models/item/gear.json
+f0d4876eade3d985be14f52b66029b671cbb1790 assets/notenoughmachines/models/item/gold_plate.json
+aebaea7f903ebcade52120b199f0b1b58d514df8 assets/notenoughmachines/models/item/gold_rod.json
 2855a3e4fb0b5604d76ae732111cf9ca71778929 assets/notenoughmachines/models/item/heavy_bronze_stamp.json
 459eaf57a761fac2be4e85062acf0490f79dc114 assets/notenoughmachines/models/item/iron_plate.json
 285a6b239e54bdc27823228a74fc1a6d589db020 assets/notenoughmachines/models/item/iron_plate_block.json
@@ -41,6 +44,7 @@ f698cc452699a25ea0217a8cf1fc127f11ea6771 assets/notenoughmachines/models/item/li
 49a59b0704cc40bfba17e1999387e685987fb8b0 assets/notenoughmachines/models/item/polished_fluxstone_slab.json
 5edf1122aab2611f111f5bb3e998387f0a5a1fed assets/notenoughmachines/models/item/polished_fluxstone_stairs.json
 8e427e239c094f42604f7f0cbb4f3d49686a7afe assets/notenoughmachines/models/item/polished_fluxstone_wall.json
+4b7fa33de89f73d17edefea76852111b41727e34 assets/notenoughmachines/models/item/railroad_tie.json
 947c8e40c07cc8c792a287659e32783d99617dbf assets/notenoughmachines/models/item/raw_tin.json
 946b4111a64358c39346f333afd0228369260d63 assets/notenoughmachines/models/item/redstone_collector.json
 8bf3f18a8b4b0a8e03f792b9ec87c4b0281b6cc1 assets/notenoughmachines/models/item/redstone_emitter.json

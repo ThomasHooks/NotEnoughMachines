@@ -46,6 +46,8 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.FLOUR, "Flour");
         addItem(AllItems.FLUX, "Flux");
         addItem(AllItems.GEAR, "Gear");
+        addItem(AllItems.GOLD_PLATE, "Gold Plate");
+        addItem(AllItems.GOLD_ROD, "Gold Rod");
         addItem(AllItems.HEAVY_BRONZE_STAMP, "Heavy Bronze Stamp");
         addItem(AllItems.IRON_PLATE, "Iron Plate");
         addItem(AllItems.IRON_ROD, "Iron Rod");
@@ -53,6 +55,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.KAOLIN, "Kaolin");
         addItem(AllItems.LINEN, "Linen");
         addItem(AllItems.LINSEED_OIL, "Linseed Oil");
+        addItem(AllItems.RAILROAD_TIE, "Railroad Tie");
         addItem(AllItems.RAW_TIN, "Raw Tin");
         addItem(AllItems.REDSTONE_COLLECTOR, "Redstone Collector");
         addItem(AllItems.REDSTONE_EMITTER, "Redstone Emitter");
@@ -72,6 +75,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.COGWHEEL_SMALL, "Small Cogwheel");
         addBlock(AllBlocks.COKE_BLOCK, "Block of Coke");
         addBlock(AllBlocks.COKE_OVEN, "Coke Oven");
+        addBlock(AllBlocks.CROSSOVER_RAIL, "Crossover Rail");
         addBlock(AllBlocks.ENCLOSED_AXLE, "Enclosed Axle");
         addBlock(AllBlocks.FIRE_BRICKS, "Fire Bricks");
         addBlock(AllBlocks.FIRE_BRICKS_SLAB, "Fire Brick Slab");

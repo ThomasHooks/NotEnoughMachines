@@ -41,6 +41,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.COKE_OVEN.get());
         dropSelf(AllBlocks.CONJUNCTIONER.get());
         dropSelf(AllBlocks.COPPER_PLATE_BLOCK.get());
+        dropSelf(AllBlocks.CROSSOVER_RAIL.get());
         dropSelf(AllBlocks.ENCLOSED_AXLE.get());
         dropSelf(AllBlocks.GEARBOX.get());
         dropSelf(AllBlocks.FIRE_BRICKS.get());

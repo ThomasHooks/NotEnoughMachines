@@ -60,6 +60,6 @@ public class CokingRecipeCategory implements IRecipeCategory<CokingRecipe>
     @Override
     public void draw(CokingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY)
     {
-        this.progressBar.draw(guiGraphics, 27, 7);
+        this.progressBar.draw(guiGraphics, 27, 8);
     }
 }

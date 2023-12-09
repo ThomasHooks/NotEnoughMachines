@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.data.recipes;
+package com.github.thomashooks.notenoughmachines.data.recipes.builders;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;

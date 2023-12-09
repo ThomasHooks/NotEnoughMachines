@@ -2,6 +2,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
+import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.CokeOvenBlockEntity;
 import net.minecraft.ChatFormatting;
@@ -104,7 +105,13 @@ public class CokeOvenBlock extends Block implements EntityBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
     {
-        toolTips.add(Component.literal("\u00A77" + "Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information").withStyle(ChatFormatting.GRAY));
+        if (KeyboardInputHelper.isPressingShift())
+        {
+            toolTips.add(Component.literal(""));
+            toolTips.add(Component.literal("Processes coal into coke").withStyle(ChatFormatting.GREEN));
+        }
+        else
+            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

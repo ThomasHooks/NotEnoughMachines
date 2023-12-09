@@ -1,5 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
+import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.WaterWheelBlockEntity;
@@ -43,7 +44,13 @@ public class WaterWheelBlock extends MechanicalBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
     {
-        toolTips.add(Component.literal("\u00A77" + "Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information").withStyle(ChatFormatting.GRAY));
+        if (KeyboardInputHelper.isPressingShift())
+        {
+            toolTips.add(Component.literal(""));
+            toolTips.add(Component.literal("Creates mechanical power from flowing water").withStyle(ChatFormatting.GREEN));
+        }
+        else
+            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

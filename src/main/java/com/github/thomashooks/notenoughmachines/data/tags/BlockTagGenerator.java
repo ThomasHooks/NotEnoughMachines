@@ -46,6 +46,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                         AllBlocks.COKE_BLOCK.get(),
                         AllBlocks.COKE_OVEN.get(),
                         AllBlocks.COPPER_PLATE_BLOCK.get(),
+                        AllBlocks.CROSSOVER_RAIL.get(),
                         AllBlocks.ENCLOSED_AXLE.get(),
                         AllBlocks.FIRE_BRICKS.get(),
                         AllBlocks.FIRE_BRICKS_SLAB.get(),
@@ -98,6 +99,14 @@ public class BlockTagGenerator extends BlockTagsProvider
                 .add(AllBlocks.FIRE_BRICKS_WALL.get(),
                         AllBlocks.FLUXSTONE_WALL.get(),
                         AllBlocks.POLISHED_FLUXSTONE_WALL.get()
+                );
+
+        this.tag(BlockTags.RAILS)
+                .add(AllBlocks.CROSSOVER_RAIL.get()
+                );
+
+        this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE)
+                .add(AllBlocks.CROSSOVER_RAIL.get()
                 );
 
         this.tag(NEMTags.Blocks.STRIPPED_LOGS)

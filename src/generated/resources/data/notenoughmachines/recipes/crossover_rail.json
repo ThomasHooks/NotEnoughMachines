@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:crossover_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "|": {
+      "item": "notenoughmachines:iron_rod"
+    }
+  },
+  "pattern": [
+    "|||",
+    "|-|",
+    "|||"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:crossover_rail"
+  },
+  "show_notification": true
+}

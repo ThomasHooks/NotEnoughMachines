@@ -29,6 +29,7 @@ public class AllItems
     public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COPPER_PLATE_BLOCK = ITEMS.register("copper_plate_block", ()-> new BlockItem(AllBlocks.COPPER_PLATE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> COPPER_ROD = ITEMS.register("copper_rod", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CROSSOVER_RAIL = ITEMS.register("crossover_rail", ()-> new BlockItem(AllBlocks.CROSSOVER_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> CRUSHED_BRONZE = ITEMS.register("crushed_bronze", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CRUSHED_COPPER_ORE = ITEMS.register("crushed_copper_ore", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CRUSHED_GOLD_ORE = ITEMS.register("crushed_gold_ore", ()-> new Item(new Item.Properties()));
@@ -53,6 +54,8 @@ public class AllItems
     public static final RegistryObject<Item> FLUXSTONE_WALL = ITEMS.register("fluxstone_wall", ()-> new BlockItem(AllBlocks.FLUXSTONE_WALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> GEAR = ITEMS.register("gear", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GEARBOX = ITEMS.register("gearbox", ()-> new BlockItem(AllBlocks.GEARBOX.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_PLATE = ITEMS.register("gold_plate", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_ROD = ITEMS.register("gold_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_BRONZE_STAMP = ITEMS.register("heavy_bronze_stamp", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_ROD = ITEMS.register("iron_rod", ()-> new Item(new Item.Properties()));
@@ -73,6 +76,7 @@ public class AllItems
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_SLAB = ITEMS.register("polished_fluxstone_slab", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_STAIRS = ITEMS.register("polished_fluxstone_stairs", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_WALL = ITEMS.register("polished_fluxstone_wall", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RAILROAD_TIE = ITEMS.register("railroad_tie", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_COLLECTOR = ITEMS.register("redstone_collector", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_EMITTER = ITEMS.register("redstone_emitter", ()-> new Item(new Item.Properties()));

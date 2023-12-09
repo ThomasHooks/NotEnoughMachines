@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:gold_rod",
+  "ingredient": {
+    "item": "notenoughmachines:gold_plate"
+  },
+  "processtime": 300,
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:gold_rod"
+  }
+}

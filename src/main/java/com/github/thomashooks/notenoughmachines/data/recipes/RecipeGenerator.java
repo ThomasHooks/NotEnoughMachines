@@ -1,6 +1,8 @@
 package com.github.thomashooks.notenoughmachines.data.recipes;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import com.github.thomashooks.notenoughmachines.data.recipes.builders.DoubleResultMachineRecipeBuilder;
+import com.github.thomashooks.notenoughmachines.data.recipes.builders.SingleResultMachineRecipeBuilder;
 import com.github.thomashooks.notenoughmachines.util.NEMTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
@@ -121,6 +123,17 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('x', Items.FURNACE)
                 .group(NotEnoughMachines.MOD_ID + ":coke_oven")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Crossover Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
+                .pattern("|||")
+                .pattern("|-|")
+                .pattern("|||")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":crossover_rail")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
         //Crushed Bronze
@@ -370,6 +383,27 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.RAIL, 16)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("| |")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":rail")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Railroad Tie
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.RAILROAD_TIE.get(), 6)
+                .pattern(" b ")
+                .pattern("###")
+                .define('#', ItemTags.WOODEN_SLABS)
+                .define('b', AllItems.LINSEED_OIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":railroad_tie")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
         //Soul Torch From Coke
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_TORCH, 4)
                 .pattern("o")
@@ -555,6 +589,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleRolling(consumer, "bronze_rod", Ingredient.of(AllItems.BRONZE_PLATE.get()), AllItems.BRONZE_ROD.get(), 3, 300);
         simpleRolling(consumer, "copper_plate", Ingredient.of(Items.COPPER_INGOT), AllItems.COPPER_PLATE.get(), 1, 200);
         simpleRolling(consumer, "copper_rod", Ingredient.of(AllItems.COPPER_PLATE.get()), AllItems.COPPER_ROD.get(), 3, 200);
+        simpleRolling(consumer, "gold_plate", Ingredient.of(Items.GOLD_INGOT), AllItems.GOLD_PLATE.get(), 1, 300);
+        simpleRolling(consumer, "gold_rod", Ingredient.of(AllItems.GOLD_PLATE.get()), AllItems.GOLD_ROD.get(), 3, 300);
         simpleRolling(consumer, "iron_plate", Ingredient.of(Items.IRON_INGOT), AllItems.IRON_PLATE.get(), 1, 300);
         simpleRolling(consumer, "iron_rod", Ingredient.of(AllItems.IRON_PLATE.get()), AllItems.IRON_ROD.get(), 3, 300);
         simpleRolling(consumer, "sponge_dry", Ingredient.of(Items.WET_SPONGE), Items.SPONGE, 1, 200);

@@ -35,6 +35,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.COPPER_PLATE);
         simpleBlockItemModel(AllBlocks.COPPER_PLATE_BLOCK);
         simpleItemModel(AllItems.COPPER_ROD);
+        simpleItemModelFromBlockTexture(AllItems.CROSSOVER_RAIL);
         simpleItemModel(AllItems.CRUSHED_BRONZE);
         simpleItemModel(AllItems.CRUSHED_COPPER_ORE);
         simpleItemModel(AllItems.CRUSHED_GOLD_ORE);
@@ -54,6 +55,8 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.FLAX);
         simpleItemModel(AllItems.FLAX_STRING);
         simpleItemModel(AllItems.GEAR);
+        simpleItemModel(AllItems.GOLD_PLATE);
+        simpleItemModel(AllItems.GOLD_ROD);
         simpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
         simpleItemModel(AllItems.IRON_PLATE);
         simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
@@ -66,9 +69,10 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
         wallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
+        simpleItemModel(AllItems.RAILROAD_TIE);
+        simpleItemModel(AllItems.RAW_TIN);
         simpleItemModel(AllItems.REDSTONE_COLLECTOR);
         simpleItemModel(AllItems.REDSTONE_EMITTER);
-        simpleItemModel(AllItems.RAW_TIN);
         simpleItemModel(AllItems.ROLLERS);
         simpleItemModel(AllItems.TIN_INGOT);
         simpleBlockItemModel(AllBlocks.WATER_WHEEL);
@@ -89,6 +93,13 @@ public class ItemModelGenerator extends ItemModelProvider
         return withExistingParent(itemIn.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + textureName));
+    }
+
+    public ItemModelBuilder simpleItemModelFromBlockTexture(RegistryObject<? extends Item> itemIn)
+    {
+        return withExistingParent(itemIn.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/" + itemIn.getId().getPath()));
     }
 
     public void wallItemModel(RegistryObject<? extends Block> blockIn, RegistryObject<? extends Block> baseBlock)

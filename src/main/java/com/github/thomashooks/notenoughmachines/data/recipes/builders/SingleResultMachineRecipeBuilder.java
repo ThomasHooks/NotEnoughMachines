@@ -1,10 +1,7 @@
-package com.github.thomashooks.notenoughmachines.data.recipes;
+package com.github.thomashooks.notenoughmachines.data.recipes.builders;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
-import com.github.thomashooks.notenoughmachines.world.item.crafting.CokingRecipe;
-import com.github.thomashooks.notenoughmachines.world.item.crafting.MillingRecipe;
-import com.github.thomashooks.notenoughmachines.world.item.crafting.RollingRecipe;
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;

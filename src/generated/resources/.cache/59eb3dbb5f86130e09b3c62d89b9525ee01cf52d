@@ -1,10 +1,11 @@
-// 1.20.1	2023-12-05T01:02:40.0874736	Loot Tables
+// 1.20.1	2023-12-08T22:40:59.683777	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 f7340e64bb9776a570abb8735cf0dcf4fa45ec03 data/notenoughmachines/loot_tables/blocks/bronze_block.json
 14a24678ae0ba6bf730d0ae4f7370ecd2e5a6114 data/notenoughmachines/loot_tables/blocks/coke_block.json
 58fd1dd9d974a8a86383e0c1c2de495c30bd5dab data/notenoughmachines/loot_tables/blocks/coke_oven.json
 bb82775b94e1e2763efa4b82df76516c70f853f3 data/notenoughmachines/loot_tables/blocks/conjunctioner.json
 aff11f0def9e9efd5a74754ccbe6fc86250de8cd data/notenoughmachines/loot_tables/blocks/copper_plate_block.json
+1ea4f6339c8f8a6efcf453b2abecba93f337f76c data/notenoughmachines/loot_tables/blocks/crossover_rail.json
 ff9c06799e3b1a735b2b66b8235ff58a49e1fd0f data/notenoughmachines/loot_tables/blocks/enclosed_axle.json
 8e7c437e69533b739acacc81caffb3f8713b15e0 data/notenoughmachines/loot_tables/blocks/filter.json
 b8e8f042740b76399b37304efb1a8cb97ec97bd8 data/notenoughmachines/loot_tables/blocks/fire_bricks.json
