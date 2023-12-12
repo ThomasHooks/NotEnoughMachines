@@ -55,6 +55,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.FLUXSTONE_WALL.get());
         dropSelf(AllBlocks.HIGH_SPEED_RAIL.get());
+        dropSelf(AllBlocks.HIGH_SPEED_POWERED_RAIL.get());
         dropSelf(AllBlocks.IRON_PLATE_BLOCK.get());
         dropSelf(AllBlocks.LINEN_BLOCK.get());
         dropSelf(AllBlocks.MILLSTONE.get());

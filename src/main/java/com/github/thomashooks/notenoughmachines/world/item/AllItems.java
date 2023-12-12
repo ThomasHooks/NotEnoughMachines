@@ -19,6 +19,7 @@ public class AllItems
 
     public static final RegistryObject<Item> AXLE = ITEMS.register("axle", ()-> new BlockItem(AllBlocks.AXLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> BOOSTER_ROD = ITEMS.register("booster_rod", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_BOOSTER_ROD = ITEMS.register("bronze_booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BLOCK = ITEMS.register("bronze_block", ()-> new BlockItem(AllBlocks.BRONZE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE = ITEMS.register("bronze_plate", ()-> new Item(new Item.Properties()));
@@ -58,6 +59,7 @@ public class AllItems
     public static final RegistryObject<Item> GOLD_PLATE = ITEMS.register("gold_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GOLD_ROD = ITEMS.register("gold_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_BRONZE_STAMP = ITEMS.register("heavy_bronze_stamp", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HIGH_SPEED_POWERED_RAIL = ITEMS.register("high_speed_powered_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_RAIL = ITEMS.register("high_speed_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_ROD = ITEMS.register("iron_rod", ()-> new Item(new Item.Properties()));

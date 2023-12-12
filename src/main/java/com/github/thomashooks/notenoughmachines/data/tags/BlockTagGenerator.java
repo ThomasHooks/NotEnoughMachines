@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import com.github.thomashooks.notenoughmachines.common.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -56,6 +57,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.FLUXSTONE_STAIRS.get(),
                 AllBlocks.FLUXSTONE_WALL.get(),
                 AllBlocks.GEARBOX.get(),
+                AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.IRON_PLATE_BLOCK.get(),
                 AllBlocks.MILLSTONE.get(),
@@ -100,11 +102,13 @@ public class BlockTagGenerator extends BlockTagsProvider
         );
         this.tag(BlockTags.RAILS).add(
                 AllBlocks.CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
                 AllBlocks.CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );

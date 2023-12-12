@@ -62,6 +62,11 @@ public class BlockStateGenerator extends BlockStateProvider
 
         wallBlock(((WallBlock) AllBlocks.FLUXSTONE_WALL.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
 
+        activeRailBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
+        );
+
         passiveRailBlock(AllBlocks.HIGH_SPEED_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail_corner")

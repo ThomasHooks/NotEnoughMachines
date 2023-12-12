@@ -11,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RailBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraftforge.api.distmarker.Dist;
@@ -20,14 +19,26 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HighSpeedRailBlock extends RailBlock
+public class HighSpeedPoweredRailBlock extends RedstoneBoosterRailBlock
 {
-    public HighSpeedRailBlock(Properties properties)
+    public HighSpeedPoweredRailBlock(Properties properties)
     {
-        super(properties);
+        super(properties, true);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
-                .setValue(WATERLOGGED, false));
+                .setValue(POWERED, false)
+                .setValue(WATERLOGGED, false)
+        );
+    }
+
+    @Override
+    public void onMinecartPass(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
+    {
+        boolean railIsPowered = state.getValue(POWERED);
+        if (railIsPowered)
+            this.boostMinecart(state, level, pos, cart, CommonConfigs.HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR.get(), CommonConfigs.HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR.get());
+        else
+            this.stopMinecart(state, level, pos, cart);
     }
 
     @Override

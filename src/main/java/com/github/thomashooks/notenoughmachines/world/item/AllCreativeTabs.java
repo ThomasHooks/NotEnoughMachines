@@ -65,6 +65,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.CROSSOVER_RAIL.get());
                         output.accept(AllItems.ONE_WAY_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_POWERED_RAIL.get());
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
                         //Crafting Items - Raw Ore
@@ -97,6 +98,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.IRON_SCREW.get());
                         //Crafting Items - Misc
                         output.accept(AllItems.BOOSTER_ROD.get());
+                        output.accept(AllItems.BRONZE_BOOSTER_ROD.get());
                         output.accept(AllItems.FLAXSEED.get());
                         output.accept(AllItems.FLAX.get());
                         output.accept(AllItems.FLAX_STRING.get());

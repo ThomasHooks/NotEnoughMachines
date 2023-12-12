@@ -1,6 +1,7 @@
 {
   "values": [
     "notenoughmachines:crossover_rail",
+    "notenoughmachines:high_speed_powered_rail",
     "notenoughmachines:high_speed_rail",
     "notenoughmachines:one_way_rail"
   ]

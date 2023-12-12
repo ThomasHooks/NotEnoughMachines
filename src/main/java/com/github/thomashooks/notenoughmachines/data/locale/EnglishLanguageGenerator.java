@@ -29,6 +29,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
     private void addAllItems()
     {
         addItem(AllItems.BOOSTER_ROD, "Booster Rod");
+        addItem(AllItems.BRONZE_BOOSTER_ROD, "Bronze Booster Rod");
         addItem(AllItems.BRONZE_INGOT, "Bronze Ingot");
         addItem(AllItems.BRONZE_PLATE, "Bronze Plate");
         addItem(AllItems.BRONZE_ROD, "Bronze Rod");
@@ -92,6 +93,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.FLUXSTONE_SLAB, "Fluxstone Slab");
         addBlock(AllBlocks.FLUXSTONE_STAIRS, "Fluxstone Stairs");
         addBlock(AllBlocks.FLUXSTONE_WALL, "Fluxstone Wall");
+        addBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL, "High-Speed Powered Rail");
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");

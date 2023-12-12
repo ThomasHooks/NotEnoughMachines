@@ -3,7 +3,7 @@ package com.github.thomashooks.notenoughmachines.data.recipes;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.data.recipes.builders.DoubleResultMachineRecipeBuilder;
 import com.github.thomashooks.notenoughmachines.data.recipes.builders.SingleResultMachineRecipeBuilder;
-import com.github.thomashooks.notenoughmachines.data.tags.AllTags;
+import com.github.thomashooks.notenoughmachines.common.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
@@ -78,6 +78,28 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('G', AllItems.GOLD_ROD.get())
                 .define('R', Items.REDSTONE)
                 .group(NotEnoughMachines.MOD_ID + ":booster_rod")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
+                .pattern("IG ")
+                .pattern("IGR")
+                .pattern("IG ")
+                .define('I', AllItems.TIN_ROD.get())
+                .define('G', AllItems.GOLD_ROD.get())
+                .define('R', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":booster_rod")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":booster_rod_from_tin_rods");
+
+        //Bronze Booster Rod
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_BOOSTER_ROD.get(), 3)
+                .pattern("IG ")
+                .pattern("IGR")
+                .pattern("IG ")
+                .define('I', AllItems.BRONZE_ROD.get())
+                .define('G', AllItems.GOLD_ROD.get())
+                .define('R', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":bronze_booster_rod")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
@@ -483,6 +505,17 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":powered_rail")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":powered_rail");
+
+        //High-Speed Powered Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_POWERED_RAIL.get(), 6)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("| |")
+                .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_powered_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
 
         //Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.RAIL, 16)
