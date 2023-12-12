@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-11T21:06:43.8297902	Item Models: notenoughmachines
+// 1.20.1	2023-12-12T00:06:44.0655272	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 93c288fc646e29b513fa6094d99d37d1651d8eb1 assets/notenoughmachines/models/item/bronze_ingot.json
@@ -33,6 +33,7 @@ ccb046d10127be67e24ff5de501c789e0b1a526a assets/notenoughmachines/models/item/fl
 f0d4876eade3d985be14f52b66029b671cbb1790 assets/notenoughmachines/models/item/gold_plate.json
 aebaea7f903ebcade52120b199f0b1b58d514df8 assets/notenoughmachines/models/item/gold_rod.json
 2855a3e4fb0b5604d76ae732111cf9ca71778929 assets/notenoughmachines/models/item/heavy_bronze_stamp.json
+aeb63cef026c65bf4a9445b22bc53c321c1d8f9e assets/notenoughmachines/models/item/high_speed_rail.json
 459eaf57a761fac2be4e85062acf0490f79dc114 assets/notenoughmachines/models/item/iron_plate.json
 285a6b239e54bdc27823228a74fc1a6d589db020 assets/notenoughmachines/models/item/iron_plate_block.json
 d590f88f5fa3eb53fb4b52a124530f5651dcf236 assets/notenoughmachines/models/item/iron_rod.json

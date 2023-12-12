@@ -28,11 +28,16 @@ public class BlockStateGenerator extends BlockStateProvider
     protected void registerStatesAndModels()
     {
         simpleCubeBlockWithItem(AllBlocks.BRONZE_BLOCK);
+
         axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
+
+        passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(), new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail"));
+
         simpleCubeBlockWithItem(AllBlocks.COKE_BLOCK);
+
         furnaceBlock(AllBlocks.COKE_OVEN.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front"),
@@ -40,45 +45,65 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side")
         );
         simpleCubeBlockWithItem(AllBlocks.FIRE_BRICKS);
+
         stairsBlock(((StairBlock) AllBlocks.FIRE_BRICKS_STAIRS.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()));
+
         slabBlock(((SlabBlock) AllBlocks.FIRE_BRICKS_SLAB.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()));
+
         wallBlock(((WallBlock) AllBlocks.FIRE_BRICKS_WALL.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()));
+
         createFlaxPlant();
+
         simpleCubeBlockWithItem(AllBlocks.FLUXSTONE);
+
         stairsBlock(((StairBlock) AllBlocks.FLUXSTONE_STAIRS.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
+
         slabBlock(((SlabBlock) AllBlocks.FLUXSTONE_SLAB.get()), blockTexture(AllBlocks.FLUXSTONE.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
+
         wallBlock(((WallBlock) AllBlocks.FLUXSTONE_WALL.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
+
+        passiveRailBlock(AllBlocks.HIGH_SPEED_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail_corner")
+        );
+
         axisBlock((RotatedPillarBlock) AllBlocks.IRON_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
         );
+
         simpleCubeBlockWithItem(AllBlocks.LINEN_BLOCK);
+
+        directionalRailBlock(AllBlocks.ONE_WAY_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail_on")
+        );
+
         axisBlock((RotatedPillarBlock) AllBlocks.POLISHED_FLUXSTONE.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
+
         stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
+
         slabBlock(((SlabBlock) AllBlocks.POLISHED_FLUXSTONE_SLAB.get()),
                 blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
+
         wallBlock(((WallBlock) AllBlocks.POLISHED_FLUXSTONE_WALL.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+
         simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
+
         simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
+
         simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
-
-        passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(), new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail"));
-
-        directionalRailBlock(AllBlocks.ONE_WAY_RAIL.get(),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail_on")
-        );
     }
 
     private void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)
@@ -127,6 +152,37 @@ public class BlockStateGenerator extends BlockStateProvider
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_EAST).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build())
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_SOUTH).addModels(ConfiguredModel.builder().modelFile(rail).build())
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build());
+    }
+
+    private void passiveRailBlock(Block block, ResourceLocation straight, ResourceLocation corner)
+    {
+        ModelFile rail = rail(AllBlocks.getName(block), straight);
+        ModelFile railCorner = railCorner(AllBlocks.getName(block) + "_corner", corner);
+        ModelFile railRaisedNE = railRaised(AllBlocks.getName(block) + "_raised_ne", straight, true);
+        ModelFile railCRaisedSE = railRaised(AllBlocks.getName(block) + "_raised_sw", straight, false);
+        getVariantBuilder(block).forAllStatesExcept( state ->
+        {
+            RailShape shape = state.getValue(BlockStateProperties.RAIL_SHAPE);
+            int yRot = 0;
+            ModelFile modelFile = rail;
+            switch (shape)
+            {
+                case NORTH_SOUTH ->     { modelFile = rail; yRot = 0; }
+                case EAST_WEST ->       { modelFile = rail; yRot = 90; }
+                case ASCENDING_EAST ->  { modelFile = railRaisedNE; yRot = 90; }
+                case ASCENDING_WEST ->  { modelFile = railCRaisedSE; yRot = 90; }
+                case ASCENDING_NORTH -> { modelFile = railRaisedNE; yRot = 0; }
+                case ASCENDING_SOUTH -> { modelFile = railCRaisedSE; yRot = 0; }
+                case SOUTH_EAST ->      { modelFile = railCorner; yRot = 0; }
+                case SOUTH_WEST ->      { modelFile = railCorner; yRot = 90; }
+                case NORTH_WEST ->      { modelFile = railCorner; yRot = 180; }
+                case NORTH_EAST ->      { modelFile = railCorner; yRot = 270; }
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(modelFile)
+                    .rotationY(yRot)
+                    .build();
+        }, BaseRailBlock.WATERLOGGED);
     }
 
     private void activeRailBlock(Block block, ResourceLocation off, ResourceLocation on)
@@ -188,6 +244,13 @@ public class BlockStateGenerator extends BlockStateProvider
     private BlockModelBuilder rail(String name, ResourceLocation rail)
     {
         return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/rail_flat")
+                .texture("rail", rail)
+                .renderType("cutout");
+    }
+
+    private BlockModelBuilder railCorner(String name, ResourceLocation rail)
+    {
+        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/rail_curved")
                 .texture("rail", rail)
                 .renderType("cutout");
     }

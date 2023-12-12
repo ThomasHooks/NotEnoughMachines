@@ -64,6 +64,7 @@ public class AllCreativeTabs
                         //Mine Cart Rails
                         output.accept(AllItems.CROSSOVER_RAIL.get());
                         output.accept(AllItems.ONE_WAY_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_RAIL.get());
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
                         //Crafting Items - Raw Ore

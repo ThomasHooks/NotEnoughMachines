@@ -57,6 +57,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.FLUXSTONE_STAIRS.get(),
                 AllBlocks.FLUXSTONE_WALL.get(),
                 AllBlocks.GEARBOX.get(),
+                AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.IRON_PLATE_BLOCK.get(),
                 AllBlocks.MILLSTONE.get(),
                 AllBlocks.ONE_WAY_RAIL.get(),
@@ -100,10 +101,12 @@ public class BlockTagGenerator extends BlockTagsProvider
         );
         this.tag(BlockTags.RAILS).add(
                 AllBlocks.CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
                 AllBlocks.CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(NEMTags.Blocks.STRIPPED_LOGS).add(

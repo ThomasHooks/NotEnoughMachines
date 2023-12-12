@@ -58,6 +58,7 @@ public class AllItems
     public static final RegistryObject<Item> GOLD_PLATE = ITEMS.register("gold_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GOLD_ROD = ITEMS.register("gold_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_BRONZE_STAMP = ITEMS.register("heavy_bronze_stamp", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HIGH_SPEED_RAIL = ITEMS.register("high_speed_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_ROD = ITEMS.register("iron_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_SCREW = ITEMS.register("iron_screw", ()-> new Item(new Item.Properties()));

@@ -368,6 +368,17 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
                 .save(consumer);
 
+        //High-Speed Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_RAIL.get(), 16)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("| |")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
         //Iron Screw
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_SCREW.get(), 1)
                 .pattern("-l ")

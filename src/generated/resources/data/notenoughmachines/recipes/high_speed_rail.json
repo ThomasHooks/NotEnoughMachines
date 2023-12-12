@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:high_speed_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "|": {
+      "item": "notenoughmachines:bronze_rod"
+    }
+  },
+  "pattern": [
+    "| |",
+    "|-|",
+    "| |"
+  ],
+  "result": {
+    "count": 16,
+    "item": "notenoughmachines:high_speed_rail"
+  },
+  "show_notification": true
+}
