@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:booster_rod",
+  "key": {
+    "G": {
+      "item": "notenoughmachines:gold_rod"
+    },
+    "I": {
+      "item": "notenoughmachines:iron_rod"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "IG ",
+    "IGR",
+    "IG "
+  ],
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:booster_rod"
+  },
+  "show_notification": true
+}

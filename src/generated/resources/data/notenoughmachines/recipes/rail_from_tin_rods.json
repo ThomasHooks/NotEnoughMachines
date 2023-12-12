@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "|": {
+      "item": "notenoughmachines:tin_rod"
+    }
+  },
+  "pattern": [
+    "| |",
+    "|-|",
+    "| |"
+  ],
+  "result": {
+    "count": 16,
+    "item": "minecraft:rail"
+  },
+  "show_notification": true
+}

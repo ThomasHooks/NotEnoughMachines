@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:one_way_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "R": {
+      "item": "minecraft:repeater"
+    },
+    "|": {
+      "item": "notenoughmachines:booster_rod"
+    }
+  },
+  "pattern": [
+    "| |",
+    "|-|",
+    "|R|"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:one_way_rail"
+  },
+  "show_notification": true
+}

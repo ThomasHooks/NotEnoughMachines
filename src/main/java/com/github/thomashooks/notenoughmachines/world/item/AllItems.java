@@ -18,6 +18,7 @@ public class AllItems
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NotEnoughMachines.MOD_ID);
 
     public static final RegistryObject<Item> AXLE = ITEMS.register("axle", ()-> new BlockItem(AllBlocks.AXLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BOOSTER_ROD = ITEMS.register("booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BLOCK = ITEMS.register("bronze_block", ()-> new BlockItem(AllBlocks.BRONZE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE = ITEMS.register("bronze_plate", ()-> new Item(new Item.Properties()));
@@ -72,6 +73,7 @@ public class AllItems
                     .stacksTo(16)
             ));
     public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone", ()-> new BlockItem(AllBlocks.MILLSTONE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ONE_WAY_RAIL = ITEMS.register("one_way_rail", ()-> new BlockItem(AllBlocks.ONE_WAY_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE = ITEMS.register("polished_fluxstone", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_SLAB = ITEMS.register("polished_fluxstone_slab", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_STAIRS = ITEMS.register("polished_fluxstone_stairs", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get(), new Item.Properties()));
@@ -86,6 +88,8 @@ public class AllItems
     public static final RegistryObject<Item> TIN_BLOCK = ITEMS.register("tin_block", ()-> new BlockItem(AllBlocks.TIN_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TIN_ORE = ITEMS.register("tin_ore", ()-> new BlockItem(AllBlocks.TIN_ORE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TIN_PLATE = ITEMS.register("tin_plate", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TIN_ROD = ITEMS.register("tin_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TRIP_HAMMER = ITEMS.register("trip_hammer", ()-> new BlockItem(AllBlocks.TRIP_HAMMER.get(), new Item.Properties()));
     public static final RegistryObject<Item> WATER_WHEEL = ITEMS.register("water_wheel", ()-> new BlockItem(AllBlocks.WATER_WHEEL.get(), new Item.Properties()));
     public static final RegistryObject<Item> WIND_WHEEL = ITEMS.register("wind_wheel", ()-> new BlockItem(AllBlocks.WIND_WHEEL.get(), new Item.Properties()));

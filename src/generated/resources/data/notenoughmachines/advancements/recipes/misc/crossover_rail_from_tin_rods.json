@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_has_flax": {
+    "has_has_tin_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "notenoughmachines:flax"
+              "notenoughmachines:tin_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:rail"
+        "recipe": "notenoughmachines:crossover_rail_from_tin_rods"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_has_flax",
+      "has_has_tin_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:rail"
+      "notenoughmachines:crossover_rail_from_tin_rods"
     ]
   },
   "sends_telemetry_event": false

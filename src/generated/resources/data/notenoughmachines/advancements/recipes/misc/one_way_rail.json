@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_has_iron_ingot": {
+    "has_has_gold_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_ingot"
+              "minecraft:gold_ingot"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "notenoughmachines:crossover_rail"
+        "recipe": "notenoughmachines:one_way_rail"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_has_iron_ingot",
+      "has_has_gold_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "notenoughmachines:crossover_rail"
+      "notenoughmachines:one_way_rail"
     ]
   },
   "sends_telemetry_event": false

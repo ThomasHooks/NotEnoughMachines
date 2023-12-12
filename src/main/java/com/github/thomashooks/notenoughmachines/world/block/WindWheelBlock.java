@@ -41,7 +41,7 @@ public class WindWheelBlock extends HorizontalMechanicalBlock
             toolTips.add(Component.literal("Creates mechanical power from the wind").withStyle(ChatFormatting.GREEN));
             toolTips.add(Component.literal(""));
             toolTips.add(Component.literal("\u00A77" + "Must be placed " + "\u00A72" + "Above Ground"));
-            toolTips.add(Component.literal("\u00A77" + "And needs a " + "\u00A72" + "16x16x1 area" + "\u00A77" + " of free space"));
+            toolTips.add(Component.literal("\u00A77" + "And needs a " + "\u00A72" + "16x1x16 area" + "\u00A77" + " of free space"));
         }
         else
             toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));

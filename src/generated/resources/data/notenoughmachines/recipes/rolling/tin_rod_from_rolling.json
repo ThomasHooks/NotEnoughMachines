@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:tin_rod",
+  "ingredient": {
+    "item": "notenoughmachines:tin_plate"
+  },
+  "processtime": 300,
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:tin_rod"
+  }
+}

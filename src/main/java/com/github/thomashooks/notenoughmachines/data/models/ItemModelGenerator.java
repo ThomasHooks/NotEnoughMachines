@@ -24,6 +24,7 @@ public class ItemModelGenerator extends ItemModelProvider
     protected void registerModels()
     {
         simpleBlockItemModel(AllBlocks.AXLE);
+        simpleItemModel(AllItems.BOOSTER_ROD);
         simpleItemModel(AllItems.BRONZE_INGOT);
         simpleItemModel(AllItems.BRONZE_PLATE);
         simpleItemModel(AllItems.BRONZE_ROD);
@@ -65,6 +66,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.KAOLIN);
         simpleItemModel(AllItems.LINEN);
         simpleItemModel(AllItems.LINSEED_OIL);
+        simpleItemModelFromBlockTexture(AllItems.ONE_WAY_RAIL);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
         simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
@@ -75,6 +77,8 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.REDSTONE_EMITTER);
         simpleItemModel(AllItems.ROLLERS);
         simpleItemModel(AllItems.TIN_INGOT);
+        simpleItemModel(AllItems.TIN_PLATE);
+        simpleItemModel(AllItems.TIN_ROD);
         simpleBlockItemModel(AllBlocks.WATER_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL_BLADE);

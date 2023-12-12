@@ -63,6 +63,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.FILTER.get());
                         //Mine Cart Rails
                         output.accept(AllItems.CROSSOVER_RAIL.get());
+                        output.accept(AllItems.ONE_WAY_RAIL.get());
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
                         //Crafting Items - Raw Ore
@@ -86,12 +87,15 @@ public class AllCreativeTabs
                         output.accept(AllItems.COPPER_PLATE.get());
                         output.accept(AllItems.GOLD_PLATE.get());
                         output.accept(AllItems.IRON_PLATE.get());
+                        output.accept(AllItems.TIN_PLATE.get());
                         output.accept(AllItems.BRONZE_ROD.get());
                         output.accept(AllItems.COPPER_ROD.get());
                         output.accept(AllItems.GOLD_ROD.get());
                         output.accept(AllItems.IRON_ROD.get());
+                        output.accept(AllItems.TIN_ROD.get());
                         output.accept(AllItems.IRON_SCREW.get());
                         //Crafting Items - Misc
+                        output.accept(AllItems.BOOSTER_ROD.get());
                         output.accept(AllItems.FLAXSEED.get());
                         output.accept(AllItems.FLAX.get());
                         output.accept(AllItems.FLAX_STRING.get());

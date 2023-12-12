@@ -187,6 +187,12 @@ public class AllBlocks
                     .sound(SoundType.STONE)
                     .noOcclusion()
             ));
+    public static final RegistryObject<Block> ONE_WAY_RAIL = BLOCKS.register("one_way_rail",
+            ()-> new OneWayRailBlock(Block.Properties.of()
+                    .noCollission()
+                    .strength(0.7F)
+                    .sound(SoundType.METAL)
+            ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone",
             ()-> new RotatedPillarBlock(Block.Properties
                     .copy(FLUXSTONE.get())

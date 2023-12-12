@@ -3,22 +3,16 @@ package com.github.thomashooks.notenoughmachines.data.models;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
+import com.github.thomashooks.notenoughmachines.world.block.OneWayRailBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.data.models.model.TextureMapping;
-import net.minecraft.data.models.model.TextureSlot;
-import net.minecraft.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraft.world.level.block.state.properties.RailShape;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
@@ -78,14 +72,21 @@ public class BlockStateGenerator extends BlockStateProvider
         simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
         simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
         simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
+
+        passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(), new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail"));
+
+        directionalRailBlock(AllBlocks.ONE_WAY_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail_on")
+        );
     }
 
-    public void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)
+    private void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)
     {
         simpleBlockWithItem(blockObject.get(), cubeAll(blockObject.get()));
     }
 
-    public void createFlaxPlant()
+    private void createFlaxPlant()
     {
         Function<BlockState, ConfiguredModel[]> function = state -> flaxCropStates(state, (CropBlock) AllBlocks.FLAXPLANT.get(), "flaxplant_stage");
         getVariantBuilder((CropBlock) AllBlocks.FLAXPLANT.get()).forAllStates(function);
@@ -99,7 +100,7 @@ public class BlockStateGenerator extends BlockStateProvider
         return models;
     }
 
-    public void furnaceBlock(Block block, ResourceLocation side, ResourceLocation front, ResourceLocation frontOn, ResourceLocation top)
+    private void furnaceBlock(Block block, ResourceLocation side, ResourceLocation front, ResourceLocation frontOn, ResourceLocation top)
     {
         ModelFile furnaceOff = models().orientable(AllBlocks.getName(block), side, front, top);
         ModelFile furnaceOn = models().orientable(AllBlocks.getName(block) + "_on", side, frontOn, top);
@@ -114,5 +115,87 @@ public class BlockStateGenerator extends BlockStateProvider
                     .rotationY(((int) facing.toYRot() + 180) % 360)
                     .build();
         });
+    }
+
+    private void passiveStraightRailBlock(Block block, ResourceLocation top)
+    {
+        ModelFile rail = rail(AllBlocks.getName(block), top);
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.NORTH_SOUTH).addModels(ConfiguredModel.builder().modelFile(rail).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.EAST_WEST).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_NORTH).addModels(ConfiguredModel.builder().modelFile(rail).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_EAST).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_SOUTH).addModels(ConfiguredModel.builder().modelFile(rail).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build());
+    }
+
+    private void activeRailBlock(Block block, ResourceLocation off, ResourceLocation on)
+    {
+        ModelFile rail = rail(AllBlocks.getName(block), off);
+        ModelFile railOn = rail(AllBlocks.getName(block) + "_on", on);
+        ModelFile railRaisedNEOn = railRaised(AllBlocks.getName(block) + "_on_raised_ne", on, true);
+        ModelFile railRaisedSWOn = railRaised(AllBlocks.getName(block) + "_on_raised_sw", on, false);
+        ModelFile railRaisedNE = railRaised(AllBlocks.getName(block) + "_raised_ne", off, true);
+        ModelFile railRaisedSW = railRaised(AllBlocks.getName(block) + "_raised_sw", off, false);
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.NORTH_SOUTH).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(rail).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.NORTH_SOUTH).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railOn).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.EAST_WEST).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.EAST_WEST).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railOn).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_NORTH).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(railRaisedNE).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_NORTH).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedNEOn).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_EAST).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(railRaisedNE).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_EAST).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedNEOn).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_SOUTH).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(railRaisedSW).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_SOUTH).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedSWOn).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(railRaisedSW).rotationY(90).build())
+                .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedSWOn).rotationY(90).build());
+    }
+
+    private void directionalRailBlock(Block block, ResourceLocation off, ResourceLocation on)
+    {
+        ModelFile rail = rail(AllBlocks.getName(block), off);
+        ModelFile railOn = rail(AllBlocks.getName(block) + "_on", on);
+        ModelFile railRaisedNEOn = railRaised(AllBlocks.getName(block) + "_on_raised_ne", on, true);
+        ModelFile railRaisedSWOn = railRaised(AllBlocks.getName(block) + "_on_raised_sw", on, false);
+        ModelFile railRaisedNE = railRaised(AllBlocks.getName(block) + "_raised_ne", off, true);
+        ModelFile railRaisedSW = railRaised(AllBlocks.getName(block) + "_raised_sw", off, false);
+
+        getVariantBuilder(block).forAllStatesExcept( state ->
+        {
+            Direction facing = state.getValue(OneWayRailBlock.FACING);
+            RailShape shape = state.getValue(OneWayRailBlock.SHAPE);
+            boolean powered = state.getValue(OneWayRailBlock.POWERED);
+            ModelFile modelFile = switch (shape)
+            {
+                case ASCENDING_NORTH, ASCENDING_EAST -> powered ? railRaisedNEOn : railRaisedNE;
+                case ASCENDING_SOUTH, ASCENDING_WEST -> powered ? railRaisedSWOn : railRaisedSW;
+                default -> powered ? railOn : rail;
+            };
+
+            if ((facing == Direction.SOUTH && shape == RailShape.ASCENDING_SOUTH) || (facing == Direction.WEST && shape == RailShape.ASCENDING_WEST))
+                modelFile = powered ? railRaisedNEOn : railRaisedNE;
+            else if ((facing == Direction.SOUTH && shape == RailShape.ASCENDING_NORTH) || (facing == Direction.WEST && shape == RailShape.ASCENDING_EAST))
+                modelFile = powered ? railRaisedSWOn : railRaisedSW;
+
+            return ConfiguredModel.builder()
+                    .modelFile(modelFile)
+                    .rotationY(((int) facing.toYRot() + 180) % 360)
+                    .build();
+        }, BaseRailBlock.WATERLOGGED);
+    }
+
+    private BlockModelBuilder rail(String name, ResourceLocation rail)
+    {
+        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/rail_flat")
+                .texture("rail", rail)
+                .renderType("cutout");
+    }
+
+    private BlockModelBuilder railRaised(String name, ResourceLocation rail, boolean isNE)
+    {
+        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_rail_raised_" + (isNE ? "ne" : "sw"))
+                .texture("rail", rail)
+                .renderType("cutout");
     }
 }

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:activator_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "r": {
+      "item": "minecraft:redstone_torch"
+    },
+    "|": {
+      "item": "notenoughmachines:iron_rod"
+    }
+  },
+  "pattern": [
+    "|-|",
+    "|r|",
+    "|-|"
+  ],
+  "result": {
+    "count": 6,
+    "item": "minecraft:activator_rail"
+  },
+  "show_notification": true
+}
