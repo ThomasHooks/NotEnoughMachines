@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.util;
+package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import net.minecraft.resources.ResourceLocation;
@@ -8,7 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class NEMTags
+public class AllTags
 {
     public static final class Items
     {

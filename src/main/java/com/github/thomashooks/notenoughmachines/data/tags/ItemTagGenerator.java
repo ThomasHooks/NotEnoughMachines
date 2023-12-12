@@ -1,14 +1,11 @@
 package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.util.NEMTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,7 +22,7 @@ public class ItemTagGenerator extends ItemTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        this.tag(NEMTags.Items.STRIPPED_LOGS).add(Items.STRIPPED_OAK_LOG,
+        this.tag(AllTags.Items.STRIPPED_LOGS).add(Items.STRIPPED_OAK_LOG,
                 Items.STRIPPED_SPRUCE_LOG,
                 Items.STRIPPED_BIRCH_LOG,
                 Items.STRIPPED_JUNGLE_LOG,

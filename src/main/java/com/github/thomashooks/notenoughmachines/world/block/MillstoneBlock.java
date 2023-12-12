@@ -1,9 +1,9 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
-import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
-import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
+import com.github.thomashooks.notenoughmachines.common.util.InventoryHelper;
+import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.MillstoneBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;

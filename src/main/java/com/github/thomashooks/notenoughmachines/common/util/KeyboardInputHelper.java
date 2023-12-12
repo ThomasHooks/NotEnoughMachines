@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.util;
+package com.github.thomashooks.notenoughmachines.common.util;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.Minecraft;

@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.config.CommonConfigs;
+import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -45,7 +46,7 @@ public class HighSpeedRailBlock extends RailBlock
     @Override
     public float getRailMaxSpeed(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
     {
-        if (cart instanceof MinecartFurnace) return cart.isInWater() ? 0.3F : 0.4F;
-        else return cart.isInWater() ? 0.4F : 0.8F;
+        if (cart instanceof MinecartFurnace) return cart.isInWater() ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE_WATERLOGGED.get() : CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE.get();
+        else return cart.isInWater() ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_WATERLOGGED.get() : CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED.get();
     }
 }

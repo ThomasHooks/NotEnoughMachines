@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines;
 
 import com.github.thomashooks.notenoughmachines.client.ClientTimer;
+import com.github.thomashooks.notenoughmachines.common.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.data.loot.modifier.AllLootModifiers;
@@ -10,7 +11,9 @@ import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
 import com.github.thomashooks.notenoughmachines.world.power.PowerNetworkStack;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -53,6 +56,8 @@ public class NotEnoughMachines
 
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Loot Modifiers");
         AllLootModifiers.registerAll(modEventBus);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfigs.SPEC,MOD_ID + "-common-configs.toml");
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event)

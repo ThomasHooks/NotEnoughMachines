@@ -3,7 +3,7 @@ package com.github.thomashooks.notenoughmachines.data.recipes;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.data.recipes.builders.DoubleResultMachineRecipeBuilder;
 import com.github.thomashooks.notenoughmachines.data.recipes.builders.SingleResultMachineRecipeBuilder;
-import com.github.thomashooks.notenoughmachines.util.NEMTags;
+import com.github.thomashooks.notenoughmachines.data.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
@@ -63,7 +63,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.AXLE.get(), 3)
                 .pattern("###")
                 .pattern("b  ")
-                .define('#', NEMTags.Items.STRIPPED_LOGS)
+                .define('#', AllTags.Items.STRIPPED_LOGS)
                 .define('b', AllItems.LINSEED_OIL.get())
                 .group(NotEnoughMachines.MOD_ID + ":axle")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
@@ -574,7 +574,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .pattern("x#x")
                 .pattern("#o#")
                 .pattern("x#x")
-                .define('#', NEMTags.Items.STRIPPED_LOGS)
+                .define('#', AllTags.Items.STRIPPED_LOGS)
                 .define('x', ItemTags.PLANKS)
                 .define('o', AllItems.LINSEED_OIL.get())
                 .group(NotEnoughMachines.MOD_ID + ":wooden_frame")

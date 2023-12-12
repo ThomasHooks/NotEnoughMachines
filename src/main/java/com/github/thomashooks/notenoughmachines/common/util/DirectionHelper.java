@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.util;
+package com.github.thomashooks.notenoughmachines.common.util;
 
 import net.minecraft.core.Direction;
 

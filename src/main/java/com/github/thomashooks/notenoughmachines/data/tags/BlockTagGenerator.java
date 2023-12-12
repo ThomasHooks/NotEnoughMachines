@@ -2,7 +2,6 @@ package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
-import com.github.thomashooks.notenoughmachines.util.NEMTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -109,7 +108,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
-        this.tag(NEMTags.Blocks.STRIPPED_LOGS).add(
+        this.tag(AllTags.Blocks.STRIPPED_LOGS).add(
                 Blocks.STRIPPED_OAK_LOG,
                 Blocks.STRIPPED_SPRUCE_LOG,
                 Blocks.STRIPPED_BIRCH_LOG,
