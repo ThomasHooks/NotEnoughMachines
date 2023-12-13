@@ -27,74 +27,43 @@ public class BlockStateGenerator extends BlockStateProvider
     @Override
     protected void registerStatesAndModels()
     {
-        simpleCubeBlockWithItem(AllBlocks.BRONZE_BLOCK);
+        //Crops
+        //--------------------------------------------------------------------------------------------------------------
+        createFlaxPlant();
 
+        //Full Blocks
+        //--------------------------------------------------------------------------------------------------------------
+        simpleCubeBlockWithItem(AllBlocks.BRONZE_BLOCK);
         axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
-
-        passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(), new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail"));
-
         simpleCubeBlockWithItem(AllBlocks.COKE_BLOCK);
-
-        furnaceBlock(AllBlocks.COKE_OVEN.get(),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front_on"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side")
-        );
         simpleCubeBlockWithItem(AllBlocks.FIRE_BRICKS);
-
-        stairsBlock(((StairBlock) AllBlocks.FIRE_BRICKS_STAIRS.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()));
-
-        slabBlock(((SlabBlock) AllBlocks.FIRE_BRICKS_SLAB.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()));
-
-        wallBlock(((WallBlock) AllBlocks.FIRE_BRICKS_WALL.get()), blockTexture(AllBlocks.FIRE_BRICKS.get()));
-
-        createFlaxPlant();
-
         simpleCubeBlockWithItem(AllBlocks.FLUXSTONE);
-
-        stairsBlock(((StairBlock) AllBlocks.FLUXSTONE_STAIRS.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
-
-        slabBlock(((SlabBlock) AllBlocks.FLUXSTONE_SLAB.get()), blockTexture(AllBlocks.FLUXSTONE.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
-
-        wallBlock(((WallBlock) AllBlocks.FLUXSTONE_WALL.get()), blockTexture(AllBlocks.FLUXSTONE.get()));
-
-        activeRailBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
-        );
-
-        passiveRailBlock(AllBlocks.HIGH_SPEED_RAIL.get(),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail_corner")
-        );
-
         axisBlock((RotatedPillarBlock) AllBlocks.IRON_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
         );
-
         simpleCubeBlockWithItem(AllBlocks.LINEN_BLOCK);
-
-        directionalRailBlock(AllBlocks.ONE_WAY_RAIL.get(),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail_on")
-        );
-
         axisBlock((RotatedPillarBlock) AllBlocks.POLISHED_FLUXSTONE.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
+        simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
+        simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
+        simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
 
-        stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        //Slabs
+        //--------------------------------------------------------------------------------------------------------------
+        slabBlock(((SlabBlock) AllBlocks.FIRE_BRICKS_SLAB.get()),
+                blockTexture(AllBlocks.FIRE_BRICKS.get()),
+                blockTexture(AllBlocks.FIRE_BRICKS.get())
         );
-
+        slabBlock(((SlabBlock) AllBlocks.FLUXSTONE_SLAB.get()),
+                blockTexture(AllBlocks.FLUXSTONE.get()),
+                blockTexture(AllBlocks.FLUXSTONE.get())
+        );
         slabBlock(((SlabBlock) AllBlocks.POLISHED_FLUXSTONE_SLAB.get()),
                 blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
@@ -102,13 +71,61 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
 
-        wallBlock(((WallBlock) AllBlocks.POLISHED_FLUXSTONE_WALL.get()), blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()));
+        //Stairs
+        //--------------------------------------------------------------------------------------------------------------
+        stairsBlock(((StairBlock) AllBlocks.FIRE_BRICKS_STAIRS.get()),
+                blockTexture(AllBlocks.FIRE_BRICKS.get())
+        );
+        stairsBlock(((StairBlock) AllBlocks.FLUXSTONE_STAIRS.get()),
+                blockTexture(AllBlocks.FLUXSTONE.get())
+        );
+        stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
 
-        simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
+        //Walls
+        //--------------------------------------------------------------------------------------------------------------
+        wallBlock(((WallBlock) AllBlocks.FIRE_BRICKS_WALL.get()),
+                blockTexture(AllBlocks.FIRE_BRICKS.get())
+        );
+        wallBlock(((WallBlock) AllBlocks.FLUXSTONE_WALL.get()),
+                blockTexture(AllBlocks.FLUXSTONE.get())
+        );
+        wallBlock(((WallBlock) AllBlocks.POLISHED_FLUXSTONE_WALL.get())
+                , blockTexture(AllBlocks.POLISHED_FLUXSTONE.get())
+        );
 
-        simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
+        //Furnaces
+        //--------------------------------------------------------------------------------------------------------------
+        furnaceBlock(AllBlocks.COKE_OVEN.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side")
+        );
 
-        simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
+        //Rails
+        //--------------------------------------------------------------------------------------------------------------
+        passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail")
+        );
+        directionalRailBlock(AllBlocks.ONE_WAY_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail_on")
+        );
+        passiveRailBlock(AllBlocks.HIGH_SPEED_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail_corner")
+        );
+        passiveStraightRailBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_crossover_rail")
+        );
+        activeRailBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
+        );
     }
 
     private void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)

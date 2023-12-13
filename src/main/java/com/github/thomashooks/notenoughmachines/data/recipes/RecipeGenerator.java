@@ -37,169 +37,22 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildCraftingTableRecipes(Consumer<FinishedRecipe> consumer)
     {
-        //Activator Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ACTIVATOR_RAIL, 6)
-                .pattern("|-|")
-                .pattern("|r|")
-                .pattern("|-|")
-                .define('|', AllItems.IRON_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .define('r', Items.REDSTONE_TORCH)
-                .group(NotEnoughMachines.MOD_ID + ":activator_rail")
-                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":activator_rail");
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ACTIVATOR_RAIL, 6)
-                .pattern("|-|")
-                .pattern("|r|")
-                .pattern("|-|")
-                .define('|', AllItems.TIN_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .define('r', Items.REDSTONE_TORCH)
-                .group(NotEnoughMachines.MOD_ID + ":activator_rail")
-                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":activator_rail_from_tin_rods");
+        //Items
+        //--------------------------------------------------------------------------------------------------------------
 
-        //Axle
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.AXLE.get(), 3)
-                .pattern("###")
-                .pattern("b  ")
-                .define('#', AllTags.Items.STRIPPED_LOGS)
-                .define('b', AllItems.LINSEED_OIL.get())
-                .group(NotEnoughMachines.MOD_ID + ":axle")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer);
-
-        //Booster Rod
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
-                .pattern("IG ")
-                .pattern("IGR")
-                .pattern("IG ")
-                .define('I', AllItems.IRON_ROD.get())
-                .define('G', AllItems.GOLD_ROD.get())
-                .define('R', Items.REDSTONE)
-                .group(NotEnoughMachines.MOD_ID + ":booster_rod")
-                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
-                .save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
-                .pattern("IG ")
-                .pattern("IGR")
-                .pattern("IG ")
-                .define('I', AllItems.TIN_ROD.get())
-                .define('G', AllItems.GOLD_ROD.get())
-                .define('R', Items.REDSTONE)
-                .group(NotEnoughMachines.MOD_ID + ":booster_rod")
-                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":booster_rod_from_tin_rods");
-
-        //Bronze Booster Rod
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_BOOSTER_ROD.get(), 3)
-                .pattern("IG ")
-                .pattern("IGR")
-                .pattern("IG ")
-                .define('I', AllItems.BRONZE_ROD.get())
-                .define('G', AllItems.GOLD_ROD.get())
-                .define('R', Items.REDSTONE)
-                .group(NotEnoughMachines.MOD_ID + ":bronze_booster_rod")
-                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
-                .save(consumer);
-
-        //Block of Bronze
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_BLOCK.get(), 1)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .define('#', AllItems.BRONZE_INGOT.get())
-                .group(NotEnoughMachines.MOD_ID + ":bronze_block")
-                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
-                .save(consumer);
+        //Bronze Ingot
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.BRONZE_INGOT.get(), 9)
                 .requires(AllItems.BRONZE_BLOCK.get())
                 .group(NotEnoughMachines.MOD_ID + ":bronze_ingot")
                 .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":bronze_ingot_from_bronze_block");
 
-        //Block of Coke
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COKE_BLOCK.get(), 1)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .define('#', AllItems.COKE.get())
-                .group(NotEnoughMachines.MOD_ID + ":coke_block")
-                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
-                .save(consumer);
+        //Coke
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COKE.get(), 9)
                 .requires(AllItems.COKE_BLOCK.get())
                 .group(NotEnoughMachines.MOD_ID + ":coke")
                 .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":coke_from_coke_block");
-
-        //Block of Linen
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlocks.LINEN_BLOCK.get(), 1)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .define('#', AllItems.LINEN.get())
-                .group(NotEnoughMachines.MOD_ID + ":linen_block")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer);
-
-        //Block of Tin
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TIN_BLOCK.get(), 1)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .define('#', AllItems.TIN_INGOT.get())
-                .group(NotEnoughMachines.MOD_ID + ":tin_block")
-                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
-                .save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.TIN_INGOT.get(), 9)
-                .requires(AllBlocks.TIN_BLOCK.get())
-                .group(NotEnoughMachines.MOD_ID + ":tin_ingot")
-                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":tin_ingot_from_tin_block");
-
-        //Campfire From Coke
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CAMPFIRE, 1)
-                .pattern(" s ")
-                .pattern("sos")
-                .pattern("###")
-                .define('o', AllItems.COKE.get())
-                .define('s', Items.STICK)
-                .define('#', ItemTags.LOGS)
-                .group(NotEnoughMachines.MOD_ID + ":campfire")
-                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":campfire_from_coke");
-
-        //Coke Oven
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COKE_OVEN.get(), 1)
-                .pattern("===")
-                .pattern("=x=")
-                .pattern("===")
-                .define('=', AllItems.FIRE_BRICKS.get())
-                .define('x', Items.FURNACE)
-                .group(NotEnoughMachines.MOD_ID + ":coke_oven")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
-        //Crossover Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
-                .pattern("|||")
-                .pattern("|-|")
-                .pattern("|||")
-                .define('|', AllItems.IRON_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .group(NotEnoughMachines.MOD_ID + ":crossover_rail")
-                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
-                .save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
-                .pattern("|||")
-                .pattern("|-|")
-                .pattern("|||")
-                .define('|', AllItems.TIN_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .group(NotEnoughMachines.MOD_ID + ":crossover_rail")
-                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":crossover_rail_from_tin_rods");
 
         //Crushed Bronze
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CRUSHED_BRONZE.get(), 2)
@@ -208,97 +61,6 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .requires(AllItems.FLUX.get(), 2)
                 .group(NotEnoughMachines.MOD_ID + ":crushed_bronze")
                 .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
-                .save(consumer);
-
-        //Detector Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.DETECTOR_RAIL, 6)
-                .pattern("|p|")
-                .pattern("|-|")
-                .pattern("|r|")
-                .define('|', AllItems.IRON_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .define('p', Items.STONE_PRESSURE_PLATE)
-                .define('r', Items.REDSTONE)
-                .group(NotEnoughMachines.MOD_ID + ":detector_rail")
-                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":detector_rail");
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.DETECTOR_RAIL, 6)
-                .pattern("|p|")
-                .pattern("|-|")
-                .pattern("|r|")
-                .define('|', AllItems.TIN_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .define('p', Items.STONE_PRESSURE_PLATE)
-                .define('r', Items.REDSTONE)
-                .group(NotEnoughMachines.MOD_ID + ":detector_rail")
-                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":detector_rail_from_tin_rods");
-
-        //Large Cogwheel
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COGWHEEL_LARGE.get(), 1)
-                .pattern("=#=")
-                .pattern("#x#")
-                .pattern("=#=")
-                .define('=', ItemTags.WOODEN_SLABS)
-                .define('#', AllItems.WOODEN_FRAME.get())
-                .define('x', AllItems.COGWHEEL_SMALL.get())
-                .group(NotEnoughMachines.MOD_ID + ":large_cogwheel")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer);
-
-        //Small Cogwheel
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COGWHEEL_SMALL.get(), 1)
-                .requires(AllItems.AXLE.get())
-                .requires(AllItems.GEAR.get())
-                .group(NotEnoughMachines.MOD_ID + ":small_cogwheel")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer);
-
-        //Enclosed Axle
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ENCLOSED_AXLE.get(), 3)
-                .pattern("###")
-                .pattern("xxx")
-                .pattern("###")
-                .define('#', AllItems.WOODEN_FRAME.get())
-                .define('x', AllItems.AXLE.get())
-                .group(NotEnoughMachines.MOD_ID + ":enclosed_axle")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer);
-
-        //Fire Bricks
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS.get(), 1)
-                .pattern("##")
-                .pattern("##")
-                .define('#', AllItems.FIRE_BRICK.get())
-                .group(NotEnoughMachines.MOD_ID + ":fire_bricks")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
-        //Fire Bricks Slab
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_SLAB.get(), 6)
-                .pattern("===")
-                .define('=', AllItems.FIRE_BRICKS.get())
-                .group(NotEnoughMachines.MOD_ID + ":fire_bricks_slab")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
-        //Fire Bricks Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_STAIRS.get(), 4)
-                .pattern("=  ")
-                .pattern("== ")
-                .pattern("===")
-                .define('=', AllItems.FIRE_BRICKS.get())
-                .group(NotEnoughMachines.MOD_ID + ":fire_bricks_stairs")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
-        //Fire Bricks Wall
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.FIRE_BRICKS_WALL.get(), 6)
-                .pattern("===")
-                .pattern("===")
-                .define('=', AllItems.FIRE_BRICKS.get())
-                .group(NotEnoughMachines.MOD_ID + ":fire_bricks_wall")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
         //Fire Charge from Coke
@@ -322,33 +84,6 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
-        //Fluxstone Slab
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE_SLAB.get(), 6)
-                .pattern("===")
-                .define('=', AllItems.FLUXSTONE.get())
-                .group(NotEnoughMachines.MOD_ID + ":fluxstone_slab")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
-        //Fluxstone Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE_STAIRS.get(), 4)
-                .pattern("=  ")
-                .pattern("== ")
-                .pattern("===")
-                .define('=', AllItems.FLUXSTONE.get())
-                .group(NotEnoughMachines.MOD_ID + ":fluxstone_stairs")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
-        //Fluxstone Wall
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.FLUXSTONE_WALL.get(), 6)
-                .pattern("===")
-                .pattern("===")
-                .define('=', AllItems.FLUXSTONE.get())
-                .group(NotEnoughMachines.MOD_ID + ":fluxstone_wall")
-                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
-                .save(consumer);
-
         //Gear
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEAR.get(), 1)
                 .pattern(" # ")
@@ -357,17 +92,6 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('#', Items.STICK)
                 .define('b', AllItems.LINSEED_OIL.get())
                 .group(NotEnoughMachines.MOD_ID + ":gear")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer);
-
-        //Gearbox
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEARBOX.get(), 1)
-                .pattern("#x#")
-                .pattern("x#x")
-                .pattern("#x#")
-                .define('#', AllItems.WOODEN_FRAME.get())
-                .define('x', AllItems.COGWHEEL_SMALL.get())
-                .group(NotEnoughMachines.MOD_ID + ":gearbox")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
@@ -388,17 +112,6 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('#', AllItems.BRONZE_BLOCK.get())
                 .group(NotEnoughMachines.MOD_ID + ":heavy_bronze_stamp")
                 .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
-                .save(consumer);
-
-        //High-Speed Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_RAIL.get(), 16)
-                .pattern("| |")
-                .pattern("|-|")
-                .pattern("| |")
-                .define('|', AllItems.BRONZE_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .group(NotEnoughMachines.MOD_ID + ":high_speed_rail")
-                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
         //Iron Screw
@@ -443,29 +156,125 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
-        //Millstone
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.MILLSTONE.get(), 1)
-                .pattern("=x=")
-                .pattern("===")
-                .pattern("#v#")
-                .define('#', AllItems.WOODEN_FRAME.get())
-                .define('x', AllItems.GEAR.get())
-                .define('=', Items.SMOOTH_STONE_SLAB)
-                .define('v', Items.HOPPER)
-                .group(NotEnoughMachines.MOD_ID + ":millstone")
+        //Soul Torch From Coke
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_TORCH, 4)
+                .pattern("o")
+                .pattern("|")
+                .pattern("#")
+                .define('o', AllItems.COKE.get())
+                .define('|', Items.STICK)
+                .define('#', Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL))
+                .group(NotEnoughMachines.MOD_ID + ":soul_torch")
+                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":soul_torch_from_coke");
+
+        //String from Flax String
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STRING, 3)
+                .pattern("# ")
+                .pattern("##")
+                .define('#', AllItems.FLAX_STRING.get())
+                .group(NotEnoughMachines.MOD_ID + ":string")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":string_from_flax_string");
+
+        //Tin Ingot
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.TIN_INGOT.get(), 9)
+                .requires(AllBlocks.TIN_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_ingot")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":tin_ingot_from_tin_block");
+
+        //Torch From Coke
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.TORCH, 4)
+                .pattern("o")
+                .pattern("|")
+                .define('o', AllItems.COKE.get())
+                .define('|', Items.STICK)
+                .group(NotEnoughMachines.MOD_ID + ":torch")
+                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":torch_from_coke");
+
+        //Full Blocks
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Bronze Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.BRONZE_INGOT.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_block")
+                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
+                .save(consumer);
+
+        //Coke Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COKE_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.COKE.get())
+                .group(NotEnoughMachines.MOD_ID + ":coke_block")
+                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
+                .save(consumer);
+
+        //Fire Bricks
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS.get(), 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', AllItems.FIRE_BRICK.get())
+                .group(NotEnoughMachines.MOD_ID + ":fire_bricks")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Linen Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlocks.LINEN_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":linen_block")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
-        //One-Way Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ONE_WAY_RAIL.get(), 6)
-                .pattern("| |")
-                .pattern("|-|")
-                .pattern("|R|")
-                .define('|', AllItems.BOOSTER_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .define('R', Items.REPEATER)
-                .group(NotEnoughMachines.MOD_ID + ":one_way_rail")
-                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+        //Tin Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TIN_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.TIN_INGOT.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_block")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer);
+
+        //Wooden Frame
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllBlocks.WOODEN_FRAME.get(), 4)
+                .pattern("x#x")
+                .pattern("#o#")
+                .pattern("x#x")
+                .define('#', AllTags.Items.STRIPPED_LOGS)
+                .define('x', ItemTags.PLANKS)
+                .define('o', AllItems.LINSEED_OIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":wooden_frame")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Slabs
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Fire Bricks Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.FIRE_BRICKS.get())
+                .group(NotEnoughMachines.MOD_ID + ":fire_bricks_slab")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Fluxstone Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.FLUXSTONE.get())
+                .group(NotEnoughMachines.MOD_ID + ":fluxstone_slab")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
         //Polished Fluxstone Slab
@@ -473,6 +282,29 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .pattern("===")
                 .define('=', AllItems.POLISHED_FLUXSTONE.get())
                 .group(NotEnoughMachines.MOD_ID + ":polished_fluxstone_slab")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Stairs
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Fire Bricks Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.FIRE_BRICKS.get())
+                .group(NotEnoughMachines.MOD_ID + ":fire_bricks_stairs")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Fluxstone Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.FLUXSTONE.get())
+                .group(NotEnoughMachines.MOD_ID + ":fluxstone_stairs")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
@@ -486,6 +318,27 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Walls
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Fire Bricks Wall
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.FIRE_BRICKS_WALL.get(), 6)
+                .pattern("===")
+                .pattern("===")
+                .define('=', AllItems.FIRE_BRICKS.get())
+                .group(NotEnoughMachines.MOD_ID + ":fire_bricks_wall")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Fluxstone Wall
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.FLUXSTONE_WALL.get(), 6)
+                .pattern("===")
+                .pattern("===")
+                .define('=', AllItems.FLUXSTONE.get())
+                .group(NotEnoughMachines.MOD_ID + ":fluxstone_wall")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
         //Polished Fluxstone Wall
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.POLISHED_FLUXSTONE_WALL.get(), 6)
                 .pattern("===")
@@ -495,26 +348,176 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
-        //Powered Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.POWERED_RAIL, 6)
-                .pattern("| |")
-                .pattern("|-|")
-                .pattern("| |")
-                .define('|', AllItems.BOOSTER_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .group(NotEnoughMachines.MOD_ID + ":powered_rail")
-                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":powered_rail");
+        //Power Connectors
+        //--------------------------------------------------------------------------------------------------------------
 
-        //High-Speed Powered Rail
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_POWERED_RAIL.get(), 6)
-                .pattern("| |")
-                .pattern("|-|")
-                .pattern("| |")
-                .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
-                .define('-', AllItems.RAILROAD_TIE.get())
-                .group(NotEnoughMachines.MOD_ID + ":high_speed_powered_rail")
-                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+        //Axle
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.AXLE.get(), 3)
+                .pattern("###")
+                .pattern("b  ")
+                .define('#', AllTags.Items.STRIPPED_LOGS)
+                .define('b', AllItems.LINSEED_OIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":axle")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Large Cogwheel
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COGWHEEL_LARGE.get(), 1)
+                .pattern("=#=")
+                .pattern("#x#")
+                .pattern("=#=")
+                .define('=', ItemTags.WOODEN_SLABS)
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.COGWHEEL_SMALL.get())
+                .group(NotEnoughMachines.MOD_ID + ":large_cogwheel")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Small Cogwheel
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COGWHEEL_SMALL.get(), 1)
+                .requires(AllItems.AXLE.get())
+                .requires(AllItems.GEAR.get())
+                .group(NotEnoughMachines.MOD_ID + ":small_cogwheel")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Enclosed Axle
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ENCLOSED_AXLE.get(), 3)
+                .pattern("###")
+                .pattern("xxx")
+                .pattern("###")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.AXLE.get())
+                .group(NotEnoughMachines.MOD_ID + ":enclosed_axle")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Gearbox
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEARBOX.get(), 1)
+                .pattern("#x#")
+                .pattern("x#x")
+                .pattern("#x#")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.COGWHEEL_SMALL.get())
+                .group(NotEnoughMachines.MOD_ID + ":gearbox")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Power Generators
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Water Wheel
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WATER_WHEEL.get(), 1)
+                .pattern("===")
+                .pattern("=x=")
+                .pattern("===")
+                .define('=', ItemTags.WOODEN_SLABS)
+                .define('x', AllItems.COGWHEEL_SMALL.get())
+                .group(NotEnoughMachines.MOD_ID + ":water_wheel")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Wind Wheel
+
+        //Furnaces and Mills
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Campfire From Coke
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.CAMPFIRE, 1)
+                .pattern(" s ")
+                .pattern("sos")
+                .pattern("###")
+                .define('o', AllItems.COKE.get())
+                .define('s', Items.STICK)
+                .define('#', ItemTags.LOGS)
+                .group(NotEnoughMachines.MOD_ID + ":campfire")
+                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":campfire_from_coke");
+
+        //Coke Oven
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COKE_OVEN.get(), 1)
+                .pattern("===")
+                .pattern("=x=")
+                .pattern("===")
+                .define('=', AllItems.FIRE_BRICKS.get())
+                .define('x', Items.FURNACE)
+                .group(NotEnoughMachines.MOD_ID + ":coke_oven")
+                .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Millstone
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.MILLSTONE.get(), 1)
+                .pattern("=x=")
+                .pattern("===")
+                .pattern("#v#")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('x', AllItems.GEAR.get())
+                .define('=', Items.SMOOTH_STONE_SLAB)
+                .define('v', Items.HOPPER)
+                .group(NotEnoughMachines.MOD_ID + ":millstone")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Rolling Mill
+
+        //Trip Hammer
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TRIP_HAMMER.get(), 1)
+                .pattern("#I#")
+                .pattern("#X#")
+                .pattern("#=#")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('I', AllItems.AXLE.get())
+                .define('X', AllItems.HEAVY_BRONZE_STAMP.get())
+                .define('=', AllItems.BRONZE_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":trip_hammer")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Rails and related rail items
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Booster Rod
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
+                .pattern("IG ")
+                .pattern("IGR")
+                .pattern("IG ")
+                .define('I', AllItems.IRON_ROD.get())
+                .define('G', AllItems.GOLD_ROD.get())
+                .define('R', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":booster_rod")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
+                .pattern("IG ")
+                .pattern("IGR")
+                .pattern("IG ")
+                .define('I', AllItems.TIN_ROD.get())
+                .define('G', AllItems.GOLD_ROD.get())
+                .define('R', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":booster_rod")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":booster_rod_from_tin_rods");
+
+        //Bronze Booster Rod
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_BOOSTER_ROD.get(), 3)
+                .pattern("IG ")
+                .pattern("IGR")
+                .pattern("IG ")
+                .define('I', AllItems.BRONZE_ROD.get())
+                .define('G', AllItems.GOLD_ROD.get())
+                .define('R', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":bronze_booster_rod")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer);
+
+        //Railroad Tie
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.RAILROAD_TIE.get(), 6)
+                .pattern(" b ")
+                .pattern("###")
+                .define('#', ItemTags.WOODEN_SLABS)
+                .define('b', AllItems.LINSEED_OIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":railroad_tie")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
         //Rail
@@ -537,81 +540,126 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":rail_from_tin_rods");
 
-        //Railroad Tie
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.RAILROAD_TIE.get(), 6)
-                .pattern(" b ")
-                .pattern("###")
-                .define('#', ItemTags.WOODEN_SLABS)
-                .define('b', AllItems.LINSEED_OIL.get())
-                .group(NotEnoughMachines.MOD_ID + ":railroad_tie")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+        //Crossover Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
+                .pattern("|||")
+                .pattern("|-|")
+                .pattern("|||")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":crossover_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
+                .pattern("|||")
+                .pattern("|-|")
+                .pattern("|||")
+                .define('|', AllItems.TIN_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":crossover_rail")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":crossover_rail_from_tin_rods");
+
+        //Detector Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.DETECTOR_RAIL, 6)
+                .pattern("|p|")
+                .pattern("|-|")
+                .pattern("|r|")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.STONE_PRESSURE_PLATE)
+                .define('r', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":detector_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":detector_rail");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.DETECTOR_RAIL, 6)
+                .pattern("|p|")
+                .pattern("|-|")
+                .pattern("|r|")
+                .define('|', AllItems.TIN_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.STONE_PRESSURE_PLATE)
+                .define('r', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":detector_rail")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":detector_rail_from_tin_rods");
+
+        //Powered Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.POWERED_RAIL, 6)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("| |")
+                .define('|', AllItems.BOOSTER_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":powered_rail")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":powered_rail");
+
+        //Activator Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ACTIVATOR_RAIL, 6)
+                .pattern("|-|")
+                .pattern("|r|")
+                .pattern("|-|")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('r', Items.REDSTONE_TORCH)
+                .group(NotEnoughMachines.MOD_ID + ":activator_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":activator_rail");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ACTIVATOR_RAIL, 6)
+                .pattern("|-|")
+                .pattern("|r|")
+                .pattern("|-|")
+                .define('|', AllItems.TIN_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('r', Items.REDSTONE_TORCH)
+                .group(NotEnoughMachines.MOD_ID + ":activator_rail")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":activator_rail_from_tin_rods");
+
+        //One-Way Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ONE_WAY_RAIL.get(), 6)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("|R|")
+                .define('|', AllItems.BOOSTER_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('R', Items.REPEATER)
+                .group(NotEnoughMachines.MOD_ID + ":one_way_rail")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
-        //Soul Torch From Coke
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_TORCH, 4)
-                .pattern("o")
-                .pattern("|")
-                .pattern("#")
-                .define('o', AllItems.COKE.get())
-                .define('|', Items.STICK)
-                .define('#', Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL))
-                .group(NotEnoughMachines.MOD_ID + ":soul_torch")
-                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":soul_torch_from_coke");
-
-        //String from Flax String
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.STRING, 3)
-                .pattern("# ")
-                .pattern("##")
-                .define('#', AllItems.FLAX_STRING.get())
-                .group(NotEnoughMachines.MOD_ID + ":string")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":string_from_flax_string");
-
-        //Trip Hammer
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TRIP_HAMMER.get(), 1)
-                .pattern("#I#")
-                .pattern("#X#")
-                .pattern("#=#")
-                .define('#', AllItems.WOODEN_FRAME.get())
-                .define('I', AllItems.AXLE.get())
-                .define('X', AllItems.HEAVY_BRONZE_STAMP.get())
-                .define('=', AllItems.BRONZE_PLATE.get())
-                .group(NotEnoughMachines.MOD_ID + ":trip_hammer")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+        //High-Speed Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_RAIL.get(), 16)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("| |")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
-        //Torch From Coke
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.TORCH, 4)
-                .pattern("o")
-                .pattern("|")
-                .define('o', AllItems.COKE.get())
-                .define('|', Items.STICK)
-                .group(NotEnoughMachines.MOD_ID + ":torch")
-                .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
-                .save(consumer, NotEnoughMachines.MOD_ID + ":torch_from_coke");
-
-        //Water Wheel
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WATER_WHEEL.get(), 1)
-                .pattern("===")
-                .pattern("=x=")
-                .pattern("===")
-                .define('=', ItemTags.WOODEN_SLABS)
-                .define('x', AllItems.COGWHEEL_SMALL.get())
-                .group(NotEnoughMachines.MOD_ID + ":water_wheel")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+        //High-Speed Crossover Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_CROSSOVER_RAIL.get(), 6)
+                .pattern("|||")
+                .pattern("|-|")
+                .pattern("|||")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_crossover_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
-        //Wooden Frame
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllBlocks.WOODEN_FRAME.get(), 4)
-                .pattern("x#x")
-                .pattern("#o#")
-                .pattern("x#x")
-                .define('#', AllTags.Items.STRIPPED_LOGS)
-                .define('x', ItemTags.PLANKS)
-                .define('o', AllItems.LINSEED_OIL.get())
-                .group(NotEnoughMachines.MOD_ID + ":wooden_frame")
-                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+        //High-Speed Powered Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_POWERED_RAIL.get(), 6)
+                .pattern("| |")
+                .pattern("|-|")
+                .pattern("| |")
+                .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_powered_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
     }
 

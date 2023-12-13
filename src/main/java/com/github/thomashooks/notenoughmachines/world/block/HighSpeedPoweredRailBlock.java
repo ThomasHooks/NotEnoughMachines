@@ -48,7 +48,8 @@ public class HighSpeedPoweredRailBlock extends RedstoneBoosterRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Allows minecarts to travel 200% faster than standard rails").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.literal("Boosts minecarts when powered with redstone").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.literal("Minecarts will move 200% faster!").withStyle(ChatFormatting.GRAY));
         }
         else
             toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));

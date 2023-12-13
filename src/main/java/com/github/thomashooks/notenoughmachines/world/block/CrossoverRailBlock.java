@@ -43,7 +43,7 @@ public class CrossoverRailBlock extends BaseRailBlock
         {
             toolTips.add(Component.literal(""));
             toolTips.add(Component.literal("Allows two sets of tracks to cross over each other").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("Carts traveling through will continue straight").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.literal("Minecarts traveling through will continue straight").withStyle(ChatFormatting.GRAY));
         }
         else
             toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
@@ -60,12 +60,15 @@ public class CrossoverRailBlock extends BaseRailBlock
     {
         if (cart != null)
         {
-            Direction direction = cart.getMotionDirection();
-            return switch (direction)
+            Direction direction = RedstoneBoosterRailBlock.getMinecartMovementDirection(cart);
+            if (direction != null)
             {
-                case EAST, WEST -> RailShape.EAST_WEST;
-                default -> RailShape.NORTH_SOUTH;
-            };
+                return switch (direction)
+                {
+                    case EAST, WEST -> RailShape.EAST_WEST;
+                    default -> RailShape.NORTH_SOUTH;
+                };
+            }
         }
 
         return super.getRailDirection(state, world, pos, cart);

@@ -205,7 +205,7 @@ public abstract class RedstoneBoosterRailBlock extends BaseRailBlock
         return world.getBlockState(pos).isRedstoneConductor(world, pos);
     }
 
-    public @Nullable Direction getMinecartMovementDirection(AbstractMinecart cart)
+    public static @Nullable Direction getMinecartMovementDirection(AbstractMinecart cart)
     {
         double xVel = cart.getDeltaMovement().x;
         double zVel = cart.getDeltaMovement().z;

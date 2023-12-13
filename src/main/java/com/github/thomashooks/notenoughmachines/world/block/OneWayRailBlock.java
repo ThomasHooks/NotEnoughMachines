@@ -49,7 +49,7 @@ public class OneWayRailBlock extends RedstoneBoosterRailBlock
     {
         boolean railIsNotPowered = !state.getValue(POWERED);
         Direction railFacing = state.getValue(FACING);
-        Direction cartMovementDirection = this.getMinecartMovementDirection(cart);
+        Direction cartMovementDirection = getMinecartMovementDirection(cart);
         if (railIsNotPowered)
             this.stopMinecart(state, level, pos, cart);
         else if (railFacing != cartMovementDirection && cartMovementDirection != null)
