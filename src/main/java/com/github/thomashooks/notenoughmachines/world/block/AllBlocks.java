@@ -178,6 +178,9 @@ public class AllBlocks
     public static final RegistryObject<Block> HIGH_SPEED_POWERED_RAIL = BLOCKS.register("high_speed_powered_rail",
             ()-> new HighSpeedPoweredRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
+    public static final RegistryObject<Block> HIGH_SPEED_LOCKING_RAIL = BLOCKS.register("high_speed_locking_rail",
+            ()-> new HighSpeedLockingRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ));
     public static final RegistryObject<Block> HIGH_SPEED_ONE_WAY_RAIL = BLOCKS.register("high_speed_one_way_rail",
             ()-> new HighSpeedOneWayRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));

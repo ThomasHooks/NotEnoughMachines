@@ -630,7 +630,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
-        //Holding Rail
+        //Locking Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.LOCKING_RAIL.get(), 6)
                 .pattern("|s|")
                 .pattern("|-|")
@@ -639,7 +639,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('s', Items.STONE_PRESSURE_PLATE)
                 .define('-', AllItems.RAILROAD_TIE.get())
                 .define('p', Items.PISTON)
-                .group(NotEnoughMachines.MOD_ID + ":holding_rail")
+                .group(NotEnoughMachines.MOD_ID + ":locking_rail")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
@@ -675,6 +675,19 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('p', Items.STONE_PRESSURE_PLATE)
                 .define('r', Items.REDSTONE)
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_detector_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //High-Speed Locking Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_LOCKING_RAIL.get(), 6)
+                .pattern("|s|")
+                .pattern("|-|")
+                .pattern("|p|")
+                .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
+                .define('s', Items.STONE_PRESSURE_PLATE)
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.PISTON)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_locking_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 

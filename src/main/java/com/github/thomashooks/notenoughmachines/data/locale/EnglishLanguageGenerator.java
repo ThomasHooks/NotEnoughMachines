@@ -96,6 +96,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.HIGH_SPEED_DETECTOR_RAIL, "High-Speed Detector Rail");
         addBlock(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL, "High-Speed One-Way Rail");
         addBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL, "High-Speed Powered Rail");
+        addBlock(AllBlocks.HIGH_SPEED_LOCKING_RAIL, "High-Speed Locking Rail");
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");

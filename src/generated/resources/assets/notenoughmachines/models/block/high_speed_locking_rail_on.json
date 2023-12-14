@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "rail": "notenoughmachines:block/high_speed_locking_rail_on"
+  }
+}

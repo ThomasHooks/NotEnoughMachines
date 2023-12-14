@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "notenoughmachines:locking_rail",
+  "group": "notenoughmachines:high_speed_locking_rail",
   "key": {
     "-": {
       "item": "notenoughmachines:railroad_tie"
@@ -13,7 +13,7 @@
       "item": "minecraft:stone_pressure_plate"
     },
     "|": {
-      "item": "notenoughmachines:booster_rod"
+      "item": "notenoughmachines:bronze_booster_rod"
     }
   },
   "pattern": [
@@ -23,7 +23,7 @@
   ],
   "result": {
     "count": 6,
-    "item": "notenoughmachines:locking_rail"
+    "item": "notenoughmachines:high_speed_locking_rail"
   },
   "show_notification": true
 }

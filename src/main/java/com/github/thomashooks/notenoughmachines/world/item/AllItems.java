@@ -62,6 +62,7 @@ public class AllItems
     public static final RegistryObject<Item> HIGH_SPEED_DETECTOR_RAIL = ITEMS.register("high_speed_detector_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_ONE_WAY_RAIL = ITEMS.register("high_speed_one_way_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_POWERED_RAIL = ITEMS.register("high_speed_powered_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> HIGH_SPEED_LOCKING_RAIL = ITEMS.register("high_speed_locking_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_RAIL = ITEMS.register("high_speed_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_ROD = ITEMS.register("iron_rod", ()-> new Item(new Item.Properties()));

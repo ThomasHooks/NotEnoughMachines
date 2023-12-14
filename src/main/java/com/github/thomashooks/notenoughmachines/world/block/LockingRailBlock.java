@@ -56,7 +56,7 @@ public class LockingRailBlock extends AbstractRedstoneRailBlock implements Entit
         super.updateState(state, world, pos, block);
 
         BlockEntity entity = world.getBlockEntity(pos);
-        if (entity instanceof LockingRailBlockEntity lockingRailBlockEntity)
+        if (state.getValue(POWERED) && entity instanceof LockingRailBlockEntity lockingRailBlockEntity)
             lockingRailBlockEntity.unlockMinecart();
     }
 

@@ -64,6 +64,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_DETECTOR_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ONE_WAY_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_POWERED_RAIL);
+        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_LOCKING_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_RAIL);
         simpleItemModelFromBlockTexture(AllItems.LOCKING_RAIL);
         simpleItemModel(AllItems.IRON_PLATE);
