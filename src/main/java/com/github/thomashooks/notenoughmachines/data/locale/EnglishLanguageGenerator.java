@@ -94,6 +94,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.FLUXSTONE_STAIRS, "Fluxstone Stairs");
         addBlock(AllBlocks.FLUXSTONE_WALL, "Fluxstone Wall");
         addBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL, "High-Speed Crossover Rail");
+        addBlock(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL, "High-Speed One-Way Rail");
         addBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL, "High-Speed Powered Rail");
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");

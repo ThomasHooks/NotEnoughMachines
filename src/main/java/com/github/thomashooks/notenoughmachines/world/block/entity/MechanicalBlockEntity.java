@@ -19,7 +19,7 @@ abstract public class MechanicalBlockEntity extends LazyTickingBlockEntity imple
     private int powerLoad = 0;
     protected int networkCapacity = 0;
     protected int networkLoad = 0;
-    protected MechanicalType mechanicalType = MechanicalType.SHAFT;
+    protected MechanicalType mechanicalType;
     private float speed = 0.0f;
     protected BlockPos driverPos = null;
     protected final static int VALIDATE_TICK = 20;

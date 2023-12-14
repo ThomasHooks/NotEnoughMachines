@@ -12,7 +12,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class RedstoneBoosterRailBlock extends BaseRailBlock
+public abstract class AbstractRedstoneRailBlock extends BaseRailBlock
 {
     /**
      * This class is mostly just a copy of PoweredRailBlock and only exist so that we can handle our own booster logic
@@ -27,7 +27,7 @@ public abstract class RedstoneBoosterRailBlock extends BaseRailBlock
     public static final double DEFAULT_BOOST_FACTOR = 0.06D;
     public static final double DEFAULT_LAUNCH_FACTOR = 0.02D;
 
-    protected RedstoneBoosterRailBlock(Properties properties, boolean isStraight)
+    protected AbstractRedstoneRailBlock(Properties properties, boolean isStraight)
     {
         super(isStraight, properties);
         this.registerDefaultState(this.stateDefinition.any()
@@ -119,7 +119,7 @@ public abstract class RedstoneBoosterRailBlock extends BaseRailBlock
     protected boolean isSameRailWithPower(Level world, BlockPos pos, boolean searchForward, int recursionCount, RailShape shape)
     {
         BlockState blockstate = world.getBlockState(pos);
-        if (!(blockstate.getBlock() instanceof RedstoneBoosterRailBlock other))
+        if (!(blockstate.getBlock() instanceof AbstractRedstoneRailBlock other))
             return false;
         else
         {
@@ -153,7 +153,7 @@ public abstract class RedstoneBoosterRailBlock extends BaseRailBlock
 
     abstract public void onMinecartPass(BlockState state, Level level, BlockPos pos, AbstractMinecart cart);
 
-    protected void stopMinecart(BlockState state, Level world, BlockPos pos, AbstractMinecart cart)
+    protected void stopMinecart(AbstractMinecart cart)
     {
         Vec3 cartDeltaMovement = cart.getDeltaMovement();
         double cartHorizontalDistance = cartDeltaMovement.horizontalDistance();
@@ -163,47 +163,68 @@ public abstract class RedstoneBoosterRailBlock extends BaseRailBlock
             cart.setDeltaMovement(cart.getDeltaMovement().multiply(0.5D, 0.0D, 0.5D));
     }
 
-    protected void boostMinecart(BlockState state, Level world, BlockPos pos, AbstractMinecart cart)
+    protected void boostMinecart(AbstractMinecart cart, double boostFactor)
     {
-        this.boostMinecart(state, world, pos, cart, DEFAULT_BOOST_FACTOR, DEFAULT_LAUNCH_FACTOR);
-    }
-
-    protected void boostMinecart(BlockState state, Level world, BlockPos pos, AbstractMinecart cart, double boostFactor, double launchFactor)
-    {
-        RailShape railshape = ((BaseRailBlock)state.getBlock()).getRailDirection(state, world, pos, cart);
         Vec3 cartDeltaMovement = cart.getDeltaMovement();
         double cartHorizontalDistance = cartDeltaMovement.horizontalDistance();
-        if (cartHorizontalDistance > 0.01D)
-            cart.setDeltaMovement(cartDeltaMovement.add(cartDeltaMovement.x / cartHorizontalDistance * boostFactor, 0.0D, cartDeltaMovement.z / cartHorizontalDistance * boostFactor));
-        else
+        cart.setDeltaMovement(cartDeltaMovement.add(cartDeltaMovement.x / cartHorizontalDistance * boostFactor, 0.0D, cartDeltaMovement.z / cartHorizontalDistance * boostFactor));
+    }
+
+    /**
+     * Launches the given minecart only if there is a redstone conductive block behind it
+     * @param state The rail's current block state
+     * @param world level that both the rail and minecart are currently in
+     * @param pos The rail's current block position
+     * @param cart The minecart to launch
+     * @param launchFactor launch speed of the minecart
+     */
+    protected void launchMinecart(BlockState state, Level world, BlockPos pos, AbstractMinecart cart, double launchFactor)
+    {
+        Vec3 cartDeltaMovement = cart.getDeltaMovement();
+        double cartDeltaX = cartDeltaMovement.x;
+        double cartDeltaZ = cartDeltaMovement.z;
+        switch (((BaseRailBlock)state.getBlock()).getRailDirection(state, world, pos, cart))
         {
-            double cartDeltaX = cartDeltaMovement.x;
-            double cartDeltaZ = cartDeltaMovement.z;
-            if (railshape == RailShape.EAST_WEST)
+            case NORTH_SOUTH ->
+            {
+                if (this.isRedstoneConductor(world, pos.north()))
+                    cartDeltaZ = launchFactor;
+                else if (this.isRedstoneConductor(world, pos.south()))
+                    cartDeltaZ = -launchFactor;
+            }
+            case EAST_WEST ->
             {
                 if (this.isRedstoneConductor(world, pos.west()))
                     cartDeltaX = launchFactor;
                 else if (this.isRedstoneConductor(world, pos.east()))
                     cartDeltaX = -launchFactor;
             }
-            else
-            {
-                if (railshape != RailShape.NORTH_SOUTH)
-                    return;
-
-                if (isRedstoneConductor(world, pos.north()))
-                    cartDeltaZ = launchFactor;
-                else if (isRedstoneConductor(world, pos.south()))
-                    cartDeltaZ = -launchFactor;
-            }
-            cart.setDeltaMovement(cartDeltaX, cartDeltaMovement.y, cartDeltaZ);
         }
+        cart.setDeltaMovement(cartDeltaX, cartDeltaMovement.y, cartDeltaZ);
     }
 
-    protected boolean isRedstoneConductor(Level world, BlockPos pos)
+    /**
+     * Launches the given minecart in the given direction
+     * @param cart The minecart to launch
+     * @param launchFactor launch speed of the minecart
+     * @param launchDirection Direction to launch the minecart
+     */
+    protected void launchMinecart(AbstractMinecart cart, Direction launchDirection, double launchFactor)
     {
-        return world.getBlockState(pos).isRedstoneConductor(world, pos);
+        Vec3 cartDeltaMovement = cart.getDeltaMovement();
+        double cartDeltaX = cartDeltaMovement.x;
+        double cartDeltaZ = cartDeltaMovement.z;
+        switch (launchDirection)
+        {
+            case NORTH -> cartDeltaZ = -launchFactor;
+            case SOUTH -> cartDeltaZ = launchFactor;
+            case WEST -> cartDeltaX = -launchFactor;
+            case EAST -> cartDeltaX = launchFactor;
+        }
+        cart.setDeltaMovement(cartDeltaX, cartDeltaMovement.y, cartDeltaZ);
     }
+
+    protected boolean isRedstoneConductor(Level world, BlockPos pos) { return world.getBlockState(pos).isRedstoneConductor(world, pos); }
 
     public static @Nullable Direction getMinecartMovementDirection(AbstractMinecart cart)
     {

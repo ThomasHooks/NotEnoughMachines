@@ -4,6 +4,7 @@ import com.github.thomashooks.notenoughmachines.common.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.entity.vehicle.MinecartFurnace;
@@ -19,14 +20,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HighSpeedPoweredRailBlock extends AbstractRedstoneRailBlock
+public class HighSpeedOneWayRailBlock extends OneWayRailBlock
 {
-    public HighSpeedPoweredRailBlock(Properties properties)
+    public HighSpeedOneWayRailBlock(Properties properties)
     {
-        super(properties, true);
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
                 .setValue(POWERED, false)
+                .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, false)
         );
     }
@@ -40,10 +42,18 @@ public class HighSpeedPoweredRailBlock extends AbstractRedstoneRailBlock
             return;
         }
 
+        Direction railFacing = state.getValue(FACING);
+        Direction cartMovementDirection = getMinecartMovementDirection(cart);
+        double boostFactor = railFacing != cartMovementDirection && cartMovementDirection != null ? -CommonConfigs.HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR.get() : CommonConfigs.HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR.get();
         if (cart.getDeltaMovement().horizontalDistance() > 0.01D)
-            this.boostMinecart(cart, CommonConfigs.HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR.get());
+            this.boostMinecart(cart, boostFactor);
         else
-            this.launchMinecart(state, level, pos, cart, CommonConfigs.HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR.get());
+        {
+            if (this.isRedstoneConductor(level, pos.relative(railFacing.getOpposite())))
+                this.launchMinecart(state, level, pos, cart, CommonConfigs.HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR.get());
+            else
+                this.launchMinecart(cart, railFacing, CommonConfigs.HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR.get());
+        }
     }
 
     @Override
@@ -53,7 +63,8 @@ public class HighSpeedPoweredRailBlock extends AbstractRedstoneRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Boosts minecarts when powered with redstone").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.literal("Acts like a one-way powered rail").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.literal("Minecarts traveling against the arrows will be reversed").withStyle(ChatFormatting.GRAY));
             toolTips.add(Component.literal("Minecarts will move 200% faster!").withStyle(ChatFormatting.GRAY));
         }
         else

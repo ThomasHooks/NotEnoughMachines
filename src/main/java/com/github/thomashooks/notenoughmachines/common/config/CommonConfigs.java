@@ -29,7 +29,7 @@ public class CommonConfigs
         HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR = BUILDER.comment("The boost factor of a minecart while it's on a high-speed powered rail")
                 .define("High-Speed Powered Rail's Boost Factor", 0.08D);
         HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR = BUILDER.comment("The launch factor of a minecart while it's on a high-speed powered rail")
-                .define("High-Speed Powered Rail's Launch Factor", 0.02D);
+                .define("High-Speed Powered Rail's Launch Factor", 0.04D);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

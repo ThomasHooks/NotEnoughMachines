@@ -60,7 +60,7 @@ public class CrossoverRailBlock extends BaseRailBlock
     {
         if (cart != null)
         {
-            Direction direction = RedstoneBoosterRailBlock.getMinecartMovementDirection(cart);
+            Direction direction = AbstractRedstoneRailBlock.getMinecartMovementDirection(cart);
             if (direction != null)
             {
                 return switch (direction)

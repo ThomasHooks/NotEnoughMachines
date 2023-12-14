@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class OneWayRailBlock extends RedstoneBoosterRailBlock
+public class OneWayRailBlock extends AbstractRedstoneRailBlock
 {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
@@ -47,15 +47,24 @@ public class OneWayRailBlock extends RedstoneBoosterRailBlock
     @Override
     public void onMinecartPass(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
     {
-        boolean railIsNotPowered = !state.getValue(POWERED);
+        if (!state.getValue(POWERED))
+        {
+            this.stopMinecart(cart);
+            return;
+        }
+
         Direction railFacing = state.getValue(FACING);
         Direction cartMovementDirection = getMinecartMovementDirection(cart);
-        if (railIsNotPowered)
-            this.stopMinecart(state, level, pos, cart);
-        else if (railFacing != cartMovementDirection && cartMovementDirection != null)
-            this.boostMinecart(state, level, pos, cart, -DEFAULT_BOOST_FACTOR, 0.0D);
+        double boostFactor = railFacing != cartMovementDirection && cartMovementDirection != null ? -DEFAULT_BOOST_FACTOR : DEFAULT_BOOST_FACTOR;
+        if (cart.getDeltaMovement().horizontalDistance() > 0.01D)
+            this.boostMinecart(cart, boostFactor);
         else
-            this.boostMinecart(state, level, pos, cart);
+        {
+            if (this.isRedstoneConductor(level, pos.relative(railFacing.getOpposite())))
+                this.launchMinecart(state, level, pos, cart, DEFAULT_LAUNCH_FACTOR);
+            else
+                this.launchMinecart(cart, railFacing, DEFAULT_LAUNCH_FACTOR);
+        }
     }
 
     @Override

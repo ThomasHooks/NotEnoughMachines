@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -24,7 +25,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer)
+    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer)
     {
         buildCraftingTableRecipes(consumer);
         buildCookingRecipes(consumer);
@@ -619,9 +620,9 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //One-Way Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ONE_WAY_RAIL.get(), 6)
-                .pattern("| |")
                 .pattern("|-|")
                 .pattern("|R|")
+                .pattern("|-|")
                 .define('|', AllItems.BOOSTER_ROD.get())
                 .define('-', AllItems.RAILROAD_TIE.get())
                 .define('R', Items.REPEATER)
@@ -648,6 +649,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('|', AllItems.BRONZE_ROD.get())
                 .define('-', AllItems.RAILROAD_TIE.get())
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_crossover_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //High-Speed One-Way Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_ONE_WAY_RAIL.get(), 6)
+                .pattern("|-|")
+                .pattern("|R|")
+                .pattern("|-|")
+                .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('R', Items.REPEATER)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_one_way_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "notenoughmachines:one_way_rail",
+  "group": "notenoughmachines:high_speed_one_way_rail",
   "key": {
     "-": {
       "item": "notenoughmachines:railroad_tie"
@@ -10,7 +10,7 @@
       "item": "minecraft:repeater"
     },
     "|": {
-      "item": "notenoughmachines:booster_rod"
+      "item": "notenoughmachines:bronze_booster_rod"
     }
   },
   "pattern": [
@@ -20,7 +20,7 @@
   ],
   "result": {
     "count": 6,
-    "item": "notenoughmachines:one_way_rail"
+    "item": "notenoughmachines:high_speed_one_way_rail"
   },
   "show_notification": true
 }
