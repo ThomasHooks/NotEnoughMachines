@@ -6,7 +6,6 @@ import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.function.Supplier;
 
@@ -100,6 +99,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");
+        addBlock(AllBlocks.LOCKING_RAIL, "Locking Rail");
         addBlock(AllBlocks.MILLSTONE, "Millstone");
         addBlock(AllBlocks.ONE_WAY_RAIL, "One-Way Rail");
         addBlock(AllBlocks.POLISHED_FLUXSTONE, "Polished Fluxstone");

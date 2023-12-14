@@ -134,6 +134,10 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
         );
+        activeRailBlock(AllBlocks.LOCKING_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/locking_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/locking_rail_on")
+        );
     }
 
     private void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)

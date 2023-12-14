@@ -7,7 +7,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -78,6 +77,7 @@ public class AllItems
                     .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).build())
                     .stacksTo(16)
             ));
+    public static final RegistryObject<Item> LOCKING_RAIL = ITEMS.register("locking_rail", ()-> new BlockItem(AllBlocks.LOCKING_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone", ()-> new BlockItem(AllBlocks.MILLSTONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ONE_WAY_RAIL = ITEMS.register("one_way_rail", ()-> new BlockItem(AllBlocks.ONE_WAY_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE = ITEMS.register("polished_fluxstone", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE.get(), new Item.Properties()));

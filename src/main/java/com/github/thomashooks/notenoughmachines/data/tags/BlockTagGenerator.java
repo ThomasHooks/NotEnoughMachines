@@ -62,6 +62,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.IRON_PLATE_BLOCK.get(),
                 AllBlocks.MILLSTONE.get(),
                 AllBlocks.ONE_WAY_RAIL.get(),
@@ -110,6 +111,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
@@ -119,6 +121,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(AllTags.Blocks.STRIPPED_LOGS).add(

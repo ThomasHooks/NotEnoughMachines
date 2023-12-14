@@ -26,6 +26,8 @@ public class AllBlockEntities
             () -> BlockEntityType.Builder.of(FilterBlockEntity::new, AllBlocks.FILTER.get()).build(null));
     public static final RegistryObject<BlockEntityType<GearboxBlockEntity>> GEARBOX = BLOCK_ENTITIES.register("gearbox",
             () -> BlockEntityType.Builder.of(GearboxBlockEntity::new, AllBlocks.GEARBOX.get()).build(null));
+    public static final RegistryObject<BlockEntityType<LockingRailBlockEntity>> LOCKING_RAIL = BLOCK_ENTITIES.register("locking_rail",
+            () -> BlockEntityType.Builder.of(LockingRailBlockEntity::new, AllBlocks.LOCKING_RAIL.get()).build(null));
     public static final RegistryObject<BlockEntityType<MillstoneBlockEntity>> MILLSTONE = BLOCK_ENTITIES.register("millstone",
             () -> BlockEntityType.Builder.of(MillstoneBlockEntity::new, AllBlocks.MILLSTONE.get()).build(null));
     public static final RegistryObject<BlockEntityType<RollingMillBlockEntity>> ROLLING_MILL = BLOCK_ENTITIES.register("rolling_mill",

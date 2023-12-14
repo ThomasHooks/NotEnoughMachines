@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:holding_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "s": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "|": {
+      "item": "notenoughmachines:booster_rod"
+    }
+  },
+  "pattern": [
+    "|s|",
+    "|-|",
+    "|p|"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:locking_rail"
+  },
+  "show_notification": true
+}

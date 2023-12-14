@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-13T21:57:15.6795298	Item Models: notenoughmachines
+// 1.20.1	2023-12-14T15:27:35.5442899	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 2d7ae8c917bd1921904b45d2d4f63225a67d4697 assets/notenoughmachines/models/item/bronze_booster_rod.json
@@ -47,6 +47,7 @@ ea737d692c975e8102ba925b65598b1731187be1 assets/notenoughmachines/models/item/ka
 4b7c4eed02820f746a4fd68a9ba5e31db15bf441 assets/notenoughmachines/models/item/large_cogwheel.json
 f698cc452699a25ea0217a8cf1fc127f11ea6771 assets/notenoughmachines/models/item/linen.json
 0dcfd9c97cb17dbdc060c382b51176857b40617e assets/notenoughmachines/models/item/linseed_oil.json
+c6fb67c7cdab7dea6debf2947abc285a5967d4d3 assets/notenoughmachines/models/item/locking_rail.json
 ffc6e6df5843966166d1f0ac47294ed4d6fa437f assets/notenoughmachines/models/item/one_way_rail.json
 020de4694e889759101986156a63c013d5477c51 assets/notenoughmachines/models/item/polished_fluxstone.json
 49a59b0704cc40bfba17e1999387e685987fb8b0 assets/notenoughmachines/models/item/polished_fluxstone_slab.json

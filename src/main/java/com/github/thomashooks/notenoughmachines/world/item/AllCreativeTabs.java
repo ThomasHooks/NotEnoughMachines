@@ -63,6 +63,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.FILTER.get());
                         //Mine Cart Rails
                         output.accept(AllItems.CROSSOVER_RAIL.get());
+                        output.accept(AllItems.LOCKING_RAIL.get());
                         output.accept(AllItems.ONE_WAY_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_CROSSOVER_RAIL.get());

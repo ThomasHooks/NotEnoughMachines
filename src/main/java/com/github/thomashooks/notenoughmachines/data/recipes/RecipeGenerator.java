@@ -630,6 +630,19 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
+        //Holding Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.LOCKING_RAIL.get(), 6)
+                .pattern("|s|")
+                .pattern("|-|")
+                .pattern("|p|")
+                .define('|', AllItems.BOOSTER_ROD.get())
+                .define('s', Items.STONE_PRESSURE_PLATE)
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.PISTON)
+                .group(NotEnoughMachines.MOD_ID + ":holding_rail")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer);
+
         //High-Speed Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_RAIL.get(), 16)
                 .pattern("| |")

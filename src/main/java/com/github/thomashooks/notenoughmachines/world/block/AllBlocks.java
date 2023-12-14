@@ -198,6 +198,12 @@ public class AllBlocks
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
+    public static final RegistryObject<Block> LOCKING_RAIL = BLOCKS.register("locking_rail",
+            ()-> new LockingRailBlock(Block.Properties.of()
+                    .noCollission()
+                    .strength(0.7F)
+                    .sound(SoundType.METAL)
+            ));
     public static final RegistryObject<Block> MILLSTONE = BLOCKS.register("millstone",
             ()-> new MillstoneBlock(Block.Properties.of()
                     .mapColor(MapColor.STONE)
