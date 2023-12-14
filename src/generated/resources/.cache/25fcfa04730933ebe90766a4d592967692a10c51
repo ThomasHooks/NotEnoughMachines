@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-12T23:02:45.4235167	Item Models: notenoughmachines
+// 1.20.1	2023-12-13T21:57:15.6795298	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 2d7ae8c917bd1921904b45d2d4f63225a67d4697 assets/notenoughmachines/models/item/bronze_booster_rod.json
@@ -35,6 +35,7 @@ f0d4876eade3d985be14f52b66029b671cbb1790 assets/notenoughmachines/models/item/go
 aebaea7f903ebcade52120b199f0b1b58d514df8 assets/notenoughmachines/models/item/gold_rod.json
 2855a3e4fb0b5604d76ae732111cf9ca71778929 assets/notenoughmachines/models/item/heavy_bronze_stamp.json
 21063ea101a040770ae9584e61c8b8b9d655ec82 assets/notenoughmachines/models/item/high_speed_crossover_rail.json
+a2ad4025473ed80f3b6fd999db2f6bac33c8c93e assets/notenoughmachines/models/item/high_speed_detector_rail.json
 8eb38d4f432cf422e237367d4c6c5b71b3009c79 assets/notenoughmachines/models/item/high_speed_one_way_rail.json
 a0233d367849dc7131497bab3f22532d95899d16 assets/notenoughmachines/models/item/high_speed_powered_rail.json
 aeb63cef026c65bf4a9445b22bc53c321c1d8f9e assets/notenoughmachines/models/item/high_speed_rail.json

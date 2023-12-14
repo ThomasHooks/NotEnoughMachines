@@ -652,6 +652,19 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
+        //High-Speed Detector Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_DETECTOR_RAIL.get(), 6)
+                .pattern("|p|")
+                .pattern("|-|")
+                .pattern("|r|")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.STONE_PRESSURE_PLATE)
+                .define('r', Items.REDSTONE)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_detector_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
         //High-Speed One-Way Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_ONE_WAY_RAIL.get(), 6)
                 .pattern("|-|")

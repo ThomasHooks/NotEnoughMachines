@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:high_speed_detector_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "p": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "|": {
+      "item": "notenoughmachines:bronze_rod"
+    }
+  },
+  "pattern": [
+    "|p|",
+    "|-|",
+    "|r|"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:high_speed_detector_rail"
+  },
+  "show_notification": true
+}

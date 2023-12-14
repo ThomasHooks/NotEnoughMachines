@@ -58,6 +58,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.FLUXSTONE_WALL.get(),
                 AllBlocks.GEARBOX.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
@@ -105,6 +106,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.RAILS).add(
                 AllBlocks.CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
@@ -113,6 +115,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
                 AllBlocks.CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
+                AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),

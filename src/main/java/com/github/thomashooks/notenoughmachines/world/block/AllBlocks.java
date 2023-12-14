@@ -172,6 +172,9 @@ public class AllBlocks
     public static final RegistryObject<Block> HIGH_SPEED_CROSSOVER_RAIL = BLOCKS.register("high_speed_crossover_rail",
             ()-> new HighSpeedCrossoverRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
+    public static final RegistryObject<Block> HIGH_SPEED_DETECTOR_RAIL = BLOCKS.register("high_speed_detector_rail",
+            ()-> new HighSpeedDetectorRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ));
     public static final RegistryObject<Block> HIGH_SPEED_POWERED_RAIL = BLOCKS.register("high_speed_powered_rail",
             ()-> new HighSpeedPoweredRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
