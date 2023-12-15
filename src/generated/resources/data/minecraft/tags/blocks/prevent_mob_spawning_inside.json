@@ -1,7 +1,9 @@
 {
   "values": [
+    "notenoughmachines:buffer_stop_rail",
     "notenoughmachines:crossover_rail",
     "notenoughmachines:high_speed_activator_rail",
+    "notenoughmachines:high_speed_buffer_stop_rail",
     "notenoughmachines:high_speed_crossover_rail",
     "notenoughmachines:high_speed_detector_rail",
     "notenoughmachines:high_speed_locking_rail",

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:rolling_mill",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:wooden_frame"
+    },
+    "-": {
+      "item": "notenoughmachines:axle"
+    },
+    "=": {
+      "item": "notenoughmachines:iron_rolls"
+    }
+  },
+  "pattern": [
+    "# #",
+    "-=-",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:rolling_mill"
+  },
+  "show_notification": true
+}

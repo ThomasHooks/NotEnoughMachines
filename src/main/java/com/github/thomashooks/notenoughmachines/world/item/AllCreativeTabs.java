@@ -62,10 +62,12 @@ public class AllCreativeTabs
                         //Machine Blocks - item transfer
                         output.accept(AllItems.FILTER.get());
                         //Mine Cart Rails
+                        output.accept(AllItems.BUFFER_STOP_RAIL.get());
                         output.accept(AllItems.CROSSOVER_RAIL.get());
                         output.accept(AllItems.LOCKING_RAIL.get());
                         output.accept(AllItems.ONE_WAY_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_CROSSOVER_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_ACTIVATOR_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_DETECTOR_RAIL.get());
@@ -90,21 +92,25 @@ public class AllCreativeTabs
                         output.accept(AllItems.FIRE_BRICK.get());
                         output.accept(AllItems.BRONZE_INGOT.get());
                         output.accept(AllItems.TIN_INGOT.get());
-                        //Crafting Items - Metal
+                        //Crafting Items - Metal Plates
                         output.accept(AllItems.BRONZE_PLATE.get());
                         output.accept(AllItems.COPPER_PLATE.get());
                         output.accept(AllItems.GOLD_PLATE.get());
                         output.accept(AllItems.IRON_PLATE.get());
                         output.accept(AllItems.TIN_PLATE.get());
+                        //Crafting Items - Metal Rods
                         output.accept(AllItems.BRONZE_ROD.get());
                         output.accept(AllItems.COPPER_ROD.get());
                         output.accept(AllItems.GOLD_ROD.get());
                         output.accept(AllItems.IRON_ROD.get());
                         output.accept(AllItems.TIN_ROD.get());
-                        output.accept(AllItems.IRON_SCREW.get());
-                        //Crafting Items - Misc
+                        //Crafting Items - Metal Misc
                         output.accept(AllItems.BOOSTER_ROD.get());
                         output.accept(AllItems.BRONZE_BOOSTER_ROD.get());
+                        output.accept(AllItems.HEAVY_BRONZE_STAMP.get());
+                        output.accept(AllItems.IRON_ROLLS.get());
+                        output.accept(AllItems.IRON_SCREW.get());
+                        //Crafting Items - Misc
                         output.accept(AllItems.FLAXSEED.get());
                         output.accept(AllItems.FLAX.get());
                         output.accept(AllItems.FLAX_STRING.get());
@@ -114,8 +120,6 @@ public class AllCreativeTabs
                         output.accept(AllItems.RAILROAD_TIE.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());
                         output.accept(AllItems.WIND_WHEEL_SAIL.get());
-                        output.accept(AllItems.HEAVY_BRONZE_STAMP.get());
-                        output.accept(AllItems.ROLLERS.get());
                         output.accept(AllItems.REDSTONE_COLLECTOR.get());
                         output.accept(AllItems.REDSTONE_EMITTER.get());
                     })

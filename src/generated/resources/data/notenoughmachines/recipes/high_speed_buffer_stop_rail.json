@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:buffer_stop_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "x": {
+      "item": "minecraft:iron_block"
+    },
+    "|": {
+      "item": "notenoughmachines:bronze_rod"
+    }
+  },
+  "pattern": [
+    "|-|",
+    "|x|",
+    "|-|"
+  ],
+  "result": {
+    "count": 8,
+    "item": "notenoughmachines:high_speed_buffer_stop_rail"
+  },
+  "show_notification": true
+}

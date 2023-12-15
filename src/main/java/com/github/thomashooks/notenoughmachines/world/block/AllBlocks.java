@@ -1,6 +1,8 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,6 +35,13 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.COPPER)
+            ));
+    public static final RegistryObject<Block> BUFFER_STOP_RAIL = BLOCKS.register("buffer_stop_rail",
+            ()-> new BufferStopRailBlock(Block.Properties.of()
+                    .strength(1.05F)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .isRedstoneConductor(AllBlocks::always)
             ));
     public static final RegistryObject<Block> COKE_BLOCK = BLOCKS.register("coke_block",
             ()-> new Block(Block.Properties.of()
@@ -172,6 +181,13 @@ public class AllBlocks
     public static final RegistryObject<Block> HIGH_SPEED_ACTIVATOR_RAIL = BLOCKS.register("high_speed_activator_rail",
             ()-> new HighSpeedActivatorRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
+    public static final RegistryObject<Block> HIGH_SPEED_BUFFER_STOP_RAIL = BLOCKS.register("high_speed_buffer_stop_rail",
+            ()-> new BufferStopRailBlock(Block.Properties.of()
+                    .strength(1.4F)
+                    .sound(SoundType.COPPER)
+                    .noOcclusion()
+                    .isRedstoneConductor(AllBlocks::always)
+            ));
     public static final RegistryObject<Block> HIGH_SPEED_CROSSOVER_RAIL = BLOCKS.register("high_speed_crossover_rail",
             ()-> new HighSpeedCrossoverRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
@@ -306,6 +322,8 @@ public class AllBlocks
     }
 
     public static String getName(Block block) { return ForgeRegistries.BLOCKS.getKey(block).getPath(); }
+
+    public static boolean always(BlockState state, BlockGetter blockGetter, BlockPos pos) { return true; }
 
     protected static ToIntFunction<BlockState> litBlockEmission(int lightLevel)
     {

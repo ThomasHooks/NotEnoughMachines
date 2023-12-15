@@ -23,6 +23,7 @@ public class AllItems
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE = ITEMS.register("bronze_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_ROD = ITEMS.register("bronze_rod", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BUFFER_STOP_RAIL = ITEMS.register("buffer_stop_rail", ()-> new BlockItem(AllBlocks.BUFFER_STOP_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COKE = ITEMS.register("coke", ()-> new FuelItem(new Item.Properties(), 3200));
     public static final RegistryObject<Item> COKE_BLOCK = ITEMS.register("coke_block", ()-> new FuelBlockItem(AllBlocks.COKE_BLOCK.get(), new Item.Properties(), 32000));
     public static final RegistryObject<Item> COKE_OVEN = ITEMS.register("coke_oven", ()-> new BlockItem(AllBlocks.COKE_OVEN.get(), new Item.Properties()));
@@ -59,6 +60,7 @@ public class AllItems
     public static final RegistryObject<Item> GOLD_ROD = ITEMS.register("gold_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_BRONZE_STAMP = ITEMS.register("heavy_bronze_stamp", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_ACTIVATOR_RAIL = ITEMS.register("high_speed_activator_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> HIGH_SPEED_BUFFER_STOP_RAIL = ITEMS.register("high_speed_buffer_stop_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_CROSSOVER_RAIL = ITEMS.register("high_speed_crossover_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_DETECTOR_RAIL = ITEMS.register("high_speed_detector_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_ONE_WAY_RAIL = ITEMS.register("high_speed_one_way_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(), new Item.Properties()));
@@ -90,7 +92,7 @@ public class AllItems
     public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_COLLECTOR = ITEMS.register("redstone_collector", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_EMITTER = ITEMS.register("redstone_emitter", ()-> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ROLLERS = ITEMS.register("rollers", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_ROLLS = ITEMS.register("iron_rolls", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ROLLING_MILL = ITEMS.register("rolling_mill", ()-> new BlockItem(AllBlocks.ROLLING_MILL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COGWHEEL_SMALL = ITEMS.register("small_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_SMALL.get(), new Item.Properties()));
     public static final RegistryObject<Item> TIN_BLOCK = ITEMS.register("tin_block", ()-> new BlockItem(AllBlocks.TIN_BLOCK.get(), new Item.Properties()));

@@ -1,6 +1,7 @@
-// 1.20.1	2023-12-14T20:41:11.2280609	Loot Tables
+// 1.20.1	2023-12-15T12:30:43.5725896	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 f7340e64bb9776a570abb8735cf0dcf4fa45ec03 data/notenoughmachines/loot_tables/blocks/bronze_block.json
+5a714d5acbe11f2d8c99111bc359a76ba9d9f629 data/notenoughmachines/loot_tables/blocks/buffer_stop_rail.json
 14a24678ae0ba6bf730d0ae4f7370ecd2e5a6114 data/notenoughmachines/loot_tables/blocks/coke_block.json
 58fd1dd9d974a8a86383e0c1c2de495c30bd5dab data/notenoughmachines/loot_tables/blocks/coke_oven.json
 bb82775b94e1e2763efa4b82df76516c70f853f3 data/notenoughmachines/loot_tables/blocks/conjunctioner.json
@@ -19,6 +20,7 @@ faeec93d3900dda334bab698edbf1c8fb0b45a3f data/notenoughmachines/loot_tables/bloc
 ac36458416bf55c9092e6d5c429ae232de6ab3b8 data/notenoughmachines/loot_tables/blocks/fluxstone_wall.json
 86d626d1894441df6f1c9bcdf6a78c80742bdfed data/notenoughmachines/loot_tables/blocks/gearbox.json
 ff8514f2d52559e194a9bfdef0d84e7e9314ee43 data/notenoughmachines/loot_tables/blocks/high_speed_activator_rail.json
+a54f55a75315fbb65bc46389f188a205ed6d1631 data/notenoughmachines/loot_tables/blocks/high_speed_buffer_stop_rail.json
 5fba761d8a9665a4faafe6a9ba9fbe074690239e data/notenoughmachines/loot_tables/blocks/high_speed_crossover_rail.json
 a249cc1268e3ccefcdbcc90b9fa60b779dadc0e6 data/notenoughmachines/loot_tables/blocks/high_speed_detector_rail.json
 2332f9a22adcaebac59e6c5a54640570c22215e2 data/notenoughmachines/loot_tables/blocks/high_speed_locking_rail.json

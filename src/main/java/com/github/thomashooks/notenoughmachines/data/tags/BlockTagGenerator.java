@@ -40,6 +40,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AXLE.get(),
                 AllBlocks.BRONZE_BLOCK.get(),
+                AllBlocks.BUFFER_STOP_RAIL.get(),
                 AllBlocks.COGWHEEL_LARGE.get(),
                 AllBlocks.COGWHEEL_SMALL.get(),
                 AllBlocks.COKE_BLOCK.get(),
@@ -58,6 +59,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.FLUXSTONE_WALL.get(),
                 AllBlocks.GEARBOX.get(),
                 AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
+                AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
                 AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
@@ -107,6 +109,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                         AllBlocks.POLISHED_FLUXSTONE_WALL.get()
         );
         this.tag(BlockTags.RAILS).add(
+                //AllBlocks.BUFFER_STOP_RAIL.get(), - Keeps minecarts from being placed inside of it
                 AllBlocks.CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
@@ -119,8 +122,10 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
+                AllBlocks.BUFFER_STOP_RAIL.get(),
                 AllBlocks.CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
+                AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
                 AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),

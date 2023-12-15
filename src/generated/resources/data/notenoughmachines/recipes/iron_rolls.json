@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:iron_rolls",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_block"
+    },
+    "x": {
+      "item": "notenoughmachines:gear"
+    }
+  },
+  "pattern": [
+    "x#x",
+    "x#x"
+  ],
+  "result": {
+    "item": "notenoughmachines:iron_rolls"
+  },
+  "show_notification": true
+}

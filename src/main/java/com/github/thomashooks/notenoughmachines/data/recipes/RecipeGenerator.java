@@ -84,16 +84,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //Flax String
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.FLAX_STRING.get(), 3)
-                .pattern("#")
-                .pattern("#")
-                .pattern("#")
+                .pattern("# ")
+                .pattern("##")
                 .define('#', AllItems.FLAX.get())
                 .group(NotEnoughMachines.MOD_ID + ":flax_string")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
         //Gear
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEAR.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.GEAR.get(), 4)
                 .pattern(" # ")
                 .pattern("#b#")
                 .pattern(" # ")
@@ -128,6 +127,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":iron_plate")
                 .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":iron_plate_from_iron_plate_block");
+
+        //Iron Rolls
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_ROLLS.get(), 1)
+                .pattern("x#x")
+                .pattern("x#x")
+                .define('#', Items.IRON_BLOCK)
+                .define('x', AllItems.GEAR.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_rolls")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
 
         //Iron Screw
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_SCREW.get(), 1)
@@ -492,6 +501,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Rolling Mill
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ROLLING_MILL.get(), 1)
+                .pattern("# #")
+                .pattern("-=-")
+                .pattern("###")
+                .define('#', AllItems.WOODEN_FRAME.get())
+                .define('-', AllItems.AXLE.get())
+                .define('=', AllItems.IRON_ROLLS.get())
+                .group(NotEnoughMachines.MOD_ID + ":rolling_mill")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
 
         //Trip Hammer
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TRIP_HAMMER.get(), 1)
@@ -572,6 +591,28 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":rail")
                 .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":rail_from_tin_rods");
+
+        //Buffer Stop Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.BUFFER_STOP_RAIL.get(), 8)
+                .pattern("|-|")
+                .pattern("|x|")
+                .pattern("|-|")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('x', Items.IRON_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":buffer_stop_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.BUFFER_STOP_RAIL.get(), 8)
+                .pattern("|-|")
+                .pattern("|x|")
+                .pattern("|-|")
+                .define('|', AllItems.TIN_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('x', AllItems.TIN_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":buffer_stop_rail")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":buffer_stop_rail_from_tin");
 
         //Crossover Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
@@ -695,6 +736,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('-', AllItems.RAILROAD_TIE.get())
                 .define('r', Items.REDSTONE_TORCH)
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_activator_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //High-Speed Buffer Stop Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AllItems.HIGH_SPEED_BUFFER_STOP_RAIL.get(), 8)
+                .pattern("|-|")
+                .pattern("|x|")
+                .pattern("|-|")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('x', Items.IRON_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":buffer_stop_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 

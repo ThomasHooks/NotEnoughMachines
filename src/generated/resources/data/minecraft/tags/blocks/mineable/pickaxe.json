@@ -2,6 +2,7 @@
   "values": [
     "notenoughmachines:axle",
     "notenoughmachines:bronze_block",
+    "notenoughmachines:buffer_stop_rail",
     "notenoughmachines:large_cogwheel",
     "notenoughmachines:small_cogwheel",
     "notenoughmachines:coke_block",
@@ -20,6 +21,7 @@
     "notenoughmachines:fluxstone_wall",
     "notenoughmachines:gearbox",
     "notenoughmachines:high_speed_activator_rail",
+    "notenoughmachines:high_speed_buffer_stop_rail",
     "notenoughmachines:high_speed_crossover_rail",
     "notenoughmachines:high_speed_detector_rail",
     "notenoughmachines:high_speed_locking_rail",

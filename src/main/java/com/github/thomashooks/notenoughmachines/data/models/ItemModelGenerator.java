@@ -29,6 +29,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.BRONZE_PLATE);
         simpleItemModel(AllItems.BRONZE_ROD);
         simpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
+        simpleItemModel(AllItems.BUFFER_STOP_RAIL);
         simpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
         simpleBlockItemModel(AllBlocks.COGWHEEL_SMALL);
         simpleItemModel(AllItems.COKE);
@@ -61,6 +62,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.GOLD_ROD);
         simpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ACTIVATOR_RAIL);
+        simpleItemModel(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_CROSSOVER_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_DETECTOR_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ONE_WAY_RAIL);
@@ -84,7 +86,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.RAW_TIN);
         simpleItemModel(AllItems.REDSTONE_COLLECTOR);
         simpleItemModel(AllItems.REDSTONE_EMITTER);
-        simpleItemModel(AllItems.ROLLERS);
+        simpleItemModel(AllItems.IRON_ROLLS);
         simpleItemModel(AllItems.TIN_INGOT);
         simpleItemModel(AllItems.TIN_PLATE);
         simpleItemModel(AllItems.TIN_ROD);

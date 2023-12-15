@@ -52,6 +52,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.HEAVY_BRONZE_STAMP, "Heavy Bronze Stamp");
         addItem(AllItems.IRON_PLATE, "Iron Plate");
         addItem(AllItems.IRON_ROD, "Iron Rod");
+        addItem(AllItems.IRON_ROLLS, "Iron Rolls");
         addItem(AllItems.IRON_SCREW, "Iron Screw");
         addItem(AllItems.KAOLIN, "Kaolin");
         addItem(AllItems.LINEN, "Linen");
@@ -60,7 +61,6 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.RAW_TIN, "Raw Tin");
         addItem(AllItems.REDSTONE_COLLECTOR, "Redstone Collector");
         addItem(AllItems.REDSTONE_EMITTER, "Redstone Emitter");
-        addItem(AllItems.ROLLERS, "Rollers");
         addItem(AllItems.TIN_INGOT, "Tin Ingot");
         addItem(AllItems.TIN_PLATE, "Tin Plate");
         addItem(AllItems.TIN_ROD, "Tin Rod");
@@ -77,6 +77,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.COGWHEEL_LARGE, "Large Cogwheel");
         addBlock(AllBlocks.COGWHEEL_SMALL, "Small Cogwheel");
         addBlock(AllBlocks.COKE_BLOCK, "Block of Coke");
+        addBlock(AllBlocks.BUFFER_STOP_RAIL, "Buffer Stop Rail");
         addBlock(AllBlocks.COKE_OVEN, "Coke Oven");
         addBlock(AllBlocks.CROSSOVER_RAIL, "Crossover Rail");
         addBlock(AllBlocks.ENCLOSED_AXLE, "Enclosed Axle");
@@ -93,6 +94,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.FLUXSTONE_STAIRS, "Fluxstone Stairs");
         addBlock(AllBlocks.FLUXSTONE_WALL, "Fluxstone Wall");
         addBlock(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL, "High-Speed Activator Rail");
+        addBlock(AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL, "High-Speed Buffer Stop Rail");
         addBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL, "High-Speed Crossover Rail");
         addBlock(AllBlocks.HIGH_SPEED_DETECTOR_RAIL, "High-Speed Detector Rail");
         addBlock(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL, "High-Speed One-Way Rail");
