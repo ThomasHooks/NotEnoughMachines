@@ -169,6 +169,9 @@ public class AllBlocks
                     .strength(1.05F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> HIGH_SPEED_ACTIVATOR_RAIL = BLOCKS.register("high_speed_activator_rail",
+            ()-> new HighSpeedActivatorRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ));
     public static final RegistryObject<Block> HIGH_SPEED_CROSSOVER_RAIL = BLOCKS.register("high_speed_crossover_rail",
             ()-> new HighSpeedCrossoverRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));

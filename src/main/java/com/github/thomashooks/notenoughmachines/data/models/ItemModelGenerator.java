@@ -60,6 +60,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.GOLD_PLATE);
         simpleItemModel(AllItems.GOLD_ROD);
         simpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
+        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ACTIVATOR_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_CROSSOVER_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_DETECTOR_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ONE_WAY_RAIL);

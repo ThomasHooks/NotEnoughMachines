@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:copper_plate",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:copper_plate_block"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:copper_plate"
+  }
+}

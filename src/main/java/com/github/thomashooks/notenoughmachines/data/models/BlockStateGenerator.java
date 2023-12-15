@@ -119,6 +119,10 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail_corner")
         );
+        activeRailBlock(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_activator_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_activator_rail_on")
+        );
         passiveStraightRailBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_crossover_rail")
         );

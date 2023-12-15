@@ -55,6 +55,13 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":coke_from_coke_block");
 
+        //Copper Plate
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COPPER_PLATE.get(), 4)
+                .requires(AllItems.COPPER_PLATE_BLOCK.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_from_copper_plate_block");
+
         //Crushed Bronze
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CRUSHED_BRONZE.get(), 2)
                 .requires(AllItems.CRUSHED_COPPER_ORE.get(), 3)
@@ -114,6 +121,13 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":heavy_bronze_stamp")
                 .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
                 .save(consumer);
+
+        //Iron Plate
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.IRON_PLATE.get(), 4)
+                .requires(AllItems.IRON_PLATE_BLOCK.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":iron_plate")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":iron_plate_from_iron_plate_block");
 
         //Iron Screw
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_SCREW.get(), 1)
@@ -218,6 +232,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
                 .save(consumer);
 
+        //Copper Plate Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_BLOCK.get(), 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', AllItems.COPPER_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_block")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
         //Fire Bricks
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS.get(), 1)
                 .pattern("##")
@@ -235,6 +258,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('#', AllItems.LINEN.get())
                 .group(NotEnoughMachines.MOD_ID + ":linen_block")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Iron Plate Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.IRON_PLATE_BLOCK.get(), 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', AllItems.IRON_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_plate_block")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
 
         //Tin Block
@@ -651,6 +683,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('|', AllItems.BRONZE_ROD.get())
                 .define('-', AllItems.RAILROAD_TIE.get())
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //High-Speed Activator Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_ACTIVATOR_RAIL.get(), 6)
+                .pattern("|-|")
+                .pattern("|r|")
+                .pattern("|-|")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('r', Items.REDSTONE_TORCH)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_activator_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 

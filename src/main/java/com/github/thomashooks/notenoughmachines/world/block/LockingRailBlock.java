@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class LockingRailBlock extends AbstractRedstoneRailBlock implements EntityBlock
+public class LockingRailBlock extends RedstoneRailBlock implements EntityBlock
 {
     public LockingRailBlock(Properties properties)
     {

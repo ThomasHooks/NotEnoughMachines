@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class OneWayRailBlock extends AbstractRedstoneRailBlock
+public class OneWayRailBlock extends RedstoneRailBlock
 {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 

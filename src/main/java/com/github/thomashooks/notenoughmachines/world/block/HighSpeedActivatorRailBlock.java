@@ -5,13 +5,16 @@ import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.entity.vehicle.MinecartFurnace;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -19,9 +22,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HighSpeedPoweredRailBlock extends RedstoneRailBlock
+public class HighSpeedActivatorRailBlock extends RedstoneRailBlock
 {
-    public HighSpeedPoweredRailBlock(Properties properties)
+    public HighSpeedActivatorRailBlock(Properties properties)
     {
         super(properties, true);
         this.registerDefaultState(this.stateDefinition.any()
@@ -34,16 +37,10 @@ public class HighSpeedPoweredRailBlock extends RedstoneRailBlock
     @Override
     public void onMinecartPass(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
     {
-        if (!state.getValue(POWERED))
-        {
-            this.stopMinecart(cart);
-            return;
-        }
-
-        if (cart.getDeltaMovement().horizontalDistance() > 0.01D)
-            this.boostMinecart(cart, CommonConfigs.HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR.get());
-        else
-            this.launchMinecart(state, level, pos, cart, CommonConfigs.HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR.get());
+        int k = Mth.floor(cart.getX());
+        int i = Mth.floor(cart.getY());
+        int j = Mth.floor(cart.getZ());
+        cart.activateMinecart(k, i, j, state.getValue(POWERED));
     }
 
     @Override
@@ -53,7 +50,7 @@ public class HighSpeedPoweredRailBlock extends RedstoneRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Boosts minecarts when powered with redstone").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.literal("Activates minecarts when powered with redstone").withStyle(ChatFormatting.GREEN));
             toolTips.add(Component.literal("Minecarts will move 200% faster!").withStyle(ChatFormatting.GRAY));
         }
         else
@@ -68,4 +65,7 @@ public class HighSpeedPoweredRailBlock extends RedstoneRailBlock
         else
             return cart.isInWater() ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_WATERLOGGED.get() : CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED.get();
     }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(SHAPE, POWERED, WATERLOGGED); }
 }

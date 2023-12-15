@@ -12,7 +12,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractRedstoneRailBlock extends BaseRailBlock
+public abstract class RedstoneRailBlock extends BaseRailBlock
 {
     /**
      * This class is mostly just a copy of PoweredRailBlock and only exist so that we can handle our own booster logic
@@ -27,7 +27,7 @@ public abstract class AbstractRedstoneRailBlock extends BaseRailBlock
     public static final double DEFAULT_BOOST_FACTOR = 0.06D;
     public static final double DEFAULT_LAUNCH_FACTOR = 0.02D;
 
-    protected AbstractRedstoneRailBlock(Properties properties, boolean isStraight)
+    protected RedstoneRailBlock(Properties properties, boolean isStraight)
     {
         super(isStraight, properties);
         this.registerDefaultState(this.stateDefinition.any()
@@ -119,7 +119,7 @@ public abstract class AbstractRedstoneRailBlock extends BaseRailBlock
     protected boolean isSameRailWithPower(Level world, BlockPos pos, boolean searchForward, int recursionCount, RailShape shape)
     {
         BlockState blockstate = world.getBlockState(pos);
-        if (!(blockstate.getBlock() instanceof AbstractRedstoneRailBlock other))
+        if (!(blockstate.getBlock() instanceof RedstoneRailBlock other))
             return false;
         else
         {

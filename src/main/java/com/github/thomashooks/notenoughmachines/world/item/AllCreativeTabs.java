@@ -67,6 +67,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.ONE_WAY_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_CROSSOVER_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_ACTIVATOR_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_DETECTOR_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_POWERED_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_LOCKING_RAIL.get());
