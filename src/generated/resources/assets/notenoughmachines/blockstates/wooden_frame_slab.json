@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughmachines:block/wooden_frame_slab"
+    },
+    "type=double": {
+      "model": "notenoughmachines:block/wooden_frame"
+    },
+    "type=top": {
+      "model": "notenoughmachines:block/wooden_frame_slab_top"
+    }
+  }
+}

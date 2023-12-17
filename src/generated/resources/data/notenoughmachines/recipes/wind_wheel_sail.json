@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:wind_wheel_sail",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    },
+    "x": {
+      "item": "notenoughmachines:wind_wheel_blade"
+    }
+  },
+  "pattern": [
+    "###",
+    "#x#",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:wind_wheel_sail"
+  },
+  "show_notification": true
+}

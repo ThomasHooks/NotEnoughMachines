@@ -75,6 +75,8 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.WATER_WHEEL.get());
         dropSelf(AllBlocks.WIND_WHEEL.get());
         dropSelf(AllBlocks.WOODEN_FRAME.get());
+        dropSelf(AllBlocks.WOODEN_FRAME_SLAB.get());
+        dropSelf(AllBlocks.WOODEN_FRAME_STAIRS.get());
     }
 
     @Override

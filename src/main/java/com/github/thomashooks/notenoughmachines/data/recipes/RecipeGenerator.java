@@ -71,6 +71,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
                 .save(consumer);
 
+        //Crushed Vermilion
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CRUSHED_VERMILION.get(), 1)
+                .requires(AllItems.CRUSHED_COPPER_ORE.get(), 1)
+                .requires(Items.REDSTONE, 4)
+                .requires(AllItems.FLUX.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":crushed_vermilion")
+                .unlockedBy("has_" + getHasName(Items.REDSTONE), has(Items.REDSTONE))
+                .save(consumer);
+
         //Fire Charge from Coke
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Items.FIRE_CHARGE, 3)
                 .pattern("fo")
@@ -180,6 +189,19 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
+        //Redstone Valve
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.REDSTONE_VALVE.get(), 1)
+                .pattern("|p|")
+                .pattern("|p|")
+                .pattern("#e#")
+                .define('|', Items.GLASS)
+                .define('p', AllItems.VERMILION_PLATE.get())
+                .define('#', AllItems.TIN_PLATE.get())
+                .define('e', Items.REDSTONE_TORCH)
+                .group(NotEnoughMachines.MOD_ID + ":redstone_valve")
+                .unlockedBy("has_" + getHasName(Items.REDSTONE), has(Items.REDSTONE))
+                .save(consumer);
+
         //Soul Torch From Coke
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SOUL_TORCH, 4)
                 .pattern("o")
@@ -217,6 +239,28 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":torch")
                 .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":torch_from_coke");
+
+        //Wind Wheel Blade
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WIND_WHEEL_BLADE.get(), 1)
+                .pattern("xx#")
+                .pattern("xx#")
+                .pattern("xx#")
+                .define('#', AllItems.AXLE.get())
+                .define('x', Items.STICK)
+                .group(NotEnoughMachines.MOD_ID + ":wind_wheel_blade")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Wind Wheel Sail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WIND_WHEEL_SAIL.get(), 1)
+                .pattern("###")
+                .pattern("#x#")
+                .pattern("###")
+                .define('x', AllItems.WIND_WHEEL_BLADE.get())
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":wind_wheel_sail")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
 
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
@@ -327,6 +371,14 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Wooden Frame Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.WOODEN_FRAME_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.WOODEN_FRAME.get())
+                .group(NotEnoughMachines.MOD_ID + ":wooden_frame_slab")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
         //Stairs
         //--------------------------------------------------------------------------------------------------------------
 
@@ -358,6 +410,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('=', AllItems.POLISHED_FLUXSTONE.get())
                 .group(NotEnoughMachines.MOD_ID + ":polished_fluxstone_stairs")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Wooden Frame Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.WOODEN_FRAME_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.WOODEN_FRAME.get())
+                .group(NotEnoughMachines.MOD_ID + ":wooden_frame_stairs")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
         //Walls
@@ -460,6 +522,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Wind Wheel
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WIND_WHEEL.get(), 1)
+                .pattern("# #")
+                .pattern(" x ")
+                .pattern("# #")
+                .define('#', AllItems.WIND_WHEEL_SAIL.get())
+                .define('x', AllItems.AXLE.get())
+                .group(NotEnoughMachines.MOD_ID + ":wind_wheel")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
 
         //Furnaces and Mills
         //--------------------------------------------------------------------------------------------------------------
@@ -530,34 +601,34 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //Booster Rod
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
-                .pattern("IG ")
-                .pattern("IGR")
-                .pattern("IG ")
-                .define('I', AllItems.IRON_ROD.get())
-                .define('G', AllItems.GOLD_ROD.get())
-                .define('R', Items.REDSTONE)
+                .pattern("ig ")
+                .pattern("igv")
+                .pattern("ig ")
+                .define('i', AllItems.IRON_ROD.get())
+                .define('g', AllItems.GOLD_ROD.get())
+                .define('v', AllItems.VERMILION_ROD.get())
                 .group(NotEnoughMachines.MOD_ID + ":booster_rod")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BOOSTER_ROD.get(), 3)
-                .pattern("IG ")
-                .pattern("IGR")
-                .pattern("IG ")
-                .define('I', AllItems.TIN_ROD.get())
-                .define('G', AllItems.GOLD_ROD.get())
-                .define('R', Items.REDSTONE)
+                .pattern("tg ")
+                .pattern("tgv")
+                .pattern("tg ")
+                .define('t', AllItems.TIN_ROD.get())
+                .define('g', AllItems.GOLD_ROD.get())
+                .define('v', AllItems.VERMILION_ROD.get())
                 .group(NotEnoughMachines.MOD_ID + ":booster_rod")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":booster_rod_from_tin_rods");
 
         //Bronze Booster Rod
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_BOOSTER_ROD.get(), 3)
-                .pattern("IG ")
-                .pattern("IGR")
-                .pattern("IG ")
-                .define('I', AllItems.BRONZE_ROD.get())
-                .define('G', AllItems.GOLD_ROD.get())
-                .define('R', Items.REDSTONE)
+                .pattern("bg ")
+                .pattern("bgv")
+                .pattern("bg ")
+                .define('b', AllItems.BRONZE_ROD.get())
+                .define('g', AllItems.GOLD_ROD.get())
+                .define('v', AllItems.VERMILION_ROD.get())
                 .group(NotEnoughMachines.MOD_ID + ":bronze_booster_rod")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
@@ -835,6 +906,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleOreBlasting(consumer, "tin_ingot", AllItems.CRUSHED_TIN_ORE.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), RecipeCategory.MISC, 0.7F, 100);
         simpleOreSmelting(consumer, "tin_ingot", AllItems.RAW_TIN.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), RecipeCategory.MISC, 0.7F, 200);
         simpleOreBlasting(consumer, "tin_ingot", AllItems.RAW_TIN.get(), AllItems.TIN_INGOT.get(), AllItems.RAW_TIN.get(), RecipeCategory.MISC, 0.7F, 100);
+        simpleOreSmelting(consumer, "vermilion_ingot", AllItems.CRUSHED_VERMILION.get(), AllItems.VERMILION_INGOT.get(), Items.REDSTONE, RecipeCategory.MISC, 0.7F, 200);
+        simpleOreBlasting(consumer, "vermilion_ingot", AllItems.CRUSHED_VERMILION.get(), AllItems.VERMILION_INGOT.get(), Items.REDSTONE, RecipeCategory.MISC, 0.7F, 100);
     }
 
     protected void buildStoneCuttingRecipes(Consumer<FinishedRecipe> consumer)
@@ -936,6 +1009,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleRolling(consumer, "sponge_dry", Ingredient.of(Items.WET_SPONGE), Items.SPONGE, 1, 200);
         simpleRolling(consumer, "tin_plate", Ingredient.of(AllItems.TIN_INGOT.get()), AllItems.TIN_PLATE.get(), 1, 300);
         simpleRolling(consumer, "tin_rod", Ingredient.of(AllItems.TIN_PLATE.get()), AllItems.TIN_ROD.get(), 3, 300);
+        simpleRolling(consumer, "vermilion_plate", Ingredient.of(AllItems.VERMILION_INGOT.get()), AllItems.VERMILION_PLATE.get(), 1, 300);
+        simpleRolling(consumer, "vermilion_rod", Ingredient.of(AllItems.VERMILION_PLATE.get()), AllItems.VERMILION_ROD.get(), 3, 300);
     }
 
     public static void buildCokeOvenRecipes(Consumer<FinishedRecipe> consumer)

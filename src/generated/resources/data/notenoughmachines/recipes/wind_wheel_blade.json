@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:wind_wheel_blade",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:axle"
+    },
+    "x": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "xx#",
+    "xx#",
+    "xx#"
+  ],
+  "result": {
+    "item": "notenoughmachines:wind_wheel_blade"
+  },
+  "show_notification": true
+}

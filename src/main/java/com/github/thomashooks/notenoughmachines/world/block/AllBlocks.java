@@ -315,6 +315,17 @@ public class AllBlocks
                     .sound(SoundType.WOOD)
                     .ignitedByLava()
             ));
+    public static final RegistryObject<Block> WOODEN_FRAME_SLAB = BLOCKS.register("wooden_frame_slab",
+            ()-> new SlabBlock(Block.Properties
+                    .copy(WOODEN_FRAME.get())
+                    .strength(2.0F, 3.0F)
+            ));
+    public static final RegistryObject<Block> WOODEN_FRAME_STAIRS = BLOCKS.register("wooden_frame_stairs",
+            ()-> new StairBlock(() -> WOODEN_FRAME.get().defaultBlockState(),
+                    BlockBehaviour.Properties
+                            .copy(WOODEN_FRAME.get())
+                            .strength(2.0F, 3.0F)
+            ));
 
     public static void registerAll(IEventBus modEventBus)
     {

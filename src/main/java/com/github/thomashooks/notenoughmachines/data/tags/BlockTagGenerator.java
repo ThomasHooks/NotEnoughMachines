@@ -35,7 +35,9 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.TRIP_HAMMER.get(),
                 AllBlocks.WATER_WHEEL.get(),
                 AllBlocks.WIND_WHEEL.get(),
-                AllBlocks.WOODEN_FRAME.get()
+                AllBlocks.WOODEN_FRAME.get(),
+                AllBlocks.WOODEN_FRAME_SLAB.get(),
+                AllBlocks.WOODEN_FRAME_STAIRS.get()
         );
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AXLE.get(),

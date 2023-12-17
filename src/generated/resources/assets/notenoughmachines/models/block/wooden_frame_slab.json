@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "notenoughmachines:block/wooden_frame",
+    "side": "notenoughmachines:block/wooden_frame",
+    "top": "notenoughmachines:block/wooden_frame"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:vermilion_plate",
+  "ingredient": {
+    "item": "notenoughmachines:vermilion_ingot"
+  },
+  "processtime": 300,
+  "result": {
+    "item": "notenoughmachines:vermilion_plate"
+  }
+}

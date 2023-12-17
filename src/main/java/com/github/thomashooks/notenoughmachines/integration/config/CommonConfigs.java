@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.common.config;
+package com.github.thomashooks.notenoughmachines.integration.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 

@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines;
 
 import com.github.thomashooks.notenoughmachines.client.ClientTimer;
-import com.github.thomashooks.notenoughmachines.common.config.CommonConfigs;
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.data.loot.modifier.AllLootModifiers;

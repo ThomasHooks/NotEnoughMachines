@@ -1,5 +1,5 @@
-// 1.20.1	2023-12-15T12:30:43.5715888	Tags for minecraft:block mod id notenoughmachines
-612834c1af969b5b197719ec18c96bbc0dc74d1e data/minecraft/tags/blocks/mineable/axe.json
+// 1.20.1	2023-12-16T10:59:57.9190106	Tags for minecraft:block mod id notenoughmachines
+dc0897537e5fc905880fb91054630ad9ac656600 data/minecraft/tags/blocks/mineable/axe.json
 854578d28ebf8887565299548e7de7df3cbc1929 data/minecraft/tags/blocks/mineable/pickaxe.json
 3151dab165ac5b2dcdaa2465a8d70ee915e9ccd9 data/minecraft/tags/blocks/needs_stone_tool.json
 95e0527b40638770745b736e53782fa7ffee4f96 data/minecraft/tags/blocks/prevent_mob_spawning_inside.json

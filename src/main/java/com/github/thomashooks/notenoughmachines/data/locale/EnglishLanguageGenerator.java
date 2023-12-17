@@ -40,6 +40,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.CRUSHED_GOLD_ORE, "Crushed Raw Gold");
         addItem(AllItems.CRUSHED_IRON_ORE, "Crushed Raw Iron");
         addItem(AllItems.CRUSHED_TIN_ORE, "Crushed Raw Tin");
+        addItem(AllItems.CRUSHED_VERMILION, "Crushed Vermilion");
         addItem(AllItems.FIRE_BRICK, "Fire Brick");
         addItem(AllItems.FLAX, "Flax");
         addItem(AllItems.FLAXSEED, "Flax Seeds");
@@ -59,11 +60,14 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.LINSEED_OIL, "Linseed Oil");
         addItem(AllItems.RAILROAD_TIE, "Railroad Tie");
         addItem(AllItems.RAW_TIN, "Raw Tin");
-        addItem(AllItems.REDSTONE_COLLECTOR, "Redstone Collector");
         addItem(AllItems.REDSTONE_EMITTER, "Redstone Emitter");
+        addItem(AllItems.REDSTONE_VALVE, "Redstone Valve");
         addItem(AllItems.TIN_INGOT, "Tin Ingot");
         addItem(AllItems.TIN_PLATE, "Tin Plate");
         addItem(AllItems.TIN_ROD, "Tin Rod");
+        addItem(AllItems.VERMILION_INGOT, "Vermilion Ingot");
+        addItem(AllItems.VERMILION_PLATE, "Vermilion Plate");
+        addItem(AllItems.VERMILION_ROD, "Vermilion Rod");
         addItem(AllItems.WIND_WHEEL_BLADE, "Wind Wheel Blade");
         addItem(AllItems.WIND_WHEEL_SAIL, "Wind Wheel Sail");
 
@@ -117,6 +121,8 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.WATER_WHEEL, "Water Wheel");
         addBlock(AllBlocks.WIND_WHEEL, "Wind Wheel");
         addBlock(AllBlocks.WOODEN_FRAME, "Wooden Frame");
+        addBlock(AllBlocks.WOODEN_FRAME_SLAB, "Wooden Frame Slab");
+        addBlock(AllBlocks.WOODEN_FRAME_STAIRS, "Wooden Frame Stairs");
     }
 
     private void addAllMenus()

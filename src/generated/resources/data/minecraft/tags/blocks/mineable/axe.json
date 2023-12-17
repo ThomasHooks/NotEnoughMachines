@@ -11,6 +11,8 @@
     "notenoughmachines:trip_hammer",
     "notenoughmachines:water_wheel",
     "notenoughmachines:wind_wheel",
-    "notenoughmachines:wooden_frame"
+    "notenoughmachines:wooden_frame",
+    "notenoughmachines:wooden_frame_slab",
+    "notenoughmachines:wooden_frame_stairs"
   ]
 }

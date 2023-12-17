@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-15T12:30:43.5725896	Loot Tables
+// 1.20.1	2023-12-16T10:59:57.9200102	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 f7340e64bb9776a570abb8735cf0dcf4fa45ec03 data/notenoughmachines/loot_tables/blocks/bronze_block.json
 5a714d5acbe11f2d8c99111bc359a76ba9d9f629 data/notenoughmachines/loot_tables/blocks/buffer_stop_rail.json
@@ -45,3 +45,5 @@ abb6650916ccf50d7e7e7c7b582d816f65c0bf40 data/notenoughmachines/loot_tables/bloc
 86548b6d99c79a82c47c2f507bacb6e742419e42 data/notenoughmachines/loot_tables/blocks/water_wheel.json
 f4f665693236ef01d40c774e403c8fc2f6d81df7 data/notenoughmachines/loot_tables/blocks/wind_wheel.json
 d62a08dc47fc19cb7f9720edef99be04edfd51db data/notenoughmachines/loot_tables/blocks/wooden_frame.json
+c0b530f872812a125d11c6566dd757feeab7f6a1 data/notenoughmachines/loot_tables/blocks/wooden_frame_slab.json
+1a37269bb788a2150746059edcbd3690c08cb03d data/notenoughmachines/loot_tables/blocks/wooden_frame_stairs.json

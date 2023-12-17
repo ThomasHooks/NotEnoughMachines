@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "notenoughmachines:vermilion_ingot",
+  "ingredient": {
+    "item": "notenoughmachines:crushed_vermilion"
+  },
+  "result": "notenoughmachines:vermilion_ingot"
+}

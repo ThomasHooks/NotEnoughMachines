@@ -70,6 +70,10 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
+        slabBlock(((SlabBlock) AllBlocks.WOODEN_FRAME_SLAB.get()),
+                blockTexture(AllBlocks.WOODEN_FRAME.get()),
+                blockTexture(AllBlocks.WOODEN_FRAME.get())
+        );
 
         //Stairs
         //--------------------------------------------------------------------------------------------------------------
@@ -83,6 +87,9 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.WOODEN_FRAME_STAIRS.get()),
+                blockTexture(AllBlocks.WOODEN_FRAME.get())
         );
 
         //Walls

@@ -1,6 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.common.config.CommonConfigs;
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

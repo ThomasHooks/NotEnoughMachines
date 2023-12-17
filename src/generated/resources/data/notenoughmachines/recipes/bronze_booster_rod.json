@@ -3,20 +3,20 @@
   "category": "misc",
   "group": "notenoughmachines:bronze_booster_rod",
   "key": {
-    "G": {
-      "item": "notenoughmachines:gold_rod"
-    },
-    "I": {
+    "b": {
       "item": "notenoughmachines:bronze_rod"
     },
-    "R": {
-      "item": "minecraft:redstone"
+    "g": {
+      "item": "notenoughmachines:gold_rod"
+    },
+    "v": {
+      "item": "notenoughmachines:vermilion_rod"
     }
   },
   "pattern": [
-    "IG ",
-    "IGR",
-    "IG "
+    "bg ",
+    "bgv",
+    "bg "
   ],
   "result": {
     "count": 3,

@@ -68,7 +68,7 @@ public class LockingRailBlock extends RedstoneRailBlock implements EntityBlock
         {
             toolTips.add(Component.literal(""));
             toolTips.add(Component.literal("Prevents minecarts from moving when not receiving a redstone signal").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("Locked minecarts are boosted in the direction it was traveling in When powered with a redstone signal").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.literal("When powered with redstone locked minecarts are boosted in the direction it was traveling in").withStyle(ChatFormatting.GRAY));
         }
         else
             toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));

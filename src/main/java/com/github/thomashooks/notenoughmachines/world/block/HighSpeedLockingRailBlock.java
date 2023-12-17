@@ -1,6 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.common.config.CommonConfigs;
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -33,7 +33,7 @@ public class HighSpeedLockingRailBlock extends LockingRailBlock
         {
             toolTips.add(Component.literal(""));
             toolTips.add(Component.literal("Prevents minecarts from moving when not receiving a redstone signal").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("Locked minecarts are boosted in the direction it was traveling in When powered with a redstone signal").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.literal("When powered with redstone locked minecarts are boosted in the direction it was traveling in").withStyle(ChatFormatting.GRAY));
             toolTips.add(Component.literal("Minecarts will move 200% faster!").withStyle(ChatFormatting.GRAY));
         }
         else

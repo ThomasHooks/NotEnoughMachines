@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:wind_wheel",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:wind_wheel_sail"
+    },
+    "x": {
+      "item": "notenoughmachines:axle"
+    }
+  },
+  "pattern": [
+    "# #",
+    " x ",
+    "# #"
+  ],
+  "result": {
+    "item": "notenoughmachines:wind_wheel"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:redstone_valve",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:tin_plate"
+    },
+    "e": {
+      "item": "minecraft:redstone_torch"
+    },
+    "p": {
+      "item": "notenoughmachines:vermilion_plate"
+    },
+    "|": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    "|p|",
+    "|p|",
+    "#e#"
+  ],
+  "result": {
+    "item": "notenoughmachines:redstone_valve"
+  },
+  "show_notification": true
+}

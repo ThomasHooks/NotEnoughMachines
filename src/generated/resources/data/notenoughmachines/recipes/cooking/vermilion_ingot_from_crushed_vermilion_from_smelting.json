@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "notenoughmachines:vermilion_ingot",
+  "ingredient": {
+    "item": "notenoughmachines:crushed_vermilion"
+  },
+  "result": "notenoughmachines:vermilion_ingot"
+}

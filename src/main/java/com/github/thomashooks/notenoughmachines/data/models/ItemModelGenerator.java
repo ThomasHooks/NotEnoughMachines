@@ -44,6 +44,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.CRUSHED_GOLD_ORE);
         simpleItemModel(AllItems.CRUSHED_IRON_ORE);
         simpleItemModel(AllItems.CRUSHED_TIN_ORE);
+        simpleItemModel(AllItems.CRUSHED_VERMILION);
         simpleItemModel(AllItems.FIRE_BRICK);
         simpleBlockItemModel(AllBlocks.FIRE_BRICKS_SLAB);
         simpleBlockItemModel(AllBlocks.FIRE_BRICKS_STAIRS);
@@ -84,16 +85,21 @@ public class ItemModelGenerator extends ItemModelProvider
         wallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
         simpleItemModel(AllItems.RAILROAD_TIE);
         simpleItemModel(AllItems.RAW_TIN);
-        simpleItemModel(AllItems.REDSTONE_COLLECTOR);
         simpleItemModel(AllItems.REDSTONE_EMITTER);
+        simpleItemModel(AllItems.REDSTONE_VALVE);
         simpleItemModel(AllItems.IRON_ROLLS);
         simpleItemModel(AllItems.TIN_INGOT);
         simpleItemModel(AllItems.TIN_PLATE);
         simpleItemModel(AllItems.TIN_ROD);
+        simpleItemModel(AllItems.VERMILION_INGOT);
+        simpleItemModel(AllItems.VERMILION_PLATE);
+        simpleItemModel(AllItems.VERMILION_ROD);
         simpleBlockItemModel(AllBlocks.WATER_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL_BLADE);
         simpleItemModel(AllItems.WIND_WHEEL_SAIL);
+        simpleBlockItemModel(AllBlocks.WOODEN_FRAME_SLAB);
+        simpleBlockItemModel(AllBlocks.WOODEN_FRAME_STAIRS);
     }
 
     public ItemModelBuilder simpleItemModel(RegistryObject<? extends Item> itemIn)

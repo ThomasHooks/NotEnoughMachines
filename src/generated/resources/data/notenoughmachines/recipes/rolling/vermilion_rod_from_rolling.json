@@ -1,0 +1,12 @@
+{
+  "type": "notenoughmachines:rolling",
+  "group": "notenoughmachines:vermilion_rod",
+  "ingredient": {
+    "item": "notenoughmachines:vermilion_plate"
+  },
+  "processtime": 300,
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:vermilion_rod"
+  }
+}
