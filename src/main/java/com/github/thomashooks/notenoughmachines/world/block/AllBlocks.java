@@ -33,7 +33,7 @@ public class AllBlocks
                     .mapColor(MapColor.COLOR_ORANGE)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresCorrectToolForDrops()
-                    .strength(3.0F, 6.0F)
+                    .strength(5.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
     public static final RegistryObject<Block> BUFFER_STOP_RAIL = BLOCKS.register("buffer_stop_rail",
@@ -42,6 +42,12 @@ public class AllBlocks
                     .sound(SoundType.METAL)
                     .noOcclusion()
                     .isRedstoneConductor(AllBlocks::always)
+            ));
+    public static final RegistryObject<Block> CHIME_RAIL = BLOCKS.register("chime_rail",
+            ()-> new ChimeRailBlock(Block.Properties.of()
+                    .noCollission()
+                    .strength(0.7F)
+                    .sound(SoundType.METAL)
             ));
     public static final RegistryObject<Block> COKE_BLOCK = BLOCKS.register("coke_block",
             ()-> new Block(Block.Properties.of()
@@ -188,6 +194,9 @@ public class AllBlocks
                     .noOcclusion()
                     .isRedstoneConductor(AllBlocks::always)
             ));
+    public static final RegistryObject<Block> HIGH_SPEED_CHIME_RAIL = BLOCKS.register("high_speed_chime_rail",
+            ()-> new HighSpeedChimeRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ));
     public static final RegistryObject<Block> HIGH_SPEED_CROSSOVER_RAIL = BLOCKS.register("high_speed_crossover_rail",
             ()-> new HighSpeedCrossoverRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
@@ -293,6 +302,15 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 3.0F) //, UniformInt.of(0, 1)
             ));
+    public static final RegistryObject<Block> VERMILION_BLOCK = BLOCKS.register("vermilion_block",
+            ()-> new PoweredBlock(Block.Properties.of()
+                    .mapColor(MapColor.COLOR_RED)
+                    .requiresCorrectToolForDrops()
+                    .strength(5.0F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .lightLevel( (state) -> { return 7; })
+                    .isRedstoneConductor(AllBlocks::never)
+            ));
     public static final RegistryObject<Block> WATER_WHEEL = BLOCKS.register("water_wheel",
             ()-> new WaterWheelBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOD)
@@ -335,6 +353,7 @@ public class AllBlocks
     public static String getName(Block block) { return ForgeRegistries.BLOCKS.getKey(block).getPath(); }
 
     public static boolean always(BlockState state, BlockGetter blockGetter, BlockPos pos) { return true; }
+    public static boolean never(BlockState state, BlockGetter blockGetter, BlockPos pos) { return false; }
 
     protected static ToIntFunction<BlockState> litBlockEmission(int lightLevel)
     {

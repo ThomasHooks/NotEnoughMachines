@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:vermilion_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:vermilion_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:vermilion_block"
+  },
+  "show_notification": true
+}

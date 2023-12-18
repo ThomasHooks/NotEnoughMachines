@@ -3,6 +3,7 @@
     "notenoughmachines:axle",
     "notenoughmachines:bronze_block",
     "notenoughmachines:buffer_stop_rail",
+    "notenoughmachines:chime_rail",
     "notenoughmachines:large_cogwheel",
     "notenoughmachines:small_cogwheel",
     "notenoughmachines:coke_block",
@@ -22,6 +23,7 @@
     "notenoughmachines:gearbox",
     "notenoughmachines:high_speed_activator_rail",
     "notenoughmachines:high_speed_buffer_stop_rail",
+    "notenoughmachines:high_speed_chime_rail",
     "notenoughmachines:high_speed_crossover_rail",
     "notenoughmachines:high_speed_detector_rail",
     "notenoughmachines:high_speed_locking_rail",
@@ -40,6 +42,7 @@
     "notenoughmachines:trip_hammer",
     "notenoughmachines:tin_ore",
     "notenoughmachines:tin_block",
+    "notenoughmachines:vermilion_block",
     "notenoughmachines:water_wheel",
     "notenoughmachines:wind_wheel",
     "notenoughmachines:wooden_frame"

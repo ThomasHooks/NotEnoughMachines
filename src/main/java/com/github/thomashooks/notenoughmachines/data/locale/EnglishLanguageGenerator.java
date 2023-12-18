@@ -82,6 +82,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.COGWHEEL_SMALL, "Small Cogwheel");
         addBlock(AllBlocks.COKE_BLOCK, "Block of Coke");
         addBlock(AllBlocks.BUFFER_STOP_RAIL, "Buffer Stop Rail");
+        addBlock(AllBlocks.CHIME_RAIL, "Chime Rail");
         addBlock(AllBlocks.COKE_OVEN, "Coke Oven");
         addBlock(AllBlocks.CROSSOVER_RAIL, "Crossover Rail");
         addBlock(AllBlocks.ENCLOSED_AXLE, "Enclosed Axle");
@@ -99,6 +100,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.FLUXSTONE_WALL, "Fluxstone Wall");
         addBlock(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL, "High-Speed Activator Rail");
         addBlock(AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL, "High-Speed Buffer Stop Rail");
+        addBlock(AllBlocks.HIGH_SPEED_CHIME_RAIL, "High-Speed Chime Rail");
         addBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL, "High-Speed Crossover Rail");
         addBlock(AllBlocks.HIGH_SPEED_DETECTOR_RAIL, "High-Speed Detector Rail");
         addBlock(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL, "High-Speed One-Way Rail");
@@ -118,6 +120,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.TIN_BLOCK, "Block of Tin");
         addBlock(AllBlocks.TRIP_HAMMER, "Trip Hammer");
         addBlock(AllBlocks.TIN_ORE, "Tin Ore");
+        addBlock(AllBlocks.VERMILION_BLOCK, "Block of Vermilion");
         addBlock(AllBlocks.WATER_WHEEL, "Water Wheel");
         addBlock(AllBlocks.WIND_WHEEL, "Wind Wheel");
         addBlock(AllBlocks.WOODEN_FRAME, "Wooden Frame");

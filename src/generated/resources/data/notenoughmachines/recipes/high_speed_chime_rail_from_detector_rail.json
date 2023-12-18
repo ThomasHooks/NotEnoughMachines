@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:high_speed_chime_rail",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:high_speed_detector_rail"
+    },
+    {
+      "item": "minecraft:note_block"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:high_speed_chime_rail"
+  }
+}

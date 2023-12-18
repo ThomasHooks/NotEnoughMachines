@@ -32,6 +32,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.AXLE.get());
         dropSelf(AllBlocks.BRONZE_BLOCK.get());
         dropSelf(AllBlocks.BUFFER_STOP_RAIL.get());
+        dropSelf(AllBlocks.CHIME_RAIL.get());
         add(AllBlocks.COGWHEEL_LARGE.get(), (block) -> { return this.createSinglePropConditionTable(block, CogwheelLargeBlock.COGWHEEL_PART, MultiBlockPart3x1x3.CENTER); });
         dropSelf(AllBlocks.COGWHEEL_SMALL.get());
         dropSelf(AllBlocks.COKE_BLOCK.get());
@@ -54,6 +55,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.HIGH_SPEED_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL.get());
+        dropSelf(AllBlocks.HIGH_SPEED_CHIME_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get());
@@ -72,6 +74,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         add(AllBlocks.TRIP_HAMMER.get(), (block) -> { return this.createSinglePropConditionTable(block, TripHammerBlock.PART, MultiBlockPart1x1x4.BOTTOM); });
         dropSelf(AllBlocks.TIN_BLOCK.get());
         this.add(AllBlocks.TIN_ORE.get(), (block) -> { return this.createOreDrop(block, AllItems.RAW_TIN.get()); });
+        dropSelf(AllBlocks.VERMILION_BLOCK.get());
         dropSelf(AllBlocks.WATER_WHEEL.get());
         dropSelf(AllBlocks.WIND_WHEEL.get());
         dropSelf(AllBlocks.WOODEN_FRAME.get());

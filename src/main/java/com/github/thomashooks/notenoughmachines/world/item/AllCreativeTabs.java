@@ -20,14 +20,15 @@ public class AllCreativeTabs
                     {
                         //Building Blocks - full
                         output.accept(AllItems.BRONZE_BLOCK.get());
-                        output.accept(AllItems.TIN_BLOCK.get());
-                        output.accept(AllItems.COPPER_PLATE_BLOCK.get());
-                        output.accept(AllItems.IRON_PLATE_BLOCK.get());
                         output.accept(AllItems.COKE_BLOCK.get());
-                        output.accept(AllItems.LINEN_BLOCK.get());
+                        output.accept(AllItems.COPPER_PLATE_BLOCK.get());
                         output.accept(AllItems.FIRE_BRICKS.get());
                         output.accept(AllItems.FLUXSTONE.get());
+                        output.accept(AllItems.IRON_PLATE_BLOCK.get());
+                        output.accept(AllItems.LINEN_BLOCK.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE.get());
+                        output.accept(AllItems.TIN_BLOCK.get());
+                        output.accept(AllItems.VERMILION_BLOCK.get());
                         output.accept(AllItems.WOODEN_FRAME.get());
                         //Building Blocks - slabs
                         output.accept(AllItems.FIRE_BRICKS_SLAB.get());
@@ -65,11 +66,13 @@ public class AllCreativeTabs
                         output.accept(AllItems.FILTER.get());
                         //Mine Cart Rails
                         output.accept(AllItems.BUFFER_STOP_RAIL.get());
+                        output.accept(AllItems.CHIME_RAIL.get());
                         output.accept(AllItems.CROSSOVER_RAIL.get());
                         output.accept(AllItems.LOCKING_RAIL.get());
                         output.accept(AllItems.ONE_WAY_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_CHIME_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_CROSSOVER_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_ACTIVATOR_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_DETECTOR_RAIL.get());

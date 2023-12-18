@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-16T10:59:57.9160115	Item Models: notenoughmachines
+// 1.20.1	2023-12-17T17:27:14.2522373	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 2d7ae8c917bd1921904b45d2d4f63225a67d4697 assets/notenoughmachines/models/item/bronze_booster_rod.json
@@ -6,6 +6,7 @@
 354deb017bb1b8685da86ad6b53addbd269f5849 assets/notenoughmachines/models/item/bronze_plate.json
 f7991298a1ffe16a1012f6006420d6505dbdf392 assets/notenoughmachines/models/item/bronze_rod.json
 4e29c334ba52f9c92c4af823acf7f02ded7a0cae assets/notenoughmachines/models/item/buffer_stop_rail.json
+7be23b05dc7412d2871232404be3b87f04c26f15 assets/notenoughmachines/models/item/chime_rail.json
 4d33ef5d465f7d04331d08e7ea340e2c55cb2269 assets/notenoughmachines/models/item/coke.json
 548fc6a9c10583c38041226c3461bcc2838e8845 assets/notenoughmachines/models/item/coke_oven.json
 266856513b6430ed032f68b3910dbae9bf902bdb assets/notenoughmachines/models/item/conjunctioner.json
@@ -38,6 +39,7 @@ aebaea7f903ebcade52120b199f0b1b58d514df8 assets/notenoughmachines/models/item/go
 2855a3e4fb0b5604d76ae732111cf9ca71778929 assets/notenoughmachines/models/item/heavy_bronze_stamp.json
 53d1a288f212699f19c18c51e7cb848a3340d521 assets/notenoughmachines/models/item/high_speed_activator_rail.json
 d3d07b41d573592db5faf2bc8dd714702033f31f assets/notenoughmachines/models/item/high_speed_buffer_stop_rail.json
+ce9a6ebfdbdf38f3247ca803f26e36824bb8a356 assets/notenoughmachines/models/item/high_speed_chime_rail.json
 21063ea101a040770ae9584e61c8b8b9d655ec82 assets/notenoughmachines/models/item/high_speed_crossover_rail.json
 a2ad4025473ed80f3b6fd999db2f6bac33c8c93e assets/notenoughmachines/models/item/high_speed_detector_rail.json
 ea1dcbf3a177d574b82e55f60f97335b08dff4f3 assets/notenoughmachines/models/item/high_speed_locking_rail.json

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:chime_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "n": {
+      "item": "minecraft:note_block"
+    },
+    "p": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "|": {
+      "item": "notenoughmachines:tin_rod"
+    }
+  },
+  "pattern": [
+    "|p|",
+    "|-|",
+    "|n|"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:chime_rail"
+  },
+  "show_notification": true
+}

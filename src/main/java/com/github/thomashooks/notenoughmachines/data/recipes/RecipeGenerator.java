@@ -240,6 +240,13 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.COKE.get()), has(AllItems.COKE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":torch_from_coke");
 
+        //Vermilion Ingot
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.VERMILION_INGOT.get(), 9)
+                .requires(AllItems.VERMILION_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":vermilion_ingot")
+                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_VERMILION.get()), has(AllItems.CRUSHED_VERMILION.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":vermilion_ingot_from_vermilion_block");
+
         //Wind Wheel Blade
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.WIND_WHEEL_BLADE.get(), 1)
                 .pattern("xx#")
@@ -330,6 +337,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('#', AllItems.TIN_INGOT.get())
                 .group(NotEnoughMachines.MOD_ID + ":tin_block")
                 .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer);
+
+        //Vermilion Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.VERMILION_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.VERMILION_INGOT.get())
+                .group(NotEnoughMachines.MOD_ID + ":vermilion_block")
+                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_VERMILION.get()), has(AllItems.CRUSHED_VERMILION.get()))
                 .save(consumer);
 
         //Wooden Frame
@@ -685,6 +702,36 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":buffer_stop_rail_from_tin");
 
+        //Chime Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CHIME_RAIL.get(), 6)
+                .pattern("|p|")
+                .pattern("|-|")
+                .pattern("|n|")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.STONE_PRESSURE_PLATE)
+                .define('n', Items.NOTE_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":chime_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CHIME_RAIL.get(), 6)
+                .pattern("|p|")
+                .pattern("|-|")
+                .pattern("|n|")
+                .define('|', AllItems.TIN_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.STONE_PRESSURE_PLATE)
+                .define('n', Items.NOTE_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":chime_rail")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":chime_rail_from_tin_rods");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CHIME_RAIL.get(), 1)
+                .requires(Items.DETECTOR_RAIL)
+                .requires(Items.NOTE_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":chime_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":chime_rail_from_detector_rail");
+
         //Crossover Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.CROSSOVER_RAIL.get(), 6)
                 .pattern("|||")
@@ -821,6 +868,25 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":buffer_stop_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
+
+        //High-Speed Buffer Chime Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_CHIME_RAIL.get(), 6)
+                .pattern("|p|")
+                .pattern("|-|")
+                .pattern("|n|")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('p', Items.STONE_PRESSURE_PLATE)
+                .define('n', Items.NOTE_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_chime_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.HIGH_SPEED_CHIME_RAIL.get(), 1)
+                .requires(AllItems.HIGH_SPEED_DETECTOR_RAIL.get())
+                .requires(Items.NOTE_BLOCK)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_chime_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":high_speed_chime_rail_from_detector_rail");
 
         //High-Speed Crossover Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_CROSSOVER_RAIL.get(), 6)

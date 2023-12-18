@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:vermilion_ingot",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:vermilion_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "notenoughmachines:vermilion_ingot"
+  }
+}

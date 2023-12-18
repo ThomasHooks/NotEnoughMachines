@@ -52,6 +52,7 @@ public class BlockStateGenerator extends BlockStateProvider
         );
         simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
         simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
+        simpleCubeBlockWithItem(AllBlocks.VERMILION_BLOCK);
         simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
 
         //Slabs
@@ -115,6 +116,10 @@ public class BlockStateGenerator extends BlockStateProvider
 
         //Rails
         //--------------------------------------------------------------------------------------------------------------
+        activeRailBlock(AllBlocks.CHIME_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/chime_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/chime_rail_on")
+        );
         passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail")
         );
@@ -129,6 +134,10 @@ public class BlockStateGenerator extends BlockStateProvider
         activeRailBlock(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_activator_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_activator_rail_on")
+        );
+        activeRailBlock(AllBlocks.HIGH_SPEED_CHIME_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_chime_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_chime_rail_on")
         );
         passiveStraightRailBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_crossover_rail")
