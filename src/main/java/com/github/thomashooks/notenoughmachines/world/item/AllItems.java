@@ -69,6 +69,7 @@ public class AllItems
     public static final RegistryObject<Item> HIGH_SPEED_DETECTOR_RAIL = ITEMS.register("high_speed_detector_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_ONE_WAY_RAIL = ITEMS.register("high_speed_one_way_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_POWERED_RAIL = ITEMS.register("high_speed_powered_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> HIGH_SPEED_LIMITER_RAIL = ITEMS.register("high_speed_limiter_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_LOCKING_RAIL = ITEMS.register("high_speed_locking_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_RAIL = ITEMS.register("high_speed_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", ()-> new Item(new Item.Properties()));
@@ -86,6 +87,7 @@ public class AllItems
                     .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).build())
                     .stacksTo(16)
             ));
+    public static final RegistryObject<Item> LIMITER_RAIL = ITEMS.register("limiter_rail", ()-> new BlockItem(AllBlocks.LIMITER_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> LOCKING_RAIL = ITEMS.register("locking_rail", ()-> new BlockItem(AllBlocks.LOCKING_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> MILLSTONE = ITEMS.register("millstone", ()-> new BlockItem(AllBlocks.MILLSTONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ONE_WAY_RAIL = ITEMS.register("one_way_rail", ()-> new BlockItem(AllBlocks.ONE_WAY_RAIL.get(), new Item.Properties()));
@@ -106,6 +108,7 @@ public class AllItems
     public static final RegistryObject<Item> TIN_ROD = ITEMS.register("tin_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TRIP_HAMMER = ITEMS.register("trip_hammer", ()-> new BlockItem(AllBlocks.TRIP_HAMMER.get(), new Item.Properties()));
     public static final RegistryObject<Item> VERMILION_BLOCK = ITEMS.register("vermilion_block", ()-> new BlockItem(AllBlocks.VERMILION_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> VERMILION_PRESSURE_PLATE = ITEMS.register("vermilion_pressure_plate", ()-> new BlockItem(AllBlocks.VERMILION_PRESSURE_PLATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> VERMILION_INGOT = ITEMS.register("vermilion_ingot", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> VERMILION_PLATE = ITEMS.register("vermilion_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> VERMILION_ROD = ITEMS.register("vermilion_rod", ()-> new Item(new Item.Properties()));

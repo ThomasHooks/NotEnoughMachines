@@ -4,6 +4,7 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.OneWayRailBlock;
+import com.github.thomashooks.notenoughmachines.world.block.state.properties.AllBlockStateProperties;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -114,6 +115,12 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side")
         );
 
+        //Redstone
+        //--------------------------------------------------------------------------------------------------------------
+        pressurePlateBlock(AllBlocks.VERMILION_PRESSURE_PLATE.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/vermilion_block")
+        );
+
         //Rails
         //--------------------------------------------------------------------------------------------------------------
         activeRailBlock(AllBlocks.CHIME_RAIL.get(),
@@ -146,6 +153,13 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_detector_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_detector_rail_on")
         );
+        fourSpeedRailBlock(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_1tick_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_2tick_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_3tick_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_4tick_on")
+        );
         activeRailBlock(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_locking_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_locking_rail_on")
@@ -157,6 +171,13 @@ public class BlockStateGenerator extends BlockStateProvider
         activeRailBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
+        );
+        fourSpeedRailBlock(AllBlocks.LIMITER_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_1tick_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_2tick_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_3tick_on"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_4tick_on")
         );
         activeRailBlock(AllBlocks.LOCKING_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/locking_rail"),
@@ -198,6 +219,15 @@ public class BlockStateGenerator extends BlockStateProvider
                     .rotationY(((int) facing.toYRot() + 180) % 360)
                     .build();
         });
+    }
+
+    public void pressurePlateBlock(Block block, ResourceLocation texture)
+    {
+        ModelFile pressurePlate = models().pressurePlate(AllBlocks.getName(block), texture);
+        ModelFile pressurePlateDown = models().pressurePlateDown(AllBlocks.getName(block) + "_down", texture);
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.POWERED, true).addModels(new ConfiguredModel(pressurePlateDown))
+                .partialState().with(BlockStateProperties.POWERED, false).addModels(new ConfiguredModel(pressurePlate));
     }
 
     private void passiveStraightRailBlock(Block block, ResourceLocation top)
@@ -264,6 +294,93 @@ public class BlockStateGenerator extends BlockStateProvider
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_SOUTH).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedSWOn).build())
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).with(BlockStateProperties.POWERED, false).addModels(ConfiguredModel.builder().modelFile(railRaisedSW).rotationY(90).build())
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedSWOn).rotationY(90).build());
+    }
+
+    private void fourSpeedRailBlock(Block block, ResourceLocation off, ResourceLocation onTick1, ResourceLocation onTick2, ResourceLocation onTick3, ResourceLocation onTick4)
+    {
+        ModelFile rail = rail(AllBlocks.getName(block), off);
+        ModelFile railRaisedNE = railRaised(AllBlocks.getName(block) + "_raised_ne", off, true);
+        ModelFile railRaisedSW = railRaised(AllBlocks.getName(block) + "_raised_sw", off, false);
+
+        ModelFile railOnTick1 = rail(AllBlocks.getName(block) + "_on_tick1", onTick1);
+        ModelFile railRaisedNEOnTick1 = railRaised(AllBlocks.getName(block) + "_on_tick1_raised_ne", onTick1, true);
+        ModelFile railRaisedSWOnTick1 = railRaised(AllBlocks.getName(block) + "_on_tick1_raised_sw", onTick1, false);
+
+        ModelFile railOnTick2 = rail(AllBlocks.getName(block) + "_on_tick2", onTick2);
+        ModelFile railRaisedNEOnTick2 = railRaised(AllBlocks.getName(block) + "_on_tick2_raised_ne", onTick2, true);
+        ModelFile railRaisedSWOnTick2 = railRaised(AllBlocks.getName(block) + "_on_tick2_raised_sw", onTick2, false);
+
+        ModelFile railOnTick3 = rail(AllBlocks.getName(block) + "_on_tick3", onTick3);
+        ModelFile railRaisedNEOnTick3 = railRaised(AllBlocks.getName(block) + "_on_tick3_raised_ne", onTick3, true);
+        ModelFile railRaisedSWOnTick3 = railRaised(AllBlocks.getName(block) + "_on_tick3_raised_sw", onTick3, false);
+
+        ModelFile railOnTick4 = rail(AllBlocks.getName(block) + "_on_tick4", onTick4);
+        ModelFile railRaisedNEOnTick4 = railRaised(AllBlocks.getName(block) + "_on_tick4_raised_ne", onTick4, true);
+        ModelFile railRaisedSWOnTick4 = railRaised(AllBlocks.getName(block) + "_on_tick4_raised_sw", onTick4, false);
+
+        getVariantBuilder(block).forAllStatesExcept( state ->
+        {
+            int tick = state.getValue(AllBlockStateProperties.SPEED);
+            RailShape shape = state.getValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT);
+            boolean powered = state.getValue(BlockStateProperties.POWERED);
+            ModelFile modelFile = null;
+            if (powered)
+            {
+                switch (shape)
+                {
+                    case ASCENDING_NORTH, ASCENDING_EAST ->
+                    {
+                        switch (tick)
+                        {
+                            case 1 -> modelFile = railRaisedNEOnTick1;
+                            case 2 -> modelFile = railRaisedNEOnTick2;
+                            case 3-> modelFile = railRaisedNEOnTick3;
+                            case 4 -> modelFile = railRaisedNEOnTick4;
+                        }
+                    }
+                    case ASCENDING_SOUTH, ASCENDING_WEST ->
+                    {
+                        switch (tick)
+                        {
+                            case 1 -> modelFile = railRaisedSWOnTick1;
+                            case 2 -> modelFile = railRaisedSWOnTick2;
+                            case 3-> modelFile = railRaisedSWOnTick3;
+                            case 4 -> modelFile = railRaisedSWOnTick4;
+                        }
+                    }
+                    default ->
+                    {
+                        switch (tick)
+                        {
+                            case 1 -> modelFile = railOnTick1;
+                            case 2 -> modelFile = railOnTick2;
+                            case 3-> modelFile = railOnTick3;
+                            case 4 -> modelFile = railOnTick4;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                switch (shape)
+                {
+                    case ASCENDING_NORTH, ASCENDING_EAST -> modelFile = railRaisedNE;
+                    case ASCENDING_SOUTH, ASCENDING_WEST ->modelFile = railRaisedSW;
+                    default -> modelFile = rail;
+                }
+            }
+
+            int yRot = switch (shape)
+            {
+                case EAST_WEST, ASCENDING_EAST, ASCENDING_WEST -> 90;
+                default -> 0;
+            };
+
+            return ConfiguredModel.builder()
+                    .modelFile(modelFile)
+                    .rotationY((yRot))
+                    .build();
+        }, BaseRailBlock.WATERLOGGED);
     }
 
     private void directionalRailBlock(Block block, ResourceLocation off, ResourceLocation on)

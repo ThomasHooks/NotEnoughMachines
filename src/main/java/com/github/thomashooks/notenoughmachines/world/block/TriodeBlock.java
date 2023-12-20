@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.world.block.state.InputDualType;
-import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
+import com.github.thomashooks.notenoughmachines.world.block.state.properties.InputDualType;
+import com.github.thomashooks.notenoughmachines.world.block.state.properties.AllBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;

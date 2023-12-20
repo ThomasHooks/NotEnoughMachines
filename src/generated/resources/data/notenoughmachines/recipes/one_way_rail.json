@@ -6,7 +6,7 @@
     "-": {
       "item": "notenoughmachines:railroad_tie"
     },
-    "R": {
+    "r": {
       "item": "minecraft:repeater"
     },
     "|": {
@@ -14,9 +14,9 @@
     }
   },
   "pattern": [
+    "|r|",
     "|-|",
-    "|R|",
-    "|-|"
+    "|r|"
   ],
   "result": {
     "count": 6,

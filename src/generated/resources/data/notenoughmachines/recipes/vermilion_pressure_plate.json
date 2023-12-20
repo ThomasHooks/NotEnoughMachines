@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:vermilion_pressure_plate",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:vermilion_plate"
+    }
+  },
+  "pattern": [
+    "=="
+  ],
+  "result": {
+    "item": "notenoughmachines:vermilion_pressure_plate"
+  },
+  "show_notification": true
+}

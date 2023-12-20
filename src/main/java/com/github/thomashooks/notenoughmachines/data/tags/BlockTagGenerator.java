@@ -66,10 +66,12 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_CHIME_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
+                AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.LIMITER_RAIL.get(),
                 AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.IRON_PLATE_BLOCK.get(),
                 AllBlocks.MILLSTONE.get(),
@@ -122,10 +124,12 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_CHIME_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
+                AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.LIMITER_RAIL.get(),
                 AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );
@@ -138,10 +142,12 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_CHIME_RAIL.get(),
                 AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
+                AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.LIMITER_RAIL.get(),
                 AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
         );

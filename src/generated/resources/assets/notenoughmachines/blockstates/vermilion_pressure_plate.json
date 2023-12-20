@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "notenoughmachines:block/vermilion_pressure_plate"
+    },
+    "powered=true": {
+      "model": "notenoughmachines:block/vermilion_pressure_plate_down"
+    }
+  }
+}

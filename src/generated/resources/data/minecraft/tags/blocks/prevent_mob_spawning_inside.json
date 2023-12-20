@@ -8,10 +8,12 @@
     "notenoughmachines:high_speed_chime_rail",
     "notenoughmachines:high_speed_crossover_rail",
     "notenoughmachines:high_speed_detector_rail",
+    "notenoughmachines:high_speed_limiter_rail",
     "notenoughmachines:high_speed_locking_rail",
     "notenoughmachines:high_speed_one_way_rail",
     "notenoughmachines:high_speed_powered_rail",
     "notenoughmachines:high_speed_rail",
+    "notenoughmachines:limiter_rail",
     "notenoughmachines:locking_rail",
     "notenoughmachines:one_way_rail"
   ]

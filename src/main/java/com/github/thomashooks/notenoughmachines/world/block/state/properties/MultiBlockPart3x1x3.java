@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.world.block.state;
+package com.github.thomashooks.notenoughmachines.world.block.state.properties;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import net.minecraft.util.Mth;

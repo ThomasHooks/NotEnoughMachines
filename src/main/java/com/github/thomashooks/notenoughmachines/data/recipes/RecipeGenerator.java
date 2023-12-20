@@ -469,6 +469,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Redstone
+        //--------------------------------------------------------------------------------------------------------------
+        //Vermilion Pressure Plate
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.VERMILION_PRESSURE_PLATE.get(), 1)
+                .pattern("==")
+                .define('=', AllItems.VERMILION_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":vermilion_pressure_plate")
+                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_VERMILION.get()), has(AllItems.CRUSHED_VERMILION.get()))
+                .save(consumer);
+
         //Power Connectors
         //--------------------------------------------------------------------------------------------------------------
 
@@ -811,15 +821,37 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //One-Way Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.ONE_WAY_RAIL.get(), 6)
+                .pattern("|r|")
                 .pattern("|-|")
-                .pattern("|R|")
-                .pattern("|-|")
+                .pattern("|r|")
                 .define('|', AllItems.BOOSTER_ROD.get())
                 .define('-', AllItems.RAILROAD_TIE.get())
-                .define('R', Items.REPEATER)
+                .define('r', Items.REPEATER)
                 .group(NotEnoughMachines.MOD_ID + ":one_way_rail")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
+
+        //Limiter Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.LIMITER_RAIL.get(), 6)
+                .pattern("|-|")
+                .pattern("|r|")
+                .pattern("|-|")
+                .define('|', AllItems.IRON_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('r', Items.REPEATER)
+                .group(NotEnoughMachines.MOD_ID + ":limiter_rail")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.LIMITER_RAIL.get(), 6)
+                .pattern("|-|")
+                .pattern("|r|")
+                .pattern("|-|")
+                .define('|', AllItems.TIN_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('r', Items.REPEATER)
+                .group(NotEnoughMachines.MOD_ID + ":limiter_rail")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":limiter_rail_from_tin_rods");
 
         //Locking Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.LOCKING_RAIL.get(), 6)
@@ -912,6 +944,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
+        //High-Speed Limiter Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_LIMITER_RAIL.get(), 6)
+                .pattern("|-|")
+                .pattern("|r|")
+                .pattern("|-|")
+                .define('|', AllItems.BRONZE_ROD.get())
+                .define('-', AllItems.RAILROAD_TIE.get())
+                .define('r', Items.REPEATER)
+                .group(NotEnoughMachines.MOD_ID + ":high_speed_limiter_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
         //High-Speed Locking Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_LOCKING_RAIL.get(), 6)
                 .pattern("|s|")
@@ -927,12 +971,12 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //High-Speed One-Way Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HIGH_SPEED_ONE_WAY_RAIL.get(), 6)
+                .pattern("|r|")
                 .pattern("|-|")
-                .pattern("|R|")
-                .pattern("|-|")
+                .pattern("|r|")
                 .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
                 .define('-', AllItems.RAILROAD_TIE.get())
-                .define('R', Items.REPEATER)
+                .define('r', Items.REPEATER)
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_one_way_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);

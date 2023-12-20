@@ -12,120 +12,162 @@ public class AllCreativeTabs
 {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, NotEnoughMachines.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> NEM_TAB =TABS.register("nem_tab",
+    public static final RegistryObject<CreativeModeTab> MAIN_TAB =TABS.register("main_tab",
             ()-> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup." + NotEnoughMachines.MOD_ID + ".nem_tab"))
+                    .title(Component.translatable("itemGroup." + NotEnoughMachines.MOD_ID + ".main_tab"))
                     .icon(AllItems.GEAR.get()::getDefaultInstance)
                     .displayItems((itemDisplayParameters, output) ->
                     {
-                        //Building Blocks - full
-                        output.accept(AllItems.BRONZE_BLOCK.get());
-                        output.accept(AllItems.COKE_BLOCK.get());
-                        output.accept(AllItems.COPPER_PLATE_BLOCK.get());
-                        output.accept(AllItems.FIRE_BRICKS.get());
-                        output.accept(AllItems.FLUXSTONE.get());
-                        output.accept(AllItems.IRON_PLATE_BLOCK.get());
-                        output.accept(AllItems.LINEN_BLOCK.get());
-                        output.accept(AllItems.POLISHED_FLUXSTONE.get());
-                        output.accept(AllItems.TIN_BLOCK.get());
-                        output.accept(AllItems.VERMILION_BLOCK.get());
+                        //Wood Blocks
+                        //Full block -> stairs -> slab -> fence/wall -> fence gate -> door -> trapdoor -> pressure plate -> button
                         output.accept(AllItems.WOODEN_FRAME.get());
-                        //Building Blocks - slabs
-                        output.accept(AllItems.FIRE_BRICKS_SLAB.get());
-                        output.accept(AllItems.FLUXSTONE_SLAB.get());
-                        output.accept(AllItems.POLISHED_FLUXSTONE_SLAB.get());
-                        output.accept(AllItems.WOODEN_FRAME_SLAB.get());
-                        //Building Blocks - stairs
-                        output.accept(AllItems.FIRE_BRICKS_STAIRS.get());
-                        output.accept(AllItems.FLUXSTONE_STAIRS.get());
-                        output.accept(AllItems.POLISHED_FLUXSTONE_STAIRS.get());
                         output.accept(AllItems.WOODEN_FRAME_STAIRS.get());
-                        //Building Blocks - fences
+                        output.accept(AllItems.WOODEN_FRAME_SLAB.get());
 
-                        //Building Blocks - walls
-                        output.accept(AllItems.FIRE_BRICKS_WALL.get());
+                        //Stone Blocks
+                        output.accept(AllItems.FLUXSTONE.get());
+                        output.accept(AllItems.FLUXSTONE_STAIRS.get());
+                        output.accept(AllItems.FLUXSTONE_SLAB.get());
                         output.accept(AllItems.FLUXSTONE_WALL.get());
+
+                        output.accept(AllItems.POLISHED_FLUXSTONE.get());
+                        output.accept(AllItems.POLISHED_FLUXSTONE_STAIRS.get());
+                        output.accept(AllItems.POLISHED_FLUXSTONE_SLAB.get());
                         output.accept(AllItems.POLISHED_FLUXSTONE_WALL.get());
+
+                        output.accept(AllItems.FIRE_BRICKS.get());
+                        output.accept(AllItems.FIRE_BRICKS_STAIRS.get());
+                        output.accept(AllItems.FIRE_BRICKS_SLAB.get());
+                        output.accept(AllItems.FIRE_BRICKS_WALL.get());
+
+                        //Fuel Blocks
+                        output.accept(AllItems.COKE_BLOCK.get());
+
+                        //Metal Blocks
+                        output.accept(AllItems.IRON_PLATE_BLOCK.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK.get());
+
+                        output.accept(AllItems.TIN_BLOCK.get());
+
+                        output.accept(AllItems.BRONZE_BLOCK.get());
+
+                        output.accept(AllItems.VERMILION_BLOCK.get());
+                        output.accept(AllItems.VERMILION_PRESSURE_PLATE.get());
+
+                        //Cloth Blocks
+                        output.accept(AllItems.LINEN_BLOCK.get());
+
                         //Ore Blocks
                         output.accept(AllItems.TIN_ORE.get());
-                        //Machine Blocks - power transfer
+
+                        //Machine Blocks - Power Transfer
                         output.accept(AllItems.AXLE.get());
                         output.accept(AllItems.COGWHEEL_SMALL.get());
                         output.accept(AllItems.COGWHEEL_LARGE.get());
                         output.accept(AllItems.ENCLOSED_AXLE.get());
                         output.accept(AllItems.GEARBOX.get());
-                        //Machine Blocks - power generators
+
+                        //Machine Blocks - Power Generators
                         output.accept(AllItems.WATER_WHEEL.get());
                         output.accept(AllItems.WIND_WHEEL.get());
-                        //Machine Blocks - mills/processors
+
+                        //Machine Blocks - Mills/Processors
                         output.accept(AllItems.COKE_OVEN.get());
                         output.accept(AllItems.MILLSTONE.get());
                         output.accept(AllItems.ROLLING_MILL.get());
                         output.accept(AllItems.TRIP_HAMMER.get());
+
                         //Machine Blocks - item transfer
                         output.accept(AllItems.FILTER.get());
-                        //Mine Cart Rails
-                        output.accept(AllItems.BUFFER_STOP_RAIL.get());
-                        output.accept(AllItems.CHIME_RAIL.get());
-                        output.accept(AllItems.CROSSOVER_RAIL.get());
-                        output.accept(AllItems.LOCKING_RAIL.get());
-                        output.accept(AllItems.ONE_WAY_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_CHIME_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_CROSSOVER_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_ACTIVATOR_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_DETECTOR_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_POWERED_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_LOCKING_RAIL.get());
-                        output.accept(AllItems.HIGH_SPEED_ONE_WAY_RAIL.get());
+
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
-                        //Crafting Items - Raw Ore
+
+                        //Minecart Rails
+                        output.accept(AllItems.CROSSOVER_RAIL.get());
+                        output.accept(AllItems.BUFFER_STOP_RAIL.get());
+                        output.accept(AllItems.LIMITER_RAIL.get());
+                        output.accept(AllItems.ONE_WAY_RAIL.get());
+                        output.accept(AllItems.LOCKING_RAIL.get());
+                        output.accept(AllItems.CHIME_RAIL.get());
+
+                        output.accept(AllItems.HIGH_SPEED_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_CROSSOVER_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_LIMITER_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_POWERED_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_ONE_WAY_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_LOCKING_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_DETECTOR_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_CHIME_RAIL.get());
+                        output.accept(AllItems.HIGH_SPEED_ACTIVATOR_RAIL.get());
+
+                        //Minecarts
+
+                        //Tools
+
+                        //Weapons
+
+                        //Armor
+
+                        //Food
+                        output.accept(AllItems.FLOUR.get());
+
+                        //Raw Ore
                         output.accept(AllItems.COKE.get());
                         output.accept(AllItems.RAW_TIN.get());
-                        //Crafting Items - Dust
-                        output.accept(AllItems.CRUSHED_BRONZE.get());
-                        output.accept(AllItems.CRUSHED_COPPER_ORE.get());
-                        output.accept(AllItems.CRUSHED_GOLD_ORE.get());
+
+                        //Raw Crushed Ore
                         output.accept(AllItems.CRUSHED_IRON_ORE.get());
+                        output.accept(AllItems.CRUSHED_COPPER_ORE.get());
                         output.accept(AllItems.CRUSHED_TIN_ORE.get());
+                        output.accept(AllItems.CRUSHED_BRONZE.get());
+                        output.accept(AllItems.CRUSHED_GOLD_ORE.get());
                         output.accept(AllItems.CRUSHED_VERMILION.get());
-                        output.accept(AllItems.FLUX.get());
-                        output.accept(AllItems.FLOUR.get());
-                        output.accept(AllItems.KAOLIN.get());
-                        //Crafting Items - Ingot/Brick
-                        output.accept(AllItems.FIRE_BRICK.get());
-                        output.accept(AllItems.BRONZE_INGOT.get());
+
+                        //Metal Ingots
                         output.accept(AllItems.TIN_INGOT.get());
+                        output.accept(AllItems.BRONZE_INGOT.get());
                         output.accept(AllItems.VERMILION_INGOT.get());
-                        //Crafting Items - Metal Plates
-                        output.accept(AllItems.BRONZE_PLATE.get());
-                        output.accept(AllItems.COPPER_PLATE.get());
-                        output.accept(AllItems.GOLD_PLATE.get());
+
+                        //Metal Plates
                         output.accept(AllItems.IRON_PLATE.get());
+                        output.accept(AllItems.COPPER_PLATE.get());
                         output.accept(AllItems.TIN_PLATE.get());
+                        output.accept(AllItems.BRONZE_PLATE.get());
+                        output.accept(AllItems.GOLD_PLATE.get());
                         output.accept(AllItems.VERMILION_PLATE.get());
-                        //Crafting Items - Metal Rods
-                        output.accept(AllItems.BRONZE_ROD.get());
-                        output.accept(AllItems.COPPER_ROD.get());
-                        output.accept(AllItems.GOLD_ROD.get());
+
+                        //Metal Rods
                         output.accept(AllItems.IRON_ROD.get());
+                        output.accept(AllItems.IRON_SCREW.get());
+                        output.accept(AllItems.COPPER_ROD.get());
                         output.accept(AllItems.TIN_ROD.get());
+                        output.accept(AllItems.BRONZE_ROD.get());
+                        output.accept(AllItems.GOLD_ROD.get());
                         output.accept(AllItems.VERMILION_ROD.get());
-                        //Crafting Items - Metal Misc
                         output.accept(AllItems.BOOSTER_ROD.get());
                         output.accept(AllItems.BRONZE_BOOSTER_ROD.get());
-                        output.accept(AllItems.HEAVY_BRONZE_STAMP.get());
-                        output.accept(AllItems.IRON_ROLLS.get());
-                        output.accept(AllItems.IRON_SCREW.get());
-                        //Crafting Items - Misc
+
+                        //Raw Dust Items
+                        output.accept(AllItems.FLUX.get());
+                        output.accept(AllItems.KAOLIN.get());
+
+                        //Bricks
+                        output.accept(AllItems.FIRE_BRICK.get());
+
+                        //Crop Items
                         output.accept(AllItems.FLAXSEED.get());
                         output.accept(AllItems.FLAX.get());
                         output.accept(AllItems.FLAX_STRING.get());
                         output.accept(AllItems.LINEN.get());
                         output.accept(AllItems.LINSEED_OIL.get());
+
+                        //Misc Crafting Items
                         output.accept(AllItems.GEAR.get());
+                        output.accept(AllItems.HEAVY_BRONZE_STAMP.get());
+                        output.accept(AllItems.IRON_ROLLS.get());
                         output.accept(AllItems.RAILROAD_TIE.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());
                         output.accept(AllItems.WIND_WHEEL_SAIL.get());

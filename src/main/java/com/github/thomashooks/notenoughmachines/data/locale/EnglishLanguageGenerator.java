@@ -71,7 +71,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.WIND_WHEEL_BLADE, "Wind Wheel Blade");
         addItem(AllItems.WIND_WHEEL_SAIL, "Wind Wheel Sail");
 
-        addItemGroup("nem_tab", "Not Enough Machines");
+        addItemGroup("main_tab", "Not Enough Machines");
     }
 
     private void addAllBlocks()
@@ -105,10 +105,12 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.HIGH_SPEED_DETECTOR_RAIL, "High-Speed Detector Rail");
         addBlock(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL, "High-Speed One-Way Rail");
         addBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL, "High-Speed Powered Rail");
+        addBlock(AllBlocks.HIGH_SPEED_LIMITER_RAIL, "High-Speed Limiter Rail");
         addBlock(AllBlocks.HIGH_SPEED_LOCKING_RAIL, "High-Speed Locking Rail");
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");
+        addBlock(AllBlocks.LIMITER_RAIL, "Limiter Rail");
         addBlock(AllBlocks.LOCKING_RAIL, "Locking Rail");
         addBlock(AllBlocks.MILLSTONE, "Millstone");
         addBlock(AllBlocks.ONE_WAY_RAIL, "One-Way Rail");
@@ -121,6 +123,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.TRIP_HAMMER, "Trip Hammer");
         addBlock(AllBlocks.TIN_ORE, "Tin Ore");
         addBlock(AllBlocks.VERMILION_BLOCK, "Block of Vermilion");
+        addBlock(AllBlocks.VERMILION_PRESSURE_PLATE, "Vermilion Pressure Plate");
         addBlock(AllBlocks.WATER_WHEEL, "Water Wheel");
         addBlock(AllBlocks.WIND_WHEEL, "Wind Wheel");
         addBlock(AllBlocks.WOODEN_FRAME, "Wooden Frame");

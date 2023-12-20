@@ -6,7 +6,7 @@ import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import com.github.thomashooks.notenoughmachines.common.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.RollingMillBlockEntity;
-import com.github.thomashooks.notenoughmachines.world.block.state.AllBlockStateProperties;
+import com.github.thomashooks.notenoughmachines.world.block.state.properties.AllBlockStateProperties;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalConnectionHelper;
 import com.github.thomashooks.notenoughmachines.world.power.MechanicalContext;
 import net.minecraft.ChatFormatting;

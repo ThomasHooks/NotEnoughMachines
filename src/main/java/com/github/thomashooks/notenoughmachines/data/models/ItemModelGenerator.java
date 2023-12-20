@@ -70,8 +70,10 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_DETECTOR_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ONE_WAY_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_POWERED_RAIL);
+        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_LIMITER_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_LOCKING_RAIL);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_RAIL);
+        simpleItemModelFromBlockTexture(AllItems.LIMITER_RAIL);
         simpleItemModelFromBlockTexture(AllItems.LOCKING_RAIL);
         simpleItemModel(AllItems.IRON_PLATE);
         simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
@@ -95,6 +97,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.TIN_ROD);
         simpleItemModel(AllItems.VERMILION_INGOT);
         simpleItemModel(AllItems.VERMILION_PLATE);
+        simpleBlockItemModel(AllBlocks.VERMILION_PRESSURE_PLATE);
         simpleItemModel(AllItems.VERMILION_ROD);
         simpleBlockItemModel(AllBlocks.WATER_WHEEL);
         simpleItemModel(AllItems.WIND_WHEEL);

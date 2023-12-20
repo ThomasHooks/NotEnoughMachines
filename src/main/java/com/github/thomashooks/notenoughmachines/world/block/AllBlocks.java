@@ -6,6 +6,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -206,6 +207,9 @@ public class AllBlocks
     public static final RegistryObject<Block> HIGH_SPEED_POWERED_RAIL = BLOCKS.register("high_speed_powered_rail",
             ()-> new HighSpeedPoweredRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
+    public static final RegistryObject<Block> HIGH_SPEED_LIMITER_RAIL = BLOCKS.register("high_speed_limiter_rail",
+            ()-> new HighSpeedLimiterRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ));
     public static final RegistryObject<Block> HIGH_SPEED_LOCKING_RAIL = BLOCKS.register("high_speed_locking_rail",
             ()-> new HighSpeedLockingRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
@@ -228,6 +232,12 @@ public class AllBlocks
                     .strength(0.8f, 2.0f)
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
+            ));
+    public static final RegistryObject<Block> LIMITER_RAIL = BLOCKS.register("limiter_rail",
+            ()-> new LimiterRailBlock(Block.Properties.of()
+                    .noCollission()
+                    .strength(0.7F)
+                    .sound(SoundType.METAL)
             ));
     public static final RegistryObject<Block> LOCKING_RAIL = BLOCKS.register("locking_rail",
             ()-> new LockingRailBlock(Block.Properties.of()
@@ -304,12 +314,20 @@ public class AllBlocks
             ));
     public static final RegistryObject<Block> VERMILION_BLOCK = BLOCKS.register("vermilion_block",
             ()-> new PoweredBlock(Block.Properties.of()
-                    .mapColor(MapColor.COLOR_RED)
+                    .mapColor(MapColor.FIRE)
                     .requiresCorrectToolForDrops()
                     .strength(5.0F, 6.0F)
                     .sound(SoundType.METAL)
                     .lightLevel( (state) -> { return 7; })
                     .isRedstoneConductor(AllBlocks::never)
+            ));
+    public static final RegistryObject<Block> VERMILION_PRESSURE_PLATE = BLOCKS.register("vermilion_pressure_plate",
+            ()-> new PressablePlateBlock(PressablePlateBlock.Sensitivity.PLAYERS, BlockSetType.IRON, Block.Properties.of()
+                    .mapColor(MapColor.FIRE)
+                    .forceSolidOn()
+                    .requiresCorrectToolForDrops()
+                    .noCollission().strength(0.5F)
+                    .pushReaction(PushReaction.DESTROY)
             ));
     public static final RegistryObject<Block> WATER_WHEEL = BLOCKS.register("water_wheel",
             ()-> new WaterWheelBlock(Block.Properties.of()

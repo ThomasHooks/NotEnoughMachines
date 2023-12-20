@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:high_speed_limiter_rail",
+  "key": {
+    "-": {
+      "item": "notenoughmachines:railroad_tie"
+    },
+    "r": {
+      "item": "minecraft:repeater"
+    },
+    "|": {
+      "item": "notenoughmachines:bronze_rod"
+    }
+  },
+  "pattern": [
+    "|-|",
+    "|r|",
+    "|-|"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:high_speed_limiter_rail"
+  },
+  "show_notification": true
+}
