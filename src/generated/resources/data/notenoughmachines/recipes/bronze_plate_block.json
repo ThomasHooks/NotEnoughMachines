@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:bronze_plate_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:bronze_plate"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "notenoughmachines:bronze_plate_block"
+  },
+  "show_notification": true
+}

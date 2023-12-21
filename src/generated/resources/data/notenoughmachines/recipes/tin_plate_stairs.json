@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:tin_plate_stairs",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:tin_plate_block"
+    }
+  },
+  "pattern": [
+    "=  ",
+    "== ",
+    "==="
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:tin_plate_stairs"
+  },
+  "show_notification": true
+}

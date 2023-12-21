@@ -37,6 +37,16 @@ public class AllBlocks
                     .strength(5.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> BRONZE_PLATE_BLOCK = BLOCKS.register("bronze_plate_block",
+            ()-> new RotatedPillarBlock(Block.Properties.copy(AllBlocks.BRONZE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> BRONZE_PLATE_SLAB = BLOCKS.register("bronze_plate_slab",
+            ()-> new SlabBlock(Block.Properties.copy(BRONZE_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> BRONZE_PLATE_STAIRS = BLOCKS.register("bronze_plate_stairs",
+            ()-> new StairBlock(() -> BRONZE_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(BRONZE_PLATE_BLOCK.get())
+            ));
     public static final RegistryObject<Block> BUFFER_STOP_RAIL = BLOCKS.register("buffer_stop_rail",
             ()-> new BufferStopRailBlock(Block.Properties.of()
                     .strength(1.05F)
@@ -99,6 +109,13 @@ public class AllBlocks
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB = BLOCKS.register("copper_plate_slab",
+            ()-> new SlabBlock(Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS = BLOCKS.register("copper_plate_stairs",
+            ()-> new StairBlock(() -> COPPER_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
     public static final RegistryObject<Block> ENCLOSED_AXLE = BLOCKS.register("enclosed_axle",
             ()-> new EnclosedAxleBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOD)
@@ -114,21 +131,18 @@ public class AllBlocks
                     .strength(2.0F, 6.0F)
             ));
     public static final RegistryObject<Block> FIRE_BRICKS_SLAB = BLOCKS.register("fire_bricks_slab",
-            ()-> new SlabBlock(Block.Properties
-                    .copy(FIRE_BRICKS.get())
+            ()-> new SlabBlock(Block.Properties.copy(FIRE_BRICKS.get())
                     .requiresCorrectToolForDrops()
                     .strength(2.0F, 6.0F)
             ));
     public static final RegistryObject<Block> FIRE_BRICKS_STAIRS = BLOCKS.register("fire_bricks_stairs",
             ()-> new StairBlock(() -> FIRE_BRICKS.get().defaultBlockState(),
-                    BlockBehaviour.Properties
-                            .copy(FIRE_BRICKS.get())
+                    BlockBehaviour.Properties.copy(FIRE_BRICKS.get())
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FIRE_BRICKS_WALL = BLOCKS.register("fire_bricks_wall",
-            ()-> new WallBlock(Block.Properties
-                    .copy(FIRE_BRICKS.get())
+            ()-> new WallBlock(Block.Properties.copy(FIRE_BRICKS.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
@@ -154,21 +168,18 @@ public class AllBlocks
                     .sound(SoundType.DEEPSLATE)
             ));
     public static final RegistryObject<Block> FLUXSTONE_SLAB = BLOCKS.register("fluxstone_slab",
-            ()-> new SlabBlock(Block.Properties
-                    .copy(FLUXSTONE.get())
+            ()-> new SlabBlock(Block.Properties.copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FLUXSTONE_STAIRS = BLOCKS.register("fluxstone_stairs",
             ()-> new StairBlock(() -> FLUXSTONE.get().defaultBlockState(),
-                    BlockBehaviour.Properties
-                            .copy(FLUXSTONE.get())
+                    BlockBehaviour.Properties.copy(FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> FLUXSTONE_WALL = BLOCKS.register("fluxstone_wall",
-            ()-> new WallBlock(Block.Properties
-                    .copy(FLUXSTONE.get())
+            ()-> new WallBlock(Block.Properties.copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
@@ -178,6 +189,16 @@ public class AllBlocks
                     .strength(1.8F, 2.0F)
                     .sound(SoundType.WOOD)
                     .noOcclusion()
+            ));
+    public static final RegistryObject<Block> GOLD_PLATE_BLOCK = BLOCKS.register("gold_plate_block",
+            ()-> new RotatedPillarBlock(Block.Properties.copy(Blocks.GOLD_BLOCK)
+            ));
+    public static final RegistryObject<Block> GOLD_PLATE_SLAB = BLOCKS.register("gold_plate_slab",
+            ()-> new SlabBlock(Block.Properties.copy(AllBlocks.GOLD_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> GOLD_PLATE_STAIRS = BLOCKS.register("gold_plate_stairs",
+            ()-> new StairBlock(() -> GOLD_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(GOLD_PLATE_BLOCK.get())
             ));
     public static final RegistryObject<Block> HIGH_SPEED_RAIL = BLOCKS.register("high_speed_rail",
             ()-> new HighSpeedRailBlock(Block.Properties.of()
@@ -225,6 +246,13 @@ public class AllBlocks
                     .strength(5.0F, 6.0F)
                     .sound(SoundType.METAL)
             ));
+    public static final RegistryObject<Block> IRON_PLATE_SLAB = BLOCKS.register("iron_plate_slab",
+            ()-> new SlabBlock(Block.Properties.copy(IRON_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> IRON_PLATE_STAIRS = BLOCKS.register("iron_plate_stairs",
+            ()-> new StairBlock(() -> IRON_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(IRON_PLATE_BLOCK.get())
+            ));
     public static final RegistryObject<Block> LINEN_BLOCK = BLOCKS.register("linen_block",
             ()-> new LinenBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOL)
@@ -259,27 +287,23 @@ public class AllBlocks
                     .sound(SoundType.METAL)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone",
-            ()-> new RotatedPillarBlock(Block.Properties
-                    .copy(FLUXSTONE.get())
+            ()-> new RotatedPillarBlock(Block.Properties.copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_SLAB = BLOCKS.register("polished_fluxstone_slab",
-            ()-> new SlabBlock(Block.Properties
-                    .copy(FLUXSTONE.get())
+            ()-> new SlabBlock(Block.Properties.copy(POLISHED_FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_STAIRS = BLOCKS.register("polished_fluxstone_stairs",
             ()-> new StairBlock(() -> POLISHED_FLUXSTONE.get().defaultBlockState(),
-                    BlockBehaviour.Properties
-                            .copy(FLUXSTONE.get())
+                    BlockBehaviour.Properties.copy(POLISHED_FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
                             .strength(1.5f, 5.0f)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_WALL = BLOCKS.register("polished_fluxstone_wall",
-            ()-> new WallBlock(Block.Properties
-                    .copy(FLUXSTONE.get())
+            ()-> new WallBlock(Block.Properties.copy(POLISHED_FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
             ));
@@ -297,6 +321,16 @@ public class AllBlocks
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.METAL)
+            ));
+    public static final RegistryObject<Block> TIN_PLATE_BLOCK = BLOCKS.register("tin_plate_block",
+            ()-> new RotatedPillarBlock(Block.Properties.copy(AllBlocks.TIN_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> TIN_PLATE_SLAB = BLOCKS.register("tin_plate_slab",
+            ()-> new SlabBlock(Block.Properties.copy(AllBlocks.TIN_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> TIN_PLATE_STAIRS = BLOCKS.register("tin_plate_stairs",
+            ()-> new StairBlock(() -> TIN_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(TIN_PLATE_BLOCK.get())
             ));
     public static final RegistryObject<Block> TRIP_HAMMER = BLOCKS.register("trip_hammer",
             ()-> new TripHammerBlock(Block.Properties.of()
@@ -352,14 +386,12 @@ public class AllBlocks
                     .ignitedByLava()
             ));
     public static final RegistryObject<Block> WOODEN_FRAME_SLAB = BLOCKS.register("wooden_frame_slab",
-            ()-> new SlabBlock(Block.Properties
-                    .copy(WOODEN_FRAME.get())
+            ()-> new SlabBlock(Block.Properties.copy(WOODEN_FRAME.get())
                     .strength(2.0F, 3.0F)
             ));
     public static final RegistryObject<Block> WOODEN_FRAME_STAIRS = BLOCKS.register("wooden_frame_stairs",
             ()-> new StairBlock(() -> WOODEN_FRAME.get().defaultBlockState(),
-                    BlockBehaviour.Properties
-                            .copy(WOODEN_FRAME.get())
+                    BlockBehaviour.Properties.copy(WOODEN_FRAME.get())
                             .strength(2.0F, 3.0F)
             ));
 

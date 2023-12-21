@@ -45,12 +45,26 @@ public class AllCreativeTabs
 
                         //Metal Blocks
                         output.accept(AllItems.IRON_PLATE_BLOCK.get());
+                        output.accept(AllItems.IRON_PLATE_STAIRS.get());
+                        output.accept(AllItems.IRON_PLATE_SLAB.get());
 
                         output.accept(AllItems.COPPER_PLATE_BLOCK.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB.get());
 
                         output.accept(AllItems.TIN_BLOCK.get());
+                        output.accept(AllItems.TIN_PLATE_BLOCK.get());
+                        output.accept(AllItems.TIN_PLATE_STAIRS.get());
+                        output.accept(AllItems.TIN_PLATE_SLAB.get());
 
                         output.accept(AllItems.BRONZE_BLOCK.get());
+                        output.accept(AllItems.BRONZE_PLATE_BLOCK.get());
+                        output.accept(AllItems.BRONZE_PLATE_STAIRS.get());
+                        output.accept(AllItems.BRONZE_PLATE_SLAB.get());
+
+                        output.accept(AllItems.GOLD_PLATE_BLOCK.get());
+                        output.accept(AllItems.GOLD_PLATE_STAIRS.get());
+                        output.accept(AllItems.GOLD_PLATE_SLAB.get());
 
                         output.accept(AllItems.VERMILION_BLOCK.get());
                         output.accept(AllItems.VERMILION_PRESSURE_PLATE.get());

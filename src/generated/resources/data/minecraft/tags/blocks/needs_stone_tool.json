@@ -1,9 +1,14 @@
 {
   "values": [
     "notenoughmachines:bronze_block",
+    "notenoughmachines:bronze_plate_block",
+    "notenoughmachines:bronze_plate_slab",
+    "notenoughmachines:bronze_plate_stairs",
     "notenoughmachines:coke_block",
     "notenoughmachines:coke_oven",
     "notenoughmachines:copper_plate_block",
+    "notenoughmachines:copper_plate_slab",
+    "notenoughmachines:copper_plate_stairs",
     "notenoughmachines:fire_bricks",
     "notenoughmachines:fire_bricks_slab",
     "notenoughmachines:fire_bricks_stairs",
@@ -12,13 +17,21 @@
     "notenoughmachines:fluxstone_slab",
     "notenoughmachines:fluxstone_stairs",
     "notenoughmachines:fluxstone_wall",
+    "notenoughmachines:gold_plate_block",
+    "notenoughmachines:gold_plate_slab",
+    "notenoughmachines:gold_plate_stairs",
     "notenoughmachines:iron_plate_block",
+    "notenoughmachines:iron_plate_slab",
+    "notenoughmachines:iron_plate_stairs",
     "notenoughmachines:polished_fluxstone",
     "notenoughmachines:polished_fluxstone_slab",
     "notenoughmachines:polished_fluxstone_stairs",
     "notenoughmachines:polished_fluxstone_wall",
     "notenoughmachines:vermilion_block",
     "notenoughmachines:tin_block",
-    "notenoughmachines:tin_ore"
+    "notenoughmachines:tin_ore",
+    "notenoughmachines:tin_plate_block",
+    "notenoughmachines:tin_plate_slab",
+    "notenoughmachines:tin_plate_stairs"
   ]
 }

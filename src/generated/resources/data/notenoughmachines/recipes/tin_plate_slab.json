@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:tin_plate_slab",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:tin_plate_block"
+    }
+  },
+  "pattern": [
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:tin_plate_slab"
+  },
+  "show_notification": true
+}

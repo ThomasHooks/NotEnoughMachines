@@ -27,6 +27,9 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.BOOSTER_ROD);
         simpleItemModel(AllItems.BRONZE_INGOT);
         simpleItemModel(AllItems.BRONZE_PLATE);
+        simpleBlockItemModel(AllBlocks.BRONZE_PLATE_BLOCK);
+        simpleBlockItemModel(AllBlocks.BRONZE_PLATE_SLAB);
+        simpleBlockItemModel(AllBlocks.BRONZE_PLATE_STAIRS);
         simpleItemModel(AllItems.BRONZE_ROD);
         simpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
         simpleItemModel(AllItems.BUFFER_STOP_RAIL);
@@ -38,6 +41,8 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.CONJUNCTIONER);
         simpleItemModel(AllItems.COPPER_PLATE);
         simpleBlockItemModel(AllBlocks.COPPER_PLATE_BLOCK);
+        simpleBlockItemModel(AllBlocks.COPPER_PLATE_SLAB);
+        simpleBlockItemModel(AllBlocks.COPPER_PLATE_STAIRS);
         simpleItemModel(AllItems.COPPER_ROD);
         simpleItemModelFromBlockTexture(AllItems.CROSSOVER_RAIL);
         simpleItemModel(AllItems.CRUSHED_BRONZE);
@@ -61,6 +66,9 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.FLAX_STRING);
         simpleItemModel(AllItems.GEAR);
         simpleItemModel(AllItems.GOLD_PLATE);
+        simpleBlockItemModel(AllBlocks.GOLD_PLATE_BLOCK);
+        simpleBlockItemModel(AllBlocks.GOLD_PLATE_SLAB);
+        simpleBlockItemModel(AllBlocks.GOLD_PLATE_STAIRS);
         simpleItemModel(AllItems.GOLD_ROD);
         simpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
         simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ACTIVATOR_RAIL);
@@ -77,6 +85,8 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModelFromBlockTexture(AllItems.LOCKING_RAIL);
         simpleItemModel(AllItems.IRON_PLATE);
         simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
+        simpleBlockItemModel(AllBlocks.IRON_PLATE_SLAB);
+        simpleBlockItemModel(AllBlocks.IRON_PLATE_STAIRS);
         simpleItemModel(AllItems.IRON_ROD);
         simpleItemModel(AllItems.IRON_SCREW);
         simpleItemModel(AllItems.KAOLIN);
@@ -94,6 +104,9 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleItemModel(AllItems.IRON_ROLLS);
         simpleItemModel(AllItems.TIN_INGOT);
         simpleItemModel(AllItems.TIN_PLATE);
+        simpleBlockItemModel(AllBlocks.TIN_PLATE_BLOCK);
+        simpleBlockItemModel(AllBlocks.TIN_PLATE_SLAB);
+        simpleBlockItemModel(AllBlocks.TIN_PLATE_STAIRS);
         simpleItemModel(AllItems.TIN_ROD);
         simpleItemModel(AllItems.VERMILION_INGOT);
         simpleItemModel(AllItems.VERMILION_PLATE);

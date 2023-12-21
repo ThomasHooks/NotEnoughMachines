@@ -48,6 +48,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":bronze_ingot_from_bronze_block");
 
+        //Bronze Plate
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.BRONZE_PLATE.get(), 4)
+                .requires(AllItems.BRONZE_PLATE_BLOCK.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":bronze_plate")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":bronze_plate_from_bronze_plate_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.BRONZE_PLATE.get(), 2)
+                .requires(AllItems.BRONZE_PLATE_SLAB.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":bronze_plate")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":bronze_plate_from_bronze_plate_slab");
+
         //Coke
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COKE.get(), 9)
                 .requires(AllItems.COKE_BLOCK.get())
@@ -61,6 +73,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":copper_plate")
                 .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_from_copper_plate_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COPPER_PLATE.get(), 2)
+                .requires(AllItems.COPPER_PLATE_SLAB.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_from_copper_plate_slab");
 
         //Crushed Bronze
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CRUSHED_BRONZE.get(), 2)
@@ -119,6 +136,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":gunpowder_from_flux_and_charcoal");
 
+        //Gold Plate
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.GOLD_PLATE.get(), 4)
+                .requires(AllItems.GOLD_PLATE_BLOCK.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":gold_plate")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":gold_plate_from_gold_plate_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.GOLD_PLATE.get(), 2)
+                .requires(AllItems.GOLD_PLATE_SLAB.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":gold_plate")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":gold_plate_from_gold_plate_slab");
+
         //Heavy Bronze Stamp
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HEAVY_BRONZE_STAMP.get(), 1)
                 .pattern("I")
@@ -136,6 +165,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":iron_plate")
                 .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":iron_plate_from_iron_plate_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.IRON_PLATE.get(), 2)
+                .requires(AllItems.IRON_PLATE_SLAB.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":iron_plate")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":iron_plate_from_iron_plate_slab");
 
         //Iron Rolls
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_ROLLS.get(), 1)
@@ -230,6 +264,18 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":tin_ingot_from_tin_block");
 
+        //Tin Plate
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.TIN_PLATE.get(), 4)
+                .requires(AllItems.TIN_PLATE_BLOCK.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":tin_plate")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":tin_plate_from_tin_plate_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.TIN_PLATE.get(), 2)
+                .requires(AllItems.TIN_PLATE_SLAB.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":tin_plate")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":tin_plate_from_tin_plate_slab");
+
         //Torch From Coke
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.TORCH, 4)
                 .pattern("o")
@@ -282,6 +328,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
                 .save(consumer);
 
+        //Bronze Plate Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_PLATE_BLOCK.get(), 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', AllItems.BRONZE_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_plate_block")
+                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
+                .save(consumer);
+
         //Coke Block
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.COKE_BLOCK.get(), 1)
                 .pattern("###")
@@ -308,6 +363,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('#', AllItems.FIRE_BRICK.get())
                 .group(NotEnoughMachines.MOD_ID + ":fire_bricks")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Gold Plate Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.GOLD_PLATE_BLOCK.get(), 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', AllItems.GOLD_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":gold_plate_block")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
         //Linen Block
@@ -339,6 +403,15 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
                 .save(consumer);
 
+        //Tin Plate Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_PLATE_BLOCK.get(), 1)
+                .pattern("##")
+                .pattern("##")
+                .define('#', AllItems.TIN_PLATE.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_plate_block")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer);
+
         //Vermilion Block
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.VERMILION_BLOCK.get(), 1)
                 .pattern("###")
@@ -364,6 +437,22 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         //Slabs
         //--------------------------------------------------------------------------------------------------------------
 
+        //Bronze Plate Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_PLATE_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.BRONZE_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_plate_slab")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Copper Plate Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
         //Fire Bricks Slab
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_SLAB.get(), 6)
                 .pattern("===")
@@ -380,12 +469,36 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Gold Plate Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.GOLD_PLATE_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.GOLD_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":gold_plate_slab")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer);
+
+        //Iron Plate Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.IRON_PLATE_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.IRON_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_plate_slab")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
         //Polished Fluxstone Slab
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.POLISHED_FLUXSTONE_SLAB.get(), 6)
                 .pattern("===")
                 .define('=', AllItems.POLISHED_FLUXSTONE.get())
                 .group(NotEnoughMachines.MOD_ID + ":polished_fluxstone_slab")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Tin Plate Slab
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_PLATE_SLAB.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.TIN_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_plate_slab")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer);
 
         //Wooden Frame Slab
@@ -398,6 +511,26 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //Stairs
         //--------------------------------------------------------------------------------------------------------------
+
+        //Bronze Plates Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_PLATE_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.BRONZE_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_plate_stairs")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Copper Plates Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
 
         //Fire Bricks Stairs
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_STAIRS.get(), 4)
@@ -419,6 +552,26 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Gold Plates Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.GOLD_PLATE_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.GOLD_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":gold_plate_stairs")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer);
+
+        //Iron Plates Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.IRON_PLATE_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.IRON_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_plate_stairs")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
         //Polished Fluxstone Stairs
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.POLISHED_FLUXSTONE_STAIRS.get(), 4)
                 .pattern("=  ")
@@ -427,6 +580,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('=', AllItems.POLISHED_FLUXSTONE.get())
                 .group(NotEnoughMachines.MOD_ID + ":polished_fluxstone_stairs")
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
+                .save(consumer);
+
+        //Tin Plates Stairs
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_PLATE_STAIRS.get(), 4)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.TIN_PLATE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":tin_plate_stairs")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer);
 
         //Wooden Frame Stairs
@@ -1022,15 +1185,32 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildStoneCuttingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        simpleStoneCutting(consumer, "bronze_plate_slab", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
+        simpleStoneCutting(consumer, "bronze_plate_stairs", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
+
+        simpleStoneCutting(consumer, "copper_plate_slab", Ingredient.of(AllItems.COPPER_PLATE_BLOCK.get()), AllItems.COPPER_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs", Ingredient.of(AllItems.COPPER_PLATE_BLOCK.get()), AllItems.COPPER_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+
         simpleStoneCutting(consumer, "fire_bricks_slab", Ingredient.of(AllItems.FIRE_BRICKS.get()), AllItems.FIRE_BRICKS_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fire_bricks_stairs", Ingredient.of(AllItems.FIRE_BRICKS.get()), AllItems.FIRE_BRICKS_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fire_bricks_wall", Ingredient.of(AllItems.FIRE_BRICKS.get()), AllItems.FIRE_BRICKS_WALL.get(), 1, RecipeCategory.DECORATIONS, AllItems.FLUXSTONE.get());
+
         simpleStoneCutting(consumer, "fluxstone_slab", Ingredient.of(AllItems.FLUXSTONE.get()), AllItems.FLUXSTONE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fluxstone_stairs", Ingredient.of(AllItems.FLUXSTONE.get()), AllItems.FLUXSTONE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fluxstone_wall", Ingredient.of(AllItems.FLUXSTONE.get()), AllItems.FLUXSTONE_WALL.get(), 1, RecipeCategory.DECORATIONS, AllItems.FLUXSTONE.get());
+
+        simpleStoneCutting(consumer, "gold_plate_slab", Ingredient.of(AllItems.GOLD_PLATE_BLOCK.get()), AllItems.GOLD_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT);
+        simpleStoneCutting(consumer, "gold_plate_stairs", Ingredient.of(AllItems.GOLD_PLATE_BLOCK.get()), AllItems.GOLD_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT);
+
+        simpleStoneCutting(consumer, "iron_plate_slab", Ingredient.of(AllItems.IRON_PLATE_BLOCK.get()), AllItems.IRON_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT);
+        simpleStoneCutting(consumer, "iron_plate_stairs", Ingredient.of(AllItems.IRON_PLATE_BLOCK.get()), AllItems.IRON_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT);
+
         simpleStoneCutting(consumer, "polished_fluxstone_slab", Ingredient.of(AllItems.POLISHED_FLUXSTONE.get()), AllItems.POLISHED_FLUXSTONE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "polished_fluxstone_stairs", Ingredient.of(AllItems.POLISHED_FLUXSTONE.get()), AllItems.POLISHED_FLUXSTONE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "polished_fluxstone_wall", Ingredient.of(AllItems.POLISHED_FLUXSTONE.get()), AllItems.POLISHED_FLUXSTONE_WALL.get(), 1, RecipeCategory.DECORATIONS, AllItems.FLUXSTONE.get());
+
+        simpleStoneCutting(consumer, "tin_plate_slab", Ingredient.of(AllItems.TIN_PLATE_BLOCK.get()), AllItems.TIN_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_INGOT.get());
+        simpleStoneCutting(consumer, "tin_plate_stairs", Ingredient.of(AllItems.TIN_PLATE_BLOCK.get()), AllItems.TIN_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_INGOT.get());
     }
 
     protected void buildMillingRecipes(Consumer<FinishedRecipe> consumer)

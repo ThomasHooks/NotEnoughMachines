@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "notenoughmachines:gold_plate_slab",
+  "ingredient": {
+    "item": "notenoughmachines:gold_plate_block"
+  },
+  "result": "notenoughmachines:gold_plate_slab"
+}

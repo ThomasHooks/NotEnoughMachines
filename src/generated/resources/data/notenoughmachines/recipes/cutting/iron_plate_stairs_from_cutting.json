@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "notenoughmachines:iron_plate_stairs",
+  "ingredient": {
+    "item": "notenoughmachines:iron_plate_block"
+  },
+  "result": "notenoughmachines:iron_plate_stairs"
+}

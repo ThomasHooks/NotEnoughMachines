@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:tin_plate",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:tin_plate_slab"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "notenoughmachines:tin_plate"
+  }
+}

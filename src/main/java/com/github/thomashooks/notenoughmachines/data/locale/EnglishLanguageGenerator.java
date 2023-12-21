@@ -78,6 +78,9 @@ public class EnglishLanguageGenerator extends LanguageProvider
     {
         addBlock(AllBlocks.AXLE, "Axle");
         addBlock(AllBlocks.BRONZE_BLOCK, "Block of Bronze");
+        addBlock(AllBlocks.BRONZE_PLATE_BLOCK, "Block of Bronze Plates");
+        addBlock(AllBlocks.BRONZE_PLATE_SLAB, "Slab of Bronze Plates");
+        addBlock(AllBlocks.BRONZE_PLATE_STAIRS, "Stairs of Bronze Plates");
         addBlock(AllBlocks.COGWHEEL_LARGE, "Large Cogwheel");
         addBlock(AllBlocks.COGWHEEL_SMALL, "Small Cogwheel");
         addBlock(AllBlocks.COKE_BLOCK, "Block of Coke");
@@ -93,11 +96,16 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.GEARBOX, "Gearbox");
         addBlock(AllBlocks.CONJUNCTIONER, "Redstone Conjunctioner");
         addBlock(AllBlocks.COPPER_PLATE_BLOCK, "Block of Copper Plates");
+        addBlock(AllBlocks.COPPER_PLATE_SLAB, "Slab of Copper Plates");
+        addBlock(AllBlocks.COPPER_PLATE_STAIRS, "Stairs of Copper Plates");
         addBlock(AllBlocks.FILTER, "Item Filter");
         addBlock(AllBlocks.FLUXSTONE, "Fluxstone");
         addBlock(AllBlocks.FLUXSTONE_SLAB, "Fluxstone Slab");
         addBlock(AllBlocks.FLUXSTONE_STAIRS, "Fluxstone Stairs");
         addBlock(AllBlocks.FLUXSTONE_WALL, "Fluxstone Wall");
+        addBlock(AllBlocks.GOLD_PLATE_BLOCK, "Block of Gold Plates");
+        addBlock(AllBlocks.GOLD_PLATE_SLAB, "Slab of Gold Plates");
+        addBlock(AllBlocks.GOLD_PLATE_STAIRS, "Stairs of Gold Plates");
         addBlock(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL, "High-Speed Activator Rail");
         addBlock(AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL, "High-Speed Buffer Stop Rail");
         addBlock(AllBlocks.HIGH_SPEED_CHIME_RAIL, "High-Speed Chime Rail");
@@ -109,6 +117,8 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.HIGH_SPEED_LOCKING_RAIL, "High-Speed Locking Rail");
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
+        addBlock(AllBlocks.IRON_PLATE_SLAB, "Slab of Iron Plates");
+        addBlock(AllBlocks.IRON_PLATE_STAIRS, "Stairs of Iron Plates");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");
         addBlock(AllBlocks.LIMITER_RAIL, "Limiter Rail");
         addBlock(AllBlocks.LOCKING_RAIL, "Locking Rail");
@@ -120,6 +130,9 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.POLISHED_FLUXSTONE_WALL, "Polished Fluxstone Wall");
         addBlock(AllBlocks.ROLLING_MILL, "Rolling Mill");
         addBlock(AllBlocks.TIN_BLOCK, "Block of Tin");
+        addBlock(AllBlocks.TIN_PLATE_BLOCK, "Block of Tin Plates");
+        addBlock(AllBlocks.TIN_PLATE_SLAB, "Slab of Tin Plates");
+        addBlock(AllBlocks.TIN_PLATE_STAIRS, "Stairs of Tin Plates");
         addBlock(AllBlocks.TRIP_HAMMER, "Trip Hammer");
         addBlock(AllBlocks.TIN_ORE, "Tin Ore");
         addBlock(AllBlocks.VERMILION_BLOCK, "Block of Vermilion");

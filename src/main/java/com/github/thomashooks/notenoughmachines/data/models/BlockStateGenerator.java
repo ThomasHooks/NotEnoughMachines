@@ -35,11 +35,19 @@ public class BlockStateGenerator extends BlockStateProvider
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
         simpleCubeBlockWithItem(AllBlocks.BRONZE_BLOCK);
+        axisBlock((RotatedPillarBlock) AllBlocks.BRONZE_PLATE_BLOCK.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top")
+        );
         axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
         simpleCubeBlockWithItem(AllBlocks.COKE_BLOCK);
+        axisBlock((RotatedPillarBlock) AllBlocks.GOLD_PLATE_BLOCK.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_top")
+        );
         simpleCubeBlockWithItem(AllBlocks.FIRE_BRICKS);
         simpleCubeBlockWithItem(AllBlocks.FLUXSTONE);
         axisBlock((RotatedPillarBlock) AllBlocks.IRON_PLATE_BLOCK.get(),
@@ -53,11 +61,27 @@ public class BlockStateGenerator extends BlockStateProvider
         );
         simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
         simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
+        axisBlock((RotatedPillarBlock) AllBlocks.TIN_PLATE_BLOCK.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_top")
+        );
         simpleCubeBlockWithItem(AllBlocks.VERMILION_BLOCK);
         simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
 
         //Slabs
         //--------------------------------------------------------------------------------------------------------------
+        slabBlock(((SlabBlock) AllBlocks.BRONZE_PLATE_SLAB.get()),
+                blockTexture(AllBlocks.BRONZE_PLATE_BLOCK.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
         slabBlock(((SlabBlock) AllBlocks.FIRE_BRICKS_SLAB.get()),
                 blockTexture(AllBlocks.FIRE_BRICKS.get()),
                 blockTexture(AllBlocks.FIRE_BRICKS.get())
@@ -66,11 +90,29 @@ public class BlockStateGenerator extends BlockStateProvider
                 blockTexture(AllBlocks.FLUXSTONE.get()),
                 blockTexture(AllBlocks.FLUXSTONE.get())
         );
+        slabBlock(((SlabBlock) AllBlocks.GOLD_PLATE_SLAB.get()),
+                blockTexture(AllBlocks.GOLD_PLATE_BLOCK.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_top")
+        );
+        slabBlock(((SlabBlock) AllBlocks.IRON_PLATE_SLAB.get()),
+                blockTexture(AllBlocks.IRON_PLATE_BLOCK.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
+        );
         slabBlock(((SlabBlock) AllBlocks.POLISHED_FLUXSTONE_SLAB.get()),
                 blockTexture(AllBlocks.POLISHED_FLUXSTONE.get()),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
+        slabBlock(((SlabBlock) AllBlocks.TIN_PLATE_SLAB.get()),
+                blockTexture(AllBlocks.TIN_PLATE_BLOCK.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_top")
         );
         slabBlock(((SlabBlock) AllBlocks.WOODEN_FRAME_SLAB.get()),
                 blockTexture(AllBlocks.WOODEN_FRAME.get()),
@@ -79,16 +121,41 @@ public class BlockStateGenerator extends BlockStateProvider
 
         //Stairs
         //--------------------------------------------------------------------------------------------------------------
+        stairsBlock(((StairBlock) AllBlocks.BRONZE_PLATE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
         stairsBlock(((StairBlock) AllBlocks.FIRE_BRICKS_STAIRS.get()),
                 blockTexture(AllBlocks.FIRE_BRICKS.get())
         );
         stairsBlock(((StairBlock) AllBlocks.FLUXSTONE_STAIRS.get()),
                 blockTexture(AllBlocks.FLUXSTONE.get())
         );
+        stairsBlock(((StairBlock) AllBlocks.GOLD_PLATE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.IRON_PLATE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
+        );
         stairsBlock(((StairBlock) AllBlocks.POLISHED_FLUXSTONE_STAIRS.get()),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.TIN_PLATE_STAIRS.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_top")
         );
         stairsBlock(((StairBlock) AllBlocks.WOODEN_FRAME_STAIRS.get()),
                 blockTexture(AllBlocks.WOODEN_FRAME.get())

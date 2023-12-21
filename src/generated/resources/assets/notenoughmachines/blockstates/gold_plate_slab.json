@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughmachines:block/gold_plate_slab"
+    },
+    "type=double": {
+      "model": "notenoughmachines:block/gold_plate_block"
+    },
+    "type=top": {
+      "model": "notenoughmachines:block/gold_plate_slab_top"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:iron_plate",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:iron_plate_slab"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "notenoughmachines:iron_plate"
+  }
+}

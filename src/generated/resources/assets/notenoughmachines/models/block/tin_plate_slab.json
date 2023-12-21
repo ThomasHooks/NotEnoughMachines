@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "notenoughmachines:block/tin_plate_block_top",
+    "side": "notenoughmachines:block/tin_plate_block_side",
+    "top": "notenoughmachines:block/tin_plate_block_top"
+  }
+}

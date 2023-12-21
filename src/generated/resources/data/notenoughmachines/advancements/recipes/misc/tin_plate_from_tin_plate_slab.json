@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_has_tin_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "notenoughmachines:tin_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:tin_plate_from_tin_plate_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_has_tin_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:tin_plate_from_tin_plate_slab"
+    ]
+  },
+  "sends_telemetry_event": false
+}

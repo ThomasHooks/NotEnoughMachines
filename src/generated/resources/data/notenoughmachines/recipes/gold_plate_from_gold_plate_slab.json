@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:gold_plate",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:gold_plate_slab"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "notenoughmachines:gold_plate"
+  }
+}

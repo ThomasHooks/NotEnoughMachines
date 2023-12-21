@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "notenoughmachines:block/iron_plate_block_top",
+    "side": "notenoughmachines:block/iron_plate_block_side",
+    "top": "notenoughmachines:block/iron_plate_block_top"
+  }
+}

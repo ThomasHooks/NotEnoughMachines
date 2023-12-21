@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:bronze_plate_slab",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:bronze_plate_block"
+    }
+  },
+  "pattern": [
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:bronze_plate_slab"
+  },
+  "show_notification": true
+}

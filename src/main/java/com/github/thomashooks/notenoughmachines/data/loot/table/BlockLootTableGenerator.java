@@ -31,6 +31,9 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     {
         dropSelf(AllBlocks.AXLE.get());
         dropSelf(AllBlocks.BRONZE_BLOCK.get());
+        dropSelf(AllBlocks.BRONZE_PLATE_BLOCK.get());
+        dropSlab(AllBlocks.BRONZE_PLATE_SLAB.get());
+        dropSelf(AllBlocks.BRONZE_PLATE_STAIRS.get());
         dropSelf(AllBlocks.BUFFER_STOP_RAIL.get());
         dropSelf(AllBlocks.CHIME_RAIL.get());
         add(AllBlocks.COGWHEEL_LARGE.get(), (block) -> { return this.createSinglePropConditionTable(block, CogwheelLargeBlock.COGWHEEL_PART, MultiBlockPart3x1x3.CENTER); });
@@ -39,17 +42,22 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.COKE_OVEN.get());
         dropSelf(AllBlocks.CONJUNCTIONER.get());
         dropSelf(AllBlocks.COPPER_PLATE_BLOCK.get());
+        dropSlab(AllBlocks.COPPER_PLATE_SLAB.get());
+        dropSelf(AllBlocks.COPPER_PLATE_STAIRS.get());
         dropSelf(AllBlocks.CROSSOVER_RAIL.get());
         dropSelf(AllBlocks.ENCLOSED_AXLE.get());
         dropSelf(AllBlocks.GEARBOX.get());
+        dropSelf(AllBlocks.GOLD_PLATE_BLOCK.get());
+        dropSlab(AllBlocks.GOLD_PLATE_SLAB.get());
+        dropSelf(AllBlocks.GOLD_PLATE_STAIRS.get());
         dropSelf(AllBlocks.FIRE_BRICKS.get());
-        add(AllBlocks.FIRE_BRICKS_SLAB.get(), block -> createSlabItemTable(AllBlocks.FIRE_BRICKS_SLAB.get()));
+        dropSlab(AllBlocks.FIRE_BRICKS_SLAB.get());
         dropSelf(AllBlocks.FIRE_BRICKS_STAIRS.get());
         dropSelf(AllBlocks.FIRE_BRICKS_WALL.get());
         dropSelf(AllBlocks.FILTER.get());
         dropCropAndSeed(AllBlocks.FLAXPLANT.get(), AllItems.FLAX.get(), AllItems.FLAXSEED.get(), FlaxPlantBlock.AGE, FlaxPlantBlock.MAX_AGE);
         dropSelf(AllBlocks.FLUXSTONE.get());
-        add(AllBlocks.FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.FLUXSTONE_SLAB.get()));
+        dropSlab(AllBlocks.FLUXSTONE_SLAB.get());
         dropSelf(AllBlocks.FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.FLUXSTONE_WALL.get());
         dropSelf(AllBlocks.HIGH_SPEED_RAIL.get());
@@ -63,18 +71,23 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get());
         dropSelf(AllBlocks.IRON_PLATE_BLOCK.get());
+        dropSlab(AllBlocks.IRON_PLATE_SLAB.get());
+        dropSelf(AllBlocks.IRON_PLATE_STAIRS.get());
         dropSelf(AllBlocks.LINEN_BLOCK.get());
         dropSelf(AllBlocks.LIMITER_RAIL.get());
         dropSelf(AllBlocks.LOCKING_RAIL.get());
         dropSelf(AllBlocks.MILLSTONE.get());
         dropSelf(AllBlocks.ONE_WAY_RAIL.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE.get());
-        add(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), block -> createSlabItemTable(AllBlocks.POLISHED_FLUXSTONE_SLAB.get()));
+        dropSlab(AllBlocks.POLISHED_FLUXSTONE_SLAB.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get());
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
         dropSelf(AllBlocks.ROLLING_MILL.get());
         add(AllBlocks.TRIP_HAMMER.get(), (block) -> { return this.createSinglePropConditionTable(block, TripHammerBlock.PART, MultiBlockPart1x1x4.BOTTOM); });
         dropSelf(AllBlocks.TIN_BLOCK.get());
+        dropSelf(AllBlocks.TIN_PLATE_BLOCK.get());
+        dropSlab(AllBlocks.TIN_PLATE_SLAB.get());
+        dropSelf(AllBlocks.TIN_PLATE_STAIRS.get());
         this.add(AllBlocks.TIN_ORE.get(), (block) -> { return this.createOreDrop(block, AllItems.RAW_TIN.get()); });
         dropSelf(AllBlocks.VERMILION_BLOCK.get());
         dropSelf(AllBlocks.VERMILION_PRESSURE_PLATE.get());
@@ -91,11 +104,16 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         return AllBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
-    private void dropCropAndSeed(Block cropBlock, Item crop, Item seed, IntegerProperty age, int maxAge)
+    protected void dropCropAndSeed(Block cropBlock, Item crop, Item seed, IntegerProperty age, int maxAge)
     {
         LootItemCondition.Builder lootitemcondition$builder1 = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(cropBlock)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(age, maxAge));
         add(cropBlock, createCropDrops(cropBlock, crop, seed, lootitemcondition$builder1));
+    }
+
+    protected void dropSlab(Block slab)
+    {
+        add(slab, block -> createSlabItemTable(slab));
     }
 }

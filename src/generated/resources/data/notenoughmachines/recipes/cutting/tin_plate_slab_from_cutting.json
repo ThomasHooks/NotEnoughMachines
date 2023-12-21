@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "notenoughmachines:tin_plate_slab",
+  "ingredient": {
+    "item": "notenoughmachines:tin_plate_block"
+  },
+  "result": "notenoughmachines:tin_plate_slab"
+}
