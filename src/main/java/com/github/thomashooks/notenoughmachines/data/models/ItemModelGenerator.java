@@ -25,13 +25,14 @@ public class ItemModelGenerator extends ItemModelProvider
     {
         simpleBlockItemModel(AllBlocks.AXLE);
         simpleItemModel(AllItems.BOOSTER_ROD);
+        simpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
         simpleItemModel(AllItems.BRONZE_INGOT);
         simpleItemModel(AllItems.BRONZE_PLATE);
         simpleBlockItemModel(AllBlocks.BRONZE_PLATE_BLOCK);
         simpleBlockItemModel(AllBlocks.BRONZE_PLATE_SLAB);
         simpleBlockItemModel(AllBlocks.BRONZE_PLATE_STAIRS);
         simpleItemModel(AllItems.BRONZE_ROD);
-        simpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
+        simpleBlockItemModel(AllBlocks.BRONZE_SCAFFOLDING);
         simpleItemModel(AllItems.BUFFER_STOP_RAIL);
         simpleItemModelFromBlockTexture(AllItems.CHIME_RAIL);
         simpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
@@ -87,6 +88,7 @@ public class ItemModelGenerator extends ItemModelProvider
         simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
         simpleBlockItemModel(AllBlocks.IRON_PLATE_SLAB);
         simpleBlockItemModel(AllBlocks.IRON_PLATE_STAIRS);
+        simpleBlockItemModel(AllBlocks.IRON_SCAFFOLDING);
         simpleItemModel(AllItems.IRON_ROD);
         simpleItemModel(AllItems.IRON_SCREW);
         simpleItemModel(AllItems.KAOLIN);

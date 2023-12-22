@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-20T22:49:37.3810581	Item Models: notenoughmachines
+// 1.20.1	2023-12-22T14:37:16.9913938	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 2d7ae8c917bd1921904b45d2d4f63225a67d4697 assets/notenoughmachines/models/item/bronze_booster_rod.json
@@ -8,6 +8,7 @@ eb031952b82e79479ca0901ab14e8ba6d9b0c1f4 assets/notenoughmachines/models/item/br
 55b931848e724ef25cfdeed3a108d227826b543d assets/notenoughmachines/models/item/bronze_plate_slab.json
 c94b6f66f01bc8501df936d9d00fa4ba70d0f203 assets/notenoughmachines/models/item/bronze_plate_stairs.json
 f7991298a1ffe16a1012f6006420d6505dbdf392 assets/notenoughmachines/models/item/bronze_rod.json
+d9c93968216b41f95ed1d0b6522a675ecb0e8b71 assets/notenoughmachines/models/item/bronze_scaffolding.json
 4e29c334ba52f9c92c4af823acf7f02ded7a0cae assets/notenoughmachines/models/item/buffer_stop_rail.json
 7be23b05dc7412d2871232404be3b87f04c26f15 assets/notenoughmachines/models/item/chime_rail.json
 4d33ef5d465f7d04331d08e7ea340e2c55cb2269 assets/notenoughmachines/models/item/coke.json
@@ -61,6 +62,7 @@ aeb63cef026c65bf4a9445b22bc53c321c1d8f9e assets/notenoughmachines/models/item/hi
 5d30f85b753a73aed915576b1ff60d981b44db34 assets/notenoughmachines/models/item/iron_plate_stairs.json
 d590f88f5fa3eb53fb4b52a124530f5651dcf236 assets/notenoughmachines/models/item/iron_rod.json
 646859a805bfa65d7cbeb2e5afdbb104060d211f assets/notenoughmachines/models/item/iron_rolls.json
+93d4a48b1edb9c80e37ed006d553d9699247c1ac assets/notenoughmachines/models/item/iron_scaffolding.json
 9a8706ae05f03eaa1cfc60fb54a7fe92895520b9 assets/notenoughmachines/models/item/iron_screw.json
 ea737d692c975e8102ba925b65598b1731187be1 assets/notenoughmachines/models/item/kaolin.json
 4b7c4eed02820f746a4fd68a9ba5e31db15bf441 assets/notenoughmachines/models/item/large_cogwheel.json

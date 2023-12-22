@@ -632,8 +632,34 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLUXSTONE.get()), has(AllItems.FLUXSTONE.get()))
                 .save(consumer);
 
+        //Ladders
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Bronze Scaffolding
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_SCAFFOLDING.get(), 6)
+                .pattern("lpl")
+                .pattern("l l")
+                .pattern("lpl")
+                .define('p', AllItems.BRONZE_PLATE.get())
+                .define('l', AllItems.BRONZE_ROD.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_scaffolding")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Iron Scaffolding
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_SCAFFOLDING.get(), 6)
+                .pattern("lpl")
+                .pattern("l l")
+                .pattern("lpl")
+                .define('p', AllItems.IRON_PLATE.get())
+                .define('l', AllItems.IRON_ROD.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_scaffolding")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
         //Redstone
         //--------------------------------------------------------------------------------------------------------------
+
         //Vermilion Pressure Plate
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.VERMILION_PRESSURE_PLATE.get(), 1)
                 .pattern("==")

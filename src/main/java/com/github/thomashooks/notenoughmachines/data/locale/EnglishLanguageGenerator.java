@@ -81,6 +81,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.BRONZE_PLATE_BLOCK, "Block of Bronze Plates");
         addBlock(AllBlocks.BRONZE_PLATE_SLAB, "Slab of Bronze Plates");
         addBlock(AllBlocks.BRONZE_PLATE_STAIRS, "Stairs of Bronze Plates");
+        addBlock(AllBlocks.BRONZE_SCAFFOLDING, "Bronze Scaffold");
         addBlock(AllBlocks.COGWHEEL_LARGE, "Large Cogwheel");
         addBlock(AllBlocks.COGWHEEL_SMALL, "Small Cogwheel");
         addBlock(AllBlocks.COKE_BLOCK, "Block of Coke");
@@ -119,6 +120,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.IRON_PLATE_SLAB, "Slab of Iron Plates");
         addBlock(AllBlocks.IRON_PLATE_STAIRS, "Stairs of Iron Plates");
+        addBlock(AllBlocks.IRON_SCAFFOLDING, "Iron Scaffold");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");
         addBlock(AllBlocks.LIMITER_RAIL, "Limiter Rail");
         addBlock(AllBlocks.LOCKING_RAIL, "Locking Rail");

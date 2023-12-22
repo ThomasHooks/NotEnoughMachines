@@ -19,7 +19,7 @@ public class AllCreativeTabs
                     .displayItems((itemDisplayParameters, output) ->
                     {
                         //Wood Blocks
-                        //Full block -> stairs -> slab -> fence/wall -> fence gate -> door -> trapdoor -> pressure plate -> button
+                        //Order: full block -> stairs -> slab -> wall -> fence -> fence gate -> door -> trapdoor -> pressure plate -> button
                         output.accept(AllItems.WOODEN_FRAME.get());
                         output.accept(AllItems.WOODEN_FRAME_STAIRS.get());
                         output.accept(AllItems.WOODEN_FRAME_SLAB.get());
@@ -87,16 +87,23 @@ public class AllCreativeTabs
                         output.accept(AllItems.WIND_WHEEL.get());
 
                         //Machine Blocks - Mills/Processors
-                        output.accept(AllItems.COKE_OVEN.get());
                         output.accept(AllItems.MILLSTONE.get());
                         output.accept(AllItems.ROLLING_MILL.get());
                         output.accept(AllItems.TRIP_HAMMER.get());
 
-                        //Machine Blocks - item transfer
-                        output.accept(AllItems.FILTER.get());
+                        //Furnaces
+                        output.accept(AllItems.COKE_OVEN.get());
+
+                        //Ladders/Scaffolding
+                        //Order: ladder -> scaffolding
+                        output.accept(AllItems.IRON_SCAFFOLDING.get());
+                        output.accept(AllItems.BRONZE_SCAFFOLDING.get());
 
                         //Redstone Blocks
                         output.accept(AllItems.CONJUNCTIONER.get());
+
+                        //Item Transfer Blocks
+                        output.accept(AllItems.FILTER.get());
 
                         //Minecart Rails
                         output.accept(AllItems.CROSSOVER_RAIL.get());

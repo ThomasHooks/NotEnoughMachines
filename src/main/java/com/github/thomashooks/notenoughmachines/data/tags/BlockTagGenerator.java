@@ -45,6 +45,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.BRONZE_PLATE_BLOCK.get(),
                 AllBlocks.BRONZE_PLATE_SLAB.get(),
                 AllBlocks.BRONZE_PLATE_STAIRS.get(),
+                AllBlocks.BRONZE_SCAFFOLDING.get(),
                 AllBlocks.BUFFER_STOP_RAIL.get(),
                 AllBlocks.CHIME_RAIL.get(),
                 AllBlocks.COGWHEEL_LARGE.get(),
@@ -84,6 +85,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.IRON_PLATE_BLOCK.get(),
                 AllBlocks.IRON_PLATE_SLAB.get(),
                 AllBlocks.IRON_PLATE_STAIRS.get(),
+                AllBlocks.IRON_SCAFFOLDING.get(),
                 AllBlocks.MILLSTONE.get(),
                 AllBlocks.ONE_WAY_RAIL.get(),
                 AllBlocks.POLISHED_FLUXSTONE.get(),
@@ -160,6 +162,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
+                AllBlocks.BRONZE_SCAFFOLDING.get(),
                 AllBlocks.BUFFER_STOP_RAIL.get(),
                 AllBlocks.CHIME_RAIL.get(),
                 AllBlocks.CROSSOVER_RAIL.get(),
@@ -173,9 +176,18 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 AllBlocks.HIGH_SPEED_RAIL.get(),
+                AllBlocks.IRON_SCAFFOLDING.get(),
                 AllBlocks.LIMITER_RAIL.get(),
                 AllBlocks.LOCKING_RAIL.get(),
                 AllBlocks.ONE_WAY_RAIL.get()
+        );
+        this.tag(BlockTags.CLIMBABLE).add(
+                AllBlocks.BRONZE_SCAFFOLDING.get(),
+                AllBlocks.IRON_SCAFFOLDING.get()
+        );
+        this.tag(BlockTags.FALL_DAMAGE_RESETTING).add(
+                AllBlocks.BRONZE_SCAFFOLDING.get(),
+                AllBlocks.IRON_SCAFFOLDING.get()
         );
         this.tag(AllTags.Blocks.STRIPPED_LOGS).add(
                 Blocks.STRIPPED_OAK_LOG,

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:bronze_scaffolding",
+  "key": {
+    "l": {
+      "item": "notenoughmachines:bronze_rod"
+    },
+    "p": {
+      "item": "notenoughmachines:bronze_plate"
+    }
+  },
+  "pattern": [
+    "lpl",
+    "l l",
+    "lpl"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:bronze_scaffolding"
+  },
+  "show_notification": true
+}

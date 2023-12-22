@@ -1,8 +1,10 @@
-// 1.20.1	2023-12-20T22:49:37.3850582	Tags for minecraft:block mod id notenoughmachines
+// 1.20.1	2023-12-22T14:37:16.9953936	Tags for minecraft:block mod id notenoughmachines
+533ac3d0f5cbcbe2eecee04256ae23bf90a884f3 data/minecraft/tags/blocks/climbable.json
+533ac3d0f5cbcbe2eecee04256ae23bf90a884f3 data/minecraft/tags/blocks/fall_damage_resetting.json
 dc0897537e5fc905880fb91054630ad9ac656600 data/minecraft/tags/blocks/mineable/axe.json
-3f84204c8ddc9c8b0891d9c020ae6f7d47746da1 data/minecraft/tags/blocks/mineable/pickaxe.json
+854671c3ec3552b97956fb8bac7739d917b00162 data/minecraft/tags/blocks/mineable/pickaxe.json
 d95bfb63fbf7e4bfe67ab5d24f6cd2e2a43cb042 data/minecraft/tags/blocks/needs_stone_tool.json
-605cd374ffb0f5b60690c72a9ffa6b566df1fa84 data/minecraft/tags/blocks/prevent_mob_spawning_inside.json
+5b4519131c557c3629602f98eaab1ec6e3ad39ed data/minecraft/tags/blocks/prevent_mob_spawning_inside.json
 aa8811e2a03ea8df29c87f6162e1541f7735c7df data/minecraft/tags/blocks/rails.json
 bd296694a2f9584f4bcca1c250785e72251967b1 data/minecraft/tags/blocks/walls.json
 e5463ae4f3b82270fa2c991901217be559ca0284 data/notenoughmachines/tags/blocks/stripped_logs.json

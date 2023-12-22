@@ -1,5 +1,6 @@
 {
   "values": [
+    "notenoughmachines:bronze_scaffolding",
     "notenoughmachines:buffer_stop_rail",
     "notenoughmachines:chime_rail",
     "notenoughmachines:crossover_rail",
@@ -13,6 +14,7 @@
     "notenoughmachines:high_speed_one_way_rail",
     "notenoughmachines:high_speed_powered_rail",
     "notenoughmachines:high_speed_rail",
+    "notenoughmachines:iron_scaffolding",
     "notenoughmachines:limiter_rail",
     "notenoughmachines:locking_rail",
     "notenoughmachines:one_way_rail"

@@ -2,6 +2,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -46,6 +47,17 @@ public class AllBlocks
     public static final RegistryObject<Block> BRONZE_PLATE_STAIRS = BLOCKS.register("bronze_plate_stairs",
             ()-> new StairBlock(() -> BRONZE_PLATE_BLOCK.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(BRONZE_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> BRONZE_SCAFFOLDING = BLOCKS.register("bronze_scaffolding",
+            ()-> new MetalScaffoldBlock(19, Block.Properties.of()
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .noCollission()
+                    .strength(0.4F, 6.0F)
+                    .sound(SoundType.COPPER)
+                    .dynamicShape()
+                    .isValidSpawn(AllBlocks::never)
+                    .pushReaction(PushReaction.DESTROY)
+                    .isRedstoneConductor(AllBlocks::never)
             ));
     public static final RegistryObject<Block> BUFFER_STOP_RAIL = BLOCKS.register("buffer_stop_rail",
             ()-> new BufferStopRailBlock(Block.Properties.of()
@@ -253,6 +265,17 @@ public class AllBlocks
             ()-> new StairBlock(() -> IRON_PLATE_BLOCK.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(IRON_PLATE_BLOCK.get())
             ));
+    public static final RegistryObject<Block> IRON_SCAFFOLDING = BLOCKS.register("iron_scaffolding",
+            ()-> new MetalScaffoldBlock(13, Block.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .noCollission()
+                    .strength(0.4F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .dynamicShape()
+                    .isValidSpawn(AllBlocks::never)
+                    .pushReaction(PushReaction.DESTROY)
+                    .isRedstoneConductor(AllBlocks::never)
+            ));
     public static final RegistryObject<Block> LINEN_BLOCK = BLOCKS.register("linen_block",
             ()-> new LinenBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOL)
@@ -403,7 +426,9 @@ public class AllBlocks
     public static String getName(Block block) { return ForgeRegistries.BLOCKS.getKey(block).getPath(); }
 
     public static boolean always(BlockState state, BlockGetter blockGetter, BlockPos pos) { return true; }
+    public static Boolean always(BlockState state, BlockGetter blockGetter, BlockPos pos, EntityType<?> entityType) { return (boolean)true; }
     public static boolean never(BlockState state, BlockGetter blockGetter, BlockPos pos) { return false; }
+    public static Boolean never(BlockState state, BlockGetter blockGetter, BlockPos pos, EntityType<?> entityType) { return (boolean)false; }
 
     protected static ToIntFunction<BlockState> litBlockEmission(int lightLevel)
     {

@@ -26,6 +26,7 @@ public class AllItems
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE = ITEMS.register("bronze_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_ROD = ITEMS.register("bronze_rod", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_SCAFFOLDING = ITEMS.register("bronze_scaffolding", ()-> new MetalScaffoldBlockItem(19, AllBlocks.BRONZE_SCAFFOLDING.get(), new Item.Properties()));
     public static final RegistryObject<Item> BUFFER_STOP_RAIL = ITEMS.register("buffer_stop_rail", ()-> new BlockItem(AllBlocks.BUFFER_STOP_RAIL.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> CHIME_RAIL = ITEMS.register("chime_rail", ()-> new BlockItem(AllBlocks.CHIME_RAIL.get(), new Item.Properties()));
@@ -86,6 +87,7 @@ public class AllItems
     public static final RegistryObject<Item> IRON_PLATE_STAIRS = ITEMS.register("iron_plate_stairs", ()-> new BlockItem(AllBlocks.IRON_PLATE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_ROD = ITEMS.register("iron_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_ROLLS = ITEMS.register("iron_rolls", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_SCAFFOLDING = ITEMS.register("iron_scaffolding", ()-> new MetalScaffoldBlockItem(13, AllBlocks.IRON_SCAFFOLDING.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_SCREW = ITEMS.register("iron_screw", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> KAOLIN = ITEMS.register("kaolin", ()-> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COGWHEEL_LARGE = ITEMS.register("large_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_LARGE.get(), new Item.Properties()));

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:iron_scaffolding",
+  "key": {
+    "l": {
+      "item": "notenoughmachines:iron_rod"
+    },
+    "p": {
+      "item": "notenoughmachines:iron_plate"
+    }
+  },
+  "pattern": [
+    "lpl",
+    "l l",
+    "lpl"
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:iron_scaffolding"
+  },
+  "show_notification": true
+}

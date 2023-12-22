@@ -34,6 +34,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.BRONZE_PLATE_BLOCK.get());
         dropSlab(AllBlocks.BRONZE_PLATE_SLAB.get());
         dropSelf(AllBlocks.BRONZE_PLATE_STAIRS.get());
+        dropSelf(AllBlocks.BRONZE_SCAFFOLDING.get());
         dropSelf(AllBlocks.BUFFER_STOP_RAIL.get());
         dropSelf(AllBlocks.CHIME_RAIL.get());
         add(AllBlocks.COGWHEEL_LARGE.get(), (block) -> { return this.createSinglePropConditionTable(block, CogwheelLargeBlock.COGWHEEL_PART, MultiBlockPart3x1x3.CENTER); });
@@ -73,6 +74,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.IRON_PLATE_BLOCK.get());
         dropSlab(AllBlocks.IRON_PLATE_SLAB.get());
         dropSelf(AllBlocks.IRON_PLATE_STAIRS.get());
+        dropSelf(AllBlocks.IRON_SCAFFOLDING.get());
         dropSelf(AllBlocks.LINEN_BLOCK.get());
         dropSelf(AllBlocks.LIMITER_RAIL.get());
         dropSelf(AllBlocks.LOCKING_RAIL.get());

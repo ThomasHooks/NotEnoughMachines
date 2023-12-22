@@ -34,7 +34,7 @@ public class BlockStateGenerator extends BlockStateProvider
 
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
-        simpleCubeBlockWithItem(AllBlocks.BRONZE_BLOCK);
+        createSimpleCubeWithItem(AllBlocks.BRONZE_BLOCK);
         axisBlock((RotatedPillarBlock) AllBlocks.BRONZE_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top")
@@ -43,30 +43,30 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
-        simpleCubeBlockWithItem(AllBlocks.COKE_BLOCK);
+        createSimpleCubeWithItem(AllBlocks.COKE_BLOCK);
         axisBlock((RotatedPillarBlock) AllBlocks.GOLD_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_top")
         );
-        simpleCubeBlockWithItem(AllBlocks.FIRE_BRICKS);
-        simpleCubeBlockWithItem(AllBlocks.FLUXSTONE);
+        createSimpleCubeWithItem(AllBlocks.FIRE_BRICKS);
+        createSimpleCubeWithItem(AllBlocks.FLUXSTONE);
         axisBlock((RotatedPillarBlock) AllBlocks.IRON_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
         );
-        simpleCubeBlockWithItem(AllBlocks.LINEN_BLOCK);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK);
         axisBlock((RotatedPillarBlock) AllBlocks.POLISHED_FLUXSTONE.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
-        simpleCubeBlockWithItem(AllBlocks.TIN_BLOCK);
-        simpleCubeBlockWithItem(AllBlocks.TIN_ORE);
+        createSimpleCubeWithItem(AllBlocks.TIN_BLOCK);
+        createSimpleCubeWithItem(AllBlocks.TIN_ORE);
         axisBlock((RotatedPillarBlock) AllBlocks.TIN_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/tin_plate_block_top")
         );
-        simpleCubeBlockWithItem(AllBlocks.VERMILION_BLOCK);
-        simpleCubeBlockWithItem(AllBlocks.WOODEN_FRAME);
+        createSimpleCubeWithItem(AllBlocks.VERMILION_BLOCK);
+        createSimpleCubeWithItem(AllBlocks.WOODEN_FRAME);
 
         //Slabs
         //--------------------------------------------------------------------------------------------------------------
@@ -173,9 +173,20 @@ public class BlockStateGenerator extends BlockStateProvider
                 , blockTexture(AllBlocks.POLISHED_FLUXSTONE.get())
         );
 
+        //Ladders
+        //--------------------------------------------------------------------------------------------------------------
+        createScaffolding(AllBlocks.BRONZE_SCAFFOLDING.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/bronze_scaffolding")),
+                new ModelFile.UncheckedModelFile(modLoc("block/bronze_scaffolding_unstable"))
+        );
+        createScaffolding(AllBlocks.IRON_SCAFFOLDING.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/iron_scaffolding")),
+                new ModelFile.UncheckedModelFile(modLoc("block/iron_scaffolding_unstable"))
+        );
+
         //Furnaces
         //--------------------------------------------------------------------------------------------------------------
-        furnaceBlock(AllBlocks.COKE_OVEN.get(),
+        createFurnace(AllBlocks.COKE_OVEN.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/coke_oven_front_on"),
@@ -184,75 +195,75 @@ public class BlockStateGenerator extends BlockStateProvider
 
         //Redstone
         //--------------------------------------------------------------------------------------------------------------
-        pressurePlateBlock(AllBlocks.VERMILION_PRESSURE_PLATE.get(),
+        createPressurePlate(AllBlocks.VERMILION_PRESSURE_PLATE.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/vermilion_block")
         );
 
         //Rails
         //--------------------------------------------------------------------------------------------------------------
-        activeRailBlock(AllBlocks.CHIME_RAIL.get(),
+        createActiveRail(AllBlocks.CHIME_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/chime_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/chime_rail_on")
         );
-        passiveStraightRailBlock(AllBlocks.CROSSOVER_RAIL.get(),
+        createPassiveStraightRail(AllBlocks.CROSSOVER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/crossover_rail")
         );
-        directionalRailBlock(AllBlocks.ONE_WAY_RAIL.get(),
+        createDirectionalRail(AllBlocks.ONE_WAY_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/one_way_rail_on")
         );
-        passiveRailBlock(AllBlocks.HIGH_SPEED_RAIL.get(),
+        createPassiveRail(AllBlocks.HIGH_SPEED_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_rail_corner")
         );
-        activeRailBlock(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
+        createActiveRail(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_activator_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_activator_rail_on")
         );
-        activeRailBlock(AllBlocks.HIGH_SPEED_CHIME_RAIL.get(),
+        createActiveRail(AllBlocks.HIGH_SPEED_CHIME_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_chime_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_chime_rail_on")
         );
-        passiveStraightRailBlock(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
+        createPassiveStraightRail(AllBlocks.HIGH_SPEED_CROSSOVER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_crossover_rail")
         );
-        activeRailBlock(AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
+        createActiveRail(AllBlocks.HIGH_SPEED_DETECTOR_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_detector_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_detector_rail_on")
         );
-        fourSpeedRailBlock(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(),
+        createFourSpeedRail(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_1tick_on"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_2tick_on"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_3tick_on"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_limiter_rail_4tick_on")
         );
-        activeRailBlock(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
+        createActiveRail(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_locking_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_locking_rail_on")
         );
-        directionalRailBlock(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
+        createDirectionalRail(AllBlocks.HIGH_SPEED_ONE_WAY_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_one_way_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_one_way_rail_on")
         );
-        activeRailBlock(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
+        createActiveRail(AllBlocks.HIGH_SPEED_POWERED_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
         );
-        fourSpeedRailBlock(AllBlocks.LIMITER_RAIL.get(),
+        createFourSpeedRail(AllBlocks.LIMITER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_1tick_on"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_2tick_on"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_3tick_on"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_4tick_on")
         );
-        activeRailBlock(AllBlocks.LOCKING_RAIL.get(),
+        createActiveRail(AllBlocks.LOCKING_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/locking_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/locking_rail_on")
         );
     }
 
-    private void simpleCubeBlockWithItem(RegistryObject<? extends Block> blockObject)
+    private void createSimpleCubeWithItem(RegistryObject<? extends Block> blockObject)
     {
         simpleBlockWithItem(blockObject.get(), cubeAll(blockObject.get()));
     }
@@ -271,7 +282,7 @@ public class BlockStateGenerator extends BlockStateProvider
         return models;
     }
 
-    private void furnaceBlock(Block block, ResourceLocation side, ResourceLocation front, ResourceLocation frontOn, ResourceLocation top)
+    private void createFurnace(Block block, ResourceLocation side, ResourceLocation front, ResourceLocation frontOn, ResourceLocation top)
     {
         ModelFile furnaceOff = models().orientable(AllBlocks.getName(block), side, front, top);
         ModelFile furnaceOn = models().orientable(AllBlocks.getName(block) + "_on", side, frontOn, top);
@@ -288,7 +299,7 @@ public class BlockStateGenerator extends BlockStateProvider
         });
     }
 
-    public void pressurePlateBlock(Block block, ResourceLocation texture)
+    public void createPressurePlate(Block block, ResourceLocation texture)
     {
         ModelFile pressurePlate = models().pressurePlate(AllBlocks.getName(block), texture);
         ModelFile pressurePlateDown = models().pressurePlateDown(AllBlocks.getName(block) + "_down", texture);
@@ -297,7 +308,14 @@ public class BlockStateGenerator extends BlockStateProvider
                 .partialState().with(BlockStateProperties.POWERED, false).addModels(new ConfiguredModel(pressurePlate));
     }
 
-    private void passiveStraightRailBlock(Block block, ResourceLocation top)
+    public void createScaffolding(Block block, ModelFile stableModel, ModelFile unstableModel)
+    {
+        getVariantBuilder(block)
+                .partialState().with(AllBlockStateProperties.UNSTABLE, true).addModels(new ConfiguredModel(unstableModel))
+                .partialState().with(AllBlockStateProperties.UNSTABLE, false).addModels(new ConfiguredModel(stableModel));
+    }
+
+    private void createPassiveStraightRail(Block block, ResourceLocation top)
     {
         ModelFile rail = rail(AllBlocks.getName(block), top);
         getVariantBuilder(block)
@@ -309,7 +327,7 @@ public class BlockStateGenerator extends BlockStateProvider
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).addModels(ConfiguredModel.builder().modelFile(rail).rotationY(90).build());
     }
 
-    private void passiveRailBlock(Block block, ResourceLocation straight, ResourceLocation corner)
+    private void createPassiveRail(Block block, ResourceLocation straight, ResourceLocation corner)
     {
         ModelFile rail = rail(AllBlocks.getName(block), straight);
         ModelFile railCorner = railCorner(AllBlocks.getName(block) + "_corner", corner);
@@ -340,7 +358,7 @@ public class BlockStateGenerator extends BlockStateProvider
         }, BaseRailBlock.WATERLOGGED);
     }
 
-    private void activeRailBlock(Block block, ResourceLocation off, ResourceLocation on)
+    private void createActiveRail(Block block, ResourceLocation off, ResourceLocation on)
     {
         ModelFile rail = rail(AllBlocks.getName(block), off);
         ModelFile railOn = rail(AllBlocks.getName(block) + "_on", on);
@@ -363,7 +381,7 @@ public class BlockStateGenerator extends BlockStateProvider
                 .partialState().with(BlockStateProperties.RAIL_SHAPE_STRAIGHT, RailShape.ASCENDING_WEST).with(BlockStateProperties.POWERED, true).addModels(ConfiguredModel.builder().modelFile(railRaisedSWOn).rotationY(90).build());
     }
 
-    private void fourSpeedRailBlock(Block block, ResourceLocation off, ResourceLocation onTick1, ResourceLocation onTick2, ResourceLocation onTick3, ResourceLocation onTick4)
+    private void createFourSpeedRail(Block block, ResourceLocation off, ResourceLocation onTick1, ResourceLocation onTick2, ResourceLocation onTick3, ResourceLocation onTick4)
     {
         ModelFile rail = rail(AllBlocks.getName(block), off);
         ModelFile railRaisedNE = railRaised(AllBlocks.getName(block) + "_raised_ne", off, true);
@@ -450,7 +468,7 @@ public class BlockStateGenerator extends BlockStateProvider
         }, BaseRailBlock.WATERLOGGED);
     }
 
-    private void directionalRailBlock(Block block, ResourceLocation off, ResourceLocation on)
+    private void createDirectionalRail(Block block, ResourceLocation off, ResourceLocation on)
     {
         ModelFile rail = rail(AllBlocks.getName(block), off);
         ModelFile railOn = rail(AllBlocks.getName(block) + "_on", on);

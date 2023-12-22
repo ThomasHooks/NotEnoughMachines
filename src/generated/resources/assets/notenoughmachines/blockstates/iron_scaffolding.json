@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "unstable=false": {
+      "model": "notenoughmachines:block/iron_scaffolding"
+    },
+    "unstable=true": {
+      "model": "notenoughmachines:block/iron_scaffolding_unstable"
+    }
+  }
+}
