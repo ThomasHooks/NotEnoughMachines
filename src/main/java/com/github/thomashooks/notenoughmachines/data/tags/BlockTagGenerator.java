@@ -42,6 +42,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AXLE.get(),
                 AllBlocks.BRONZE_BLOCK.get(),
+                AllBlocks.BRONZE_LADDER.get(),
                 AllBlocks.BRONZE_PLATE_BLOCK.get(),
                 AllBlocks.BRONZE_PLATE_SLAB.get(),
                 AllBlocks.BRONZE_PLATE_STAIRS.get(),
@@ -82,6 +83,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.HIGH_SPEED_RAIL.get(),
                 AllBlocks.LIMITER_RAIL.get(),
                 AllBlocks.LOCKING_RAIL.get(),
+                AllBlocks.IRON_LADDER.get(),
                 AllBlocks.IRON_PLATE_BLOCK.get(),
                 AllBlocks.IRON_PLATE_SLAB.get(),
                 AllBlocks.IRON_PLATE_STAIRS.get(),
@@ -182,11 +184,15 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.CLIMBABLE).add(
+                AllBlocks.BRONZE_LADDER.get(),
                 AllBlocks.BRONZE_SCAFFOLDING.get(),
+                AllBlocks.IRON_LADDER.get(),
                 AllBlocks.IRON_SCAFFOLDING.get()
         );
         this.tag(BlockTags.FALL_DAMAGE_RESETTING).add(
+                AllBlocks.BRONZE_LADDER.get(),
                 AllBlocks.BRONZE_SCAFFOLDING.get(),
+                AllBlocks.IRON_LADDER.get(),
                 AllBlocks.IRON_SCAFFOLDING.get()
         );
         this.tag(AllTags.Blocks.STRIPPED_LOGS).add(

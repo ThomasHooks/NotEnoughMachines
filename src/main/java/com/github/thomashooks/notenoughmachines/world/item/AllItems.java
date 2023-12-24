@@ -20,6 +20,7 @@ public class AllItems
     public static final RegistryObject<Item> BOOSTER_ROD = ITEMS.register("booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BOOSTER_ROD = ITEMS.register("bronze_booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BLOCK = ITEMS.register("bronze_block", ()-> new BlockItem(AllBlocks.BRONZE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_LADDER = ITEMS.register("bronze_ladder", ()-> new BlockItem(AllBlocks.BRONZE_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE_BLOCK = ITEMS.register("bronze_plate_block", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE_SLAB = ITEMS.register("bronze_plate_slab", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE_STAIRS = ITEMS.register("bronze_plate_stairs", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_STAIRS.get(), new Item.Properties()));
@@ -81,6 +82,8 @@ public class AllItems
     public static final RegistryObject<Item> HIGH_SPEED_LIMITER_RAIL = ITEMS.register("high_speed_limiter_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_LOCKING_RAIL = ITEMS.register("high_speed_locking_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_RAIL = ITEMS.register("high_speed_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_RAIL.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_LADDER = ITEMS.register("iron_ladder", ()-> new BlockItem(AllBlocks.IRON_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE_BLOCK = ITEMS.register("iron_plate_block", ()-> new BlockItem(AllBlocks.IRON_PLATE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_PLATE_SLAB = ITEMS.register("iron_plate_slab", ()-> new BlockItem(AllBlocks.IRON_PLATE_SLAB.get(), new Item.Properties()));

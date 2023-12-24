@@ -78,6 +78,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
     {
         addBlock(AllBlocks.AXLE, "Axle");
         addBlock(AllBlocks.BRONZE_BLOCK, "Block of Bronze");
+        addBlock(AllBlocks.BRONZE_LADDER, "Bronze Ladder");
         addBlock(AllBlocks.BRONZE_PLATE_BLOCK, "Block of Bronze Plates");
         addBlock(AllBlocks.BRONZE_PLATE_SLAB, "Slab of Bronze Plates");
         addBlock(AllBlocks.BRONZE_PLATE_STAIRS, "Stairs of Bronze Plates");
@@ -117,6 +118,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.HIGH_SPEED_LIMITER_RAIL, "High-Speed Limiter Rail");
         addBlock(AllBlocks.HIGH_SPEED_LOCKING_RAIL, "High-Speed Locking Rail");
         addBlock(AllBlocks.HIGH_SPEED_RAIL, "High-Speed Rail");
+        addBlock(AllBlocks.IRON_LADDER, "Iron Ladder");
         addBlock(AllBlocks.IRON_PLATE_BLOCK, "Block of Iron Plates");
         addBlock(AllBlocks.IRON_PLATE_SLAB, "Slab of Iron Plates");
         addBlock(AllBlocks.IRON_PLATE_STAIRS, "Stairs of Iron Plates");

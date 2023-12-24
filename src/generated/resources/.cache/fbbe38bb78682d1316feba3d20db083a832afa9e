@@ -1,8 +1,8 @@
-// 1.20.1	2023-12-22T14:37:16.9953936	Tags for minecraft:block mod id notenoughmachines
-533ac3d0f5cbcbe2eecee04256ae23bf90a884f3 data/minecraft/tags/blocks/climbable.json
-533ac3d0f5cbcbe2eecee04256ae23bf90a884f3 data/minecraft/tags/blocks/fall_damage_resetting.json
+// 1.20.1	2023-12-22T19:03:57.1362472	Tags for minecraft:block mod id notenoughmachines
+d6315aba6d627cf52e0d34805a541f194a3f239b data/minecraft/tags/blocks/climbable.json
+d6315aba6d627cf52e0d34805a541f194a3f239b data/minecraft/tags/blocks/fall_damage_resetting.json
 dc0897537e5fc905880fb91054630ad9ac656600 data/minecraft/tags/blocks/mineable/axe.json
-854671c3ec3552b97956fb8bac7739d917b00162 data/minecraft/tags/blocks/mineable/pickaxe.json
+16f0477bc990674d13938b74a01d05bc10762bc6 data/minecraft/tags/blocks/mineable/pickaxe.json
 d95bfb63fbf7e4bfe67ab5d24f6cd2e2a43cb042 data/minecraft/tags/blocks/needs_stone_tool.json
 5b4519131c557c3629602f98eaab1ec6e3ad39ed data/minecraft/tags/blocks/prevent_mob_spawning_inside.json
 aa8811e2a03ea8df29c87f6162e1541f7735c7df data/minecraft/tags/blocks/rails.json

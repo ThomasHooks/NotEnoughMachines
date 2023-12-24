@@ -44,9 +44,7 @@ public class ConjunctionerBlock extends TriodeBlock
             double d2 = (double)pos.getZ() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
             float f = -5.0F;
             if (randomSource.nextBoolean())
-            {
                 f = 4.0F;
-            }
 
             f /= 16.0F;
             double d3 = (double)(f * (float)direction.getStepX());

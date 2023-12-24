@@ -635,6 +635,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         //Ladders
         //--------------------------------------------------------------------------------------------------------------
 
+        //Bronze Ladder
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_LADDER.get(), 3)
+                .pattern("l l")
+                .pattern("lll")
+                .pattern("l l")
+                .define('l', AllItems.BRONZE_ROD.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_ladder")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
         //Bronze Scaffolding
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_SCAFFOLDING.get(), 6)
                 .pattern("lpl")
@@ -644,6 +654,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('l', AllItems.BRONZE_ROD.get())
                 .group(NotEnoughMachines.MOD_ID + ":bronze_scaffolding")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Iron Ladder
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_LADDER.get(), 3)
+                .pattern("l l")
+                .pattern("lll")
+                .pattern("l l")
+                .define('l', AllItems.IRON_ROD.get())
+                .group(NotEnoughMachines.MOD_ID + ":iron_ladder")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
 
         //Iron Scaffolding

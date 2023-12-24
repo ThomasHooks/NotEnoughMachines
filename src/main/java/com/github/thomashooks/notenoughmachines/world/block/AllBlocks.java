@@ -38,6 +38,14 @@ public class AllBlocks
                     .strength(5.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> BRONZE_LADDER = BLOCKS.register("bronze_ladder",
+            ()-> new LadderBlock(Block.Properties.of()
+                    .forceSolidOff()
+                    .strength(0.7F, 6.0F)
+                    .sound(SoundType.COPPER)
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY)
+            ));
     public static final RegistryObject<Block> BRONZE_PLATE_BLOCK = BLOCKS.register("bronze_plate_block",
             ()-> new RotatedPillarBlock(Block.Properties.copy(AllBlocks.BRONZE_BLOCK.get())
             ));
@@ -248,6 +256,14 @@ public class AllBlocks
             ));
     public static final RegistryObject<Block> HIGH_SPEED_ONE_WAY_RAIL = BLOCKS.register("high_speed_one_way_rail",
             ()-> new HighSpeedOneWayRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ));
+    public static final RegistryObject<Block> IRON_LADDER = BLOCKS.register("iron_ladder",
+            ()-> new LadderBlock(Block.Properties.of()
+                    .forceSolidOff()
+                    .strength(0.7F, 6.0F)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .pushReaction(PushReaction.DESTROY)
             ));
     public static final RegistryObject<Block> IRON_PLATE_BLOCK = BLOCKS.register("iron_plate_block",
             ()-> new RotatedPillarBlock(Block.Properties

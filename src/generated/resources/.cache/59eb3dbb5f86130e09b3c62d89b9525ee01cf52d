@@ -1,6 +1,7 @@
-// 1.20.1	2023-12-22T14:37:16.996393	Loot Tables
+// 1.20.1	2023-12-22T19:03:57.1372488	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 f7340e64bb9776a570abb8735cf0dcf4fa45ec03 data/notenoughmachines/loot_tables/blocks/bronze_block.json
+6ac436a308f5c64c98b9c47fe3fb1cb27abba97d data/notenoughmachines/loot_tables/blocks/bronze_ladder.json
 69ac3fa41e93c1536b78cd3bcf06e51712c9c5cc data/notenoughmachines/loot_tables/blocks/bronze_plate_block.json
 6147cbf1d658b781356ddb003a295eaf95319383 data/notenoughmachines/loot_tables/blocks/bronze_plate_slab.json
 ddb42d22489e55e686f264467229b9c184736587 data/notenoughmachines/loot_tables/blocks/bronze_plate_stairs.json
@@ -39,6 +40,7 @@ d459ceb23923a0699005245f8d5d0a7c2a8e0043 data/notenoughmachines/loot_tables/bloc
 fdb3fe2e0f30700e95b263d5f4d375b8eb883dda data/notenoughmachines/loot_tables/blocks/high_speed_one_way_rail.json
 934a8359fece6995122e27ed52124a7a80427bd6 data/notenoughmachines/loot_tables/blocks/high_speed_powered_rail.json
 8d04de43c8e0e57389bcb881f8359ed2a2a2e03a data/notenoughmachines/loot_tables/blocks/high_speed_rail.json
+dec5d72b27a976ec62f5964aa5099c7237507bad data/notenoughmachines/loot_tables/blocks/iron_ladder.json
 2b93dc8618ebfef3f45aee39cf9429130648eb1c data/notenoughmachines/loot_tables/blocks/iron_plate_block.json
 9c58ba4bcf5c27a085d8226fb2fb9a9b2eb10b1a data/notenoughmachines/loot_tables/blocks/iron_plate_slab.json
 57416f8b0f3c53bc2553bfe09f9421d71883f54d data/notenoughmachines/loot_tables/blocks/iron_plate_stairs.json

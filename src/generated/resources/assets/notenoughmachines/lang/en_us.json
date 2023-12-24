@@ -1,6 +1,7 @@
 {
   "block.notenoughmachines.axle": "Axle",
   "block.notenoughmachines.bronze_block": "Block of Bronze",
+  "block.notenoughmachines.bronze_ladder": "Bronze Ladder",
   "block.notenoughmachines.bronze_plate_block": "Block of Bronze Plates",
   "block.notenoughmachines.bronze_plate_slab": "Slab of Bronze Plates",
   "block.notenoughmachines.bronze_plate_stairs": "Stairs of Bronze Plates",
@@ -38,6 +39,7 @@
   "block.notenoughmachines.high_speed_one_way_rail": "High-Speed One-Way Rail",
   "block.notenoughmachines.high_speed_powered_rail": "High-Speed Powered Rail",
   "block.notenoughmachines.high_speed_rail": "High-Speed Rail",
+  "block.notenoughmachines.iron_ladder": "Iron Ladder",
   "block.notenoughmachines.iron_plate_block": "Block of Iron Plates",
   "block.notenoughmachines.iron_plate_slab": "Slab of Iron Plates",
   "block.notenoughmachines.iron_plate_stairs": "Stairs of Iron Plates",

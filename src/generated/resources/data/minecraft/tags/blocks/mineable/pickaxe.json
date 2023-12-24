@@ -2,6 +2,7 @@
   "values": [
     "notenoughmachines:axle",
     "notenoughmachines:bronze_block",
+    "notenoughmachines:bronze_ladder",
     "notenoughmachines:bronze_plate_block",
     "notenoughmachines:bronze_plate_slab",
     "notenoughmachines:bronze_plate_stairs",
@@ -42,6 +43,7 @@
     "notenoughmachines:high_speed_rail",
     "notenoughmachines:limiter_rail",
     "notenoughmachines:locking_rail",
+    "notenoughmachines:iron_ladder",
     "notenoughmachines:iron_plate_block",
     "notenoughmachines:iron_plate_slab",
     "notenoughmachines:iron_plate_stairs",

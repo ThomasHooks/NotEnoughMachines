@@ -1,6 +1,8 @@
 {
   "values": [
+    "notenoughmachines:bronze_ladder",
     "notenoughmachines:bronze_scaffolding",
+    "notenoughmachines:iron_ladder",
     "notenoughmachines:iron_scaffolding"
   ]
 }

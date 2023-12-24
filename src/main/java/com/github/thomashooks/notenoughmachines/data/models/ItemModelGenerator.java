@@ -23,133 +23,135 @@ public class ItemModelGenerator extends ItemModelProvider
     @Override
     protected void registerModels()
     {
-        simpleBlockItemModel(AllBlocks.AXLE);
-        simpleItemModel(AllItems.BOOSTER_ROD);
-        simpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
-        simpleItemModel(AllItems.BRONZE_INGOT);
-        simpleItemModel(AllItems.BRONZE_PLATE);
-        simpleBlockItemModel(AllBlocks.BRONZE_PLATE_BLOCK);
-        simpleBlockItemModel(AllBlocks.BRONZE_PLATE_SLAB);
-        simpleBlockItemModel(AllBlocks.BRONZE_PLATE_STAIRS);
-        simpleItemModel(AllItems.BRONZE_ROD);
-        simpleBlockItemModel(AllBlocks.BRONZE_SCAFFOLDING);
-        simpleItemModel(AllItems.BUFFER_STOP_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.CHIME_RAIL);
-        simpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
-        simpleBlockItemModel(AllBlocks.COGWHEEL_SMALL);
-        simpleItemModel(AllItems.COKE);
-        simpleBlockItemModel(AllBlocks.COKE_OVEN);
-        simpleItemModel(AllItems.CONJUNCTIONER);
-        simpleItemModel(AllItems.COPPER_PLATE);
-        simpleBlockItemModel(AllBlocks.COPPER_PLATE_BLOCK);
-        simpleBlockItemModel(AllBlocks.COPPER_PLATE_SLAB);
-        simpleBlockItemModel(AllBlocks.COPPER_PLATE_STAIRS);
-        simpleItemModel(AllItems.COPPER_ROD);
-        simpleItemModelFromBlockTexture(AllItems.CROSSOVER_RAIL);
-        simpleItemModel(AllItems.CRUSHED_BRONZE);
-        simpleItemModel(AllItems.CRUSHED_COPPER_ORE);
-        simpleItemModel(AllItems.CRUSHED_GOLD_ORE);
-        simpleItemModel(AllItems.CRUSHED_IRON_ORE);
-        simpleItemModel(AllItems.CRUSHED_TIN_ORE);
-        simpleItemModel(AllItems.CRUSHED_VERMILION);
-        simpleItemModel(AllItems.FIRE_BRICK);
-        simpleBlockItemModel(AllBlocks.FIRE_BRICKS_SLAB);
-        simpleBlockItemModel(AllBlocks.FIRE_BRICKS_STAIRS);
-        wallItemModel(AllBlocks.FIRE_BRICKS_WALL, AllBlocks.FIRE_BRICKS);
-        simpleItemModel(AllItems.FILTER, "filter_item");
-        simpleItemModel(AllItems.FLUX);
-        simpleBlockItemModel(AllBlocks.FLUXSTONE_SLAB);
-        simpleBlockItemModel(AllBlocks.FLUXSTONE_STAIRS);
-        wallItemModel(AllBlocks.FLUXSTONE_WALL, AllBlocks.FLUXSTONE);
-        simpleItemModel(AllItems.FLOUR);
-        simpleItemModel(AllItems.FLAXSEED);
-        simpleItemModel(AllItems.FLAX);
-        simpleItemModel(AllItems.FLAX_STRING);
-        simpleItemModel(AllItems.GEAR);
-        simpleItemModel(AllItems.GOLD_PLATE);
-        simpleBlockItemModel(AllBlocks.GOLD_PLATE_BLOCK);
-        simpleBlockItemModel(AllBlocks.GOLD_PLATE_SLAB);
-        simpleBlockItemModel(AllBlocks.GOLD_PLATE_STAIRS);
-        simpleItemModel(AllItems.GOLD_ROD);
-        simpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ACTIVATOR_RAIL);
-        simpleItemModel(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_CHIME_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_CROSSOVER_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_DETECTOR_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_ONE_WAY_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_POWERED_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_LIMITER_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_LOCKING_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.HIGH_SPEED_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.LIMITER_RAIL);
-        simpleItemModelFromBlockTexture(AllItems.LOCKING_RAIL);
-        simpleItemModel(AllItems.IRON_PLATE);
-        simpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
-        simpleBlockItemModel(AllBlocks.IRON_PLATE_SLAB);
-        simpleBlockItemModel(AllBlocks.IRON_PLATE_STAIRS);
-        simpleBlockItemModel(AllBlocks.IRON_SCAFFOLDING);
-        simpleItemModel(AllItems.IRON_ROD);
-        simpleItemModel(AllItems.IRON_SCREW);
-        simpleItemModel(AllItems.KAOLIN);
-        simpleItemModel(AllItems.LINEN);
-        simpleItemModel(AllItems.LINSEED_OIL);
-        simpleItemModelFromBlockTexture(AllItems.ONE_WAY_RAIL);
-        simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE);
-        simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
-        simpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
-        wallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
-        simpleItemModel(AllItems.RAILROAD_TIE);
-        simpleItemModel(AllItems.RAW_TIN);
-        simpleItemModel(AllItems.REDSTONE_EMITTER);
-        simpleItemModel(AllItems.REDSTONE_VALVE);
-        simpleItemModel(AllItems.IRON_ROLLS);
-        simpleItemModel(AllItems.TIN_INGOT);
-        simpleItemModel(AllItems.TIN_PLATE);
-        simpleBlockItemModel(AllBlocks.TIN_PLATE_BLOCK);
-        simpleBlockItemModel(AllBlocks.TIN_PLATE_SLAB);
-        simpleBlockItemModel(AllBlocks.TIN_PLATE_STAIRS);
-        simpleItemModel(AllItems.TIN_ROD);
-        simpleItemModel(AllItems.VERMILION_INGOT);
-        simpleItemModel(AllItems.VERMILION_PLATE);
-        simpleBlockItemModel(AllBlocks.VERMILION_PRESSURE_PLATE);
-        simpleItemModel(AllItems.VERMILION_ROD);
-        simpleBlockItemModel(AllBlocks.WATER_WHEEL);
-        simpleItemModel(AllItems.WIND_WHEEL);
-        simpleItemModel(AllItems.WIND_WHEEL_BLADE);
-        simpleItemModel(AllItems.WIND_WHEEL_SAIL);
-        simpleBlockItemModel(AllBlocks.WOODEN_FRAME_SLAB);
-        simpleBlockItemModel(AllBlocks.WOODEN_FRAME_STAIRS);
+        createSimpleBlockItemModel(AllBlocks.AXLE);
+        createSimpleItemModel(AllItems.BOOSTER_ROD);
+        createSimpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
+        createSimpleItemModel(AllItems.BRONZE_INGOT);
+        createSimpleFlatItemModel(AllItems.BRONZE_LADDER);
+        createSimpleItemModel(AllItems.BRONZE_PLATE);
+        createSimpleBlockItemModel(AllBlocks.BRONZE_PLATE_BLOCK);
+        createSimpleBlockItemModel(AllBlocks.BRONZE_PLATE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.BRONZE_PLATE_STAIRS);
+        createSimpleItemModel(AllItems.BRONZE_ROD);
+        createSimpleBlockItemModel(AllBlocks.BRONZE_SCAFFOLDING);
+        createSimpleItemModel(AllItems.BUFFER_STOP_RAIL);
+        createSimpleFlatItemModel(AllItems.CHIME_RAIL);
+        createSimpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
+        createSimpleBlockItemModel(AllBlocks.COGWHEEL_SMALL);
+        createSimpleItemModel(AllItems.COKE);
+        createSimpleBlockItemModel(AllBlocks.COKE_OVEN);
+        createSimpleItemModel(AllItems.CONJUNCTIONER);
+        createSimpleItemModel(AllItems.COPPER_PLATE);
+        createSimpleBlockItemModel(AllBlocks.COPPER_PLATE_BLOCK);
+        createSimpleBlockItemModel(AllBlocks.COPPER_PLATE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.COPPER_PLATE_STAIRS);
+        createSimpleItemModel(AllItems.COPPER_ROD);
+        createSimpleFlatItemModel(AllItems.CROSSOVER_RAIL);
+        createSimpleItemModel(AllItems.CRUSHED_BRONZE);
+        createSimpleItemModel(AllItems.CRUSHED_COPPER_ORE);
+        createSimpleItemModel(AllItems.CRUSHED_GOLD_ORE);
+        createSimpleItemModel(AllItems.CRUSHED_IRON_ORE);
+        createSimpleItemModel(AllItems.CRUSHED_TIN_ORE);
+        createSimpleItemModel(AllItems.CRUSHED_VERMILION);
+        createSimpleItemModel(AllItems.FIRE_BRICK);
+        createSimpleBlockItemModel(AllBlocks.FIRE_BRICKS_SLAB);
+        createSimpleBlockItemModel(AllBlocks.FIRE_BRICKS_STAIRS);
+        createWallItemModel(AllBlocks.FIRE_BRICKS_WALL, AllBlocks.FIRE_BRICKS);
+        createSimpleItemModel(AllItems.FILTER, "filter_item");
+        createSimpleItemModel(AllItems.FLUX);
+        createSimpleBlockItemModel(AllBlocks.FLUXSTONE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.FLUXSTONE_STAIRS);
+        createWallItemModel(AllBlocks.FLUXSTONE_WALL, AllBlocks.FLUXSTONE);
+        createSimpleItemModel(AllItems.FLOUR);
+        createSimpleItemModel(AllItems.FLAXSEED);
+        createSimpleItemModel(AllItems.FLAX);
+        createSimpleItemModel(AllItems.FLAX_STRING);
+        createSimpleItemModel(AllItems.GEAR);
+        createSimpleItemModel(AllItems.GOLD_PLATE);
+        createSimpleBlockItemModel(AllBlocks.GOLD_PLATE_BLOCK);
+        createSimpleBlockItemModel(AllBlocks.GOLD_PLATE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.GOLD_PLATE_STAIRS);
+        createSimpleItemModel(AllItems.GOLD_ROD);
+        createSimpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_ACTIVATOR_RAIL);
+        createSimpleItemModel(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_CHIME_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_CROSSOVER_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_DETECTOR_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_ONE_WAY_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_POWERED_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_LIMITER_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_LOCKING_RAIL);
+        createSimpleFlatItemModel(AllItems.HIGH_SPEED_RAIL);
+        createSimpleFlatItemModel(AllItems.LIMITER_RAIL);
+        createSimpleFlatItemModel(AllItems.LOCKING_RAIL);
+        createSimpleFlatItemModel(AllItems.IRON_LADDER);
+        createSimpleItemModel(AllItems.IRON_PLATE);
+        createSimpleBlockItemModel(AllBlocks.IRON_PLATE_BLOCK);
+        createSimpleBlockItemModel(AllBlocks.IRON_PLATE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.IRON_PLATE_STAIRS);
+        createSimpleBlockItemModel(AllBlocks.IRON_SCAFFOLDING);
+        createSimpleItemModel(AllItems.IRON_ROD);
+        createSimpleItemModel(AllItems.IRON_SCREW);
+        createSimpleItemModel(AllItems.KAOLIN);
+        createSimpleItemModel(AllItems.LINEN);
+        createSimpleItemModel(AllItems.LINSEED_OIL);
+        createSimpleFlatItemModel(AllItems.ONE_WAY_RAIL);
+        createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE);
+        createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
+        createWallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
+        createSimpleItemModel(AllItems.RAILROAD_TIE);
+        createSimpleItemModel(AllItems.RAW_TIN);
+        createSimpleItemModel(AllItems.REDSTONE_EMITTER);
+        createSimpleItemModel(AllItems.REDSTONE_VALVE);
+        createSimpleItemModel(AllItems.IRON_ROLLS);
+        createSimpleItemModel(AllItems.TIN_INGOT);
+        createSimpleItemModel(AllItems.TIN_PLATE);
+        createSimpleBlockItemModel(AllBlocks.TIN_PLATE_BLOCK);
+        createSimpleBlockItemModel(AllBlocks.TIN_PLATE_SLAB);
+        createSimpleBlockItemModel(AllBlocks.TIN_PLATE_STAIRS);
+        createSimpleItemModel(AllItems.TIN_ROD);
+        createSimpleItemModel(AllItems.VERMILION_INGOT);
+        createSimpleItemModel(AllItems.VERMILION_PLATE);
+        createSimpleBlockItemModel(AllBlocks.VERMILION_PRESSURE_PLATE);
+        createSimpleItemModel(AllItems.VERMILION_ROD);
+        createSimpleBlockItemModel(AllBlocks.WATER_WHEEL);
+        createSimpleItemModel(AllItems.WIND_WHEEL);
+        createSimpleItemModel(AllItems.WIND_WHEEL_BLADE);
+        createSimpleItemModel(AllItems.WIND_WHEEL_SAIL);
+        createSimpleBlockItemModel(AllBlocks.WOODEN_FRAME_SLAB);
+        createSimpleBlockItemModel(AllBlocks.WOODEN_FRAME_STAIRS);
     }
 
-    public ItemModelBuilder simpleItemModel(RegistryObject<? extends Item> itemIn)
+    public ItemModelBuilder createSimpleItemModel(RegistryObject<? extends Item> itemIn)
     {
         return withExistingParent(itemIn.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + itemIn.getId().getPath()));
     }
 
-    public ItemModelBuilder simpleItemModel(RegistryObject<? extends Item> itemIn, String textureName)
+    public ItemModelBuilder createSimpleItemModel(RegistryObject<? extends Item> itemIn, String textureName)
     {
         return withExistingParent(itemIn.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + textureName));
     }
 
-    public ItemModelBuilder simpleItemModelFromBlockTexture(RegistryObject<? extends Item> itemIn)
+    public ItemModelBuilder createSimpleFlatItemModel(RegistryObject<? extends Item> itemIn)
     {
         return withExistingParent(itemIn.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/" + itemIn.getId().getPath()));
     }
 
-    public void wallItemModel(RegistryObject<? extends Block> blockIn, RegistryObject<? extends Block> baseBlock)
+    public void createWallItemModel(RegistryObject<? extends Block> blockIn, RegistryObject<? extends Block> baseBlock)
     {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(blockIn.get()).getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall", new ResourceLocation(NotEnoughMachines.MOD_ID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
-    public void simpleBlockItemModel(RegistryObject<? extends Block> blockIn)
+    public void createSimpleBlockItemModel(RegistryObject<? extends Block> blockIn)
     {
         this.withExistingParent(NotEnoughMachines.MOD_ID + ":" + ForgeRegistries.BLOCKS.getKey(blockIn.get()).getPath(),
                 modLoc("block/" + ForgeRegistries.BLOCKS.getKey(blockIn.get()).getPath()));

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:iron_ladder",
+  "key": {
+    "l": {
+      "item": "notenoughmachines:iron_rod"
+    }
+  },
+  "pattern": [
+    "l l",
+    "lll",
+    "l l"
+  ],
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:iron_ladder"
+  },
+  "show_notification": true
+}

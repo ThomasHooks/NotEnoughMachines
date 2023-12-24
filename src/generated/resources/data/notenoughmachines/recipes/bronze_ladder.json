@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:bronze_ladder",
+  "key": {
+    "l": {
+      "item": "notenoughmachines:bronze_rod"
+    }
+  },
+  "pattern": [
+    "l l",
+    "lll",
+    "l l"
+  ],
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:bronze_ladder"
+  },
+  "show_notification": true
+}

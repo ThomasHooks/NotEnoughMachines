@@ -31,6 +31,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     {
         dropSelf(AllBlocks.AXLE.get());
         dropSelf(AllBlocks.BRONZE_BLOCK.get());
+        dropSelf(AllBlocks.BRONZE_LADDER.get());
         dropSelf(AllBlocks.BRONZE_PLATE_BLOCK.get());
         dropSlab(AllBlocks.BRONZE_PLATE_SLAB.get());
         dropSelf(AllBlocks.BRONZE_PLATE_STAIRS.get());
@@ -71,6 +72,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.HIGH_SPEED_POWERED_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_LIMITER_RAIL.get());
         dropSelf(AllBlocks.HIGH_SPEED_LOCKING_RAIL.get());
+        dropSelf(AllBlocks.IRON_LADDER.get());
         dropSelf(AllBlocks.IRON_PLATE_BLOCK.get());
         dropSlab(AllBlocks.IRON_PLATE_SLAB.get());
         dropSelf(AllBlocks.IRON_PLATE_STAIRS.get());

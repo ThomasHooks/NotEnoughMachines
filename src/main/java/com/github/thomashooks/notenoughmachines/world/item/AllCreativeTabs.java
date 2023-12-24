@@ -95,8 +95,10 @@ public class AllCreativeTabs
                         output.accept(AllItems.COKE_OVEN.get());
 
                         //Ladders/Scaffolding
-                        //Order: ladder -> scaffolding
+                        output.accept(AllItems.IRON_LADDER.get());
                         output.accept(AllItems.IRON_SCAFFOLDING.get());
+
+                        output.accept(AllItems.BRONZE_LADDER.get());
                         output.accept(AllItems.BRONZE_SCAFFOLDING.get());
 
                         //Redstone Blocks
