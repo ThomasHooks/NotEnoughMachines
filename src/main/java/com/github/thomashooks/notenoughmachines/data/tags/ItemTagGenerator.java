@@ -2,6 +2,7 @@ package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.common.tags.AllTags;
+import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -23,7 +24,8 @@ public class ItemTagGenerator extends ItemTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider)
     {
-        this.tag(AllTags.Items.STRIPPED_LOGS).add(Items.STRIPPED_OAK_LOG,
+        this.tag(AllTags.Items.STRIPPED_LOGS).add(
+                Items.STRIPPED_OAK_LOG,
                 Items.STRIPPED_SPRUCE_LOG,
                 Items.STRIPPED_BIRCH_LOG,
                 Items.STRIPPED_JUNGLE_LOG,
@@ -43,6 +45,10 @@ public class ItemTagGenerator extends ItemTagsProvider
                 Items.STRIPPED_MANGROVE_WOOD,
                 Items.STRIPPED_CRIMSON_HYPHAE,
                 Items.STRIPPED_WARPED_HYPHAE,
-                Items.STRIPPED_BAMBOO_BLOCK);
+                Items.STRIPPED_BAMBOO_BLOCK
+        );
+        this.tag(AllTags.Items.BRONZE_INGOTS).add(
+                AllItems.BRONZE_INGOT.get()
+        );
     }
 }

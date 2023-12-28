@@ -14,6 +14,7 @@ public class AllTags
     {
         public static final TagKey<Item> STRIPPED_LOGS = makeTag("stripped_logs");
         public static final TagKey<Item> COBBLESTONE = makeTag("cobblestone");
+        public static final TagKey<Item> BRONZE_INGOTS = makeForgeTag("ingots/bronze");
 
 
         private static TagKey<Item> makeForgeTag(String path)

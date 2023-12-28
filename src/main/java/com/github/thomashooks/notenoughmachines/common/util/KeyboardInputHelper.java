@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.lwjgl.glfw.GLFW;
 
 @OnlyIn(Dist.CLIENT)
-public class ToolTipHelper
+public class KeyboardInputHelper
 {
     private static final long GLFW_WINDOW = Minecraft.getInstance().getWindow().getWindow();
 
@@ -17,7 +17,8 @@ public class ToolTipHelper
         return InputConstants.isKeyDown(GLFW_WINDOW, GLFW.GLFW_KEY_LEFT_SHIFT) || InputConstants.isKeyDown(GLFW_WINDOW, GLFW.GLFW_KEY_RIGHT_SHIFT);
     }
 
-    public static String getTranslationKey(String key) { return "tooltip." + NotEnoughMachines.MOD_ID + "." + key; }
-
-    public static String moreInfoPressShift() { return getTranslationKey(ToolTipKeys.MORE_INFO_PRESS_SHIFT.key()); }
+    public static boolean isPressingCtrl()
+    {
+        return InputConstants.isKeyDown(GLFW_WINDOW, GLFW.GLFW_KEY_LEFT_CONTROL) || InputConstants.isKeyDown(GLFW_WINDOW, GLFW.GLFW_KEY_RIGHT_CONTROL);
+    }
 }

@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -58,10 +59,10 @@ public class BufferStopRailBlock extends BaseRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Endcap that stops minecarts from rolling off the track").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.BUFFER_STOP_RAIL.getTranslation()).withStyle(ChatFormatting.GREEN));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

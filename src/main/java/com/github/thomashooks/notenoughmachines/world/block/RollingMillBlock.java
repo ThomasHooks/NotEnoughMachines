@@ -3,6 +3,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.common.util.InventoryHelper;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.common.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.RollingMillBlockEntity;
@@ -99,10 +100,10 @@ public class RollingMillBlock extends HorizontalMechanicalBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Processes materials by flatting and drawing them").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.ROLLING_MILL.getTranslation()).withStyle(ChatFormatting.GREEN));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.world.block.entity.FilterBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.inventory.FilterMenu;
@@ -91,10 +92,10 @@ public class FilterBlock extends ItemConduitBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Routes items in different directions depending upon which color the item has been sorted into").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.ITEM_FILTER.getTranslation()).withStyle(ChatFormatting.GREEN));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

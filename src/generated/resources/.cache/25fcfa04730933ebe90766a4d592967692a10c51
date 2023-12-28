@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-22T19:03:57.1322463	Item Models: notenoughmachines
+// 1.20.1	2023-12-26T02:09:24.3200656	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 2d7ae8c917bd1921904b45d2d4f63225a67d4697 assets/notenoughmachines/models/item/bronze_booster_rod.json
@@ -73,6 +73,10 @@ f698cc452699a25ea0217a8cf1fc127f11ea6771 assets/notenoughmachines/models/item/li
 0dcfd9c97cb17dbdc060c382b51176857b40617e assets/notenoughmachines/models/item/linseed_oil.json
 c6fb67c7cdab7dea6debf2947abc285a5967d4d3 assets/notenoughmachines/models/item/locking_rail.json
 ffc6e6df5843966166d1f0ac47294ed4d6fa437f assets/notenoughmachines/models/item/one_way_rail.json
+2b0cac3758268e2a9d2ced188f19b9f01b5960e0 assets/notenoughmachines/models/item/padded_boots.json
+b8cf7d3dc971cffec314b4f7c8a6313157e17d27 assets/notenoughmachines/models/item/padded_chestplate.json
+c126a2852cc55ac553aca6260c6a867eb27797b8 assets/notenoughmachines/models/item/padded_helmet.json
+d5b4f34acab50114ad1c59e40560f33a33244346 assets/notenoughmachines/models/item/padded_leggings.json
 020de4694e889759101986156a63c013d5477c51 assets/notenoughmachines/models/item/polished_fluxstone.json
 49a59b0704cc40bfba17e1999387e685987fb8b0 assets/notenoughmachines/models/item/polished_fluxstone_slab.json
 5edf1122aab2611f111f5bb3e998387f0a5a1fed assets/notenoughmachines/models/item/polished_fluxstone_stairs.json

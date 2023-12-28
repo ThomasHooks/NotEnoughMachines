@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.LockingRailBlockEntity;
 import net.minecraft.ChatFormatting;
@@ -67,11 +68,11 @@ public class LockingRailBlock extends RedstoneRailBlock implements EntityBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Prevents minecarts from moving when not receiving a redstone signal").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("When powered with redstone locked minecarts are boosted in the direction it was traveling in").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.LOCKING_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.LOCKING_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

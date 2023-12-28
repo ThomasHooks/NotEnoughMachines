@@ -3,6 +3,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.common.util.InventoryHelper;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.CokeOvenBlockEntity;
 import net.minecraft.ChatFormatting;
@@ -108,10 +109,10 @@ public class CokeOvenBlock extends Block implements EntityBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Processes coal into coke").withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.COKE_OVEN.getTranslation()).withStyle(ChatFormatting.GREEN));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

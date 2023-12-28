@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.common.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.WindWheelBlockEntity;
@@ -38,13 +39,11 @@ public class WindWheelBlock extends HorizontalMechanicalBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Creates mechanical power from the wind").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("\u00A77" + "Must be placed " + "\u00A72" + "Above Ground"));
-            toolTips.add(Component.literal("\u00A77" + "And needs a " + "\u00A72" + "16x1x16 area" + "\u00A77" + " of free space"));
+            toolTips.add(Component.translatable(ToolTipKeys.WIND_WHEEL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.WIND_WHEEL2.getTranslation()));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

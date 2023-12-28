@@ -1,5 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
 import net.minecraft.ChatFormatting;
@@ -32,11 +33,12 @@ public class HighSpeedCrossoverRailBlock extends CrossoverRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Allows two sets of tracks to cross over each other").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("Minecarts will move 200% faster!").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.CROSSOVER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.CROSSOVER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MINECARTS_MOVE_FASTER.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

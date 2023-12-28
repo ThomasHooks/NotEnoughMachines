@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -42,11 +43,11 @@ public class HighSpeedLimiterRailBlock extends LimiterRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Limits the speed of minecarts when receiving a redstone signal").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("Right click to change the speed limit").withStyle(ChatFormatting.GRAY));
-            toolTips.add(Component.literal("Minecarts will move 200% faster!").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.LIMITER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.LIMITER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MINECARTS_MOVE_FASTER.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 }

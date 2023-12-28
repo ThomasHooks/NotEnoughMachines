@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -42,11 +43,11 @@ public class CrossoverRailBlock extends BaseRailBlock
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Allows two sets of tracks to cross over each other").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal("Minecarts traveling through will continue straight").withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.CROSSOVER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.CROSSOVER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

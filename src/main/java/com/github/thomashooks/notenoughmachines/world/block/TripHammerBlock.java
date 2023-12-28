@@ -3,6 +3,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.common.util.InventoryHelper;
 import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.common.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.TripHammerBlockEntity;
@@ -79,12 +80,11 @@ public class TripHammerBlock extends HorizontalMechanicalBlock implements IMulti
         if (KeyboardInputHelper.isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("Processes materials by pulverizing them into dust").withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.literal(""));
-            toolTips.add(Component.literal("\u00A77" + "Needs a " + "\u00A72" + "1x1x4 area" + "\u00A77" + " of free space"));
+            toolTips.add(Component.translatable(ToolTipKeys.TRIP_HAMMER1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(ToolTipKeys.TRIP_HAMMER2.getTranslation()));
         }
         else
-            toolTips.add(Component.literal(KeyboardInputHelper.MORE_INFO_PRESS_SHIFT).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
