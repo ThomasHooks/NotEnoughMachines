@@ -4,8 +4,10 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +15,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
@@ -73,35 +77,27 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion)
+    public @NotNull RecipeBuilder unlockedBy(@NotNull String name, @NotNull CriterionTriggerInstance criterion)
     {
         this.advancement.addCriterion(name, criterion);
         return this;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String groupIn)
+    public @NotNull RecipeBuilder group(@Nullable String groupIn)
     {
         this.group = groupIn;
         return this;
     }
 
     @Override
-    public Item getResult() { return this.result; }
+    public @NotNull Item getResult() { return this.result; }
 
     @Override
-    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation resourceLocation)
+    public void save(Consumer<FinishedRecipe> consumer, @NotNull ResourceLocation recipeID)
     {
-        //this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(resourceLocation)).rewards(AdvancementRewards.Builder.recipe(resourceLocation)).requirements(RequirementsStrategy.OR);
-        consumer.accept(new SingleResultMachineRecipeBuilder.Result(
-                resourceLocation,
-                this.group == null ? NotEnoughMachines.MOD_ID + ":" : this.group,
-                this.ingredient,
-                this.result,
-                this.count,
-                this.processingTime,
-                this.serializer)
-        );
+        this.advancement.parent(new ResourceLocation(NotEnoughMachines.MOD_ID, "recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeID)).rewards(AdvancementRewards.Builder.recipe(recipeID)).requirements(RequirementsStrategy.OR);
+        consumer.accept(new SingleResultMachineRecipeBuilder.Result(recipeID, this.group == null ? NotEnoughMachines.MOD_ID + ":" : this.group, this.ingredient, this.result, this.count, this.processingTime, this.serializer, this.advancement, recipeID.withPrefix("recipes/")));
     }
 
     public static class Result implements FinishedRecipe
@@ -113,8 +109,10 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
         private final int count;
         private final int processingTime;
         private final RecipeSerializer<?> serializer;
+        private final Advancement.Builder advancement;
+        private final ResourceLocation advancementID;
 
-        public Result(ResourceLocation id, String group, Ingredient ingredient, Item result, int count, int processingTime, RecipeSerializer<?> serializer)
+        public Result(ResourceLocation id, String group, Ingredient ingredient, Item result, int count, int processingTime, RecipeSerializer<?> serializer, Advancement.Builder advancement, ResourceLocation advancementID)
         {
             this.id = id;
             this.group = group;
@@ -123,10 +121,12 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
             this.count = count;
             this.processingTime = processingTime;
             this.serializer = serializer;
+            this.advancement = advancement;
+            this.advancementID = advancementID;
         }
 
         @Override
-        public void serializeRecipeData(JsonObject jsonObject)
+        public void serializeRecipeData(@NotNull JsonObject jsonObject)
         {
             if (!this.group.isEmpty())
                 jsonObject.addProperty("group", this.group);
@@ -134,7 +134,7 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
             jsonObject.add("ingredient", this.ingredient.toJson());
 
             JsonObject jsonResult = new JsonObject();
-            jsonResult.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
+            jsonResult.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
             if (this.count > 1)
                 jsonResult.addProperty("count", this.count);
             jsonObject.add("result", jsonResult);
@@ -143,17 +143,17 @@ public class SingleResultMachineRecipeBuilder implements RecipeBuilder
         }
 
         @Override
-        public ResourceLocation getId() { return this.id; }
+        public @NotNull ResourceLocation getId() { return this.id; }
 
         @Override
-        public RecipeSerializer<?> getType() { return this.serializer; }
-
-        @Nullable
-        @Override
-        public JsonObject serializeAdvancement() { return null; }
+        public @NotNull RecipeSerializer<?> getType() { return this.serializer; }
 
         @Nullable
         @Override
-        public ResourceLocation getAdvancementId() { return null; }
+        public JsonObject serializeAdvancement() { return this.advancement.serializeToJson(); }
+
+        @Nullable
+        @Override
+        public ResourceLocation getAdvancementId() { return this.advancementID; }
     }
 }

@@ -1,0 +1,22 @@
+{
+  "parent": "notenoughmachines:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:coking/charcoal_from_coking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:coking/charcoal_from_coking"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "notenoughmachines:vermilion_plate"
   },
-  "processtime": 300,
+  "processtime": 200,
   "result": {
     "count": 3,
     "item": "notenoughmachines:vermilion_rod"

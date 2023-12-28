@@ -1,0 +1,22 @@
+{
+  "parent": "notenoughmachines:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:rolling/iron_plate_from_rolling"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:rolling/iron_plate_from_rolling"
+    ]
+  },
+  "sends_telemetry_event": false
+}

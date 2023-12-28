@@ -1,0 +1,22 @@
+{
+  "parent": "notenoughmachines:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:milling/light_gray_dye_from_milling"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:milling/light_gray_dye_from_milling"
+    ]
+  },
+  "sends_telemetry_event": false
+}

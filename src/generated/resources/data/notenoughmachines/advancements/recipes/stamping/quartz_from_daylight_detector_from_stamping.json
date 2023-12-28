@@ -1,0 +1,22 @@
+{
+  "parent": "notenoughmachines:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "notenoughmachines:stamping/quartz_from_daylight_detector_from_stamping"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "notenoughmachines:stamping/quartz_from_daylight_detector_from_stamping"
+    ]
+  },
+  "sends_telemetry_event": false
+}

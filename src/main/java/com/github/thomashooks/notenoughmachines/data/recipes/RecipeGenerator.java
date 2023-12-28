@@ -315,6 +315,47 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
+        //Armor
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Padded Boots
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AllItems.PADDED_BOOTS.get(), 1)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":padded_boots")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Padded Chestplate
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AllItems.PADDED_CHESTPLATE.get(), 1)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":padded_chestplate")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Padded Helmet
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AllItems.PADDED_HELMET.get(), 1)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":padded_helmet")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Padded Leggings
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AllItems.PADDED_LEGGINGS.get(), 1)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', AllItems.LINEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":padded_leggings")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
 
@@ -1264,14 +1305,14 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         //Dust
         simpleMilling(consumer, "blaze_powder", Items.BLAZE_ROD, Items.BLAZE_POWDER, 4, 200);
         simpleMilling(consumer, "bone_meal", Items.BONE, Items.BONE_MEAL, 6, 200);
-        simpleMilling(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 1, 600);
+        simpleMilling(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 1, 400);
         simpleMilling(consumer, "flour", Items.WHEAT, AllItems.FLOUR.get(), 1, 200);
         simpleMilling(consumer, "flux", AllItems.FLUXSTONE.get(), AllItems.FLUX.get(), 1, 400);
         simpleMilling(consumer, "glowstone_dust", Items.GLOWSTONE, Items.GLOWSTONE_DUST, 2, 400);
-        simpleMilling(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 1, 600);
-        simpleMilling(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 1, 600);
+        simpleMilling(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 1, 400);
+        simpleMilling(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 1, 400);
         simpleMilling(consumer, "sugar", Items.SUGAR_CANE, Items.SUGAR, 2, 200);
-        simpleMilling(consumer, "tin_dust", AllItems.RAW_TIN.get(), AllItems.CRUSHED_TIN_ORE.get(), 1, 600);
+        simpleMilling(consumer, "tin_dust", AllItems.RAW_TIN.get(), AllItems.CRUSHED_TIN_ORE.get(), 1, 400);
 
         //Dye
         simpleMilling(consumer, "black_dye", Ingredient.of(Items.INK_SAC, Items.WITHER_ROSE), Items.BLACK_DYE, 2, 200);
@@ -1345,8 +1386,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleRolling(consumer, "sponge_dry", Ingredient.of(Items.WET_SPONGE), Items.SPONGE, 1, 200);
         simpleRolling(consumer, "tin_plate", Ingredient.of(AllItems.TIN_INGOT.get()), AllItems.TIN_PLATE.get(), 1, 300);
         simpleRolling(consumer, "tin_rod", Ingredient.of(AllItems.TIN_PLATE.get()), AllItems.TIN_ROD.get(), 3, 300);
-        simpleRolling(consumer, "vermilion_plate", Ingredient.of(AllItems.VERMILION_INGOT.get()), AllItems.VERMILION_PLATE.get(), 1, 300);
-        simpleRolling(consumer, "vermilion_rod", Ingredient.of(AllItems.VERMILION_PLATE.get()), AllItems.VERMILION_ROD.get(), 3, 300);
+        simpleRolling(consumer, "vermilion_plate", Ingredient.of(AllItems.VERMILION_INGOT.get()), AllItems.VERMILION_PLATE.get(), 1, 200);
+        simpleRolling(consumer, "vermilion_rod", Ingredient.of(AllItems.VERMILION_PLATE.get()), AllItems.VERMILION_ROD.get(), 3, 200);
     }
 
     public static void buildCokeOvenRecipes(Consumer<FinishedRecipe> consumer)

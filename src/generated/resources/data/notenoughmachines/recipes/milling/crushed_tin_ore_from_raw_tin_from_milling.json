@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "notenoughmachines:raw_tin"
   },
-  "processtime": 600,
+  "processtime": 400,
   "result": {
     "item": "notenoughmachines:crushed_tin_ore"
   }

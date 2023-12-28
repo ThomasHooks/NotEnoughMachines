@@ -4,7 +4,7 @@
   "ingredient": {
     "item": "minecraft:raw_iron"
   },
-  "processtime": 600,
+  "processtime": 400,
   "result": {
     "item": "notenoughmachines:crushed_iron_ore"
   }
