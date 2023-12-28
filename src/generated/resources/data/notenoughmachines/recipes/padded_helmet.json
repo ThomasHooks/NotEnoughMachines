@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:padded_helmet",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "result": {
+    "item": "notenoughmachines:padded_helmet"
+  },
+  "show_notification": true
+}

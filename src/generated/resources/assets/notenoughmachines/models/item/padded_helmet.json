@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "notenoughmachines:item/padded_helmet",
+    "layer1": "notenoughmachines:item/padded_helmet_overlay"
+  }
+}

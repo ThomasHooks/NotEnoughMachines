@@ -97,6 +97,10 @@ public class ItemModelGenerator extends ItemModelProvider
         createSimpleItemModel(AllItems.LINEN);
         createSimpleItemModel(AllItems.LINSEED_OIL);
         createSimpleFlatItemModel(AllItems.ONE_WAY_RAIL);
+        createSimpleItemModel(AllItems.PADDED_BOOTS);
+        createSimpleItemModel(AllItems.PADDED_CHESTPLATE);
+        createSimpleItemModel(AllItems.PADDED_HELMET, "padded_helmet", "padded_helmet_overlay");
+        createSimpleItemModel(AllItems.PADDED_LEGGINGS, "padded_leggings", "padded_leggings_overlay");
         createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE);
         createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
         createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
@@ -126,23 +130,27 @@ public class ItemModelGenerator extends ItemModelProvider
 
     public ItemModelBuilder createSimpleItemModel(RegistryObject<? extends Item> itemIn)
     {
-        return withExistingParent(itemIn.getId().getPath(),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + itemIn.getId().getPath()));
+        return withExistingParent(itemIn.getId().getPath(), new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + itemIn.getId().getPath()));
     }
 
-    public ItemModelBuilder createSimpleItemModel(RegistryObject<? extends Item> itemIn, String textureName)
+    public ItemModelBuilder createSimpleItemModel(RegistryObject<? extends Item> itemIn, String layer0TextureName)
     {
-        return withExistingParent(itemIn.getId().getPath(),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + textureName));
+        return withExistingParent(itemIn.getId().getPath(), new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + layer0TextureName));
+    }
+
+    public ItemModelBuilder createSimpleItemModel(RegistryObject<? extends Item> itemIn, String layer0TextureName, String layer1TextureName)
+    {
+        return withExistingParent(itemIn.getId().getPath(), new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + layer0TextureName))
+                .texture("layer1", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + layer1TextureName));
     }
 
     public ItemModelBuilder createSimpleFlatItemModel(RegistryObject<? extends Item> itemIn)
     {
-        return withExistingParent(itemIn.getId().getPath(),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/" + itemIn.getId().getPath()));
+        return withExistingParent(itemIn.getId().getPath(), new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(NotEnoughMachines.MOD_ID, "block/" + itemIn.getId().getPath()));
     }
 
     public void createWallItemModel(RegistryObject<? extends Block> blockIn, RegistryObject<? extends Block> baseBlock)

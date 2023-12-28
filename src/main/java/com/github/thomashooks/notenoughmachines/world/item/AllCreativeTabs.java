@@ -133,6 +133,10 @@ public class AllCreativeTabs
                         //Weapons
 
                         //Armor
+                        output.accept(AllItems.PADDED_HELMET.get());
+                        output.accept(AllItems.PADDED_CHESTPLATE.get());
+                        output.accept(AllItems.PADDED_LEGGINGS.get());
+                        output.accept(AllItems.PADDED_BOOTS.get());
 
                         //Food
                         output.accept(AllItems.FLOUR.get());
@@ -200,8 +204,5 @@ public class AllCreativeTabs
                     .build()
     );
 
-    public static void registerAll(IEventBus modEventBus)
-    {
-        TABS.register(modEventBus);
-    }
+    public static void registerAll(IEventBus modEventBus) { TABS.register(modEventBus); }
 }

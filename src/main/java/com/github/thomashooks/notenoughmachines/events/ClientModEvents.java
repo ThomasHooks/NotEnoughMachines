@@ -6,9 +6,12 @@ import com.github.thomashooks.notenoughmachines.client.render.blockentity.*;
 import com.github.thomashooks.notenoughmachines.client.render.blockentity.model.*;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.inventory.AllMenus;
+import com.github.thomashooks.notenoughmachines.world.item.AllItems;
+import com.github.thomashooks.notenoughmachines.world.item.PaddedArmorItem;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -68,5 +71,20 @@ public class ClientModEvents
     public static void registerKeyMappings(RegisterKeyMappingsEvent event)
     {
         //NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Key Mappings");
+    }
+
+    @SubscribeEvent
+    public static void registerItemColors(RegisterColorHandlersEvent.Item event)
+    {
+        NotEnoughMachines.LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all dyeable items");
+        event.register((stack, layer) ->
+        {
+            return layer > 0 ? -1 : ((PaddedArmorItem)stack.getItem()).getColor(stack);
+        },
+                AllItems.PADDED_BOOTS.orElseThrow(IllegalStateException::new),
+                AllItems.PADDED_CHESTPLATE.orElseThrow(IllegalStateException::new),
+                AllItems.PADDED_HELMET.orElseThrow(IllegalStateException::new),
+                AllItems.PADDED_LEGGINGS.orElseThrow(IllegalStateException::new)
+        );
     }
 }

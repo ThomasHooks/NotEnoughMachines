@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:padded_leggings",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "item": "notenoughmachines:padded_leggings"
+  },
+  "show_notification": true
+}

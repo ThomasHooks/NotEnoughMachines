@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:padded_chestplate",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    }
+  },
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:padded_chestplate"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:padded_boots",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    }
+  },
+  "pattern": [
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "item": "notenoughmachines:padded_boots"
+  },
+  "show_notification": true
+}

@@ -1,15 +1,18 @@
 package com.github.thomashooks.notenoughmachines;
 
 import com.github.thomashooks.notenoughmachines.client.ClientTimer;
+import com.github.thomashooks.notenoughmachines.data.loot.modifier.AllLootModifiers;
 import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
-import com.github.thomashooks.notenoughmachines.data.loot.modifier.AllLootModifiers;
 import com.github.thomashooks.notenoughmachines.world.inventory.AllMenus;
 import com.github.thomashooks.notenoughmachines.world.item.AllCreativeTabs;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
+import com.github.thomashooks.notenoughmachines.world.item.PaddedArmorItem;
 import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
 import com.github.thomashooks.notenoughmachines.world.power.PowerNetworkStack;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -35,6 +38,8 @@ public class NotEnoughMachines
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::onCommonSetup);
+
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOW, PaddedArmorItem::onLivingEntityFall);
 
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":registering all Blocks");
         AllBlocks.registerAll(modEventBus);
