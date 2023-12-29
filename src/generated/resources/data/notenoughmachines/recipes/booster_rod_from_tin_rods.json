@@ -4,10 +4,10 @@
   "group": "notenoughmachines:booster_rod",
   "key": {
     "g": {
-      "item": "notenoughmachines:gold_rod"
+      "tag": "forge:rods/gold"
     },
     "t": {
-      "item": "notenoughmachines:tin_rod"
+      "tag": "forge:rods/tin"
     },
     "v": {
       "item": "notenoughmachines:vermilion_rod"

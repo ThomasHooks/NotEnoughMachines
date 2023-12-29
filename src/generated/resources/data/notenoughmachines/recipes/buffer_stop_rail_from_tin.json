@@ -10,7 +10,7 @@
       "item": "notenoughmachines:tin_block"
     },
     "|": {
-      "item": "notenoughmachines:tin_rod"
+      "tag": "forge:rods/tin"
     }
   },
   "pattern": [

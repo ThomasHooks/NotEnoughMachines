@@ -4,10 +4,10 @@
   "group": "notenoughmachines:bronze_scaffolding",
   "key": {
     "l": {
-      "item": "notenoughmachines:bronze_rod"
+      "tag": "forge:rods/bronze"
     },
     "p": {
-      "item": "notenoughmachines:bronze_plate"
+      "tag": "forge:plates/bronze"
     }
   },
   "pattern": [

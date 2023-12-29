@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class RollingRecipe extends AbstractMachineRecipe
@@ -22,13 +23,13 @@ public class RollingRecipe extends AbstractMachineRecipe
     }
 
     @Override
-    public ItemStack getToastSymbol() { return new ItemStack(AllItems.ROLLING_MILL.get()); }
+    public @NotNull ItemStack getToastSymbol() { return new ItemStack(AllItems.ROLLING_MILL.get()); }
 
     @Override
-    public RecipeSerializer<?> getSerializer() { return Serializer.ROLLING; }
+    public @NotNull RecipeSerializer<?> getSerializer() { return Serializer.ROLLING; }
 
     @Override
-    public RecipeType<?> getType() { return Type.ROLLING; }
+    public @NotNull RecipeType<?> getType() { return Type.ROLLING; }
 
     public static class Type implements RecipeType<RollingRecipe>
     {
@@ -42,7 +43,7 @@ public class RollingRecipe extends AbstractMachineRecipe
         public static final ResourceLocation ID = new ResourceLocation(NotEnoughMachines.MOD_ID, "rolling");
 
         @Override
-        public RollingRecipe fromJson(ResourceLocation recipeId, JsonObject serializedRecipe)
+        public @NotNull RollingRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject serializedRecipe)
         {
             String group = GsonHelper.getAsString(serializedRecipe, "group", "");
 
@@ -61,7 +62,7 @@ public class RollingRecipe extends AbstractMachineRecipe
         }
 
         @Override
-        public @Nullable RollingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
+        public @Nullable RollingRecipe fromNetwork(@NotNull ResourceLocation recipeId, FriendlyByteBuf buffer)
         {
             String group = buffer.readUtf();
             Ingredient ingredient = Ingredient.fromNetwork(buffer);

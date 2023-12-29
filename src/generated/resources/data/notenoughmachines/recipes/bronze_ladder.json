@@ -4,7 +4,7 @@
   "group": "notenoughmachines:bronze_ladder",
   "key": {
     "l": {
-      "item": "notenoughmachines:bronze_rod"
+      "tag": "forge:rods/bronze"
     }
   },
   "pattern": [

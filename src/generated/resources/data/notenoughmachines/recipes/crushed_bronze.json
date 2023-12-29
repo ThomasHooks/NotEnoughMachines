@@ -4,16 +4,16 @@
   "group": "notenoughmachines:crushed_bronze",
   "ingredients": [
     {
-      "item": "notenoughmachines:crushed_copper_ore"
+      "tag": "forge:dusts/copper"
     },
     {
-      "item": "notenoughmachines:crushed_copper_ore"
+      "tag": "forge:dusts/copper"
     },
     {
-      "item": "notenoughmachines:crushed_copper_ore"
+      "tag": "forge:dusts/copper"
     },
     {
-      "item": "notenoughmachines:crushed_tin_ore"
+      "tag": "forge:dusts/tin"
     },
     {
       "item": "notenoughmachines:flux"

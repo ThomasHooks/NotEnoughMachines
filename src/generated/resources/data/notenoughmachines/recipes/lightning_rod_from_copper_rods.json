@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "notenoughmachines:lightning_rod",
+  "key": {
+    "i": {
+      "tag": "forge:rods/copper"
+    }
+  },
+  "pattern": [
+    "i",
+    "i",
+    "i"
+  ],
+  "result": {
+    "item": "minecraft:lightning_rod"
+  },
+  "show_notification": true
+}

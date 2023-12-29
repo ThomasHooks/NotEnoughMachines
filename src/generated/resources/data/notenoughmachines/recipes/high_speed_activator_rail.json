@@ -10,7 +10,7 @@
       "item": "minecraft:redstone_torch"
     },
     "|": {
-      "item": "notenoughmachines:bronze_rod"
+      "tag": "forge:rods/bronze"
     }
   },
   "pattern": [

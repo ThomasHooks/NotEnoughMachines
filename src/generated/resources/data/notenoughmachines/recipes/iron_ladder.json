@@ -4,7 +4,7 @@
   "group": "notenoughmachines:iron_ladder",
   "key": {
     "l": {
-      "item": "notenoughmachines:iron_rod"
+      "tag": "forge:rods/iron"
     }
   },
   "pattern": [

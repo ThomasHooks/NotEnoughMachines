@@ -12,9 +12,25 @@ public class AllTags
 {
     public static final class Items
     {
-        public static final TagKey<Item> STRIPPED_LOGS = makeTag("stripped_logs");
-        public static final TagKey<Item> COBBLESTONE = makeTag("cobblestone");
+        public static final TagKey<Item> BRONZE_DUST = makeForgeTag("dusts/bronze");
         public static final TagKey<Item> BRONZE_INGOTS = makeForgeTag("ingots/bronze");
+        public static final TagKey<Item> BRONZE_PLATES = makeForgeTag("plates/bronze");
+        public static final TagKey<Item> BRONZE_RODS = makeForgeTag("rods/bronze");
+        public static final TagKey<Item> COPPER_DUST = makeForgeTag("dusts/copper");
+        public static final TagKey<Item> COPPER_PLATES = makeForgeTag("plates/copper");
+        public static final TagKey<Item> COPPER_RODS = makeForgeTag("rods/copper");
+        public static final TagKey<Item> GOLD_DUST = makeForgeTag("dusts/gold");
+        public static final TagKey<Item> GOLD_PLATES = makeForgeTag("plates/gold");
+        public static final TagKey<Item> GOLD_RODS = makeForgeTag("rods/gold");
+        public static final TagKey<Item> IRON_DUST = makeForgeTag("dusts/iron");
+        public static final TagKey<Item> IRON_PLATES = makeForgeTag("plates/iron");
+        public static final TagKey<Item> IRON_RODS = makeForgeTag("rods/iron");
+        public static final TagKey<Item> STRIPPED_LOGS = makeTag("stripped_logs");
+        public static final TagKey<Item> TIN_DUST = makeForgeTag("dusts/tin");
+        public static final TagKey<Item> TIN_INGOTS = makeForgeTag("ingots/tin");
+        public static final TagKey<Item> TIN_ORES = makeForgeTag("ores/tin");
+        public static final TagKey<Item> TIN_PLATES = makeForgeTag("plates/tin");
+        public static final TagKey<Item> TIN_RODS = makeForgeTag("rods/tin");
 
 
         private static TagKey<Item> makeForgeTag(String path)

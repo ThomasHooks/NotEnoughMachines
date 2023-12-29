@@ -7,7 +7,7 @@
       "item": "minecraft:iron_ingot"
     },
     "l": {
-      "item": "notenoughmachines:iron_rod"
+      "tag": "forge:rods/iron"
     }
   },
   "pattern": [

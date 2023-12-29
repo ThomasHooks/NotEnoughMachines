@@ -4,7 +4,7 @@
   "group": "notenoughmachines:tin_plate_block",
   "key": {
     "#": {
-      "item": "notenoughmachines:tin_plate"
+      "tag": "forge:plates/tin"
     }
   },
   "pattern": [

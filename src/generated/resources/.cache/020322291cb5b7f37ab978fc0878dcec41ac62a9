@@ -1,3 +1,20 @@
-// 1.20.1	2023-12-28T14:07:52.9812356	Tags for minecraft:item mod id notenoughmachines
+// 1.20.1	2023-12-28T17:57:37.9040556	Tags for minecraft:item mod id notenoughmachines
+063b49d3e9086a34d1ab46bfa5b84529de1d587f data/forge/tags/items/dusts/bronze.json
+1c53c76e7323b05a889fc88d2fab070a84d88d73 data/forge/tags/items/dusts/copper.json
+99c14c56c9f40d510a8ee8f2f6e017aa588487f8 data/forge/tags/items/dusts/gold.json
+a877a8c8a12c16d3079f839f894acf5872980d26 data/forge/tags/items/dusts/iron.json
+8f687ea3ee6a72be84602a81f11a67ca2cc7dc8b data/forge/tags/items/dusts/tin.json
 76082396e1d01f8047a3e042bce20cb4bf16db41 data/forge/tags/items/ingots/bronze.json
+41ae77607a15c46f7738d19655b54dbf8c2edecb data/forge/tags/items/ingots/tin.json
+8c7ca7ce6d181a87959f86c4e1d519af9eaf446a data/forge/tags/items/ores/tin.json
+756afbda97e48125f2d16ea54639a236989f59b7 data/forge/tags/items/plates/bronze.json
+73483aeb139a99909107e399208c99d6f3ec2767 data/forge/tags/items/plates/copper.json
+223f8b710c123bdcecbad53f7de3b10af9acea52 data/forge/tags/items/plates/gold.json
+5f48209e1d699db503238395c13e2f9fa3c4a0ad data/forge/tags/items/plates/iron.json
+5c91cb6c7577cbe3445df3a0b946dd5254ab3cd5 data/forge/tags/items/plates/tin.json
+7d54757a83bf4bebab38b5c449fba02371aabf37 data/forge/tags/items/rods/bronze.json
+c5cdb8b25adb045144deb42f110786e1bc0e12fc data/forge/tags/items/rods/copper.json
+4056e66fb4d467f62c3ccac9c1c85fff5570d178 data/forge/tags/items/rods/gold.json
+50398578f21bc1eb9615ff6b5ec40b3e16bfdcc9 data/forge/tags/items/rods/iron.json
+608b2a87440ce354cbd47341e703b76c6f339ee3 data/forge/tags/items/rods/tin.json
 e5463ae4f3b82270fa2c991901217be559ca0284 data/notenoughmachines/tags/items/stripped_logs.json

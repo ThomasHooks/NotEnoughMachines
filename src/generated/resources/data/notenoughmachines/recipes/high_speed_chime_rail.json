@@ -13,7 +13,7 @@
       "item": "minecraft:stone_pressure_plate"
     },
     "|": {
-      "item": "notenoughmachines:bronze_rod"
+      "tag": "forge:rods/bronze"
     }
   },
   "pattern": [

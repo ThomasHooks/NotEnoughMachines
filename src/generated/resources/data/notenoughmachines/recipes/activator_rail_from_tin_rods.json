@@ -10,7 +10,7 @@
       "item": "minecraft:redstone_torch"
     },
     "|": {
-      "item": "notenoughmachines:tin_rod"
+      "tag": "forge:rods/tin"
     }
   },
   "pattern": [

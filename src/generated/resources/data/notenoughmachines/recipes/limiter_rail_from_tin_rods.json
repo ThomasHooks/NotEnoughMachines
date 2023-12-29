@@ -10,7 +10,7 @@
       "item": "minecraft:repeater"
     },
     "|": {
-      "item": "notenoughmachines:tin_rod"
+      "tag": "forge:rods/tin"
     }
   },
   "pattern": [

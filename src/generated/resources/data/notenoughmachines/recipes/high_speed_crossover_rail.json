@@ -7,7 +7,7 @@
       "item": "notenoughmachines:railroad_tie"
     },
     "|": {
-      "item": "notenoughmachines:bronze_rod"
+      "tag": "forge:rods/bronze"
     }
   },
   "pattern": [

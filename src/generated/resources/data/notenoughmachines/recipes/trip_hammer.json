@@ -7,7 +7,7 @@
       "item": "notenoughmachines:wooden_frame"
     },
     "=": {
-      "item": "notenoughmachines:bronze_plate"
+      "tag": "forge:plates/bronze"
     },
     "I": {
       "item": "notenoughmachines:axle"

@@ -4,7 +4,6 @@ import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -13,6 +12,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class MillingRecipe extends AbstractMachineRecipe
@@ -23,13 +23,13 @@ public class MillingRecipe extends AbstractMachineRecipe
     }
 
     @Override
-    public ItemStack getToastSymbol() { return new ItemStack(AllItems.MILLSTONE.get()); }
+    public @NotNull ItemStack getToastSymbol() { return new ItemStack(AllItems.MILLSTONE.get()); }
 
     @Override
-    public RecipeSerializer<?> getSerializer() { return Serializer.MILLING; }
+    public @NotNull RecipeSerializer<?> getSerializer() { return Serializer.MILLING; }
 
     @Override
-    public RecipeType<?> getType() { return Type.MILLING; }
+    public @NotNull RecipeType<?> getType() { return Type.MILLING; }
 
     public static class Type implements RecipeType<MillingRecipe>
     {
@@ -44,7 +44,7 @@ public class MillingRecipe extends AbstractMachineRecipe
         public static final ResourceLocation ID = new ResourceLocation(NotEnoughMachines.MOD_ID, "milling");
 
         @Override
-        public MillingRecipe fromJson(ResourceLocation recipeId, JsonObject serializedRecipe)
+        public @NotNull MillingRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject serializedRecipe)
         {
             String group = GsonHelper.getAsString(serializedRecipe, "group", "");
 
@@ -63,7 +63,7 @@ public class MillingRecipe extends AbstractMachineRecipe
         }
 
         @Override
-        public @Nullable MillingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
+        public @Nullable MillingRecipe fromNetwork(@NotNull ResourceLocation recipeId, FriendlyByteBuf buffer)
         {
             String group = buffer.readUtf();
             Ingredient ingredient = Ingredient.fromNetwork(buffer);

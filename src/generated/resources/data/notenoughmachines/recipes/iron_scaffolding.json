@@ -4,10 +4,10 @@
   "group": "notenoughmachines:iron_scaffolding",
   "key": {
     "l": {
-      "item": "notenoughmachines:iron_rod"
+      "tag": "forge:rods/iron"
     },
     "p": {
-      "item": "notenoughmachines:iron_plate"
+      "tag": "forge:plates/iron"
     }
   },
   "pattern": [

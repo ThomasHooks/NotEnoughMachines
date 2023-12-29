@@ -4,7 +4,7 @@
   "group": "notenoughmachines:redstone_valve",
   "key": {
     "#": {
-      "item": "notenoughmachines:tin_plate"
+      "tag": "forge:plates/tin"
     },
     "e": {
       "item": "minecraft:redstone_torch"

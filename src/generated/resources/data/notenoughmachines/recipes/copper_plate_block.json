@@ -4,7 +4,7 @@
   "group": "notenoughmachines:copper_plate_block",
   "key": {
     "#": {
-      "item": "notenoughmachines:copper_plate"
+      "tag": "forge:plates/copper"
     }
   },
   "pattern": [

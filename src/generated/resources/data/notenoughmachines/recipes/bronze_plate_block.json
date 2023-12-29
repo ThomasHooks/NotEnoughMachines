@@ -4,7 +4,7 @@
   "group": "notenoughmachines:bronze_plate_block",
   "key": {
     "#": {
-      "item": "notenoughmachines:bronze_plate"
+      "tag": "forge:plates/bronze"
     }
   },
   "pattern": [

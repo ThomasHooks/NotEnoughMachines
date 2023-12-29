@@ -10,7 +10,7 @@
       "item": "minecraft:iron_block"
     },
     "|": {
-      "item": "notenoughmachines:bronze_rod"
+      "tag": "forge:rods/bronze"
     }
   },
   "pattern": [

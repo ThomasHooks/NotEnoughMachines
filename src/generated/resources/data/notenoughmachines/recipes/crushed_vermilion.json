@@ -4,7 +4,7 @@
   "group": "notenoughmachines:crushed_vermilion",
   "ingredients": [
     {
-      "item": "notenoughmachines:crushed_copper_ore"
+      "tag": "forge:dusts/copper"
     },
     {
       "item": "minecraft:redstone"

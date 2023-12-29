@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class StampingRecipe extends AbstractMachineRecipe
@@ -31,13 +32,13 @@ public class StampingRecipe extends AbstractMachineRecipe
     }
 
     @Override
-    public ItemStack getToastSymbol() { return new ItemStack(AllItems.TRIP_HAMMER.get()); }
+    public @NotNull ItemStack getToastSymbol() { return new ItemStack(AllItems.TRIP_HAMMER.get()); }
 
     @Override
-    public RecipeSerializer<?> getSerializer() { return Serializer.STAMPING; }
+    public @NotNull RecipeSerializer<?> getSerializer() { return Serializer.STAMPING; }
 
     @Override
-    public RecipeType<?> getType() { return Type.STAMPING; }
+    public @NotNull RecipeType<?> getType() { return Type.STAMPING; }
 
     public static class Type implements RecipeType<StampingRecipe>
     {
@@ -51,7 +52,7 @@ public class StampingRecipe extends AbstractMachineRecipe
         public static final ResourceLocation ID = new ResourceLocation(NotEnoughMachines.MOD_ID, "stamping");
 
         @Override
-        public StampingRecipe fromJson(ResourceLocation recipeId, JsonObject serializedRecipe)
+        public @NotNull StampingRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject serializedRecipe)
         {
             String group = GsonHelper.getAsString(serializedRecipe, "group", "");
 
@@ -72,7 +73,7 @@ public class StampingRecipe extends AbstractMachineRecipe
         }
 
         @Override
-        public @Nullable StampingRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
+        public @Nullable StampingRecipe fromNetwork(@NotNull ResourceLocation recipeId, FriendlyByteBuf buffer)
         {
             String group = buffer.readUtf();
             Ingredient ingredient = Ingredient.fromNetwork(buffer);

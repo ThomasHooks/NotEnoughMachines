@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractMachineRecipe implements Recipe<SimpleContainer>
 {
@@ -39,34 +40,34 @@ public abstract class AbstractMachineRecipe implements Recipe<SimpleContainer>
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients()
+    public @NotNull NonNullList<Ingredient> getIngredients()
     {
         return NonNullList.withSize(1, this.ingredients);
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) { return this.results.copy(); }
+    public @NotNull ItemStack assemble(@NotNull SimpleContainer container, @NotNull RegistryAccess registryAccess) { return this.results.copy(); }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) { return true; }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) { return this.results.copy(); }
+    public @NotNull ItemStack getResultItem(RegistryAccess registryAccess) { return this.results.copy(); }
 
     public int getProcessingTime() { return this.processingTime; }
 
     @Override
-    public ResourceLocation getId() { return this.id; }
+    public @NotNull ResourceLocation getId() { return this.id; }
 
     @Override
-    public String getGroup() { return this.group; }
+    public @NotNull String getGroup() { return this.group; }
 
     @Override
-    public abstract ItemStack getToastSymbol();
+    public abstract @NotNull ItemStack getToastSymbol();
 
     @Override
-    public abstract RecipeSerializer<?> getSerializer();
+    public abstract @NotNull RecipeSerializer<?> getSerializer();
 
     @Override
-    public abstract RecipeType<?> getType();
+    public abstract @NotNull RecipeType<?> getType();
 }

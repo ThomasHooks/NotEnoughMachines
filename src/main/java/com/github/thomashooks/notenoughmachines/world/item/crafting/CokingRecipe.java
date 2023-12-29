@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CokingRecipe extends AbstractMachineRecipe
@@ -22,13 +23,13 @@ public class CokingRecipe extends AbstractMachineRecipe
     }
 
     @Override
-    public ItemStack getToastSymbol() { return new ItemStack(AllItems.COKE_OVEN.get()); }
+    public @NotNull ItemStack getToastSymbol() { return new ItemStack(AllItems.COKE_OVEN.get()); }
 
     @Override
-    public RecipeSerializer<?> getSerializer() { return Serializer.COKING; }
+    public @NotNull RecipeSerializer<?> getSerializer() { return Serializer.COKING; }
 
     @Override
-    public RecipeType<?> getType() { return Type.COKING; }
+    public @NotNull RecipeType<?> getType() { return Type.COKING; }
 
     public static class Type implements RecipeType<CokingRecipe>
     {
@@ -42,7 +43,7 @@ public class CokingRecipe extends AbstractMachineRecipe
         public static final ResourceLocation ID = new ResourceLocation(NotEnoughMachines.MOD_ID, "rolling");
 
         @Override
-        public CokingRecipe fromJson(ResourceLocation recipeId, JsonObject serializedRecipe)
+        public @NotNull CokingRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject serializedRecipe)
         {
             String group = GsonHelper.getAsString(serializedRecipe, "group", "");
 
