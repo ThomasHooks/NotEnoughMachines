@@ -108,8 +108,15 @@ public class DoubleResultMachineRecipeBuilder implements RecipeBuilder
     @Override
     public void save(Consumer<FinishedRecipe> consumer, @NotNull ResourceLocation recipeID)
     {
-        this.advancement.parent(new ResourceLocation(NotEnoughMachines.MOD_ID, "recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeID)).rewards(AdvancementRewards.Builder.recipe(recipeID)).requirements(RequirementsStrategy.OR);
+        this.ensureValid(recipeID);
+        this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeID)).rewards(AdvancementRewards.Builder.recipe(recipeID)).requirements(RequirementsStrategy.OR);
         consumer.accept(new DoubleResultMachineRecipeBuilder.Result(recipeID, this.group == null ? NotEnoughMachines.MOD_ID + ":" : this.group, this.ingredient, this.resultPrimary, this.countPrimary, this.resultSecondary, this.countSecondary, this.processingTime, this.serializer, this.advancement, recipeID.withPrefix("recipes/")));
+    }
+
+    private void ensureValid(ResourceLocation recipeID)
+    {
+        if (this.advancement.getCriteria().isEmpty())
+            throw new IllegalStateException("No way of obtaining recipe " + recipeID);
     }
 
     public static class Result implements FinishedRecipe

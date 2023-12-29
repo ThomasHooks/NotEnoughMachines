@@ -1,6 +1,18 @@
 {
-  "parent": "notenoughmachines:recipes/root",
+  "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_has_raw_tin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "notenoughmachines:raw_tin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "notenoughmachines:milling/crushed_tin_ore_from_raw_tin_from_milling"
@@ -10,6 +22,7 @@
   },
   "requirements": [
     [
+      "has_has_raw_tin",
       "has_the_recipe"
     ]
   ],

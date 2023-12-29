@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.common.util;
+package com.github.thomashooks.notenoughmachines.util;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;

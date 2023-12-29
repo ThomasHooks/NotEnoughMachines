@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.common.util.KeyboardInputHelper;
-import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.common.tags.AllTags;
+import com.github.thomashooks.notenoughmachines.integration.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

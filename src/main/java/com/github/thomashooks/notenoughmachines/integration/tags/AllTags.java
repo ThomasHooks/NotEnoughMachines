@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.common.tags;
+package com.github.thomashooks.notenoughmachines.integration.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import net.minecraft.resources.ResourceLocation;

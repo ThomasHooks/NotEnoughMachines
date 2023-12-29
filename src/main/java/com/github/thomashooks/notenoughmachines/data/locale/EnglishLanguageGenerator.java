@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data.locale;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.common.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;

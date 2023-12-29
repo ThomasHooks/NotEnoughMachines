@@ -3,7 +3,7 @@ package com.github.thomashooks.notenoughmachines.data.recipes;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.data.recipes.builders.DoubleResultMachineRecipeBuilder;
 import com.github.thomashooks.notenoughmachines.data.recipes.builders.SingleResultMachineRecipeBuilder;
-import com.github.thomashooks.notenoughmachines.common.tags.AllTags;
+import com.github.thomashooks.notenoughmachines.integration.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
@@ -38,6 +38,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildCraftingTableRecipes(Consumer<FinishedRecipe> consumer)
     {
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all shaped and shapeless recipes");
+
         //Items
         //--------------------------------------------------------------------------------------------------------------
 
@@ -1255,6 +1257,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildCookingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all cooking recipes");
+
         //Building Blocks
         simpleOreSmelting(consumer, "polished_fluxstone", AllItems.FLUXSTONE.get(), AllItems.POLISHED_FLUXSTONE.get(), AllItems.FLUXSTONE.get(), RecipeCategory.BUILDING_BLOCKS, 0.15F, 200);
 
@@ -1282,6 +1286,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildStoneCuttingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all stone cutting recipes");
+
         simpleStoneCutting(consumer, "bronze_plate_slab", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
         simpleStoneCutting(consumer, "bronze_plate_stairs", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
 
@@ -1312,118 +1318,129 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
     protected void buildMillingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all milling recipes");
+
         //Dust
-        simpleMilling(consumer, "blaze_powder", Items.BLAZE_ROD, Items.BLAZE_POWDER, 4, 200);
-        simpleMilling(consumer, "bone_meal", Items.BONE, Items.BONE_MEAL, 6, 200);
-        simpleMilling(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 1, 400);
-        simpleMilling(consumer, "flour", Items.WHEAT, AllItems.FLOUR.get(), 1, 200);
-        simpleMilling(consumer, "flux", AllItems.FLUXSTONE.get(), AllItems.FLUX.get(), 1, 400);
-        simpleMilling(consumer, "glowstone_dust", Items.GLOWSTONE, Items.GLOWSTONE_DUST, 2, 400);
-        simpleMilling(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 1, 400);
-        simpleMilling(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 1, 400);
-        simpleMilling(consumer, "sugar", Items.SUGAR_CANE, Items.SUGAR, 2, 200);
-        simpleMilling(consumer, "tin_dust", AllItems.RAW_TIN.get(), AllItems.CRUSHED_TIN_ORE.get(), 1, 400);
+        simpleMilling(consumer, "blaze_powder", Items.BLAZE_ROD, Items.BLAZE_POWDER, 4, Items.BLAZE_ROD, 200);
+        simpleMilling(consumer, "bone_meal", Items.BONE, Items.BONE_MEAL, 6, Items.BONE, 200);
+        simpleMilling(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 1, Items.RAW_COPPER, 400);
+        simpleMilling(consumer, "flour", Items.WHEAT, AllItems.FLOUR.get(), 1, Items.WHEAT, 200);
+        simpleMilling(consumer, "flux", AllItems.FLUXSTONE.get(), AllItems.FLUX.get(), 1, AllItems.FLUXSTONE.get(), 400);
+        simpleMilling(consumer, "glowstone_dust", Items.GLOWSTONE, Items.GLOWSTONE_DUST, 2, Items.GLOWSTONE, 400);
+        simpleMilling(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 1, Items.RAW_GOLD, 400);
+        simpleMilling(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 1, Items.RAW_IRON, 400);
+        simpleMilling(consumer, "sugar", Items.SUGAR_CANE, Items.SUGAR, 2, Items.SUGAR_CANE, 200);
+        simpleMilling(consumer, "tin_dust", AllItems.RAW_TIN.get(), AllItems.CRUSHED_TIN_ORE.get(), 1, AllItems.RAW_TIN.get(), 400);
 
         //Dye
-        simpleMilling(consumer, "black_dye", Ingredient.of(Items.INK_SAC, Items.WITHER_ROSE), Items.BLACK_DYE, 2, 200);
-        simpleMilling(consumer, "blue_dye", Items.LAPIS_LAZULI, Items.BLUE_DYE, 3, 400);
-        simpleMilling(consumer, "blue_dye", Items.CORNFLOWER, Items.BLUE_DYE, 2, 200);
-        simpleMilling(consumer, "brown_dye", Items.COCOA_BEANS, Items.BROWN_DYE, 2, 200);
-        simpleMilling(consumer, "green_dye", Items.CACTUS, Items.GREEN_DYE, 2, 200);
-        simpleMilling(consumer, "light_blue_dye", Items.BLUE_ORCHID, Items.LIGHT_BLUE_DYE, 2, 200);
-        simpleMilling(consumer, "light_gray_dye", Ingredient.of(Items.AZURE_BLUET, Items.OXEYE_DAISY, Items.WHITE_TULIP), Items.LIGHT_GRAY_DYE, 2, 200);
-        simpleMilling(consumer, "magenta_dye", Ingredient.of(Items.LILAC, Items.ALLIUM), Items.MAGENTA_DYE, 2, 200);
-        simpleMilling(consumer, "orange_dye", Items.ORANGE_TULIP, Items.ORANGE_DYE, 2, 200);
-        simpleMilling(consumer, "pink_dye", Ingredient.of(Items.PINK_TULIP, Items.PEONY), Items.PINK_DYE, 2, 200);
-        simpleMilling(consumer, "red_dye", Ingredient.of(Items.POPPY, Items.RED_TULIP, Items.BEETROOT, Items.ROSE_BUSH), Items.RED_DYE, 2, 200);
-        simpleMilling(consumer, "white_dye", Ingredient.of(Items.BONE_MEAL, Items.LILY_OF_THE_VALLEY), Items.WHITE_DYE, 2, 200);
-        simpleMilling(consumer, "yellow_dye", Ingredient.of(Items.DANDELION, Items.SUNFLOWER), Items.YELLOW_DYE, 2, 200);
+        simpleMilling(consumer, "black_dye", Ingredient.of(Items.INK_SAC, Items.WITHER_ROSE), Items.BLACK_DYE, 2, Items.BLACK_DYE, 200);
+        simpleMilling(consumer, "blue_dye", Items.LAPIS_LAZULI, Items.BLUE_DYE, 3, Items.LAPIS_LAZULI, 400);
+        simpleMilling(consumer, "blue_dye", Items.CORNFLOWER, Items.BLUE_DYE, 2, Items.CORNFLOWER, 200);
+        simpleMilling(consumer, "brown_dye", Items.COCOA_BEANS, Items.BROWN_DYE, 2, Items.COCOA_BEANS, 200);
+        simpleMilling(consumer, "green_dye", Items.CACTUS, Items.GREEN_DYE, 2, Items.CACTUS, 200);
+        simpleMilling(consumer, "light_blue_dye", Items.BLUE_ORCHID, Items.LIGHT_BLUE_DYE, 2, Items.BLUE_ORCHID, 200);
+        simpleMilling(consumer, "light_gray_dye", Ingredient.of(Items.AZURE_BLUET, Items.OXEYE_DAISY, Items.WHITE_TULIP), Items.LIGHT_GRAY_DYE, 2, Items.LIGHT_GRAY_DYE, 200);
+        simpleMilling(consumer, "magenta_dye", Ingredient.of(Items.LILAC, Items.ALLIUM), Items.MAGENTA_DYE, 2, Items.MAGENTA_DYE, 200);
+        simpleMilling(consumer, "orange_dye", Items.ORANGE_TULIP, Items.ORANGE_DYE, 2, Items.ORANGE_TULIP, 200);
+        simpleMilling(consumer, "pink_dye", Ingredient.of(Items.PINK_TULIP, Items.PEONY), Items.PINK_DYE, 2, Items.PINK_DYE, 200);
+        simpleMilling(consumer, "red_dye", Ingredient.of(Items.POPPY, Items.RED_TULIP, Items.BEETROOT, Items.ROSE_BUSH), Items.RED_DYE, 2, Items.RED_DYE, 200);
+        simpleMilling(consumer, "white_dye", Ingredient.of(Items.BONE_MEAL, Items.LILY_OF_THE_VALLEY), Items.WHITE_DYE, 2, Items.WHITE_DYE, 200);
+        simpleMilling(consumer, "yellow_dye", Ingredient.of(Items.DANDELION, Items.SUNFLOWER), Items.YELLOW_DYE, 2, Items.YELLOW_DYE, 200);
 
         //Misc
-        simpleMilling(consumer, "flax_string", AllItems.FLAX.get(), AllItems.FLAX_STRING.get(), 3, 200);
-        simpleMilling(consumer, "flint", Items.GRAVEL, Items.FLINT, 1, 400);
+        simpleMilling(consumer, "flax_string", AllItems.FLAX.get(), AllItems.FLAX_STRING.get(), 3, AllItems.FLAX.get(), 200);
+        simpleMilling(consumer, "flint", Items.GRAVEL, Items.FLINT, 1, Items.GRAVEL, 400);
     }
 
     protected void buildStampingRecipes(Consumer<FinishedRecipe> consumer)
     {
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all stamping recipes");
+
         //Building Blocks
-        simpleStamping(consumer, "clay_ball", Ingredient.of(Items.SAND, Items.RED_SAND), Items.CLAY_BALL, 6, 200);
-        simpleStamping(consumer, "cobblestone", Ingredient.of(Items.STONE, Items.CRACKED_STONE_BRICKS, Items.SMOOTH_STONE), Items.COBBLESTONE, 1, 200);
-        simpleStamping(consumer, "cracked_stone_bricks", Ingredient.of(Items.STONE_BRICKS, Items.CHISELED_STONE_BRICKS), Items.CRACKED_STONE_BRICKS, 1, 200);
-        simpleStamping(consumer, "gravel", Ingredient.of(Items.COBBLESTONE), Items.GRAVEL, 1, 200);
-        simpleStamping(consumer, "mossy_cobblestone", Ingredient.of(Items.MOSSY_STONE_BRICKS), Items.MOSSY_COBBLESTONE, 1, 200);
-        simpleStamping(consumer, "red_sand", Ingredient.of(Items.RED_SANDSTONE, Items.CHISELED_RED_SANDSTONE, Items.CUT_RED_SANDSTONE, Items.SMOOTH_RED_SANDSTONE), Items.RED_SAND, 1, 200);
-        simpleStamping(consumer, "sand", Ingredient.of(Items.SANDSTONE, Items.CHISELED_SANDSTONE, Items.SMOOTH_SANDSTONE, Items.CUT_SANDSTONE), Items.SAND, 1, 200);
-        simpleStamping(consumer, "sand", Items.GRAVEL, Items.SAND, 1, Items.FLINT, 2, 200);
+        simpleStamping(consumer, "clay_ball", Ingredient.of(Items.SAND, Items.RED_SAND), Items.CLAY_BALL, 6, Items.SAND, 200);
+        simpleStamping(consumer, "cobblestone", Ingredient.of(Items.STONE, Items.CRACKED_STONE_BRICKS, Items.SMOOTH_STONE), Items.COBBLESTONE, 1, Items.COBBLESTONE, 200);
+        simpleStamping(consumer, "cracked_stone_bricks", Ingredient.of(Items.STONE_BRICKS, Items.CHISELED_STONE_BRICKS), Items.CRACKED_STONE_BRICKS, 1, Items.STONE_BRICKS, 200);
+        simpleStamping(consumer, "gravel", Ingredient.of(Items.COBBLESTONE), Items.GRAVEL, 1, Items.COBBLESTONE, 200);
+        simpleStamping(consumer, "mossy_cobblestone", Ingredient.of(Items.MOSSY_STONE_BRICKS), Items.MOSSY_COBBLESTONE, 1, Items.MOSSY_STONE_BRICKS, 200);
+        simpleStamping(consumer, "red_sand", Ingredient.of(Items.RED_SANDSTONE, Items.CHISELED_RED_SANDSTONE, Items.CUT_RED_SANDSTONE, Items.SMOOTH_RED_SANDSTONE), Items.RED_SAND, 1, Items.RED_SANDSTONE, 200);
+        simpleStamping(consumer, "sand", Ingredient.of(Items.SANDSTONE, Items.CHISELED_SANDSTONE, Items.SMOOTH_SANDSTONE, Items.CUT_SANDSTONE), Items.SAND, 1, Items.SAND, 200);
+        simpleStamping(consumer, "sand", Items.GRAVEL, Items.SAND, 1, Items.FLINT, 2, Items.GRAVEL, 200);
 
         //Dust
-        simpleStamping(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 2, 400);
-        simpleStamping(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 2, 400);
-        simpleStamping(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 2, 400);
-        simpleStamping(consumer, "tin_dust", AllItems.RAW_TIN.get(), AllItems.CRUSHED_TIN_ORE.get(), 2, 400);
+        simpleStamping(consumer, "copper_dust", Items.RAW_COPPER, AllItems.CRUSHED_COPPER_ORE.get(), 2, Items.RAW_COPPER, 400);
+        simpleStamping(consumer, "gold_dust", Items.RAW_GOLD, AllItems.CRUSHED_GOLD_ORE.get(), 2, Items.RAW_GOLD, 400);
+        simpleStamping(consumer, "iron_dust", Items.RAW_IRON, AllItems.CRUSHED_IRON_ORE.get(), 2, Items.RAW_IRON, 400);
+        simpleStamping(consumer, "tin_dust", AllItems.RAW_TIN.get(), AllItems.CRUSHED_TIN_ORE.get(), 2, AllItems.RAW_TIN.get(), 400);
 
         //Raw Ore
-        simpleStamping(consumer, "raw_copper", Ingredient.of(Items.COPPER_ORE, Items.DEEPSLATE_COPPER_ORE), Items.RAW_COPPER, 6, 400);
-        simpleStamping(consumer, "raw_gold", Ingredient.of(Items.GOLD_ORE, Items.DEEPSLATE_GOLD_ORE), Items.RAW_GOLD, 2, 400);
-        simpleStamping(consumer, "raw_iron", Ingredient.of(Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), Items.RAW_IRON, 2, 400);
-        simpleStamping(consumer, "raw_tin", Ingredient.of(AllItems.TIN_ORE.get()), AllItems.RAW_TIN.get(), 2, 400);
+        simpleStamping(consumer, "raw_copper", Ingredient.of(Items.COPPER_ORE, Items.DEEPSLATE_COPPER_ORE), Items.RAW_COPPER, 6, Items.COPPER_ORE, 400);
+        simpleStamping(consumer, "raw_gold", Ingredient.of(Items.GOLD_ORE, Items.DEEPSLATE_GOLD_ORE), Items.RAW_GOLD, 2, Items.GOLD_ORE, 400);
+        simpleStamping(consumer, "raw_iron", Ingredient.of(Items.IRON_ORE, Items.DEEPSLATE_IRON_ORE), Items.RAW_IRON, 2, Items.IRON_ORE, 400);
+        simpleStamping(consumer, "raw_tin", Ingredient.of(AllItems.TIN_ORE.get()), AllItems.RAW_TIN.get(), 2, AllItems.TIN_ORE.get(), 400);
 
         //Other Minerals
-        simpleStamping(consumer, "amethyst_shard", Ingredient.of(Items.AMETHYST_CLUSTER), Items.AMETHYST_SHARD, 7, 200);
-        simpleStamping(consumer, "coal", Ingredient.of(Items.COAL_ORE, Items.DEEPSLATE_COAL_ORE), Items.COAL, 3, 400);
-        simpleStamping(consumer, "diamond", Ingredient.of(Items.DIAMOND_ORE, Items.DEEPSLATE_DIAMOND_ORE), Items.DIAMOND, 3, 600);
-        simpleStamping(consumer, "emerald", Ingredient.of(Items.EMERALD_ORE, Items.DEEPSLATE_EMERALD_ORE), Items.EMERALD, 3, 600);
-        simpleStamping(consumer, "flux", AllItems.FLUXSTONE.get(), AllItems.FLUX.get(), 3, 200);
-        simpleStamping(consumer, "glowstone_dust", Items.GLOWSTONE, Items.GLOWSTONE_DUST, 4, 200);
-        simpleStamping(consumer, "glowstone_dust", Items.REDSTONE_LAMP, Items.GLOWSTONE_DUST, 4, Items.REDSTONE, 4, 200);
-        simpleStamping(consumer, "gold_nugget", Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 7, 400);
-        simpleStamping(consumer, "lapis_lazuli", Ingredient.of(Items.LAPIS_ORE, Items.DEEPSLATE_LAPIS_ORE), Items.LAPIS_LAZULI, 11, 400);
-        simpleStamping(consumer, "quartz", Ingredient.of(Items.NETHER_QUARTZ_ORE), Items.QUARTZ, 2, 200);
-        simpleStamping(consumer, "quartz", Items.DAYLIGHT_DETECTOR, Items.QUARTZ, 3, Items.SAND, 3, 200);
-        simpleStamping(consumer, "redstone", Ingredient.of(Items.REDSTONE_ORE, Items.DEEPSLATE_REDSTONE_ORE), Items.REDSTONE, 6, 400);
+        simpleStamping(consumer, "amethyst_shard", Ingredient.of(Items.AMETHYST_CLUSTER), Items.AMETHYST_SHARD, 7, Items.AMETHYST_CLUSTER, 200);
+        simpleStamping(consumer, "coal", Ingredient.of(Items.COAL_ORE, Items.DEEPSLATE_COAL_ORE), Items.COAL, 3, Items.COAL_ORE, 400);
+        simpleStamping(consumer, "diamond", Ingredient.of(Items.DIAMOND_ORE, Items.DEEPSLATE_DIAMOND_ORE), Items.DIAMOND, 3, Items.DIAMOND_ORE, 600);
+        simpleStamping(consumer, "emerald", Ingredient.of(Items.EMERALD_ORE, Items.DEEPSLATE_EMERALD_ORE), Items.EMERALD, 3, Items.EMERALD_ORE, 600);
+        simpleStamping(consumer, "flux", AllItems.FLUXSTONE.get(), AllItems.FLUX.get(), 3, AllItems.FLUXSTONE.get(), 200);
+        simpleStamping(consumer, "glowstone_dust", Items.GLOWSTONE, Items.GLOWSTONE_DUST, 4, Items.GLOWSTONE, 200);
+        simpleStamping(consumer, "glowstone_dust", Items.REDSTONE_LAMP, Items.GLOWSTONE_DUST, 4, Items.REDSTONE, 4, Items.GLOWSTONE, 200);
+        simpleStamping(consumer, "gold_nugget", Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 7, Items.NETHER_GOLD_ORE, 400);
+        simpleStamping(consumer, "lapis_lazuli", Ingredient.of(Items.LAPIS_ORE, Items.DEEPSLATE_LAPIS_ORE), Items.LAPIS_LAZULI, 11, Items.LAPIS_ORE, 400);
+        simpleStamping(consumer, "quartz", Ingredient.of(Items.NETHER_QUARTZ_ORE), Items.QUARTZ, 2, Items.NETHER_QUARTZ_ORE, 200);
+        simpleStamping(consumer, "quartz", Items.DAYLIGHT_DETECTOR, Items.QUARTZ, 3, Items.SAND, 3, Items.DAYLIGHT_DETECTOR, 200);
+        simpleStamping(consumer, "redstone", Ingredient.of(Items.REDSTONE_ORE, Items.DEEPSLATE_REDSTONE_ORE), Items.REDSTONE, 6, Items.REDSTONE_ORE, 400);
     }
 
     protected void buildRollingRecipes(Consumer<FinishedRecipe> consumer)
     {
-        simpleRolling(consumer, "bronze_plate", Ingredient.of(AllItems.BRONZE_INGOT.get()), AllItems.BRONZE_PLATE.get(), 1, 300);
-        simpleRolling(consumer, "bronze_rod", Ingredient.of(AllItems.BRONZE_PLATE.get()), AllItems.BRONZE_ROD.get(), 3, 300);
-        simpleRolling(consumer, "copper_plate", Ingredient.of(Items.COPPER_INGOT), AllItems.COPPER_PLATE.get(), 1, 200);
-        simpleRolling(consumer, "copper_rod", Ingredient.of(AllItems.COPPER_PLATE.get()), AllItems.COPPER_ROD.get(), 3, 200);
-        simpleRolling(consumer, "gold_plate", Ingredient.of(Items.GOLD_INGOT), AllItems.GOLD_PLATE.get(), 1, 300);
-        simpleRolling(consumer, "gold_rod", Ingredient.of(AllItems.GOLD_PLATE.get()), AllItems.GOLD_ROD.get(), 3, 300);
-        simpleRolling(consumer, "iron_plate", Ingredient.of(Items.IRON_INGOT), AllItems.IRON_PLATE.get(), 1, 300);
-        simpleRolling(consumer, "iron_rod", Ingredient.of(AllItems.IRON_PLATE.get()), AllItems.IRON_ROD.get(), 3, 300);
-        simpleRolling(consumer, "sponge_dry", Ingredient.of(Items.WET_SPONGE), Items.SPONGE, 1, 200);
-        simpleRolling(consumer, "tin_plate", Ingredient.of(AllItems.TIN_INGOT.get()), AllItems.TIN_PLATE.get(), 1, 300);
-        simpleRolling(consumer, "tin_rod", Ingredient.of(AllItems.TIN_PLATE.get()), AllItems.TIN_ROD.get(), 3, 300);
-        simpleRolling(consumer, "vermilion_plate", Ingredient.of(AllItems.VERMILION_INGOT.get()), AllItems.VERMILION_PLATE.get(), 1, 200);
-        simpleRolling(consumer, "vermilion_rod", Ingredient.of(AllItems.VERMILION_PLATE.get()), AllItems.VERMILION_ROD.get(), 3, 200);
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all rolling recipes");
+
+        simpleRolling(consumer, "bronze_plate", Ingredient.of(AllItems.BRONZE_INGOT.get()), AllItems.BRONZE_PLATE.get(), 1, AllItems.BRONZE_INGOT.get(), 300);
+        simpleRolling(consumer, "bronze_rod", Ingredient.of(AllItems.BRONZE_PLATE.get()), AllItems.BRONZE_ROD.get(), 3, AllItems.BRONZE_INGOT.get(), 300);
+        simpleRolling(consumer, "copper_plate", Ingredient.of(Items.COPPER_INGOT), AllItems.COPPER_PLATE.get(), 1, Items.COPPER_INGOT, 200);
+        simpleRolling(consumer, "copper_rod", Ingredient.of(AllItems.COPPER_PLATE.get()), AllItems.COPPER_ROD.get(), 3, Items.COPPER_INGOT, 200);
+        simpleRolling(consumer, "gold_plate", Ingredient.of(Items.GOLD_INGOT), AllItems.GOLD_PLATE.get(), 1, Items.GOLD_INGOT, 300);
+        simpleRolling(consumer, "gold_rod", Ingredient.of(AllItems.GOLD_PLATE.get()), AllItems.GOLD_ROD.get(), 3, Items.GOLD_INGOT, 300);
+        simpleRolling(consumer, "iron_plate", Ingredient.of(Items.IRON_INGOT), AllItems.IRON_PLATE.get(), 1, Items.IRON_INGOT, 300);
+        simpleRolling(consumer, "iron_rod", Ingredient.of(AllItems.IRON_PLATE.get()), AllItems.IRON_ROD.get(), 3, Items.IRON_INGOT, 300);
+        simpleRolling(consumer, "sponge_dry", Ingredient.of(Items.WET_SPONGE), Items.SPONGE, 1, Items.WET_SPONGE, 200);
+        simpleRolling(consumer, "tin_plate", Ingredient.of(AllItems.TIN_INGOT.get()), AllItems.TIN_PLATE.get(), 1, AllItems.TIN_INGOT.get(), 300);
+        simpleRolling(consumer, "tin_rod", Ingredient.of(AllItems.TIN_PLATE.get()), AllItems.TIN_ROD.get(), 3, AllItems.TIN_INGOT.get(), 300);
+        simpleRolling(consumer, "vermilion_plate", Ingredient.of(AllItems.VERMILION_INGOT.get()), AllItems.VERMILION_PLATE.get(), 1, AllItems.VERMILION_INGOT.get(), 200);
+        simpleRolling(consumer, "vermilion_rod", Ingredient.of(AllItems.VERMILION_PLATE.get()), AllItems.VERMILION_ROD.get(), 3, AllItems.VERMILION_INGOT.get(), 200);
     }
 
     public static void buildCokeOvenRecipes(Consumer<FinishedRecipe> consumer)
     {
-        simpleCoking(consumer, "charcoal", Ingredient.of(ItemTags.LOGS), Items.CHARCOAL, 1, 600);
-        simpleCoking(consumer, "coke", Ingredient.of(Items.COAL), AllItems.COKE.get(), 1, 1800);
-        simpleCoking(consumer, "coke_block", Ingredient.of(Items.COAL_BLOCK), AllItems.COKE_BLOCK.get(), 1, 16200);
+        LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all coking recipes");
+
+        simpleCoking(consumer, "charcoal", Ingredient.of(ItemTags.LOGS), Items.CHARCOAL, 1, Items.CHARCOAL, 600);
+        simpleCoking(consumer, "coke", Ingredient.of(Items.COAL), AllItems.COKE.get(), 1, Items.COAL, 1800);
+        simpleCoking(consumer, "coke_block", Ingredient.of(Items.COAL_BLOCK), AllItems.COKE_BLOCK.get(), 1, Items.COAL, 16200);
     }
 
-    public static void simpleCoking(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, int processingTime)
+    public static void simpleCoking(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, ItemLike unlockedBy, int processingTime)
     {
         SingleResultMachineRecipeBuilder.coking(ingredient, result, count, processingTime)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":coking/" + getItemName(result) + "_from_coking");
     }
 
-    public static void simpleMilling(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike result, int count, int processingTime)
+    public static void simpleMilling(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike result, int count, ItemLike unlockedBy, int processingTime)
     {
         SingleResultMachineRecipeBuilder.milling(Ingredient.of(ingredient), result, count, processingTime)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":milling/" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_milling");
     }
 
-    public static void simpleMilling(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, int processingTime)
+    public static void simpleMilling(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, ItemLike unlockedBy, int processingTime)
     {
         SingleResultMachineRecipeBuilder.milling(ingredient, result, count, processingTime)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":milling/" + getItemName(result) + "_from_milling");
     }
@@ -1452,39 +1469,44 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer, NotEnoughMachines.MOD_ID + ":cooking/" + getItemName(result) + "_from_" + getItemName(ingredient) + "_from_smoking");
     }
 
-    public static void simpleRolling(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, int processingTime)
+    public static void simpleRolling(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike result, int count, ItemLike unlockedBy, int processingTime)
     {
         SingleResultMachineRecipeBuilder.rolling(ingredient, result, count, processingTime)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":rolling/" + getItemName(result) + "_from_rolling");
     }
 
-    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike resultPrimary, int countPrimary, int processingTime)
+    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike resultPrimary, int countPrimary, ItemLike unlockedBy, int processingTime)
     {
         DoubleResultMachineRecipeBuilder.stamping(ingredient, resultPrimary, countPrimary, processingTime)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":stamping/" + getItemName(resultPrimary) + "_from_stamping");
     }
 
-    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike resultPrimary, int countPrimary, int processingTime)
+    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike resultPrimary, int countPrimary, ItemLike unlockedBy, int processingTime)
     {
         DoubleResultMachineRecipeBuilder.stamping(Ingredient.of(ingredient), resultPrimary, countPrimary, processingTime)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":stamping/" + getItemName(resultPrimary) + "_from_" + getItemName(ingredient) + "_from_stamping");
     }
 
-    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike resultPrimary, int countPrimary, ItemLike resultSecondary, int countSecondary, int processingTime)
+    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, Ingredient ingredient, ItemLike resultPrimary, int countPrimary, ItemLike resultSecondary, int countSecondary, ItemLike unlockedBy, int processingTime)
     {
         DoubleResultMachineRecipeBuilder.stamping(ingredient, resultPrimary, countPrimary, processingTime)
                 .addSecondaryResult(resultSecondary, countSecondary)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":stamping/" + getItemName(resultPrimary) + "_from_stamping");
     }
 
-    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike resultPrimary, int countPrimary, ItemLike resultSecondary, int countSecondary, int processingTime)
+    public static void simpleStamping(Consumer<FinishedRecipe> consumer, String group, ItemLike ingredient, ItemLike resultPrimary, int countPrimary, ItemLike resultSecondary, int countSecondary, ItemLike unlockedBy, int processingTime)
     {
         DoubleResultMachineRecipeBuilder.stamping(Ingredient.of(ingredient), resultPrimary, countPrimary, processingTime)
                 .addSecondaryResult(resultSecondary, countSecondary)
+                .unlockedBy("has_" + getHasName(unlockedBy), has(unlockedBy))
                 .group(NotEnoughMachines.MOD_ID + ":" + group)
                 .save(consumer, NotEnoughMachines.MOD_ID + ":stamping/" + getItemName(resultPrimary) + "_from_" + getItemName(ingredient)  + "_from_stamping");
     }

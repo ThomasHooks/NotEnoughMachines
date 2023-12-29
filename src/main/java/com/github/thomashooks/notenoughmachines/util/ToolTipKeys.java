@@ -1,4 +1,4 @@
-package com.github.thomashooks.notenoughmachines.common.util;
+package com.github.thomashooks.notenoughmachines.util;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import org.jetbrains.annotations.NotNull;

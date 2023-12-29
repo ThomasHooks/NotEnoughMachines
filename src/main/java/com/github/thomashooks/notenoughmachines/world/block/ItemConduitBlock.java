@@ -1,6 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.common.util.InventoryHelper;
+import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
 import com.google.common.collect.Maps;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
