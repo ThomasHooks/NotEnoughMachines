@@ -3,7 +3,7 @@ package com.github.thomashooks.notenoughmachines.util;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import org.jetbrains.annotations.NotNull;
 
-public enum ToolTipKeys
+public enum TooltipKeys
 {
     ACTIVATOR_RAIL("activator_rail"),
     BUFFER_STOP_RAIL("buffer_stop_rail"),
@@ -15,6 +15,11 @@ public enum ToolTipKeys
     GEARBOX("gearbox"),
     IS_DYEABLE("is_dyeable"),
     ITEM_FILTER("item_filter"),
+    ITEM_POUCH("item_pouch"),
+    ITEM_POUCH_FULLNESS("item_pouch.fullness"),
+    ITEM_POUCH_INSERT("item_pouch.insert"),
+    ITEM_POUCH_REMOVE("item_pouch.remove"),
+    ITEM_POUCH_SLOT("item_pouch.slot"),
     LIMITER_RAIL1("limiter_rail1"),
     LIMITER_RAIL2("limiter_rail2"),
     LOCKING_RAIL1("locking_rail1"),
@@ -37,7 +42,7 @@ public enum ToolTipKeys
 
     private final String key;
 
-    ToolTipKeys(@NotNull String key)
+    TooltipKeys(@NotNull String key)
     {
         this.key = key;
     }

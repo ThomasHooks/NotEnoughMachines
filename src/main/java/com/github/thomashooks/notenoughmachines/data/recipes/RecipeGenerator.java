@@ -358,6 +358,20 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
+        //Tools
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Item Pouch
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.ITEM_POUCH.get(), 1)
+                .pattern("s s")
+                .pattern("# #")
+                .pattern("###")
+                .define('#', AllItems.LINEN.get())
+                .define('s', AllItems.FLAX_STRING.get())
+                .group(NotEnoughMachines.MOD_ID + ":item_pouch")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
 

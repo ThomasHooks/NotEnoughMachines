@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-26T02:09:24.3200656	Item Models: notenoughmachines
+// 1.20.1	2023-12-29T16:39:40.1148163	Item Models: notenoughmachines
 70a410477e1a0d107522e4ed8d5ccd0f9b01ac32 assets/notenoughmachines/models/item/axle.json
 1dbda9f40b7744787f00cea463e9716a3896fd07 assets/notenoughmachines/models/item/booster_rod.json
 2d7ae8c917bd1921904b45d2d4f63225a67d4697 assets/notenoughmachines/models/item/bronze_booster_rod.json
@@ -66,6 +66,7 @@ d590f88f5fa3eb53fb4b52a124530f5651dcf236 assets/notenoughmachines/models/item/ir
 646859a805bfa65d7cbeb2e5afdbb104060d211f assets/notenoughmachines/models/item/iron_rolls.json
 93d4a48b1edb9c80e37ed006d553d9699247c1ac assets/notenoughmachines/models/item/iron_scaffolding.json
 9a8706ae05f03eaa1cfc60fb54a7fe92895520b9 assets/notenoughmachines/models/item/iron_screw.json
+61800d85f2b1cff3806b5b7e4636e09bba26011b assets/notenoughmachines/models/item/item_pouch.json
 ea737d692c975e8102ba925b65598b1731187be1 assets/notenoughmachines/models/item/kaolin.json
 4b7c4eed02820f746a4fd68a9ba5e31db15bf441 assets/notenoughmachines/models/item/large_cogwheel.json
 84ba4e04a753b0d76fac294c929bf100b81d7a1b assets/notenoughmachines/models/item/limiter_rail.json

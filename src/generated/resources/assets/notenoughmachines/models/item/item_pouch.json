@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "notenoughmachines:item/item_pouch",
+    "layer1": "notenoughmachines:item/item_pouch_overlay"
+  }
+}

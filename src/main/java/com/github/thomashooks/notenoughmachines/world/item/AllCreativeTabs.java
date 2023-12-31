@@ -129,6 +129,7 @@ public class AllCreativeTabs
                         //Minecarts
 
                         //Tools
+                        output.accept(AllItems.ITEM_POUCH.get());
 
                         //Weapons
 

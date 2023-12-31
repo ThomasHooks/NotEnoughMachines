@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.data.locale;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
-import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.data.PackOutput;
@@ -121,6 +121,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.IRON_ROD, "Iron Rod");
         addItem(AllItems.IRON_ROLLS, "Iron Rolls");
         addItem(AllItems.IRON_SCREW, "Iron Screw");
+        addItem(AllItems.ITEM_POUCH, "Item Pouch");
         addItem(AllItems.KAOLIN, "Kaolin");
         addItem(AllItems.LINEN, "Linen");
         addItem(AllItems.LINSEED_OIL, "Linseed Oil");
@@ -141,35 +142,40 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.WIND_WHEEL_BLADE, "Wind Wheel Blade");
         addItem(AllItems.WIND_WHEEL_SAIL, "Wind Wheel Sail");
 
-        addToolTip(ToolTipKeys.ACTIVATOR_RAIL, "Activates minecarts when powered with redstone");
-        addToolTip(ToolTipKeys.BUFFER_STOP_RAIL, "Endcap that stops minecarts from rolling off the track");
-        addToolTip(ToolTipKeys.CHIME_RAIL, "Plays a sound when a minecart passes over");
-        addToolTip(ToolTipKeys.COKE_OVEN, "Processes coal into coke");
-        addToolTip(ToolTipKeys.CROSSOVER_RAIL1, "Allows two sets of tracks to cross over each other");
-        addToolTip(ToolTipKeys.CROSSOVER_RAIL2, "Minecarts traveling through will continue straight");
-        addToolTip(ToolTipKeys.DETECTOR_RAIL, "Produces a redstone signal when a minecart passes over");
-        addToolTip(ToolTipKeys.GEARBOX, "Transfers mechanical power to different different axes");
-        addToolTip(ToolTipKeys.IS_DYEABLE, "Dyeable");
-        addToolTip(ToolTipKeys.ITEM_FILTER, "Routes items in different directions depending upon which color the item has been sorted into");
-        addToolTip(ToolTipKeys.LIMITER_RAIL1, "Limits the speed of minecarts when receiving a redstone signal");
-        addToolTip(ToolTipKeys.LIMITER_RAIL2, "Right click to change the speed limit");
-        addToolTip(ToolTipKeys.LOCKING_RAIL1, "Prevents minecarts from moving when not receiving a redstone signal");
-        addToolTip(ToolTipKeys.LOCKING_RAIL2, "When powered with redstone locked minecarts are boosted in the direction it was traveling in");
-        addToolTip(ToolTipKeys.MECHANICAL_POWER_SIDES, "Transfers mechanical power to the sides");
-        addToolTip(ToolTipKeys.MECHANICAL_POWER_STRAIGHT, "Transfers mechanical power in a straight line");
-        addToolTip(ToolTipKeys.MILLSTONE, "Processes materials by grinding them into powder");
-        addToolTip(ToolTipKeys.MINECARTS_MOVE_FASTER, "Minecarts will move 200% faster!");
-        addToolTip(ToolTipKeys.MORE_INFO_PRESS_SHIFT, "\u00A77" + "Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information");
-        addToolTip(ToolTipKeys.ONE_WAY_RAIL1, "Acts like a one-way powered rail");
-        addToolTip(ToolTipKeys.ONE_WAY_RAIL2, "Minecarts traveling against the arrows will be reversed");
-        addToolTip(ToolTipKeys.POWERED_RAIL, "Boosts minecarts when powered with redstone");
-        addToolTip(ToolTipKeys.REDUCES_FALL_DAMAGE, "Reduces fall damage when on Feet");
-        addToolTip(ToolTipKeys.ROLLING_MILL, "Processes materials by flatting and drawing them");
-        addToolTip(ToolTipKeys.TRIP_HAMMER1, "Processes materials by pulverizing them into dust");
-        addToolTip(ToolTipKeys.TRIP_HAMMER2, "\u00A77" + "Needs a " + "\u00A72" + "1x1x4 area" + "\u00A77" + " of free space");
-        addToolTip(ToolTipKeys.WATER_WHEEL, "Creates mechanical power from flowing water");
-        addToolTip(ToolTipKeys.WIND_WHEEL1, "Creates mechanical power from the wind");
-        addToolTip(ToolTipKeys.WIND_WHEEL2, "\u00A77" + "Must be placed " + "\u00A72" + "Above Ground " + "\u00A77" + "and needs a " + "\u00A72" + "16x1x16 area" + "\u00A77" + " of free space");
+        addToolTip(TooltipKeys.ACTIVATOR_RAIL, "Activates minecarts when powered with redstone");
+        addToolTip(TooltipKeys.BUFFER_STOP_RAIL, "Endcap that stops minecarts from rolling off the track");
+        addToolTip(TooltipKeys.CHIME_RAIL, "Plays a sound when a minecart passes over");
+        addToolTip(TooltipKeys.COKE_OVEN, "Processes coal into coke");
+        addToolTip(TooltipKeys.CROSSOVER_RAIL1, "Allows two sets of tracks to cross over each other");
+        addToolTip(TooltipKeys.CROSSOVER_RAIL2, "Minecarts traveling through will continue straight");
+        addToolTip(TooltipKeys.DETECTOR_RAIL, "Produces a redstone signal when a minecart passes over");
+        addToolTip(TooltipKeys.GEARBOX, "Transfers mechanical power to different different axes");
+        addToolTip(TooltipKeys.IS_DYEABLE, "Dyeable");
+        addToolTip(TooltipKeys.ITEM_FILTER, "Routes items in different directions depending upon which color the item has been sorted into");
+        addToolTip(TooltipKeys.ITEM_POUCH, "Stores up to four stacks worth of mixed items");
+        addToolTip(TooltipKeys.ITEM_POUCH_FULLNESS, "%s/%s");
+        addToolTip(TooltipKeys.ITEM_POUCH_INSERT, "To put items inside, either (1) pick up the item pouch and right-click on the item(s), or (2) pick up the item(s) and right-click on the item pouch");
+        addToolTip(TooltipKeys.ITEM_POUCH_REMOVE, "To take items out, either (1) pick up the item pouch and right-click on an empty slot, or (2) right-click on the item pouch");
+        addToolTip(TooltipKeys.ITEM_POUCH_SLOT, "To select which item is taken out press " + "\u00A72" + "W (forward)" + "\u00A77" + " and " + "\u00A72" + "S (backwards)" + "\u00A77");
+        addToolTip(TooltipKeys.LIMITER_RAIL1, "Limits the speed of minecarts when receiving a redstone signal");
+        addToolTip(TooltipKeys.LIMITER_RAIL2, "Right click to change the speed limit");
+        addToolTip(TooltipKeys.LOCKING_RAIL1, "Prevents minecarts from moving when not receiving a redstone signal");
+        addToolTip(TooltipKeys.LOCKING_RAIL2, "When powered with redstone locked minecarts are boosted in the direction it was traveling in");
+        addToolTip(TooltipKeys.MECHANICAL_POWER_SIDES, "Transfers mechanical power to the sides");
+        addToolTip(TooltipKeys.MECHANICAL_POWER_STRAIGHT, "Transfers mechanical power in a straight line");
+        addToolTip(TooltipKeys.MILLSTONE, "Processes materials by grinding them into powder");
+        addToolTip(TooltipKeys.MINECARTS_MOVE_FASTER, "Minecarts will move 200% faster!");
+        addToolTip(TooltipKeys.MORE_INFO_PRESS_SHIFT, "\u00A77" + "Press " + "\u00A72" + "SHIFT" + "\u00A77" + " for more information");
+        addToolTip(TooltipKeys.ONE_WAY_RAIL1, "Acts like a one-way powered rail");
+        addToolTip(TooltipKeys.ONE_WAY_RAIL2, "Minecarts traveling against the arrows will be reversed");
+        addToolTip(TooltipKeys.POWERED_RAIL, "Boosts minecarts when powered with redstone");
+        addToolTip(TooltipKeys.REDUCES_FALL_DAMAGE, "Reduces fall damage when on Feet");
+        addToolTip(TooltipKeys.ROLLING_MILL, "Processes materials by flatting and drawing them");
+        addToolTip(TooltipKeys.TRIP_HAMMER1, "Processes materials by pulverizing them into dust");
+        addToolTip(TooltipKeys.TRIP_HAMMER2, "\u00A77" + "Needs a " + "\u00A72" + "1x1x4 area" + "\u00A77" + " of free space");
+        addToolTip(TooltipKeys.WATER_WHEEL, "Creates mechanical power from flowing water");
+        addToolTip(TooltipKeys.WIND_WHEEL1, "Creates mechanical power from the wind");
+        addToolTip(TooltipKeys.WIND_WHEEL2, "\u00A77" + "Must be placed " + "\u00A72" + "Above Ground " + "\u00A77" + "and needs a " + "\u00A72" + "16x1x16 area" + "\u00A77" + " of free space");
 
         addMenu(AllBlocks.COKE_OVEN, "Coke Oven");
         addMenu(AllBlocks.FILTER, "Item Filter");
@@ -198,7 +204,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         add("itemGroup." + NotEnoughMachines.MOD_ID + "." + key, name);
     }
 
-    public void addToolTip(ToolTipKeys key, String text)
+    public void addToolTip(TooltipKeys key, String text)
     {
         add(key.getTranslation(), text);
     }

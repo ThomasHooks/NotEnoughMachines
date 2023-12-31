@@ -2,8 +2,8 @@ package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
-import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
-import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.client.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import com.github.thomashooks.notenoughmachines.util.VoxelShapeHelper;
 import com.github.thomashooks.notenoughmachines.world.block.entity.AllBlockEntities;
 import com.github.thomashooks.notenoughmachines.world.block.entity.RollingMillBlockEntity;
@@ -97,13 +97,13 @@ public class RollingMillBlock extends HorizontalMechanicalBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
     {
-        if (KeyboardInputHelper.isPressingShift())
+        if (KeyboardInputHelper.getInstance().isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.translatable(ToolTipKeys.ROLLING_MILL.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(TooltipKeys.ROLLING_MILL.getTranslation()).withStyle(ChatFormatting.GREEN));
         }
         else
-            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

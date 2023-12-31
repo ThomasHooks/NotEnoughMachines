@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:item_pouch",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:linen"
+    },
+    "s": {
+      "item": "notenoughmachines:flax_string"
+    }
+  },
+  "pattern": [
+    "s s",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:item_pouch"
+  },
+  "show_notification": true
+}

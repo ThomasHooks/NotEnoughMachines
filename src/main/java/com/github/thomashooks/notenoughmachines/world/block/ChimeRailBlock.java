@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
-import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.client.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -61,13 +61,13 @@ public class ChimeRailBlock extends DetectorRailBlock
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
     {
-        if (KeyboardInputHelper.isPressingShift())
+        if (KeyboardInputHelper.getInstance().isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.translatable(ToolTipKeys.CHIME_RAIL.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(TooltipKeys.CHIME_RAIL.getTranslation()).withStyle(ChatFormatting.GREEN));
         }
         else
-            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

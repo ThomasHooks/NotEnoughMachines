@@ -1,7 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
-import com.github.thomashooks.notenoughmachines.util.KeyboardInputHelper;
-import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.client.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -38,26 +39,26 @@ public class CrossoverRailBlock extends BaseRailBlock
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable BlockGetter blockGetter, @NotNull List<Component> toolTips, @NotNull TooltipFlag flag)
     {
-        if (KeyboardInputHelper.isPressingShift())
+        if (KeyboardInputHelper.getInstance().isPressingShift())
         {
             toolTips.add(Component.literal(""));
-            toolTips.add(Component.translatable(ToolTipKeys.CROSSOVER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.translatable(ToolTipKeys.CROSSOVER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(TooltipKeys.CROSSOVER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(TooltipKeys.CROSSOVER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.translatable(ToolTipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
+            toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
-    public Property<RailShape> getShapeProperty() { return SHAPE; }
+    public @NotNull Property<RailShape> getShapeProperty() { return SHAPE; }
 
     @Override
     public boolean canMakeSlopes(BlockState state, BlockGetter level, BlockPos pos) { return false; }
 
     @Override
-    public RailShape getRailDirection(BlockState state, BlockGetter world, BlockPos pos, @Nullable AbstractMinecart cart)
+    public @NotNull RailShape getRailDirection(@NotNull BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @Nullable AbstractMinecart cart)
     {
         if (cart != null)
         {

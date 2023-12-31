@@ -1,6 +1,6 @@
 package com.github.thomashooks.notenoughmachines.world.item;
 
-import com.github.thomashooks.notenoughmachines.util.ToolTipKeys;
+import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -62,10 +62,10 @@ public class PaddedArmorItem extends ArmorItem implements DyeableLeatherItem
     public void appendHoverText(@NotNull ItemStack itemStack, @Nullable Level world, @NotNull List<Component> toolTips, @NotNull TooltipFlag flags)
     {
         if (itemStack.getItem().equals(AllItems.PADDED_BOOTS.orElseThrow(IllegalStateException::new)))
-            toolTips.add(Component.translatable(ToolTipKeys.REDUCES_FALL_DAMAGE.getTranslation()).withStyle(ChatFormatting.GREEN));
+            toolTips.add(Component.translatable(TooltipKeys.REDUCES_FALL_DAMAGE.getTranslation()).withStyle(ChatFormatting.GREEN));
 
         if (!this.hasCustomColor(itemStack))
-            toolTips.add(Component.translatable(ToolTipKeys.IS_DYEABLE.getTranslation()).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
+            toolTips.add(Component.translatable(TooltipKeys.IS_DYEABLE.getTranslation()).withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
     }
 
     @Override
