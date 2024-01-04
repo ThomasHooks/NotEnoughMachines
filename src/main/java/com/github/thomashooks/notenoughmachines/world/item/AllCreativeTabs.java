@@ -130,8 +130,10 @@ public class AllCreativeTabs
 
                         //Tools
                         output.accept(AllItems.ITEM_POUCH.get());
+                        output.accept(AllItems.PROSPECTORS_PICK.get());
 
                         //Weapons
+                        output.accept(AllItems.BRONZE_MACE.get());
 
                         //Armor
                         output.accept(AllItems.PADDED_HELMET.get());
@@ -194,7 +196,6 @@ public class AllCreativeTabs
 
                         //Misc Crafting Items
                         output.accept(AllItems.GEAR.get());
-                        output.accept(AllItems.HEAVY_BRONZE_STAMP.get());
                         output.accept(AllItems.IRON_ROLLS.get());
                         output.accept(AllItems.RAILROAD_TIE.get());
                         output.accept(AllItems.WIND_WHEEL_BLADE.get());

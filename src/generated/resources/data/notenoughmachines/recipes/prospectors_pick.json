@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:prospectors_pick",
+  "key": {
+    "b": {
+      "tag": "forge:ingots/bronze"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "bbb",
+    " sb",
+    " s "
+  ],
+  "result": {
+    "item": "notenoughmachines:prospectors_pick"
+  },
+  "show_notification": true
+}

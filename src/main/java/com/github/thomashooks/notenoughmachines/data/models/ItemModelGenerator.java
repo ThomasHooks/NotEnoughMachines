@@ -34,6 +34,7 @@ public class ItemModelGenerator extends ItemModelProvider
         createSimpleBlockItemModel(AllBlocks.BRONZE_PLATE_STAIRS);
         createSimpleItemModel(AllItems.BRONZE_ROD);
         createSimpleBlockItemModel(AllBlocks.BRONZE_SCAFFOLDING);
+        createHandheldItemModel(AllItems.BRONZE_MACE);
         createSimpleItemModel(AllItems.BUFFER_STOP_RAIL);
         createSimpleFlatItemModel(AllItems.CHIME_RAIL);
         createSimpleBlockItemModel(AllBlocks.COGWHEEL_LARGE);
@@ -72,7 +73,6 @@ public class ItemModelGenerator extends ItemModelProvider
         createSimpleBlockItemModel(AllBlocks.GOLD_PLATE_SLAB);
         createSimpleBlockItemModel(AllBlocks.GOLD_PLATE_STAIRS);
         createSimpleItemModel(AllItems.GOLD_ROD);
-        createSimpleItemModel(AllItems.HEAVY_BRONZE_STAMP);
         createSimpleFlatItemModel(AllItems.HIGH_SPEED_ACTIVATOR_RAIL);
         createSimpleItemModel(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL);
         createSimpleFlatItemModel(AllItems.HIGH_SPEED_CHIME_RAIL);
@@ -106,6 +106,7 @@ public class ItemModelGenerator extends ItemModelProvider
         createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_SLAB);
         createSimpleBlockItemModel(AllBlocks.POLISHED_FLUXSTONE_STAIRS);
         createWallItemModel(AllBlocks.POLISHED_FLUXSTONE_WALL, AllBlocks.POLISHED_FLUXSTONE);
+        createHandheldItemModel(AllItems.PROSPECTORS_PICK);
         createSimpleItemModel(AllItems.RAILROAD_TIE);
         createSimpleItemModel(AllItems.RAW_TIN);
         createSimpleItemModel(AllItems.REDSTONE_EMITTER);
@@ -146,6 +147,12 @@ public class ItemModelGenerator extends ItemModelProvider
         return withExistingParent(itemIn.getId().getPath(), new ResourceLocation("item/generated"))
                 .texture("layer0", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + layer0TextureName))
                 .texture("layer1", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + layer1TextureName));
+    }
+
+    public ItemModelBuilder createHandheldItemModel(RegistryObject<? extends Item> itemIn)
+    {
+        return withExistingParent(itemIn.getId().getPath(), new ResourceLocation("item/handheld"))
+                .texture("layer0", new ResourceLocation(NotEnoughMachines.MOD_ID, "item/" + itemIn.getId().getPath()));
     }
 
     public ItemModelBuilder createSimpleFlatItemModel(RegistryObject<? extends Item> itemIn)

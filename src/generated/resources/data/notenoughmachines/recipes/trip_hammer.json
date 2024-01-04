@@ -9,16 +9,16 @@
     "=": {
       "tag": "forge:plates/bronze"
     },
-    "I": {
+    "i": {
       "item": "notenoughmachines:axle"
     },
-    "X": {
-      "item": "notenoughmachines:heavy_bronze_stamp"
+    "x": {
+      "item": "notenoughmachines:bronze_mace"
     }
   },
   "pattern": [
-    "#I#",
-    "#X#",
+    "#i#",
+    "#x#",
     "#=#"
   ],
   "result": {

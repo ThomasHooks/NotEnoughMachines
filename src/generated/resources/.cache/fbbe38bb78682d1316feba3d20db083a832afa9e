@@ -1,4 +1,5 @@
-// 1.20.1	2023-12-22T19:03:57.1362472	Tags for minecraft:block mod id notenoughmachines
+// 1.20.1	2024-01-01T22:17:34.5697683	Tags for minecraft:block mod id notenoughmachines
+dd84ad1535ab8d848ffdca11e3ca79890d3852ee data/forge/tags/blocks/ores_in_ground/stone.json
 d6315aba6d627cf52e0d34805a541f194a3f239b data/minecraft/tags/blocks/climbable.json
 d6315aba6d627cf52e0d34805a541f194a3f239b data/minecraft/tags/blocks/fall_damage_resetting.json
 dc0897537e5fc905880fb91054630ad9ac656600 data/minecraft/tags/blocks/mineable/axe.json

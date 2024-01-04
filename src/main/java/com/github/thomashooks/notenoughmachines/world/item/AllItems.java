@@ -22,6 +22,7 @@ public class AllItems
     public static final RegistryObject<Item> BRONZE_PLATE_SLAB = ITEMS.register("bronze_plate_slab", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE_STAIRS = ITEMS.register("bronze_plate_stairs", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_MACE = ITEMS.register("bronze_mace", ()-> new MaceItem(ToolTiers.BRONZE, 3.0F, -3.2F, 1.8F, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE = ITEMS.register("bronze_plate", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_ROD = ITEMS.register("bronze_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SCAFFOLDING = ITEMS.register("bronze_scaffolding", ()-> new MetalScaffoldBlockItem(19, AllBlocks.BRONZE_SCAFFOLDING.get(), new Item.Properties()));
@@ -68,7 +69,6 @@ public class AllItems
     public static final RegistryObject<Item> GOLD_PLATE_SLAB = ITEMS.register("gold_plate_slab", ()-> new BlockItem(AllBlocks.GOLD_PLATE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_PLATE_STAIRS = ITEMS.register("gold_plate_stairs", ()-> new BlockItem(AllBlocks.GOLD_PLATE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> GOLD_ROD = ITEMS.register("gold_rod", ()-> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> HEAVY_BRONZE_STAMP = ITEMS.register("heavy_bronze_stamp", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_ACTIVATOR_RAIL = ITEMS.register("high_speed_activator_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_BUFFER_STOP_RAIL = ITEMS.register("high_speed_buffer_stop_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_BUFFER_STOP_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> HIGH_SPEED_CHIME_RAIL = ITEMS.register("high_speed_chime_rail", ()-> new BlockItem(AllBlocks.HIGH_SPEED_CHIME_RAIL.get(), new Item.Properties()));
@@ -112,6 +112,7 @@ public class AllItems
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_SLAB = ITEMS.register("polished_fluxstone_slab", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_SLAB.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_STAIRS = ITEMS.register("polished_fluxstone_stairs", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_STAIRS.get(), new Item.Properties()));
     public static final RegistryObject<Item> POLISHED_FLUXSTONE_WALL = ITEMS.register("polished_fluxstone_wall", ()-> new BlockItem(AllBlocks.POLISHED_FLUXSTONE_WALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PROSPECTORS_PICK = ITEMS.register("prospectors_pick", ()-> new ProspectorPickItem(ToolTiers.BRONZE, 1.5F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> RAILROAD_TIE = ITEMS.register("railroad_tie", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_EMITTER = ITEMS.register("redstone_emitter", ()-> new Item(new Item.Properties()));

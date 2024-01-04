@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "notenoughmachines:bronze_mace",
+  "key": {
+    "b": {
+      "item": "notenoughmachines:bronze_block"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "b",
+    "s",
+    "s"
+  ],
+  "result": {
+    "item": "notenoughmachines:bronze_mace"
+  },
+  "show_notification": true
+}

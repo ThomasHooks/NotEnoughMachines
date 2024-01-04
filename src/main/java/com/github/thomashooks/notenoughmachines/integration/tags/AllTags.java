@@ -49,6 +49,9 @@ public class AllTags
     public static final class Blocks
     {
         public static final TagKey<Block> STRIPPED_LOGS = makeTag("stripped_logs");
+        public static final TagKey<Block> ORES_IN_DEEPSLATE = makeForgeTag("ores_in_ground/deepslate");
+        public static final TagKey<Block> ORES_IN_NETHERRACK = makeForgeTag("ores_in_ground/netherrack");
+        public static final TagKey<Block> ORES_IN_STONE = makeForgeTag("ores_in_ground/stone");
 
         private static TagKey<Block> makeForgeTag(String path)
         {

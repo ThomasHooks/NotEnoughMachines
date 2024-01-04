@@ -98,6 +98,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.BRONZE_INGOT, "Bronze Ingot");
         addItem(AllItems.BRONZE_PLATE, "Bronze Plate");
         addItem(AllItems.BRONZE_ROD, "Bronze Rod");
+        addItem(AllItems.BRONZE_MACE, "Bronze Mace");
         addItem(AllItems.COKE, "Coke");
         addItem(AllItems.COPPER_PLATE, "Copper Plate");
         addItem(AllItems.COPPER_ROD, "Copper Rod");
@@ -116,7 +117,6 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.GEAR, "Gear");
         addItem(AllItems.GOLD_PLATE, "Gold Plate");
         addItem(AllItems.GOLD_ROD, "Gold Rod");
-        addItem(AllItems.HEAVY_BRONZE_STAMP, "Heavy Bronze Stamp");
         addItem(AllItems.IRON_PLATE, "Iron Plate");
         addItem(AllItems.IRON_ROD, "Iron Rod");
         addItem(AllItems.IRON_ROLLS, "Iron Rolls");
@@ -129,6 +129,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addItem(AllItems.PADDED_CHESTPLATE, "Padded Chestplate");
         addItem(AllItems.PADDED_HELMET, "Padded Helmet");
         addItem(AllItems.PADDED_LEGGINGS, "Padded Leggings");
+        addItem(AllItems.PROSPECTORS_PICK, "Prospector's Pick");
         addItem(AllItems.RAILROAD_TIE, "Railroad Tie");
         addItem(AllItems.RAW_TIN, "Raw Tin");
         addItem(AllItems.REDSTONE_EMITTER, "Redstone Emitter");
@@ -169,6 +170,10 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addToolTip(TooltipKeys.ONE_WAY_RAIL1, "Acts like a one-way powered rail");
         addToolTip(TooltipKeys.ONE_WAY_RAIL2, "Minecarts traveling against the arrows will be reversed");
         addToolTip(TooltipKeys.POWERED_RAIL, "Boosts minecarts when powered with redstone");
+        addToolTip(TooltipKeys.PROSPECTOR_PICK, "Pickaxe that prospects for nearby ores");
+        addToolTip(TooltipKeys.PROSPECTOR_PICK_SCAN, "Right-click on a block to prospect for ores within %s blocks");
+        addToolTip(TooltipKeys.PROSPECTOR_PICK_TRACE_AMOUNTS, "Found trace amounts of %s");
+        addToolTip(TooltipKeys.PROSPECTOR_PICK_NOTHING, "Found nothing of value");
         addToolTip(TooltipKeys.REDUCES_FALL_DAMAGE, "Reduces fall damage when on Feet");
         addToolTip(TooltipKeys.ROLLING_MILL, "Processes materials by flatting and drawing them");
         addToolTip(TooltipKeys.TRIP_HAMMER1, "Processes materials by pulverizing them into dust");

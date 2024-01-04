@@ -9,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,7 +22,7 @@ public class BlockTagGenerator extends BlockTagsProvider
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider providerIn)
+    protected void addTags(HolderLookup.@NotNull Provider providerIn)
     {
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 AllBlocks.AXLE.get(),
@@ -140,6 +141,9 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.TIN_PLATE_BLOCK.get(),
                 AllBlocks.TIN_PLATE_SLAB.get(),
                 AllBlocks.TIN_PLATE_STAIRS.get()
+        );
+        this.tag(AllTags.Blocks.ORES_IN_STONE).add(
+                AllBlocks.TIN_ORE.get()
         );
         this.tag(BlockTags.WALLS).add(
                         AllBlocks.FIRE_BRICKS_WALL.get(),

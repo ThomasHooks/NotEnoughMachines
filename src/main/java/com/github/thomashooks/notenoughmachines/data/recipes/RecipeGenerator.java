@@ -150,17 +150,6 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":gold_plate_from_gold_plate_slab");
 
-        //Heavy Bronze Stamp
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.HEAVY_BRONZE_STAMP.get(), 1)
-                .pattern("I")
-                .pattern("#")
-                .pattern("#")
-                .define('I', AllItems.AXLE.get())
-                .define('#', AllItems.BRONZE_BLOCK.get())
-                .group(NotEnoughMachines.MOD_ID + ":heavy_bronze_stamp")
-                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
-                .save(consumer);
-
         //Iron Plate
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.IRON_PLATE.get(), 4)
                 .requires(AllItems.IRON_PLATE_BLOCK.get(), 1)
@@ -370,6 +359,31 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('s', AllItems.FLAX_STRING.get())
                 .group(NotEnoughMachines.MOD_ID + ":item_pouch")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Prospector's Pick
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AllItems.PROSPECTORS_PICK.get(), 1)
+                .pattern("bbb")
+                .pattern(" sb")
+                .pattern(" s ")
+                .define('b', AllTags.Items.BRONZE_INGOTS)
+                .define('s', Items.STICK)
+                .group(NotEnoughMachines.MOD_ID + ":prospectors_pick")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Weapons
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Bronze Mace
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AllItems.BRONZE_MACE.get(), 1)
+                .pattern("b")
+                .pattern("s")
+                .pattern("s")
+                .define('b', AllItems.BRONZE_BLOCK.get())
+                .define('s', Items.STICK)
+                .group(NotEnoughMachines.MOD_ID + ":bronze_mace")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
         //Full Blocks
@@ -888,12 +902,12 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //Trip Hammer
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.TRIP_HAMMER.get(), 1)
-                .pattern("#I#")
-                .pattern("#X#")
+                .pattern("#i#")
+                .pattern("#x#")
                 .pattern("#=#")
                 .define('#', AllItems.WOODEN_FRAME.get())
-                .define('I', AllItems.AXLE.get())
-                .define('X', AllItems.HEAVY_BRONZE_STAMP.get())
+                .define('i', AllItems.AXLE.get())
+                .define('x', AllItems.BRONZE_MACE.get())
                 .define('=', AllTags.Items.BRONZE_PLATES)
                 .group(NotEnoughMachines.MOD_ID + ":trip_hammer")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
