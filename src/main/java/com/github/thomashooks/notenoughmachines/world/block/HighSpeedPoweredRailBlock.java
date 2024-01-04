@@ -24,7 +24,7 @@ public class HighSpeedPoweredRailBlock extends RedstoneRailBlock
 {
     public HighSpeedPoweredRailBlock(Properties properties)
     {
-        super(properties, true);
+        super(true, true, properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
                 .setValue(POWERED, false)

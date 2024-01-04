@@ -27,7 +27,7 @@ public class HighSpeedActivatorRailBlock extends RedstoneRailBlock
 {
     public HighSpeedActivatorRailBlock(Properties properties)
     {
-        super(properties, true);
+        super(true, true, properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
                 .setValue(POWERED, false)
@@ -57,16 +57,4 @@ public class HighSpeedActivatorRailBlock extends RedstoneRailBlock
         else
             toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
-
-    @Override
-    public float getRailMaxSpeed(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
-    {
-        if (cart instanceof MinecartFurnace)
-            return cart.isInWater() ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE_WATERLOGGED.get() : CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE.get();
-        else
-            return cart.isInWater() ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_WATERLOGGED.get() : CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED.get();
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(SHAPE, POWERED, WATERLOGGED); }
 }

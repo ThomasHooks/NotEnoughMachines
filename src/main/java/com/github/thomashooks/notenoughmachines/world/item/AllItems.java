@@ -29,8 +29,8 @@ public class AllItems
     public static final RegistryObject<Item> BUFFER_STOP_RAIL = ITEMS.register("buffer_stop_rail", ()-> new BlockItem(AllBlocks.BUFFER_STOP_RAIL.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> CHIME_RAIL = ITEMS.register("chime_rail", ()-> new BlockItem(AllBlocks.CHIME_RAIL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> COKE = ITEMS.register("coke", ()-> new FuelItem(new Item.Properties(), 3200));
-    public static final RegistryObject<Item> COKE_BLOCK = ITEMS.register("coke_block", ()-> new FuelBlockItem(AllBlocks.COKE_BLOCK.get(), new Item.Properties(), 32000));
+    public static final RegistryObject<Item> COKE = ITEMS.register("coke", ()-> new FuelItem(3200, new Item.Properties()));
+    public static final RegistryObject<Item> COKE_BLOCK = ITEMS.register("coke_block", ()-> new FuelBlockItem(AllBlocks.COKE_BLOCK.get(), 32000, new Item.Properties()));
     public static final RegistryObject<Item> COKE_OVEN = ITEMS.register("coke_oven", ()-> new BlockItem(AllBlocks.COKE_OVEN.get(), new Item.Properties()));
     public static final RegistryObject<Item> CONJUNCTIONER = ITEMS.register("conjunctioner", ()-> new BlockItem(AllBlocks.CONJUNCTIONER.get(), new Item.Properties()));
     public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate", ()-> new Item(new Item.Properties()));
@@ -93,7 +93,7 @@ public class AllItems
     public static final RegistryObject<Item> KAOLIN = ITEMS.register("kaolin", ()-> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COGWHEEL_LARGE = ITEMS.register("large_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_LARGE.get(), new Item.Properties()));
     public static final RegistryObject<Item> LINEN = ITEMS.register("linen", ()-> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> LINEN_BLOCK = ITEMS.register("linen_block", ()-> new BlockItem(AllBlocks.LINEN_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK = ITEMS.register("linen_block", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK.get(), 200, new Item.Properties()));
     public static final RegistryObject<Item> LINSEED_OIL = ITEMS.register("linseed_oil",
             ()-> new LinseedOilItem(new Item.Properties()
                     .craftRemainder(Items.GLASS_BOTTLE)

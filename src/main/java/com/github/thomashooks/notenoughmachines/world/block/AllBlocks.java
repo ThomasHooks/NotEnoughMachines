@@ -249,13 +249,13 @@ public class AllBlocks
             ()-> new HighSpeedPoweredRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
     public static final RegistryObject<Block> HIGH_SPEED_LIMITER_RAIL = BLOCKS.register("high_speed_limiter_rail",
-            ()-> new HighSpeedLimiterRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ()-> new LimiterRailBlock(true, Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
     public static final RegistryObject<Block> HIGH_SPEED_LOCKING_RAIL = BLOCKS.register("high_speed_locking_rail",
-            ()-> new HighSpeedLockingRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ()-> new LockingRailBlock(true, Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
     public static final RegistryObject<Block> HIGH_SPEED_ONE_WAY_RAIL = BLOCKS.register("high_speed_one_way_rail",
-            ()-> new HighSpeedOneWayRailBlock(Block.Properties.copy(HIGH_SPEED_RAIL.get())
+            ()-> new OneWayRailBlock(true, Block.Properties.copy(HIGH_SPEED_RAIL.get())
             ));
     public static final RegistryObject<Block> IRON_LADDER = BLOCKS.register("iron_ladder",
             ()-> new LadderBlock(Block.Properties.of()
@@ -295,19 +295,19 @@ public class AllBlocks
     public static final RegistryObject<Block> LINEN_BLOCK = BLOCKS.register("linen_block",
             ()-> new LinenBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOL)
-                    .instrument(NoteBlockInstrument.GUITAR)
+                    .instrument(NoteBlockInstrument.FLUTE)
                     .strength(0.8f, 2.0f)
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
     public static final RegistryObject<Block> LIMITER_RAIL = BLOCKS.register("limiter_rail",
-            ()-> new LimiterRailBlock(Block.Properties.of()
+            ()-> new LimiterRailBlock(false, Block.Properties.of()
                     .noCollission()
                     .strength(0.7F)
                     .sound(SoundType.METAL)
             ));
     public static final RegistryObject<Block> LOCKING_RAIL = BLOCKS.register("locking_rail",
-            ()-> new LockingRailBlock(Block.Properties.of()
+            ()-> new LockingRailBlock(false, Block.Properties.of()
                     .noCollission()
                     .strength(0.7F)
                     .sound(SoundType.METAL)
@@ -320,7 +320,7 @@ public class AllBlocks
                     .noOcclusion()
             ));
     public static final RegistryObject<Block> ONE_WAY_RAIL = BLOCKS.register("one_way_rail",
-            ()-> new OneWayRailBlock(Block.Properties.of()
+            ()-> new OneWayRailBlock(false, Block.Properties.of()
                     .noCollission()
                     .strength(0.7F)
                     .sound(SoundType.METAL)

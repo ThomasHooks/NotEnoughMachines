@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.client.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -28,9 +29,9 @@ public class OneWayRailBlock extends RedstoneRailBlock
 {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    public OneWayRailBlock(Properties properties)
+    public OneWayRailBlock(boolean isHighSpeed, Properties properties)
     {
-        super(properties, true);
+        super(true, isHighSpeed, properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
                 .setValue(POWERED, false)
@@ -40,7 +41,7 @@ public class OneWayRailBlock extends RedstoneRailBlock
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context)
+    public BlockState getStateForPlacement(@NotNull BlockPlaceContext context)
     {
         return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection());
     }
@@ -56,34 +57,38 @@ public class OneWayRailBlock extends RedstoneRailBlock
 
         Direction railFacing = state.getValue(FACING);
         Direction cartMovementDirection = getMinecartMovementDirection(cart);
-        double boostFactor = railFacing != cartMovementDirection && cartMovementDirection != null ? -DEFAULT_BOOST_FACTOR : DEFAULT_BOOST_FACTOR;
+        double boostConfig = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR.get() : DEFAULT_BOOST_FACTOR;
+        double boostFactor = railFacing != cartMovementDirection && cartMovementDirection != null ? -boostConfig : boostConfig;
+        double launchFactor = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR.get() : DEFAULT_LAUNCH_FACTOR;
         if (cart.getDeltaMovement().horizontalDistance() > 0.01D)
             this.boostMinecart(cart, boostFactor);
         else
         {
             if (this.isRedstoneConductor(level, pos.relative(railFacing.getOpposite())))
-                this.launchMinecart(state, level, pos, cart, DEFAULT_LAUNCH_FACTOR);
+                this.launchMinecart(state, level, pos, cart, launchFactor);
             else
-                this.launchMinecart(cart, railFacing, DEFAULT_LAUNCH_FACTOR);
+                this.launchMinecart(cart, railFacing, launchFactor);
         }
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable BlockGetter blockGetter, @NotNull List<Component> tooltips, @NotNull TooltipFlag flag)
     {
         if (KeyboardInputHelper.getInstance().isPressingShift())
         {
-            toolTips.add(Component.literal(""));
-            toolTips.add(Component.translatable(TooltipKeys.ONE_WAY_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.translatable(TooltipKeys.ONE_WAY_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            tooltips.add(Component.literal(""));
+            tooltips.add(Component.translatable(TooltipKeys.ONE_WAY_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            tooltips.add(Component.translatable(TooltipKeys.ONE_WAY_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            if (this.isHighSpeed)
+                tooltips.add(Component.translatable(TooltipKeys.MINECARTS_MOVE_FASTER.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
+            tooltips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
-    public void onRemove(BlockState oldState, Level world, BlockPos pos, BlockState newState, boolean isMoving)
+    public void onRemove(@NotNull BlockState oldState, Level world, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving)
     {
         if (!world.isClientSide && !newState.isAir())
         {
@@ -142,7 +147,7 @@ public class OneWayRailBlock extends RedstoneRailBlock
     }
 
     @Override
-    public @NotNull BlockState rotate(BlockState state, Rotation rotation)
+    public @NotNull BlockState rotate(@NotNull BlockState state, Rotation rotation)
     {
         return switch (rotation)
         {

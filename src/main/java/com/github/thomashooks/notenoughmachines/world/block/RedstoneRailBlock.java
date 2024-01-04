@@ -1,8 +1,10 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
+import net.minecraft.world.entity.vehicle.MinecartFurnace;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,8 +28,9 @@ public abstract class RedstoneRailBlock extends BaseRailBlock
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final double DEFAULT_BOOST_FACTOR = 0.06D;
     public static final double DEFAULT_LAUNCH_FACTOR = 0.02D;
+    protected final boolean isHighSpeed;
 
-    protected RedstoneRailBlock(Properties properties, boolean isStraight)
+    protected RedstoneRailBlock(boolean isStraight, boolean isHighSpeed, Properties properties)
     {
         super(isStraight, properties);
         this.registerDefaultState(this.stateDefinition.any()
@@ -35,6 +38,7 @@ public abstract class RedstoneRailBlock extends BaseRailBlock
                 .setValue(POWERED, false)
                 .setValue(WATERLOGGED, false)
         );
+        this.isHighSpeed = isHighSpeed;
     }
 
     protected boolean findPoweredRailSignal(Level world, BlockPos pos, BlockState state, boolean searchForward, int recursionCount)
@@ -121,23 +125,21 @@ public abstract class RedstoneRailBlock extends BaseRailBlock
         BlockState blockstate = world.getBlockState(pos);
         if (!(blockstate.getBlock() instanceof RedstoneRailBlock other))
             return false;
-        else
+
+        RailShape railshape = other.getRailDirection(blockstate, world, pos, null);
+        if (shape != RailShape.EAST_WEST || railshape != RailShape.NORTH_SOUTH && railshape != RailShape.ASCENDING_NORTH && railshape != RailShape.ASCENDING_SOUTH)
         {
-            RailShape railshape = other.getRailDirection(blockstate, world, pos, null);
-            if (shape != RailShape.EAST_WEST || railshape != RailShape.NORTH_SOUTH && railshape != RailShape.ASCENDING_NORTH && railshape != RailShape.ASCENDING_SOUTH)
-            {
-                if (shape != RailShape.NORTH_SOUTH || railshape != RailShape.EAST_WEST && railshape != RailShape.ASCENDING_EAST && railshape != RailShape.ASCENDING_WEST)
-                    return world.hasNeighborSignal(pos) ? true : other.findPoweredRailSignal(world, pos, blockstate, searchForward, recursionCount + 1);
-                else
-                    return false;
-            }
+            if (shape != RailShape.NORTH_SOUTH || railshape != RailShape.EAST_WEST && railshape != RailShape.ASCENDING_EAST && railshape != RailShape.ASCENDING_WEST)
+                return world.hasNeighborSignal(pos) ? true : other.findPoweredRailSignal(world, pos, blockstate, searchForward, recursionCount + 1);
             else
                 return false;
         }
+        else
+            return false;
     }
 
     @Override
-    protected void updateState(BlockState state, Level world, BlockPos pos, Block block)
+    protected void updateState(BlockState state, Level world, @NotNull BlockPos pos, @NotNull Block block)
     {
         boolean flag = state.getValue(POWERED);
         boolean flag1 = world.hasNeighborSignal(pos) || this.findPoweredRailSignal(world, pos, state, true, 0) || this.findPoweredRailSignal(world, pos, state, false, 0);
@@ -242,10 +244,23 @@ public abstract class RedstoneRailBlock extends BaseRailBlock
     }
 
     @Override
-    public Property<RailShape> getShapeProperty() { return SHAPE; }
+    public @NotNull Property<RailShape> getShapeProperty() { return SHAPE; }
 
     @Override
-    public @NotNull BlockState rotate(BlockState state, Rotation rotation)
+    public float getRailMaxSpeed(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
+    {
+        float maxSpeed = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED.get() : 0.4F;
+        float inWaterMaxSpeed = this.isHighSpeed ?  CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_WATERLOGGED.get() : 0.2F;
+        float furnaceCartMaxSpeed = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE.get() : 0.2F;
+        float furnaceCartInWaterMaxSpeed = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE_WATERLOGGED.get() : 0.15F;
+        if (cart instanceof MinecartFurnace)
+            return cart.isInWater() ? furnaceCartInWaterMaxSpeed : furnaceCartMaxSpeed;
+        else
+            return cart.isInWater() ? inWaterMaxSpeed : maxSpeed;
+    }
+
+    @Override
+    public @NotNull BlockState rotate(@NotNull BlockState state, Rotation rotation)
     {
         return switch (rotation)
         {

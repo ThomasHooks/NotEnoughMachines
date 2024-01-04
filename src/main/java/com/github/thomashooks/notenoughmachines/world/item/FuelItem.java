@@ -9,7 +9,7 @@ public class FuelItem extends Item
 {
     private int burnTime;
 
-    public FuelItem(Properties properties, int burnTimeIn)
+    public FuelItem(int burnTimeIn, Properties properties)
     {
         super(properties);
         this.burnTime = burnTimeIn;

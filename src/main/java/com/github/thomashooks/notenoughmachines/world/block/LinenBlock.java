@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.extensions.IForgeBlock;
+import org.jetbrains.annotations.NotNull;
 
 public class LinenBlock extends Block implements IForgeBlock
 {
@@ -19,16 +20,12 @@ public class LinenBlock extends Block implements IForgeBlock
      * Block's chance to react to a living entity falling on it.
      */
     @Override
-    public void fallOn(Level world, BlockState blockState, BlockPos pos, Entity entity, float fallDistance)
+    public void fallOn(@NotNull Level world, @NotNull BlockState blockState, @NotNull BlockPos pos, Entity entity, float fallDistance)
     {
         if (entity.isSuppressingBounce())
-        {
             super.fallOn(world, blockState, pos, entity, fallDistance);
-        } else
-        {
+        else
             entity.causeFallDamage(fallDistance, 0.0F, world.damageSources().fall());
-        }
-
     }
 
     /**
@@ -36,29 +33,19 @@ public class LinenBlock extends Block implements IForgeBlock
      * on its own
      */
     @Override
-    public void updateEntityAfterFallOn(BlockGetter blockGetter, Entity entity) {
+    public void updateEntityAfterFallOn(@NotNull BlockGetter blockGetter, Entity entity)
+    {
         if (entity.isSuppressingBounce())
-        {
             super.updateEntityAfterFallOn(blockGetter, entity);
-        }
         else
-        {
             this.bounceUp(entity);
-        }
-
     }
 
     @Override
-    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction)
-    {
-        return 30;
-    }
+    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) { return 30; }
 
     @Override
-    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction)
-    {
-        return 60;
-    }
+    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) { return 60; }
 
     private void bounceUp(Entity entity)
     {

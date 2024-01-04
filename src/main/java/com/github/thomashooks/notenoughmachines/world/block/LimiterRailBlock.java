@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block;
 
 import com.github.thomashooks.notenoughmachines.client.KeyboardInputHelper;
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.util.TooltipKeys;
 import com.github.thomashooks.notenoughmachines.world.block.state.properties.AllBlockStateProperties;
 import net.minecraft.ChatFormatting;
@@ -35,9 +36,9 @@ import java.util.List;
 public class LimiterRailBlock extends RedstoneRailBlock
 {
     public static final IntegerProperty SPEED = AllBlockStateProperties.SPEED;
-    public LimiterRailBlock(Properties properties)
+    public LimiterRailBlock(boolean isHighSpeed, Properties properties)
     {
-        super(properties, true);
+        super(true, isHighSpeed, properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
                 .setValue(POWERED, false)
@@ -63,11 +64,15 @@ public class LimiterRailBlock extends RedstoneRailBlock
     @Override
     public float getRailMaxSpeed(BlockState state, Level level, BlockPos pos, AbstractMinecart cart)
     {
+        float maxSpeed = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED.get() : 0.4F;
+        float inWaterMaxSpeed = this.isHighSpeed ?  CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_WATERLOGGED.get() : 0.2F;
+        float furnaceCartMaxSpeed = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE.get() : 0.2F;
+        float furnaceCartInWaterMaxSpeed = this.isHighSpeed ? CommonConfigs.HIGH_SPEED_RAIL_MAX_SPEED_MINECART_FURNACE_WATERLOGGED.get() : 0.15F;
         float limit = state.getValue(POWERED) ? 0.25F * state.getValue(SPEED) : 1.0F;
         if (cart instanceof MinecartFurnace)
-            return (cart.isInWater() ? 0.15F : 0.2F) * limit;
+            return (cart.isInWater() ? furnaceCartInWaterMaxSpeed : furnaceCartMaxSpeed) * limit;
         else
-            return (cart.isInWater() ? 0.2F : 0.4F) * limit;
+            return (cart.isInWater() ? inWaterMaxSpeed : maxSpeed) * limit;
     }
 
     @Override
@@ -83,16 +88,18 @@ public class LimiterRailBlock extends RedstoneRailBlock
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable BlockGetter blockGetter, @NotNull List<Component> tooltips, @NotNull TooltipFlag flag)
     {
         if (KeyboardInputHelper.getInstance().isPressingShift())
         {
-            toolTips.add(Component.literal(""));
-            toolTips.add(Component.translatable(TooltipKeys.LIMITER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.translatable(TooltipKeys.LIMITER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            tooltips.add(Component.literal(""));
+            tooltips.add(Component.translatable(TooltipKeys.LIMITER_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            tooltips.add(Component.translatable(TooltipKeys.LIMITER_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            if (this.isHighSpeed)
+                tooltips.add(Component.translatable(TooltipKeys.MINECARTS_MOVE_FASTER.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
+            tooltips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

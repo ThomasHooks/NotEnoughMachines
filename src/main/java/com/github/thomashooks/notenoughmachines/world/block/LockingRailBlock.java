@@ -27,9 +27,9 @@ import java.util.List;
 
 public class LockingRailBlock extends RedstoneRailBlock implements EntityBlock
 {
-    public LockingRailBlock(Properties properties)
+    public LockingRailBlock(boolean isHighSpeed, Properties properties)
     {
-        super(properties, true);
+        super(true, isHighSpeed, properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(SHAPE, RailShape.NORTH_SOUTH)
                 .setValue(POWERED, false)
@@ -52,7 +52,7 @@ public class LockingRailBlock extends RedstoneRailBlock implements EntityBlock
     }
 
     @Override
-    protected void updateState(BlockState state, Level world, BlockPos pos, Block block)
+    protected void updateState(BlockState state, Level world, @NotNull BlockPos pos, @NotNull Block block)
     {
         super.updateState(state, world, pos, block);
 
@@ -63,22 +63,18 @@ public class LockingRailBlock extends RedstoneRailBlock implements EntityBlock
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> toolTips, TooltipFlag flag)
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable BlockGetter blockGetter, @NotNull List<Component> tooltips, @NotNull TooltipFlag flag)
     {
         if (KeyboardInputHelper.getInstance().isPressingShift())
         {
-            toolTips.add(Component.literal(""));
-            toolTips.add(Component.translatable(TooltipKeys.LOCKING_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
-            toolTips.add(Component.translatable(TooltipKeys.LOCKING_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            tooltips.add(Component.literal(""));
+            tooltips.add(Component.translatable(TooltipKeys.LOCKING_RAIL1.getTranslation()).withStyle(ChatFormatting.GREEN));
+            tooltips.add(Component.translatable(TooltipKeys.LOCKING_RAIL2.getTranslation()).withStyle(ChatFormatting.GRAY));
+            if (this.isHighSpeed)
+                tooltips.add(Component.translatable(TooltipKeys.MINECARTS_MOVE_FASTER.getTranslation()).withStyle(ChatFormatting.GRAY));
         }
         else
-            toolTips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-    {
-        builder.add(SHAPE, POWERED, WATERLOGGED);
+            tooltips.add(Component.translatable(TooltipKeys.MORE_INFO_PRESS_SHIFT.getTranslation()).withStyle(ChatFormatting.GRAY));
     }
 
     @Nullable

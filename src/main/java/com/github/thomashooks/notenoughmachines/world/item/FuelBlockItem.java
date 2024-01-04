@@ -10,7 +10,7 @@ public class FuelBlockItem extends BlockItem
 {
     private int burnTime;
 
-    public FuelBlockItem(Block block, Properties properties, int burnTimeIn)
+    public FuelBlockItem(Block block, int burnTimeIn, Properties properties)
     {
         super(block, properties);
         this.burnTime = burnTimeIn;
