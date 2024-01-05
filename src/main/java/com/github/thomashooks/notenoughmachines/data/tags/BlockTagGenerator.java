@@ -95,6 +95,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.POLISHED_FLUXSTONE_SLAB.get(),
                 AllBlocks.POLISHED_FLUXSTONE_STAIRS.get(),
                 AllBlocks.POLISHED_FLUXSTONE_WALL.get(),
+                AllBlocks.RAW_TIN_BLOCK.get(),
                 AllBlocks.ROLLING_MILL.get(),
                 AllBlocks.TRIP_HAMMER.get(),
                 AllBlocks.TIN_ORE.get(),
@@ -135,6 +136,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.POLISHED_FLUXSTONE_SLAB.get(),
                 AllBlocks.POLISHED_FLUXSTONE_STAIRS.get(),
                 AllBlocks.POLISHED_FLUXSTONE_WALL.get(),
+                AllBlocks.RAW_TIN_BLOCK.get(),
                 AllBlocks.VERMILION_BLOCK.get(),
                 AllBlocks.TIN_BLOCK.get(),
                 AllBlocks.TIN_ORE.get(),
@@ -221,6 +223,25 @@ public class BlockTagGenerator extends BlockTagsProvider
                 Blocks.STRIPPED_CRIMSON_HYPHAE,
                 Blocks.STRIPPED_WARPED_HYPHAE,
                 Blocks.STRIPPED_BAMBOO_BLOCK
+        );
+        this.tag(AllTags.Blocks.LINEN_BLOCKS).add(
+                AllBlocks.LINEN_BLOCK.get(),
+                AllBlocks.LINEN_BLOCK_WHITE.get(),
+                AllBlocks.LINEN_BLOCK_ORANGE.get(),
+                AllBlocks.LINEN_BLOCK_MAGENTA.get(),
+                AllBlocks.LINEN_BLOCK_LIGHT_BLUE.get(),
+                AllBlocks.LINEN_BLOCK_YELLOW.get(),
+                AllBlocks.LINEN_BLOCK_LIME.get(),
+                AllBlocks.LINEN_BLOCK_PINK.get(),
+                AllBlocks.LINEN_BLOCK_GRAY.get(),
+                AllBlocks.LINEN_BLOCK_LIGHT_GRAY.get(),
+                AllBlocks.LINEN_BLOCK_CYAN.get(),
+                AllBlocks.LINEN_BLOCK_PURPLE.get(),
+                AllBlocks.LINEN_BLOCK_BLUE.get(),
+                AllBlocks.LINEN_BLOCK_BROWN.get(),
+                AllBlocks.LINEN_BLOCK_GREEN.get(),
+                AllBlocks.LINEN_BLOCK_RED.get(),
+                AllBlocks.LINEN_BLOCK_BLACK.get()
         );
     }
 }

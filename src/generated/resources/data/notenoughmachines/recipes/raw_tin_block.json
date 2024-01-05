@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:raw_tin_block",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:raw_tin"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "notenoughmachines:raw_tin_block"
+  },
+  "show_notification": true
+}

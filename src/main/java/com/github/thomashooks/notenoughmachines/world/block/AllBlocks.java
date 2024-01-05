@@ -300,6 +300,70 @@ public class AllBlocks
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
+    public static final RegistryObject<Block> LINEN_BLOCK_WHITE = BLOCKS.register("linen_block_white",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.SNOW)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_ORANGE = BLOCKS.register("linen_block_orange",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_ORANGE)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_MAGENTA = BLOCKS.register("linen_block_magenta",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_MAGENTA)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_LIGHT_BLUE = BLOCKS.register("linen_block_light_blue",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_YELLOW = BLOCKS.register("linen_block_yellow",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_YELLOW)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_LIME = BLOCKS.register("linen_block_lime",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_PINK = BLOCKS.register("linen_block_pink",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_PINK)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_GRAY = BLOCKS.register("linen_block_gray",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_GRAY)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_LIGHT_GRAY = BLOCKS.register("linen_block_light_gray",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_CYAN = BLOCKS.register("linen_block_cyan",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_CYAN)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_PURPLE = BLOCKS.register("linen_block_purple",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_PURPLE)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_BLUE = BLOCKS.register("linen_block_blue",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_BLUE)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_BROWN = BLOCKS.register("linen_block_brown",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_BROWN)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_GREEN = BLOCKS.register("linen_block_green",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_GREEN)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_RED = BLOCKS.register("linen_block_red",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_RED)
+            ));
+    public static final RegistryObject<Block> LINEN_BLOCK_BLACK = BLOCKS.register("linen_block_black",
+            ()-> new LinenBlock(Block.Properties.copy(LINEN_BLOCK.get())
+                    .mapColor(MapColor.COLOR_BLACK)
+            ));
     public static final RegistryObject<Block> LIMITER_RAIL = BLOCKS.register("limiter_rail",
             ()-> new LimiterRailBlock(false, Block.Properties.of()
                     .noCollission()
@@ -345,6 +409,12 @@ public class AllBlocks
             ()-> new WallBlock(Block.Properties.copy(POLISHED_FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
                     .strength(1.5f, 5.0f)
+            ));
+    public static final RegistryObject<Block> RAW_TIN_BLOCK = BLOCKS.register("raw_tin_block",
+            ()-> new Block(Block.Properties.of()
+                    .mapColor(MapColor.RAW_IRON)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops().strength(5.0F, 6.0F)
             ));
     public static final RegistryObject<Block> ROLLING_MILL = BLOCKS.register("rolling_mill",
             ()-> new RollingMillBlock(Block.Properties.of()
@@ -434,10 +504,7 @@ public class AllBlocks
                             .strength(2.0F, 3.0F)
             ));
 
-    public static void registerAll(IEventBus modEventBus)
-    {
-        BLOCKS.register(modEventBus);
-    }
+    public static void registerAll(IEventBus modEventBus) { BLOCKS.register(modEventBus); }
 
     public static String getName(Block block) { return ForgeRegistries.BLOCKS.getKey(block).getPath(); }
 

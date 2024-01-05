@@ -71,9 +71,26 @@ public class AllCreativeTabs
 
                         //Cloth Blocks
                         output.accept(AllItems.LINEN_BLOCK.get());
+                        output.accept(AllItems.LINEN_BLOCK_WHITE.get());
+                        output.accept(AllItems.LINEN_BLOCK_ORANGE.get());
+                        output.accept(AllItems.LINEN_BLOCK_MAGENTA.get());
+                        output.accept(AllItems.LINEN_BLOCK_LIGHT_BLUE.get());
+                        output.accept(AllItems.LINEN_BLOCK_YELLOW.get());
+                        output.accept(AllItems.LINEN_BLOCK_LIME.get());
+                        output.accept(AllItems.LINEN_BLOCK_PINK.get());
+                        output.accept(AllItems.LINEN_BLOCK_GRAY.get());
+                        output.accept(AllItems.LINEN_BLOCK_LIGHT_GRAY.get());
+                        output.accept(AllItems.LINEN_BLOCK_CYAN.get());
+                        output.accept(AllItems.LINEN_BLOCK_PURPLE.get());
+                        output.accept(AllItems.LINEN_BLOCK_BLUE.get());
+                        output.accept(AllItems.LINEN_BLOCK_BROWN.get());
+                        output.accept(AllItems.LINEN_BLOCK_GREEN.get());
+                        output.accept(AllItems.LINEN_BLOCK_RED.get());
+                        output.accept(AllItems.LINEN_BLOCK_BLACK.get());
 
                         //Ore Blocks
                         output.accept(AllItems.TIN_ORE.get());
+                        output.accept(AllItems.RAW_TIN_BLOCK.get());
 
                         //Machine Blocks - Power Transfer
                         output.accept(AllItems.AXLE.get());

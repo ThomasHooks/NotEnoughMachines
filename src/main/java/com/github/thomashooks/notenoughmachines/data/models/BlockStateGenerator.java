@@ -55,10 +55,27 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/iron_plate_block_top")
         );
         createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_WHITE);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_ORANGE);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_MAGENTA);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_LIGHT_BLUE);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_YELLOW);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_LIME);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_PINK);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_GRAY);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_LIGHT_GRAY);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_CYAN);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_PURPLE);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_BLUE);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_BROWN);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_GREEN);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_RED);
+        createSimpleCubeWithItem(AllBlocks.LINEN_BLOCK_BLACK);
         axisBlock((RotatedPillarBlock) AllBlocks.POLISHED_FLUXSTONE.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/polished_fluxstone_top")
         );
+        createSimpleCubeWithItem(AllBlocks.RAW_TIN_BLOCK);
         createSimpleCubeWithItem(AllBlocks.TIN_BLOCK);
         createSimpleCubeWithItem(AllBlocks.TIN_ORE);
         axisBlock((RotatedPillarBlock) AllBlocks.TIN_PLATE_BLOCK.get(),

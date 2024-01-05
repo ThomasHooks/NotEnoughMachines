@@ -4,11 +4,11 @@
   "group": "notenoughmachines:linen",
   "ingredients": [
     {
-      "item": "notenoughmachines:linen_block"
+      "tag": "notenoughmachines:linen_blocks"
     }
   ],
   "result": {
-    "count": 9,
+    "count": 4,
     "item": "notenoughmachines:linen"
   }
 }

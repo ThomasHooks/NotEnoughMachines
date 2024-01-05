@@ -25,6 +25,7 @@ public class AllTags
         public static final TagKey<Item> IRON_DUST = makeForgeTag("dusts/iron");
         public static final TagKey<Item> IRON_PLATES = makeForgeTag("plates/iron");
         public static final TagKey<Item> IRON_RODS = makeForgeTag("rods/iron");
+        public static final TagKey<Item> LINEN_BLOCKS = makeTag("linen_blocks");
         public static final TagKey<Item> STRIPPED_LOGS = makeTag("stripped_logs");
         public static final TagKey<Item> TIN_DUST = makeForgeTag("dusts/tin");
         public static final TagKey<Item> TIN_INGOTS = makeForgeTag("ingots/tin");
@@ -49,6 +50,7 @@ public class AllTags
     public static final class Blocks
     {
         public static final TagKey<Block> STRIPPED_LOGS = makeTag("stripped_logs");
+        public static final TagKey<Block> LINEN_BLOCKS = makeTag("linen_blocks");
         public static final TagKey<Block> ORES_IN_DEEPSLATE = makeForgeTag("ores_in_ground/deepslate");
         public static final TagKey<Block> ORES_IN_NETHERRACK = makeForgeTag("ores_in_ground/netherrack");
         public static final TagKey<Block> ORES_IN_STONE = makeForgeTag("ores_in_ground/stone");

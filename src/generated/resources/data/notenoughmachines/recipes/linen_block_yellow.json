@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "notenoughmachines:linen_block_yellow",
+  "ingredients": [
+    {
+      "tag": "notenoughmachines:linen_blocks"
+    },
+    {
+      "item": "minecraft:yellow_dye"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:linen_block_yellow"
+  }
+}

@@ -92,8 +92,24 @@ public class AllItems
     public static final RegistryObject<Item> ITEM_POUCH = ITEMS.register("item_pouch", ()-> new PouchItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> KAOLIN = ITEMS.register("kaolin", ()-> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COGWHEEL_LARGE = ITEMS.register("large_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_LARGE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> LINEN = ITEMS.register("linen", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LINEN = ITEMS.register("linen", ()-> new FuelItem(50, new Item.Properties()));
     public static final RegistryObject<Item> LINEN_BLOCK = ITEMS.register("linen_block", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_WHITE = ITEMS.register("linen_block_white", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_WHITE.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_ORANGE = ITEMS.register("linen_block_orange", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_ORANGE.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_MAGENTA = ITEMS.register("linen_block_magenta", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_MAGENTA.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_LIGHT_BLUE = ITEMS.register("linen_block_light_blue", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_LIGHT_BLUE.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_YELLOW = ITEMS.register("linen_block_yellow", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_YELLOW.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_LIME = ITEMS.register("linen_block_lime", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_LIME.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_PINK = ITEMS.register("linen_block_pink", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_PINK.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_GRAY = ITEMS.register("linen_block_gray", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_GRAY.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_LIGHT_GRAY = ITEMS.register("linen_block_light_gray", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_LIGHT_GRAY.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_CYAN = ITEMS.register("linen_block_cyan", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_CYAN.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_PURPLE = ITEMS.register("linen_block_purple", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_PURPLE.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_BLUE = ITEMS.register("linen_block_blue", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_BLUE.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_BROWN = ITEMS.register("linen_block_brown", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_BROWN.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_GREEN = ITEMS.register("linen_block_green", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_GREEN.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_RED = ITEMS.register("linen_block_red", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_RED.get(), 200, new Item.Properties()));
+    public static final RegistryObject<Item> LINEN_BLOCK_BLACK = ITEMS.register("linen_block_black", ()-> new FuelBlockItem(AllBlocks.LINEN_BLOCK_BLACK.get(), 200, new Item.Properties()));
     public static final RegistryObject<Item> LINSEED_OIL = ITEMS.register("linseed_oil",
             ()-> new LinseedOilItem(new Item.Properties()
                     .craftRemainder(Items.GLASS_BOTTLE)
@@ -116,6 +132,7 @@ public class AllItems
     public static final RegistryObject<Item> RAILROAD_TIE = ITEMS.register("railroad_tie", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_EMITTER = ITEMS.register("redstone_emitter", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_TIN_BLOCK = ITEMS.register("raw_tin_block", ()-> new BlockItem(AllBlocks.RAW_TIN_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_VALVE = ITEMS.register("redstone_valve", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ROLLING_MILL = ITEMS.register("rolling_mill", ()-> new BlockItem(AllBlocks.ROLLING_MILL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COGWHEEL_SMALL = ITEMS.register("small_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_SMALL.get(), new Item.Properties()));

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "notenoughmachines:linen_block_purple",
+  "ingredients": [
+    {
+      "tag": "notenoughmachines:linen_blocks"
+    },
+    {
+      "item": "minecraft:purple_dye"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:linen_block_purple"
+  }
+}

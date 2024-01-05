@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "notenoughmachines:linen_block_light_gray",
+  "ingredients": [
+    {
+      "tag": "notenoughmachines:linen_blocks"
+    },
+    {
+      "item": "minecraft:light_gray_dye"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:linen_block_light_gray"
+  }
+}

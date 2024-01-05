@@ -200,8 +200,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":linen")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.LINEN.get(), 9)
-                .requires(AllBlocks.LINEN_BLOCK.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.LINEN.get(), 4)
+                .requires(AllTags.Items.LINEN_BLOCKS)
                 .group(NotEnoughMachines.MOD_ID + ":linen")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":linen_from_linen_block");
@@ -213,6 +213,13 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":linseed_oil")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
+
+        //Raw Tin
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.RAW_TIN.get(), 9)
+                .requires(AllItems.RAW_TIN_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":raw_tin")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":raw_tin_from_raw_tin_block");
 
         //Redstone Valve
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.REDSTONE_VALVE.get(), 1)
@@ -447,11 +454,106 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //Linen Block
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlocks.LINEN_BLOCK.get(), 1)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
+                .pattern("##")
+                .pattern("##")
                 .define('#', AllItems.LINEN.get())
                 .group(NotEnoughMachines.MOD_ID + ":linen_block")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_WHITE.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.WHITE_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_white")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_ORANGE.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.ORANGE_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_orange")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_MAGENTA.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.MAGENTA_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_magenta")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_LIGHT_BLUE.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.LIGHT_BLUE_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_light_blue")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_YELLOW.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.YELLOW_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_yellow")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_LIME.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.LIME_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_lime")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_PINK.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.PINK_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_pink")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_GRAY.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.GRAY_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_gray")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_LIGHT_GRAY.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.LIGHT_GRAY_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_light_gray")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_CYAN.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.CYAN_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_cyan")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_PURPLE.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.PURPLE_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_purple")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_BLUE.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.BLUE_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_blue")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_BROWN.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.BROWN_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_brown")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_GREEN.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.GREEN_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_green")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_RED.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.RED_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_red")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.LINEN_BLOCK_BLACK.get(), 1)
+                .requires(AllTags.Items.LINEN_BLOCKS)
+                .requires(Items.BLACK_DYE)
+                .group(NotEnoughMachines.MOD_ID + ":linen_block_black")
                 .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
                 .save(consumer);
 
@@ -462,6 +564,16 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('#', AllTags.Items.IRON_PLATES)
                 .group(NotEnoughMachines.MOD_ID + ":iron_plate_block")
                 .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
+        //Raw Tin Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.RAW_TIN_BLOCK.get(), 1)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', AllItems.RAW_TIN.get())
+                .group(NotEnoughMachines.MOD_ID + ":raw_tin_block")
+                .unlockedBy("has_" + getHasName(AllItems.RAW_TIN.get()), has(AllItems.RAW_TIN.get()))
                 .save(consumer);
 
         //Tin Block

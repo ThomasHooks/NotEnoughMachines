@@ -2,6 +2,7 @@ package com.github.thomashooks.notenoughmachines.data.tags;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.integration.tags.AllTags;
+import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -46,6 +47,25 @@ public class ItemTagGenerator extends ItemTagsProvider
                 Items.STRIPPED_CRIMSON_HYPHAE,
                 Items.STRIPPED_WARPED_HYPHAE,
                 Items.STRIPPED_BAMBOO_BLOCK
+        );
+        this.tag(AllTags.Items.LINEN_BLOCKS).add(
+                AllItems.LINEN_BLOCK.get(),
+                AllItems.LINEN_BLOCK_WHITE.get(),
+                AllItems.LINEN_BLOCK_ORANGE.get(),
+                AllItems.LINEN_BLOCK_MAGENTA.get(),
+                AllItems.LINEN_BLOCK_LIGHT_BLUE.get(),
+                AllItems.LINEN_BLOCK_YELLOW.get(),
+                AllItems.LINEN_BLOCK_LIME.get(),
+                AllItems.LINEN_BLOCK_PINK.get(),
+                AllItems.LINEN_BLOCK_GRAY.get(),
+                AllItems.LINEN_BLOCK_LIGHT_GRAY.get(),
+                AllItems.LINEN_BLOCK_CYAN.get(),
+                AllItems.LINEN_BLOCK_PURPLE.get(),
+                AllItems.LINEN_BLOCK_BLUE.get(),
+                AllItems.LINEN_BLOCK_BROWN.get(),
+                AllItems.LINEN_BLOCK_GREEN.get(),
+                AllItems.LINEN_BLOCK_RED.get(),
+                AllItems.LINEN_BLOCK_BLACK.get()
         );
         this.tag(AllTags.Items.BRONZE_DUST).add(
                 AllItems.CRUSHED_BRONZE.get()
