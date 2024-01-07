@@ -1,0 +1,12 @@
+{
+  "values": [
+    "notenoughmachines:copper_plate_slab",
+    "notenoughmachines:copper_plate_slab_exposed",
+    "notenoughmachines:copper_plate_slab_weathered",
+    "notenoughmachines:copper_plate_slab_oxidized",
+    "notenoughmachines:copper_plate_slab_waxed",
+    "notenoughmachines:copper_plate_slab_exposed_waxed",
+    "notenoughmachines:copper_plate_slab_weathered_waxed",
+    "notenoughmachines:copper_plate_slab_oxidized_waxed"
+  ]
+}

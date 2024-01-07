@@ -3,6 +3,7 @@ package com.github.thomashooks.notenoughmachines.data.tags;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.integration.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
+import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -55,8 +56,29 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.COKE_BLOCK.get(),
                 AllBlocks.COKE_OVEN.get(),
                 AllBlocks.COPPER_PLATE_BLOCK.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get(),
                 AllBlocks.COPPER_PLATE_SLAB.get(),
+                AllBlocks.COPPER_PLATE_SLAB_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_WAXED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get(),
                 AllBlocks.COPPER_PLATE_STAIRS.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get(),
                 AllBlocks.CROSSOVER_RAIL.get(),
                 AllBlocks.ENCLOSED_AXLE.get(),
                 AllBlocks.FIRE_BRICKS.get(),
@@ -116,8 +138,29 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.COKE_BLOCK.get(),
                 AllBlocks.COKE_OVEN.get(),
                 AllBlocks.COPPER_PLATE_BLOCK.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get(),
                 AllBlocks.COPPER_PLATE_SLAB.get(),
+                AllBlocks.COPPER_PLATE_SLAB_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_WAXED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get(),
                 AllBlocks.COPPER_PLATE_STAIRS.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get(),
                 AllBlocks.FIRE_BRICKS.get(),
                 AllBlocks.FIRE_BRICKS_SLAB.get(),
                 AllBlocks.FIRE_BRICKS_STAIRS.get(),
@@ -200,6 +243,36 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.BRONZE_SCAFFOLDING.get(),
                 AllBlocks.IRON_LADDER.get(),
                 AllBlocks.IRON_SCAFFOLDING.get()
+        );
+        this.tag(AllTags.Blocks.COPPER_PLATE_BLOCKS).add(
+                AllBlocks.COPPER_PLATE_BLOCK.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get()
+        );
+        this.tag(AllTags.Blocks.COPPER_PLATE_SLABS).add(
+            AllBlocks.COPPER_PLATE_SLAB.get(),
+            AllBlocks.COPPER_PLATE_SLAB_EXPOSED.get(),
+            AllBlocks.COPPER_PLATE_SLAB_WEATHERED.get(),
+            AllBlocks.COPPER_PLATE_SLAB_OXIDIZED.get(),
+            AllBlocks.COPPER_PLATE_SLAB_WAXED.get(),
+            AllBlocks.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(),
+            AllBlocks.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(),
+            AllBlocks.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get()
+        );
+        this.tag(AllTags.Blocks.COPPER_PLATE_STAIRS).add(
+                AllBlocks.COPPER_PLATE_STAIRS.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_EXPOSED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WEATHERED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(),
+                AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get()
         );
         this.tag(AllTags.Blocks.STRIPPED_LOGS).add(
                 Blocks.STRIPPED_OAK_LOG,

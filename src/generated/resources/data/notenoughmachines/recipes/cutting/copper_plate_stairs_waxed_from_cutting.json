@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "notenoughmachines:copper_plate_stairs_waxed",
+  "ingredient": {
+    "item": "notenoughmachines:copper_plate_block_waxed"
+  },
+  "result": "notenoughmachines:copper_plate_stairs_waxed"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "notenoughmachines:block/copper_plate_block_top_exposed",
+    "side": "notenoughmachines:block/copper_plate_block_side_exposed",
+    "top": "notenoughmachines:block/copper_plate_block_top_exposed"
+  }
+}

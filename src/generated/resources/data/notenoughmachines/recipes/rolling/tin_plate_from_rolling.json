@@ -2,7 +2,7 @@
   "type": "notenoughmachines:rolling",
   "group": "notenoughmachines:tin_plate",
   "ingredient": {
-    "item": "notenoughmachines:tin_ingot"
+    "tag": "forge:ingots/tin"
   },
   "processtime": 300,
   "result": {

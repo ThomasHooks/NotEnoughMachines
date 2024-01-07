@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "notenoughmachines:copper_plate_slab_waxed",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:copper_plate_slab"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "item": "notenoughmachines:copper_plate_slab_waxed"
+  }
+}

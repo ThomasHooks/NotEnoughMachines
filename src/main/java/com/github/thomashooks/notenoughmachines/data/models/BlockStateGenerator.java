@@ -43,6 +43,34 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_EXPOSED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed")
+        );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_WEATHERED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered")
+        );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized")
+        );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_WAXED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed")
+        );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered")
+        );
+        axisBlock((RotatedPillarBlock) AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized")
+        );
         createSimpleCubeWithItem(AllBlocks.COKE_BLOCK);
         axisBlock((RotatedPillarBlock) AllBlocks.GOLD_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/gold_plate_block_side"),
@@ -99,6 +127,48 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
         );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_EXPOSED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_EXPOSED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_WEATHERED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_WEATHERED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_OXIDIZED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_WAXED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_EXPOSED_WAXED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_WEATHERED_WAXED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered")
+        );
+        slabBlock(((SlabBlock) AllBlocks.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get()),
+                blockTexture(AllBlocks.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized")
+        );
         slabBlock(((SlabBlock) AllBlocks.FIRE_BRICKS_SLAB.get()),
                 blockTexture(AllBlocks.FIRE_BRICKS.get()),
                 blockTexture(AllBlocks.FIRE_BRICKS.get())
@@ -147,6 +217,41 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_EXPOSED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_WEATHERED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_exposed")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_weathered")
+        );
+        stairsBlock(((StairBlock) AllBlocks.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get()),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_side_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/copper_plate_block_top_oxidized")
         );
         stairsBlock(((StairBlock) AllBlocks.FIRE_BRICKS_STAIRS.get()),
                 blockTexture(AllBlocks.FIRE_BRICKS.get())

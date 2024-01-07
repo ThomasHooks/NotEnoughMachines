@@ -1,0 +1,12 @@
+{
+  "values": [
+    "notenoughmachines:copper_plate_block",
+    "notenoughmachines:copper_plate_block_exposed",
+    "notenoughmachines:copper_plate_block_weathered",
+    "notenoughmachines:copper_plate_block_oxidized",
+    "notenoughmachines:copper_plate_block_waxed",
+    "notenoughmachines:copper_plate_block_exposed_waxed",
+    "notenoughmachines:copper_plate_block_weathered_waxed",
+    "notenoughmachines:copper_plate_block_oxidized_waxed"
+  ]
+}

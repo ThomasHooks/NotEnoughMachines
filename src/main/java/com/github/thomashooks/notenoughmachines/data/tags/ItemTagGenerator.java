@@ -10,6 +10,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,7 +24,7 @@ public class ItemTagGenerator extends ItemTagsProvider
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider)
+    protected void addTags(HolderLookup.@NotNull Provider provider)
     {
         this.tag(AllTags.Items.STRIPPED_LOGS).add(
                 Items.STRIPPED_OAK_LOG,
@@ -66,6 +67,36 @@ public class ItemTagGenerator extends ItemTagsProvider
                 AllItems.LINEN_BLOCK_GREEN.get(),
                 AllItems.LINEN_BLOCK_RED.get(),
                 AllItems.LINEN_BLOCK_BLACK.get()
+        );
+        this.tag(AllTags.Items.COPPER_PLATE_BLOCKS).add(
+                AllItems.COPPER_PLATE_BLOCK.get(),
+                AllItems.COPPER_PLATE_BLOCK_EXPOSED.get(),
+                AllItems.COPPER_PLATE_BLOCK_WEATHERED.get(),
+                AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get(),
+                AllItems.COPPER_PLATE_BLOCK_WAXED.get(),
+                AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get(),
+                AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get(),
+                AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get()
+        );
+        this.tag(AllTags.Items.COPPER_PLATE_SLABS).add(
+                AllItems.COPPER_PLATE_SLAB.get(),
+                AllItems.COPPER_PLATE_SLAB_EXPOSED.get(),
+                AllItems.COPPER_PLATE_SLAB_WEATHERED.get(),
+                AllItems.COPPER_PLATE_SLAB_OXIDIZED.get(),
+                AllItems.COPPER_PLATE_SLAB_WAXED.get(),
+                AllItems.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(),
+                AllItems.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(),
+                AllItems.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get()
+        );
+        this.tag(AllTags.Items.COPPER_PLATE_STAIRS).add(
+                AllItems.COPPER_PLATE_STAIRS.get(),
+                AllItems.COPPER_PLATE_STAIRS_EXPOSED.get(),
+                AllItems.COPPER_PLATE_STAIRS_WEATHERED.get(),
+                AllItems.COPPER_PLATE_STAIRS_OXIDIZED.get(),
+                AllItems.COPPER_PLATE_STAIRS_WAXED.get(),
+                AllItems.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(),
+                AllItems.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(),
+                AllItems.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get()
         );
         this.tag(AllTags.Items.BRONZE_DUST).add(
                 AllItems.CRUSHED_BRONZE.get()

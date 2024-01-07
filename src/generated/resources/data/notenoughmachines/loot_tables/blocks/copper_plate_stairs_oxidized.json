@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "notenoughmachines:copper_plate_stairs_oxidized"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "notenoughmachines:blocks/copper_plate_stairs_oxidized"
+}

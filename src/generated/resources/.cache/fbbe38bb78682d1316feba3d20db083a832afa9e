@@ -1,12 +1,15 @@
-// 1.20.1	2024-01-04T22:22:36.4981301	Tags for minecraft:block mod id notenoughmachines
+// 1.20.1	2024-01-06T22:42:04.5704824	Tags for minecraft:block mod id notenoughmachines
 dd84ad1535ab8d848ffdca11e3ca79890d3852ee data/forge/tags/blocks/ores_in_ground/stone.json
 d6315aba6d627cf52e0d34805a541f194a3f239b data/minecraft/tags/blocks/climbable.json
 d6315aba6d627cf52e0d34805a541f194a3f239b data/minecraft/tags/blocks/fall_damage_resetting.json
 dc0897537e5fc905880fb91054630ad9ac656600 data/minecraft/tags/blocks/mineable/axe.json
-7116c9c6edf1bc60b1ec8364b7608466b3a1a3e4 data/minecraft/tags/blocks/mineable/pickaxe.json
-c97a74eabb30961f102ce5eed727f4c301438ab8 data/minecraft/tags/blocks/needs_stone_tool.json
+8ef029689e5dedfe95c9b61d5004e9f630fc2090 data/minecraft/tags/blocks/mineable/pickaxe.json
+6036c4998270b1eb478c06b5f1cec9e7b5bff5f0 data/minecraft/tags/blocks/needs_stone_tool.json
 5b4519131c557c3629602f98eaab1ec6e3ad39ed data/minecraft/tags/blocks/prevent_mob_spawning_inside.json
 aa8811e2a03ea8df29c87f6162e1541f7735c7df data/minecraft/tags/blocks/rails.json
 bd296694a2f9584f4bcca1c250785e72251967b1 data/minecraft/tags/blocks/walls.json
+0cc1f2c226d79e4a5ed363bb3b1b387d4096b681 data/notenoughmachines/tags/blocks/copper_plate_blocks.json
+d40c22bec174b7934bb2b978837d1c45c7405f5a data/notenoughmachines/tags/blocks/copper_plate_slabs.json
+ee8a5bf7751bfcfbcd30f8fadef53f1d3786e37a data/notenoughmachines/tags/blocks/copper_plate_stairs.json
 1fd33683beaa1502aa798d064b4dbb34316521b3 data/notenoughmachines/tags/blocks/linen_blocks.json
 e5463ae4f3b82270fa2c991901217be559ca0284 data/notenoughmachines/tags/blocks/stripped_logs.json

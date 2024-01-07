@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "notenoughmachines:block/copper_plate_block_weathered_waxed_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "notenoughmachines:block/copper_plate_block_weathered_waxed"
+    },
+    "axis=z": {
+      "model": "notenoughmachines:block/copper_plate_block_weathered_waxed_horizontal",
+      "x": 90
+    }
+  }
+}

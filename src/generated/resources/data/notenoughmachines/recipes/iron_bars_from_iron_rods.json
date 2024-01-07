@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:iron_bars",
+  "key": {
+    "r": {
+      "tag": "forge:rods/iron"
+    }
+  },
+  "pattern": [
+    "rrr",
+    "rrr"
+  ],
+  "result": {
+    "count": 16,
+    "item": "minecraft:iron_bars"
+  },
+  "show_notification": true
+}

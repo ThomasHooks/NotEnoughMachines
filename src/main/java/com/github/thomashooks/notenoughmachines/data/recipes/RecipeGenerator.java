@@ -61,6 +61,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":bronze_plate")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":bronze_plate_from_bronze_plate_slab");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.BRONZE_PLATE.get(), 4)
+                .requires(AllItems.BRONZE_PLATE_STAIRS.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":bronze_plate")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":bronze_plate_from_bronze_plate_stairs");
 
         //Coke
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COKE.get(), 9)
@@ -71,15 +76,20 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
 
         //Copper Plate
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COPPER_PLATE.get(), 4)
-                .requires(AllItems.COPPER_PLATE_BLOCK.get(), 1)
+                .requires(Ingredient.of(AllTags.Items.COPPER_PLATE_BLOCKS), 1)
                 .group(NotEnoughMachines.MOD_ID + ":copper_plate")
                 .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_from_copper_plate_block");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COPPER_PLATE.get(), 2)
-                .requires(AllItems.COPPER_PLATE_SLAB.get(), 1)
+                .requires(Ingredient.of(AllTags.Items.COPPER_PLATE_SLABS), 1)
                 .group(NotEnoughMachines.MOD_ID + ":copper_plate")
                 .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_from_copper_plate_slab");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.COPPER_PLATE.get(), 4)
+                .requires(Ingredient.of(AllTags.Items.COPPER_PLATE_STAIRS), 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_from_copper_plate_stairs");
 
         //Crushed Bronze
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.CRUSHED_BRONZE.get(), 2)
@@ -149,6 +159,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":gold_plate")
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":gold_plate_from_gold_plate_slab");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.GOLD_PLATE.get(), 4)
+                .requires(AllItems.GOLD_PLATE_STAIRS.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":gold_plate")
+                .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":gold_plate_from_gold_plate_stairs");
 
         //Iron Plate
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.IRON_PLATE.get(), 4)
@@ -161,6 +176,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":iron_plate")
                 .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":iron_plate_from_iron_plate_slab");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.IRON_PLATE.get(), 4)
+                .requires(AllItems.IRON_PLATE_STAIRS.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":iron_plate")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":iron_plate_from_iron_plate_stairs");
 
         //Iron Rolls
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.IRON_ROLLS.get(), 1)
@@ -273,6 +293,11 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":tin_plate")
                 .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":tin_plate_from_tin_plate_slab");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllItems.TIN_PLATE.get(), 4)
+                .requires(AllItems.TIN_PLATE_STAIRS.get(), 1)
+                .group(NotEnoughMachines.MOD_ID + ":tin_plate")
+                .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":tin_plate_from_tin_plate_stairs");
 
         //Torch From Coke
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.TORCH, 4)
@@ -431,6 +456,38 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .pattern("##")
                 .define('#', AllTags.Items.COPPER_PLATES)
                 .group(NotEnoughMachines.MOD_ID + ":copper_plate_block")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Waxed Copper Plate Block
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_BLOCK_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_BLOCK.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_block_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Exposed Waxed Copper Plate Block
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_BLOCK_EXPOSED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_block_exposed_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Weathered Waxed Copper Plate Block
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_BLOCK_WEATHERED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_block_weathered_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Oxidized Waxed Copper Plate Block
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_block_oxidized_waxed")
                 .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer);
 
@@ -636,6 +693,94 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer);
 
+        //Copper Plate Slab Exposed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_EXPOSED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_EXPOSED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_exposed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plate Slab Weathered
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_WEATHERED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_WEATHERED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_weathered")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plate Slab Oxidized
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_OXIDIZED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_oxidized")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plate Slab Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_WAXED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plate Slab Exposed Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_exposed_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plate Slab Weathered Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_weathered_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plate Slab Oxidized Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get(), 6)
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_oxidized_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Waxed Copper Plate Slab
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_SLAB.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_slab_waxed_from_honeycomb");
+
+        //Exposed Waxed Copper Plate Slab
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_SLAB_EXPOSED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_exposed_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_slab_exposed_waxed_from_honeycomb");
+
+        //Weathered Waxed Copper Plate Slab
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_SLAB_WEATHERED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_weathered_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_slab_weathered_waxed_from_honeycomb");
+
+        //Oxidized Waxed Copper Plate Slab
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_SLAB_OXIDIZED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_slab_oxidized_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_slab_oxidized_waxed_from_honeycomb");
+
         //Fire Bricks Slab
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_SLAB.get(), 6)
                 .pattern("===")
@@ -696,7 +841,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         //--------------------------------------------------------------------------------------------------------------
 
         //Bronze Plates Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_PLATE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_PLATE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -706,7 +851,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Copper Plates Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -715,8 +860,110 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer);
 
+        //Copper Plates Stairs Exposed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_EXPOSED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_EXPOSED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_exposed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plates Stairs Weathered
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_WEATHERED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_WEATHERED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_weathered")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plates Stairs Oxidized
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_OXIDIZED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_oxidized")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plates Stairs Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_WAXED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plates Stairs Exposed Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_exposed_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plates Stairs Weathered Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_weathered_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Copper Plates Stairs Oxidized Waxed
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get(), 6)
+                .pattern("=  ")
+                .pattern("== ")
+                .pattern("===")
+                .define('=', AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get())
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_oxidized_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer);
+
+        //Waxed Copper Plate Stairs
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_STAIRS.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_stairs_waxed_from_honeycomb");
+
+        //Exposed Waxed Copper Plate Stairs
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_STAIRS_EXPOSED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_exposed_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_stairs_exposed_waxed_from_honeycomb");
+
+        //Weathered Waxed Copper Plate Stairs
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_STAIRS_WEATHERED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_weathered_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_stairs_weathered_waxed_from_honeycomb");
+
+        //Oxidized Waxed Copper Plate Stairs
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AllItems.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get(), 1)
+                .requires(AllItems.COPPER_PLATE_STAIRS_OXIDIZED.get(), 1)
+                .requires(Items.HONEYCOMB, 1)
+                .group(NotEnoughMachines.MOD_ID + ":copper_plate_stairs_oxidized_waxed")
+                .unlockedBy("has_" + getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":copper_plate_stairs_oxidized_waxed_from_honeycomb");
+
         //Fire Bricks Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FIRE_BRICKS_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -726,7 +973,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Fluxstone Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -736,7 +983,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Gold Plates Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.GOLD_PLATE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.GOLD_PLATE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -745,8 +992,17 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
+        //Iron Bars
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Items.IRON_BARS, 16)
+                .pattern("rrr")
+                .pattern("rrr")
+                .define('r', AllTags.Items.IRON_RODS)
+                .group(NotEnoughMachines.MOD_ID + ":iron_bars")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, NotEnoughMachines.MOD_ID + ":iron_bars_from_iron_rods");
+
         //Iron Plates Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.IRON_PLATE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.IRON_PLATE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -756,7 +1012,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Polished Fluxstone Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.POLISHED_FLUXSTONE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.POLISHED_FLUXSTONE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -766,7 +1022,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Tin Plates Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_PLATE_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_PLATE_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -776,7 +1032,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Wooden Frame Stairs
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.WOODEN_FRAME_STAIRS.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllItems.WOODEN_FRAME_STAIRS.get(), 6)
                 .pattern("=  ")
                 .pattern("== ")
                 .pattern("===")
@@ -1428,30 +1684,52 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
     {
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all stone cutting recipes");
 
+        //Bronze Plate Block
         simpleStoneCutting(consumer, "bronze_plate_slab", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
         simpleStoneCutting(consumer, "bronze_plate_stairs", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
 
+        //Copper Plate Block
         simpleStoneCutting(consumer, "copper_plate_slab", Ingredient.of(AllItems.COPPER_PLATE_BLOCK.get()), AllItems.COPPER_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
         simpleStoneCutting(consumer, "copper_plate_stairs", Ingredient.of(AllItems.COPPER_PLATE_BLOCK.get()), AllItems.COPPER_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_exposed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_EXPOSED.get()), AllItems.COPPER_PLATE_SLAB_EXPOSED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_exposed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_EXPOSED.get()), AllItems.COPPER_PLATE_STAIRS_EXPOSED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_weathered", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_WEATHERED.get()), AllItems.COPPER_PLATE_SLAB_WEATHERED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_weathered", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_WEATHERED.get()), AllItems.COPPER_PLATE_STAIRS_WEATHERED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_oxidized", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get()), AllItems.COPPER_PLATE_SLAB_OXIDIZED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_oxidized", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get()), AllItems.COPPER_PLATE_STAIRS_OXIDIZED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_WAXED.get()), AllItems.COPPER_PLATE_SLAB_WAXED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_WAXED.get()), AllItems.COPPER_PLATE_STAIRS_WAXED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_exposed_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get()), AllItems.COPPER_PLATE_SLAB_EXPOSED_WAXED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_exposed_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get()), AllItems.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_weathered_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get()), AllItems.COPPER_PLATE_SLAB_WEATHERED_WAXED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_weathered_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get()), AllItems.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_slab_oxidized_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get()), AllItems.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
+        simpleStoneCutting(consumer, "copper_plate_stairs_oxidized_waxed", Ingredient.of(AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get()), AllItems.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.COPPER_INGOT);
 
+        //Fire Bricks
         simpleStoneCutting(consumer, "fire_bricks_slab", Ingredient.of(AllItems.FIRE_BRICKS.get()), AllItems.FIRE_BRICKS_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fire_bricks_stairs", Ingredient.of(AllItems.FIRE_BRICKS.get()), AllItems.FIRE_BRICKS_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fire_bricks_wall", Ingredient.of(AllItems.FIRE_BRICKS.get()), AllItems.FIRE_BRICKS_WALL.get(), 1, RecipeCategory.DECORATIONS, AllItems.FLUXSTONE.get());
 
+        //Fluxstone
         simpleStoneCutting(consumer, "fluxstone_slab", Ingredient.of(AllItems.FLUXSTONE.get()), AllItems.FLUXSTONE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fluxstone_stairs", Ingredient.of(AllItems.FLUXSTONE.get()), AllItems.FLUXSTONE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "fluxstone_wall", Ingredient.of(AllItems.FLUXSTONE.get()), AllItems.FLUXSTONE_WALL.get(), 1, RecipeCategory.DECORATIONS, AllItems.FLUXSTONE.get());
 
+        //Gold Plate Block
         simpleStoneCutting(consumer, "gold_plate_slab", Ingredient.of(AllItems.GOLD_PLATE_BLOCK.get()), AllItems.GOLD_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT);
         simpleStoneCutting(consumer, "gold_plate_stairs", Ingredient.of(AllItems.GOLD_PLATE_BLOCK.get()), AllItems.GOLD_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.GOLD_INGOT);
 
+        //Iron Plate Block
         simpleStoneCutting(consumer, "iron_plate_slab", Ingredient.of(AllItems.IRON_PLATE_BLOCK.get()), AllItems.IRON_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT);
         simpleStoneCutting(consumer, "iron_plate_stairs", Ingredient.of(AllItems.IRON_PLATE_BLOCK.get()), AllItems.IRON_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, Items.IRON_INGOT);
 
+        //Polished Fluxstone
         simpleStoneCutting(consumer, "polished_fluxstone_slab", Ingredient.of(AllItems.POLISHED_FLUXSTONE.get()), AllItems.POLISHED_FLUXSTONE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "polished_fluxstone_stairs", Ingredient.of(AllItems.POLISHED_FLUXSTONE.get()), AllItems.POLISHED_FLUXSTONE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.FLUXSTONE.get());
         simpleStoneCutting(consumer, "polished_fluxstone_wall", Ingredient.of(AllItems.POLISHED_FLUXSTONE.get()), AllItems.POLISHED_FLUXSTONE_WALL.get(), 1, RecipeCategory.DECORATIONS, AllItems.FLUXSTONE.get());
 
+        //Tin Plate Block
         simpleStoneCutting(consumer, "tin_plate_slab", Ingredient.of(AllItems.TIN_PLATE_BLOCK.get()), AllItems.TIN_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_INGOT.get());
         simpleStoneCutting(consumer, "tin_plate_stairs", Ingredient.of(AllItems.TIN_PLATE_BLOCK.get()), AllItems.TIN_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.TIN_INGOT.get());
     }
@@ -1537,8 +1815,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
     {
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all rolling recipes");
 
-        simpleRolling(consumer, "bronze_plate", Ingredient.of(AllItems.BRONZE_INGOT.get()), AllItems.BRONZE_PLATE.get(), 1, AllItems.BRONZE_INGOT.get(), 300);
-        simpleRolling(consumer, "bronze_rod", Ingredient.of(AllItems.BRONZE_PLATE.get()), AllItems.BRONZE_ROD.get(), 3, AllItems.BRONZE_INGOT.get(), 300);
+        simpleRolling(consumer, "bronze_plate", Ingredient.of(AllTags.Items.BRONZE_INGOTS), AllItems.BRONZE_PLATE.get(), 1, AllItems.BRONZE_INGOT.get(), 300);
+        simpleRolling(consumer, "bronze_rod", Ingredient.of(AllTags.Items.BRONZE_PLATES), AllItems.BRONZE_ROD.get(), 3, AllItems.BRONZE_INGOT.get(), 300);
         simpleRolling(consumer, "copper_plate", Ingredient.of(Items.COPPER_INGOT), AllItems.COPPER_PLATE.get(), 1, Items.COPPER_INGOT, 200);
         simpleRolling(consumer, "copper_rod", Ingredient.of(AllItems.COPPER_PLATE.get()), AllItems.COPPER_ROD.get(), 3, Items.COPPER_INGOT, 200);
         simpleRolling(consumer, "gold_plate", Ingredient.of(Items.GOLD_INGOT), AllItems.GOLD_PLATE.get(), 1, Items.GOLD_INGOT, 300);
@@ -1546,8 +1824,8 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleRolling(consumer, "iron_plate", Ingredient.of(Items.IRON_INGOT), AllItems.IRON_PLATE.get(), 1, Items.IRON_INGOT, 300);
         simpleRolling(consumer, "iron_rod", Ingredient.of(AllItems.IRON_PLATE.get()), AllItems.IRON_ROD.get(), 3, Items.IRON_INGOT, 300);
         simpleRolling(consumer, "sponge_dry", Ingredient.of(Items.WET_SPONGE), Items.SPONGE, 1, Items.WET_SPONGE, 200);
-        simpleRolling(consumer, "tin_plate", Ingredient.of(AllItems.TIN_INGOT.get()), AllItems.TIN_PLATE.get(), 1, AllItems.TIN_INGOT.get(), 300);
-        simpleRolling(consumer, "tin_rod", Ingredient.of(AllItems.TIN_PLATE.get()), AllItems.TIN_ROD.get(), 3, AllItems.TIN_INGOT.get(), 300);
+        simpleRolling(consumer, "tin_plate", Ingredient.of(AllTags.Items.TIN_INGOTS), AllItems.TIN_PLATE.get(), 1, AllItems.TIN_INGOT.get(), 300);
+        simpleRolling(consumer, "tin_rod", Ingredient.of(AllTags.Items.TIN_PLATES), AllItems.TIN_ROD.get(), 3, AllItems.TIN_INGOT.get(), 300);
         simpleRolling(consumer, "vermilion_plate", Ingredient.of(AllItems.VERMILION_INGOT.get()), AllItems.VERMILION_PLATE.get(), 1, AllItems.VERMILION_INGOT.get(), 200);
         simpleRolling(consumer, "vermilion_rod", Ingredient.of(AllItems.VERMILION_PLATE.get()), AllItems.VERMILION_ROD.get(), 3, AllItems.VERMILION_INGOT.get(), 200);
     }

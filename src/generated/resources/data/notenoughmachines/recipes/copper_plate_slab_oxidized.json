@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:copper_plate_slab_oxidized",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:copper_plate_block_oxidized"
+    }
+  },
+  "pattern": [
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:copper_plate_slab_oxidized"
+  },
+  "show_notification": true
+}

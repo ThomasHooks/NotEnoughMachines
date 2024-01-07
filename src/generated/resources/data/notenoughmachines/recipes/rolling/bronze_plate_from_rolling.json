@@ -2,7 +2,7 @@
   "type": "notenoughmachines:rolling",
   "group": "notenoughmachines:bronze_plate",
   "ingredient": {
-    "item": "notenoughmachines:bronze_ingot"
+    "tag": "forge:ingots/bronze"
   },
   "processtime": 300,
   "result": {

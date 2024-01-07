@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "notenoughmachines:copper_plate_slab_oxidized",
+  "ingredient": {
+    "item": "notenoughmachines:copper_plate_block_oxidized"
+  },
+  "result": "notenoughmachines:copper_plate_slab_oxidized"
+}

@@ -18,6 +18,9 @@ public class AllTags
         public static final TagKey<Item> BRONZE_RODS = makeForgeTag("rods/bronze");
         public static final TagKey<Item> COPPER_DUST = makeForgeTag("dusts/copper");
         public static final TagKey<Item> COPPER_PLATES = makeForgeTag("plates/copper");
+        public static final TagKey<Item> COPPER_PLATE_BLOCKS = makeTag("copper_plate_blocks");
+        public static final TagKey<Item> COPPER_PLATE_SLABS = makeTag("copper_plate_slabs");
+        public static final TagKey<Item> COPPER_PLATE_STAIRS = makeTag("copper_plate_stairs");
         public static final TagKey<Item> COPPER_RODS = makeForgeTag("rods/copper");
         public static final TagKey<Item> GOLD_DUST = makeForgeTag("dusts/gold");
         public static final TagKey<Item> GOLD_PLATES = makeForgeTag("plates/gold");
@@ -49,6 +52,10 @@ public class AllTags
 
     public static final class Blocks
     {
+
+        public static final TagKey<Block> COPPER_PLATE_BLOCKS = makeTag("copper_plate_blocks");
+        public static final TagKey<Block> COPPER_PLATE_SLABS = makeTag("copper_plate_slabs");
+        public static final TagKey<Block> COPPER_PLATE_STAIRS = makeTag("copper_plate_stairs");
         public static final TagKey<Block> STRIPPED_LOGS = makeTag("stripped_logs");
         public static final TagKey<Block> LINEN_BLOCKS = makeTag("linen_blocks");
         public static final TagKey<Block> ORES_IN_DEEPSLATE = makeForgeTag("ores_in_ground/deepslate");

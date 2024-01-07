@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:copper_plate_slab_weathered",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:copper_plate_block_weathered"
+    }
+  },
+  "pattern": [
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:copper_plate_slab_weathered"
+  },
+  "show_notification": true
+}

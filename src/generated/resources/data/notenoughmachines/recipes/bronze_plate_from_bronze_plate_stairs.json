@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:bronze_plate",
+  "ingredients": [
+    {
+      "item": "notenoughmachines:bronze_plate_stairs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:bronze_plate"
+  }
+}

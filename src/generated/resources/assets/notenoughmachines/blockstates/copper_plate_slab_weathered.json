@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughmachines:block/copper_plate_slab_weathered"
+    },
+    "type=double": {
+      "model": "notenoughmachines:block/copper_plate_block_weathered"
+    },
+    "type=top": {
+      "model": "notenoughmachines:block/copper_plate_slab_weathered_top"
+    }
+  }
+}

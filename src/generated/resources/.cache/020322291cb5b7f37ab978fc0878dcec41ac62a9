@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-04T16:46:36.2322409	Tags for minecraft:item mod id notenoughmachines
+// 1.20.1	2024-01-06T21:40:53.2617131	Tags for minecraft:item mod id notenoughmachines
 063b49d3e9086a34d1ab46bfa5b84529de1d587f data/forge/tags/items/dusts/bronze.json
 1c53c76e7323b05a889fc88d2fab070a84d88d73 data/forge/tags/items/dusts/copper.json
 99c14c56c9f40d510a8ee8f2f6e017aa588487f8 data/forge/tags/items/dusts/gold.json
@@ -17,5 +17,8 @@ c5cdb8b25adb045144deb42f110786e1bc0e12fc data/forge/tags/items/rods/copper.json
 4056e66fb4d467f62c3ccac9c1c85fff5570d178 data/forge/tags/items/rods/gold.json
 50398578f21bc1eb9615ff6b5ec40b3e16bfdcc9 data/forge/tags/items/rods/iron.json
 608b2a87440ce354cbd47341e703b76c6f339ee3 data/forge/tags/items/rods/tin.json
+0cc1f2c226d79e4a5ed363bb3b1b387d4096b681 data/notenoughmachines/tags/items/copper_plate_blocks.json
+d40c22bec174b7934bb2b978837d1c45c7405f5a data/notenoughmachines/tags/items/copper_plate_slabs.json
+ee8a5bf7751bfcfbcd30f8fadef53f1d3786e37a data/notenoughmachines/tags/items/copper_plate_stairs.json
 1fd33683beaa1502aa798d064b4dbb34316521b3 data/notenoughmachines/tags/items/linen_blocks.json
 e5463ae4f3b82270fa2c991901217be559ca0284 data/notenoughmachines/tags/items/stripped_logs.json

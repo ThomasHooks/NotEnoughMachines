@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughmachines:block/copper_plate_slab_oxidized"
+    },
+    "type=double": {
+      "model": "notenoughmachines:block/copper_plate_block_oxidized"
+    },
+    "type=top": {
+      "model": "notenoughmachines:block/copper_plate_slab_oxidized_top"
+    }
+  }
+}

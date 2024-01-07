@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "notenoughmachines:block/copper_plate_block_top_oxidized",
+    "side": "notenoughmachines:block/copper_plate_block_side_oxidized",
+    "top": "notenoughmachines:block/copper_plate_block_top_oxidized"
+  }
+}

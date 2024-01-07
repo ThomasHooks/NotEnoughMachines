@@ -123,17 +123,87 @@ public class AllBlocks
                     .pushReaction(PushReaction.DESTROY)
             ));
     public static final RegistryObject<Block> COPPER_PLATE_BLOCK = BLOCKS.register("copper_plate_block",
-            ()-> new RotatedPillarBlock(Block.Properties.of()
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.UNAFFECTED, Block.Properties.of()
                     .mapColor(MapColor.COLOR_ORANGE)
                     .requiresCorrectToolForDrops()
                     .strength(3.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_EXPOSED = BLOCKS.register("copper_plate_block_exposed",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.EXPOSED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_WEATHERED = BLOCKS.register("copper_plate_block_weathered",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.WEATHERED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_OXIDIZED = BLOCKS.register("copper_plate_block_oxidized",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.OXIDIZED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_WAXED = BLOCKS.register("copper_plate_block_waxed",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.UNAFFECTED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_EXPOSED_WAXED = BLOCKS.register("copper_plate_block_exposed_waxed",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.EXPOSED, Block.Properties.copy(COPPER_PLATE_BLOCK_EXPOSED.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_WEATHERED_WAXED = BLOCKS.register("copper_plate_block_weathered_waxed",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.WEATHERED, Block.Properties.copy(COPPER_PLATE_BLOCK_WEATHERED.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_BLOCK_OXIDIZED_WAXED = BLOCKS.register("copper_plate_block_oxidized_waxed",
+            ()-> new WeatheringRotatedPillarBlock(IWeatheringBlock.State.OXIDIZED, Block.Properties.copy(COPPER_PLATE_BLOCK_OXIDIZED.get())
+            ));
     public static final RegistryObject<Block> COPPER_PLATE_SLAB = BLOCKS.register("copper_plate_slab",
-            ()-> new SlabBlock(Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.UNAFFECTED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_EXPOSED = BLOCKS.register("copper_plate_slab_exposed",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.EXPOSED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_WEATHERED = BLOCKS.register("copper_plate_slab_weathered",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.WEATHERED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_OXIDIZED = BLOCKS.register("copper_plate_slab_oxidized",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.OXIDIZED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_WAXED = BLOCKS.register("copper_plate_slab_waxed",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.UNAFFECTED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_EXPOSED_WAXED = BLOCKS.register("copper_plate_slab_exposed_waxed",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.EXPOSED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_WEATHERED_WAXED = BLOCKS.register("copper_plate_slab_weathered_waxed",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.WEATHERED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_SLAB_OXIDIZED_WAXED = BLOCKS.register("copper_plate_slab_oxidized_waxed",
+            ()-> new WeatheringSlabBlock(IWeatheringBlock.State.OXIDIZED, Block.Properties.copy(COPPER_PLATE_BLOCK.get())
             ));
     public static final RegistryObject<Block> COPPER_PLATE_STAIRS = BLOCKS.register("copper_plate_stairs",
-            ()-> new StairBlock(() -> COPPER_PLATE_BLOCK.get().defaultBlockState(),
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.UNAFFECTED, () -> COPPER_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_EXPOSED = BLOCKS.register("copper_plate_stairs_exposed",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.EXPOSED, () -> COPPER_PLATE_BLOCK_EXPOSED.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_WEATHERED = BLOCKS.register("copper_plate_stairs_weathered",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.WEATHERED, () -> COPPER_PLATE_BLOCK_WEATHERED.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_OXIDIZED = BLOCKS.register("copper_plate_stairs_oxidized",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.OXIDIZED, () -> COPPER_PLATE_BLOCK_OXIDIZED.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_WAXED = BLOCKS.register("copper_plate_stairs_waxed",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.UNAFFECTED, () -> COPPER_PLATE_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_EXPOSED_WAXED = BLOCKS.register("copper_plate_stairs_exposed_waxed",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.EXPOSED, () -> COPPER_PLATE_BLOCK_EXPOSED.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_WEATHERED_WAXED = BLOCKS.register("copper_plate_stairs_weathered_waxed",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.WEATHERED, () -> COPPER_PLATE_BLOCK_WEATHERED.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
+            ));
+    public static final RegistryObject<Block> COPPER_PLATE_STAIRS_OXIDIZED_WAXED = BLOCKS.register("copper_plate_stairs_oxidized_waxed",
+            ()-> new WeatheringStairBlock(IWeatheringBlock.State.OXIDIZED, () -> COPPER_PLATE_BLOCK_OXIDIZED.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(COPPER_PLATE_BLOCK.get())
             ));
     public static final RegistryObject<Block> ENCLOSED_AXLE = BLOCKS.register("enclosed_axle",

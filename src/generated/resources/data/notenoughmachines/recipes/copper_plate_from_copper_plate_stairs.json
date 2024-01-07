@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "notenoughmachines:copper_plate",
+  "ingredients": [
+    {
+      "tag": "notenoughmachines:copper_plate_stairs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:copper_plate"
+  }
+}

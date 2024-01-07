@@ -1,0 +1,12 @@
+{
+  "values": [
+    "notenoughmachines:copper_plate_stairs",
+    "notenoughmachines:copper_plate_stairs_exposed",
+    "notenoughmachines:copper_plate_stairs_weathered",
+    "notenoughmachines:copper_plate_stairs_oxidized",
+    "notenoughmachines:copper_plate_stairs_waxed",
+    "notenoughmachines:copper_plate_stairs_exposed_waxed",
+    "notenoughmachines:copper_plate_stairs_weathered_waxed",
+    "notenoughmachines:copper_plate_stairs_oxidized_waxed"
+  ]
+}

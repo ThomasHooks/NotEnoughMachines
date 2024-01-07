@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "notenoughmachines:block/copper_plate_slab_exposed"
+    },
+    "type=double": {
+      "model": "notenoughmachines:block/copper_plate_block_exposed"
+    },
+    "type=top": {
+      "model": "notenoughmachines:block/copper_plate_slab_exposed_top"
+    }
+  }
+}

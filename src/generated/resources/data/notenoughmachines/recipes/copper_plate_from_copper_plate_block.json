@@ -4,7 +4,7 @@
   "group": "notenoughmachines:copper_plate",
   "ingredients": [
     {
-      "item": "notenoughmachines:copper_plate_block"
+      "tag": "notenoughmachines:copper_plate_blocks"
     }
   ],
   "result": {

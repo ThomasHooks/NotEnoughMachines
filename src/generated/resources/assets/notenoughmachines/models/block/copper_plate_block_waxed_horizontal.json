@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "notenoughmachines:block/copper_plate_block_top",
+    "side": "notenoughmachines:block/copper_plate_block_side"
+  }
+}

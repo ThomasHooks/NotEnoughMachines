@@ -52,6 +52,34 @@ public class AllCreativeTabs
                         output.accept(AllItems.COPPER_PLATE_STAIRS.get());
                         output.accept(AllItems.COPPER_PLATE_SLAB.get());
 
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_EXPOSED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_EXPOSED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_EXPOSED.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_WEATHERED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_WEATHERED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_WEATHERED.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_OXIDIZED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_OXIDIZED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_OXIDIZED.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_WAXED.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_EXPOSED_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_EXPOSED_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_EXPOSED_WAXED.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_WEATHERED_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_WEATHERED_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_WEATHERED_WAXED.get());
+
+                        output.accept(AllItems.COPPER_PLATE_BLOCK_OXIDIZED_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_STAIRS_OXIDIZED_WAXED.get());
+                        output.accept(AllItems.COPPER_PLATE_SLAB_OXIDIZED_WAXED.get());
+
                         output.accept(AllItems.TIN_BLOCK.get());
                         output.accept(AllItems.TIN_PLATE_BLOCK.get());
                         output.accept(AllItems.TIN_PLATE_STAIRS.get());

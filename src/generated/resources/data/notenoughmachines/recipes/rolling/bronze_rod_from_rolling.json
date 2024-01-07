@@ -2,7 +2,7 @@
   "type": "notenoughmachines:rolling",
   "group": "notenoughmachines:bronze_rod",
   "ingredient": {
-    "item": "notenoughmachines:bronze_plate"
+    "tag": "forge:plates/bronze"
   },
   "processtime": 300,
   "result": {

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "notenoughmachines:copper_plate_stairs_weathered_waxed",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:copper_plate_block_weathered_waxed"
+    }
+  },
+  "pattern": [
+    "=  ",
+    "== ",
+    "==="
+  ],
+  "result": {
+    "count": 6,
+    "item": "notenoughmachines:copper_plate_stairs_weathered_waxed"
+  },
+  "show_notification": true
+}
