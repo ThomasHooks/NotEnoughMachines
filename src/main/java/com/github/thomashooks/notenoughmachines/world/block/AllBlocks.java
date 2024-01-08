@@ -38,6 +38,14 @@ public class AllBlocks
                     .strength(5.0F, 6.0F)
                     .sound(SoundType.COPPER)
             ));
+    public static final RegistryObject<Block> BRONZE_GRATE = BLOCKS.register("bronze_grate",
+            ()-> new GrateBlock(Block.Properties.copy(BRONZE_BLOCK.get())
+                    .noOcclusion()
+                    .isValidSpawn(AllBlocks::never)
+                    .isRedstoneConductor(AllBlocks::never)
+                    .isSuffocating(AllBlocks::never)
+                    .isViewBlocking(AllBlocks::never)
+            ));
     public static final RegistryObject<Block> BRONZE_LADDER = BLOCKS.register("bronze_ladder",
             ()-> new LadderBlock(Block.Properties.of()
                     .forceSolidOff()

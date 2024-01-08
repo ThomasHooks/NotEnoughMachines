@@ -428,7 +428,17 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .pattern("###")
                 .define('#', AllItems.BRONZE_INGOT.get())
                 .group(NotEnoughMachines.MOD_ID + ":bronze_block")
-                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Bronze Grate
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.BRONZE_GRATE.get(), 4)
+                .pattern(" # ")
+                .pattern("# #")
+                .pattern(" # ")
+                .define('#', AllItems.BRONZE_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":bronze_grate")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
         //Bronze Plate Block
@@ -437,7 +447,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .pattern("##")
                 .define('#', AllTags.Items.BRONZE_PLATES)
                 .group(NotEnoughMachines.MOD_ID + ":bronze_plate_block")
-                .unlockedBy("has_" + getHasName(AllItems.CRUSHED_BRONZE.get()), has(AllItems.CRUSHED_BRONZE.get()))
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
         //Coke Block
@@ -1685,6 +1695,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         LOGGER.debug(NotEnoughMachines.MOD_ID + ":building all stone cutting recipes");
 
         //Bronze Plate Block
+        simpleStoneCutting(consumer, "bronze_grate", Ingredient.of(AllItems.BRONZE_BLOCK.get()), AllItems.BRONZE_GRATE.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
         simpleStoneCutting(consumer, "bronze_plate_slab", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_SLAB.get(), 2, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
         simpleStoneCutting(consumer, "bronze_plate_stairs", Ingredient.of(AllItems.BRONZE_PLATE_BLOCK.get()), AllItems.BRONZE_PLATE_STAIRS.get(), 1, RecipeCategory.BUILDING_BLOCKS, AllItems.BRONZE_INGOT.get());
 

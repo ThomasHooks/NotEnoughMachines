@@ -17,6 +17,7 @@ public class AllItems
     public static final RegistryObject<Item> BOOSTER_ROD = ITEMS.register("booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BOOSTER_ROD = ITEMS.register("bronze_booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BLOCK = ITEMS.register("bronze_block", ()-> new BlockItem(AllBlocks.BRONZE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_GRATE = ITEMS.register("bronze_grate", ()-> new BlockItem(AllBlocks.BRONZE_GRATE.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_LADDER = ITEMS.register("bronze_ladder", ()-> new BlockItem(AllBlocks.BRONZE_LADDER.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE_BLOCK = ITEMS.register("bronze_plate_block", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_PLATE_SLAB = ITEMS.register("bronze_plate_slab", ()-> new BlockItem(AllBlocks.BRONZE_PLATE_SLAB.get(), new Item.Properties()));

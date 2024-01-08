@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "notenoughmachines:bronze_block"
+        "recipe": "notenoughmachines:bronze_grate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "notenoughmachines:bronze_block"
+      "notenoughmachines:bronze_grate"
     ]
   },
   "sends_telemetry_event": false

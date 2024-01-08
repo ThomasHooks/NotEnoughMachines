@@ -35,6 +35,7 @@ public class BlockStateGenerator extends BlockStateProvider
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
         createSimpleCubeWithItem(AllBlocks.BRONZE_BLOCK);
+        createSimpleTransparentCube(AllBlocks.BRONZE_GRATE.get(), new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_grate"));
         axisBlock((RotatedPillarBlock) AllBlocks.BRONZE_PLATE_BLOCK.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_side"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/bronze_plate_block_top")
@@ -390,6 +391,11 @@ public class BlockStateGenerator extends BlockStateProvider
         simpleBlockWithItem(blockObject.get(), cubeAll(blockObject.get()));
     }
 
+    private void createSimpleTransparentCube(Block block, ResourceLocation texture)
+    {
+        simpleBlockWithItem(block, transparentCube(AllBlocks.getName(block), texture));
+    }
+
     private void createFlaxPlant()
     {
         Function<BlockState, ConfiguredModel[]> function = state -> flaxCropStates(state, (CropBlock) AllBlocks.FLAXPLANT.get(), "flaxplant_stage");
@@ -641,6 +647,13 @@ public class BlockStateGenerator extends BlockStateProvider
     {
         return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_rail_raised_" + (isNE ? "ne" : "sw"))
                 .texture("rail", rail)
+                .renderType("cutout");
+    }
+
+    private BlockModelBuilder transparentCube(String name, ResourceLocation texture)
+    {
+        return models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/cube_all")
+                .texture("all", texture)
                 .renderType("cutout");
     }
 }

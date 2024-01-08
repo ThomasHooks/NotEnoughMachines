@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:bronze_grate",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:bronze_block"
+    }
+  },
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "result": {
+    "count": 4,
+    "item": "notenoughmachines:bronze_grate"
+  },
+  "show_notification": true
+}

@@ -1,6 +1,7 @@
-// 1.20.1	2024-01-06T21:40:53.2637137	Loot Tables
+// 1.20.1	2024-01-07T21:25:15.6205434	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 f7340e64bb9776a570abb8735cf0dcf4fa45ec03 data/notenoughmachines/loot_tables/blocks/bronze_block.json
+87c8c0c27d9d1e41485951f34aa0b19f536ed01a data/notenoughmachines/loot_tables/blocks/bronze_grate.json
 6ac436a308f5c64c98b9c47fe3fb1cb27abba97d data/notenoughmachines/loot_tables/blocks/bronze_ladder.json
 69ac3fa41e93c1536b78cd3bcf06e51712c9c5cc data/notenoughmachines/loot_tables/blocks/bronze_plate_block.json
 6147cbf1d658b781356ddb003a295eaf95319383 data/notenoughmachines/loot_tables/blocks/bronze_plate_slab.json

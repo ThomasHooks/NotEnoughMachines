@@ -31,6 +31,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     {
         dropSelf(AllBlocks.AXLE.get());
         dropSelf(AllBlocks.BRONZE_BLOCK.get());
+        dropSelf(AllBlocks.BRONZE_GRATE.get());
         dropSelf(AllBlocks.BRONZE_LADDER.get());
         dropSelf(AllBlocks.BRONZE_PLATE_BLOCK.get());
         dropSlab(AllBlocks.BRONZE_PLATE_SLAB.get());

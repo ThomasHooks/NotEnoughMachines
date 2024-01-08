@@ -44,6 +44,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AXLE.get(),
                 AllBlocks.BRONZE_BLOCK.get(),
+                AllBlocks.BRONZE_GRATE.get(),
                 AllBlocks.BRONZE_LADDER.get(),
                 AllBlocks.BRONZE_PLATE_BLOCK.get(),
                 AllBlocks.BRONZE_PLATE_SLAB.get(),
@@ -132,6 +133,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         );
         this.tag(BlockTags.NEEDS_STONE_TOOL).add(
                 AllBlocks.BRONZE_BLOCK.get(),
+                AllBlocks.BRONZE_GRATE.get(),
                 AllBlocks.BRONZE_PLATE_BLOCK.get(),
                 AllBlocks.BRONZE_PLATE_SLAB.get(),
                 AllBlocks.BRONZE_PLATE_STAIRS.get(),

@@ -86,6 +86,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.TIN_PLATE_SLAB.get());
 
                         output.accept(AllItems.BRONZE_BLOCK.get());
+                        output.accept(AllItems.BRONZE_GRATE.get());
                         output.accept(AllItems.BRONZE_PLATE_BLOCK.get());
                         output.accept(AllItems.BRONZE_PLATE_STAIRS.get());
                         output.accept(AllItems.BRONZE_PLATE_SLAB.get());

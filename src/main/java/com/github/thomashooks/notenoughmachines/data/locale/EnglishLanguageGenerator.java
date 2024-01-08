@@ -24,6 +24,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
 
         addBlock(AllBlocks.AXLE, "Axle");
         addBlock(AllBlocks.BRONZE_BLOCK, "Block of Bronze");
+        addBlock(AllBlocks.BRONZE_GRATE, "Bronze Grate");
         addBlock(AllBlocks.BRONZE_LADDER, "Bronze Ladder");
         addBlock(AllBlocks.BRONZE_PLATE_BLOCK, "Block of Bronze Plates");
         addBlock(AllBlocks.BRONZE_PLATE_SLAB, "Slab of Bronze Plates");
