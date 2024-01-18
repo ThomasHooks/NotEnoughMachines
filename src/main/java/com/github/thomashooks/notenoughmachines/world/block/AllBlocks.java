@@ -3,6 +3,7 @@ package com.github.thomashooks.notenoughmachines.world.block;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -237,12 +238,12 @@ public class AllBlocks
             ()-> new StairBlock(() -> FIRE_BRICKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(FIRE_BRICKS.get())
                             .requiresCorrectToolForDrops()
-                            .strength(1.5f, 5.0f)
+                            .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> FIRE_BRICKS_WALL = BLOCKS.register("fire_bricks_wall",
             ()-> new WallBlock(Block.Properties.copy(FIRE_BRICKS.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 5.0f)
+                    .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> FILTER = BLOCKS.register("filter",
             () -> new FilterBlock(Block.Properties.of()
@@ -262,19 +263,19 @@ public class AllBlocks
                     .mapColor(MapColor.QUARTZ)
                     .instrument(NoteBlockInstrument.BASEDRUM)
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 5.0f)
+                    .strength(1.5F, 5.0F)
                     .sound(SoundType.DEEPSLATE)
             ));
     public static final RegistryObject<Block> FLUXSTONE_SLAB = BLOCKS.register("fluxstone_slab",
             ()-> new SlabBlock(Block.Properties.copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 5.0f)
+                    .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> FLUXSTONE_STAIRS = BLOCKS.register("fluxstone_stairs",
             ()-> new StairBlock(() -> FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
-                            .strength(1.5f, 5.0f)
+                            .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> FLUXSTONE_WALL = BLOCKS.register("fluxstone_wall",
             ()-> new WallBlock(Block.Properties.copy(FLUXSTONE.get())
@@ -374,7 +375,7 @@ public class AllBlocks
             ()-> new LinenBlock(Block.Properties.of()
                     .mapColor(MapColor.WOOL)
                     .instrument(NoteBlockInstrument.FLUTE)
-                    .strength(0.8f, 2.0f)
+                    .strength(0.8F, 2.0F)
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
             ));
@@ -470,23 +471,23 @@ public class AllBlocks
     public static final RegistryObject<Block> POLISHED_FLUXSTONE = BLOCKS.register("polished_fluxstone",
             ()-> new RotatedPillarBlock(Block.Properties.copy(FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 5.0f)
+                    .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_SLAB = BLOCKS.register("polished_fluxstone_slab",
             ()-> new SlabBlock(Block.Properties.copy(POLISHED_FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 5.0f)
+                    .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_STAIRS = BLOCKS.register("polished_fluxstone_stairs",
             ()-> new StairBlock(() -> POLISHED_FLUXSTONE.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(POLISHED_FLUXSTONE.get())
                             .requiresCorrectToolForDrops()
-                            .strength(1.5f, 5.0f)
+                            .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> POLISHED_FLUXSTONE_WALL = BLOCKS.register("polished_fluxstone_wall",
             ()-> new WallBlock(Block.Properties.copy(POLISHED_FLUXSTONE.get())
                     .requiresCorrectToolForDrops()
-                    .strength(1.5f, 5.0f)
+                    .strength(1.5F, 5.0F)
             ));
     public static final RegistryObject<Block> RAW_TIN_BLOCK = BLOCKS.register("raw_tin_block",
             ()-> new Block(Block.Properties.of()
@@ -500,6 +501,76 @@ public class AllBlocks
                     .strength(2.8F, 3.0F)
                     .sound(SoundType.WOOD)
                     .noOcclusion()
+            ));
+    public static final RegistryObject<Block> SACK = BLOCKS.register("sack",
+            ()-> new SackBlock(null, Block.Properties.of()
+                    .mapColor(MapColor.WOOL)
+                    .strength(0.7F, 5.0F)
+                    .sound(SoundType.WOOL)
+            ));
+    public static final RegistryObject<Block> SACK_WHITE = BLOCKS.register("sack_white",
+            ()-> new SackBlock(DyeColor.WHITE, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.SNOW)
+            ));
+    public static final RegistryObject<Block> SACK_ORANGE = BLOCKS.register("sack_orange",
+            ()-> new SackBlock(DyeColor.ORANGE, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_ORANGE)
+            ));
+    public static final RegistryObject<Block> SACK_MAGENTA = BLOCKS.register("sack_magenta",
+            ()-> new SackBlock(DyeColor.MAGENTA, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_MAGENTA)
+            ));
+    public static final RegistryObject<Block> SACK_LIGHT_BLUE = BLOCKS.register("sack_light_blue",
+            ()-> new SackBlock(DyeColor.LIGHT_BLUE, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE)
+            ));
+    public static final RegistryObject<Block> SACK_YELLOW = BLOCKS.register("sack_yellow",
+            ()-> new SackBlock(DyeColor.YELLOW, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_YELLOW)
+            ));
+    public static final RegistryObject<Block> SACK_LIME = BLOCKS.register("sack_lime",
+            ()-> new SackBlock(DyeColor.LIME, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN)
+            ));
+    public static final RegistryObject<Block> SACK_PINK = BLOCKS.register("sack_pink",
+            ()-> new SackBlock(DyeColor.PINK, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_PINK)
+            ));
+    public static final RegistryObject<Block> SACK_GRAY = BLOCKS.register("sack_gray",
+            ()-> new SackBlock(DyeColor.GRAY, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_GRAY)
+            ));
+    public static final RegistryObject<Block> SACK_LIGHT_GRAY = BLOCKS.register("sack_light_gray",
+            ()-> new SackBlock(DyeColor.LIGHT_GRAY, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+            ));
+    public static final RegistryObject<Block> SACK_CYAN = BLOCKS.register("sack_cyan",
+            ()-> new SackBlock(DyeColor.CYAN, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_CYAN)
+            ));
+    public static final RegistryObject<Block> SACK_PURPLE = BLOCKS.register("sack_purple",
+            ()-> new SackBlock(DyeColor.PURPLE, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_PURPLE)
+            ));
+    public static final RegistryObject<Block> SACK_BLUE = BLOCKS.register("sack_blue",
+            ()-> new SackBlock(DyeColor.BLUE, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_BLUE)
+            ));
+    public static final RegistryObject<Block> SACK_BROWN = BLOCKS.register("sack_brown",
+            ()-> new SackBlock(DyeColor.BROWN, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_BROWN)
+            ));
+    public static final RegistryObject<Block> SACK_GREEN = BLOCKS.register("sack_green",
+            ()-> new SackBlock(DyeColor.GREEN, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_GREEN)
+            ));
+    public static final RegistryObject<Block> SACK_RED = BLOCKS.register("sack_red",
+            ()-> new SackBlock(DyeColor.RED, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_RED)
+            ));
+    public static final RegistryObject<Block> SACK_BLACK = BLOCKS.register("sack_black",
+            ()-> new SackBlock(DyeColor.BLACK, Block.Properties.copy(SACK.get())
+                    .mapColor(MapColor.COLOR_BLACK)
             ));
     public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block",
             ()-> new Block(Block.Properties.of()

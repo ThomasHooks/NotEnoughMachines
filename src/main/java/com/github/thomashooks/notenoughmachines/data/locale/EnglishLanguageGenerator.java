@@ -118,6 +118,23 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.POLISHED_FLUXSTONE_WALL, "Polished Fluxstone Wall");
         addBlock(AllBlocks.RAW_TIN_BLOCK, "Block of Raw Tin");
         addBlock(AllBlocks.ROLLING_MILL, "Rolling Mill");
+        addBlock(AllBlocks.SACK, "Sack");
+        addBlock(AllBlocks.SACK_WHITE, "White Sack");
+        addBlock(AllBlocks.SACK_ORANGE, "Orange Sack");
+        addBlock(AllBlocks.SACK_MAGENTA, "Magenta Sack");
+        addBlock(AllBlocks.SACK_LIGHT_BLUE, "Light Blue Sack");
+        addBlock(AllBlocks.SACK_YELLOW, "Yellow Sack");
+        addBlock(AllBlocks.SACK_LIME, "Lime Sack");
+        addBlock(AllBlocks.SACK_PINK, "Pink Sack");
+        addBlock(AllBlocks.SACK_GRAY, "Gray Sack");
+        addBlock(AllBlocks.SACK_LIGHT_GRAY, "Light Gray Sack");
+        addBlock(AllBlocks.SACK_CYAN, "Cyan Sack");
+        addBlock(AllBlocks.SACK_PURPLE, "Purple Sack");
+        addBlock(AllBlocks.SACK_BLUE, "Blue Sack");
+        addBlock(AllBlocks.SACK_BROWN, "Brown Sack");
+        addBlock(AllBlocks.SACK_GREEN, "Green Sack");
+        addBlock(AllBlocks.SACK_RED, "Red Sack");
+        addBlock(AllBlocks.SACK_BLACK, "Black Sack");
         addBlock(AllBlocks.TIN_BLOCK, "Block of Tin");
         addBlock(AllBlocks.TIN_PLATE_BLOCK, "Block of Tin Plates");
         addBlock(AllBlocks.TIN_PLATE_SLAB, "Slab of Tin Plates");
@@ -215,6 +232,8 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addToolTip(TooltipKeys.PROSPECTOR_PICK_NOTHING, "Found nothing of value");
         addToolTip(TooltipKeys.REDUCES_FALL_DAMAGE, "Reduces fall damage when on Feet");
         addToolTip(TooltipKeys.ROLLING_MILL, "Processes materials by flatting and drawing them");
+        addToolTip(TooltipKeys.SACK_IS_EMPTY, "empty...");
+        addToolTip(TooltipKeys.SACK_OVERFLOW, "and %s more...");
         addToolTip(TooltipKeys.TRIP_HAMMER1, "Processes materials by pulverizing them into dust");
         addToolTip(TooltipKeys.TRIP_HAMMER2, "\u00A77" + "Needs a " + "\u00A72" + "1x1x4 area" + "\u00A77" + " of free space");
         addToolTip(TooltipKeys.WATER_WHEEL, "Creates mechanical power from flowing water");
@@ -225,6 +244,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addMenu(AllBlocks.FILTER, "Item Filter");
         addMenu(AllBlocks.MILLSTONE, "Millstone");
         addMenu(AllBlocks.ROLLING_MILL, "Rolling Mill");
+        addMenu(AllBlocks.SACK, "Sack");
         addMenu(AllBlocks.TRIP_HAMMER, "Trip Hammer");
 
         addJEICategory(AllBlocks.COKE_OVEN, "Coking");

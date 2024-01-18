@@ -1,9 +1,10 @@
 package com.github.thomashooks.notenoughmachines.data.loot.table;
 
+import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.CogwheelLargeBlock;
 import com.github.thomashooks.notenoughmachines.world.block.FlaxPlantBlock;
-import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.block.TripHammerBlock;
+import com.github.thomashooks.notenoughmachines.world.block.entity.SackBlockEntity;
 import com.github.thomashooks.notenoughmachines.world.block.state.properties.MultiBlockPart1x1x4;
 import com.github.thomashooks.notenoughmachines.world.block.state.properties.MultiBlockPart3x1x3;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
@@ -13,8 +14,15 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
@@ -126,6 +134,23 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSelf(AllBlocks.POLISHED_FLUXSTONE_WALL.get());
         dropSelf(AllBlocks.RAW_TIN_BLOCK.get());
         dropSelf(AllBlocks.ROLLING_MILL.get());
+        createSackDrop(AllBlocks.SACK.get());
+        createSackDrop(AllBlocks.SACK_WHITE.get());
+        createSackDrop(AllBlocks.SACK_ORANGE.get());
+        createSackDrop(AllBlocks.SACK_MAGENTA.get());
+        createSackDrop(AllBlocks.SACK_LIGHT_BLUE.get());
+        createSackDrop(AllBlocks.SACK_YELLOW.get());
+        createSackDrop(AllBlocks.SACK_LIME.get());
+        createSackDrop(AllBlocks.SACK_PINK.get());
+        createSackDrop(AllBlocks.SACK_GRAY.get());
+        createSackDrop(AllBlocks.SACK_LIGHT_GRAY.get());
+        createSackDrop(AllBlocks.SACK_CYAN.get());
+        createSackDrop(AllBlocks.SACK_PURPLE.get());
+        createSackDrop(AllBlocks.SACK_BLUE.get());
+        createSackDrop(AllBlocks.SACK_BROWN.get());
+        createSackDrop(AllBlocks.SACK_GREEN.get());
+        createSackDrop(AllBlocks.SACK_RED.get());
+        createSackDrop(AllBlocks.SACK_BLACK.get());
         add(AllBlocks.TRIP_HAMMER.get(), (block) -> { return this.createSinglePropConditionTable(block, TripHammerBlock.PART, MultiBlockPart1x1x4.BOTTOM); });
         dropSelf(AllBlocks.TIN_BLOCK.get());
         dropSelf(AllBlocks.TIN_PLATE_BLOCK.get());
@@ -158,5 +183,16 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
     protected void dropSlab(Block slab)
     {
         add(slab, block -> createSlabItemTable(slab));
+    }
+
+    protected void createSackDrop(Block sackBlock)
+    {
+        this.add(sackBlock, (block) ->
+        {
+            return LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block)
+                .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
+                .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy(SackBlockEntity.ITEMS_TAG, "BlockEntityTag."+ SackBlockEntity.ITEMS_TAG))
+            )));
+        });
     }
 }

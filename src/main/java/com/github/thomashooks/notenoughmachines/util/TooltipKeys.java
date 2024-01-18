@@ -38,6 +38,8 @@ public enum TooltipKeys
     PROSPECTOR_PICK_NOTHING("prospector_pick.nothing"),
     REDUCES_FALL_DAMAGE("reduces_fall_damage"),
     ROLLING_MILL("rolling_mill"),
+    SACK_IS_EMPTY("sack.empty"),
+    SACK_OVERFLOW("sack.more"),
     TRIP_HAMMER1("trip_hammer1"),
     TRIP_HAMMER2("trip_hammer2"),
     WATER_WHEEL("water_wheel"),

@@ -37,6 +37,7 @@ public class ClientRegistrationEvents
             MenuScreens.register(AllMenus.FILTER.orElseThrow(IllegalStateException::new), FilterScreen::new);
             MenuScreens.register(AllMenus.MILLSTONE.orElseThrow(IllegalStateException::new), MillstoneScreen::new);
             MenuScreens.register(AllMenus.ROLLING_MILL.orElseThrow(IllegalStateException::new), RollingMillScreen::new);
+            MenuScreens.register(AllMenus.SACK.orElseThrow(IllegalStateException::new), SackScreen::new);
             MenuScreens.register(AllMenus.TRIP_HAMMER.orElseThrow(IllegalStateException::new), TripHammerScreen::new);
         });
 

@@ -307,6 +307,77 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ModelFile.UncheckedModelFile(modLoc("block/iron_scaffolding_unstable"))
         );
 
+        //Containers
+        //--------------------------------------------------------------------------------------------------------------
+        createOpenableContainer(AllBlocks.SACK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened"))
+        );
+        createOpenableContainer(AllBlocks.SACK_WHITE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_white")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_white"))
+        );
+        createOpenableContainer(AllBlocks.SACK_ORANGE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_orange")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_orange"))
+        );
+        createOpenableContainer(AllBlocks.SACK_MAGENTA.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_magenta")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_magenta"))
+        );
+        createOpenableContainer(AllBlocks.SACK_LIGHT_BLUE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_light_blue")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_light_blue"))
+        );
+        createOpenableContainer(AllBlocks.SACK_YELLOW.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_yellow")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_yellow"))
+        );
+        createOpenableContainer(AllBlocks.SACK_LIME.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_lime")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_lime"))
+        );
+        createOpenableContainer(AllBlocks.SACK_PINK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_pink")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_pink"))
+        );
+        createOpenableContainer(AllBlocks.SACK_GRAY.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_gray")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_gray"))
+        );
+        createOpenableContainer(AllBlocks.SACK_LIGHT_GRAY.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_light_gray")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_light_gray"))
+        );
+        createOpenableContainer(AllBlocks.SACK_CYAN.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_cyan")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_cyan"))
+        );
+        createOpenableContainer(AllBlocks.SACK_PURPLE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_purple")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_purple"))
+        );
+        createOpenableContainer(AllBlocks.SACK_BLUE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_blue")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_blue"))
+        );
+        createOpenableContainer(AllBlocks.SACK_BROWN.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_brown")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_brown"))
+        );
+        createOpenableContainer(AllBlocks.SACK_GREEN.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_green")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_green"))
+        );
+        createOpenableContainer(AllBlocks.SACK_RED.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_red")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_red"))
+        );
+        createOpenableContainer(AllBlocks.SACK_BLACK.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_black")),
+                new ModelFile.UncheckedModelFile(modLoc("block/sack_opened_black"))
+        );
+
         //Furnaces
         //--------------------------------------------------------------------------------------------------------------
         createFurnace(AllBlocks.COKE_OVEN.get(),
@@ -441,6 +512,14 @@ public class BlockStateGenerator extends BlockStateProvider
         getVariantBuilder(block)
                 .partialState().with(AllBlockStateProperties.UNSTABLE, true).addModels(new ConfiguredModel(unstableModel))
                 .partialState().with(AllBlockStateProperties.UNSTABLE, false).addModels(new ConfiguredModel(stableModel));
+    }
+
+    public void createOpenableContainer(Block block, ModelFile closedModel, ModelFile openedModel)
+    {
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.OPEN, true).addModels(new ConfiguredModel(openedModel))
+                .partialState().with(BlockStateProperties.OPEN, false).addModels(new ConfiguredModel(closedModel));
+        simpleBlockItem(block, closedModel);
     }
 
     private void createPassiveStraightRail(Block block, ResourceLocation top)

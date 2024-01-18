@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "notenoughmachines:block/sack_gray"
+    },
+    "open=true": {
+      "model": "notenoughmachines:block/sack_opened_gray"
+    }
+  }
+}

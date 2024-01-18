@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:sack",
+  "key": {
+    "b": {
+      "item": "notenoughmachines:linen_block_gray"
+    }
+  },
+  "pattern": [
+    "bbb",
+    "b b",
+    "bbb"
+  ],
+  "result": {
+    "item": "notenoughmachines:sack_gray"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "notenoughmachines:block/sack_lime"
+    },
+    "open=true": {
+      "model": "notenoughmachines:block/sack_opened_lime"
+    }
+  }
+}

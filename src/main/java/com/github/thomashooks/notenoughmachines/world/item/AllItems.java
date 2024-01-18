@@ -136,7 +136,6 @@ public class AllItems
             ()-> new LinseedOilItem(new Item.Properties()
                     .craftRemainder(Items.GLASS_BOTTLE)
                     .food(new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).build())
-                    .stacksTo(16)
             ));
     public static final RegistryObject<Item> LIMITER_RAIL = ITEMS.register("limiter_rail", ()-> new BlockItem(AllBlocks.LIMITER_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> LOCKING_RAIL = ITEMS.register("locking_rail", ()-> new BlockItem(AllBlocks.LOCKING_RAIL.get(), new Item.Properties()));
@@ -158,6 +157,27 @@ public class AllItems
     public static final RegistryObject<Item> REDSTONE_VALVE = ITEMS.register("redstone_valve", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ROLLING_MILL = ITEMS.register("rolling_mill", ()-> new BlockItem(AllBlocks.ROLLING_MILL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COGWHEEL_SMALL = ITEMS.register("small_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_SMALL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SACK = ITEMS.register("sack", ()-> new SackItem(AllBlocks.SACK.get(), new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> SACK_WHITE = ITEMS.register("sack_white", ()-> new SackItem(AllBlocks.SACK_WHITE.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_ORANGE = ITEMS.register("sack_orange", ()-> new SackItem(AllBlocks.SACK_ORANGE.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_MAGENTA = ITEMS.register("sack_magenta", ()-> new SackItem(AllBlocks.SACK_MAGENTA.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_LIGHT_BLUE = ITEMS.register("sack_light_blue", ()-> new SackItem(AllBlocks.SACK_LIGHT_BLUE.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_YELLOW = ITEMS.register("sack_yellow", ()-> new SackItem(AllBlocks.SACK_YELLOW.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_LIME = ITEMS.register("sack_lime", ()-> new SackItem(AllBlocks.SACK_LIME.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_PINK = ITEMS.register("sack_pink", ()-> new SackItem(AllBlocks.SACK_PINK.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_GRAY = ITEMS.register("sack_gray", ()-> new SackItem(AllBlocks.SACK_GRAY.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_LIGHT_GRAY = ITEMS.register("sack_light_gray", ()-> new SackItem(AllBlocks.SACK_LIGHT_GRAY.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_CYAN = ITEMS.register("sack_cyan", ()-> new SackItem(AllBlocks.SACK_CYAN.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_PURPLE = ITEMS.register("sack_purple", ()-> new SackItem(AllBlocks.SACK_PURPLE.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_BLUE = ITEMS.register("sack_blue", ()-> new SackItem(AllBlocks.SACK_BLUE.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_BROWN = ITEMS.register("sack_brown", ()-> new SackItem(AllBlocks.SACK_BROWN.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_GREEN = ITEMS.register("sack_green", ()-> new SackItem(AllBlocks.SACK_GREEN.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_RED = ITEMS.register("sack_red", ()-> new SackItem(AllBlocks.SACK_RED.get(), new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SACK_BLACK = ITEMS.register("sack_black", ()-> new SackItem(AllBlocks.SACK_BLACK.get(), new Item.Properties().stacksTo(1)));
+
+
+
     public static final RegistryObject<Item> TIN_BLOCK = ITEMS.register("tin_block", ()-> new BlockItem(AllBlocks.TIN_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> TIN_PLATE_BLOCK = ITEMS.register("tin_plate_block", ()-> new BlockItem(AllBlocks.TIN_PLATE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> TIN_PLATE_SLAB = ITEMS.register("tin_plate_slab", ()-> new BlockItem(AllBlocks.TIN_PLATE_SLAB.get(), new Item.Properties()));

@@ -117,6 +117,25 @@ public class AllCreativeTabs
                         output.accept(AllItems.LINEN_BLOCK_RED.get());
                         output.accept(AllItems.LINEN_BLOCK_BLACK.get());
 
+                        //Storage Blocks
+                        output.accept(AllItems.SACK.get());
+                        output.accept(AllItems.SACK_WHITE.get());
+                        output.accept(AllItems.SACK_ORANGE.get());
+                        output.accept(AllItems.SACK_MAGENTA.get());
+                        output.accept(AllItems.SACK_LIGHT_BLUE.get());
+                        output.accept(AllItems.SACK_YELLOW.get());
+                        output.accept(AllItems.SACK_LIME.get());
+                        output.accept(AllItems.SACK_PINK.get());
+                        output.accept(AllItems.SACK_GRAY.get());
+                        output.accept(AllItems.SACK_LIGHT_GRAY.get());
+                        output.accept(AllItems.SACK_CYAN.get());
+                        output.accept(AllItems.SACK_PURPLE.get());
+                        output.accept(AllItems.SACK_BLUE.get());
+                        output.accept(AllItems.SACK_BROWN.get());
+                        output.accept(AllItems.SACK_GREEN.get());
+                        output.accept(AllItems.SACK_RED.get());
+                        output.accept(AllItems.SACK_BLACK.get());
+
                         //Ore Blocks
                         output.accept(AllItems.TIN_ORE.get());
                         output.accept(AllItems.RAW_TIN_BLOCK.get());

@@ -6,11 +6,13 @@ import com.github.thomashooks.notenoughmachines.data.recipes.builders.SingleResu
 import com.github.thomashooks.notenoughmachines.integration.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
 import com.github.thomashooks.notenoughmachines.world.item.AllItems;
+import com.github.thomashooks.notenoughmachines.world.item.crafting.AllRecipes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -418,6 +420,179 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
 
+        //Storage Blocks
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //White Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_WHITE.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_WHITE.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Orange Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_ORANGE.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_ORANGE.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Magenta Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_MAGENTA.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_MAGENTA.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Light Blue Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_LIGHT_BLUE.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_LIGHT_BLUE.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Yellow Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_YELLOW.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_YELLOW.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Lime Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_LIME.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_LIME.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Pink Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_PINK.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_PINK.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Gray Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_GRAY.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_GRAY.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Light Gray Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_LIGHT_GRAY.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_LIGHT_GRAY.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Cyan Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_CYAN.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_CYAN.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Purple Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_PURPLE.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_PURPLE.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Blue Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_BLUE.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_BLUE.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Brown Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_BROWN.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_BROWN.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Green Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_GREEN.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_GREEN.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Red Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_RED.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_RED.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
+        //Black Sack
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllItems.SACK_BLACK.get(), 1)
+                .pattern("bbb")
+                .pattern("b b")
+                .pattern("bbb")
+                .define('b', AllItems.LINEN_BLOCK_BLACK.get())
+                .group(NotEnoughMachines.MOD_ID + ":sack")
+                .unlockedBy("has_" + getHasName(AllItems.FLAX.get()), has(AllItems.FLAX.get()))
+                .save(consumer);
+
         //Full Blocks
         //--------------------------------------------------------------------------------------------------------------
 
@@ -673,7 +848,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .save(consumer);
 
         //Wooden Frame
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllBlocks.WOODEN_FRAME.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AllBlocks.WOODEN_FRAME.get(), 8)
                 .pattern("x#x")
                 .pattern("#o#")
                 .pattern("x#x")
