@@ -185,6 +185,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.HIGH_SPEED_BUFFER_STOP_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_LIMITER_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_POWERED_RAIL.get());
+                        output.accept(AllItems.LAUNCHING_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_ONE_WAY_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_LOCKING_RAIL.get());
                         output.accept(AllItems.HIGH_SPEED_DETECTOR_RAIL.get());

@@ -444,6 +444,10 @@ public class BlockStateGenerator extends BlockStateProvider
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/high_speed_powered_rail_on")
         );
+        createActiveRail(AllBlocks.LAUNCHING_RAIL.get(),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/launching_rail"),
+                new ResourceLocation(NotEnoughMachines.MOD_ID, "block/launching_rail_on")
+        );
         createFourSpeedRail(AllBlocks.LIMITER_RAIL.get(),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail"),
                 new ResourceLocation(NotEnoughMachines.MOD_ID, "block/limiter_rail_1tick_on"),

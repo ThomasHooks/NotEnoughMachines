@@ -14,6 +14,7 @@ public class AllItems
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NotEnoughMachines.MOD_ID);
 
     public static final RegistryObject<Item> AXLE = ITEMS.register("axle", ()-> new BlockItem(AllBlocks.AXLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> LAUNCHING_RAIL = ITEMS.register("launching_rail", ()-> new BlockItem(AllBlocks.LAUNCHING_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> BOOSTER_ROD = ITEMS.register("booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BOOSTER_ROD = ITEMS.register("bronze_booster_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BLOCK = ITEMS.register("bronze_block", ()-> new BlockItem(AllBlocks.BRONZE_BLOCK.get(), new Item.Properties()));
@@ -28,7 +29,6 @@ public class AllItems
     public static final RegistryObject<Item> BRONZE_ROD = ITEMS.register("bronze_rod", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SCAFFOLDING = ITEMS.register("bronze_scaffolding", ()-> new MetalScaffoldBlockItem(19, AllBlocks.BRONZE_SCAFFOLDING.get(), new Item.Properties()));
     public static final RegistryObject<Item> BUFFER_STOP_RAIL = ITEMS.register("buffer_stop_rail", ()-> new BlockItem(AllBlocks.BUFFER_STOP_RAIL.get(), new Item.Properties()));
-
     public static final RegistryObject<Item> CHIME_RAIL = ITEMS.register("chime_rail", ()-> new BlockItem(AllBlocks.CHIME_RAIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> COKE = ITEMS.register("coke", ()-> new FuelItem(3200, new Item.Properties()));
     public static final RegistryObject<Item> COKE_BLOCK = ITEMS.register("coke_block", ()-> new FuelBlockItem(AllBlocks.COKE_BLOCK.get(), 32000, new Item.Properties()));

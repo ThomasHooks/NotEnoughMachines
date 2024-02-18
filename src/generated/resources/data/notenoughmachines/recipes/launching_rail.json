@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "notenoughmachines:launching_rail",
+  "key": {
+    "#": {
+      "item": "notenoughmachines:high_speed_powered_rail"
+    },
+    "|": {
+      "item": "notenoughmachines:bronze_booster_rod"
+    }
+  },
+  "pattern": [
+    "|#|",
+    "|#|",
+    "|#|"
+  ],
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:launching_rail"
+  },
+  "show_notification": true
+}

@@ -3,7 +3,6 @@ package com.github.thomashooks.notenoughmachines.data.tags;
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
 import com.github.thomashooks.notenoughmachines.integration.tags.AllTags;
 import com.github.thomashooks.notenoughmachines.world.block.AllBlocks;
-import com.github.thomashooks.notenoughmachines.world.item.AllItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -43,6 +42,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         );
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 AllBlocks.AXLE.get(),
+                AllBlocks.LAUNCHING_RAIL.get(),
                 AllBlocks.BRONZE_BLOCK.get(),
                 AllBlocks.BRONZE_GRATE.get(),
                 AllBlocks.BRONZE_LADDER.get(),
@@ -199,6 +199,7 @@ public class BlockTagGenerator extends BlockTagsProvider
         );
         this.tag(BlockTags.RAILS).add(
                 //AllBlocks.BUFFER_STOP_RAIL.get(), - Keeps minecarts from being placed inside of it
+                AllBlocks.LAUNCHING_RAIL.get(),
                 AllBlocks.CHIME_RAIL.get(),
                 AllBlocks.CROSSOVER_RAIL.get(),
                 AllBlocks.HIGH_SPEED_ACTIVATOR_RAIL.get(),
@@ -215,6 +216,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.ONE_WAY_RAIL.get()
         );
         this.tag(BlockTags.PREVENT_MOB_SPAWNING_INSIDE).add(
+                AllBlocks.LAUNCHING_RAIL.get(),
                 AllBlocks.BRONZE_SCAFFOLDING.get(),
                 AllBlocks.BUFFER_STOP_RAIL.get(),
                 AllBlocks.CHIME_RAIL.get(),

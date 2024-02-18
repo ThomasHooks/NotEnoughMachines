@@ -24,6 +24,7 @@ public class ItemModelGenerator extends ItemModelProvider
     protected void registerModels()
     {
         createSimpleBlockItemModel(AllBlocks.AXLE);
+        createSimpleFlatItemModel(AllItems.LAUNCHING_RAIL);
         createSimpleItemModel(AllItems.BOOSTER_ROD);
         createSimpleItemModel(AllItems.BRONZE_BOOSTER_ROD);
         createSimpleItemModel(AllItems.BRONZE_INGOT);

@@ -20,6 +20,7 @@ public enum TooltipKeys
     ITEM_POUCH_INSERT("item_pouch.insert"),
     ITEM_POUCH_REMOVE("item_pouch.remove"),
     ITEM_POUCH_SLOT("item_pouch.slot"),
+    LAUNCHING_RAIL("launching_rail"),
     LIMITER_RAIL1("limiter_rail1"),
     LIMITER_RAIL2("limiter_rail2"),
     LOCKING_RAIL1("locking_rail1"),

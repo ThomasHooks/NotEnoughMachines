@@ -77,7 +77,7 @@ public class SackBlock extends Block implements EntityBlock
                 PiglinAi.angerNearbyPiglins(player, true);
             }
             else
-                throw new IllegalStateException(NotEnoughMachines.MOD_ID + "%s: menu provider is missing!".formatted(SackBlock.class.getCanonicalName()));
+                throw new IllegalStateException(NotEnoughMachines.MOD_ID + ".%s: menu provider is missing!".formatted(SackBlock.class.getCanonicalName()));
         }
         return InteractionResult.sidedSuccess(world.isClientSide());
     }

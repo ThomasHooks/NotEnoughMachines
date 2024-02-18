@@ -1674,6 +1674,17 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .unlockedBy("has_" + getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
                 .save(consumer);
 
+        //Launching Rail
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, AllItems.LAUNCHING_RAIL.get(), 3)
+                .pattern("|#|")
+                .pattern("|#|")
+                .pattern("|#|")
+                .define('|', AllItems.BRONZE_BOOSTER_ROD.get())
+                .define('#', AllItems.HIGH_SPEED_POWERED_RAIL.get())
+                .group(NotEnoughMachines.MOD_ID + ":launching_rail")
+                .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
         //Limiter Rail
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, AllItems.LIMITER_RAIL.get(), 6)
                 .pattern("|-|")
@@ -1952,7 +1963,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
         simpleMilling(consumer, "yellow_dye", Ingredient.of(Items.DANDELION, Items.SUNFLOWER), Items.YELLOW_DYE, 2, Items.YELLOW_DYE, 200);
 
         //Misc
-        simpleMilling(consumer, "flax_string", AllItems.FLAX.get(), AllItems.FLAX_STRING.get(), 3, AllItems.FLAX.get(), 200);
+        simpleMilling(consumer, "flax_string", AllItems.FLAX.get(), AllItems.FLAX_STRING.get(), 2, AllItems.FLAX.get(), 200);
         simpleMilling(consumer, "flint", Items.GRAVEL, Items.FLINT, 1, Items.GRAVEL, 400);
     }
 
