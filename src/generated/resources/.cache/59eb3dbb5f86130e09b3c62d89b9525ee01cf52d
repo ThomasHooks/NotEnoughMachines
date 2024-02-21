@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-05T20:49:34.4944608	Loot Tables
+// 1.20.1	2024-02-19T17:13:17.579625	Loot Tables
 92931baec661a1ebe034160a17f6724f24288087 data/notenoughmachines/loot_tables/blocks/axle.json
 f7340e64bb9776a570abb8735cf0dcf4fa45ec03 data/notenoughmachines/loot_tables/blocks/bronze_block.json
 87c8c0c27d9d1e41485951f34aa0b19f536ed01a data/notenoughmachines/loot_tables/blocks/bronze_grate.json
@@ -67,6 +67,7 @@ dec5d72b27a976ec62f5964aa5099c7237507bad data/notenoughmachines/loot_tables/bloc
 9c58ba4bcf5c27a085d8226fb2fb9a9b2eb10b1a data/notenoughmachines/loot_tables/blocks/iron_plate_slab.json
 57416f8b0f3c53bc2553bfe09f9421d71883f54d data/notenoughmachines/loot_tables/blocks/iron_plate_stairs.json
 4968d9e49873aa23341116611d92742f6a32817c data/notenoughmachines/loot_tables/blocks/iron_scaffolding.json
+37eeb9ac81d8ef1ef0814cdfde17630b1ca50101 data/notenoughmachines/loot_tables/blocks/item_duct.json
 a3028027e5a7388f414cbf8b2f7eaa313e208e9c data/notenoughmachines/loot_tables/blocks/large_cogwheel.json
 80ad5ea8939121dabb188856f83228094048067f data/notenoughmachines/loot_tables/blocks/launching_rail.json
 cbd0ee1679f3b24fbad29a7b45f84a88531754b5 data/notenoughmachines/loot_tables/blocks/limiter_rail.json

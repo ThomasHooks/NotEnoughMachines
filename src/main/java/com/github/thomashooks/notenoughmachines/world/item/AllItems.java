@@ -111,6 +111,7 @@ public class AllItems
     public static final RegistryObject<Item> IRON_ROLLS = ITEMS.register("iron_rolls", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> IRON_SCAFFOLDING = ITEMS.register("iron_scaffolding", ()-> new MetalScaffoldBlockItem(13, AllBlocks.IRON_SCAFFOLDING.get(), new Item.Properties()));
     public static final RegistryObject<Item> IRON_SCREW = ITEMS.register("iron_screw", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ITEM_DUCT = ITEMS.register("item_duct", ()-> new BlockItem(AllBlocks.ITEM_DUCT.get(), new Item.Properties()));
     public static final RegistryObject<Item> ITEM_POUCH = ITEMS.register("item_pouch", ()-> new PouchItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> KAOLIN = ITEMS.register("kaolin", ()-> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> COGWHEEL_LARGE = ITEMS.register("large_cogwheel", ()-> new BlockItem(AllBlocks.COGWHEEL_LARGE.get(), new Item.Properties()));

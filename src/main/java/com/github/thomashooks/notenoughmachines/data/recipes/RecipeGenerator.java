@@ -1578,7 +1578,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":chime_rail")
                 .unlockedBy("has_" + getHasName(AllItems.TIN_INGOT.get()), has(AllItems.TIN_INGOT.get()))
                 .save(consumer, NotEnoughMachines.MOD_ID + ":chime_rail_from_tin_rods");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, AllItems.CHIME_RAIL.get(), 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, AllItems.CHIME_RAIL.get(), 6)
                 .requires(Items.DETECTOR_RAIL)
                 .requires(Items.NOTE_BLOCK)
                 .group(NotEnoughMachines.MOD_ID + ":chime_rail")
@@ -1767,7 +1767,7 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_chime_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
                 .save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, AllItems.HIGH_SPEED_CHIME_RAIL.get(), 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TRANSPORTATION, AllItems.HIGH_SPEED_CHIME_RAIL.get(), 6)
                 .requires(AllItems.HIGH_SPEED_DETECTOR_RAIL.get())
                 .requires(Items.NOTE_BLOCK)
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_chime_rail")
@@ -1844,6 +1844,29 @@ public class RecipeGenerator extends RecipeProvider implements IConditionBuilder
                 .define('-', AllItems.RAILROAD_TIE.get())
                 .group(NotEnoughMachines.MOD_ID + ":high_speed_powered_rail")
                 .unlockedBy("has_" + getHasName(AllItems.BRONZE_INGOT.get()), has(AllItems.BRONZE_INGOT.get()))
+                .save(consumer);
+
+        //Item Conduits
+        //--------------------------------------------------------------------------------------------------------------
+
+        //Item Duct
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, AllItems.ITEM_DUCT.get(), 3)
+                .pattern("-c-")
+                .define('-', AllTags.Items.IRON_PLATES)
+                .define('c', Items.CHEST)
+                .group(NotEnoughMachines.MOD_ID + ":item_duct")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer);
+
+        //Item Filter
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, AllItems.FILTER.get(), 1)
+                .pattern(" c ")
+                .pattern("v=v")
+                .define('v', AllItems.REDSTONE_VALVE.get())
+                .define('c', Items.COMPARATOR)
+                .define('=', AllItems.ITEM_DUCT.get())
+                .group(NotEnoughMachines.MOD_ID + ":filter")
+                .unlockedBy("has_" + getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
     }
 

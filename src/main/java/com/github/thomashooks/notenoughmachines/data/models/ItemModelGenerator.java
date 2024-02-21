@@ -115,6 +115,7 @@ public class ItemModelGenerator extends ItemModelProvider
         createSimpleBlockItemModel(AllBlocks.IRON_SCAFFOLDING);
         createSimpleItemModel(AllItems.IRON_ROD);
         createSimpleItemModel(AllItems.IRON_SCREW);
+        createSimpleItemModel(AllItems.ITEM_DUCT);
         createSimpleItemModel(AllItems.ITEM_POUCH, "item_pouch", "item_pouch_overlay");
         createSimpleItemModel(AllItems.KAOLIN);
         createSimpleItemModel(AllItems.LINEN);

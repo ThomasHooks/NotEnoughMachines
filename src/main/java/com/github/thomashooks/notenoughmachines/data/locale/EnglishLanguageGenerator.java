@@ -91,6 +91,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addBlock(AllBlocks.IRON_PLATE_SLAB, "Slab of Iron Plates");
         addBlock(AllBlocks.IRON_PLATE_STAIRS, "Stairs of Iron Plates");
         addBlock(AllBlocks.IRON_SCAFFOLDING, "Iron Scaffold");
+        addBlock(AllBlocks.ITEM_DUCT, "Item Duct");
         addBlock(AllBlocks.LINEN_BLOCK, "Block of Linen");
         addBlock(AllBlocks.LINEN_BLOCK_WHITE, "White Block of Linen");
         addBlock(AllBlocks.LINEN_BLOCK_ORANGE, "Orange Block of Linen");
@@ -202,6 +203,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
 
         addToolTip(TooltipKeys.ACTIVATOR_RAIL, "Activates minecarts when powered with redstone");
         addToolTip(TooltipKeys.BUFFER_STOP_RAIL, "Endcap that stops minecarts from rolling off the track");
+        addToolTip(TooltipKeys.CANT_MOVE_ITEMS_UP, "Items cannot be transported upwards!");
         addToolTip(TooltipKeys.CHIME_RAIL, "Plays a sound when a minecart passes over");
         addToolTip(TooltipKeys.COKE_OVEN, "Processes coal into coke");
         addToolTip(TooltipKeys.CROSSOVER_RAIL1, "Allows two sets of tracks to cross over each other");
@@ -209,6 +211,7 @@ public class EnglishLanguageGenerator extends LanguageProvider
         addToolTip(TooltipKeys.DETECTOR_RAIL, "Produces a redstone signal when a minecart passes over");
         addToolTip(TooltipKeys.GEARBOX, "Transfers mechanical power to different different axes");
         addToolTip(TooltipKeys.IS_DYEABLE, "Dyeable");
+        addToolTip(TooltipKeys.ITEM_DUCT, "Transports a single item in the direction the duct is facing");
         addToolTip(TooltipKeys.ITEM_FILTER, "Routes items in different directions depending upon which color the item has been sorted into");
         addToolTip(TooltipKeys.ITEM_POUCH, "Stores up to four stacks worth of mixed items");
         addToolTip(TooltipKeys.ITEM_POUCH_FULLNESS, "%s/%s");

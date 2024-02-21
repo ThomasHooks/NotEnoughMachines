@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "notenoughmachines:item_duct",
+  "key": {
+    "-": {
+      "tag": "forge:plates/iron"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    }
+  },
+  "pattern": [
+    "-c-"
+  ],
+  "result": {
+    "count": 3,
+    "item": "notenoughmachines:item_duct"
+  },
+  "show_notification": true
+}

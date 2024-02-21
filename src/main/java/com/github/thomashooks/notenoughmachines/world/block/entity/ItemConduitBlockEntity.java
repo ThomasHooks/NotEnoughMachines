@@ -1,6 +1,7 @@
 package com.github.thomashooks.notenoughmachines.world.block.entity;
 
 import com.github.thomashooks.notenoughmachines.NotEnoughMachines;
+import com.github.thomashooks.notenoughmachines.integration.config.CommonConfigs;
 import com.github.thomashooks.notenoughmachines.util.InventoryHelper;
 import com.github.thomashooks.notenoughmachines.world.block.ItemConduitBlock;
 import net.minecraft.core.BlockPos;
@@ -29,10 +30,10 @@ public abstract class ItemConduitBlockEntity extends LazyTickingBlockEntity
     public void lazyTick()
     {
         ItemStackHandler inventoryIndex = this.itemStackHandlers.get(getInventoryIndex());
-        if (canPullItems())
-            pullItems(inventoryIndex, getMaxItemTransfer());
         if (canPushItems())
             pushItems(inventoryIndex, getMaxItemTransfer());
+        if (canPullItems())
+            pullItems(inventoryIndex, getMaxItemTransfer());
     }
 
     /**
@@ -43,7 +44,7 @@ public abstract class ItemConduitBlockEntity extends LazyTickingBlockEntity
     /**
      * @return Gets the item transfer rate of this item conduit
      */
-    public int getItemTransferRate() { return 40; }
+    public int getItemTransferRate() { return CommonConfigs.ITEM_CONDUIT_TRANSFER_RATE.get(); }
 
     /**
      * @return Gets the maximum number of items that can be transferred
@@ -53,12 +54,12 @@ public abstract class ItemConduitBlockEntity extends LazyTickingBlockEntity
     /**
      * @return True if this item conduit can pull Items from other inventories
      */
-    public abstract boolean canPullItems();
+    public boolean canPullItems() { return false; }
 
     /**
      * @return True If this item conduit can push Items into other inventories
      */
-    public abstract boolean canPushItems();
+    public boolean canPushItems() { return false; }
 
     /**
      * @return True if this item conduit is locked

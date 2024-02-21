@@ -108,6 +108,7 @@ public class BlockLootTableGenerator extends BlockLootSubProvider
         dropSlab(AllBlocks.IRON_PLATE_SLAB.get());
         dropSelf(AllBlocks.IRON_PLATE_STAIRS.get());
         dropSelf(AllBlocks.IRON_SCAFFOLDING.get());
+        dropSelf(AllBlocks.ITEM_DUCT.get());
         dropSelf(AllBlocks.LINEN_BLOCK.get());
         dropSelf(AllBlocks.LINEN_BLOCK_WHITE.get());
         dropSelf(AllBlocks.LINEN_BLOCK_ORANGE.get());

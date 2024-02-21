@@ -371,6 +371,13 @@ public class AllBlocks
                     .pushReaction(PushReaction.DESTROY)
                     .isRedstoneConductor(AllBlocks::never)
             ));
+    public static final RegistryObject<Block> ITEM_DUCT = BLOCKS.register("item_duct",
+            ()-> new ItemDuctBlock(Block.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(1.2F, 2.0F)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+            ));
     public static final RegistryObject<Block> LAUNCHING_RAIL = BLOCKS.register("launching_rail",
             ()-> new LaunchingRailBlock(Block.Properties.of()
                     .noCollission()

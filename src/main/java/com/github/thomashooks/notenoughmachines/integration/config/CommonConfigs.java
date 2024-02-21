@@ -16,6 +16,7 @@ public class CommonConfigs
     public static final ForgeConfigSpec.ConfigValue<Float> HIGH_SPEED_POWERED_RAIL_BOOST_FACTOR;
     public static final ForgeConfigSpec.ConfigValue<Float> HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR;
     public static final ForgeConfigSpec.ConfigValue<Integer> PROSPECTOR_PICK_RANGE;
+    public static final ForgeConfigSpec.ConfigValue<Integer> ITEM_CONDUIT_TRANSFER_RATE;
 
     static
     {
@@ -31,6 +32,8 @@ public class CommonConfigs
         HIGH_SPEED_POWERED_RAIL_LAUNCH_FACTOR = BUILDER.comment("The launch factor of a minecart while it's on a high-speed powered rail").define("High-Speed Powered Rail's Launch Factor", 0.03F);
 
         PROSPECTOR_PICK_RANGE = BUILDER.comment("The prospector pick's maximum scanning range").define("Prospector Pick's Max Range", 7);
+
+        ITEM_CONDUIT_TRANSFER_RATE = BUILDER.comment("The item transfer rate of all item conduits in ticks").define("Item Conduit Transfer Rate", 40);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

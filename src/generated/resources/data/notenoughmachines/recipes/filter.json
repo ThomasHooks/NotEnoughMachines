@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "notenoughmachines:filter",
+  "key": {
+    "=": {
+      "item": "notenoughmachines:item_duct"
+    },
+    "c": {
+      "item": "minecraft:comparator"
+    },
+    "v": {
+      "item": "notenoughmachines:redstone_valve"
+    }
+  },
+  "pattern": [
+    " c ",
+    "v=v"
+  ],
+  "result": {
+    "item": "notenoughmachines:filter"
+  },
+  "show_notification": true
+}

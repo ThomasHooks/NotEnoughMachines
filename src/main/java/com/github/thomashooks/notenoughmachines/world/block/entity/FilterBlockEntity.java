@@ -54,9 +54,6 @@ public class FilterBlockEntity extends ItemConduitBlockEntity implements MenuPro
     }
 
     @Override
-    public boolean canPullItems() { return false; }
-
-    @Override
     public boolean canPushItems() { return true; }
 
     @Override

@@ -170,6 +170,7 @@ public class AllCreativeTabs
                         output.accept(AllItems.CONJUNCTIONER.get());
 
                         //Item Transfer Blocks
+                        output.accept(AllItems.ITEM_DUCT.get());
                         output.accept(AllItems.FILTER.get());
 
                         //Minecart Rails

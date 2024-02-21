@@ -112,6 +112,7 @@ public class BlockTagGenerator extends BlockTagsProvider
                 AllBlocks.IRON_PLATE_SLAB.get(),
                 AllBlocks.IRON_PLATE_STAIRS.get(),
                 AllBlocks.IRON_SCAFFOLDING.get(),
+                AllBlocks.ITEM_DUCT.get(),
                 AllBlocks.MILLSTONE.get(),
                 AllBlocks.ONE_WAY_RAIL.get(),
                 AllBlocks.POLISHED_FLUXSTONE.get(),
